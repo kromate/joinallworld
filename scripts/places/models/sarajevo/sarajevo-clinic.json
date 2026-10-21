@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarajevo_Bolnica-Kosevo_2011-10-24.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Milan Suvajac",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/clinic2.jpg",
+   "used": "older Kosevo pavilion: three-storey sand-beige render, stepped gabled wings with low tiled roofs, small flat entrance canopy, tall brick chimney, punched windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/392306629",
+   "used": "real campus block outline (1983, 11 levels, concrete) for the tall main block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "osm": true,
+    "fit": 64,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d9c96",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 7,
+    "glassColour": "#4a525a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -52
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a89d84",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "glassColour": "#3a3f44"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 16,
+    "colour": "#6b4336",
+    "material": "clay-tile",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-wing",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    27,
+    -51
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a39880",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 5.5,
+    "plinth": 0.4,
+    "glassColour": "#3a3f44"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 18,
+    "colour": "#6b4336",
+    "material": "clay-tile",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -62,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 5,
+    "height": 3.4,
+    "colour": "#7f9099",
+    "columns": 0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18,
+    -48,
+    10
+   ],
+   "params": {
+    "profile": [
+     [
+      1.1,
+      0,
+      "#8c5a46"
+     ],
+     [
+      0.9,
+      26,
+      "#8c5a46"
+     ]
+    ],
+    "colour": "#8c5a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -66
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -68
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pavilion is a single long low-gable block, not the stepped gable wings with taller stair-block; windows more regular than the photo; tall concrete block is OSM outline scaled down with no photo of it."
+ }
+}

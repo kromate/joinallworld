@@ -1,0 +1,553 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-404325219",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MerikylpylanPuistoWest.JPG",
+   "licence": "Public domain",
+   "author": "KLS",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/merikylpyla-w.jpg",
+   "used": "sand beach in the foreground, shallow bay to the right, deciduous treeline behind, light poles, small shelters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MerikylpylanPuistoSouth.JPG",
+   "licence": "Public domain",
+   "author": "KLS",
+   "view": "side",
+   "file": "/tmp/places-evidence/helsinki/merikylpyla-s.jpg",
+   "used": "reeds, scattered granite boulders in the water, tree-lined shore"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/404325219",
+   "used": "identity only: the 643 m park is shown as a ~100 m beach slice"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 70,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      12
+     ],
+     [
+      16,
+      8
+     ],
+     [
+      30,
+      6
+     ],
+     [
+      44,
+      -2
+     ],
+     [
+      60,
+      -14
+     ],
+     [
+      75,
+      -24
+     ],
+     [
+      75,
+      45
+     ],
+     [
+      0,
+      45
+     ],
+     [
+      -2,
+      32
+     ],
+     [
+      -3,
+      20
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.08,
+    "colour": "#5a7f9c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      10.5
+     ],
+     [
+      16,
+      6.5
+     ],
+     [
+      30,
+      4.5
+     ],
+     [
+      44,
+      -3.5
+     ],
+     [
+      60,
+      -15.5
+     ],
+     [
+      75,
+      -25.5
+     ],
+     [
+      75,
+      -24
+     ],
+     [
+      60,
+      -14
+     ],
+     [
+      44,
+      -2
+     ],
+     [
+      30,
+      6
+     ],
+     [
+      16,
+      8
+     ],
+     [
+      0,
+      12
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.04,
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    52,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 10,
+    "count": 60,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    36,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -4
+     ],
+     [
+      -30,
+      -2
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      20,
+      -14
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#bfb59f"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     6,
+     9,
+     0
+    ],
+    "end": [
+     15,
+     9.6,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.18,
+        0.18
+       ],
+       "height": 1.3,
+       "colour": "#8b8b4c",
+       "topScale": 0.3
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     26,
+     4.8,
+     0
+    ],
+    "end": [
+     35,
+     5.3999999999999995,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.18,
+        0.18
+       ],
+       "height": 1.3,
+       "colour": "#8b8b4c",
+       "topScale": 0.3
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     50,
+     4,
+     0
+    ],
+    "end": [
+     59,
+     4.6,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.18,
+        0.18
+       ],
+       "height": 1.3,
+       "colour": "#8b8b4c",
+       "topScale": 0.3
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "count": 9,
+    "colour": "#7d7a74"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    66,
+    14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "count": 5,
+    "colour": "#85807a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 0.16,
+    "n": 8,
+    "height": 7.5,
+    "colour": "#2a8a8f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    14,
+    7.5
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#e8e4d0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 0.16,
+    "n": 8,
+    "height": 7.5,
+    "colour": "#2a8a8f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    24,
+    7.5
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#e8e4d0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 0.16,
+    "n": 8,
+    "height": 7.5,
+    "colour": "#2a8a8f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    24,
+    7.5
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#e8e4d0"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -14,
+    34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 2.8,
+    "kind": "hip",
+    "roof_colour": "#8a4a3a"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 6,
+    "umbrellas": true,
+    "loungers": false
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    52,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "count": 10,
+    "colour": "#7d7a74"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    18,
+    3.5,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#7f8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    36,
+    4.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "depth": 0.8,
+    "colour": "#7f8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    56,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.1,
+    "depth": 0.8,
+    "colour": "#7f8a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -3,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "n": 8,
+    "height": 9,
+    "colour": "#2a8a8f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -3,
+    9
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#e8e4d0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sand/treeline/bay now read but the bay is a hard-edged flat polygon, reeds and boulders are small, foreground sand lacks the photo shadow and grass tufts."
+ }
+}

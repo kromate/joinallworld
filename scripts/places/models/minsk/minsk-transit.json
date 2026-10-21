@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: Kamiennaja Horka metro, plain glass-and-stone street vestibule beside bus bays; Commons photos are platform interior and an illuminated name sign only, so no exterior is evidenced; platform-interior photo Kamgor_05 (CC BY-SA 3.0, Antares 610) used only for the stone/white/red colour palette"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vestibule",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d6d2c6",
+    "trimColour": "#8a8d90",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#6f93a8",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "material": "membrane",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-block",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    18,
+    4
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69c",
+    "windows": "plain",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 4,
+    "columns": 2,
+    "colour": "#8a8d90",
+    "edge_colour": "#c8362f"
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 9,
+    "kiosk": false
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 4,
+    "height": 3.2,
+    "form": "shed",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -10,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#2f5d8a",
+    "count": 2,
+    "spacing": 4,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 3,
+    "colour": "#2f4f8a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the vestibule found; vestibule, portal and bus shelter are typical, not matched."
+ }
+}

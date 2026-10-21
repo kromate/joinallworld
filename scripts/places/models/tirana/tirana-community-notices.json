@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1174012234",
+   "used": "General Directorate of Prisons outline (1,198 m2, name match, Wikidata Q56284028); no photo found, so a plain 4-storey state block behind a perimeter wall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c4b8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8b8f8c",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b3ad9f"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.4,
+    "colour": "#4a4f52"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#c8102e",
+     "#c8102e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -25,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; outline real, facade and perimeter wall typed."
+ }
+}

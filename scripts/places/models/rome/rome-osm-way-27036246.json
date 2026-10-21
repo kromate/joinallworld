@@ -1,0 +1,494 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-way-27036246",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roma_San_Filippo_Neri_ingresso.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Blackcat",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/hosp0.jpg",
+   "used": "symmetrical 1930s-40s block: taller central tower in terracotta-orange brick with cream travertine piers, cream central slab, orange end blocks, flanking wings with balcony terraces, low entrance portico with white columns, cars and palms in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Filippo_Neri_001.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mario1952",
+   "view": "side",
+   "file": "/tmp/places-evidence/rome/hosp1.jpg",
+   "used": "terracotta-pink walls, white drum-shaped chapel, long balconied wings"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1403649",
+   "used": "overall scale only; the outline is a sprawling pavilion complex, only the entrance block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre-cream",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#e3d6b9",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 7.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.3,
+      "spacing": 10.4,
+      "colour": "#d4a483",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#c4693f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 6.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.0,
+      "depth": 0.4,
+      "spacing": 4.0,
+      "colour": "#e3d6b9",
+      "margin": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3d6b9",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     24,
+     21
+    ]
+   },
+   "at": [
+    -33,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#c4693f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 7.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.4,
+      "depth": 0.3,
+      "spacing": 6.8,
+      "colour": "#e3d6b9",
+      "margin": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     24,
+     21
+    ]
+   },
+   "at": [
+    31,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#c4693f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 7.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.4,
+      "depth": 0.3,
+      "spacing": 6.8,
+      "colour": "#e3d6b9",
+      "margin": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -47,
+    13
+   ],
+   "rotDeg": 28,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#c9714a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e3d6b9"
+     }
+    ],
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    47,
+    13
+   ],
+   "rotDeg": -28,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#c9714a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e3d6b9"
+     }
+    ],
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-low",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "material": "painted-render",
+    "colour": "#e3d6b9",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc5ae",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 17,
+    "depth": 4.5,
+    "height": 4.2,
+    "columns": 6,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f4efe2",
+    "roofColour": "#cfc5ae"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "car",
+   "at": [
+    -12,
+    -27,
+    0
+   ],
+   "params": {
+    "colour": "#d0d3d8",
+    "count": 3,
+    "spacing": 3.6,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -23.3,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 0.5,
+    "colour": "#cfc5ae"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     9
+    ],
+    "height": 0.1,
+    "colour": "#4d4e52"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "car",
+   "at": [
+    8,
+    -27,
+    0.1
+   ],
+   "params": {
+    "colour": "#1f2328",
+    "count": 2,
+    "spacing": 3.6,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -28
+    ],
+    "height": 24
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -30
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -26
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -28
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -26
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Splayed wings, deeper end blocks, taller columned porch, palms and pine, tank removed; balcony loggias dropped for budget, no road curve detail, tower windows generic."
+ }
+}

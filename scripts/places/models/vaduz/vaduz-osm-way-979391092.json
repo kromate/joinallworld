@@ -1,0 +1,481 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-979391092",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biedermannhaus.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Presse- und Informationsamt, Vaduz",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/bied1.jpg",
+   "used": "two-storey weathered timber farmhouse, wide low tile roof with gable to the right, recessed covered porch with board railing at the front, stone plinth, white chimney, forest backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/979391092",
+   "used": "footprint size 14 x 10 m (match quality name)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.4,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     14.4,
+     10.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-back",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7b7064",
+    "windows": "punched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7064"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-right",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    3.5,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7b7064",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7064"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7b7064",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "bay": 3.5,
+    "plinth": 0,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f5348",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-rail",
+   "at": [
+    -3.5,
+    -4.6,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#5e4d3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-post-a",
+   "at": [
+    -6.8,
+    -4.6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.3,
+    "colour": "#4e3f32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-post-b",
+   "at": [
+    -3.5,
+    -4.6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.3,
+    "colour": "#4e3f32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-post-c",
+   "at": [
+    -0.3,
+    -4.6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.3,
+    "colour": "#4e3f32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-floor",
+   "at": [
+    -3.5,
+    -3.0,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "height": 0.2,
+    "colour": "#6b5a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-dark",
+   "at": [
+    -3.5,
+    -1.6,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "height": 2.1,
+    "colour": "#2c2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "diamond-0",
+   "at": [
+    -4.8,
+    -5.02,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.05
+    ],
+    "height": 0.35,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "diamond-1",
+   "at": [
+    -3.5,
+    -5.02,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.05
+    ],
+    "height": 0.35,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "diamond-2",
+   "at": [
+    -2.2,
+    -5.02,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.05
+    ],
+    "height": 0.35,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    -4,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     3.0,
+     1.8
+    ]
+   },
+   "at": [
+    -6.0,
+    -6.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps2",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.2
+    ]
+   },
+   "at": [
+    -6.0,
+    -5.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-a",
+   "at": [
+    5.2,
+    -5.05,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.08
+    ],
+    "height": 1.5,
+    "colour": "#4d5b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-b",
+   "at": [
+    6.8,
+    -5.05,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.08
+    ],
+    "height": 1.5,
+    "colour": "#4d5b45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "spread": 7,
+    "colour": "#2e5a30",
+    "count": 6,
+    "line": 44
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 6,
+    "colour": "#3d6b34",
+    "count": 3,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4,
+    "colour": "#5b8a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "open porch now cut in with posts, rail, steps, diamonds; large round tree still hides facade centre (tree widget cannot be shrunk), forest backdrop only as tree line, shutters and plank texture simplified"
+ }
+}

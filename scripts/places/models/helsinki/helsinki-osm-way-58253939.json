@@ -1,0 +1,336 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-58253939",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Puotila_Chapel.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Arkkipuudeli",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/chapel1.jpg",
+   "used": "granite rubble walls in pink-grey, gable with green-patinated eaves, tall arched windows with red brick surrounds, small round-headed windows, rock outcrop and stone steps beside"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Puotilankappeli.jpg",
+   "licence": "CC BY 2.5",
+   "author": "MakeF",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/chapel2.jpg",
+   "used": "gable-end front: two tall arched windows, four small ones, copper roof edge, rock retaining wall and shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/58253939",
+   "used": "footprint 14.4 x 13.8 m and its rotation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -17,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14.2,
+     13.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#6e665f",
+    "windows": "none",
+    "trimColour": "#a8503d",
+    "plinth": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ],
+      "colours": [
+       "#6f6660",
+       "#8a7770",
+       "#544e4a"
+      ],
+      "slits": 0.22
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f8a72",
+    "material": "metal-sheet",
+    "pitch": 46,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "pointed-arch-window-row",
+   "at": [
+    0,
+    -7,
+    7.0
+   ],
+   "params": {
+    "length": 2,
+    "count": 1,
+    "width": 1.9,
+    "height": 4.4,
+    "kind": "pointed",
+    "sill": 0
+   }
+  },
+  {
+   "type": "pointed-arch-window-row",
+   "at": [
+    0,
+    -7,
+    1.0
+   ],
+   "params": {
+    "length": 2,
+    "count": 1,
+    "width": 2.1,
+    "height": 4.8,
+    "kind": "pointed",
+    "sill": 0
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -4.6,
+    -7.0,
+    7.0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "kind": "arch",
+    "trim": "#a8503d"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4.6,
+    -7.0,
+    7.0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "kind": "arch",
+    "trim": "#a8503d"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -4.6,
+    -7.0,
+    2.6
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "kind": "arch",
+    "trim": "#a8503d"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    4.6,
+    -7.0,
+    2.6
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "kind": "arch",
+    "trim": "#a8503d"
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    4,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 1.6,
+    "colour": "#8e8780",
+    "statue": false
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    -6,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "count": 16,
+    "colour": "#7f7873"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 2.2,
+    "run": 2.0,
+    "count": 11,
+    "colour": "#a8a9a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     12
+    ],
+    "height": 1.4,
+    "colour": "#7d7873"
+   }
+  },
+  {
+   "type": "topiary",
+   "at": [
+    -5,
+    -8.2,
+    0
+   ],
+   "params": {
+    "height": 1.2,
+    "count": 8,
+    "spacing": 1.5,
+    "colour": "#3f6a3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    6,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "count": 20,
+    "colour": "#8e8780"
+   }
+  },
+  {
+   "type": "topiary",
+   "at": [
+    -7,
+    -7.8,
+    0
+   ],
+   "params": {
+    "height": 1.6,
+    "count": 10,
+    "spacing": 1.6,
+    "colour": "#33582f"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    -8.4,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "depth": 1.0,
+    "colour": "#3c6a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Taller steeper gable with green copper roof, two pointed windows, four small ones, rubble outcrop and shrubs; rubble is a flat block pattern without joint depth, no stone steps/retaining wall, camera sees side wall."
+ }
+}

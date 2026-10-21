@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Urad mestske casti Praha-Ujezd: modest 3-storey borough office, rendered, pitched roof, 1990s-2000s (brief, low confidence; Commons photos found were of a different borough, Ujezd nad Lesy, so not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     32,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#a9a9a4",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a30",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcab8",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "overhang": 0.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.16,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#b0aca0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#2f4f6f",
+    "frameColour": "#a9a9a4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "cars": [
+   {
+    "at": [
+     -6,
+     -18
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -2,
+     -18
+    ],
+    "yawDeg": 90,
+    "colour": "#7a2b2b"
+   },
+   {
+    "at": [
+     2,
+     -18
+    ],
+    "yawDeg": 90,
+    "colour": "#2f4f6f"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building; typical modest borough office from the brief's size and roof."
+ }
+}

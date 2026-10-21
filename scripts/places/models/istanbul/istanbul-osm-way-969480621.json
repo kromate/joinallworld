@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-969480621",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/969480621",
+   "used": "name Mazul Kemer, single-tier stone aqueduct arcade about 90 m long, 6 m thick, 12 m high (brief dimensions are guesses; no photo or OSM building found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    0,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     90,
+     6
+    ],
+    "height": 3.0,
+    "colour": "#a39a82",
+    "topColour": "#b3aa92",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -45,
+     0,
+     0
+    ],
+    "end": [
+     45,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5,
+       6
+      ],
+      "height": 5.0,
+      "colour": "#9a917a",
+      "slot": "stone-blocks"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "springers",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -45,
+     0,
+     0
+    ],
+    "end": [
+     45,
+     0,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#a8a08a",
+      "slot": "stone-blocks",
+      "sections": [
+       {
+        "z": 5,
+        "rect": [
+         5,
+         6
+        ]
+       },
+       {
+        "z": 5.8,
+        "rect": [
+         6.2,
+         6
+        ]
+       },
+       {
+        "z": 6.6,
+        "rect": [
+         8.2,
+         6
+        ]
+       },
+       {
+        "z": 7.4,
+        "rect": [
+         10.8,
+         6
+        ]
+       },
+       {
+        "z": 8.2,
+        "rect": [
+         13.2,
+         6
+        ]
+       },
+       {
+        "z": 9.0,
+        "rect": [
+         15.0,
+         6
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-front",
+   "at": [
+    0,
+    -2.7,
+    12.0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#bdb49b",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-back",
+   "at": [
+    0,
+    2.7,
+    12.0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#bdb49b",
+    "slot": "stone-blocks"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM building: typed single-tier pointed-arch stone aqueduct, dimensions guessed, no stream or weathering detail."
+ }
+}

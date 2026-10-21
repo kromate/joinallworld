@@ -1,0 +1,160 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tyreso_centrum_silhuett.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Einarspetz",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/tyreso1.jpg",
+   "used": "raised centre on columns above an open bus station, cream metal-panel facade with ribbon windows, barrel-vaulted glazed roof, dark soffit"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1103013221",
+   "used": "footprint (155 x 104 m, irregular)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dcd8cb",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 4,
+      "spacing": 16,
+      "width": 2.2,
+      "kind": "square",
+      "colour": "#77776f",
+      "backColour": "#1c1c1e",
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "colour": "#9fb4bd",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       90,
+       22
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       90,
+       21
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       90,
+       18
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       90,
+       13
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       90,
+       7
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       90,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.6
+    ],
+    "height": 1.4,
+    "colour": "#e9e6dc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-1103013221",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ribbon windows are dark blue rather than pale; columns are uniform rather than a few chunky ones; no clock porthole or visible bus-station furniture; rooftop lettering is a plain bar."
+ }
+}

@@ -1,0 +1,480 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Relief panels are plain framed boxes with a diamond medallion, not carved coin/stamp reliefs; sign board is blank (no lettering by rule); stone pines are simple umbrella revolves; low left wall shown shorter than in the photo."
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_des_timbres_et_des_monnaies_de_Monaco.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gael13011",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/timbres2.jpg",
+   "used": "low blank sandstone wall at left, recessed glazed entrance under a blank sign board, tall right block with big recessed relief panels, flat roofs with thick parapet, terracotta paving, white balustrade at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Timbres_et_Monnaies_Monaco_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Arnaud 25",
+   "view": "detail",
+   "used": "sand-coloured stone #d6c5a3, framed relief panels flanking the door, glazed door in white frames"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/686461257",
+   "used": "overall footprint size (about 20 x 10 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "low-wall",
+   "footprint": {
+    "rect": [
+     24,
+     9.6
+    ]
+   },
+   "at": [
+    -14.5,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d3c8b4",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0c7b3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     5,
+     9.6
+    ]
+   },
+   "at": [
+    0.5,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d6c3a0",
+    "windows": "curtain",
+    "cornice": false,
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#56616a",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb994",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-block",
+   "footprint": {
+    "rect": [
+     12,
+     9.6
+    ]
+   },
+   "at": [
+    9,
+    0.2
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb48d",
+    "windows": "none",
+    "cornice": false,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4ab84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.5,
+    -5.3,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 1.3,
+    "bottom": 4.3,
+    "colour": "#f6f3ea",
+    "frameColour": "#d9d0bd",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#c4572f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-frame",
+   "at": [
+    10.5,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     8.0,
+     0.4
+    ],
+    "z0": 1.8,
+    "height": 7.6,
+    "colour": "#a98f66"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-main",
+   "at": [
+    10.5,
+    -4.75
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     0.5
+    ],
+    "z0": 2.2,
+    "height": 6.8,
+    "colour": "#cdb48d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "medallion",
+   "at": [
+    10.5,
+    -5.0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 4.2,
+    "height": 2.4,
+    "colour": "#b79d74"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "medallion-in",
+   "at": [
+    10.5,
+    -5.1
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 4.65,
+    "height": 1.5,
+    "colour": "#d6bf99"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-narrow3.9",
+   "at": [
+    4.6,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.35
+    ],
+    "z0": 2.6,
+    "height": 7.0,
+    "colour": "#b9a07a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-narrow12.0",
+   "at": [
+    15.6,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.35
+    ],
+    "z0": 2.6,
+    "height": 7.0,
+    "colour": "#b9a07a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "picture-panel-a",
+   "at": [
+    -5.5,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.2
+    ],
+    "z0": 1.6,
+    "height": 1.8,
+    "colour": "#b9a07a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "picture-panel-b",
+   "at": [
+    -2.5,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.2
+    ],
+    "z0": 1.6,
+    "height": 1.8,
+    "colour": "#b9a07a"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    17.5,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "postEvery": 1.6,
+    "colour": "#f1ede2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terracotta-paving",
+   "at": [
+    3,
+    -9
+   ],
+   "params": {
+    "rect": [
+     44,
+     20
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#b9623d"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9.2,
+    9,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#6b4a2f",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#6b4a2f"
+     ],
+     [
+      0.35,
+      9
+     ],
+     [
+      4.6,
+      9.5,
+      "#4a6a3a"
+     ],
+     [
+      5.2,
+      10.4
+     ],
+     [
+      3.0,
+      11.4
+     ],
+     [
+      0,
+      11.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2.1999999999999993,
+    9,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#6b4a2f",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#6b4a2f"
+     ],
+     [
+      0.35,
+      8
+     ],
+     [
+      4.6,
+      8.5,
+      "#4a6a3a"
+     ],
+     [
+      5.2,
+      9.4
+     ],
+     [
+      3.0,
+      10.4
+     ],
+     [
+      0,
+      10.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6.199999999999999,
+    9,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#6b4a2f",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#6b4a2f"
+     ],
+     [
+      0.35,
+      10
+     ],
+     [
+      4.6,
+      10.5,
+      "#4a6a3a"
+     ],
+     [
+      5.2,
+      11.4
+     ],
+     [
+      3.0,
+      12.4
+     ],
+     [
+      0,
+      12.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "picture-panel-c",
+   "at": [
+    -10,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.2
+    ],
+    "z0": 1.6,
+    "height": 1.8,
+    "colour": "#b9a07a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-node-5919288520"
+}

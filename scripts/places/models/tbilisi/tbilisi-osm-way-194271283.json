@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-194271283",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/194271283",
+   "used": "orientation and rough size only; the outline (about 250 m) includes surrounding ground so it is not extruded"
+  },
+  {
+   "kind": "text",
+   "used": "brief: club rugby/football ground with one covered stand, low terraces, four floodlights; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 42,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     124,
+     92
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f86"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 100,
+    "width": 66
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -44,
+    0.5
+   ],
+   "params": {
+    "length": 60,
+    "depth": 14,
+    "height": 9,
+    "roof": "cantilever",
+    "rear": "plain",
+    "storeys": 2,
+    "seat_colour": "#c2402e",
+    "seat_colour2": "#d8d2c4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    -40,
+    0.5
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    -40,
+    0.5
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    40,
+    0.5
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    40,
+    0.5
+   ],
+   "params": {
+    "height": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic one-stand ground sized from brief, stand/terrace arrangement unverified"
+ }
+}

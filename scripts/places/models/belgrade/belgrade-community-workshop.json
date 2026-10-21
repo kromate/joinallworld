@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-community-workshop",
+ "name": "Public Library Milutin Bojic (branch)",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small branch library, no photo or building description found; the OSM building under the pin is a kindergarten, so it was NOT used. Modest two-storey hipped branch library typical of Belgrade municipal neighbourhoods."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc4",
+    "trimColour": "#efeee8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b9b6af"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reading-wing",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    -16,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d6bd",
+    "trimColour": "#efeee8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f90",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.2,
+    "height": 3.4,
+    "columns": 2,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#efeee8",
+    "roofColour": "#b9b6af"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#3f6f8f",
+    "frameColour": "#b9b6af",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#4a4f55"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM building is a kindergarten; generic two-storey branch library, text only"
+ }
+}

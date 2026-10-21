@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/99298370",
+   "used": "real outline of the GVZ headquarters block at Thurgauerstrasse 56 (bent slab, about 85 x 29 m, building:levels 8, start_date 1986, commercial)"
+  },
+  {
+   "kind": "text",
+   "used": "brief and GVZ pages: cantonal building insurer HQ in Zurich-Oerlikon, staged renovation; no photo of this building found (Commons results show other Oerlikon buildings), so facade is a typical 1980s office slab"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c8c2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 7,
+    "plinth": 0.6,
+    "glassColour": "#6f8190",
+    "bands": "#8f9496",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -28,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#7d8a92",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -6,
+    -5,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists in the sources; OSM outline and levels only, facade (ribbon-glazed 1980s office slab) and colours are typical guesses."
+ }
+}

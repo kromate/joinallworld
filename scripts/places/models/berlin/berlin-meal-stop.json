@@ -1,0 +1,627 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Karl-Marx-Allee_Cafe_Sibylle.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Angela M. Arnold, Berlin",
+   "view": "street",
+   "used": "travertine-clad ground storey with tall gold-framed glazing between piers, balustraded balcony ledge above, cream ceramic upper storeys, orange blank sign board over the door",
+   "file": "/tmp/places-evidence/berlin/b5-cafe2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/315548153",
+   "used": "7 levels and block context only, outline too irregular to match the photographed frontage"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 15,
+  "aspect": 1.33,
+  "margin": -0.1,
+  "shiftY": -0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "rect": [
+     44,
+     19.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bfae92",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#6f8186",
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c8d78",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 6.4,
+   "height": 23.6,
+   "storeys": 6,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 2.9,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b5b5d",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "balcony-rail",
+   "params": {
+    "length": 44,
+    "height": 1.2,
+    "colour": "#e9e4d6",
+    "postEvery": 0.6
+   },
+   "at": [
+    0,
+    -9.6,
+    6.4
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "cafe-board",
+   "params": {
+    "width": 5,
+    "height": 2.0,
+    "bottom": 4.0,
+    "colour": "#e08a1c",
+    "posts": false
+   },
+   "at": [
+    -4,
+    -10.3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "params": {
+    "rect": [
+     3.2,
+     1.0
+    ],
+    "height": 6.4,
+    "colour": "#b3a283"
+   },
+   "at": [
+    -20,
+    -10.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame0",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -18,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frameT0",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -18,
+    -10.3,
+    5.2
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull0",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.4,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -18,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp0",
+   "params": {
+    "height": 4.5
+   },
+   "at": [
+    -20,
+    -9.6,
+    6.4
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "params": {
+    "rect": [
+     3.2,
+     1.0
+    ],
+    "height": 6.4,
+    "colour": "#b3a283"
+   },
+   "at": [
+    -12,
+    -10.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame1",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -10,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frameT1",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -10,
+    -10.3,
+    5.2
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull1",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.4,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -10,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp1",
+   "params": {
+    "height": 4.5
+   },
+   "at": [
+    -12,
+    -9.6,
+    6.4
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "params": {
+    "rect": [
+     3.2,
+     1.0
+    ],
+    "height": 6.4,
+    "colour": "#b3a283"
+   },
+   "at": [
+    -4,
+    -10.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame2",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -2,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frameT2",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -2,
+    -10.3,
+    5.2
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull2",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.4,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    -2,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp2",
+   "params": {
+    "height": 4.5
+   },
+   "at": [
+    -4,
+    -9.6,
+    6.4
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "params": {
+    "rect": [
+     3.2,
+     1.0
+    ],
+    "height": 6.4,
+    "colour": "#b3a283"
+   },
+   "at": [
+    4,
+    -10.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame3",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    6,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frameT3",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    6,
+    -10.3,
+    5.2
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull3",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.4,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    6,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp3",
+   "params": {
+    "height": 4.5
+   },
+   "at": [
+    4,
+    -9.6,
+    6.4
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier4",
+   "params": {
+    "rect": [
+     3.2,
+     1.0
+    ],
+    "height": 6.4,
+    "colour": "#b3a283"
+   },
+   "at": [
+    12,
+    -10.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame4",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    14,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frameT4",
+   "params": {
+    "rect": [
+     3.8,
+     0.2
+    ],
+    "height": 0.3,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    14,
+    -10.3,
+    5.2
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull4",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.4,
+    "colour": "#c9a43a"
+   },
+   "at": [
+    14,
+    -10.3,
+    1.0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp4",
+   "params": {
+    "height": 4.5
+   },
+   "at": [
+    12,
+    -9.6,
+    6.4
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice-balcony",
+   "params": {
+    "rect": [
+     44.6,
+     1.4
+    ],
+    "height": 0.5,
+    "colour": "#c9c0aa"
+   },
+   "at": [
+    0,
+    -9.6,
+    5.9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gold frames are offset bars not tall mullioned glazing, piers are plain blocks without travertine grain, balustrade is a post rail not turned balusters, upper floors lack ceramic window surrounds, sign is blank by rule."
+ }
+}

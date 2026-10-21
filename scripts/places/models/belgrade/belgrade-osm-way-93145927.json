@@ -1,0 +1,197 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/93145927",
+   "used": "ground outline about 137 x 66 m (osm, name match) as apron; pitch aligned to its long edge; stand placed on the south-east side"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small suburban club ground with one covered stand on a long side and floodlights; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "osm": true,
+    "scale": 0.89
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9c9a94",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "rotDeg": 51,
+   "params": {
+    "length": 92,
+    "width": 54,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "start": [
+     8.0,
+     -42.5
+    ],
+    "end": [
+     43.3,
+     1.0
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "seatColours": [
+     "#4f7ba6",
+     "#c9c5bd"
+    ],
+    "concreteColour": "#c9c5bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    6.6,
+    -49.1
+   ],
+   "rotDeg": 51,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0ddd5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7c7e",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -57.9,
+    -17.5,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    5.0,
+    60.3,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -3.5,
+    -61.5,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    59.4,
+    16.2,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -37.3,
+    30.2
+   ],
+   "params": {
+    "width": 60,
+    "depth": 6,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo available; stand length, canopy and clubhouse positions typed from brief, only the outline is measured"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-93145927"
+}

@@ -1,0 +1,163 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/52118654",
+   "used": "kiosk footprint 5 x 3.1 m, rotated diamond outline"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arabianaukio_square_in_Toukola_in_Helsinki,_Finland,_2022_May_%E2%80%93_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Coen",
+   "view": "street",
+   "file": "/tmp/places-evidence/helsinki/3_0.jpg",
+   "used": "setting only (the photo does not show the kiosk): granite cobble paving, lawn strip, maple trees, grey plastered apartment block with green shopfront awning, tram line"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 0
+   },
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5c6b78",
+    "windows": "screen",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3a3d40",
+    "material": "metal-sheet",
+    "rise": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "depth": 1.4,
+    "height": 2.6,
+    "colours": [
+     "#2f6b5a",
+     "#e9e6dd"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -1.8,
+    2.9
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#2f6b5a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apartment-block",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9bfc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "groundKind": "shopfront",
+    "groundHeight": 3.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the kiosk exists; footprint from OSM, finishes typed from the brief; plaza context taken from the square photos, wheelset sculptures and tram line omitted."
+ }
+}

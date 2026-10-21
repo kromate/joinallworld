@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/558562753",
+   "used": "real outline of the containing building, 61 x 61 m, comb-like wings, 2,891 m2 (name match only; no photo of this building found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 3.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5440",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 8,
+    "bands": "#d9d3c4",
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -2,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -14,
+    -35,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 5,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -36,
+    4.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#f2f2ee",
+    "posts": false
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    5,
+    5,
+    11.5
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "no photo of the building; massing from OSM outline and brief only; windows coarse to fit the triangle budget"
+ }
+}

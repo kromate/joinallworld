@@ -1,0 +1,810 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-282299241",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citypark_Mall.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Avi1111 dr. avishai teicher",
+   "view": "front",
+   "used": "cream stone facade, central gabled pavilion with big arched glazed window, two pairs of tall white columns, glass canopy over entrance, dark stepped plinth, dark recessed shop windows",
+   "file": "/tmp/places-evidence/tirana/city2.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citypark_Tirana.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Albinfo",
+   "view": "street",
+   "used": "red sail-shaped sign roof with white pylon on the left, blue glass office tower behind, long low mall front on the right, palms and car park",
+   "file": "/tmp/places-evidence/tirana/city1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/282299241",
+   "used": "overall size only (314 m long, clamped); the front pavilion and one wing are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     64,
+     36
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ebe5d5",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#cfc8b6",
+    "plinth": 0.9,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f4efe2",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f0ebdc",
+    "material": "concrete",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-end",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ebe5d5",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#4a3f3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-end",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    27,
+    -12
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ebe5d5",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#4a3f3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -17,
+    4.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 13,
+    "depth": 5,
+    "height": 0,
+    "thickness": 0.3,
+    "colour": "#a9b9bd",
+    "edgeColour": "#707b7d"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "red-sail",
+   "at": [
+    -46,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#c0403b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       18,
+       0.8
+      ],
+      "cx": 0
+     },
+     {
+      "z": 10,
+      "rect": [
+       10,
+       0.8
+      ],
+      "cx": 4
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.2,
+       0.8
+      ],
+      "cx": 8.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "at": [
+    -36,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.6
+    ],
+    "height": 24,
+    "colour": "#f1eee6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 1.0,
+    "colour": "#eeeae0",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13,
+    -13.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f4f1e8",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.1,
+      1.0
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      1.0,
+      15.2
+     ],
+     [
+      1.35,
+      15.5
+     ],
+     [
+      1.5,
+      16.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.2,
+    -13.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f4f1e8",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.1,
+      1.0
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      1.0,
+      15.2
+     ],
+     [
+      1.35,
+      15.5
+     ],
+     [
+      1.5,
+      16.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10.2,
+    -13.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f4f1e8",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.1,
+      1.0
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      1.0,
+      15.2
+     ],
+     [
+      1.35,
+      15.5
+     ],
+     [
+      1.5,
+      16.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    13,
+    -13.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f4f1e8",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.1,
+      1.0
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      1.0,
+      15.2
+     ],
+     [
+      1.35,
+      15.5
+     ],
+     [
+      1.5,
+      16.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "arch-window",
+   "at": [
+    0,
+    -11.5,
+    6
+   ],
+   "params": {
+    "colour": "#6f8f9c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11,
+       0.6
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       11,
+       0.6
+      ]
+     },
+     {
+      "z": 7.4235047480638645,
+      "rect": [
+       10.63,
+       0.6
+      ]
+     },
+     {
+      "z": 8.75,
+      "rect": [
+       9.53,
+       0.6
+      ]
+     },
+     {
+      "z": 9.88908729652601,
+      "rect": [
+       7.78,
+       0.6
+      ]
+     },
+     {
+      "z": 10.763139720814412,
+      "rect": [
+       5.5,
+       0.6
+      ]
+     },
+     {
+      "z": 11.312592044589875,
+      "rect": [
+       1.5,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre",
+   "at": [
+    0,
+    -11.3,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#5a5f62",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-door",
+   "footprint": {
+    "rect": [
+     12,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4c5a60",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     56,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2d2f32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d2f32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#2a2c2f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ped-l",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -19,
+    -20
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2d2f32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d2f32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eagle-l",
+   "at": [
+    -19,
+    -20,
+    2.2
+   ],
+   "params": {
+    "colour": "#f6f4ee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       0.9,
+       0.7
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       2.6,
+       0.3
+      ]
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       3.4,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ped-r",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    19,
+    -20
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2d2f32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d2f32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "eagle-r",
+   "at": [
+    19,
+    -20,
+    2.2
+   ],
+   "params": {
+    "colour": "#f6f4ee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       0.9,
+       0.7
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       2.6,
+       0.3
+      ]
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       3.4,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -44,
+    20
+   ],
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f77a8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bands": "#243a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58606a",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion gable is a plain triangle not the stepped arched pediment; columns lack detail; eagles read as bowls; fountains and wings' recessed shop bands simplified; only front of the 314 m mall modelled."
+ }
+}

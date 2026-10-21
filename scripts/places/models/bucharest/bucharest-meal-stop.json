@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edificio_caru_%27cu_bere,_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "sailko",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/caru1.jpg",
+   "used": "three-storey sandstone front with arched windows and stone balconies on corbels, corner tower with steep slate pyramid roof, tall slender spire at the left corner, cream awning along the ground floor, slate hip roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1456401783",
+   "used": "plan scale reference only (building modelled narrower than OSM 28 x 25 m to match the street-front photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 42,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9a96e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.4,
+    "bay": 2.9,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a98d58"
+      ],
+      "height": 0.6,
+      "at": 0.97,
+      "proud": 0.3,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "depth": 1.5,
+      "width": 3.8,
+      "every": 8.6,
+      "slab": 0.5,
+      "railKind": "balusters",
+      "colour": "#b79c68",
+      "railColour": "#cdb98f",
+      "floors": [
+       1
+      ],
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 1.0,
+      "width": 3.0,
+      "every": 8.6,
+      "slab": 0.4,
+      "railKind": "balusters",
+      "colour": "#b79c68",
+      "railColour": "#cdb98f",
+      "floors": [
+       2
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "trimColour": "#a98d58"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d6068",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "front-gable",
+   "at": [
+    0,
+    -5,
+    18
+   ],
+   "params": {
+    "colour": "#5d6068",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       2.5
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       7,
+       2
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       4,
+       1.4
+      ]
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       0.6,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-face",
+   "at": [
+    0,
+    -5.3,
+    14
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.4
+    ],
+    "height": 4,
+    "colour": "#c9a96e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "faces": [
+     "front"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-pinnacle-0",
+   "at": [
+    -4.8,
+    -5.3,
+    18
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 4,
+    "topScale": 0.15,
+    "colour": "#b79c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-pinnacle-1",
+   "at": [
+    4.8,
+    -5.3,
+    18
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 4,
+    "topScale": 0.15,
+    "colour": "#b79c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-pinnacle-0",
+   "at": [
+    -8.5,
+    -5.2,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.8,
+    "topScale": 0.15,
+    "colour": "#b79c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-pinnacle-1",
+   "at": [
+    8.5,
+    -5.2,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.8,
+    "topScale": 0.15,
+    "colour": "#b79c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire-base",
+   "at": [
+    -11,
+    -3,
+    15
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "height": 4,
+    "colour": "#c9a96e",
+    "topColour": "#c9a96e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "faces": [
+     "front"
+    ]
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    -11,
+    -3,
+    19
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 9,
+    "sides": 4,
+    "colour": "#6e7078",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret",
+   "at": [
+    9.5,
+    -3,
+    17
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 2.5,
+    "colour": "#c9a96e",
+    "topColour": "#c9a96e"
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    9.5,
+    -3,
+    19.5
+   ],
+   "params": {
+    "baseWidth": 2.4,
+    "height": 3.5,
+    "sides": 4,
+    "colour": "#6e7078",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awning",
+   "at": [
+    0,
+    -7.6,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     24,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#eadfc6",
+    "topColour": "#eadfc6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    11,
+    -10,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ochre sandstone, tall street-front proportions, corbelled balconies and left spire now present; still a free-standing block with a hip roof, no carved stepped gable or arched loggia rows, tower less ornate"
+ }
+}

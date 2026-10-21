@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-28130522",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28130522",
+   "used": "the real park outline (126 x 88 m) as the lawn; no photograph found"
+  },
+  {
+   "kind": "text",
+   "used": "brief: mature plane and linden trees, gravel paths, benches, a pavilion and a statue; positions are typical, not surveyed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.3,
+      -5.3
+     ],
+     [
+      -50.5,
+      -12.8
+     ],
+     [
+      -45.9,
+      -21.8
+     ],
+     [
+      33.9,
+      -52.3
+     ],
+     [
+      60.5,
+      15.3
+     ],
+     [
+      -35.4,
+      51.7
+     ],
+     [
+      -44.0,
+      31.6
+     ],
+     [
+      -51.0,
+      13.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7f9a62",
+    "topColour": "#7f9a62",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "radius": 9,
+    "n": 20,
+    "height": 0.08,
+    "colour": "#d4cdbb",
+    "topColour": "#d4cdbb"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    0,
+    0.23
+   ],
+   "params": {
+    "height": 5.5,
+    "plinth_height": 1.8,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    22,
+    -18,
+    0.15
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -7,
+    0.15
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36.0,
+    17.6,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 6,
+    "spread": 8,
+    "line": 70
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32.0,
+    -24.0,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 4,
+    "spread": 9,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16.0,
+    28.0,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 4,
+    "spread": 8,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32.0,
+    0.0,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 8,
+    "line": 30
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -6
+     ],
+     [
+      48,
+      6
+     ],
+     [
+      48,
+      9
+     ],
+     [
+      -48,
+      -3
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#cdbf9d",
+    "topColour": "#cdbf9d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -40
+     ],
+     [
+      -3,
+      -40
+     ],
+     [
+      14,
+      40
+     ],
+     [
+      9,
+      40
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#cdbf9d",
+    "topColour": "#cdbf9d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photograph; path network, statue and pavilion placement are plausible not surveyed"
+ }
+}

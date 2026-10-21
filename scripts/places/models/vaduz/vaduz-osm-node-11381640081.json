@@ -1,0 +1,208 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vaduz.json#vaduz-osm-node-11381640081",
+   "used": "riverside timber and render pavilion about 20 x 10 m with terrace and umbrellas (brief typed it; no photo found; the OSM way containing the node is a 2,541 m2 block, so not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9b7a55",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f5a56",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    8,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#eee8da",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f5a56",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    -1,
+    -5.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a45",
+    "material": "timber-shingle",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -1,
+    -6,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.5,
+    "colours": [
+     "#eee8da",
+     "#6b4a32",
+     "#c9a24a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#6b4a32",
+    "frameColour": "#eee8da"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-node-11381640081",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM block is not the restaurant; typed riverside pavilion."
+ }
+}

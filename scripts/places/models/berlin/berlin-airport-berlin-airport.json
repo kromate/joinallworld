@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-airport-berlin-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Berlin_Brandenburg_Airport_Terminal_1.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/berlin/ap1.jpg",
+   "used": "landside forecourt: huge flat roof slab with tan-gold fascia on tall slim square grey columns, glazed hall behind, raised departures deck with railing on pale concrete piers, taxis at ground level"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airport_in_Berlin.jpg",
+   "licence": "CC0",
+   "author": "jensschoeffel",
+   "view": "aerial",
+   "used": "pier proportion only (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/942159906",
+   "used": "none: the OSM match is an apron polygon, not the terminal; size from the brief (about 200 m long), 116 m portion modelled because of the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     116,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcdc6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2.5,
+      "spacing": 11.6,
+      "width": 2.6,
+      "kind": "square",
+      "colour": "#cfcdc6",
+      "backColour": "#6b6b69"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a9a5",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     116,
+     28
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 7.5,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e3e6e3",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9598",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-soffit",
+   "at": [
+    0,
+    -18,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     124,
+     104
+    ],
+    "height": 0.5,
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    -18,
+    21.7
+   ],
+   "params": {
+    "rect": [
+     124,
+     104
+    ],
+    "height": 2.6,
+    "colour": "#d9bd78",
+    "topColour": "#9a9fa2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "front-columns",
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -58,
+     -58
+    ],
+    "end": [
+     58,
+     -58
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 21.2,
+      "colour": "#aeb3b7"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "array",
+   "id": "soffit-beams",
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -55,
+     -18
+    ],
+    "end": [
+     55,
+     -18
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       102
+      ],
+      "height": 0.9,
+      "z0": 20.3,
+      "colour": "#2e3033"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "deck-rail",
+   "at": [
+    0,
+    -34.5,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     116,
+     0.25
+    ],
+    "height": 1.2,
+    "colour": "#8c9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    10,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "taxi",
+    "density": 0.7,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "deck-edge",
+   "at": [
+    0,
+    -35.2,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     116,
+     1.0
+    ],
+    "height": 1.3,
+    "colour": "#d6d4cd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a 124 m portion of the ~200 m terminal (scene clamp); deep tan fascia roof, free columns and open pier arcade present; hall glazing paler but still bluish, roof reads thinner than photo from the low camera, beams/lighting and railing simplified"
+ }
+}

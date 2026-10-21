@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-438649004",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/30174022",
+   "used": "real building outline of the maternity hospital (about 60 x 16 m, name match, 2 levels tagged): irregular stepped rear edge and a long front block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/438649004",
+   "used": "hospital grounds area (about 11,000 m2) for the site extent and forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d9bc",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "plinth": 0.9,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b5ada0"
+      ],
+      "height": 0.35,
+      "at": 0.0,
+      "proud": 0.08,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f6368",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -5,
+    -9.2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa4ad",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -5,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 11,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2,
+    "colour": "#dcd8ce"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    21,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#e8e4da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "cars": [
+   {
+    "at": [
+     -30,
+     -17
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -26,
+     -17
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -22,
+     -17
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     12,
+     -17
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     16,
+     -17
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     28,
+     -17
+    ],
+    "yawDeg": 90
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     33,
+     -15
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     22
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: massing from the real OSM outline with a typical Kyiv Soviet-era cream-render hospital treatment (height, storeys, ribbon windows, canopy and ambulance bay are assumed); the brief's 6-storey U-plan is not supported by the 2-level OSM tag."
+ }
+}

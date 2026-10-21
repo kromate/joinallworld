@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-way-182196435",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Springfield_c%C3%B4tchi%C3%A9the_Saint_H%C3%A9lyi.jpg",
+   "licence": "Public domain",
+   "author": "Man vyi",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/springfield.jpg",
+   "used": "glazed round drum with overhanging disc roof edged in dark red, long glazed block with red ribbed fascia, cream rendered round tower with brown bands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/182196435",
+   "used": "size of the building (about 34 x 28 m, bearing 168)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.24,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    6,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6c7f8c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7f95a3",
+    "trimColour": "#8e2f2a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e2f2a",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "drum",
+   "at": [
+    -12,
+    -2
+   ],
+   "params": {
+    "radius": 7,
+    "n": 20,
+    "height": 11,
+    "colour": "#3f5666",
+    "windows": "curtain",
+    "windowRatio": 0.88,
+    "glassColour": "#6f8da1",
+    "trimColour": "#2a2a2e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -12,
+    -2
+   ],
+   "params": {
+    "radius": 9.5,
+    "n": 28,
+    "z0": 11,
+    "height": 1.2,
+    "colour": "#e6dfd0",
+    "trimColour": "#8e2f2a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -12,
+    -2
+   ],
+   "params": {
+    "radius": 9.6,
+    "n": 28,
+    "z0": 11.9,
+    "height": 1.2,
+    "colour": "#8e2f2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    6,
+    -5.2,
+    8
+   ],
+   "params": {
+    "rect": [
+     27,
+     1.2
+    ],
+    "height": 1.5,
+    "colour": "#8e2f2a",
+    "topScale": [
+     1,
+     0.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    22,
+    3
+   ],
+   "params": {
+    "radius": 6.5,
+    "n": 24,
+    "height": 16,
+    "colour": "#e0d7c3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    22,
+    3
+   ],
+   "params": {
+    "radius": 6.7,
+    "n": 24,
+    "z0": 13,
+    "height": 0.6,
+    "colour": "#7a4a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    22,
+    3
+   ],
+   "params": {
+    "radius": 6.7,
+    "n": 24,
+    "z0": 15.5,
+    "height": 0.6,
+    "colour": "#7a4a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    22,
+    3
+   ],
+   "params": {
+    "radius": 7.3,
+    "n": 24,
+    "z0": 16,
+    "height": 0.9,
+    "colour": "#7a4a32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower reads slightly pale and ribbed; mullion grid and red-framed glazing approximate; foreground tree omitted; plan composed"
+ }
+}

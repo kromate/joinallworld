@@ -1,0 +1,170 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/200282827",
+   "used": "real footprint outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/belgrade.json#belgrade-osm-node-12869419136",
+   "used": "3-storey ribbon-glazed commercial block, pale render and blue-grey glazing; the Commons street photos nearby show Pupinova apartment slabs, not this building, so none were used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efeee8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#7f93a0",
+    "plinth": 0.4,
+    "bands": "#c9ced1",
+    "cornice": true,
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f90",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -18,
+    3.4
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 0.4,
+    "form": "flat",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -16,
+    12.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.6,
+    "colour": "#7f93a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "cars": [
+   {
+    "at": [
+     -20,
+     -32
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -12,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3d42"
+   },
+   {
+    "at": [
+     -4,
+     -32
+    ],
+    "yawDeg": 0,
+    "colour": "#9a2f2f"
+   },
+   {
+    "at": [
+     4,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     12,
+     -32
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     20,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3d42"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -24
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-node-12869419136",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; footprint only, facade colours typed"
+ }
+}

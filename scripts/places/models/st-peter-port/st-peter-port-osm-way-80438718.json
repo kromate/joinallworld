@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-way-80438718",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/80438718",
+   "used": "real park outline (about 320 x 285 m, auto-fitted to 118 m) as the grassed park surface; no photo of the park found"
+  },
+  {
+   "kind": "text",
+   "ref": "brief st-peter-port-osm-way-80438718",
+   "used": "sports fields and paths on a former quarry slope, fence-wall, two floodlights, broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f8c5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8c5a"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "id": "pitch",
+   "at": [
+    -8,
+    -5,
+    0.4
+   ],
+   "rotDeg": 18,
+   "params": {
+    "length": 42,
+    "width": 26,
+    "stripes": 6,
+    "goals": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast-a",
+   "at": [
+    14,
+    -18,
+    0.4
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast-b",
+   "at": [
+    -30,
+    8,
+    0.4
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "quarry-wall",
+   "at": [
+    -40,
+    28,
+    0.3
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "trees-east",
+   "at": [
+    30,
+    20,
+    0.4
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "trees-west",
+   "at": [
+    -30,
+    -30,
+    0.4
+   ],
+   "params": {
+    "width": 24,
+    "depth": 20,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only: outline scaled to 118 m, pitch and floodlight positions guessed, no photo of the park"
+ }
+}

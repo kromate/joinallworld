@@ -1,0 +1,811 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-osm-way-112137587",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mura_vaticane_-_ingresso_ai_Musei_00410.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "user:Lalupa",
+   "view": "street",
+   "file": "/tmp/places-evidence/vatican-city/v3_0.jpg",
+   "used": "tall batter-faced brick wall with travertine rusticated gateway topped by a statue group, large pale apsidal drum with arched niches behind and a pale annex on the wall top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/112137587",
+   "used": "real outline for the museum wings behind the wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 8.0
+   },
+   "height": 14,
+   "storeys": 3,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b98a",
+    "windows": "none",
+    "bands": "#efe4c8",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b07a5a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex",
+   "at": [
+    18,
+    -14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     36,
+     9
+    ],
+    "z0": 0,
+    "height": 27,
+    "colour": "#d8c9a8",
+    "topColour": "#bfb090"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex-bands",
+   "at": [
+    18,
+    -14.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     37,
+     9.2
+    ],
+    "z0": 17.5,
+    "height": 0.7,
+    "colour": "#e8dec4",
+    "topColour": "#e8dec4"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -36
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22
+   }
+  },
+  {
+   "type": "loft",
+   "id": "curtain-wall",
+   "at": [
+    0,
+    -27
+   ],
+   "params": {
+    "colour": "#a88f6c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       92,
+       6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       92,
+       3.2
+      ],
+      "cy": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "string",
+   "at": [
+    0,
+    -28.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     92,
+     0.5
+    ],
+    "z0": 9,
+    "height": 0.5,
+    "colour": "#b6a07e",
+    "topColour": "#b6a07e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-cornice",
+   "at": [
+    0,
+    -27.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     92,
+     1.4
+    ],
+    "z0": 21.6,
+    "height": 0.8,
+    "colour": "#c2b08e",
+    "topColour": "#c2b08e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-block",
+   "at": [
+    12,
+    -29.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     9.4,
+     2.4
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#ddd5c0",
+    "topColour": "#ddd5c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arch",
+   "at": [
+    12,
+    -30.75
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#1d1a17",
+    "topColour": "#1d1a17"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-arch-top",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "points": [
+     [
+      12,
+      -30.9,
+      6.2
+     ],
+     [
+      12,
+      -31.049999999999997,
+      6.2
+     ]
+    ],
+    "colour": "#1d1a17"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-arch-ring",
+   "at": [
+    12,
+    -30.799999999999997
+   ],
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      6.2
+     ],
+     "radius": 2.3,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#e6dfcb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rust-0--1",
+   "at": [
+    9.35,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 0.0,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-0-1",
+   "at": [
+    14.65,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 0.0,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-1--1",
+   "at": [
+    9.15,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 0.9,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-1-1",
+   "at": [
+    14.85,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 0.9,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-2--1",
+   "at": [
+    9.35,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 1.8,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-2-1",
+   "at": [
+    14.65,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 1.8,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-3--1",
+   "at": [
+    9.15,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 2.7,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-3-1",
+   "at": [
+    14.85,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 2.7,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-4--1",
+   "at": [
+    9.35,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-4-1",
+   "at": [
+    14.65,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-5--1",
+   "at": [
+    9.15,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 4.5,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-5-1",
+   "at": [
+    14.85,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 4.5,
+    "height": 0.8,
+    "colour": "#e2dac6",
+    "topColour": "#e2dac6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-6--1",
+   "at": [
+    9.35,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 5.4,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rust-6-1",
+   "at": [
+    14.65,
+    -30.799999999999997
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "z0": 5.4,
+    "height": 0.8,
+    "colour": "#d3c9b0",
+    "topColour": "#d3c9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-ent",
+   "at": [
+    12,
+    -29.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     10.4,
+     3.0
+    ],
+    "z0": 11,
+    "height": 1.5,
+    "colour": "#e6dfcb",
+    "topColour": "#e6dfcb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-band",
+   "at": [
+    12,
+    -31.25
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     7.0,
+     0.2
+    ],
+    "z0": 11.3,
+    "height": 0.8,
+    "colour": "#bdb398",
+    "topColour": "#bdb398"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "statue-base",
+   "at": [
+    12,
+    -29.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     6.4,
+     2.4
+    ],
+    "z0": 12.5,
+    "height": 0.8,
+    "colour": "#ddd5c0",
+    "topColour": "#ddd5c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-0",
+   "at": [
+    10.2,
+    -29.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 13.3,
+    "height": 3.2,
+    "colour": "#ebe5d6",
+    "topColour": "#ebe5d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-1",
+   "at": [
+    12.0,
+    -29.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     1.6
+    ],
+    "z0": 13.3,
+    "height": 4.4,
+    "colour": "#ebe5d6",
+    "topColour": "#ebe5d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-2",
+   "at": [
+    13.9,
+    -29.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "z0": 13.3,
+    "height": 3.4,
+    "colour": "#ebe5d6",
+    "topColour": "#ebe5d6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "apse",
+   "at": [
+    -22,
+    -14
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d8c9a6",
+    "profile": [
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      30
+     ],
+     [
+      10.8,
+      30.3
+     ],
+     [
+      10.8,
+      31.6,
+      "#e6dcc0"
+     ],
+     [
+      9.8,
+      31.9
+     ],
+     [
+      8,
+      32.6,
+      "#bdae8c"
+     ],
+     [
+      4,
+      34
+     ],
+     [
+      0.2,
+      35
+     ]
+    ],
+    "arcade": {
+     "from": 14,
+     "to": 26,
+     "count": 4,
+     "width": 3.2,
+     "height": 6,
+     "sill": 4,
+     "shape": "arched",
+     "depth": 0.6,
+     "innerColour": "#8a7c5e"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "apse-statues",
+   "at": [
+    -22,
+    -14
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "st",
+     "at": [
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 31.6,
+      "height": 2.2,
+      "colour": "#ebe5d6",
+      "topColour": "#ebe5d6"
+     }
+    },
+    "mode": "arc",
+    "count": 6,
+    "radius": 10.3,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Scene framing is far wider than the photo (OSM wings force a 118 m extent); wall is lofted and battered but flat-coloured; gate rustication is block courses, statues are blocks; apse niches are shallow arcade cuts; wings behind are plain."
+ }
+}

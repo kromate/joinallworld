@@ -1,0 +1,942 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wien_22_Bill-Grah-Park_a.jpg",
+   "licence": "CC0",
+   "author": "Gugerell",
+   "view": "street",
+   "file": "/tmp/places-evidence/vienna/grah1.jpg",
+   "used": "mown lawn, scattered tall Scots pines with brown trunks, mixed broadleaf screen, park benches and picnic table on a bare patch, timber fence along the edge, old-style green lamp posts, spring-rider playground toy, wooden pergola at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38756181",
+   "used": "real park outline (about 81 x 68 m, leisure=park)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50.1,
+      2.8
+     ],
+     [
+      -48.7,
+      6.5
+     ],
+     [
+      -40.7,
+      11.3
+     ],
+     [
+      23.2,
+      34.2
+     ],
+     [
+      30.1,
+      31.5
+     ],
+     [
+      35,
+      6.9
+     ],
+     [
+      29.4,
+      -13.4
+     ],
+     [
+      20.2,
+      -36.3
+     ],
+     [
+      17.2,
+      -38.2
+     ],
+     [
+      -21.5,
+      -18.2
+     ],
+     [
+      -47.5,
+      -3.3
+     ],
+     [
+      -49.5,
+      -0.6
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#8db55a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      -46,
+      0
+     ],
+     [
+      -40,
+      4
+     ],
+     [
+      -5,
+      16
+     ],
+     [
+      26,
+      28
+     ],
+     [
+      28,
+      26
+     ],
+     [
+      -4,
+      13
+     ],
+     [
+      -38,
+      0.5
+     ],
+     [
+      -44,
+      -3
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#d6c9ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      13
+     ],
+     [
+      0,
+      14
+     ],
+     [
+      20,
+      -30
+     ],
+     [
+      17,
+      -31
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#d6c9ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "play-patch",
+   "at": [
+    10,
+    0,
+    0.22
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "height": 0.06,
+    "colour": "#a58a64"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.8,
+    "kind": "hip",
+    "roof_colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    10,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -1,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -26,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    24,
+    2,
+    0.2
+   ],
+   "rotDeg": 78,
+   "params": {
+    "length": 38,
+    "height": 1.1,
+    "thickness": 0.12,
+    "colour": "#8a6a4a",
+    "kind": "railing"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-1",
+   "at": [
+    -14,
+    -6,
+    0.2
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-2",
+   "at": [
+    -10,
+    -3,
+    0.2
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -3,
+    11
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-3",
+   "at": [
+    -12,
+    -10,
+    0.2
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -10,
+    13
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-4",
+   "at": [
+    2,
+    -14,
+    0.2
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    -14,
+    10
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-5",
+   "at": [
+    6,
+    -11,
+    0.2
+   ],
+   "params": {
+    "height": 15,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -11,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-6",
+   "at": [
+    14,
+    8,
+    0.2
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    8,
+    9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-7",
+   "at": [
+    18,
+    5,
+    0.2
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    5,
+    11
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-8",
+   "at": [
+    16,
+    12,
+    0.2
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    12,
+    13
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-9",
+   "at": [
+    -26,
+    8,
+    0.2
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    8,
+    10
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pine-trunk-10",
+   "at": [
+    -22,
+    12,
+    0.2
+   ],
+   "params": {
+    "height": 15,
+    "colour": "#6b4a35",
+    "radius": 0.45,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    12,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "colour": "#3f5a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -33,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post-0",
+   "at": [
+    -30,
+    4,
+    0.22
+   ],
+   "params": {
+    "height": 3.6,
+    "colour": "#2f5a3a",
+    "radius": 0.08,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head-0",
+   "at": [
+    -30,
+    4,
+    3.8
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#e8e2c0",
+    "rect": [
+     0.4,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post-1",
+   "at": [
+    -8,
+    12,
+    0.22
+   ],
+   "params": {
+    "height": 3.6,
+    "colour": "#2f5a3a",
+    "radius": 0.08,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head-1",
+   "at": [
+    -8,
+    12,
+    3.8
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#e8e2c0",
+    "rect": [
+     0.4,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post-2",
+   "at": [
+    10,
+    18,
+    0.22
+   ],
+   "params": {
+    "height": 3.6,
+    "colour": "#2f5a3a",
+    "radius": 0.08,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head-2",
+   "at": [
+    10,
+    18,
+    3.8
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#e8e2c0",
+    "rect": [
+     0.4,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post-3",
+   "at": [
+    20,
+    -24,
+    0.22
+   ],
+   "params": {
+    "height": 3.6,
+    "colour": "#2f5a3a",
+    "radius": 0.08,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head-3",
+   "at": [
+    20,
+    -24,
+    3.8
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#e8e2c0",
+    "rect": [
+     0.4,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "table-top",
+   "at": [
+    10,
+    0,
+    1.0
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#8a6a4a",
+    "rect": [
+     2.2,
+     0.9
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "table-leg-a",
+   "at": [
+    9.2,
+    0,
+    0.25
+   ],
+   "params": {
+    "height": 0.75,
+    "colour": "#6b4a35",
+    "rect": [
+     0.1,
+     0.8
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "table-leg-b",
+   "at": [
+    10.8,
+    0,
+    0.25
+   ],
+   "params": {
+    "height": 0.75,
+    "colour": "#6b4a35",
+    "rect": [
+     0.1,
+     0.8
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-a",
+   "at": [
+    10,
+    -1.0,
+    0.7
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#8a6a4a",
+    "rect": [
+     2.2,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-b",
+   "at": [
+    10,
+    1.0,
+    0.7
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#8a6a4a",
+    "rect": [
+     2.2,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rider-spring",
+   "at": [
+    15,
+    -3,
+    0.25
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#b03a30",
+    "radius": 0.1,
+    "n": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rider-body",
+   "at": [
+    15,
+    -3,
+    0.75
+   ],
+   "params": {
+    "height": 0.35,
+    "colour": "#4f9a4a",
+    "rect": [
+     0.35,
+     1.0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   92,
+   82
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Eye-level photo vs overview render: pine crowns are low-poly cones, pergola reduced to a pavilion, no pond or reeds, lamp posts and picnic furniture are simple prisms."
+ }
+}

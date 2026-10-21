@@ -1,0 +1,385 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-27298226",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_Slavija.jpg",
+   "licence": "Public domain",
+   "author": "Marko Sarajevo",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/qs2.jpg",
+   "used": "main stand seen from the pitch: ~14 rows of blue seats with white block lettering, stepped concrete front wall with ad boards, central two-storey white press/VIP box with ribbon windows, steel-truss canopy with blue edge roofing over the central bay only, floodlight-free flat pitch, wooded hills behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PromjenapodlogenastadionuSlavija.jpg",
+   "licence": "Public domain",
+   "author": "Zvonko",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/sarajevo/qs1.jpg",
+   "used": "opposite stand is a plain grey concrete terrace with a few blue seats and a short end terrace, blue steel railings along the pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27298226",
+   "used": "overall ground size and orientation only (about 150 x 100 m incl. surrounds)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 5,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     -33
+    ],
+    "end": [
+     48,
+     -33
+    ],
+    "rows": 13,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.1,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#2d5da8",
+     "#f2f2ee"
+    ],
+    "blocks": 6,
+    "seatColour": "#2d5da8",
+    "concreteColour": "#b9b7b1",
+    "underColour": "#8f8e8a",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -31.6
+     ],
+     [
+      48,
+      -31.6
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#c9c7c1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     36,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -44
+   ],
+   "z0": 6.5,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d5d4cf",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a6",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box-base",
+   "footprint": {
+    "rect": [
+     38,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -43
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b7b1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a8a4",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -39,
+    13.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 52,
+    "depth": 15,
+    "height": 0,
+    "thickness": 0.8,
+    "columns": 0,
+    "colour": "#2f4f8f",
+    "edgeColour": "#2f4f8f",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       14
+      ],
+      "z0": 12.4,
+      "height": 0.8,
+      "colour": "#5d6770"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -44.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 13.2,
+      "colour": "#5d6770"
+     }
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     48,
+     36
+    ],
+    "end": [
+     -48,
+     36
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#9fa6ac",
+     "#2d5da8"
+    ],
+    "blocks": 3,
+    "seatColour": "#a6a8a6",
+    "concreteColour": "#b4b2ac",
+    "underColour": "#8f8e8a",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     -24
+    ],
+    "end": [
+     56,
+     24
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#9fa6ac"
+    ],
+    "seatColour": "#a6a8a6",
+    "concreteColour": "#b4b2ac",
+    "underColour": "#8f8e8a",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -31
+     ],
+     [
+      -52,
+      35
+     ],
+     [
+      52,
+      35
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#2d5da8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 14,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Main stand, central box and truss canopy read correctly; the near north terrace hides the pitch from the photo viewpoint, no lettering on seats, hills and floodlight-free surroundings are only tree groves, canopy is a flat slab not sloped."
+ }
+}

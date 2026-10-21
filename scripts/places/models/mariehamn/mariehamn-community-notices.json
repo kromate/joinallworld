@@ -1,0 +1,228 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%85lands_lagting.jpg",
+   "licence": "Attribution",
+   "author": "Magne Kveseth",
+   "view": "front",
+   "file": "/tmp/places-evidence/mariehamn/lag0.jpg",
+   "used": "three-storey pale grey stone-panel block with storey bands and big glazed bays between piers, low wing to the left, row of flagpoles in a patterned brick plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1557602324",
+   "used": "overall size (about 43x31 m); simplified to rectangles because the photo shows a flat front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3d1c9",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e5e3dc",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8d8e",
+    "material": "metal-sheet",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    3
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bab7af",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8d8e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.2,
+    3
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.7,
+    "colour": "#6c6e70"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "count": 10,
+    "spacing": 3,
+    "colour": "#2d4f9e",
+    "colours": [
+     "#2d4f9e",
+     "#c8202a",
+     "#f0c820",
+     "#f4f4f4",
+     "#2d4f9e",
+     "#c8202a",
+     "#f0c820",
+     "#f4f4f4",
+     "#2d4f9e",
+     "#c8202a"
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 3,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#b8c8cc",
+    "edgeColour": "#9aa5a8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -3.5,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    3.5,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pier grid, mixed flags, globe lamps; flags plain coloured not real designs, no circular brick pattern"
+ }
+}

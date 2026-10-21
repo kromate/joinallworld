@@ -1,0 +1,395 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-node-11071633601",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1002353381",
+   "used": "nearest building is 77 m away and unrelated; not used. Only the brief's 20 x 6 m long coastal stair is modelled (no photo found: the Commons 'P\u00f5hjakonn' images show a military exercise, not the stairs)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 26,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     20.8,
+     0
+    ],
+    "vary": {
+     "height": [
+      0.4,
+      4.6
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.8
+      ],
+      "z0": 0,
+      "height": 0.4,
+      "colour": "#8a6b4a",
+      "topColour": "#9a7a56"
+     }
+    },
+    "lod2Step": 3,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -4.4,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     20.8,
+     0
+    ],
+    "vary": {
+     "height": [
+      0.2,
+      4.2
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.4,
+       1.7
+      ],
+      "z0": 0,
+      "height": 0.2,
+      "colour": "#6b7a48",
+      "topColour": "#6f8250"
+     }
+    },
+    "lod2Step": 3,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    4.4,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     20.8,
+     0
+    ],
+    "vary": {
+     "height": [
+      0.2,
+      4.2
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.4,
+       1.7
+      ],
+      "z0": 0,
+      "height": 0.2,
+      "colour": "#6b7a48",
+      "topColour": "#6f8250"
+     }
+    },
+    "lod2Step": 3,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -1.35,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     0,
+     0,
+     0.9
+    ],
+    "end": [
+     0,
+     20.8,
+     5.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#6f5338"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1.35,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     0,
+     0,
+     0.9
+    ],
+    "end": [
+     0,
+     20.8,
+     5.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#6f5338"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -1.35,
+      -8,
+      1.8
+     ],
+     [
+      -1.35,
+      12.8,
+      6.4
+     ]
+    ],
+    "colour": "#6f5338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      1.35,
+      -8,
+      1.8
+     ],
+     [
+      1.35,
+      12.8,
+      6.4
+     ]
+    ],
+    "colour": "#6f5338"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     4.0
+    ],
+    "z0": 0,
+    "height": 4.7,
+    "colour": "#7c6044",
+    "topColour": "#9a7a56"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-rail",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    17.1,
+    4.7
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.12
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#6f5338"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shore-stones",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -9.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     1.4
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#9aa0a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9,
+     14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     22
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     24
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   50,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the stairs exists; length, rise and timber/stone look are typical for a Gulf of Finland shore stair, platform and rails are assumed"
+ }
+}

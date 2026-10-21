@@ -1,0 +1,25 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "mariehamn", "venueId": "mariehamn-osm-way-1173832356",
+ "verified": "text",
+ "evidence": [
+  {"kind": "osm", "ref": "way/1173832356", "used": "name match only (leisure=stadium); the outline is a 437 x 183 m sports-park area, far larger than the track, so it is not used as a footprint"},
+  {"kind": "text", "ref": "briefs/mariehamn.json", "used": "athletics ground with red oval track, one low covered stand, four floodlights, scoreboard; no photo found on Commons or Wikidata"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 22, "fovDeg": 50, "aspect": 1.333, "margin": 0.1},
+ "parts": [
+  {"type": "athletics-track", "at": [0, 0, 0], "params": {"length": 176, "width": 94, "lane_width": 7.4, "colour": "#b04a3a"}},
+  {"type": "stand", "params": {"start": [-28, -53], "end": [28, -53], "rows": 9, "rise": 0.45, "run": 0.8, "firstHeight": 0.8, "under": "open", "backWall": 1.0, "bay": 7, "seatColours": ["#2f5f8a", "#e8e6e0"], "blocks": 4, "concreteColour": "#c9c6bd",
+   "canopy": {"height": 7.5, "depth": 9, "thickness": 0.4, "colour": "#5a5f66"}}},
+  {"type": "mass", "id": "changing-block", "footprint": {"rect": [22, 7]}, "at": [-42, -61], "height": 3.4, "storeys": 1,
+   "wall": {"material": "concrete", "colour": "#d8d5cb", "windows": "ribbon", "windowRatio": 0.12, "bands": "#2f5f8a", "plinth": 0.3},
+   "roof": {"form": "shed", "colour": "#5a5f66", "material": "metal-sheet", "pitch": 6, "overhang": 0.5}},
+  {"type": "floodlight-mast", "at": [-70, -55, 0], "params": {"height": 24, "head_width": 4}},
+  {"type": "floodlight-mast", "at": [70, -55, 0], "params": {"height": 24, "head_width": 4}},
+  {"type": "floodlight-mast", "at": [-70, 55, 0], "params": {"height": 24, "head_width": 4}},
+  {"type": "floodlight-mast", "at": [70, 55, 0], "params": {"height": 24, "head_width": 4}},
+  {"type": "scoreboard", "at": [60, 56, 0], "params": {"width": 9, "height": 4, "facing": "south"}},
+  {"type": "fence-wall", "at": [0, 60, 0], "params": {"length": 150}}
+ ],
+ "site": {"ground": "grass", "forecourt": "parking", "trees": [{"kind": "conifer", "at": [-78, 30]}, {"kind": "conifer", "at": [78, 35]}, {"kind": "conifer", "at": [-78, -25]}], "extent": [120, 120]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo exists; layout assumed from the brief (single stand on the south side, four masts), real stand length, roof form and track orientation unknown"}
+}

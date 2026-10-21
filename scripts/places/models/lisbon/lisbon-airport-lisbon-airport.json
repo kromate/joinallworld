@@ -1,0 +1,437 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroporto_Humberto_Delgado_(53756119338).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/air4.jpg",
+   "used": "departures front: beige limestone-clad block with blank sign panel, tall curved teal-framed glass drum, long flat canopy over the kerb, red curved shed to the left, glazed flank at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17651166",
+   "used": "overall scale only (terminal about 1 km long, a 130 m portion is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "shiftX": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     28,
+     34
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-top",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 22,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6dfd0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-drum",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#3f8a8e",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       13,
+       16
+      ]
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       14,
+       17
+      ]
+     },
+     {
+      "z": 34,
+      "ellipse": [
+       10,
+       12.5
+      ]
+     },
+     {
+      "z": 35,
+      "ellipse": [
+       9,
+       11
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-wing",
+   "footprint": {
+    "rect": [
+     36,
+     30
+    ]
+   },
+   "at": [
+    -44,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c4a2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-flank",
+   "footprint": {
+    "rect": [
+     26,
+     30
+    ]
+   },
+   "at": [
+    38,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d9aa0",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbf",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "kerb-canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 16,
+    "height": 6.2,
+    "thickness": 0.2,
+    "columns": 14,
+    "colour": "#f2f2f0",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-shed-body",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -46,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4302b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4302b"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "blank-sign",
+   "at": [
+    -8,
+    -17.2,
+    17
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#cdd5d0",
+    "posts": false
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    -62,
+    32,
+    0
+   ],
+   "params": {
+    "height": 50,
+    "style": "round",
+    "colour": "#d8d6cf",
+    "bandColour": "#7a8a94"
+   }
+  },
+  {
+   "type": "car",
+   "id": "kerb-cars",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-mullions",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "m",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 31,
+      "colour": "#2d5f63"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     12,
+     -4
+    ],
+    "radius": 14.2,
+    "radiusY": 17.2,
+    "count": 22,
+    "facing": "outward"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "id": "sign-panel",
+   "at": [
+    -8,
+    -17.3,
+    12
+   ],
+   "params": {
+    "width": 9,
+    "height": 9,
+    "bottom": 0,
+    "colour": "#efe9da",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ana-strip",
+   "at": [
+    -8,
+    -17.5,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 1.8,
+    "colour": "#3d8a4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "upper-canopy",
+   "at": [
+    -8,
+    -21,
+    17
+   ],
+   "params": {
+    "rect": [
+     30,
+     8
+    ],
+    "height": 1.8,
+    "colour": "#3d3f42"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "red-shed-roof",
+   "at": [
+    -46,
+    -20,
+    2.5
+   ],
+   "params": {
+    "colour": "#c4302b",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       24,
+       14
+      ]
+     },
+     {
+      "z": 2,
+      "rect": [
+       24,
+       12.5
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       24,
+       9
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       24,
+       4.5
+      ]
+     },
+     {
+      "z": 6.2,
+      "rect": [
+       24,
+       1.5
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 22,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tall mullioned drum, sign panel, dark upper canopy, lowered curved red shed and thinner canopy with more posts; no diagonal bracing, red shed roof mostly hidden by canopy, wordmark only a green strip, no people/street clutter."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-airport-lisbon-airport"
+}

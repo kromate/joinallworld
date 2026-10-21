@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-186575346",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/186575346",
+   "used": "real ground outline (130 x 83 m, long axis bearing 20 deg), scaled 0.8 to the 118 m model limit; main stand placed on the long east side"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Chalkanoras_Idaliou",
+   "used": "small village club ground at Dali with one covered main stand; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "polygon": [
+     [
+      -47.6,
+      -28.4
+     ],
+     [
+      -44.7,
+      -20.2
+     ],
+     [
+      -39.4,
+      -17.8
+     ],
+     [
+      -15.5,
+      49.9
+     ],
+     [
+      -7.6,
+      57.8
+     ],
+     [
+      47.4,
+      37.8
+     ],
+     [
+      11.0,
+      -60.1
+     ],
+     [
+      -42.6,
+      -37.2
+     ],
+     [
+      -46.6,
+      -34.2
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     11.4,
+     -30.2
+    ],
+    "end": [
+     28.2,
+     14.8
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColours": [
+     "#5f7fa8",
+     "#d8d4ca"
+    ],
+    "seatColour": "#5f7fa8",
+    "blocks": 3,
+    "backWall": 1.0,
+    "under": "solid",
+    "concreteColour": "#d8d4ca",
+    "canopy": {
+     "height": 7,
+     "depth": 8,
+     "colour": "#8e8a82",
+     "slopeDeg": 4,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -24.0,
+    -43.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "post_height": 2.4,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -35.3,
+    -22.1,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -10.3,
+    41.2,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38.3,
+    32.4,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    7.4,
+    -48.6,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: real outline plus one covered stand, floodlights and scoreboard from the brief; stand design is a guess."
+ }
+}

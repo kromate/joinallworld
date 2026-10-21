@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-1051649120",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pomle_stadium.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Svk fan",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/v0_0.jpg",
+   "used": "main stand seen from the pitch: raked blue/white seating, flat dark roof on slim white columns, low grey-white base with small windows, tan neighbouring building at right, red-roofed house at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1051649120",
+   "used": "identity only (outline is the whole sports grounds, 400 m, not modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.735,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 62
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     18
+    ],
+    "end": [
+     -36,
+     18
+    ],
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 3.4,
+    "under": "solid",
+    "seatColours": [
+     "#3f73b8",
+     "#3f73b8",
+     "#e8eef4",
+     "#3f73b8"
+    ],
+    "seatColour": "#3f73b8",
+    "blocks": 8,
+    "concreteColour": "#8fa9cc",
+    "underColour": "#cfcfc6",
+    "canopy": {
+     "height": 3.8,
+     "depth": 12,
+     "colour": "#25272b",
+     "edgeColour": "#2f3236",
+     "slopeDeg": 2,
+     "supports": 9,
+     "thickness": 1.2
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     70,
+     5
+    ]
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e6e0",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    42.5,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a2",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -40,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d4",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0502f",
+    "pitch": 30,
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "kind": "chainlink",
+    "colour": "#8d9399"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stripe-35",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    -35.5,
+    15.5
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d33a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1d33a",
+       "#2f60a8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stripe35",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    35.5,
+    15.5
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1d33a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1d33a",
+       "#2f60a8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner",
+   "footprint": {
+    "rect": [
+     66,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    17.5
+   ],
+   "z0": 3.4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4f9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4f9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "canopy still a bit high and no truss, seats read as blue ramp not individual blocks, banner board hidden behind seating, no foreground tree"
+ }
+}

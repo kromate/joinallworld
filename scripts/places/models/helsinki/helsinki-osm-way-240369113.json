@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-240369113",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/240369113",
+   "used": "11 x 10 m irregular grassy surround outline"
+  },
+  {
+   "kind": "text",
+   "used": "Wikidata Q20249941: glacial erratic memorial stone with a plaque (historic=stone); granite, size assumed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "surround",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#6f7a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8a4c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "colour": "#8d8a80",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.6,
+       2.0
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       2.9,
+       2.3
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       2.4,
+       1.9
+      ],
+      "cx": -0.1
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       1.4,
+       1.1
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 2.7,
+      "ellipse": [
+       0.5,
+       0.4
+      ],
+      "cx": -0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    0.1,
+    -2.3
+   ],
+   "z0": 0.8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#3a3c3e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3c3e"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -7,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; boulder shape, size and plaque are assumed"
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St%C3%BAdentar_fr%C3%A1_Versl%C3%B3_2010_Versl%C3%B3_stlit_2010_338_(4633328023).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Dagur Brynj\u00f3lfsson",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/verslo1.jpg",
+   "used": "grey concrete facade colour, tall stacked rectangular windows with light frames, tall central glazed bay with mullions, stepped entrance, clipped hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/101084753",
+   "used": "real plan outline (name match), 3 levels, 1985"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#979990",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 4,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#979990",
+       "#939590"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "punched",
+     "right": "punched",
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5058",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     2.5
+    ]
+   },
+   "at": [
+    4,
+    -34.6
+   ],
+   "height": 15.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8794",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "spacing": 1.6,
+      "colour": "#d5d8d8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5058",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -37,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#7b7d76"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#2b4a6f",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   120,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -34
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -30
+    ],
+    "height": 5
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo mostly hidden by a graduation crowd; tall glazed entrance bay with mullions and wide steps added; windows still wider than the real tall narrow ones; no hedge or stone wall"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-101084753"
+}

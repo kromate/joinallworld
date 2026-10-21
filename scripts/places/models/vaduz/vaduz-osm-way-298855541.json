@@ -1,0 +1,409 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-298855541",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alp_Val%C3%BCna_(52335454896).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Olgierd R",
+   "view": "street",
+   "file": "/tmp/places-evidence/vaduz/valuna.jpg",
+   "used": "grey rubble-stone ground floor with arched openings and shuttered windows under a dark timber upper storey and wide-eaved shallow gable roof; gravel track, picnic benches, alpine meadow and conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/298855541",
+   "used": "identity only: the OSM outline covers several alp buildings, so a single 17 x 10 m inn is modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     17,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f877b",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "trimColour": "#3a2a20",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "right"
+     ],
+     "shape": "arch",
+     "bay": 5,
+     "opening": 0.62,
+     "height": 0.8,
+     "depth": 0.8,
+     "colour": "#2a2018"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b867c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     17,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.3,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3225",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "trimColour": "#2e1e15"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f2f25",
+    "material": "timber-shingle",
+    "pitch": 20,
+    "overhang": 2.0,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -5.1,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#3a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -5.25,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 0.25,
+    "colour": "#c4507a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.1,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#3a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.25,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 0.25,
+    "colour": "#c4507a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -5.1,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#3a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -5.25,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 0.25,
+    "colour": "#c4507a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    -5.1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#2e1e15"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -5.1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#2e1e15"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    -5.1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#2e1e15"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -5.1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#2e1e15"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    4,
+    2,
+    6.6
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "pots": 1,
+    "colour": "#8b867c"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -3,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#8b867c"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -8,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#a98a63"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#a98a63"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    11,
+    -7,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.4,
+    "colour": "#2f4a73"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -12
+     ],
+     [
+      14,
+      -12
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#6a5a42"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gable-end arcade is on the far end and not visible from the camera, camera sees the long wall instead of the gable end; windows still narrow glazed slits; no gravel track, no picnic benches; stone is regular ashlar-like"
+ }
+}

@@ -1,0 +1,512 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jeffs1DSC_1036.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wistula",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/jeffs.jpg",
+   "used": "long low brick diner, green flat roof edge, two red-white striped roof sign boxes, striped awning, white umbrellas, flagpole, steel flue"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/226544896",
+   "used": "overall size (27 x 23 m) only; irregular outline simplified to the photographed front range"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.52,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "diner",
+   "footprint": {
+    "rect": [
+     27,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a45a45",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "groundKind": "shopfront",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a4a",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    7,
+    -1
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a4a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-box-left",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    -12.5,
+    0.5
+   ],
+   "z0": 4.2,
+   "height": 2.2,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c23a35",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c23a35",
+      "#f2eee8"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-box-right",
+   "footprint": {
+    "rect": [
+     8,
+     2.4
+    ]
+   },
+   "at": [
+    6,
+    1
+   ],
+   "z0": 4.2,
+   "height": 2.2,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c23a35",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c23a35",
+      "#f2eee8"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flue",
+   "at": [
+    9,
+    4,
+    4.2
+   ],
+   "params": {
+    "radius": 0.8,
+    "n": 8,
+    "height": 4.2,
+    "colour": "#9da0a3"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "drop": 0.7,
+    "height": 2.9,
+    "colours": [
+     "#2f6b4f",
+     "#e8e4d8"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.2,
+      "n": 8,
+      "height": 0.3,
+      "z0": 2.6,
+      "colour": "#f2f0ea",
+      "topScale": 0.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5,
+     -9
+    ],
+    "end": [
+     14,
+     -9
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    -21,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 0.2,
+    "n": 6,
+    "height": 20,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo",
+   "at": [
+    9.5,
+    -0.35,
+    4.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 1.1,
+    "n": 16,
+    "height": 0.2,
+    "colour": "#f2eee8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "stripe-band",
+   "footprint": {
+    "rect": [
+     26,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -6.9
+   ],
+   "z0": 3.3,
+   "height": 0.8,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c23a35",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c23a35",
+      "#f2eee8"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c23a35",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-range",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a45a45",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f5a4a",
+    "material": "membrane",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-bay",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    10,
+    -7.2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a45a45",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 6,
+      "height": 0.6,
+      "colour": "#e5b81f",
+      "topScale": 0.6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -13
+    ],
+    "end": [
+     -12,
+     -11
+    ],
+    "count": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 6,
+      "height": 0.6,
+      "colour": "#c23a35",
+      "topScale": 0.6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -15
+    ],
+    "end": [
+     -12,
+     -13
+    ],
+    "count": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.1,
+    "colour": "#7a2a24",
+    "thickness": 0.15,
+    "kind": "fence"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag",
+   "at": [
+    -20.4,
+    -9,
+    17.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.05
+    ],
+    "height": 2.2,
+    "colour": "#b03a48"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Stripe boards and flowerbed are blocky stand-ins, no seating fence detail beyond a plain rail, logo disc blank, gable bay approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-meal-stop"
+}

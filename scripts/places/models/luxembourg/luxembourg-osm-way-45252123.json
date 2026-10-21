@@ -1,0 +1,103 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/45252123",
+   "used": "real 29x20 m irregular footprint, tagged restaurant, name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered building with gable roof, awning and terrace; no exterior photo of this venue exists (nearby Commons results are road signs)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8bd",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e5a48",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.2,
+    "colours": [
+     "#7a2f2a",
+     "#efe6d2"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -15.2,
+    3.2
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-45252123",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo exists; footprint and brief only, roof and facade typed from city style"
+ }
+}

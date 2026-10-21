@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-node-1165818843",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u041a\u0430\u0441\u0446\u0451\u043b.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chizhik Artyom",
+   "view": "side",
+   "file": "/tmp/places-evidence/minsk/minsk-osm-node-1165818843-0.jpg",
+   "used": "Wikidata P18 of the museum (Raubichi): weathered white long nave with a red-orange hipped/gable tile roof, pointed arched window in the plain gable end, a low flat-roofed annex, two black steep spires on a stepped-gable facade at the far end, set in trees"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q13031503",
+   "used": "Museum of Belarusian Folk Art, Raubichi"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1528779274",
+   "used": "checked only: the 146 m2 museum outline is much smaller than the church shown in the photo, so the nave is sized from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d3cfc3",
+    "windows": "pointed",
+    "windowRatio": 0.09,
+    "plinth": 0.5,
+    "bay": 6.5,
+    "trimColour": "#b5ae9e",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8664c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-window",
+   "at": [
+    -13.1,
+    0,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       0.3
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       2.0,
+       0.3
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       1.6,
+       0.3
+      ]
+     },
+     {
+      "z": 3.9,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     },
+     {
+      "z": 4.3,
+      "rect": [
+       0.4,
+       0.3
+      ]
+     }
+    ],
+    "colour": "#343a46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    -11.5,
+    -9
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e5da",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "dormer",
+   "id": "roof-vent",
+   "on": "nave",
+   "at": [
+    -6,
+    -2.6,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.0,
+    "height": 1.0,
+    "colour": "#7a2f26"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "facade-gable",
+   "at": [
+    13.1,
+    0,
+    8.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 10.5,
+    "height": 5.5,
+    "steps": 5,
+    "thickness": 0.8,
+    "colour": "#c9a99c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-n",
+   "at": [
+    12.4,
+    -4.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 11,
+    "colour": "#b8a198",
+    "windows": "pointed",
+    "windowRatio": 0.08,
+    "storeys": 3
+   }
+  },
+  {
+   "type": "core/spire",
+   "id": "spire-n",
+   "at": [
+    12.4,
+    -4.8,
+    11
+   ],
+   "params": {
+    "baseWidth": 2.8,
+    "height": 10,
+    "sides": 4,
+    "colour": "#25272d",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-s",
+   "at": [
+    12.4,
+    4.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 11,
+    "colour": "#b8a198",
+    "windows": "pointed",
+    "windowRatio": 0.08,
+    "storeys": 3
+   }
+  },
+  {
+   "type": "core/spire",
+   "id": "spire-s",
+   "at": [
+    12.4,
+    4.8,
+    11
+   ],
+   "params": {
+    "baseWidth": 2.8,
+    "height": 10,
+    "sides": 4,
+    "colour": "#25272d",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 7,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "birch-back",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 7,
+    "spread": 14,
+    "colour": "#5d8a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce-end",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 5,
+    "spread": 8,
+    "colour": "#2a5230"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Two black spires on facade end and stepped gable present but camera sees the nave side so facade/gothic window not visible; annex a roofed box with grey roof, trees sparse vs dense forest; photo is an elevated view."
+ }
+}

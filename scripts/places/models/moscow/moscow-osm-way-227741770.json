@@ -1,0 +1,525 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-way-227741770",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tupolev_Tu-104_near_Vnukovo_Airport_-_Moscow.JPG",
+   "licence": "Public domain",
+   "author": "Anthony Ivanoff",
+   "view": "side",
+   "file": "/tmp/places-evidence/moscow/p3_1.jpg",
+   "used": "jet nose-up on three stepped concrete pylons over a wide low base slab: swept low wings, engines in the wing roots, swept tail with tailplane high on the fin, white fuselage with a dark blue cheat line"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/227741770",
+   "used": "identity and overall size (about 35 x 28 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "wings flat plates not following pitch; gear are simple struts; no window row"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base-slab",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     12
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#aeb1ad",
+    "windows": "none",
+    "topColour": "#c9ccc8",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-aft",
+   "at": [
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "z0": 1.6,
+    "height": 6.2,
+    "colour": "#c4c7c2",
+    "windows": "none",
+    "topScale": 0.8,
+    "topColour": "#c4c7c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-mid",
+   "at": [
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "z0": 1.6,
+    "height": 9.0,
+    "colour": "#c4c7c2",
+    "windows": "none",
+    "topScale": 0.8,
+    "topColour": "#c4c7c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-fwd",
+   "at": [
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "z0": 1.6,
+    "height": 11.0,
+    "colour": "#c4c7c2",
+    "windows": "none",
+    "topScale": 0.8,
+    "topColour": "#c4c7c2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fuselage",
+   "params": {
+    "section": {
+     "circle": 1.5
+    },
+    "points": [
+     [
+      -14,
+      0,
+      8
+     ],
+     [
+      12,
+      0,
+      15
+     ]
+    ],
+    "n": 10,
+    "colour": "#e6eaec"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "nose",
+   "params": {
+    "section": {
+     "circle": 1.5
+    },
+    "points": [
+     [
+      12,
+      0,
+      15
+     ],
+     [
+      20,
+      0,
+      17.2
+     ]
+    ],
+    "taper": [
+     1,
+     0.18
+    ],
+    "n": 10,
+    "colour": "#e6eaec"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "tail-cone",
+   "params": {
+    "section": {
+     "circle": 1.5
+    },
+    "points": [
+     [
+      -14,
+      0,
+      8
+     ],
+     [
+      -20.5,
+      0,
+      7.8
+     ]
+    ],
+    "taper": [
+     1,
+     0.3
+    ],
+    "n": 10,
+    "colour": "#e6eaec"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "blue-line",
+   "params": {
+    "section": {
+     "rect": [
+      26,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -12,
+      1.52,
+      8.55
+     ],
+     [
+      14,
+      1.52,
+      15.55
+     ]
+    ],
+    "colour": "#2f4a8a",
+    "n": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-left",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      1.4
+     ],
+     [
+      -9,
+      17
+     ],
+     [
+      -11.5,
+      17
+     ],
+     [
+      -5,
+      1.4
+     ]
+    ],
+    "z0": 11.0,
+    "height": 0.6,
+    "colour": "#dfe3e5",
+    "topColour": "#e6eaec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-right",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      -1.4
+     ],
+     [
+      -9,
+      -17
+     ],
+     [
+      -11.5,
+      -17
+     ],
+     [
+      -5,
+      -1.4
+     ]
+    ],
+    "z0": 11.0,
+    "height": 0.6,
+    "colour": "#dfe3e5",
+    "topColour": "#e6eaec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "engine-l",
+   "params": {
+    "section": {
+     "circle": 0.85
+    },
+    "points": [
+     [
+      -6,
+      2.9,
+      10.4
+     ],
+     [
+      3,
+      2.9,
+      12.3
+     ]
+    ],
+    "taper": [
+     1,
+     0.7
+    ],
+    "n": 8,
+    "colour": "#d4d8da"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "engine-r",
+   "params": {
+    "section": {
+     "circle": 0.85
+    },
+    "points": [
+     [
+      -6,
+      -2.9,
+      10.4
+     ],
+     [
+      3,
+      -2.9,
+      12.3
+     ]
+    ],
+    "taper": [
+     1,
+     0.7
+    ],
+    "n": 8,
+    "colour": "#d4d8da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tailplane-l",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      0.5
+     ],
+     [
+      -18,
+      7
+     ],
+     [
+      -20,
+      7
+     ],
+     [
+      -18.5,
+      0.5
+     ]
+    ],
+    "z0": 12.8,
+    "height": 0.3,
+    "colour": "#dfe3e5",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tailplane-r",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      -0.5
+     ],
+     [
+      -18,
+      -7
+     ],
+     [
+      -20,
+      -7
+     ],
+     [
+      -18.5,
+      -0.5
+     ]
+    ],
+    "z0": 12.8,
+    "height": 0.3,
+    "colour": "#dfe3e5",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fin",
+   "params": {
+    "sections": [
+     {
+      "z": 7.8,
+      "rect": [
+       7,
+       0.35
+      ],
+      "cx": -17
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       3,
+       0.25
+      ],
+      "cx": -20
+     }
+    ],
+    "colour": "#e6eaec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear-nose",
+   "at": [
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 12.6,
+    "height": 2.4,
+    "colour": "#2b2e33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear-main-l",
+   "at": [
+    2,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 10.0,
+    "height": 2.2,
+    "colour": "#2b2e33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear-main-r",
+   "at": [
+    2,
+    -1.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 10.0,
+    "height": 2.2,
+    "colour": "#2b2e33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cockpit",
+   "at": [
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.8
+    ],
+    "z0": 16.2,
+    "height": 0.5,
+    "colour": "#1d2a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 6,
+    "spread": 6,
+    "line": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   40
+  ]
+ }
+}

@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_NK_Radnik_Velika_Gorica.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ex13",
+   "view": "side",
+   "file": "/tmp/places-evidence/zagreb/radnik.jpg",
+   "used": "oval ground with grey running track around the pitch, covered main stand on the left with dark green tiered seats and small roofed tribune, opposite grass-banked terrace with yellow seats, mesh fence around the track, floodlight masts far side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30014192",
+   "used": "ground oval (200 x 158 m leisure area) scaled to fit the scene: track oval 100 x 128 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 2.47,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "track",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     96,
+     118
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5ae9c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ae9c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     70,
+     100
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d9a3e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d9a3e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 68,
+    "width": 40,
+    "stripes": 4,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.5,
+    "thickness": 0.12,
+    "colour": "#6f7a72",
+    "points": [
+     [
+      0,
+      -66
+     ],
+     [
+      34,
+      -60
+     ],
+     [
+      52,
+      -34
+     ],
+     [
+      56,
+      0
+     ],
+     [
+      52,
+      34
+     ],
+     [
+      34,
+      60
+     ],
+     [
+      0,
+      66
+     ],
+     [
+      -34,
+      60
+     ],
+     [
+      -52,
+      34
+     ],
+     [
+      -56,
+      0
+     ],
+     [
+      -52,
+      -34
+     ],
+     [
+      -34,
+      -60
+     ],
+     [
+      0,
+      -66
+     ]
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     32
+    ],
+    "end": [
+     -50,
+     -32
+    ],
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#2f5a3c",
+    "seatColours": [
+     "#2f5a3c",
+     "#3d6a4a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b6ac",
+    "under": "open",
+    "canopy": {
+     "height": 7.0,
+     "depth": 4,
+     "colour": "#5a4a40",
+     "slopeDeg": 3,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tribune-box",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -56,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a5a3c",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a4a40",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     -30
+    ],
+    "end": [
+     52,
+     30
+    ],
+    "rows": 3,
+    "rise": 0.4,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "seatColour": "#c9b037",
+    "concreteColour": "#7a8a52",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    63,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     70
+    ],
+    "height": 2.0,
+    "topScale": [
+     0.2,
+     0.85
+    ],
+    "colour": "#6f9a4a",
+    "slot": "grass"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pitch markings clean not worn grass, fence is thin posts without mesh sheen, outer grass bank only on east side, no advertising boards, ground pad flat"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-30014192"
+}

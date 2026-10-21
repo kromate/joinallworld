@@ -1,0 +1,89 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/768643035",
+   "used": "real building outline (363 m2, building=university); nearby street photos show only hillside views and other buildings so none were used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "seat",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbf9f",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#ece5d3",
+      "height": 0.3,
+      "floors": [
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#5eb6e4",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     10
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

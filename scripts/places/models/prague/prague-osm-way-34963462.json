@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-34963462",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_view_of_P%C5%99%C3%ADmsk%C3%A9_n%C3%A1m%C4%9Bst%C3%AD_street_in_Kl%C3%A1novice,_Prague.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jiri Sedlacek",
+   "view": "street",
+   "file": "/tmp/places-evidence/prague/rimske.jpg",
+   "used": "context only: the commons image shows a street beside the green (grass verge, mature broadleaf trees, a white villa with a red tile roof, lamp posts); it does not show the park as a whole so it is not a building comparison"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/34963462",
+   "used": "park outline (about 177 x 164 m, fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -77.0,
+      -37.4
+     ],
+     [
+      39.7,
+      -51.8
+     ],
+     [
+      42.6,
+      -31.5
+     ],
+     [
+      52.7,
+      56.8
+     ],
+     [
+      31.5,
+      59.3
+     ],
+     [
+      -11.3,
+      64.8
+     ],
+     [
+      -12.9,
+      43.8
+     ],
+     [
+      -18.2,
+      -3.0
+     ],
+     [
+      -70.2,
+      2.9
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#6f9a4a",
+    "topColour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-main",
+   "params": {
+    "rect": [
+     3.2,
+     100
+    ],
+    "height": 0.16,
+    "colour": "#8c8a84",
+    "topColour": "#8c8a84"
+   },
+   "at": [
+    -2,
+    4,
+    0
+   ],
+   "rotDeg": 8
+  },
+  {
+   "type": "prism",
+   "id": "path-cross",
+   "params": {
+    "rect": [
+     70,
+     2.4
+    ],
+    "height": 0.16,
+    "colour": "#8c8a84",
+    "topColour": "#8c8a84"
+   },
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "rotDeg": -5
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 9,
+    "spread": 14,
+    "line": 50,
+    "colour": "#4a7a38"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 6,
+    "spread": 12,
+    "line": 36,
+    "colour": "#55803c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 4,
+    "spread": 6,
+    "line": 14,
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {}
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -40
+    ],
+    "end": [
+     2,
+     48
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -62,
+    -12
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532e",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a street view exists (no photo of the square), so the green is the real outline with generic paths, trees and lamps; not photo verified"
+ }
+}

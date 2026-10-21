@@ -1,0 +1,588 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-254561957",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Almada_Forum.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Quinta do Bom Retiro",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/af1.jpg",
+   "used": "terracotta-brick walls, tall glass entrance hall with orange mullion columns under a huge overhanging copper-brown wedge roof, mushroom lamp posts on the plaza, water pond with planter trees, taller brick block at right with deep slotted bays and white panels, low pergola wing at left; the sign lettering is left out"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Almada_Forum_-_Portugal_(4538307901).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Vitor Oliveira",
+   "view": "interior",
+   "used": "consulted only: brick arcaded galleries, confirms the warm brick palette (interior not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254561957",
+   "used": "overall size only (390 x 200 m): a 118 m portion around the main entrance is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.62,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-glass",
+   "footprint": {
+    "rect": [
+     38,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb3b8",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a4e2c",
+    "rise": 16,
+    "overhang": 13,
+    "high": "front"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    -21,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0623f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-left",
+   "footprint": {
+    "rect": [
+     24,
+     34
+    ]
+   },
+   "at": [
+    -44,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0623f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a2e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9,
+    "start": [
+     -18,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 17,
+      "colour": "#d9772f"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5,
+    19
+   ],
+   "params": {
+    "width": 26,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#e8e2d4",
+    "frameColour": "#e8e2d4",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "cube",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    25,
+    -1
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8683f",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "bands": "#8c4a30",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cube-window",
+   "at": [
+    25,
+    -9.2,
+    10
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#3f5560"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "z0": 0,
+   "height": 42,
+   "storeys": 7,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0623f",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#ece8e0"
+      ],
+      "depth": 1.6
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "start": [
+     -14,
+     0
+    ],
+    "end": [
+     14,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "height": 8.5,
+       "colour": "#7a5638"
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       8.5
+      ],
+      "params": {
+       "segments": 12,
+       "colour": "#f0ead8",
+       "profile": [
+        [
+         0,
+         0
+        ],
+        [
+         0.5,
+         0
+        ],
+        [
+         0.5,
+         0.2,
+         "#f0ead8"
+        ],
+        [
+         3.4,
+         0.9
+        ],
+        [
+         3.4,
+         1.1
+        ],
+        [
+         0,
+         1.1
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -24,
+     0
+    ],
+    "end": [
+     24,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       6
+      ],
+      "height": 0.7,
+      "colour": "#8c4a30"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -68,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "height": 5,
+    "colour": "#8a6a45"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "water",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     18
+    ],
+    "height": 0.3,
+    "colour": "#4f7488"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "boardwalk",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     3
+    ],
+    "height": 0.45,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-l",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     8
+    ],
+    "height": 1.1,
+    "colour": "#8c4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-m",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "height": 1.1,
+    "colour": "#8c4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-r",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     8
+    ],
+    "height": 1.1,
+    "colour": "#8c4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cube-brick",
+   "at": [
+    26,
+    -1,
+    17
+   ],
+   "params": {
+    "rect": [
+     11,
+     15
+    ],
+    "height": 3,
+    "colour": "#a85a38"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "copper roof is a plain wedge, tower bays are fins not deep recesses, water garden is simple slabs with few planters, far-left pergola is a stand-in"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   116,
+   90
+  ],
+  "cars": [],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -38
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -34
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -28
+    ],
+    "height": 5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -30
+    ],
+    "height": 8
+   }
+  ]
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "verified": "footprint",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this market was found (the OSM zig-zag outline is the only evidence); roof, stall layout and colours come from the brief's typical Riviera covered market."
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1106783860",
+   "used": "real market outline (name match, 73 x 26 m, 830 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6c98f",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "bay": 6,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e8b7c",
+    "material": "metal-sheet",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 4,
+      "depth": 1.8,
+      "height": 2.7,
+      "colours": [
+       "#6e8b7c",
+       "#f1e9d6"
+      ],
+      "posts": false
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -12,
+     0
+    ],
+    "end": [
+     6,
+     -6,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 3.6,
+    "colour": "#6e8b7c",
+    "frameColour": "#f1e9d6",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -16
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-market-game"
+}

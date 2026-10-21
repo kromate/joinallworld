@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lentvario_gele%C5%BEinkelio_stotis_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Terminator216",
+   "view": "front",
+   "used": "red-brick station: taller two-storey centre block with arched windows and dark hip roof, higher left wing, long single-storey right wing with big arched windows, cream banding, forecourt car park",
+   "file": "/tmp/places-evidence/vilnius/len2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24701521",
+   "used": "overall length (about 68 m) and depth (about 17 m) of the station building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.778,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     32,
+     13
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a85a45",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.5,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e0d2ac"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a403a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a85a45",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "plain"
+    },
+    "windowRatio": 0.36,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e0d2ac"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a403a",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    -23,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.0,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a85a45",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.36,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e0d2ac"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a403a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    9.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 8,
+    "colour": "#5e5f63",
+    "edgeColour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    22,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.15
+    ],
+    "height": 0.1,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    23.5,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.15
+    ],
+    "height": 0.1,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0,
+    "yaw": 0,
+    "colour": "#4a4f55"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    24,
+    0,
+    6.4
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.4,
+    "pots": 2,
+    "colour": "#9b4f3c"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    8,
+    -3,
+    6.4
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.4,
+    "pots": 2,
+    "colour": "#9b4f3c"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3,
+    -3,
+    10.2
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 3.6,
+    "pots": 2,
+    "colour": "#9b4f3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Chimneys added but small; no projecting gable bay on centre block (dropped, hidden by camera); platform canopy/tracks guesses; window rhythm still regular grid"
+ }
+}

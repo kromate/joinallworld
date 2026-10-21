@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Z-6713_Zgrada_Zapadnog_kolodvora_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Miroslav Vajdic",
+   "view": "street",
+   "file": "/tmp/places-evidence/zagreb/station.jpg",
+   "used": "two-storey ochre block with a lower one-storey-plus-attic wing, terracotta-red arched window surrounds, string course, deep eaves, dark red clay hip roofs, red brick chimneys, stone plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/45759340",
+   "used": "elongated plan, about 96 x 19 m, tall block near the middle"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     24,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b45a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 4.6,
+    "plinth": 1.1,
+    "bands": "#b5502f",
+    "trimColour": "#b5502f",
+    "cornice": "#4a3028"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f3a2e",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    -31,
+    1
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b45a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 4.6,
+    "plinth": 1.0,
+    "trimColour": "#b5502f",
+    "cornice": "#c9a56a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f3a2e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    26,
+    -1.5
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b45a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 4.6,
+    "plinth": 1.0,
+    "trimColour": "#b5502f",
+    "cornice": "#c9a56a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f3a2e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -10,
+    -5.5,
+    10.5
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 3.2,
+    "pots": 0,
+    "colour": "#b5502f"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    10,
+    -5.5,
+    10.5
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 3.2,
+    "pots": 0,
+    "colour": "#b5502f"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -48,
+    2,
+    7.5
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 3.2,
+    "pots": 0,
+    "colour": "#b5502f"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    10,
+    5.5,
+    10.5
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 3.2,
+    "pots": 0,
+    "colour": "#b5502f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arched windows lack red surrounds detail and string courses are thin; chimneys/roof approximate; road slab still present; far view only"
+ }
+}

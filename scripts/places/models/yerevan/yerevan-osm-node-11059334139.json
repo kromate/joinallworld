@@ -1,0 +1,234 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-node-11059334139",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/463897046",
+   "used": "nearest building (187 m2, 9 m from the point) taken as the corner shop footprint size only; the only Commons photo is an Assyrian church 206 m away, a different building, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop-a",
+   "footprint": {
+    "rect": [
+     12.4,
+     7.4
+    ]
+   },
+   "at": [
+    -16,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d4c4a6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-b",
+   "footprint": {
+    "rect": [
+     9,
+     6.5
+    ]
+   },
+   "at": [
+    -2,
+    8
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c7b595",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-c",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    15,
+    5
+   ],
+   "rotDeg": -4,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d6bd",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-store",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    28,
+    10
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8470",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d6f60",
+    "material": "corrugated",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    4,
+    -9
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#4f7a8a",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -9,
+    -8
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b0753d",
+    "width": 2.6,
+    "depth": 2,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -30,
+    14
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 5,
+    "colour": "#7a8a8f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -6
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 16,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the square; shops, kiosks and tank are a plausible lower-Ararat-plain village centre from the brief"
+ }
+}

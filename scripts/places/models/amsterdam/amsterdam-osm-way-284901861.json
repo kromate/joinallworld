@@ -1,0 +1,762 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-284901861",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hervormde_kerk_Krommeniedijk_2021-02-20.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerard Hogervorst",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/kd2.jpg",
+   "used": "tall brick gable front with slate-clad square tower and clock on the ridge end, slender slate spire, long side with tall buttressed arched windows, low brick annex with dark tiled roof, poplars, meadow"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Krommeniedijk_kerkje.JPG",
+   "licence": "Public domain",
+   "author": "unknown (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/kd1.jpg",
+   "used": "front gable with two pairs of small arched windows and green door, dark purple-brown brick, ditch and grass setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/284901861",
+   "used": "overall extent only; the OSM outline includes buttress and porch notches so the model uses a plain 11 x 17 m hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12.5,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6c5244",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 3.4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "width": 0.7,
+      "depth": 0.35,
+      "spacing": 3.4,
+      "colour": "#6a4b3d",
+      "margin": 1.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#3d4146",
+    "material": "slate",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-stage",
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 11,
+    "height": 9,
+    "colour": "#5e656c",
+    "topColour": "#4a5056",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -8.0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.25
+    ],
+    "z0": 16.4,
+    "height": 1.5,
+    "colour": "#2e6a55"
+   },
+   "at": [
+    0,
+    -9.95,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "z0": 17.2,
+    "height": 1.8,
+    "colour": "#222a2e"
+   },
+   "at": [
+    0,
+    -9.95,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "spire",
+   "at": [
+    0,
+    -8.0,
+    20
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#464d54",
+    "profile": [
+     [
+      1.7,
+      0
+     ],
+     [
+      1.6,
+      0.4
+     ],
+     [
+      1.4,
+      1.5
+     ],
+     [
+      0.8,
+      6
+     ],
+     [
+      0.1,
+      12.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.0,
+    31.8
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c7a74a",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.3,
+      0.6
+     ],
+     [
+      0.05,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     4.2,
+     5
+    ]
+   },
+   "at": [
+    8.6,
+    -3.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7a60",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 28,
+    "colour": "#3b3d40",
+    "material": "slate",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 17.4,
+    "height": 1.6,
+    "colour": "#1f2528"
+   },
+   "at": [
+    0,
+    -6.05,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 17.4,
+    "height": 1.6,
+    "colour": "#1f2528"
+   },
+   "at": [
+    1.95,
+    -8.0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 17.4,
+    "height": 1.6,
+    "colour": "#1f2528"
+   },
+   "at": [
+    -1.95,
+    -8.0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar0",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar1",
+   "at": [
+    -11,
+    2,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar2",
+   "at": [
+    -9,
+    10,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar3",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar4",
+   "at": [
+    20,
+    3,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar5",
+   "at": [
+    25,
+    -5,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "poplar6",
+   "at": [
+    17,
+    10,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.25,
+      5
+     ],
+     [
+      0.9,
+      7
+     ],
+     [
+      2.3,
+      11
+     ],
+     [
+      2.6,
+      14
+     ],
+     [
+      1.8,
+      18
+     ],
+     [
+      0.6,
+      21
+     ],
+     [
+      0.08,
+      23
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ditch",
+   "params": {
+    "rect": [
+     46,
+     1.8
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#7d93a0"
+   },
+   "at": [
+    4,
+    -16.5,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "fence-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.14
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#f1f1ee"
+     }
+    },
+    "mode": "line",
+    "count": 20,
+    "start": [
+     -14,
+     -14
+    ],
+    "end": [
+     22,
+     -14
+    ],
+    "lod2Step": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence-rail",
+   "params": {
+    "rect": [
+     36,
+     0.08
+    ],
+    "z0": 0.75,
+    "height": 0.1,
+    "colour": "#f1f1ee"
+   },
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "bare poplars are smooth spindle columns, not branching crowns; no clock faces on all sides, no gate bridge or ditch detail"
+ }
+}

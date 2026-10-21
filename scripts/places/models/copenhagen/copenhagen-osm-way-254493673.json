@@ -1,0 +1,516 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vedb%C3%A6k_Kirke_2007.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Claus B. Storgaard",
+   "view": "side",
+   "file": "/tmp/places-evidence/copenhagen/254493673_0.jpg",
+   "used": "orange-red brick, square west tower with paired arched belfry openings and a tall green copper spire, slate nave with a transept gable, small round-arched windows, arched corbel friezes, granite plinth, entrance door in the tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254493673",
+   "used": "cross plan 23 x 14 m: tower, nave, transept, chancel"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -9,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8553a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#cf6c4c",
+    "windowShape": "arched",
+    "cornice": true
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6f9f86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    -0.3,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8553a",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#cf6c4c",
+    "bay": 5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5f64",
+    "material": "slate",
+    "pitch": 36,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     7,
+     18
+    ]
+   },
+   "at": [
+    3.7,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8553a",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#cf6c4c",
+    "bay": 5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5f64",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    10.0,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b8553a",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#cf6c4c",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5f64",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -8.4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      26,
+      0
+     ]
+    ],
+    "height": 0.5,
+    "thickness": 0.3,
+    "colour": "#8d8a85"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    -1,
+    12.5
+   ],
+   "params": {
+    "colour": "#6f9f86",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.7,
+       4.7
+      ]
+     },
+     {
+      "z": 0.4,
+      "rect": [
+       4.1,
+       4.1
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       3.1,
+       3.1
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -1,
+    23
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -9.55,
+    -3.22,
+    9.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.8,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.24,
+    -1.9,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.76,
+    -1.9,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.9,
+    1.2400000000000002,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -8.45,
+    -3.22,
+    9.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.8,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.24,
+    -0.7999999999999999,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.76,
+    -0.7999999999999999,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.799999999999999,
+    1.2400000000000002,
+    9.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#2c2825"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -9,
+    -3.22,
+    5.6
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 0.35,
+    "height": 1.2,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -9,
+    -3.22,
+    3.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 0.35,
+    "height": 1.0,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -9,
+    -3.22,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.6,
+    "arch": true,
+    "colour": "#8a4a22",
+    "trim": "#d9b79a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -1,
+    12.1
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     4.7,
+     4.7
+    ],
+    "height": 0.35,
+    "colour": "#d08a62"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -6
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     8
+    ],
+    "height": 18
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-254493673",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Corbel friezes only as plain bands; camera is higher oblique than photo; side belfry openings flat dark panels"
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oudepastorie.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lucapersempre (nl.wikipedia)",
+   "view": "side",
+   "file": "/tmp/places-evidence/brussels/pastorie.jpg",
+   "used": "low red-brick wing with hipped clay-tile roof, taller main house with slate gable roof and crow-stepped end gable, white stone window frames in narrow bays, moat bank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/302927116",
+   "used": "long narrow plan about 45 x 10 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-house",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65a42",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 4.6,
+    "plinth": 0.6,
+    "trimColour": "#d8d0bd",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f57",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-wing",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    -10.5,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0624a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 6,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8573a",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "crow-gable",
+   "at": [
+    21.4,
+    0,
+    7.2
+   ],
+   "rotDeg": 270,
+   "params": {
+    "width": 8.0,
+    "height": 5.4,
+    "steps": 6,
+    "thickness": 0.9,
+    "colour": "#a65a42"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "chimney",
+   "at": [
+    20.6,
+    0,
+    11.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.0,
+    "pots": 1,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "dormer",
+   "id": "dormer",
+   "at": [
+    4,
+    -3.5,
+    7.5
+   ],
+   "params": {
+    "width": 1.4,
+    "depth": 1.2,
+    "height": 1.5,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "moat",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     8
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#2c4549"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bank",
+   "at": [
+    0,
+    -5.3,
+    0
+   ],
+   "params": {
+    "colour": "#6f8f4a",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       2.6
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       44,
+       1.2
+      ],
+      "cy": 0.7
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "crow-stepped gable is at the far end, windows lack mullions, moat flat strip with simple grass bank"
+ }
+}

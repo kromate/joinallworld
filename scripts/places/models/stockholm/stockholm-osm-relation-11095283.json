@@ -1,0 +1,431 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stockholms_Olympiastadion,_070310.JPG",
+   "licence": "CC BY 2.5",
+   "author": "Johannes Scherman",
+   "view": "interior",
+   "file": "/tmp/places-evidence/stockholm/olymp1.jpg",
+   "used": "north arcaded brick wall with scoreboard, two tall brick entrance towers with clock and floodlight, low raked stands, red track and green field"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10187551",
+   "used": "overall size (about 190 x 120 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-wall",
+   "footprint": {
+    "rect": [
+     100,
+     6
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a1634a",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 8,
+      "opening": 0.6,
+      "height": 0.8,
+      "depth": 1.0,
+      "pierColour": "#a1634a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    0,
+    47.4
+   ],
+   "z0": 3.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a3a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     40
+    ],
+    "end": [
+     52,
+     40
+    ],
+    "flip": true,
+    "rows": 10,
+    "seatColour": "#a9a79c",
+    "concreteColour": "#b4b0a4",
+    "under": "solid",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 38,
+    "startDeg": 180,
+    "endDeg": 360,
+    "rows": 8,
+    "seatColour": "#6b6b6d",
+    "concreteColour": "#9a948a",
+    "under": "solid",
+    "facetDeg": 40
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -58,
+     38
+    ],
+    "end": [
+     -58,
+     -2
+    ],
+    "rows": 10,
+    "seatColour": "#4a4a4d",
+    "concreteColour": "#8a847a",
+    "under": "open",
+    "canopy": {
+     "height": 8,
+     "depth": 8,
+     "colour": "#7e8083"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     58,
+     -2
+    ],
+    "end": [
+     58,
+     38
+    ],
+    "rows": 10,
+    "seatColour": "#4a4a4d",
+    "concreteColour": "#8a847a",
+    "under": "open",
+    "canopy": {
+     "height": 8,
+     "depth": 8,
+     "colour": "#7e8083"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "track",
+   "footprint": {
+    "rect": [
+     116,
+     76
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5503a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5503a"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -54,
+    46,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 12,
+    "height": 40,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#8f5b43",
+    "capColour": "#6a5a50",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    54,
+    46,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 12,
+    "height": 40,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#8f5b43",
+    "capColour": "#6a5a50",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -54,
+    46,
+    37
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "height": 5,
+    "colour": "#555555",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    54,
+    46,
+    37
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "height": 5,
+    "colour": "#555555",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "field",
+   "footprint": {
+    "rect": [
+     100,
+     62
+    ]
+   },
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6fa24c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa24c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-58",
+   "footprint": {
+    "rect": [
+     5,
+     0.6
+    ]
+   },
+   "at": [
+    -54,
+    39.8
+   ],
+   "z0": 29,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-58",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    44
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a2f2a",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock58",
+   "footprint": {
+    "rect": [
+     5,
+     0.6
+    ]
+   },
+   "at": [
+    54,
+    39.8
+   ],
+   "z0": 29,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav58",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    46,
+    44
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a2f2a",
+    "pitch": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-relation-11095283",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is an interior view from the south; model seen from outside so north wall arcade is small and stands are simplified; clock faces and floodlight masts are blocky; side stands lack the dark pavilion detail."
+ }
+}

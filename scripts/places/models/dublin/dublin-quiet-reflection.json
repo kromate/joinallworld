@@ -1,0 +1,769 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kill_of_Grange_Chutch_front.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kania1966",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/kill2.jpg",
+   "used": "west gable with steep sloping shoulders, double-arched bellcote on top, low doorway, grey rubble stone, graveyard with headstones, yews and broadleaf trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kill_of_the_Grange_Church.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ianfhunter",
+   "view": "front",
+   "used": "warmer stone colour and same gable proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/73561110",
+   "used": "18.3 x 10.5 m outline: length along the nave; width trimmed to the 8 m the gable shows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "west-gable",
+   "at": [
+    0,
+    -8.25,
+    0
+   ],
+   "params": {
+    "colour": "#7d7b73",
+    "material": "stone",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.4,
+       1.0
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       8.0,
+       1.0
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       6.0,
+       1.0
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       3.0,
+       1.0
+      ]
+     },
+     {
+      "z": 7.8,
+      "rect": [
+       2.5,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellcote",
+   "at": [
+    0,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.0
+    ],
+    "height": 2.2,
+    "colour": "#76746c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-peak-l",
+   "at": [
+    -0.85,
+    -8.25,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.9
+    ],
+    "height": 0.35,
+    "colour": "#76746c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-peak-r",
+   "at": [
+    0.85,
+    -8.25,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.9
+    ],
+    "height": 0.35,
+    "colour": "#76746c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -8.78,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "height": 1.7,
+    "colour": "#2b2d30",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "niche-l",
+   "at": [
+    -1.6,
+    -8.78,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "height": 0.8,
+    "colour": "#5a5953",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-slit",
+   "at": [
+    1.8,
+    -8.78,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#2b2d30",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-0",
+   "at": [
+    -3.65,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 3.4,
+    "colour": "#7b7870",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-1",
+   "at": [
+    -3.65,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 2.2,
+    "colour": "#85827a",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-2",
+   "at": [
+    -3.65,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 1.2,
+    "colour": "#7b7870",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-3",
+   "at": [
+    3.65,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 2.8,
+    "colour": "#85827a",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-4",
+   "at": [
+    3.65,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 1.6,
+    "colour": "#7b7870",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-wall-5",
+   "at": [
+    3.65,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "height": 2.3,
+    "colour": "#85827a",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "east-gable",
+   "at": [
+    0,
+    8.25,
+    0
+   ],
+   "params": {
+    "colour": "#7b7870",
+    "material": "stone",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.2,
+       0.95
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       8.0,
+       0.95
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       5.0,
+       0.9
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       2.4,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "headstones",
+   "at": [
+    0,
+    -12.25,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "headstones",
+   "at": [
+    -6,
+    -16.25,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "headstones",
+   "at": [
+    7,
+    -14.25,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "headstones",
+   "at": [
+    4,
+    -11,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "cross-shaft-0",
+   "at": [
+    4.5,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.2
+    ],
+    "height": 1.5,
+    "colour": "#8a877c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm-0",
+   "at": [
+    4.5,
+    -10,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "height": 0.28,
+    "colour": "#8a877c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-shaft-1",
+   "at": [
+    7.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.2
+    ],
+    "height": 1.5,
+    "colour": "#8a877c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm-1",
+   "at": [
+    7.5,
+    -12.5,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "height": 0.28,
+    "colour": "#8a877c",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "colour": "#16301f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "colour": "#16301f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "colour": "#16301f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "colour": "#16301f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#2f5a2f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#2f5a2f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-l",
+   "at": [
+    -0.6,
+    -8.78,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.12
+    ],
+    "height": 1.1,
+    "colour": "#22262b",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-r",
+   "at": [
+    0.6,
+    -8.78,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.12
+    ],
+    "height": 1.1,
+    "colour": "#22262b",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-l-top",
+   "at": [
+    -0.6,
+    -8.78,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.12
+    ],
+    "height": 0.25,
+    "colour": "#22262b",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-r-top",
+   "at": [
+    0.6,
+    -8.78,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.12
+    ],
+    "height": 0.25,
+    "colour": "#22262b",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "yew-0",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 2.6,
+    "depth": 2.2,
+    "colour": "#1c3a24"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "yew-1",
+   "at": [
+    7.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 2.6,
+    "depth": 2.2,
+    "colour": "#1c3a24"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "yew-2",
+   "at": [
+    11,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 2.6,
+    "depth": 2.2,
+    "colour": "#1c3a24"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "yew-3",
+   "at": [
+    -6.5,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.6,
+    "depth": 2.2,
+    "colour": "#1c3a24"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hs-0",
+   "at": [
+    -2.5,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.25
+    ],
+    "height": 1.1,
+    "colour": "#6f6f66",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hs-1",
+   "at": [
+    1.5,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.25
+    ],
+    "height": 1.2000000000000002,
+    "colour": "#6f6f66",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hs-2",
+   "at": [
+    3.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.25
+    ],
+    "height": 1.3,
+    "colour": "#6f6f66",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hs-3",
+   "at": [
+    -4.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.25
+    ],
+    "height": 1.4000000000000001,
+    "colour": "#6f6f66",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hs-4",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.25
+    ],
+    "height": 1.5,
+    "colour": "#6f6f66",
+    "material": "stone"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gable shoulders read slightly hip-like and fall short of the photo height; bellcote arches are dark rectangles, not arched; no stepped bellcote top or ruined nave shoulders; yews are generic"
+ }
+}

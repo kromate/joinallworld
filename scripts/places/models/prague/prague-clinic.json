@@ -1,0 +1,373 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bohnice_psychiatrick%C3%A1_l%C3%A9%C4%8Debna_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "VitVit",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/bohnice.jpg",
+   "used": "administration building: cream stucco, three-part front, taller central pavilion with balustraded attic, pediment panel and tall windows, columned entrance porch with steps, two-storey wings with cornice and balustraded roof edge, terracotta hip roofs, rusticated base, cobbled forecourt and clipped shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/319062309",
+   "used": "facts only: 64 ha hospital campus, heritage; the outline is the whole campus so only the administration building is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     27,
+     13
+    ]
+   },
+   "at": [
+    -24.5,
+    1
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3dcc6",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d2c9ae",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8502f",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     27,
+     13
+    ]
+   },
+   "at": [
+    24.5,
+    1
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3dcc6",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d2c9ae",
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8502f",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     21,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1ede0",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c0",
+    "parapet": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "z0": 16.5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e0cc",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0.0,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c0",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment-block",
+   "footprint": {
+    "rect": [
+     10,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -7.8
+   ],
+   "height": 4,
+   "storeys": 1,
+   "z0": 16.5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6ddc6",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e6ddc6",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-panel",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.3
+   ],
+   "z0": 16.8,
+   "height": 2.2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c8a050",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a5f9a"
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 5,
+    "height": 7.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 6,
+    "kind": "round",
+    "colour": "#eeead8"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -3.9,
+    21.5
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.9,
+    "postEvery": 2,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -7.4,
+    8.5
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.8,
+    "postEvery": 2.4,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -9,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#2f4a2a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    9,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#2f4a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank-roof--1",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    -6.5,
+    -1
+   ],
+   "z0": 16.5,
+   "height": 1.6,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e0cc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0562c",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank-roof-1",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    6.5,
+    -1
+   ],
+   "z0": 16.5,
+   "height": 1.6,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e0cc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0562c",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   110,
+   70
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Porch is a free-standing portico rather than the real piered entrance; no sculpted pediment or stucco reliefs; real shrubs are large dark clipped masses, here only small hedges; terracotta flank roofs simplified."
+ }
+}

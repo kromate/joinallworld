@@ -1,0 +1,524 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Houses_at_the_Ethnographic_museum.jpg",
+   "licence": "CC BY 2.0",
+   "author": "rugbyxm",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/eth1.jpg",
+   "used": "small dark-timber hut with orange clay-tile hip roof and open veranda, wattle granary on four stilts with grey gabled roof, open grass meadow, wall of cypress and conifers behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Folk_architecture_in_the_Tbilisi_Open_Air_Museum.JPG",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/eth2.jpg",
+   "used": "large west-Georgian timber house: long low gable roof of dark boards, deep carved-post veranda with lattice balustrade, stone steps"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Tbilisi_Open_Air_Museum_of_Ethnography",
+   "used": "east-Georgian flat-roofed stone houses, watchtowers, mills; the site is a 52 ha hill (about 12 houses are modelled in a 110 m cluster)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house-veranda",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e402c",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a4636",
+    "material": "timber-shingle",
+    "overhang": 1.4,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0.0,
+    -3.2,
+    0.0
+   ],
+   "params": {
+    "length": 12,
+    "count": 6,
+    "height": 3.1,
+    "radius": 0.14,
+    "kind": "round",
+    "roofDepth": 0.0,
+    "colour": "#3f2a1c",
+    "roofColour": "#5a4636"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0.0,
+    -3.1,
+    0.4
+   ],
+   "params": {
+    "length": 12,
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2.8,
+    -4.1,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.45,
+    "run": 0.45,
+    "count": 3,
+    "colour": "#8f8a7f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-hut",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a3826",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8512a",
+    "material": "clay-tile",
+    "overhang": 1.3,
+    "pitch": 28
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -6,
+    -8.6,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "count": 4,
+    "height": 2.9,
+    "radius": 0.12,
+    "kind": "round",
+    "colour": "#4a3020"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -8.5,
+    0.45
+   ],
+   "params": {
+    "length": 7,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#3f2a1c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    8,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 2.6,
+    "dy": 2.0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 1.6,
+      "colour": "#3a2c22"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "granary",
+   "footprint": {
+    "rect": [
+     3.8,
+     3
+    ]
+   },
+   "at": [
+    8,
+    -5
+   ],
+   "rotDeg": 10,
+   "z0": 1.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b5d4c",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e6a64",
+    "material": "timber-shingle",
+    "overhang": 0.6,
+    "pitch": 40
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-house",
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "at": [
+    21,
+    10
+   ],
+   "rotDeg": 6,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8c8576",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "parapet": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5b3e",
+    "material": "membrane",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-house-2",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "rotDeg": -4,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#aaa497",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5b3e",
+    "material": "membrane",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    28.0,
+    7.0,
+    0
+   ],
+   "params": {
+    "colour": "#8c8576",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       3.0,
+       3.0
+      ]
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       3.5,
+       3.5
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       3.5,
+       3.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-2",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    3
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#664630",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a4f3a",
+    "material": "timber-shingle",
+    "overhang": 1.2,
+    "pitch": 26
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mill",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    22,
+    4
+   ],
+   "rotDeg": -20,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7c6a52",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a4636",
+    "material": "timber-shingle",
+    "overhang": 0.8,
+    "pitch": 30
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    7.0,
+    12.6,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#9b958a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -25.2,
+    8.4,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      1.6,
+      0
+     ],
+     [
+      1.8,
+      0.8
+     ],
+     [
+      1.1,
+      2.0
+     ],
+     [
+      0,
+      2.8
+     ]
+    ],
+    "colour": "#bfae6e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 22,
+    "line": 80,
+    "colour": "#2d4a30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23.8,
+    -1.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -1,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cluster compressed from 52 ha site; stilt granary and veranda simplified (no wattle weave, lattice or carved posts); conifers are generic not slim cypress; meadow darker than photo; stone tower and houses still blocky."
+ }
+}

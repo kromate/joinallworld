@@ -1,0 +1,400 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-relation-14714515",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Square_Tallaght_-_2024-11-09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "\u745e\u4e3d\u6c5f\u7684\u6cb3\u6c34",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/sq1.jpg",
+   "used": "warm orange-brown brick walls with pale bands, thin blue roof edge, glazed clerestory strip, glazed entrance canopy, brick stair towers on the left, surface car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37838269",
+   "used": "real outline (221 x 187 m, scaled to fit 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "polygon": [
+     [
+      -62.4,
+      27.0
+     ],
+     [
+      -58.8,
+      11.4
+     ],
+     [
+      -54.6,
+      -2.6
+     ],
+     [
+      -32.2,
+      -5.7
+     ],
+     [
+      -21.8,
+      -57.2
+     ],
+     [
+      7.8,
+      -51.0
+     ],
+     [
+      15.6,
+      -51.5
+     ],
+     [
+      44.7,
+      -42.6
+     ],
+     [
+      34.3,
+      4.2
+     ],
+     [
+      32.2,
+      15.6
+     ],
+     [
+      56.2,
+      20.8
+     ],
+     [
+      46.8,
+      27.0
+     ],
+     [
+      42.6,
+      49.9
+     ],
+     [
+      2.6,
+      43.2
+     ],
+     [
+      -46.8,
+      32.8
+     ]
+    ]
+   },
+   "height": 13.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5693f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-r",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    20,
+    -18
+   ],
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a85e3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-r",
+   "at": [
+    20,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     44.6,
+     24.6
+    ],
+    "z0": 18,
+    "height": 0.7,
+    "colour": "#2a4fa0",
+    "topColour": "#2a4fa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     86,
+     9
+    ]
+   },
+   "at": [
+    2,
+    -55
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b87345",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-clere",
+   "at": [
+    2,
+    -55.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     86,
+     7
+    ],
+    "z0": 8,
+    "height": 2.6,
+    "colour": "#7f94a1",
+    "topColour": "#2a4fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-fascia",
+   "at": [
+    2,
+    -55,
+    0
+   ],
+   "params": {
+    "rect": [
+     86.6,
+     9.6
+    ],
+    "z0": 10.6,
+    "height": 0.5,
+    "colour": "#2a4fa0",
+    "topColour": "#2a4fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clere-top",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     24
+    ],
+    "z0": 14.2,
+    "height": 3,
+    "colour": "#7f94a1",
+    "topColour": "#2a4fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-1",
+   "at": [
+    -66,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 0,
+    "height": 20,
+    "colour": "#a85e3a",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-2",
+   "at": [
+    -60,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#a85e3a",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-pitch",
+   "at": [
+    -7,
+    -63,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     10
+    ],
+    "z0": 4.2,
+    "height": 3.0,
+    "topScale": 0.45,
+    "colour": "#7f9aa8",
+    "topColour": "#8fa7b5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-red",
+   "at": [
+    44,
+    -30.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.5
+    ],
+    "z0": 11.5,
+    "height": 5,
+    "colour": "#c8201f",
+    "topColour": "#c8201f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-white",
+   "at": [
+    44,
+    -30.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "z0": 12.5,
+    "height": 2.8,
+    "colour": "#f2f2f0",
+    "topColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-sign",
+   "at": [
+    -33,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 3,
+    "height": 4,
+    "colour": "#2f5fa3",
+    "topColour": "#2f5fa3"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 18,
+    "density": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -68
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -68
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Footprint simplified and scaled to 118 m; triangle budget forced removing window strips and brick bands, car park sparse versus the photo's packed cars; sign is a blank red/white board, glazed canopy is a hipped approximation."
+ }
+}

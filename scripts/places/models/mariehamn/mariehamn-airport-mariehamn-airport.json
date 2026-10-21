@@ -1,0 +1,313 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mariehamn_Airport.jpg",
+   "licence": "Public domain",
+   "author": "Egon Eagle",
+   "view": "front",
+   "file": "/tmp/places-evidence/mariehamn/air0.jpg",
+   "used": "two-level terminal: dark brown lower storey on the left, cream render right with dark entrance canopy, continuous dark upper ribbon storey, glazed round control tower left of centre, flagpoles, asphalt apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1463723241",
+   "used": "aerodrome only (2.3 km outline), not used for the terminal; size from photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#4c3d33",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bands": "#d9d0bb",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#59544f",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    12,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d4b2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#59544f",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-strip",
+   "footprint": {
+    "rect": [
+     66,
+     13
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 5.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a3430",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5a58",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    19,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e6e1d2",
+    "edgeColour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -18,
+    3,
+    8.9
+   ],
+   "params": {
+    "height": 9,
+    "style": "round",
+    "colour": "#d9d4c4",
+    "shaftRadius": 2.4,
+    "cabRadius": 4.2,
+    "cabColour": "#3d5f66",
+    "bandColour": "#cfcabd"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -44,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#e8e8ee",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "rect": [
+     96,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a6a62",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a62"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -24,
+     0
+    ],
+    "end": [
+     36,
+     -24,
+     0
+    ],
+    "count": 13,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.2,
+       6
+      ]
+     },
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#f1f1ec",
+      "windows": "none",
+      "plinth": 0
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f1f1ec"
+     },
+     "z0": -0.37
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    19,
+    -12,
+    4.2
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.2,
+    "bottom": 4.2,
+    "colour": "#2c58a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    44,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -48,
+     -10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-airport-mariehamn-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "west wing narrowed, tower on roof, red-brown apron and canopy done; site framing wide, vegetation, clock and logo omitted"
+ }
+}

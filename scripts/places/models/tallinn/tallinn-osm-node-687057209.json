@@ -1,0 +1,189 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small village local lore museum, single-storey rural Estonian vernacular building about 16 x 9 m; the OSM match is nearest-only (a 34 x 22 m irregular shape 7 m away) so it is not used; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "trimColour": "#eeeae0",
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b4a40",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.2
+    ]
+   },
+   "at": [
+    -3,
+    -5.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8c5a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b4a40",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     5,
+     3.6
+    ]
+   },
+   "at": [
+    14,
+    5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8c5a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5b4640",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#eeeae0",
+    "frameColour": "#8c5a45"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      0
+     ],
+     [
+      14,
+      0
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#8c5a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo and no reliable outline; modest Estonian vernacular museum typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-node-687057209"
+}

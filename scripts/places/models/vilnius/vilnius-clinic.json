@@ -1,0 +1,362 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vilnius_Psychiatric_Hospital_1.jpg",
+   "licence": "Public domain",
+   "author": "Alma Pater",
+   "view": "front",
+   "used": "19th-century buff/yellow brick hospital: three storeys plus attic, central gabled projection with triple arched window and stepped pediment, arched-window friezes, white string courses, grey hip roof, flat entrance canopy and a statue on a stepped plinth, lawns and conifers",
+   "file": "/tmp/places-evidence/vilnius/vilnius-clinic-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25892959",
+   "used": "campus layout scale (many connected pavilions, about 320 x 200 m); only the main front block is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     36,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b99a66",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#efe9d6",
+    "bay": 4.6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-projection",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -4.25
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59562",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.32,
+    "plinth": 0.9,
+    "bay": 3.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#efe9d6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d838a",
+    "material": "metal-sheet",
+    "pitch": 52,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    -31,
+    -0.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b99a66",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#efe9d6",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    31,
+    -0.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b99a66",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#efe9d6",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    0,
+    23
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b99a66",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.9,
+    "bay": 6.5,
+    "bands": "#efe9d6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12.2,
+    3.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3.4,
+    "height": 0,
+    "thickness": 0.35,
+    "columns": 0,
+    "colour": "#5d6770"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#3d3a36",
+    "plinthColour": "#6b6962"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ped-step1",
+   "footprint": {
+    "rect": [
+     13,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -11.4
+   ],
+   "height": 0.7,
+   "z0": 13.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#efe9d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-block",
+   "footprint": {
+    "rect": [
+     3,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 2.2,
+   "z0": 19.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59562",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6f48"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -14
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -14
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -12
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gable pediment now rises above roofline but corbel stepping, triple arched window group and arched eave frieze are simplified; render is wider/lower than photo; campus pavilions omitted"
+ }
+}

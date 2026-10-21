@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bremgarten_Rathaus.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:Voyager",
+   "view": "street",
+   "file": "/tmp/places-evidence/zurich/rathaus1.jpg",
+   "used": "generic Swiss Altstadt style only (photo is the Bremgarten Rathaus, a different town, NOT this venue): white render, grey rusticated ground storey, grey stone bands, hip tile roof with dormer"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/477927605",
+   "used": "real outline (pentagon, 22 x 16 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 35,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rathaus",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 2.6,
+    "bands": "#8d8f90",
+    "cornice": true,
+    "trimColour": "#8a8d8f",
+    "windowShape": "rect",
+    "groundKind": "arcade",
+    "groundHeight": 3.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "colour": "#9a9c9d"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4b3a33",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -4,
+    -3,
+    0
+   ],
+   "on": "rathaus",
+   "params": {
+    "width": 2.2,
+    "depth": 1.4,
+    "height": 2.2,
+    "colour": "#f1f0ec"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    3,
+    2,
+    0
+   ],
+   "on": "rathaus",
+   "params": {
+    "width": 1.2,
+    "height": 2.5,
+    "pots": 0,
+    "colour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    3,
+    -3,
+    0
+   ],
+   "on": "rathaus",
+   "params": {
+    "width": 2.2,
+    "depth": 1.4,
+    "height": 2.2,
+    "colour": "#f1f0ec"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real OSM outline and storeys; facade is generic Swiss Altstadt style from a photo of a different building (Bremgarten), not claimed as the real venue. Ground storey arcade is shallow, no shutters or stepped baroque gable, single-ridge hip roof."
+ }
+}

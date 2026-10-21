@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-33149531",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bruxelles_-_Schaerbeek_-_Centre_Hospitalier_Paul_Brien_2019-07-10_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fin-de-siecle",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/v19_0.jpg",
+   "used": "long six-storey cream-brick block with regular punched windows and stacked balconies on the left half, taller end block with a darker brick top storey, low brown-brick annex with a blank sign board, flat entrance canopy, darker tall wing behind on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33149531",
+   "used": "overall scale of the hospital site (about 219 x 166 m); only the Paul Brien front block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 48,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.52,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#dcc7a5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#556270",
+    "plinth": 0.3,
+    "bay": 6.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     14,
+     15
+    ]
+   },
+   "at": [
+    25,
+    0.5
+   ],
+   "height": 25,
+   "storeys": 7,
+   "wall": {
+    "material": "brick",
+    "colour": "#dcc7a5",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "glassColour": "#556270",
+    "plinth": 0.3,
+    "bay": 6.0,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-top",
+   "footprint": {
+    "rect": [
+     14,
+     15
+    ]
+   },
+   "at": [
+    25,
+    0.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5545",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#556270",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   },
+   "z0": 25
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    40,
+    -8.5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a5a47",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#556270",
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-wing",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    -36,
+    10
+   ],
+   "height": 30,
+   "storeys": 9,
+   "wall": {
+    "material": "brick",
+    "colour": "#4d4240",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#556270",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55504c",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-wing",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    4
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3d2cd",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#556270",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "lod": [
+    0
+   ],
+   "at": [
+    -23,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "floors": 5,
+    "storeyHeight": 3.5,
+    "proud": 1.2,
+    "rail": true,
+    "colour": "#7c8086"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 6,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#4a4442"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    38,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2,
+    "bottom": 4.2,
+    "colour": "#5a3f36",
+    "frameColour": "#c8c0b8",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    -17.2,
+    5.1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#d44f8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -8
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Massing, cream brick, balcony stack, dark top storey, annex and canopy match; no pink logo disc, no trees/hedges along the street front, window rhythm is coarser than the real facade, wings behind are plain boxes."
+ }
+}

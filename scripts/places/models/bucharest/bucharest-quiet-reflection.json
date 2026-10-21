@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RO_IF_Petrachioaia_Assumption_church.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andrei Stroe",
+   "view": "side",
+   "file": "/tmp/places-evidence/bucharest/petra.jpg",
+   "used": "low cream-yellow rendered nave with grey standing-seam metal hip roof, exposed brick patches, octagonal tower with deep eaves and low grey octagonal roof, wooden bell frame at right, old brick boundary wall and iron gate in front, conifers at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1088260518",
+   "used": "overall size 19 x 9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.275,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     8.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dba0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#c9b97a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b727a",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.5,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4684f",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b727a",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    1.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 3.9,
+    "z0": 4.6,
+    "height": 6.2,
+    "colour": "#e8dea8",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eaves",
+   "at": [
+    1.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.6,
+    "z0": 10.8,
+    "height": 0.7,
+    "colour": "#d8cc78",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-roof",
+   "at": [
+    1.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.6,
+    "z0": 11.5,
+    "height": 1.7,
+    "colour": "#5f666d",
+    "topScale": 0.12
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    1.5,
+    0,
+    13.2
+   ],
+   "params": {
+    "baseWidth": 0.4,
+    "height": 1.6,
+    "colour": "#3b3b3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-post-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    9.2,
+    -1.6
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8cc78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cc78",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-post-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    9.2,
+    1.6
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8cc78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cc78",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-beam",
+   "footprint": {
+    "rect": [
+     0.6,
+     3.8
+    ]
+   },
+   "at": [
+    9.2,
+    0
+   ],
+   "z0": 3.5,
+   "height": 0.5,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8cc78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cc78",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b98a63"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.2,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#c8a99a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 2,
+    "spread": 3,
+    "line": 4,
+    "colour": "#3d6040"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   40,
+   30
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -7
+    ],
+    "height": 4
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "nave roof simplified to a plain hip (real roof has a lower eave step), tower windows are slits not modelled, exposed brick patches, bell frame and iron gate are rough, foreground fences differ"
+ }
+}

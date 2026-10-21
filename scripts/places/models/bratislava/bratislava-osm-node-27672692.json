@@ -1,0 +1,303 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-node-27672692",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akad%C3%A9mia_Policajn%C3%A9ho_zboru_v_Bratislave.jpg",
+   "licence": "CC0",
+   "author": "Matus.antol",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/police.jpg",
+   "used": "main entrance: grey-green rendered upper storey, white flat entrance canopy on slim steel posts over a dark glazed lobby, blank sign board above, two flagpoles, dark-framed barred windows on the right wing, dark tile plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16678424",
+   "used": "containing complex only (315 x 140 m, not reliable as one building); only the entrance front is modelled as a modest low block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.0,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#9a9d90",
+    "windows": "none",
+    "plinth": 1.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    17,
+    -1
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#8f9186",
+    "windows": "punched",
+    "glassColour": "#262d31"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     17,
+     3
+    ]
+   },
+   "at": [
+    -1,
+    -8.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3236",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    -1,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     5.5
+    ],
+    "z0": 4.3,
+    "height": 0.9,
+    "colour": "#ece9df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-l",
+   "at": [
+    -9.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#6d7378"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-r",
+   "at": [
+    7.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.3,
+    "colour": "#6d7378"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.8
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#262c33"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -7.4,
+    5.6
+   ],
+   "params": {
+    "width": 15,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f2f2f0",
+    "frameColour": "#2f4a82",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crest",
+   "at": [
+    -1,
+    -7.5,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#2f4a82",
+    "topScale": [
+     0.8,
+     1
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#2a2d30"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     -8.2,
+     5.2
+    ],
+    "end": [
+     9,
+     -8.2,
+     5.2
+    ],
+    "count": 17
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -13,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 21,
+    "colour": "#2f55a4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    11,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 21,
+    "colour": "#2a4fa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   40,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy slab on posts over dark lobby, sign board, crest, tall flags, plinth read; right wing windows simplified, flag colours/angle and barred glazing not matched, camera farther than photo."
+ }
+}

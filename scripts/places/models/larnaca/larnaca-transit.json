@@ -1,0 +1,522 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bus_terminal_Larnaca.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Josef Moser",
+   "view": "street",
+   "file": "/tmp/places-evidence/larnaca/bus.jpg",
+   "used": "open asphalt bus yard (no canopy), blue-white buses parked in a loose row, one large eucalyptus mid-yard, blue boundary fence behind, small white building at right edge, hot clear light"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53111127",
+   "used": "large irregular bus-station outline (220 x 84 m); the model keeps a representative 70 x 40 m part of the yard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "yard",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     36
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#77777a"
+   }
+  },
+  {
+   "type": "coach",
+   "id": "coaches-front-right",
+   "at": [
+    14,
+    -6
+   ],
+   "params": {
+    "colour": "#2d5fb0",
+    "stripe": "#eef2f8",
+    "count": 1,
+    "spacing": 4,
+    "length": 12,
+    "yaw": -80,
+    "wall_colour": "#2d5fb0",
+    "roof_colour": "#eef2f8",
+    "trim_colour": "#1c2b3a"
+   }
+  },
+  {
+   "type": "coach",
+   "id": "coaches-left",
+   "at": [
+    -22,
+    -2
+   ],
+   "params": {
+    "colour": "#2d5fb0",
+    "stripe": "#eef2f8",
+    "count": 3,
+    "spacing": 4.4,
+    "length": 12,
+    "yaw": -95,
+    "wall_colour": "#2d5fb0",
+    "roof_colour": "#eef2f8",
+    "trim_colour": "#1c2b3a"
+   }
+  },
+  {
+   "type": "coach",
+   "id": "coaches-back",
+   "at": [
+    -12,
+    12
+   ],
+   "params": {
+    "colour": "#2d5fb0",
+    "stripe": "#eef2f8",
+    "count": 6,
+    "spacing": 4.4,
+    "length": 12,
+    "yaw": -92,
+    "wall_colour": "#2d5fb0",
+    "roof_colour": "#eef2f8",
+    "trim_colour": "#1c2b3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "at": [
+    0,
+    17
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#2c58a3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    22,
+    -2
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6de",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "office-door",
+   "at": [
+    22,
+    -5.05
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#2c58a3"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "office-awning",
+   "at": [
+    22,
+    -6.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 2.4,
+    "height": 2.8,
+    "thickness": 0.15,
+    "colour": "#2c58a3"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "waiting",
+   "at": [
+    -20,
+    8
+   ],
+   "params": {
+    "length": 12,
+    "depth": 3,
+    "height": 3,
+    "form": "shed",
+    "accent": "#2d5fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "euc-trunk-a",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 8,
+    "z0": 0,
+    "height": 8,
+    "topScale": 0.6,
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "euc-trunk-b",
+   "at": [
+    0.6,
+    2.2
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 8,
+    "z0": 3,
+    "height": 8,
+    "topScale": 0.5,
+    "topOffset": [
+     -2,
+     1.5
+    ],
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "euc-trunk-c",
+   "at": [
+    -0.4,
+    1.8
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 8,
+    "z0": 3,
+    "height": 8,
+    "topScale": 0.5,
+    "topOffset": [
+     2.5,
+     -1
+    ],
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-0",
+   "at": [
+    0,
+    2,
+    12
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      3.6,
+      -0.5
+     ],
+     [
+      4.5,
+      0
+     ],
+     [
+      3.6,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-1",
+   "at": [
+    -4,
+    3,
+    10.5
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      2.72,
+      -0.5
+     ],
+     [
+      3.4,
+      0
+     ],
+     [
+      2.72,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-2",
+   "at": [
+    4.5,
+    0.5,
+    11
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      2.8800000000000003,
+      -0.5
+     ],
+     [
+      3.6,
+      0
+     ],
+     [
+      2.8800000000000003,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-3",
+   "at": [
+    -2,
+    0,
+    13.5
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      2.5600000000000005,
+      -0.5
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      2.5600000000000005,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-4",
+   "at": [
+    3,
+    3.5,
+    13.8
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      2.4000000000000004,
+      -0.5
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      2.4000000000000004,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "euc-crown-5",
+   "at": [
+    -6.5,
+    1,
+    9.5
+   ],
+   "params": {
+    "colour": "#8d9b80",
+    "segments": 10,
+    "profile": [
+     [
+      0,
+      -0.8
+     ],
+     [
+      2.08,
+      -0.5
+     ],
+     [
+      2.6,
+      0
+     ],
+     [
+      2.08,
+      0.7
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "back-trees-l",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "back-trees-r",
+   "at": [
+    8,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm",
+   "at": [
+    -18,
+    19
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   56,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Coaches still boxy and small at wide auto-camera; eucalyptus crown stacked discs; ground slab offset from yard pad; no dense tree backdrop."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-transit"
+}

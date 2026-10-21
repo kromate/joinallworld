@@ -1,0 +1,466 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lysi_Chapel.JPG",
+   "licence": "CC0",
+   "author": "Pavloscy",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/lysi.jpg",
+   "used": "cross-in-square chapel massing, rubble limestone walls, terracotta-tiled gabled arms, tall drum with tiled cap, semicircular apse, plank door at left of the west face"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lysi_Chapel_Side.JPG",
+   "licence": "CC0",
+   "author": "Pavloscy",
+   "view": "side",
+   "file": "/tmp/places-evidence/larnaca/lysi-side.jpg",
+   "used": "apse with slit window, drum slit window, eucalyptus trees, bare chalky ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/190662188",
+   "used": "footprint scale: about 8.6 x 7.7 m (the brief's bell tower is not in the photos and was dropped)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7.4,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8805e",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a40",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     4.6,
+     7.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8805e",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a40",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "n": 14,
+    "z0": 4.0,
+    "height": 5.0,
+    "colour": "#a8805e"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-cap",
+   "at": [
+    0,
+    0,
+    9.0
+   ],
+   "params": {
+    "colour": "#9a5a40",
+    "segments": 16,
+    "profile": [
+     [
+      2.0,
+      0
+     ],
+     [
+      1.9,
+      0.15
+     ],
+     [
+      0.9,
+      0.5
+     ],
+     [
+      0,
+      0.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "at": [
+    3.7,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0.0,
+      -2.3
+     ],
+     [
+      0.711,
+      -2.187
+     ],
+     [
+      1.352,
+      -1.861
+     ],
+     [
+      1.861,
+      -1.352
+     ],
+     [
+      2.187,
+      -0.711
+     ],
+     [
+      2.3,
+      0.0
+     ],
+     [
+      2.187,
+      0.711
+     ],
+     [
+      1.861,
+      1.352
+     ],
+     [
+      1.352,
+      1.861
+     ],
+     [
+      0.711,
+      2.187
+     ],
+     [
+      0.0,
+      2.3
+     ]
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#a8805e",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse-cap",
+   "at": [
+    3.7,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0.0,
+      -2.45
+     ],
+     [
+      0.757,
+      -2.33
+     ],
+     [
+      1.44,
+      -1.982
+     ],
+     [
+      1.982,
+      -1.44
+     ],
+     [
+      2.33,
+      -0.757
+     ],
+     [
+      2.45,
+      0.0
+     ],
+     [
+      2.33,
+      0.757
+     ],
+     [
+      1.982,
+      1.44
+     ],
+     [
+      1.44,
+      1.982
+     ],
+     [
+      0.757,
+      2.33
+     ],
+     [
+      0.0,
+      2.45
+     ]
+    ],
+    "z0": 4.6,
+    "height": 0.8,
+    "topScale": 0.3,
+    "colour": "#9a5a40",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse-slit",
+   "at": [
+    5.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.3
+    ],
+    "z0": 1.6,
+    "height": 1.8,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "threshold",
+   "at": [
+    -1.3,
+    -3.95,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.15,
+    "run": 0.35,
+    "count": 1,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -1.3,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#4a2a18"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-slit-0",
+   "at": [
+    0.93,
+    -1.748
+   ],
+   "rotDeg": 28,
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "z0": 5.6,
+    "height": 2.6,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-slit-1",
+   "at": [
+    -0.93,
+    -1.748
+   ],
+   "rotDeg": -28,
+   "params": {
+    "rect": [
+     0.4,
+     0.15
+    ],
+    "z0": 5.6,
+    "height": 2.6,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hole-0",
+   "at": [
+    -1.6,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.18,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hole-1",
+   "at": [
+    -1.05,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.18,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hole-2",
+   "at": [
+    -0.5,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.18,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hole-3",
+   "at": [
+    0.050000000000000044,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.18,
+    "colour": "#241912"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hole-4",
+   "at": [
+    0.6000000000000001,
+    -3.72
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.18,
+    "colour": "#241912"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -9,
+     2
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -11,
+     -1
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rubble is regular blocks not irregular fieldstone; apse not half-domed; drum slits plain dark boxes, no arched heads; apse tile cap small."
+ }
+}

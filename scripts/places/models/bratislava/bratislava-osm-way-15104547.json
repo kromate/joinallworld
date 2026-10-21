@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-15104547",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zimn%C3%BD_%C5%A1tadi%C3%B3n_Vladim%C3%ADra_Dzurillu_(2011).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Pavol Freso",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/v3_0.jpg",
+   "used": "windowless box clad in dark navy panels with a blue lower band on a concrete plinth, flat roof with a signboard at the corner, car park in front; no logos or text modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/15104547",
+   "used": "real 80 x 60 m outline, rotated so the long side is the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 58,
+  "aspect": 1.49,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 84
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#555b66",
+    "windows": "none",
+    "plinth": 2.0,
+    "groundKind": "concrete",
+    "groundHeight": 2.0,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       14,
+       8
+      ],
+      "colours": [
+       "#2b303b",
+       "#2b303b",
+       "#2b303b",
+       "#6a2428",
+       "#cfd0d4",
+       "#22396e"
+      ],
+      "mode": "random",
+      "gap": 0.15
+     },
+     {
+      "type": "panels",
+      "faces": [
+       "back",
+       "left",
+       "right"
+      ],
+      "size": [
+       3.0,
+       2.4
+      ],
+      "colours": [
+       "#d9e2ee",
+       "#c6d3e4",
+       "#cfdbe9"
+      ],
+      "mode": "random",
+      "gap": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7077",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -28,
+    -22,
+    16.6
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.0,
+    "bottom": 0,
+    "colour": "#2a3350",
+    "frameColour": "#c43a30",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -34,
+    -37,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "spacing": 3.4,
+    "colour": "#b8322c",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "colour": "#9a9a96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "facade is a blocky panel grid not one continuous printed banner, blue plinth band missing (only grey plinth), end wall panels bluish not pale, cars/gravel lot sparser than photo, roof sign not on a mast; parked cars render as a single nose-to-tail row on sand"
+ }
+}

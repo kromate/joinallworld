@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-693882871",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cezamat_od_strony_ul._Poleczki.jpg",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Adrian Grycuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/osm-way-693882871-0.jpg",
+   "used": "three-storey dark reflective curtain-wall block with black mullion grid, set-back black metal attic band, glass wrapping the left end, pale grey wing at left, perforated light-grey cladding car park at right, row of small round-clipped trees along the front, lawn with low hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/693882871",
+   "used": "overall size only (about 219 x 91 m site, too large for the scene): a 70 m portion of the main block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.76,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     48,
+     24
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46565e",
+    "glassColour": "#566a74",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 6.0,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#101214"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f32",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     48,
+     24
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "z0": 13.5,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#15181a",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres",
+     "colour": "#22282b",
+     "faces": [
+      "front",
+      "left",
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f32",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end",
+   "footprint": {
+    "rect": [
+     3,
+     24
+    ]
+   },
+   "at": [
+    -26.5,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3b41",
+    "glassColour": "#566a74",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 5,
+    "plinth": 0.3,
+    "bands": "#101214"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f32",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    33,
+    1
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d4d7d8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#dfe1e2",
+       "#ccd0d2",
+       "#eceeee"
+      ],
+      "slits": 0.12,
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -17,
+     0
+    ],
+    "end": [
+     22,
+     -17,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 4.5
+     }
+    }
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 0.6,
+    "colour": "#2c3236",
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -22,
+     0
+    ],
+    "end": [
+     38,
+     -22,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       1.1
+      ],
+      "height": 1.0,
+      "colour": "#4d7a37",
+      "topColour": "#6a9a48"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -27,
+     0
+    ],
+    "end": [
+     30,
+     -27,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       1.1
+      ],
+      "height": 1.0,
+      "colour": "#4d7a37",
+      "topColour": "#6a9a48"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -32,
+     0
+    ],
+    "end": [
+     34,
+     -32,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       1.1
+      ],
+      "height": 1.0,
+      "colour": "#4d7a37",
+      "topColour": "#6a9a48"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 20,
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a 48 m portion of the 219 m complex; mullion grid and reflections are simpler than the real curtain wall; perforation of the car-park cladding is a coarse panel pattern; hedges are blocky strips; left grey wing reduced to a glazed end."
+ }
+}

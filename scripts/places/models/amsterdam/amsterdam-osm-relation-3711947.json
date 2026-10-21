@@ -1,0 +1,736 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-relation-3711947",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muiden,_Muiderslot._09-05-2022._(actm.)_07.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agnes Monkelbaan",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/muiderslot1.jpg",
+   "used": "corner view: tall round brick tower with conical slate spire at the near corner, battlemented curtain wall, twin-roofed square tower left, stepped-gable slate hall behind, hip-roofed gate tower right with turret, bridge, brick red colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20141028_Muiderslot_vanuit_het_zuidoosten_gezien.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/amsterdam/muiderslot2.jpg",
+   "used": "proportions of towers to hall across the moat, slate roof colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3711947",
+   "used": "identity and overall size only (outline is a ragged 43x37 m polygon that does not match the square plan; plan is composed by hand ~34 m square)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.46,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 11,
+    "thickness": 2.2,
+    "merlons": true,
+    "batter": 0.4
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 11,
+    "thickness": 2.2,
+    "merlons": true,
+    "batter": 0.4
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -16,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 10,
+    "thickness": 2.2,
+    "merlons": true,
+    "batter": 0.4
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 10,
+    "thickness": 2.2,
+    "merlons": true,
+    "batter": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    15,
+    -15,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a0604a",
+    "profile": [
+     [
+      4.1,
+      0
+     ],
+     [
+      3.8,
+      1.5
+     ],
+     [
+      3.8,
+      21.5,
+      "#a0604a"
+     ],
+     [
+      4.0,
+      21.5,
+      "#8c4f3b"
+     ],
+     [
+      4.3,
+      22.3,
+      "#8c4f3b"
+     ],
+     [
+      4.6,
+      22.3,
+      "#c9bfa9"
+     ],
+     [
+      4.6,
+      23.3,
+      "#8c4f3b"
+     ],
+     [
+      4.1,
+      23.3,
+      "#4d5157"
+     ],
+     [
+      3.9,
+      23.4,
+      "#4d5157"
+     ],
+     [
+      0.25,
+      36,
+      "#4d5157"
+     ],
+     [
+      0.05,
+      39,
+      "#2c2e30"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -16,
+    -16
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0604a",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "plinth": 1.2,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4d5157",
+    "material": "slate",
+    "rise": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -18.5,
+    -18.5,
+    17
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4d5157",
+    "profile": [
+     [
+      1.9,
+      0
+     ],
+     [
+      1.8,
+      1,
+      "#8c4f3b"
+     ],
+     [
+      0.1,
+      6.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-nw",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -16,
+    16
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0604a",
+    "windows": "none",
+    "windowRatio": 0.04,
+    "plinth": 1.2,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4d5157",
+    "material": "slate",
+    "rise": 7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-gate",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    15.5,
+    10
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0604a",
+    "windows": "none",
+    "windowRatio": 0.04,
+    "plinth": 1.2,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4d5157",
+    "material": "slate",
+    "rise": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    19.5,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a0604a",
+    "profile": [
+     [
+      3.3,
+      0
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      12.8,
+      "#a0604a"
+     ],
+     [
+      3.3499999999999996,
+      12.8,
+      "#c9bfa9"
+     ],
+     [
+      3.3499999999999996,
+      13.8,
+      "#8c4f3b"
+     ],
+     [
+      3.5,
+      14,
+      "#4d5157"
+     ],
+     [
+      3.5,
+      14.1,
+      "#4d5157"
+     ],
+     [
+      0.3,
+      20.5,
+      "#4d5157"
+     ],
+     [
+      0.05,
+      23.5,
+      "#2c2e30"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-south",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -1,
+    -11.5
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0604a",
+    "windows": "punched",
+    "bands": "#c9bfa9",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5157",
+    "material": "slate",
+    "pitch": 50,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     7,
+     20
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0604a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5157",
+    "material": "slate",
+    "pitch": 48,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -12.2,
+    -11.5,
+    12
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "steps": 5,
+    "thickness": 1.0
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     14,
+     3.2
+    ]
+   },
+   "at": [
+    27,
+    -2
+   ],
+   "rotDeg": 90,
+   "z0": 0.3,
+   "height": 3.6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5998a",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "moat",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "depth": 46,
+    "moat_width": 13,
+    "colour": "#3f4d3a"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    11,
+    -11.5,
+    12
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "steps": 5,
+    "thickness": 1.0
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -12,
+    6,
+    11
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.5,
+    "steps": 4,
+    "thickness": 1.0
+   },
+   "rotDeg": 90,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "chimney-1",
+   "footprint": {
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    -6,
+    -11.5
+   ],
+   "z0": 12,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c4f3b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-2",
+   "footprint": {
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    5,
+    -12
+   ],
+   "z0": 12,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c4f3b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.0
+    ]
+   },
+   "at": [
+    18.9,
+    -15.2
+   ],
+   "z0": 13,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b3262b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    15,
+    -19.0
+   ],
+   "z0": 9,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b3262b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-3",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.0
+    ]
+   },
+   "at": [
+    -20.6,
+    -16
+   ],
+   "z0": 12,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b3262b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-4",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -16,
+    -20.6
+   ],
+   "z0": 12,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b3262b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     3,
+     14
+    ]
+   },
+   "at": [
+    32,
+    -8
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#4e6b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4f3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     25
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Moat reaches walls in darker tone and corner tower is slim with corbel band and tall spire; crow-step gables/chimneys/shutters are sparse, tower windows approximate, bridge is blocky and the moat shows as a flat band with green plane beyond."
+ }
+}

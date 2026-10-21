@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-23704046",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Defence_College_of_Finland.jpg",
+   "licence": "Public domain",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/mpkk.jpg",
+   "used": "functionalist 3-storey greige rendered block, regular square windows in rows, flat copper-green roof edge, low flat entrance canopy over a glazed dark door with stepped approach, lower wing to the right, field guns either side, pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23704046",
+   "used": "campus site only (416 x 382 m); one building is modelled at real scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bbb3a3",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "trimColour": "#c9c2b2",
+    "glassColour": "#3d4d5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9f90",
+    "material": "copper",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    23,
+    5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2baa9",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "trimColour": "#c9c2b2",
+    "glassColour": "#3d4d5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9f90",
+    "material": "copper",
+    "overhang": 0.3,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    -25,
+    5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bbb3a3",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "trimColour": "#c9c2b2",
+    "glassColour": "#3d4d5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9f90",
+    "material": "copper",
+    "overhang": 0.3,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -5.2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3a45",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b09e",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -21,
+    -8,
+    0
+   ],
+   "params": {
+    "yaw": 90
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    12,
+    -8,
+    0
+   ],
+   "params": {
+    "yaw": 90
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window proportions simplified, no shrubs/planters, field guns are generic, pines are low-poly stand-ins, canopy has no green copper fascia"
+ }
+}

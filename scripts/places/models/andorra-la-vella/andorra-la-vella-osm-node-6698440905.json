@@ -1,0 +1,145 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/817197764",
+   "used": "nearest OSM building (30.6 x 20.6 m, 8.7 m from the point) as the pavilion outline"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "small terraced garden in the Sant Julia de Loria hills with a stone pavilion; stone and timber, slate gable roof (typed, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2,
+    "fit": 32
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39c8e",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#7a6a55"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.2,
+    "thickness": 0.5,
+    "colour": "#7d786d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.0,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#b5ae9f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-node-6698440905",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM nearest building used as the pavilion, gable roof fitted to bounding box of an irregular outline, garden terraces schematic"
+ }
+}

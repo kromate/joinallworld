@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-relation-17929549",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Szent_L%C3%A1szl%C3%B3_K%C3%B3rh%C3%A1z5.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "12akd",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/osm-relation-17929549-0.jpg",
+   "used": "main entrance block: three levels, yellow render with red brick pilasters and string courses, brick ground floor with small barred windows, arched upper windows, central arched door, low hip roof of dark red tile with many chimneys"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Szent_L%C3%A1szl%C3%B3_K%C3%B3rh%C3%A1z7.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "12akd",
+   "view": "detail",
+   "file": "/tmp/places-evidence/budapest/osm-relation-17929549-2.jpg",
+   "used": "single-storey brick pavilion with blind arched bays and brick voussoirs"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17929549",
+   "used": "campus is 192,000 m2; only the entrance block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.6,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     54,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b98a58",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     54,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.2,
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2c67c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a85f3a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a3430",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    15
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0603f",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3f33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex2",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    23
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b98a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f33",
+    "material": "clay-tile",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     3,
+     0
+    ],
+    "end": [
+     21,
+     3,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "chimney-stack",
+     "params": {
+      "width": 1.1,
+      "height": 3.2,
+      "pots": 0,
+      "colour": "#a4553a"
+     }
+    }
+   },
+   "on": "upper"
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#b9b0a2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.7,
+    3.4
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#7d6a52",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "kind": "bars",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0,
+    "colour": "#e0c23a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Brick string courses are a single band and pilasters are missing; central entrance door and its arch are not cut; only the entrance block and a simplified rear annex are modelled of a 19 ha pavilion campus."
+ }
+}

@@ -1,0 +1,413 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chi%C8%99in%C4%83u_Central_Station_in_Moldova_(Front_View).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "RFMONLINE.DE",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/rail1.jpg",
+   "used": "tan rusticated stone walls, central gabled block with big pink arched window and 3-arch entrance on twin columns, dark red overhanging roof, flanking wings with arched windows and taller end pavilions with small hips, clock in gable"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chisinau_Railstation_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Simiprof",
+   "view": "side",
+   "file": "/tmp/places-evidence/chisinau/rail2.jpg",
+   "used": "barrel-vault platform roof with translucent panels over the tracks, blue carriages, wide paved platform"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/618483373",
+   "used": "length about 147 m, depth about 27 m, 2 levels; model is a 100 m middle portion (scene clamp 120 m), composed from the photo as the OSM outline is a skewed ribbon"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4ae88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#e4dcc4",
+    "trimColour": "#a8383a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2a",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    27,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4ae88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#e4dcc4",
+    "trimColour": "#a8383a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2a",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    -46,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4ae88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.36,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#e4dcc4",
+    "trimColour": "#a8383a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2a",
+    "rise": 2.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    46,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4ae88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.36,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#e4dcc4",
+    "trimColour": "#a8383a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2a",
+    "rise": 2.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4ae88",
+    "windows": "none",
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#e4dcc4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f2a",
+    "material": "metal-sheet",
+    "rise": 3.8,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     1.4
+    ],
+    "z0": 6.5,
+    "height": 12.5,
+    "colour": "#e8c0b0",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 28,
+     "opening": 0.74,
+     "height": 0.92,
+     "depth": 0.7,
+     "faces": [
+      "front"
+     ]
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tympanum",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -15.6
+   ],
+   "height": 9,
+   "z0": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46586a",
+    "windows": "none",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46586a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     20,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9cfb4",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 6.7,
+     "opening": 0.62,
+     "height": 0.8,
+     "depth": 1.0,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ad",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#a9a69f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    95,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 90,
+    "depth": 36,
+    "height": 8,
+    "rise": 4,
+    "thickness": 0.3,
+    "colour": "#7b8a96",
+    "edgeColour": "#4f5f6b",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    95,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "tracks": 5,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -16.4,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 4,
+    "height": 6.5,
+    "radius": 0.5,
+    "kind": "round",
+    "beamHeight": 0.5,
+    "colour": "#e6dcc2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   108,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ornamental pink arch relief is a flat colour band with a dark glazed panel in front (arch not cut), no rusticated texture or clock roundel, columns plain; platform vault moved behind the building."
+ }
+}

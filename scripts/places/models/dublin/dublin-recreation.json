@@ -1,0 +1,320 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lake_on_the_Poddle_in_Tymon_Park_(E),_M50_in_background_(geograph_3545710).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "jwd",
+   "view": "street",
+   "file": "/tmp/places-evidence/dublin/tymon1.jpg",
+   "used": "blue lake with grassy bank, curving tarmac path, single willow, treeline of broadleaf woodland behind, flat open meadow"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7222370",
+   "used": "park extent and identity; a 180 x 120 m lakeside excerpt is modelled, the 1.9 km outline is far larger"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.69,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 70,
+    "colour": "#6fae3c"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 44,
+    "shape": "ellipse",
+    "colour": "#2a5d9f",
+    "bank": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      3,
+      -14
+     ],
+     [
+      4,
+      -8
+     ],
+     [
+      8,
+      -3
+     ],
+     [
+      16,
+      2
+     ],
+     [
+      28,
+      4
+     ]
+    ],
+    "width": 3.6,
+    "colour": "#5a5b5e"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 4,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 12,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#8a9a4a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    17,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-post-l",
+   "at": [
+    17,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 4,
+    "colour": "#6b6e72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-post-r",
+   "at": [
+    20,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 4,
+    "colour": "#6b6e72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    18.5,
+    33.8,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#2a5d9f"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-0",
+   "at": [
+    -39.599999999999994,
+    -6.8,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#5f8a2e"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-1",
+   "at": [
+    -32.599999999999994,
+    -9.2,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#7a9a38"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-2",
+   "at": [
+    -25.599999999999998,
+    -9.8,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#5f8a2e"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-3",
+   "at": [
+    -18.6,
+    -9.2,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#7a9a38"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-4",
+   "at": [
+    -11.6,
+    -6.8,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#5f8a2e"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-5",
+   "at": [
+    -6.0,
+    -2.0,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#7a9a38"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-6",
+   "at": [
+    -3.2,
+    4.0,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#5f8a2e"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reed-7",
+   "at": [
+    -39.599999999999994,
+    0.3999999999999999,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.0,
+    "depth": 0.8,
+    "colour": "#7a9a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "camera auto-fit still frames the whole excerpt from outside, not path-level; lake is one ellipse, bank and path are flat; woodland and willow are generic low-poly trees"
+ }
+}

@@ -1,0 +1,385 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-airport-oslo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oslo_Airport,_Gardermoen.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/airport1.jpg",
+   "used": "long glazed hall with fine mullion grid, shallow roof with swept overhanging edge higher at the left, control tower behind left of centre, ochre clad stair cores, lower glazed side wings, jet bridges and aircraft in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oslo_Airport,_Gardermoen_Terminal_2008.jpg",
+   "licence": "CC BY 3.0 pl",
+   "author": "Radoslaw Botev",
+   "view": "street",
+   "file": "/tmp/places-evidence/oslo/airport2.jpg",
+   "used": "deep timber-edged canopy on V-shaped concrete columns, grey metal roof underside with timber rafters, colours of the timber"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173527308",
+   "used": "overall size only (the real outline is 990 m long; a central 110 m portion is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 2.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a6870",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "glassColour": "#6f7f88",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#8d949a"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "sweep",
+    "colour": "#6f7a80",
+    "material": "metal-sheet",
+    "rise": 9,
+    "overhang": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    -65,
+    -2
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a6870",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#6f7f88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    65,
+    -3
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a6870",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#6f7f88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-left",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.4
+    ]
+   },
+   "at": [
+    -38,
+    -15.7
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "timber",
+    "colour": "#a9824a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-right",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.4
+    ]
+   },
+   "at": [
+    34,
+    -15.7
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "timber",
+    "colour": "#a9824a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-mid",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.4
+    ]
+   },
+   "at": [
+    12,
+    -15.7
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "timber",
+    "colour": "#a9824a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-apron",
+   "footprint": {
+    "rect": [
+     56,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -28
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adb0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -62,
+    30,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#a5aaad",
+    "cabColour": "#6d7a82",
+    "bandColour": "#8d949a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 4,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gantry-l",
+   "footprint": {
+    "rect": [
+     2,
+     10
+    ]
+   },
+   "at": [
+    -22,
+    -36
+   ],
+   "z0": 3,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9aa1a5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gantry-r",
+   "footprint": {
+    "rect": [
+     2,
+     10
+    ]
+   },
+   "at": [
+    22,
+    -36
+   ],
+   "z0": 3,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9aa1a5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d949a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -60.0,
+    -62,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.3,
+    "colour": "#e8ebed",
+    "tailColour": "#1f3a6e"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    60.0,
+    -62,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.3,
+    "colour": "#e8ebed",
+    "tailColour": "#c8362f"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is symmetric swept hip rather than the one-sided eave of the photo; mullion grid is only the generic curtain pattern; planes and gantries simplified at the sides; foreground masts and apron vehicles omitted"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   160,
+   120
+  ]
+ }
+}

@@ -1,0 +1,498 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Keila_keskpark_1.jpg",
+   "licence": "CC BY-SA 4.0 (Commons)",
+   "author": "see Commons page",
+   "view": "street",
+   "file": "/tmp/places-evidence/tallinn/keila2.jpg",
+   "used": "avenue of mature dark-trunked broadleaf trees either side of a grey block-paved path, white slatted benches, slim grey lamp posts, lawns beyond, fountain jet at the far end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Keila_keskpark.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Melilac",
+   "view": "street",
+   "used": "gravel path, white benches with dark frames, lawn edges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/60576469",
+   "used": "park identity; the avenue is composed straight rather than tracing the 340 m outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 7,
+  "fovDeg": 46,
+  "aspect": 1.59,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "id": "lawn",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 100,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "avenue",
+   "params": {
+    "points": [
+     [
+      0,
+      -35
+     ],
+     [
+      0,
+      65
+     ]
+    ],
+    "width": 5.5,
+    "colour": "#7f786d"
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches-left",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.6,
+     -24,
+     0
+    ],
+    "end": [
+     -3.6,
+     50,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "park-bench",
+      "params": {
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches-right",
+   "params": {
+    "mode": "line",
+    "start": [
+     3.6,
+     -14,
+     0
+    ],
+    "end": [
+     3.6,
+     56,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "park-bench",
+      "rotDeg": 180,
+      "params": {
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.3,
+     -28,
+     0
+    ],
+    "end": [
+     -3.3,
+     56,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps-right",
+   "params": {
+    "mode": "line",
+    "start": [
+     3.3,
+     -22,
+     0
+    ],
+    "end": [
+     3.3,
+     50,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "id": "fountain",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fountain-plinth",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    64
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9b4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     -33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     -33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     -27
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     -27
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     -21
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     -21
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     -15
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     -15
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     -9
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     -9
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     -3
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     -3
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     3
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     3
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     9
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     9
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     15
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     15
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     21
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     21
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     27
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     27
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     33
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     39
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     39
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     45
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     45
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     51
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     51
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.7,
+     57
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.7,
+     57
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.2,
+     63
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5.2,
+     63
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   50,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Continuous double avenue of 17 m trees every 6 m now, but only 100 m modelled and trees are lollipop blobs without dark gnarled trunks or meeting canopy; path renders blue-tinged (glossy sky reflection) and is plain not block-paved; benches are generic not curved white slat; camera is a fit-all exterior view not eye level on the path (fit building only frames the fountain plinth)."
+ }
+}

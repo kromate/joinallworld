@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-1273961691",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1273961691",
+   "used": "real 9-point outline (about 63 x 60 m, bent block) of Universiteti Marin Barleti"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#e3e0d4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "curtain",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "glassColour": "#6f8aa0",
+    "bands": "#f0eee8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-lobby",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    2,
+    -34
+   ],
+   "rotDeg": -12,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9bb0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8",
+    "material": "concrete",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.0,
+    "colour": "#6f8aa0"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    14,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    17,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -36
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     22
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this private university; real outline and brief used. Facade, glazing share and entrance are assumed."
+ }
+}

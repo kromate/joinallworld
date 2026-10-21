@@ -1,0 +1,239 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Einar_Forseths_Park_2013b.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bysmon",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/einar1.jpg",
+   "used": "small triangular lawn at a street corner, grey asphalt road and pavement edging it, tall birches left, a big Scots pine centre-right, dense woodland behind, bench at the back, street lamp and signs at the road edge ; granite outcrop removed (not in photo)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/345758266",
+   "used": "park outline (name match, 91 x 58 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d9a4e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d9a4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -40
+     ],
+     [
+      -30,
+      -36
+     ],
+     [
+      0,
+      -32
+     ],
+     [
+      30,
+      -30
+     ],
+     [
+      60,
+      -22
+     ],
+     [
+      75,
+      -10
+     ]
+    ],
+    "width": 11,
+    "colour": "#6b6b6d"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -31
+     ],
+     [
+      -30,
+      -28.5
+     ],
+     [
+      0,
+      -26.5
+     ],
+     [
+      28,
+      -24
+     ],
+     [
+      50,
+      -16
+     ]
+    ],
+    "width": 2,
+    "colour": "#a9a8a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 4,
+    "spread": 9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 25,
+    "count": 2,
+    "spread": 5,
+    "colour": "#2f5a32"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 85,
+    "depth": 20,
+    "count": 24,
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 3,
+    "count": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench",
+   "footprint": {
+    "rect": [
+     2,
+     0.7
+    ]
+   },
+   "at": [
+    14,
+    16
+   ],
+   "z0": 0.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8782f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8782f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ],
+  "groundColour": "#6f9544"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-345758266",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Grass edge with curved asphalt band and pavement, tall pines and birches with grove behind, lamps and a bench added, outcrop removed; trees remain low-poly cones/blobs, ground plane renders as pale grey-green, no road signs or kerb detail, view is an overview not street level."
+ }
+}

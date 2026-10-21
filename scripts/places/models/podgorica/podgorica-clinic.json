@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/175188704",
+   "used": "369 m2 irregular outline (containing match, untagged building) as the main block"
+  },
+  {
+   "kind": "text",
+   "ref": "brief: Dom zdravlja Konik, Yugoslav-era district health centre",
+   "used": "3 storeys, cream render, flat roof, ribbon windows, ambulance bay, blank sign board; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3dcc8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b4b0a6",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#f4f1ea",
+    "frameColour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   60,
+   50
+  ],
+  "cars": [
+   {
+    "at": [
+     -6,
+     -26
+    ],
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     6,
+     -26
+    ],
+    "colour": "#2d3a55"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real untagged OSM outline, 3 storeys cream render assumed from brief"
+ }
+}

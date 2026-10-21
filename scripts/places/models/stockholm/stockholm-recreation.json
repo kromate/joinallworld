@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/235092467",
+   "used": "park outline of the bathing area (253 x 104 m), scaled to the scene"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fagelaoudde.jpg",
+   "licence": "Public domain",
+   "author": "Yvwv",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/fagel.jpg",
+   "used": "setting only: mixed pine and oak woodland beside the cycle path (no building or jetty visible, so no photo comparison)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shore-lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7f9a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#789453",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "shelter": false,
+    "timber": true,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a3a",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e4a36",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 7,
+    "spread": 5,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 5,
+    "line": 36
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the bathing place itself; jetty, kiosk and shore are typical features, only the park outline is real"
+ }
+}

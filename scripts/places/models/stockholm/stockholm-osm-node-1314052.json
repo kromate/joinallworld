@@ -1,0 +1,399 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-node-1314052",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ericsson_V%C3%A4stberga_2010b.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "front",
+   "used": "three-storey cream rendered block with grouped ribbon windows, glass stair tower on the right rising above the roof, dark black building at left, apartments at right, blank name strip on the roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24390919",
+   "used": "checked only: Huvudfabriken outline is a larger irregular complex, so the block is composed from the photo with rear wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     58,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cdae",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "glassColour": "#dbe6ee",
+    "trimColour": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     58,
+     14
+    ]
+   },
+   "at": [
+    0,
+    14.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3caab",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "plinth": 0.4,
+    "glassColour": "#dbe6ee",
+    "trimColour": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 17.5,
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "storeys": 5,
+    "colour": "#f3f4f2",
+    "glassColour": "#c6dbe6",
+    "trimColour": "#ffffff",
+    "radius": 3.6,
+    "n": 16
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -9,
+    17.5
+   ],
+   "params": {
+    "height": 1.2,
+    "colour": "#c4c8ca",
+    "top": true,
+    "radius": 3.2,
+    "n": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-wing",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -40,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#25272a",
+    "windows": "none",
+    "windowRatio": 0.08,
+    "glassColour": "#7f9bb0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2e30",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    46,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3ddd0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -7.7,
+    13.2
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.3,
+    "bottom": 0,
+    "colour": "#2e2e2e",
+    "frameColour": "#d6cdae",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#4a4038",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4
+     },
+     {
+      "z": 6,
+      "circle": 0.25
+     },
+     {
+      "z": 9,
+      "circle": 0.12
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      0,
+      5
+     ],
+     [
+      -3,
+      1,
+      10
+     ],
+     [
+      -5,
+      2,
+      14
+     ]
+    ],
+    "colour": "#4a4038",
+    "curve": true
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      0,
+      6
+     ],
+     [
+      3,
+      -1,
+      11
+     ],
+     [
+      5,
+      0,
+      15
+     ]
+    ],
+    "colour": "#4a4038",
+    "curve": true
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      0,
+      8
+     ],
+     [
+      0,
+      3,
+      13
+     ],
+     [
+      1,
+      4,
+      17
+     ]
+    ],
+    "colour": "#4a4038",
+    "curve": true
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      0,
+      7
+     ],
+     [
+      -1,
+      -3,
+      12
+     ],
+     [
+      -2,
+      -4,
+      16
+     ]
+    ],
+    "colour": "#4a4038",
+    "curve": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -22
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ribbon windows read as continuous bands rather than grouped white-framed panes; stair tower is a faceted prism not a true glazed cylinder; bare tree is simple sticks; curved road edge and street lamps missing; OSM complex outline not used"
+ }
+}

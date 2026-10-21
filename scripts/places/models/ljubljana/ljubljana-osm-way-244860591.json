@@ -1,0 +1,447 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-244860591",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skofja_Loka_Jakobskirche_08062008_66.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Johann Jaritz",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/lj-jakob.jpg",
+   "used": "pale plastered west gable facade with stepped zigzag eaves frieze and three blind panels, small green-roofed arched porch, tall square white tower at the left with clock, green copper cap, black belfry and onion finial"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/244860591",
+   "used": "overall size (about 35 x 20 m with aisle bulges and choir)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.46
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     27,
+     16.5
+    ]
+   },
+   "at": [
+    0,
+    11
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3cf",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.07,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "pointed",
+     "right": "pointed"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.4,
+      "depth": 0.15,
+      "spacing": 4.6,
+      "colour": "#d3ccb2",
+      "margin": 1.0,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#c9c1a6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a94c37",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3cf",
+    "windows": "pointed",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a94c37",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    -5.1,
+    0.4
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd9cb",
+    "windows": "none",
+    "windowRatio": 0.04,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "round"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-cap",
+   "at": [
+    -5.1,
+    0.4,
+    21
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#5f8a74",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.8,
+      0.4
+     ],
+     [
+      3.5,
+      1.2
+     ],
+     [
+      2.7,
+      2.0
+     ],
+     [
+      1.7,
+      2.7
+     ],
+     [
+      1.1,
+      3.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -5.1,
+    0.4,
+    23.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 3.6,
+    "colour": "#2d3b36",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion",
+   "at": [
+    -5.1,
+    0.4,
+    27.1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2d3b36",
+    "profile": [
+     [
+      1.4,
+      0
+     ],
+     [
+      1.6,
+      0.4
+     ],
+     [
+      1.2,
+      1.2
+     ],
+     [
+      0.5,
+      2.0
+     ],
+     [
+      0.25,
+      2.5
+     ],
+     [
+      0.3,
+      2.9
+     ],
+     [
+      0,
+      3.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "finial",
+   "at": [
+    -5.1,
+    0.4,
+    30.4
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 3.6,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5.2,
+     3.2
+    ]
+   },
+   "at": [
+    2.6,
+    -4.1
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cc",
+    "windows": "arched",
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f8a74",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-left",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    -21,
+    2
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c0",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3a3d",
+    "pitch": 45,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-disc",
+   "at": [
+    -5.1,
+    -2.75,
+    18.2
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "height": 1.8,
+    "colour": "#f4f1e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-right",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    18.5,
+    1
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9442f",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair",
+   "at": [
+    -4,
+    -8
+   ],
+   "params": {
+    "rect": [
+     10,
+     3.5
+    ],
+    "height": 0.6,
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-opening",
+   "at": [
+    -5.1,
+    -2.75,
+    15.0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#3a3631"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower now has one belfry slot, clock disc, bulbous cap and stair; nave gable steeper but zigzag eaves frieze and 3 blind panels not modelled; neighbours generic."
+ }
+}

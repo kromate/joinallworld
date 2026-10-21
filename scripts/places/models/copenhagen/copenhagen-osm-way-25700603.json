@@ -1,0 +1,363 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-25700603",
+ "name": "Borupgaard Gymnasium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Borupgaard_Gymnasium.jpg",
+   "licence": "Public domain",
+   "author": "Allanrbo (da.wikipedia)",
+   "view": "street",
+   "used": "two-storey red-brick block with grey-white ribbon window bands and flat roof, low glazed canteen link beyond, broadleaf trees and paved forecourt",
+   "file": "/tmp/places-evidence/copenhagen/bor1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/127448216",
+   "used": "five-block campus outline (24 points, about 100 x 91 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 1,
+  "fovDeg": 42,
+  "aspect": 1.66
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "blocks",
+   "params": {
+    "points": [
+     [
+      -52.8,
+      -31.1
+     ],
+     [
+      0.1,
+      -44.3
+     ],
+     [
+      36.3,
+      -50.9
+     ],
+     [
+      43.4,
+      -22.6
+     ],
+     [
+      11.5,
+      -14.7
+     ],
+     [
+      16,
+      3.2
+     ],
+     [
+      44.2,
+      -3.8
+     ],
+     [
+      51.2,
+      24.3
+     ],
+     [
+      23.2,
+      31.3
+     ],
+     [
+      21.8,
+      25.8
+     ],
+     [
+      13.7,
+      27.8
+     ],
+     [
+      20.3,
+      54.2
+     ],
+     [
+      -8.9,
+      61.4
+     ],
+     [
+      -16.4,
+      31.1
+     ],
+     [
+      -12.6,
+      23.5
+     ],
+     [
+      -37,
+      29.6
+     ],
+     [
+      -43.9,
+      2.1
+     ],
+     [
+      -18.7,
+      -4.2
+     ],
+     [
+      -20.6,
+      -11.8
+     ],
+     [
+      -46.4,
+      -5.4
+     ]
+    ],
+    "z0": 0,
+    "height": 8.2,
+    "storeys": 2,
+    "colour": "#8f4a38",
+    "topColour": "#6b6a68",
+    "windows": "none",
+    "trimColour": "#e8e6e0",
+    "windowShape": "rect",
+    "windowRatio": 0.45,
+    "bay": 4,
+    "glassColour": "#a9bcc6",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "blocks-lod",
+   "params": {
+    "points": [
+     [
+      -52.8,
+      -31.1
+     ],
+     [
+      0.1,
+      -44.3
+     ],
+     [
+      36.3,
+      -50.9
+     ],
+     [
+      43.4,
+      -22.6
+     ],
+     [
+      11.5,
+      -14.7
+     ],
+     [
+      16,
+      3.2
+     ],
+     [
+      44.2,
+      -3.8
+     ],
+     [
+      51.2,
+      24.3
+     ],
+     [
+      23.2,
+      31.3
+     ],
+     [
+      21.8,
+      25.8
+     ],
+     [
+      13.7,
+      27.8
+     ],
+     [
+      20.3,
+      54.2
+     ],
+     [
+      -8.9,
+      61.4
+     ],
+     [
+      -16.4,
+      31.1
+     ],
+     [
+      -12.6,
+      23.5
+     ],
+     [
+      -37,
+      29.6
+     ],
+     [
+      -43.9,
+      2.1
+     ],
+     [
+      -18.7,
+      -4.2
+     ],
+     [
+      -20.6,
+      -11.8
+     ],
+     [
+      -46.4,
+      -5.4
+     ]
+    ],
+    "z0": 0,
+    "height": 8.2,
+    "storeys": 2,
+    "colour": "#8f4a38",
+    "topColour": "#6b6a68",
+    "windows": "none",
+    "trimColour": "#e8e6e0",
+    "windowShape": "rect",
+    "windowRatio": 0.45,
+    "glassColour": "#a9bcc6"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "glass-gable-entrance",
+   "id": "canteen-link",
+   "at": [
+    16,
+    8
+   ],
+   "rotDeg": 14,
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "height": 3.6,
+    "rise": 2.2,
+    "glass_colour": "#a9c0cb"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "id": "flagpole",
+   "at": [
+    -12,
+    -58
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "id": "boulder",
+   "at": [
+    -24,
+    -62
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 1.8,
+    "height": 1.3,
+    "colour": "#a9a095",
+    "statue": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedge-line",
+   "params": {
+    "mode": "line",
+    "start": [
+     -62,
+     -52
+    ],
+    "end": [
+     -62,
+     -14
+    ],
+    "count": 7,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 6.5,
+      "height": 1.3,
+      "depth": 1.2,
+      "colour": "#3f6b30"
+     },
+     "rotDeg": 90
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -45
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -10
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -40
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     65,
+     10
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -62
+    ],
+    "height": 22
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Punched window bays, brick colour, paving, taller trees, canteen link, flagpole, boulder in place; trees are leafy not bare, no grass verge, glazed link hidden behind blocks from this camera, view is not the photo ground-level angle"
+ }
+}

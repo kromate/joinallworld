@@ -1,0 +1,364 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bezistan,_Sarajevo.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jennifer Boyer",
+   "view": "street",
+   "file": "/tmp/places-evidence/sarajevo/bez2.jpg",
+   "used": "weathered buff stone and brick walls, wide round-arched open bays with deep reveals, shallow brick dome and lead-grey dome on a flat parapeted roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarajevo_Gazi-Husrev-Beg-Basar01.jpg",
+   "licence": "CC BY-SA 2.0 de",
+   "author": "Christian Bickel",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sarajevo/bez1.jpg",
+   "used": "vaulted covered street running the full length, repeated round arches, pale paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188836329",
+   "used": "106 x 19 m plan"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "arcade generator always fills bays with glazing so bays are not fully open and dark; stone is smoother than real rough masonry; domes lower but not ribbed; adjoining shops missing"
+ },
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     106,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89677",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "shape": "arch",
+      "bay": 8,
+      "opening": 0.9,
+      "height": 0.85,
+      "depth": 1.6,
+      "pierColour": "#7d6d55"
+     },
+     {
+      "type": "arcade",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "shape": "arch",
+      "bay": 8,
+      "opening": 0.9,
+      "height": 0.85,
+      "depth": 1.6,
+      "pierColour": "#7d6d55"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8068",
+    "material": "membrane",
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -42,
+    0,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      5.4,
+      0,
+      "#a89677"
+     ],
+     [
+      5.4,
+      0.5,
+      "#a89677"
+     ],
+     [
+      5.2,
+      0.5,
+      "#9a4a38"
+     ],
+     [
+      4.0,
+      1.0,
+      "#9a4a38"
+     ],
+     [
+      2.2,
+      1.35,
+      "#9a4a38"
+     ],
+     [
+      0,
+      1.5,
+      "#9a4a38"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -25.2,
+    0,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      5.4,
+      0,
+      "#a89677"
+     ],
+     [
+      5.4,
+      0.5,
+      "#a89677"
+     ],
+     [
+      5.2,
+      0.5,
+      "#7b7f84"
+     ],
+     [
+      4.0,
+      1.0,
+      "#7b7f84"
+     ],
+     [
+      2.2,
+      1.35,
+      "#7b7f84"
+     ],
+     [
+      0,
+      1.5,
+      "#7b7f84"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8.4,
+    0,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      5.4,
+      0,
+      "#a89677"
+     ],
+     [
+      5.4,
+      0.5,
+      "#a89677"
+     ],
+     [
+      5.2,
+      0.5,
+      "#7b7f84"
+     ],
+     [
+      4.0,
+      1.0,
+      "#7b7f84"
+     ],
+     [
+      2.2,
+      1.35,
+      "#7b7f84"
+     ],
+     [
+      0,
+      1.5,
+      "#7b7f84"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8.4,
+    0,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      5.4,
+      0,
+      "#a89677"
+     ],
+     [
+      5.4,
+      0.5,
+      "#a89677"
+     ],
+     [
+      5.2,
+      0.5,
+      "#7b7f84"
+     ],
+     [
+      4.0,
+      1.0,
+      "#7b7f84"
+     ],
+     [
+      2.2,
+      1.35,
+      "#7b7f84"
+     ],
+     [
+      0,
+      1.5,
+      "#7b7f84"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    25.2,
+    0,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      5.4,
+      0,
+      "#a89677"
+     ],
+     [
+      5.4,
+      0.5,
+      "#a89677"
+     ],
+     [
+      5.2,
+      0.5,
+      "#9a4a38"
+     ],
+     [
+      4.0,
+      1.0,
+      "#9a4a38"
+     ],
+     [
+      2.2,
+      1.35,
+      "#9a4a38"
+     ],
+     [
+      0,
+      1.5,
+      "#9a4a38"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    6.4
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -53.3,
+      -9.8
+     ],
+     [
+      53.3,
+      -9.8
+     ],
+     [
+      53.3,
+      9.8
+     ],
+     [
+      -53.3,
+      9.8
+     ]
+    ],
+    "closed": true,
+    "colour": "#8a4a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-188836329"
+}

@@ -1,0 +1,312 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tacks%C3%A4gelsekyrkan_Tyres%C3%B6_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/tack1.jpg",
+   "used": "steep dark slate roof sweeping down to low eaves, cream render gable end with low entrance bays, freestanding dark timber A-frame bell tower, granite boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/133975840",
+   "used": "location; footprint too small so size taken from photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.37,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     17
+    ]
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33383f",
+    "material": "slate",
+    "pitch": 62,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b8",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.5,
+     0,
+     0
+    ],
+    "end": [
+     3.5,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        0.5
+       ],
+       "height": 2.4,
+       "colour": "#7a6a58",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 4,
+    "colour": "#4a3025",
+    "points": [
+     [
+      -1.8,
+      -1.8,
+      0
+     ],
+     [
+      -0.7,
+      -0.7,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 4,
+    "colour": "#4a3025",
+    "points": [
+     [
+      -1.8,
+      1.8,
+      0
+     ],
+     [
+      -0.7,
+      0.7,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 4,
+    "colour": "#4a3025",
+    "points": [
+     [
+      1.8,
+      -1.8,
+      0
+     ],
+     [
+      0.7,
+      -0.7,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 4,
+    "colour": "#4a3025",
+    "points": [
+     [
+      1.8,
+      1.8,
+      0
+     ],
+     [
+      0.7,
+      0.7,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    0,
+    12
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 2.2,
+    "topScale": 0.05,
+    "colour": "#2d2f33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 0.3,
+    "colour": "#4a3025",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "thickness": 0.6,
+    "colour": "#9a9a96",
+    "kind": "wall"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -17
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     8
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-133975840",
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Bell tower is plain legs without lattice bracing; entrance bays and granite wall simplified; foliage absent."
+ }
+}

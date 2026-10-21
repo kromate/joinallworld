@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-osm-node-10774102205",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museos_Vaticanos_-_Galer%C3%ADa_de_los_Mapas_-_003.jpg",
+   "licence": "CC (Commons)",
+   "view": "interior",
+   "used": "interior only: tall window rhythm along one wall and the barrel vault, so the gallery is modelled as a long narrow arched-window wing; no exterior photo was found"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/173060",
+   "used": "not used: the outline is the whole 400 m museum complex (containing match), so the modelled gallery is a 112 m wing from the brief"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Gallery_of_Maps",
+   "used": "120 m long (modelled shortened to 106 m with end pavilions to fit the 120 m scene clamp), 1580-83, ochre rendered Belvedere wing with tall windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     84,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8a77f",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#efe7d3",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8a77f",
+       "#cf9c72"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9906b",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#efe7d3",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    47,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9906b",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#efe7d3",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.5
+      ],
+      "z0": 6,
+      "height": 8.5,
+      "colour": "#efe7d3",
+      "topColour": "#efe7d3"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -38,
+     -4.7
+    ],
+    "end": [
+     38,
+     -4.7
+    ],
+    "count": 20,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "z0": 16,
+      "height": 3.2,
+      "colour": "#c9906b",
+      "topColour": "#a85d44",
+      "topScale": 0.8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "count": 7
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo exists; wing proportions, ochre render and window rhythm are inferred from the brief and interior photos, end pavilions and roof pitch are plausible."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   50
+  ]
+ }
+}

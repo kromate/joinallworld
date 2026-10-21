@@ -1,0 +1,359 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AviaPark_Moscow_01-2016_img1.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "street",
+   "file": "/tmp/places-evidence/moscow/av1.jpg",
+   "used": "tall orange-clad main block over a white podium, cream-yellow stepped wings to the left, blue glazed and violet end blocks, rooftop letter sign (left blank), row of banner flags at the front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3789959",
+   "used": "overall size only (636 m long, too long for the scene clamp); a 118 m portion with the main block at its right end is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 52,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     118,
+     52
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "none",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea2",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-orange",
+   "footprint": {
+    "rect": [
+     46,
+     46
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "z0": 7,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8902a",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     38,
+     44
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "z0": 7,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dcc684",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-glass",
+   "footprint": {
+    "rect": [
+     20,
+     40
+    ]
+   },
+   "at": [
+    -37,
+    -1
+   ],
+   "z0": 7,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f93b3",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "violet-end",
+   "footprint": {
+    "rect": [
+     12,
+     36
+    ]
+   },
+   "at": [
+    -53,
+    0
+   ],
+   "z0": 7,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5e86",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rooftop-sign",
+   "at": [
+    34,
+    -21,
+    33
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#e8e0e6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "at": [
+    34,
+    -23.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.0
+    ],
+    "height": 8,
+    "colour": "#b9d2e0",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    34,
+    -23.4,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "height": 6,
+    "bottom": 9,
+    "colour": "#b32a2e",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     12,
+     -29,
+     0
+    ],
+    "end": [
+     56,
+     -29,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.3,
+        0.3
+       ],
+       "height": 16,
+       "colour": "#9a9ea2",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.3,
+       0,
+       3
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.15
+       ],
+       "height": 9,
+       "colour": "#c2447a",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.3,
+       0,
+       12
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.15
+       ],
+       "height": 3,
+       "colour": "#f2eef0",
+       "windows": "none"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wings now step down cream 26 > blue 18 > violet 12, entrance bay, red sign and taller pink/white banners added; podium plain, no real signage or facade detail, 118 m of 636 m modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-market-game"
+}

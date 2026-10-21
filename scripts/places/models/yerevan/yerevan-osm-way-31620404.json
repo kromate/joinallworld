@@ -1,0 +1,625 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-way-31620404",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vazgen_Sargsyan_Republican_Stadium_02.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Beko",
+   "view": "side",
+   "file": "/tmp/places-evidence/yerevan/repub2.jpg",
+   "used": "turquoise steel-truss roof carried on heavy concrete piers over blue seating, pink tuff wall with paired-column loggia and arches"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hanrapetakan_stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bouarf",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yerevan/repub0.jpg",
+   "used": "oval bowl fully roofed in turquoise, tall floodlight masts at corners, pink arcaded base wall, orange and blue seats"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9096980",
+   "used": "overall size and oval plan (scaled to the 118 m scene limit)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 42,
+  "aspect": 2.14
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "points": [
+     [
+      -33,
+      -20
+     ],
+     [
+      33,
+      -20
+     ],
+     [
+      33,
+      20
+     ],
+     [
+      -33,
+      20
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#4c8f3e"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 34,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 1.0,
+    "run": 0.85,
+    "firstHeight": 5,
+    "facetDeg": 24,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2c63a8",
+     "#d9772b",
+     "#c0392b"
+    ],
+    "blocks": 2,
+    "concreteColour": "#b3a79a",
+    "underColour": "#9a8e82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-n",
+   "params": {
+    "points": [
+     [
+      -40,
+      14
+     ],
+     [
+      40,
+      14
+     ],
+     [
+      36,
+      36
+     ],
+     [
+      -36,
+      36
+     ]
+    ],
+    "z0": 12.5,
+    "height": 0.8,
+    "colour": "#2fa59a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-s",
+   "params": {
+    "points": [
+     [
+      -40,
+      -14
+     ],
+     [
+      -36,
+      -36
+     ],
+     [
+      36,
+      -36
+     ],
+     [
+      40,
+      -14
+     ]
+    ],
+    "z0": 12.5,
+    "height": 0.8,
+    "colour": "#2fa59a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-e",
+   "params": {
+    "points": [
+     [
+      44,
+      -12
+     ],
+     [
+      56,
+      -9
+     ],
+     [
+      56,
+      9
+     ],
+     [
+      44,
+      12
+     ]
+    ],
+    "z0": 8.5,
+    "height": 0.7,
+    "colour": "#2fa59a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-n",
+   "params": {
+    "points": [
+     [
+      -40,
+      14
+     ],
+     [
+      40,
+      14
+     ],
+     [
+      40,
+      16
+     ],
+     [
+      -40,
+      16
+     ]
+    ],
+    "z0": 10.8,
+    "height": 1.7,
+    "colour": "#8a8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-s",
+   "params": {
+    "points": [
+     [
+      -40,
+      -16
+     ],
+     [
+      40,
+      -16
+     ],
+     [
+      40,
+      -14
+     ],
+     [
+      -40,
+      -14
+     ]
+    ],
+    "z0": 10.8,
+    "height": 1.7,
+    "colour": "#8a8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-ring",
+   "params": {
+    "points": [
+     [
+      54.0,
+      0.0
+     ],
+     [
+      53.18,
+      6.6
+     ],
+     [
+      50.74,
+      13.0
+     ],
+     [
+      46.77,
+      19.0
+     ],
+     [
+      41.37,
+      24.43
+     ],
+     [
+      34.71,
+      29.11
+     ],
+     [
+      27.0,
+      32.91
+     ],
+     [
+      18.47,
+      35.71
+     ],
+     [
+      9.38,
+      37.42
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -9.38,
+      37.42
+     ],
+     [
+      -18.47,
+      35.71
+     ],
+     [
+      -27.0,
+      32.91
+     ],
+     [
+      -34.71,
+      29.11
+     ],
+     [
+      -41.37,
+      24.43
+     ],
+     [
+      -46.77,
+      19.0
+     ],
+     [
+      -50.74,
+      13.0
+     ],
+     [
+      -53.18,
+      6.6
+     ],
+     [
+      -54.0,
+      0.0
+     ],
+     [
+      -53.18,
+      -6.6
+     ],
+     [
+      -50.74,
+      -13.0
+     ],
+     [
+      -46.77,
+      -19.0
+     ],
+     [
+      -41.37,
+      -24.43
+     ],
+     [
+      -34.71,
+      -29.11
+     ],
+     [
+      -27.0,
+      -32.91
+     ],
+     [
+      -18.47,
+      -35.71
+     ],
+     [
+      -9.38,
+      -37.42
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      9.38,
+      -37.42
+     ],
+     [
+      18.47,
+      -35.71
+     ],
+     [
+      27.0,
+      -32.91
+     ],
+     [
+      34.71,
+      -29.11
+     ],
+     [
+      41.37,
+      -24.43
+     ],
+     [
+      46.77,
+      -19.0
+     ],
+     [
+      50.74,
+      -13.0
+     ],
+     [
+      53.18,
+      -6.6
+     ]
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#c28b7d"
+   }
+  },
+  {
+   "type": "array",
+   "id": "loggia-arches",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 54.1,
+    "radiusY": 38.1,
+    "count": 36,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.2
+      ],
+      "params": {
+       "rect": [
+        1.7,
+        0.3
+       ],
+       "height": 2.0,
+       "colour": "#5a2f2a"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       2.2
+      ],
+      "params": {
+       "radius": 0.14,
+       "n": 5,
+       "arc": {
+        "steps": 6,
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 0.85,
+        "startDeg": 0,
+        "endDeg": 180,
+        "plane": "xz"
+       },
+       "colour": "#e0b2a3"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns-loggia",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 54.3,
+    "radiusY": 38.3,
+    "count": 72,
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0.2
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 2.4,
+      "colour": "#e4c0b0"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "floodlight-towers",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 104,
+    "dy": 78,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#6e757b",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.2,
+          2.2
+         ]
+        },
+        {
+         "z": 30,
+         "rect": [
+          0.9,
+          0.9
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       30
+      ],
+      "params": {
+       "rect": [
+        6,
+        0.9
+       ],
+       "height": 3,
+       "colour": "#d9dcdc"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "hill-houses-0",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     46
+    ],
+    "end": [
+     60,
+     46
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 13,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       7,
+       6
+      ],
+      "height": 5,
+      "colour": "#d8c2a4",
+      "topColour": "#a44b36",
+      "topScale": 0.8
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "hill-houses-1",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     52
+    ],
+    "end": [
+     60,
+     52
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 13,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      3
+     ],
+     "params": {
+      "rect": [
+       7,
+       6
+      ],
+      "height": 7,
+      "colour": "#c9a98b",
+      "topColour": "#a44b36",
+      "topScale": 0.8
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Roof planes are flat slabs without visible truss depth; loggia arches are simple recesses; hillside housing rows are not visible in the framing; stands are still a full oval bowl"
+ }
+}

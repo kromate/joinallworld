@@ -1,0 +1,605 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-way-292848094",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B8%D0%BD%D1%81%D0%BA-%D0%90%D1%80%D0%B5%D0%BD%D0%B0._Minsk-Arena_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Guntars Mednis",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/p16_2.jpg",
+   "used": "oval drum with stacked cream horizontal bands and dark window strips, tall central glazed bay, steel truss entrance canopy with blank banner, broad stair terrace, domed rim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/292848094",
+   "used": "overall extent (about 134 x 133 m near-circular plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "polygon": [
+     [
+      59.0,
+      0.0
+     ],
+     [
+      56.11,
+      17.3
+     ],
+     [
+      47.73,
+      32.92
+     ],
+     [
+      34.68,
+      45.3
+     ],
+     [
+      18.23,
+      53.26
+     ],
+     [
+      0.0,
+      56.0
+     ],
+     [
+      -18.23,
+      53.26
+     ],
+     [
+      -34.68,
+      45.3
+     ],
+     [
+      -47.73,
+      32.92
+     ],
+     [
+      -56.11,
+      17.3
+     ],
+     [
+      -59.0,
+      0.0
+     ],
+     [
+      -56.11,
+      -17.3
+     ],
+     [
+      -47.73,
+      -32.92
+     ],
+     [
+      -34.68,
+      -45.3
+     ],
+     [
+      -18.23,
+      -53.26
+     ],
+     [
+      -0.0,
+      -56.0
+     ],
+     [
+      18.23,
+      -53.26
+     ],
+     [
+      34.68,
+      -45.3
+     ],
+     [
+      47.73,
+      -32.92
+     ],
+     [
+      56.11,
+      -17.3
+     ]
+    ]
+   },
+   "height": 25,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#2c2a28",
+    "windows": "none",
+    "plinth": 1.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2c2a28",
+       "#1f1e1d"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc4c8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rim",
+   "at": [
+    0,
+    0,
+    25
+   ],
+   "params": {
+    "colour": "#c9b484",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       62.5,
+       59.5
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       62.5,
+       59.5
+      ]
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       56,
+       53
+      ]
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       40,
+       38
+      ]
+     }
+    ],
+    "round": 12
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "canopy",
+   "at": [
+    0,
+    -60.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 12,
+    "height": 8.0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#9aa2a8",
+    "edgeColour": "#c9b484"
+   }
+  },
+  {
+   "type": "array",
+   "id": "truss-posts",
+   "at": [
+    0,
+    -60.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -23,
+     0,
+     0
+    ],
+    "end": [
+     23,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 8.0,
+      "colour": "#9aa2a8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "id": "banner",
+   "at": [
+    0,
+    -66.6,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "height": 2.4,
+    "bottom": 8.1,
+    "colour": "#d8c58a",
+    "frameColour": "#c2c6c8",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bands",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0,
+     2.2
+    ],
+    "end": [
+     0,
+     0,
+     18.6
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#c9b484",
+      "sections": [
+       {
+        "z": 0,
+        "ellipse": [
+         60.6,
+         57.4
+        ]
+       },
+       {
+        "z": 2.6,
+        "ellipse": [
+         60.6,
+         57.4
+        ]
+       }
+      ],
+      "round": 12
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "top-band",
+   "at": [
+    0,
+    0,
+    21.5
+   ],
+   "params": {
+    "colour": "#c9b484",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       61.2,
+       58
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       61.2,
+       58
+      ]
+     }
+    ],
+    "round": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-bay",
+   "at": [
+    0,
+    -57.6
+   ],
+   "params": {
+    "rect": [
+     38,
+     3.4
+    ],
+    "z0": 6.5,
+    "height": 19,
+    "colour": "#1d242b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions",
+   "at": [
+    0,
+    -59.5,
+    7.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 15,
+    "start": [
+     -18.6,
+     0,
+     0
+    ],
+    "end": [
+     18.6,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 17,
+      "colour": "#aab2b8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "transoms",
+   "at": [
+    0,
+    -59.5,
+    10.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     13
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       38,
+       0.35
+      ],
+      "height": 0.4,
+      "colour": "#aab2b8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-glow",
+   "at": [
+    0,
+    -59.45
+   ],
+   "params": {
+    "rect": [
+     37,
+     0.1
+    ],
+    "z0": 9,
+    "height": 6.0,
+    "colour": "#c8b878"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-0",
+   "at": [
+    0,
+    -61.5
+   ],
+   "params": {
+    "rect": [
+     84,
+     2.0
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#a09b94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-1",
+   "at": [
+    0,
+    -63.5
+   ],
+   "params": {
+    "rect": [
+     82,
+     2.0
+    ],
+    "z0": 0,
+    "height": 3.15,
+    "colour": "#8f8a84",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-2",
+   "at": [
+    0,
+    -65.5
+   ],
+   "params": {
+    "rect": [
+     80,
+     2.0
+    ],
+    "z0": 0,
+    "height": 2.7,
+    "colour": "#a09b94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-3",
+   "at": [
+    0,
+    -67.5
+   ],
+   "params": {
+    "rect": [
+     78,
+     2.0
+    ],
+    "z0": 0,
+    "height": 2.25,
+    "colour": "#8f8a84",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-4",
+   "at": [
+    0,
+    -69.5
+   ],
+   "params": {
+    "rect": [
+     76,
+     2.0
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#a09b94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-5",
+   "at": [
+    0,
+    -71.5
+   ],
+   "params": {
+    "rect": [
+     74,
+     2.0
+    ],
+    "z0": 0,
+    "height": 1.35,
+    "colour": "#8f8a84",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-6",
+   "at": [
+    0,
+    -73.5
+   ],
+   "params": {
+    "rect": [
+     72,
+     2.0
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#a09b94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-7",
+   "at": [
+    0,
+    -75.5
+   ],
+   "params": {
+    "rect": [
+     70,
+     2.0
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#8f8a84",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "drum is faceted 20-sided with straight cream bands; canopy is slab on posts without lattice; glazed bay is a flat prism with mullion grid, not recessed; stair has no rails; velodrome wing not modelled"
+ }
+}

@@ -1,0 +1,516 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Klinikareal.JPG",
+   "licence": "CC BY-SA 3.0 ch",
+   "author": "Richard McAllister",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/zurich/clinic1.jpg",
+   "used": "campus layout: separate white-render villas, hip roofs in dark brown and red-brown tile, tower villa left, grey-white block right, lawns and conifers, lake behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HoheneggTerrazza.jpg",
+   "licence": "CC BY-SA 3.0 ch",
+   "author": "Lee Li Photography",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/clinic2.jpg",
+   "used": "newer entrance building: beige render, dark slate steep hip roof with eyebrow dormers, tall render chimney, copper edges, ribbon window"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/235292955",
+   "used": "campus extent only (225 m x 193 m); the outline is the whole site so individual villas are placed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 17,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-villa",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.0,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": false
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3a36",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-villa",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    2,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3a34",
+    "material": "clay-tile",
+    "pitch": 46,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-wing",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    16,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe5d3",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8603f",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    38,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a6a50",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-house",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a403c",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    40,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dccfb4",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f343a",
+    "material": "slate",
+    "pitch": 52,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    34,
+    -24,
+    9
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 6,
+    "pots": 0,
+    "colour": "#d8cfbd"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 10
+     }
+    },
+    "mode": "line",
+    "start": [
+     18,
+     -30
+    ],
+    "end": [
+     -20,
+     -30
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -4,
+    -3,
+    0
+   ],
+   "on": "entrance-hall",
+   "params": {
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.4,
+    "colour": "#f1ede2"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4,
+    -3,
+    0
+   ],
+   "on": "entrance-hall",
+   "params": {
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.4,
+    "colour": "#f1ede2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -41,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3a2e2c",
+    "material": "slate",
+    "pitch": 60,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -30,
+    -2,
+    13
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 4,
+    "pots": 0,
+    "colour": "#e3ddcf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lake",
+   "footprint": {
+    "rect": [
+     110,
+     40
+    ]
+   },
+   "at": [
+    0,
+    62
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5f8fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8fb0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hill",
+   "footprint": {
+    "rect": [
+     110,
+     16
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5f8a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f8a45",
+    "material": "concrete",
+    "pitch": 8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -14
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Villas still simplified boxes with only two entrance dormers, a turret stand-in, no eyebrow dormers on others (triangle budget); lake is a flat blue plane, hill a low ridge; trees sparse; positions approximate."
+ }
+}

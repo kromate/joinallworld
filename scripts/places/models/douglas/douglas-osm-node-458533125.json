@@ -1,0 +1,1667 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-node-458533125",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TT_Lap_%5E9_Approaching_Greeba_Bridge_-_geograph.org.uk_-_5742874.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Glyn Baker",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/greeba2.jpg",
+   "used": "road setting only (low rubble wall along a bend, hedges, tall bare broadleaf trees, white cottage beyond). It does not show the bridge, so it is context, not proof of the arch."
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Greeba_Bridge_IMG_0292.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Agljones",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/greeba3.jpg",
+   "used": "checked: shows only the TT course sign and the hedge-lined road, not the bridge; ivy-covered hedge bank and tall trees taken as setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1313944052",
+   "used": "nearest-match building 37 m away (unreliable): overall scale only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     7.4,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a70",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.0,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "left",
+      "right"
+     ],
+     "shape": "arch",
+     "bay": 8,
+     "opening": 0.72,
+     "height": 0.88,
+     "depth": 1.4,
+     "storeys": 1
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "material": "concrete",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.5,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -13,
+      -31,
+      0.45
+     ],
+     [
+      -6,
+      -27,
+      1.45
+     ],
+     [
+      -1.5,
+      -20,
+      2.45
+     ],
+     [
+      0,
+      -12,
+      3.05
+     ],
+     [
+      0,
+      -4,
+      3.05
+     ],
+     [
+      0,
+      0,
+      3.05
+     ],
+     [
+      0,
+      4,
+      3.05
+     ],
+     [
+      0,
+      12,
+      3.05
+     ],
+     [
+      1.5,
+      20,
+      2.45
+     ],
+     [
+      6,
+      27,
+      1.45
+     ],
+     [
+      13,
+      31,
+      0.45
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.14,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -14.49,
+      -28.4,
+      0.73
+     ],
+     [
+      -8.07,
+      -24.83,
+      1.73
+     ],
+     [
+      -4.29,
+      -18.89,
+      2.73
+     ],
+     [
+      -2.99,
+      -11.72,
+      3.33
+     ],
+     [
+      -3.0,
+      -4.0,
+      3.33
+     ],
+     [
+      -3.0,
+      0.0,
+      3.33
+     ],
+     [
+      -3.0,
+      4.0,
+      3.33
+     ],
+     [
+      -2.99,
+      12.28,
+      3.33
+     ],
+     [
+      -1.29,
+      21.11,
+      2.73
+     ],
+     [
+      3.93,
+      29.17,
+      1.73
+     ],
+     [
+      11.51,
+      33.6,
+      0.73
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#e8e8e2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.14,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -11.51,
+      -33.6,
+      0.73
+     ],
+     [
+      -3.93,
+      -29.17,
+      1.73
+     ],
+     [
+      1.29,
+      -21.11,
+      2.73
+     ],
+     [
+      2.99,
+      -12.28,
+      3.33
+     ],
+     [
+      3.0,
+      -4.0,
+      3.33
+     ],
+     [
+      3.0,
+      0.0,
+      3.33
+     ],
+     [
+      3.0,
+      4.0,
+      3.33
+     ],
+     [
+      2.99,
+      11.72,
+      3.33
+     ],
+     [
+      4.29,
+      18.89,
+      2.73
+     ],
+     [
+      8.07,
+      24.83,
+      1.73
+     ],
+     [
+      14.49,
+      28.4,
+      0.73
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#e8e8e2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.95
+     ]
+    },
+    "points": [
+     [
+      -14.69,
+      -28.05,
+      1.15
+     ],
+     [
+      -8.35,
+      -24.54,
+      2.15
+     ],
+     [
+      -4.66,
+      -18.74,
+      3.15
+     ],
+     [
+      -3.39,
+      -11.68,
+      3.75
+     ],
+     [
+      -3.4,
+      -4.0,
+      3.75
+     ],
+     [
+      -3.4,
+      0.0,
+      3.75
+     ],
+     [
+      -3.4,
+      4.0,
+      3.75
+     ],
+     [
+      -3.39,
+      12.32,
+      3.75
+     ],
+     [
+      -1.66,
+      21.26,
+      3.15
+     ],
+     [
+      3.65,
+      29.46,
+      2.15
+     ],
+     [
+      11.31,
+      33.95,
+      1.15
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#85826f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -14.69,
+      -28.05,
+      1.68
+     ],
+     [
+      -8.35,
+      -24.54,
+      2.68
+     ],
+     [
+      -4.66,
+      -18.74,
+      3.68
+     ],
+     [
+      -3.39,
+      -11.68,
+      4.28
+     ],
+     [
+      -3.4,
+      -4.0,
+      4.28
+     ],
+     [
+      -3.4,
+      0.0,
+      4.28
+     ],
+     [
+      -3.4,
+      4.0,
+      4.28
+     ],
+     [
+      -3.39,
+      12.32,
+      4.28
+     ],
+     [
+      -1.66,
+      21.26,
+      3.68
+     ],
+     [
+      3.65,
+      29.46,
+      2.68
+     ],
+     [
+      11.31,
+      33.95,
+      1.68
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#9a978a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.95
+     ]
+    },
+    "points": [
+     [
+      -11.31,
+      -33.95,
+      1.15
+     ],
+     [
+      -3.65,
+      -29.46,
+      2.15
+     ],
+     [
+      1.66,
+      -21.26,
+      3.15
+     ],
+     [
+      3.39,
+      -12.32,
+      3.75
+     ],
+     [
+      3.4,
+      -4.0,
+      3.75
+     ],
+     [
+      3.4,
+      0.0,
+      3.75
+     ],
+     [
+      3.4,
+      4.0,
+      3.75
+     ],
+     [
+      3.39,
+      11.68,
+      3.75
+     ],
+     [
+      4.66,
+      18.74,
+      3.15
+     ],
+     [
+      8.35,
+      24.54,
+      2.15
+     ],
+     [
+      14.69,
+      28.05,
+      1.15
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#85826f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -11.31,
+      -33.95,
+      1.68
+     ],
+     [
+      -3.65,
+      -29.46,
+      2.68
+     ],
+     [
+      1.66,
+      -21.26,
+      3.68
+     ],
+     [
+      3.39,
+      -12.32,
+      4.28
+     ],
+     [
+      3.4,
+      -4.0,
+      4.28
+     ],
+     [
+      3.4,
+      0.0,
+      4.28
+     ],
+     [
+      3.4,
+      4.0,
+      4.28
+     ],
+     [
+      3.39,
+      11.68,
+      4.28
+     ],
+     [
+      4.66,
+      18.74,
+      3.68
+     ],
+     [
+      8.35,
+      24.54,
+      2.68
+     ],
+     [
+      14.69,
+      28.05,
+      1.68
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#9a978a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stream",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     5.6
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#4a6f74"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -5.6,
+    -16,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 1.8,
+    "depth": 1.2,
+    "colour": "#3f6a2f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    5.6,
+    -22,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "depth": 1.2,
+    "colour": "#46722f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    5.6,
+    16,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 1.8,
+    "depth": 1.2,
+    "colour": "#3f6a2f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -5.6,
+    22,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "depth": 1.2,
+    "colour": "#46722f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    7.5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "depth": 1.1,
+    "height": 2.4,
+    "colour": "#c8362f",
+    "roofColour": "#c8362f"
+   }
+  },
+  {
+   "type": "chalet",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 6,
+    "height": 3.0,
+    "colour": "#eeebe0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      3.2
+     ]
+    },
+    "points": [
+     [
+      0,
+      -4,
+      1.6
+     ],
+     [
+      0,
+      -10,
+      1.6
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      0,
+      -10,
+      1.8
+     ],
+     [
+      -0.8,
+      -16,
+      1.4
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -0.8,
+      -16,
+      1.8
+     ],
+     [
+      -3.2,
+      -21,
+      1.0
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -3.2,
+      -21,
+      1.4
+     ],
+     [
+      -6.5,
+      -25,
+      0.6
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      3.2
+     ]
+    },
+    "points": [
+     [
+      0,
+      4,
+      1.6
+     ],
+     [
+      0,
+      10,
+      1.6
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      0,
+      10,
+      1.8
+     ],
+     [
+      0.8,
+      16,
+      1.4
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      0.8,
+      16,
+      1.8
+     ],
+     [
+      3.2,
+      21,
+      1.0
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6.4,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      3.2,
+      21,
+      1.4
+     ],
+     [
+      6.5,
+      25,
+      0.6
+     ]
+    ],
+    "colour": "#4f5052"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    6,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    10,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    -12,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    -14,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -9,
+    -24,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    -26,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    -26,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10,
+    20,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10,
+    20,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 6,
+      "circle": 0.42,
+      "colour": "#3f3f33"
+     },
+     {
+      "z": 10,
+      "circle": 0.3,
+      "colour": "#3a3a30"
+     },
+     {
+      "z": 15,
+      "circle": 0.12,
+      "colour": "#3a3a30"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3a3a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    9,
+    24,
+    9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1,
+       1
+      ],
+      "colour": "#4a4a38"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.2,
+       2.0
+      ],
+      "colour": "#6b6a4a"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       0.8,
+       0.8
+      ],
+      "colour": "#4a4a38"
+     }
+    ],
+    "curve": true,
+    "capTop": true,
+    "colour": "#4a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -7.5,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "depth": 1.1,
+    "height": 2.4,
+    "colour": "#c8362f",
+    "roofColour": "#c8362f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of Greeba Bridge exists on Commons (checked); verified stays text. Arch/span typical single-span rubble bridge, voussoirs not modelled, tree canopies generic"
+ }
+}

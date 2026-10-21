@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-node-4401051294",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-osm-node-4401051294",
+   "used": "two-storey L-shaped care home (Athienou), about 50 x 20 m, render, flat roof, entrance canopy, roof water tanks, car park; no OSM match, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#c9b48a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -10,
+    16
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#c9b48a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#c9b48a",
+    "edgeColour": "#f0ebdf"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -6,
+    -6.2,
+    3.8
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -12,
+    12,
+    7.6
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -9,
+    12,
+    7.6
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Text only; L massing and canopy from brief type, no facade evidence."
+ }
+}

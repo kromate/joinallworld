@@ -1,0 +1,440 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lidice_Memorial_2018_xy2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/lid2.jpg",
+   "used": "axial view: paved court with red brick joint lines, stepped path between clipped hedges, open octagonal sandstone pavilion with tall square piers, flat octagonal roof with a blue-grey soffit and a spike, flat-roofed sandstone arcades either side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Peter_Stehlik_2009.05.12_Lidice_004a.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Peter Stehlik",
+   "view": "street",
+   "file": "/tmp/places-evidence/prague/lid1.jpg",
+   "used": "the same court from the side: rectangular fountain channel, arcades returning along the sides, long low sandstone-clad museum with blank flat-roofed band and brown doors"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7735080",
+   "used": "location and scale of the memorial area only: the 764 m park outline is far too large, so the central court (pavilion, arcades, museum) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "piers",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 8,
+    "radius": 6.2,
+    "startDeg": 22.5,
+    "endDeg": 337.5,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.5,
+       1.5
+      ]
+     },
+     "height": 13,
+     "wall": {
+      "material": "sandstone",
+      "colour": "#cdb78f",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#cdb78f",
+      "material": "concrete",
+      "parapet": 0
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-roof",
+   "at": [
+    0,
+    30,
+    13
+   ],
+   "params": {
+    "n": 8,
+    "radius": 8.6,
+    "height": 2.2,
+    "topScale": 0.93,
+    "colour": "#b8a27c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-soffit",
+   "at": [
+    0,
+    30,
+    12.7
+   ],
+   "params": {
+    "n": 8,
+    "radius": 7.6,
+    "height": 0.4,
+    "colour": "#7f98a0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "spike",
+   "at": [
+    0,
+    30,
+    15.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.12,
+      1.2
+     ],
+     [
+      0.03,
+      2.6
+     ],
+     [
+      0,
+      2.6
+     ]
+    ],
+    "segments": 8,
+    "colour": "#5d6a70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-plinth",
+   "footprint": {
+    "rect": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b7a47f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7a47f",
+    "material": "concrete",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "pavilion-steps",
+   "at": [
+    0,
+    22.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#b5a58a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-l",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    -12,
+    20
+   ],
+   "z0": 0,
+   "height": 1.9,
+   "wall": {
+    "material": "render",
+    "colour": "#4a6b36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6b36",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-r",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    12,
+    20
+   ],
+   "z0": 0,
+   "height": 1.9,
+   "wall": {
+    "material": "render",
+    "colour": "#4a6b36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6b36",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "channel",
+   "footprint": {
+    "rect": [
+     12,
+     2.2
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#a99f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa3b0",
+    "material": "glass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     60,
+     8
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8c39b",
+    "windows": "none",
+    "plinth": 0.4,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7e1d2",
+    "material": "membrane",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "col-back-l",
+   "at": [
+    -40,
+    30.5,
+    0
+   ],
+   "params": {
+    "length": 31,
+    "count": 14,
+    "height": 4.0,
+    "radius": 0.35,
+    "kind": "square",
+    "beamHeight": 0.7,
+    "roofDepth": 3.5,
+    "colour": "#cdb78f",
+    "roofColour": "#b8a27c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "id": "col-back-r",
+   "at": [
+    9,
+    30.5,
+    0
+   ],
+   "params": {
+    "length": 31,
+    "count": 14,
+    "height": 4.0,
+    "radius": 0.35,
+    "kind": "square",
+    "beamHeight": 0.7,
+    "roofDepth": 3.5,
+    "colour": "#cdb78f",
+    "roofColour": "#b8a27c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "id": "col-side-l",
+   "at": [
+    -37,
+    8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 10,
+    "height": 4.0,
+    "radius": 0.35,
+    "kind": "square",
+    "beamHeight": 0.7,
+    "roofDepth": 3.5,
+    "colour": "#cdb78f",
+    "roofColour": "#b8a27c"
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": 90
+  },
+  {
+   "type": "core/colonnade",
+   "id": "col-side-r",
+   "at": [
+    37,
+    8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 10,
+    "height": 4.0,
+    "radius": 0.35,
+    "kind": "square",
+    "beamHeight": 0.7,
+    "roofDepth": 3.5,
+    "colour": "#cdb78f",
+    "roofColour": "#b8a27c"
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": 90
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     47
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     48
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     48
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     47
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Pavilion is taller with a thick octagon roof but reads as a square canopy at this camera; arcades are colonnade parts with side returns not matching the photo, no brick-jointed paving, benches, or pollarded trees; framing still wide."
+ }
+}

@@ -1,0 +1,431 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Station_Brussel-Zuid_Gebouw.jpg",
+   "licence": "see Commons file page",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/midi3.jpg",
+   "used": "street frontage: tan stone-clad slab at left, dark teal glazed entrance hall under a stepped, sloping dark canopy, glass-topped office tower with horizontal balcony fins at right, paved forecourt, blank signage band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brussels-South_railway_station_I.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/brussels/midi1.jpg",
+   "used": "platform level: long flat concrete canopy on slim steel posts, paved platform, tracks beside it"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13731982",
+   "used": "overall size (278 m long) only; a 120 m portion is modelled as the outline is far too long for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -26,
+    2
+   ],
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4a870",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       4,
+       3.4
+      ],
+      "colours": [
+       "#d4a870",
+       "#c49860",
+       "#dcb482"
+      ],
+      "gap": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    12,
+    -3
+   ],
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#34505d",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#1d4a4f",
+    "overhang": 7,
+    "rise": 12
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -8.6,
+    9.5
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.8,
+    "bottom": 9.5,
+    "colour": "#2c4a5a",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "canopy-link",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    36,
+    -3
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#34505d",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d4a4f",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-tower",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    52,
+    6
+   ],
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b8a0",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8c8ae",
+       "#a98f74"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 0.8,
+      "width": 26,
+      "every": 30,
+      "slab": 0.3,
+      "colour": "#7a6450",
+      "railKind": "glass",
+      "continuous": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-crown",
+   "params": {
+    "colour": "#3d6a8a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       28,
+       14
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       30,
+       14.5
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       22,
+       11
+      ]
+     }
+    ]
+   },
+   "at": [
+    52,
+    6,
+    38
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "viaduct",
+   "params": {
+    "rect": [
+     90,
+     44
+    ],
+    "height": 6.5,
+    "colour": "#a8a49c"
+   },
+   "at": [
+    -5,
+    44,
+    0
+   ]
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -5,
+    38,
+    6.5
+   ],
+   "params": {
+    "length": 125,
+    "tracks": 4,
+    "spacing": 5.4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -5,
+    41,
+    6.5
+   ],
+   "params": {
+    "width": 120,
+    "depth": 7,
+    "height": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -5,
+    52,
+    6.5
+   ],
+   "params": {
+    "width": 120,
+    "depth": 7,
+    "height": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    25,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#232a30",
+    "count": 2,
+    "spacing": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "line": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "canopy-posts",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -4,
+     -12
+    ],
+    "end": [
+     28,
+     -12
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 9,
+      "colour": "#1d2f35"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bollards",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -20,
+     -20
+    ],
+    "end": [
+     50,
+     -20
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 0.9,
+      "colour": "#3a3f44"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Long sloping teal canopy over glazed hall, panelled tan slab, balcony-banded tower with glass crown; canopy not stepped, taller canopy tried and hid the glazing so reverted; framing differs from street photo, forecourt lamp missing"
+ }
+}

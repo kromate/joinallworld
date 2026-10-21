@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-770859631",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/770859631",
+   "used": "park outline (Parco Marino Nicolini, name match, 1,700 m2 narrow hillside strip)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small hillside park with lawn, paths and a few trees; shelter assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7aa357",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7aa357"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -25,
+      -18
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      28,
+      20
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    2,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#a85c3c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -4,
+    0.55
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "kind": "wall",
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 10,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    16,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

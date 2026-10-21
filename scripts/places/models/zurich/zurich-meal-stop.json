@@ -1,0 +1,363 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hiltl_Z%C3%BCrich.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adrian Michael",
+   "view": "street",
+   "used": "5-storey white rendered corner block, grey stone-framed shopfront band with deep white awnings, blank signage fascias, small recessed corner entrance, punched tall windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/326422839",
+   "used": "corner footprint (containing, 5 levels, 375 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.2,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shopfront-band",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9a9791",
+    "windows": "curtain",
+    "windowRatio": 0.72,
+    "glassColour": "#4f5d63",
+    "trimColour": "#9a9791"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9791",
+    "material": "membrane",
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.4,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "cornice": true,
+    "trimColour": "#b9b5aa",
+    "glassColour": "#7a8f99",
+    "pattern": {
+     "type": "bands",
+     "colour": "#b9b5aa",
+     "height": 0.5,
+     "at": 0.2
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   },
+   "z0": 4.6
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    9.2,
+    4.3,
+    0
+   ],
+   "rotDeg": 157,
+   "params": {
+    "width": 9.5,
+    "depth": 2.2,
+    "height": 4.3,
+    "rise": 0.9,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    5.2,
+    -8.5,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "width": 15.5,
+    "depth": 2.2,
+    "height": 4.3,
+    "rise": 0.9,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    11.5,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#d8c6a4",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -15,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#f4f1ea",
+     "#d8c6a4"
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    13,
+    -2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.35,
+      0,
+      "#b86a45"
+     ],
+     [
+      0.5,
+      0.5,
+      "#b86a45"
+     ],
+     [
+      0.6,
+      0.6,
+      "#3f6b3a"
+     ],
+     [
+      0.7,
+      1.2,
+      "#3f6b3a"
+     ],
+     [
+      0.3,
+      1.5,
+      "#3f6b3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    9,
+    -10,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.35,
+      0,
+      "#b86a45"
+     ],
+     [
+      0.5,
+      0.5,
+      "#b86a45"
+     ],
+     [
+      0.6,
+      0.6,
+      "#3f6b3a"
+     ],
+     [
+      0.7,
+      1.2,
+      "#3f6b3a"
+     ],
+     [
+      0.3,
+      1.5,
+      "#3f6b3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5,
+    -13,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.35,
+      0,
+      "#b86a45"
+     ],
+     [
+      0.5,
+      0.5,
+      "#b86a45"
+     ],
+     [
+      0.6,
+      0.6,
+      "#3f6b3a"
+     ],
+     [
+      0.7,
+      1.2,
+      "#3f6b3a"
+     ],
+     [
+      0.3,
+      1.5,
+      "#3f6b3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    12,
+    2.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.35,
+      0,
+      "#b86a45"
+     ],
+     [
+      0.5,
+      0.5,
+      "#b86a45"
+     ],
+     [
+      0.6,
+      0.6,
+      "#3f6b3a"
+     ],
+     [
+      0.7,
+      1.2,
+      "#3f6b3a"
+     ],
+     [
+      0.3,
+      1.5,
+      "#3f6b3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.35,
+      0,
+      "#b86a45"
+     ],
+     [
+      0.5,
+      0.5,
+      "#b86a45"
+     ],
+     [
+      0.6,
+      0.6,
+      "#3f6b3a"
+     ],
+     [
+      0.7,
+      1.2,
+      "#3f6b3a"
+     ],
+     [
+      0.3,
+      1.5,
+      "#3f6b3a"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   60,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Ground floor is now a stone-grey glazed shopfront band with attached white awnings, cafe umbrellas and planters; no recessed corner entrance or chamfer cut (OSM outline corner only), upper windows lack stone surrounds, no mansard roof, awnings are single slabs."
+ }
+}

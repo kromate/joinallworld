@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-node-1804271293",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (name): open timber birdwatching tower, 3 levels, viewing deck, stair, over a reed-bay shore; no OSM footprint, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "legs",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 3,
+    "dy": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 6.2,
+      "colour": "#8a7456",
+      "windows": "none",
+      "bottom": false
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    0,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "height": 0.3,
+    "colour": "#b69a6e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cabin",
+   "at": [
+    0,
+    0,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.3,
+    "colour": "#9a8260",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "storeys": 1,
+    "faces": {
+     "front": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0,
+    8.8
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "height": 1.8,
+    "topScale": 0.05,
+    "colour": "#7a6a5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "stairs",
+   "at": [
+    2.6,
+    -1.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     0,
+     0,
+     0.3
+    ],
+    "end": [
+     0,
+     -5,
+     6.0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.55
+      ],
+      "height": 0.15,
+      "colour": "#b69a6e",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail",
+   "params": {
+    "radius": 0.05,
+    "points": [
+     [
+      2.1,
+      -1.4,
+      7.2
+     ],
+     [
+      2.1,
+      -2,
+      7.2
+     ],
+     [
+      2.1,
+      -2,
+      6.5
+     ],
+     [
+      2.1,
+      -5.5,
+      0.9
+     ]
+    ],
+    "colour": "#7a6a5a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "reeds",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -8,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     3,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.1,
+        1.6
+       ]
+      ],
+      "colour": "#a8985a",
+      "segments": 6
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo, no footprint: typical open timber lookout from the name only; proportions guessed"
+ }
+}

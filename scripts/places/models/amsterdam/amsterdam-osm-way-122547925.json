@@ -1,0 +1,94 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-122547925",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1379860674",
+   "used": "real hospital outline (name match, 272 x 117 m, auto-fitted by the composer); 2004"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nio_Flower_Power_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alena Hanzlova",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/spaarne1.jpg",
+   "used": "only the amber leaf-shaped busway shelter in Floriande and the horizontal grey cladding of the neighbouring block; this photo does NOT show the hospital itself, so it is not used for verification"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a6a4f",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#9a6a4f",
+      "#8aa0aa"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -58,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 22,
+    "depth": 5,
+    "height": 3.6,
+    "colour": "#e0a030",
+    "columns": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hospital: only the real simplified outline, estimated 5 storeys and brick colour; bus shelter canopy is a stand-in; atrium and car park garage not modelled."
+ }
+}

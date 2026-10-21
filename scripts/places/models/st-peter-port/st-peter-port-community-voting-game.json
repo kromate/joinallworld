@@ -1,0 +1,84 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/525722008",
+   "used": "real outline of the Castel Douzaine Room (18 x 12 m, irregular); no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8d9296",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bands": "#b2aaa0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 34,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b2aaa0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    9,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.4,
+    "bottom": 0.9,
+    "colour": "#eee9dc",
+    "frameColour": "#8d9296"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 2,
+  "extent": [
+   55,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; granite/slate assumed, door and window positions unknown"
+ }
+}

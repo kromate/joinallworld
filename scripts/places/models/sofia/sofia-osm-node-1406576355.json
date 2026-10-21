@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-osm-node-1406576355",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/507294421",
+   "used": "nearest unnamed building outline (22 m away, 18 x 17 m, bearing 58 deg) taken as the fortress remains; no photo found of Kladnitsa fortress"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "keep",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a69f90",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7466",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "id": "curtain-n",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 4.5,
+    "thickness": 1.6,
+    "colour": "#a69f90",
+    "gaps": 0.25
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "id": "curtain-s",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 3.8,
+    "thickness": 1.6,
+    "colour": "#8f8878",
+    "gaps": 0.3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "id": "curtain-w",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 3.2,
+    "thickness": 1.5,
+    "colour": "#7a7466",
+    "gaps": 0.35
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "corner-tower",
+   "id": "tower-sw",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 3.5,
+    "height": 8,
+    "kind": "round",
+    "cap": "none",
+    "ruin": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "pines",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 5,
+    "spread": 24,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo; ruin walls and tower placed by hand around the nearest OSM building"
+ }
+}

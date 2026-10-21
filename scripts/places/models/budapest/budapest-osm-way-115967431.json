@@ -1,0 +1,419 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buda%C3%B6rs,_k%C5%91-hegyi_k%C3%A1polna_2021_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pasztilla aka Attila Terbocs",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/chap1.jpg",
+   "used": "cream render chapel with yellow plinth band, red tile gable roof, pilaster strips, arched side window, low sacristy annex at front left with its own roof, dark louvred belfry with grey cap on the ridge, white stone crucifix on boulder and plinth to the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/115967431",
+   "used": "size only (about 8.6 x 8 m); outline is irregular so a rectangle is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.263
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     6.6,
+     8.2
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ecdc",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.2,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "none"
+    },
+    "windowShape": "arched",
+    "bands": {
+     "colour": "#e3c98b",
+     "height": 1.7
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.6
+    ]
+   },
+   "at": [
+    -3.7,
+    -2.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ecdc",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    2,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 6.0,
+    "height": 2.4,
+    "colour": "#3a3a3c",
+    "topColour": "#2f3236",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-cap",
+   "at": [
+    2,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "z0": 8.4,
+    "height": 1.6,
+    "topScale": 0.12,
+    "colour": "#4a4f55",
+    "topColour": "#4a4f55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-bar",
+   "at": [
+    2,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 10.0,
+    "height": 1.1,
+    "colour": "#2d2d2d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skirt-nave",
+   "at": [
+    2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.9,
+     8.5
+    ],
+    "z0": 0,
+    "height": 1.7,
+    "colour": "#e3c98b",
+    "topColour": "#e3c98b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skirt-sac",
+   "at": [
+    -3.7,
+    -2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.1,
+     3.9
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#e3c98b",
+    "topColour": "#e3c98b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    2.6,
+    -4.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.7,
+    "colour": "#2a2a2c",
+    "topColour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-surround",
+   "at": [
+    2.6,
+    -4.12,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.15
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#d8d4c8",
+    "topColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-window",
+   "at": [
+    2,
+    -4.12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.12
+    ],
+    "z0": 5.6,
+    "height": 1.4,
+    "colour": "#2c2c2e",
+    "topColour": "#2c2c2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-base",
+   "at": [
+    -9.6,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.0
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b9b7b0",
+    "topColour": "#b9b7b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-plinth",
+   "at": [
+    -9.6,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.6
+    ],
+    "z0": 0.5,
+    "height": 2.2,
+    "colour": "#d8d6cf",
+    "topColour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "boulder",
+   "at": [
+    -9.6,
+    -4,
+    2.7
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#a9a69c",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.6,
+      0.2
+     ],
+     [
+      1.1,
+      0.7
+     ],
+     [
+      0,
+      0.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-post",
+   "at": [
+    -9.6,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.35
+    ],
+    "z0": 3.5,
+    "height": 4.2,
+    "colour": "#ddd9d0",
+    "topColour": "#ddd9d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "at": [
+    -9.6,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.35
+    ],
+    "z0": 7.0,
+    "height": 0.6,
+    "colour": "#ddd9d0",
+    "topColour": "#ddd9d0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.6,
+    -5.0,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b9b7b0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1,
+    "spread": 3,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No statue on the crucifix, no relief plaques or dated panels, grille door and half-round window simplified, roof pitch a little low; plinth skirt and ground are flat colours."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-115967431"
+}

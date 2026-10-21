@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Infocentrum s knihovnou: small municipal information centre with library, two storeys, gable roof, pale render with sage green trim (brief, low confidence; OSM footprint is tagged residential so not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b9c4b0",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a37",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -7.2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9c4b0",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a37",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -8.8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.16,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#b9c4b0",
+    "frameColour": "#8a4a37"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -5
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     2
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building; a generic small library/info centre from the brief."
+ }
+}

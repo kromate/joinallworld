@@ -1,0 +1,259 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-16507696",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Georgian_Technical_University",
+   "used": "large Soviet-era polytechnic campus on Kostava Avenue; no architecture described, so the form follows the brief: U-shaped six-storey concrete block, ribbon windows, entrance colonnade with steps and flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1308903461",
+   "used": "not used: nearest match is a 57x8 m garage block, not the university"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     74,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -29,
+    28
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3ae9e",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    29,
+    28
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3ae9e",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e0d4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e0d4",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 6,
+    "height": 8,
+    "radius": 0.5,
+    "kind": "square",
+    "roofDepth": 3,
+    "colour": "#e4e0d4",
+    "roofColour": "#d8d4c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#a8a498"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#f2f2f2",
+     "#b3262e"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#f2f2f2",
+     "#b3262e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     36
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the campus building; U-block, storeys and colonnade are from the brief (low confidence), not observed"
+ }
+}

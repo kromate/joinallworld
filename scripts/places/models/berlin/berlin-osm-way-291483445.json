@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-291483445",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/291483445",
+   "used": "campus outline (209 x 128 m, simplified), height and storeys from the brief; the nearby Villa Borsig photos show a different building and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d1c0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6,
+    "glassColour": "#8fa3ad",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f82",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -36
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3ad",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -46,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -46,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -60
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     -50
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     20
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building; outline scaled to 118 m with generic ribbon-window blocks"
+ }
+}

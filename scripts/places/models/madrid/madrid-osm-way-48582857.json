@@ -1,0 +1,590 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-48582857",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Canto_del_Pico_2.jpg",
+   "licence": "CC BY 2.5",
+   "author": "esetena",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/m_canto.jpg",
+   "used": "granite walls, dark slate hip roof, stepped Flemish gables with crown finial, upper-left arcaded loggia, pink render panels, narrower stepped-gable tower at right, rocky hilltop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48582857",
+   "used": "overall size 30x18 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89a78",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "arched",
+    "faces": {
+     "back": "punched"
+    },
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f555c",
+    "material": "slate",
+    "rise": 4.0,
+    "overhang": 1.0
+   },
+   "z0": 4.0
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "height": 3.0,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": -4
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     16
+    ],
+    "height": 4.2,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": 10
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     18
+    ],
+    "height": 3.8,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": -12
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     9
+    ],
+    "height": 4.4,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": 25
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     8
+    ],
+    "height": 4.2,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     6
+    ],
+    "height": 2.2,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": 5
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     7
+    ],
+    "height": 2.0,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": 30
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 1.8,
+    "colour": "#8c8b86",
+    "windows": "none"
+   },
+   "rotDeg": -30
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    14.6
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    15.9
+   ],
+   "params": {
+    "rect": [
+     7.25,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     6.1000000000000005,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    18.5
+   ],
+   "params": {
+    "rect": [
+     4.950000000000001,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    19.8
+   ],
+   "params": {
+    "rect": [
+     3.8000000000000007,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    21.1
+   ],
+   "params": {
+    "rect": [
+     2.6500000000000004,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    22.4
+   ],
+   "params": {
+    "rect": [
+     1.5000000000000009,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.8
+    ],
+    "height": 10.6,
+    "colour": "#a89a78",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 2,
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9.3,
+    23.8
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 2.0,
+    "colour": "#5a5a5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    15.5
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     4.550000000000001,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    17.7
+   ],
+   "params": {
+    "rect": [
+     3.7,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    18.8
+   ],
+   "params": {
+    "rect": [
+     2.8500000000000005,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    19.9
+   ],
+   "params": {
+    "rect": [
+     2.0000000000000004,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -5.7,
+    21.0
+   ],
+   "params": {
+    "rect": [
+     1.1500000000000004,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#a89a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -3,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.8
+    ],
+    "height": 11.0,
+    "colour": "#a89a78",
+    "windows": "punched",
+    "windowShape": "rect",
+    "storeys": 3,
+    "windowRatio": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -9.7,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.6
+    ],
+    "height": 3.6,
+    "colour": "#b2a384",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 1,
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -9.7,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.8
+    ],
+    "height": 3.3,
+    "colour": "#c58a78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -10.4,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     0.5
+    ],
+    "height": 0.35,
+    "colour": "#8a7a68",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -6,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "height": 4,
+    "colour": "#9a8e72",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Raised on granite boulder plinth with yellow-brown walls, 7-step Flemish gable with finial, stepped tower gable, 3-arch loggia and pink balcony; boulders are blocky prisms, gables approximate, distant telephoto photo"
+ }
+}

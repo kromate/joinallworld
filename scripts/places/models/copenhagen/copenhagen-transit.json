@@ -1,0 +1,539 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:J%C3%A6gersborg_Station_20.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dannebrog (Wikimedia Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/copenhagen/c20_jaeg2.jpg",
+   "used": "low dark timber station building with continuous window band and light roof edge on the island platform, double track beside the platform, water tower behind: grey-blue glazed concrete shaft with projecting balconies under a red-brown round tank"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:J%C3%A6gersborg_st.jpg",
+   "licence": "CC BY 2.5",
+   "author": "EPO",
+   "view": "street",
+   "file": "/tmp/places-evidence/copenhagen/c20_jaeg1.jpg",
+   "used": "station set on an embankment above the motorway, long platform edge, tall posts"
+  },
+  {
+   "kind": "text",
+   "url": "https://da.wikipedia.org/wiki/J%C3%A6gersborg_Station",
+   "used": "1936 wooden building by K. T. Seest, now dark green; enclosed roofed waiting hall; 3 platforms, 4 tracks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/633393390",
+   "used": "not used: the OSM match is a 6 m water-tower service shed 96 m away"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "island-platform",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     9
+    ],
+    "height": 1.0,
+    "colour": "#a9a69f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "z0": 1.0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f4a3a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#f2ede0",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f4448",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "waiting-hall",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    8,
+    2
+   ],
+   "z0": 1.0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f4a3a",
+    "windows": "punched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f4448",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-n",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "height": 0.9,
+    "colour": "#a9a69f"
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "tracks",
+   "at": [
+    0,
+    11,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "tracks-s",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "shelter",
+   "at": [
+    28,
+    22,
+    0.9
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "water-tower",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#b8bcc4",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      11.5,
+      0
+     ],
+     [
+      12,
+      2,
+      "#7f93ab"
+     ],
+     [
+      12,
+      52,
+      "#7f93ab"
+     ],
+     [
+      15.5,
+      53,
+      "#a35a42"
+     ],
+     [
+      17,
+      56,
+      "#a35a42"
+     ],
+     [
+      17,
+      66,
+      "#a35a42"
+     ],
+     [
+      16,
+      68,
+      "#8d4a38"
+     ],
+     [
+      0.01,
+      69,
+      "#8d4a38"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -1,
+    1.0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "embankment-trees",
+   "at": [
+    -40,
+    34,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 16,
+    "count": 10
+   }
+  },
+  {
+   "type": "array",
+   "id": "balconies-0",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 12.2,
+    "startDeg": 0,
+    "endDeg": 324,
+    "count": 10,
+    "facing": "outward",
+    "dz": 0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "height": 0.5,
+      "z0": 8,
+      "colour": "#c6ccd4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "balconies-1",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 12.2,
+    "startDeg": 0,
+    "endDeg": 324,
+    "count": 10,
+    "facing": "outward",
+    "dz": 0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "height": 0.5,
+      "z0": 19,
+      "colour": "#c6ccd4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "balconies-2",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 12.2,
+    "startDeg": 0,
+    "endDeg": 324,
+    "count": 10,
+    "facing": "outward",
+    "dz": 0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "height": 0.5,
+      "z0": 30,
+      "colour": "#c6ccd4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "balconies-3",
+   "at": [
+    34,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 12.2,
+    "startDeg": 0,
+    "endDeg": 324,
+    "count": 10,
+    "facing": "outward",
+    "dz": 0,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "height": 0.5,
+      "z0": 41,
+      "colour": "#c6ccd4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tactile-strip",
+   "at": [
+    0,
+    -2.2,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.6
+    ],
+    "height": 0.04,
+    "colour": "#e0c030"
+   }
+  },
+  {
+   "type": "train",
+   "id": "regional-unit",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "carriages": 2,
+    "colour": "#d9c22e",
+    "loco_colour": "#8aa63a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "catenary-posts",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -40,
+     -13.5,
+     0
+    ],
+    "end": [
+     40,
+     -13.5,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 8.5,
+      "colour": "#5c5f63"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "catenary-wire",
+   "at": [
+    0,
+    -13.5,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.08
+    ],
+    "height": 0.08,
+    "colour": "#2b2d30"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -30,
+    6.7,
+    1.0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.1,
+    "thickness": 0.05,
+    "kind": "rail",
+    "colour": "#c9ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Water tower ~2x taller with 10-sided shaft, four balcony rings and wider red-brown tank; platform with yellow tactile strip, double track, catenary posts and wire, regional unit and fence simplified; station building plain green mass with window band; no glazing pattern"
+ }
+}

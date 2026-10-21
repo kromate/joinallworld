@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wien_-_Krankenhaus_Nord.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "C.Stadler/Bwag",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/clinic1.jpg",
+   "used": "long low green-glass base, stepped brown-red brick-clad blocks above, white upper cubes, glass lift/stair towers, landscaped park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Krankenhaus_Nord_Wien_Floridsdorf_2015_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown",
+   "view": "side",
+   "used": "curved grey panel facade with ribbon and punched windows over a glazed ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3633072",
+   "used": "overall extent only (338 m); a recognisable 150 m frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 2.0,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     112,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8a82",
+    "glassColour": "#4d7a74",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 16
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk-l",
+   "footprint": {
+    "rect": [
+     32,
+     18
+    ]
+   },
+   "at": [
+    -38,
+    6
+   ],
+   "z0": 8.5,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3f",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3e5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk-lm",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    -10,
+    10
+   ],
+   "z0": 8.5,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#6f5044",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3e5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk-m",
+   "footprint": {
+    "rect": [
+     32,
+     18
+    ]
+   },
+   "at": [
+    20,
+    6
+   ],
+   "z0": 8.5,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#664a40",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3e5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk-r",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    46,
+    10
+   ],
+   "z0": 8.5,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3f",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3e5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-top",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    46,
+    10
+   ],
+   "z0": 30.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e8ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d6d9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 30,
+    "colour": "#9db9cc",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "material": "glass-curtain",
+    "bay": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -32
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "complex far larger; white parapet volumes and balcony loggias simplified to ribbon windows; park paths not drawn"
+ }
+}

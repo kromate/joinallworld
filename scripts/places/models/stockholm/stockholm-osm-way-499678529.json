@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-499678529",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stockholms_sjukhem_2011a.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "side",
+   "file": "/tmp/places-evidence/stockholm/sjukhem_a.jpg",
+   "used": "orange-ochre rendered 4-storey block, light grey hipped metal roof, arched upper windows on the long face, plain rectangular windows on the end, lower balconied wing left, glazed balcony wing right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30048255",
+   "used": "overall extent only (172 m site, many wings); one wing is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-ground",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b8602e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#9a4e25",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8602e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 14.4,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c4703a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.24,
+    "faces": {
+     "back": "plain",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": "#d9a273",
+    "plinth": 0,
+    "cornice": true,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9c0c4",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    -27,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cc7a42",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9c0c4",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     9,
+     13
+    ]
+   },
+   "at": [
+    21.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcd0d0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#e6e6e0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9c0c4",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "balcony-pods",
+   "at": [
+    -27,
+    -3.5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "floors": 2,
+    "floor_height": 3.8,
+    "every": 2,
+    "depth": 0.9,
+    "colour": "#d9d6cf",
+    "skip_ground": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lantern",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    21.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 17.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db3b0",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9c0c4",
+    "material": "metal-sheet"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "only one wing modelled; balcony pods read as dark band on west wing; glazed balcony wing simplified; no dormers or construction site"
+ }
+}

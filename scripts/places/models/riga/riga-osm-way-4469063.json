@@ -1,0 +1,398 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-4469063",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:R%C4%ABgas_zood%C4%81rza_centr%C4%81l%C4%81_ieeja,_R%C4%ABga,_Latvia_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "M.Strikis",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/zoo1.jpg",
+   "used": "main entrance: white rendered gate block with a small terracotta hip roof and blank sign band, two flanking white wings with terracotta hip roofs rising at the outer ends, green iron gates, tall pines all round, grey path in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Riga-zoo-2.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Rigas pasvaldibas agentura Rigas nacionalais zoologiskais darzs",
+   "view": "street",
+   "used": "general woodland character (not downloaded in detail)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4469063",
+   "used": "zoo area 16.8 ha (168,000 m2); the contained building way/203396151 is only 19 x 7 m, so the gate is modelled by hand rather than from the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-block",
+   "footprint": {
+    "rect": [
+     8,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ebde",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "rise": 1.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-left",
+   "footprint": {
+    "rect": [
+     9,
+     7.5
+    ]
+   },
+   "at": [
+    -15,
+    1
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efeadc",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "rise": 3.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-right",
+   "footprint": {
+    "rect": [
+     9,
+     7.5
+    ]
+   },
+   "at": [
+    15,
+    1
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efeadc",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "rise": 3.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-left",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    -7.5,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ebde",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.8,
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-right",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    7.5,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ebde",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.8,
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2.4,
+    4.2
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 0.0,
+    "colour": "#f0ebde",
+    "frameColour": "#c9c3b4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -2.4,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 3.2,
+    "pillar": 0.4,
+    "leaf": "bars",
+    "colour": "#f0ebde",
+    "leafColour": "#2f6b5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    3,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2,
+    "thickness": 0.25,
+    "kind": "bars",
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    30,
+    3,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2,
+    "thickness": 0.25,
+    "kind": "bars",
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -22,
+    30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2,
+    "cap_colour": "#8a4a36",
+    "colour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    20,
+    36,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "rise": 1.8,
+    "cap_colour": "#7a3b2c",
+    "colour": "#8b6a47"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 26
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -4
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     -8
+    ],
+    "height": 25
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     4
+    ],
+    "height": 27
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     18
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     24
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     -12
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -38,
+     12
+    ],
+    "height": 23
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     2,
+     40
+    ],
+    "height": 26
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "pavilion end roofs slightly lower than real; no benches, kiosks at gate or real tree density; only the entrance is modelled in detail, zoo grounds are suggested by pavilions and pines"
+ }
+}

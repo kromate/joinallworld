@@ -1,0 +1,331 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Església_de_Sant_Corneli_i_Sant_Cebrià.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Arnaugir",
+   "view": "side",
+   "file": "/tmp/places-evidence/andorra-la-vella/ord.jpg",
+   "used": "square rubble-stone bell tower with flat parapet-less cap, two small belfry openings, clock faces on two sides, low stone nave beside it with slate eave"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202640608",
+   "used": "nave footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6250",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -6.5,
+    -7.5
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6250",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5547",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-f0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -7.6,
+    -10.55
+   ],
+   "z0": 12,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-f1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -5.4,
+    -10.55
+   ],
+   "z0": 12,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-s0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.9
+    ]
+   },
+   "at": [
+    -3.45,
+    -8.6
+   ],
+   "z0": 12,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-s1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.9
+    ]
+   },
+   "at": [
+    -3.45,
+    -6.4
+   ],
+   "z0": 12,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-f",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6.5,
+    -10.55
+   ],
+   "z0": 8.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-s",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.5
+    ]
+   },
+   "at": [
+    -3.45,
+    -7.5
+   ],
+   "z0": 8.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.0,
+    -10.55
+   ],
+   "z0": 3.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.0,
+    -10.55
+   ],
+   "z0": 6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#241e18",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#241e18"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#8a8478"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -8
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rounds 2: nave/tower recoloured darker; belfry openings and clock are flat blocks, no cornice; textured as coursed stone"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-202640608"
+}

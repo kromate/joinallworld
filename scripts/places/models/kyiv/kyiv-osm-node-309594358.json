@@ -1,0 +1,222 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Дот_401_(402)_«Міна»_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (Kyiv Fortified Region DOT 401)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/dot2.jpg",
+   "used": "typology only (a DIFFERENT pillbox of the same Kyiv Fortified Region): weathered pale concrete front, heavy overhanging lintel slab, rusty steel door in a recess, earth mound and dense greenery"
+  },
+  {
+   "kind": "text",
+   "url": "https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%87%D0%B0-%D0%97%D0%B0%D1%81%D0%BF%D0%B0",
+   "used": "1930s KIFR pillbox, 9 x 7 x 3 m guessed size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 45
+ },
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "casemate",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c84",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a776f",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    3.6,
+    0
+   ],
+   "params": {
+    "colour": "#4f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9.5,
+       7.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       7.6,
+       5.8
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       4.6,
+       3.4
+      ]
+     },
+     {
+      "z": 3.7,
+      "ellipse": [
+       2.2,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.2,
+    -3.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "height": 1.9,
+    "colour": "#5b4a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.2,
+    -3.55,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "height": 2.2,
+    "colour": "#6e6b64"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -3.55,
+    1.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.8,
+     0.3
+    ],
+    "height": 0.45,
+    "colour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.2,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     9,
+     1.2
+    ],
+    "height": 0.5,
+    "colour": "#a8a59c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1.2,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.25,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "compared with a different KIFR pillbox (DOT 401): no overgrowth or weathering, door and lintel proportions approximate, size of No 453 unknown"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-node-309594358"
+}

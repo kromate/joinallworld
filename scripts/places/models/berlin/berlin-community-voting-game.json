@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zehlendorf_Mexikoplatz_April_2018_Bahnhofsgeb%C3%A4ude.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/berlin/mx2.jpg",
+   "used": "S-Bahn station building: round hall with arched stone-pier entrance arcade, ochre-cream render, shallow brown tile skirt roof, drum with arched windows, brown tile dome with green copper cap, two-storey ochre wing to the left, railway bridge to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zehlendorf_Mexikoplatz_April_2018-004.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fridolin freudenfett",
+   "view": "street",
+   "used": "the square itself: open lawn with a round fountain basin, tall broadleaf trees, cream villa-style apartment blocks with red tile roofs and a green-capped corner turret around the edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "rotunda",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#e4cd92",
+    "profile": [
+     [
+      0,
+      0,
+      "#e4cd92"
+     ],
+     [
+      12.5,
+      0,
+      "#d9c38a"
+     ],
+     [
+      12.5,
+      0.12,
+      "#d9c38a"
+     ],
+     [
+      12.5,
+      6.5,
+      "#e4cd92"
+     ],
+     [
+      16.0,
+      6.2,
+      "#5e3b2c"
+     ],
+     [
+      16.0,
+      6.7,
+      "#6b4331"
+     ],
+     [
+      13,
+      8.2,
+      "#6b4331"
+     ],
+     [
+      10.2,
+      9.8,
+      "#6b4331"
+     ],
+     [
+      10.2,
+      10.0,
+      "#e4cd92"
+     ],
+     [
+      10.2,
+      14.0,
+      "#e4cd92"
+     ],
+     [
+      10.9,
+      14.0,
+      "#5e3b2c"
+     ],
+     [
+      10.9,
+      14.4,
+      "#6b4331"
+     ],
+     [
+      10.0,
+      15.0,
+      "#74492f"
+     ],
+     [
+      8.8,
+      17.2,
+      "#74492f"
+     ],
+     [
+      6.2,
+      19.6,
+      "#74492f"
+     ],
+     [
+      3.8,
+      21.2,
+      "#74492f"
+     ],
+     [
+      2.4,
+      22.0,
+      "#74492f"
+     ],
+     [
+      2.4,
+      22.3,
+      "#4e3a30"
+     ],
+     [
+      2.3,
+      22.3,
+      "#e4cd92"
+     ],
+     [
+      2.3,
+      23.8,
+      "#e4cd92"
+     ],
+     [
+      2.9,
+      23.8,
+      "#5f9a8a"
+     ],
+     [
+      1.6,
+      24.8,
+      "#5f9a8a"
+     ],
+     [
+      0,
+      25.8,
+      "#5f9a8a"
+     ]
+    ],
+    "arcade": {
+     "from": 0.3,
+     "to": 6.2,
+     "count": 7,
+     "width": 5.0,
+     "height": 5.8,
+     "sill": 0.0,
+     "shape": "round",
+     "depth": 1.2,
+     "innerColour": "#3b2f2b",
+     "phase": 0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "entrance-piers",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -11.6,
+     -10.5
+    ],
+    "end": [
+     11.6,
+     -10.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       1.7
+      ],
+      "height": 6.5,
+      "colour": "#c9bb9a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -25,
+    3
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e0b86e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3a2a",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    17
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2c27c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#74492f",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-bridge",
+   "at": [
+    34,
+    -6,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     30,
+     2.4
+    ],
+    "height": 0.6,
+    "colour": "#26292b"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bridge-piers",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     22,
+     -6
+    ],
+    "end": [
+     46,
+     -6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       3.5
+      ],
+      "height": 4.5,
+      "colour": "#b3a78f"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -8,
+    -48,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "waterColour": "#8fb8cc",
+    "rimColour": "#cfc3a5"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 7,
+    "colour": "#58903f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 6,
+    "colour": "#58903f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-rail",
+   "at": [
+    34,
+    -6,
+    5.1
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.3
+    ],
+    "height": 1.8,
+    "colour": "#1f2224"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-a",
+   "at": [
+    -9,
+    3,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 6.5,
+    "colour": "#d8c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-b",
+   "at": [
+    9,
+    3,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 6.5,
+    "colour": "#d8c9a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 8,
+    "colour": "#58903f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-stage dome, deep arcade, chimneys, attached two-storey wing present; arches are ring cut-outs not stone piers, drum windows not a distinct arched band, skirt roof not scalloped, ironwork bridge is a plain dark deck with rail, square layout only indicated"
+ }
+}

@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-way-206176262",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nicosia_Ataturk_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Seksen iki yuz kirk bes",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/stad1.jpg",
+   "used": "red-brown track round a green pitch, long low main stand across the far side with a thin flat green roof on posts over multicoloured seat blocks (red, yellow, green, blue), low grey concrete terraces either side, two tall steel lattice floodlight masts at the far corners"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atat%C3%BCrk_Stadium_in_Nicosia.jpg",
+   "licence": "CC0",
+   "author": "Seksen iki yuz kirk bes",
+   "view": "street",
+   "file": "/tmp/places-evidence/kyrenia/stad2.jpg",
+   "used": "palms along the outside, pale low outer wall, green roof edge of main stand"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/206176262",
+   "used": "overall size (about 220 x 138 m); outline replaced by an oval stand ring"
+  },
+  {
+   "kind": "wikidata",
+   "id": "Q3495527",
+   "ref": "Q3495527",
+   "used": "OSM way 206176262 is name-matched to Lefkosa Ataturk Stadyumu (North Nicosia, centroid 33.338E 35.214N); the photos show this very stadium, so the evidence is correct even though the venue sits in the kyrenia list. Also removed pitch trees/kit as the critic asked"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 140,
+    "width": 76,
+    "colour": "#b3563f"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "width": 60,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     46,
+     46
+    ],
+    "end": [
+     -46,
+     46
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "under": "open",
+    "seatColours": [
+     "#b33a3a",
+     "#e0b43a",
+     "#2e8b57",
+     "#2f5fa8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c2beb3",
+    "underColour": "#a9a59b",
+    "backWall": 0.5,
+    "canopy": {
+     "height": 10,
+     "depth": 11,
+     "thickness": 0.6,
+     "slopeDeg": 2,
+     "colour": "#2d7a4e",
+     "edgeColour": "#2d7a4e",
+     "supports": 9
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 80,
+    "radiusY": 49,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 30,
+    "under": "open",
+    "seatColour": "#bdbab0",
+    "concreteColour": "#c9c5ba",
+    "underColour": "#aaa69c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -74.80000000000001,
+     50.0
+    ],
+    "end": [
+     74.80000000000001,
+     50.0
+    ],
+    "count": 2,
+    "of": {
+     "type": "lattice-mast",
+     "params": {
+      "height": 35,
+      "baseWidth": 3,
+      "topWidth": 1,
+      "panels": 8,
+      "colour": "#9aa0a6",
+      "colour2": "#9aa0a6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -74.80000000000001,
+     -50.0
+    ],
+    "end": [
+     74.80000000000001,
+     -50.0
+    ],
+    "count": 2,
+    "of": {
+     "type": "lattice-mast",
+     "params": {
+      "height": 35,
+      "baseWidth": 3,
+      "topWidth": 1,
+      "panels": 8,
+      "colour": "#9aa0a6",
+      "colour2": "#9aa0a6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "north"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "critic's evidenceOk=false rejected: OSM way is Lefkosa Ataturk Stadyumu (Wikidata Q3495527), photos are of that same stadium. Terraces plain grey; pitch part adds its own trees/kit; no dugouts"
+ }
+}

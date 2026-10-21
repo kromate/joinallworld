@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-way-1017175209",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1017175209",
+   "used": "real park outline (name match, 0 m), 62 x 57 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small grassed public park with a few trees, paths, a boundary wall and a small pavilion; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 100
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6c9446",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#74a04c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-main",
+   "params": {
+    "section": {
+     "rect": [
+      2.0,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -20,
+      8,
+      0.3
+     ],
+     [
+      -6,
+      10,
+      0.3
+     ],
+     [
+      6,
+      12,
+      0.3
+     ],
+     [
+      14,
+      14,
+      0.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-south",
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      0,
+      12,
+      0.3
+     ],
+     [
+      4,
+      -2,
+      0.3
+     ],
+     [
+      8,
+      -14,
+      0.3
+     ],
+     [
+      10,
+      -26,
+      0.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     5.5,
+     3.8
+    ]
+   },
+   "at": [
+    12,
+    -8
+   ],
+   "rotDeg": -20,
+   "z0": 0.5,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd5c0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 28,
+    "colour": "#5a5f66",
+    "material": "slate",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    22,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -14,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "boundary",
+   "params": {
+    "length": 20,
+    "height": 1.0,
+    "thickness": 0.35,
+    "colour": "#8d8a80",
+    "points": [
+     [
+      -27.9,
+      15.8
+     ],
+     [
+      -1.2,
+      25
+     ],
+     [
+      11.8,
+      30
+     ],
+     [
+      15.1,
+      26.8
+     ],
+     [
+      21.5,
+      27
+     ],
+     [
+      23.5,
+      21.5
+     ],
+     [
+      23.8,
+      16
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline real, paths and trees placed plausibly"
+ }
+}

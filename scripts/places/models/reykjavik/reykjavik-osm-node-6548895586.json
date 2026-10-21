@@ -1,0 +1,116 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/196599215",
+   "used": "1958 public building outline (Stapi hall core of Hljomahol), about 62 x 62 m"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#3f6f9a",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fly-tower",
+   "params": {
+    "rect": [
+     22,
+     18
+    ],
+    "z0": 10,
+    "height": 6,
+    "colour": "#bdbdb6",
+    "topColour": "#3c4650"
+   },
+   "at": [
+    -5,
+    12,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-foyer",
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#3f6f9a",
+    "topColour": "#ffffff",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 5,
+    "height": 2,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -37.3,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; foyer, fly tower and glazing placement inferred from the brief, original outline used"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-node-6548895586"
+}

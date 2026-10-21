@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-node-7192273754",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "OSM point only (no polygon, no photo found): small roadside memorial; modest grey-stone stele with a cross on a paved platform with two steps, in the style of Romanian roadside memorials"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.25
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.35,
+    "colour": "#8a8a85",
+    "topColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    0.5,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.0
+    ],
+    "height": 0.2,
+    "colour": "#8a8a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    1,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.4
+    ],
+    "height": 0.6,
+    "colour": "#6f6f6b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stele",
+   "at": [
+    0,
+    1,
+    1.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.6
+    ],
+    "height": 3.2,
+    "topScale": 0.85,
+    "colour": "#8a8a85",
+    "topColour": "#8a8a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    1,
+    4.35
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 1.5,
+    "colour": "#4a4a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.22
+    ],
+    "height": 0.22,
+    "colour": "#4a4a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-left",
+   "at": [
+    -2.1,
+    -0.8,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "height": 0.12,
+    "colour": "#4a4a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-right",
+   "at": [
+    2.1,
+    -0.8,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "height": 0.12,
+    "colour": "#4a4a48"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic stele with cross from OSM name only"
+ }
+}

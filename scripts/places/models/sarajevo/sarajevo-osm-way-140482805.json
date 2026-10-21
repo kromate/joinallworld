@@ -1,0 +1,844 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadium_Grbavica.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Own work (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/sarajevo/grb2.jpg",
+   "used": "outer stand with curved pale roof on raking struts, tall blue-white floodlight masts, low perimeter wall, wooded hill behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_Grbavica_July_2022.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bakir123",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sarajevo/grb1.jpg",
+   "used": "blue seats with white lettering, long flat grey roof on the east stand, blue running track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/140482805",
+   "used": "overall size (191 x 170 m incl. surroundings); pitch 105x68 modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -60,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftX": 0,
+  "shiftY": 0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "west canopy still on straight columns (V struts not visible); corner tiers and perimeter wall are simple; no wooded hill backdrop"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     114,
+     78
+    ],
+    "height": 0.1,
+    "colour": "#3f67b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     105,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#4f8a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -58,
+     34
+    ],
+    "end": [
+     -58,
+     -34
+    ],
+    "flip": false,
+    "rows": 16,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#c9c8c3",
+    "underColour": "#a9a8a4",
+    "under": "solid",
+    "backWall": 2.5,
+    "canopy": {
+     "height": 13,
+     "depth": 18,
+     "thickness": 1.6,
+     "slopeDeg": -8,
+     "colour": "#e0dccf",
+     "edgeColour": "#e8e8e4",
+     "supports": 4
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     58,
+     -34
+    ],
+    "end": [
+     58,
+     34
+    ],
+    "rows": 5,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "seatColours": [
+     "#2f5aa5",
+     "#e8e8e4"
+    ],
+    "blocks": 3,
+    "concreteColour": "#c0bfba",
+    "under": "solid",
+    "canopy": {
+     "height": 10,
+     "depth": 12,
+     "thickness": 1.0,
+     "slopeDeg": 3,
+     "colour": "#b9bcbd",
+     "edgeColour": "#e8e8e4",
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -40
+    ],
+    "end": [
+     50,
+     -40
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     40
+    ],
+    "end": [
+     -50,
+     40
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -47,
+    5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.6
+    ],
+    "height": 5,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62.0,
+    -46.0,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 7,
+    "colour": "#d5d9dc"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -50,
+     -32
+    ],
+    "radius": 8,
+    "startDeg": 180,
+    "endDeg": 270,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62.0,
+    46.0,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 7,
+    "colour": "#d5d9dc"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -50,
+     32
+    ],
+    "radius": 8,
+    "startDeg": 90,
+    "endDeg": 180,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62.0,
+    -46.0,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 7,
+    "colour": "#d5d9dc"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     50,
+     -32
+    ],
+    "radius": 8,
+    "startDeg": 270,
+    "endDeg": 360,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62.0,
+    46.0,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 7,
+    "colour": "#d5d9dc"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     50,
+     32
+    ],
+    "radius": 8,
+    "startDeg": 0,
+    "endDeg": 90,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColour": "#2f5aa5",
+    "concreteColour": "#b9b8b3",
+    "under": "solid",
+    "facetDeg": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -30,
+      3
+     ],
+     [
+      -65,
+      -32.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -30,
+      3
+     ],
+     [
+      -65,
+      -27.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -18,
+      3
+     ],
+     [
+      -65,
+      -20.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -18,
+      3
+     ],
+     [
+      -65,
+      -15.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -6,
+      3
+     ],
+     [
+      -65,
+      -8.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      -6,
+      3
+     ],
+     [
+      -65,
+      -3.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      6,
+      3
+     ],
+     [
+      -65,
+      3.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      6,
+      3
+     ],
+     [
+      -65,
+      8.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      18,
+      3
+     ],
+     [
+      -65,
+      15.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      18,
+      3
+     ],
+     [
+      -65,
+      20.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      30,
+      3
+     ],
+     [
+      -65,
+      27.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -57,
+      30,
+      3
+     ],
+     [
+      -65,
+      32.5,
+      12.5
+     ]
+    ],
+    "colour": "#cfd0cc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     0.5
+    ],
+    "height": 3,
+    "colour": "#a9a8a2"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     0.5
+    ],
+    "height": 3,
+    "colour": "#a9a8a2"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -80,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -84,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -78,
+     40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-140482805"
+}

@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-node-4515277514",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vilnius_view_to_TV_tower.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kulmalukko",
+   "view": "street",
+   "file": "/tmp/places-evidence/vilnius/tv1.jpg",
+   "used": "slender grey concrete shaft, small saucer about half way up, red and white banded steel spike above"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/355168274",
+   "used": "matched object is a car park; not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.8,
+      0.0,
+      "#b9b8b3"
+     ],
+     [
+      3.28,
+      10.0,
+      "#b9b8b3"
+     ],
+     [
+      2.48,
+      32.0,
+      "#b3b2ad"
+     ],
+     [
+      1.84,
+      60.0,
+      "#aeada8"
+     ],
+     [
+      1.76,
+      64.0,
+      "#8c9196"
+     ],
+     [
+      3.6,
+      64.8,
+      "#8c9196"
+     ],
+     [
+      5.4,
+      65.8,
+      "#a3a8ad"
+     ],
+     [
+      5.8,
+      67.2,
+      "#a3a8ad"
+     ],
+     [
+      5.4,
+      69.2,
+      "#4a82c4"
+     ],
+     [
+      3.2,
+      70.4,
+      "#8c9196"
+     ],
+     [
+      1.6,
+      71.2,
+      "#b9b8b3"
+     ],
+     [
+      1.28,
+      76.8,
+      "#b9b8b3"
+     ],
+     [
+      0.44,
+      77.2,
+      "#d9d9d9"
+     ],
+     [
+      0.4,
+      82.0,
+      "#d9d9d9"
+     ],
+     [
+      0.38,
+      82.0,
+      "#c8362f"
+     ],
+     [
+      0.37,
+      88.8,
+      "#c8362f"
+     ],
+     [
+      0.37,
+      88.8,
+      "#f2f2f2"
+     ],
+     [
+      0.36,
+      95.6,
+      "#f2f2f2"
+     ],
+     [
+      0.36,
+      95.6,
+      "#c8362f"
+     ],
+     [
+      0.35,
+      102.4,
+      "#c8362f"
+     ],
+     [
+      0.35,
+      102.4,
+      "#f2f2f2"
+     ],
+     [
+      0.34,
+      109.2,
+      "#f2f2f2"
+     ],
+     [
+      0.34,
+      109.2,
+      "#c8362f"
+     ],
+     [
+      0.34,
+      116.0,
+      "#c8362f"
+     ],
+     [
+      0.34,
+      116.0,
+      "#f2f2f2"
+     ],
+     [
+      0.33,
+      122.8,
+      "#f2f2f2"
+     ],
+     [
+      0.33,
+      122.8,
+      "#c8362f"
+     ],
+     [
+      0.32,
+      129.6,
+      "#c8362f"
+     ],
+     [
+      0.32,
+      129.6,
+      "#f2f2f2"
+     ],
+     [
+      0.31,
+      130.4,
+      "#f2f2f2"
+     ],
+     [
+      0.1,
+      130.4,
+      "#c8362f"
+     ]
+    ],
+    "segments": 24,
+    "bottomCap": true,
+    "crease": 50
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a7a2",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9196",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     -8
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     24
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     26
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "notes": "Scaled to 0.4 of real size (326.5 m real, 130.6 m modelled) to stay inside the 140 m renderer height limit; proportions kept.",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "scaled to 0.4 for height limit; podium is a guess; photo is a distant silhouette so podium and plaza are unverified"
+ }
+}

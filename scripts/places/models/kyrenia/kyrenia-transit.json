@@ -1,0 +1,849 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyrenia_01-2017_img04_view_from_castle_bastion.jpg",
+   "licence": "free licence (Commons FAL)",
+   "author": "Commons contributor (Kyrenia 01-2017 series)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kyrenia/harbour4.jpg",
+   "used": "horseshoe harbour seen from the castle bastion: castle stone in the foreground left, quay apron in front, two-storey cafe rows with white umbrellas along the west and back quays, long stone mole on the right ending in a small lighthouse, moored boats, turquoise water"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 70
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     100
+    ],
+    "z0": -0.25,
+    "height": 0.35,
+    "colour": "#2f9a9a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     24
+    ],
+    "z0": -0.1,
+    "height": 0.6,
+    "colour": "#c9b898"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     80
+    ],
+    "z0": -0.1,
+    "height": 0.6,
+    "colour": "#c9b898"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     14
+    ],
+    "z0": -0.1,
+    "height": 0.6,
+    "colour": "#c9b898"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     90
+    ],
+    "z0": -0.1,
+    "height": 2.2,
+    "colour": "#c8b185"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     88
+    ],
+    "z0": 2.1,
+    "height": 0.15,
+    "colour": "#a89c84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    80,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 2.1,
+    "height": 7,
+    "colour": "#e4d8b8",
+    "topScale": 0.65
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    80,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 9.1,
+    "height": 1.4,
+    "colour": "#7a3a2a",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "z0": -0.1,
+    "height": 3.5,
+    "colour": "#bfa36a",
+    "topScale": 0.87
+   }
+  },
+  {
+   "type": "mass",
+   "id": "castle-bastion",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -42,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfb277",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a86e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 11,
+    "kind": "round",
+    "cap": "none"
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -60,
+    -22,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 11,
+    "kind": "round",
+    "cap": "none"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -42,
+    -40,
+    7
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.4,
+    "thickness": 0.8,
+    "merlons": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -46,
+    8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 14,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#efe7d0",
+     "#e8dcc0"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -18,
+    58,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 24,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#efe7d0",
+     "#d86a4a"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -22.532441359429846,
+    12.951969643074358,
+    0.05
+   ],
+   "params": {
+    "length": 16,
+    "width": 3,
+    "colour": "#f1f1ee",
+    "yaw": 180
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -28.53205196062164,
+    11.192724592620316,
+    0.05
+   ],
+   "params": {
+    "length": 16,
+    "width": 3,
+    "colour": "#2f5f8a",
+    "yaw": 75
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    27.928673188491203,
+    46.42171287179881,
+    0.05
+   ],
+   "params": {
+    "length": 8,
+    "width": 3,
+    "colour": "#a63a2e",
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -1.4948940596407638,
+    25.291755656009663,
+    0.05
+   ],
+   "params": {
+    "length": 10,
+    "width": 3,
+    "colour": "#e8e0c8",
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -20.63275118272281,
+    53.26204929142319,
+    0.05
+   ],
+   "params": {
+    "length": 8,
+    "width": 3,
+    "colour": "#2f7a52",
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    19.2331400521795,
+    17.28490966492352,
+    0.05
+   ],
+   "params": {
+    "length": 12,
+    "width": 3,
+    "colour": "#f1f1ee",
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    6.396194578571631,
+    43.130946026178464,
+    0.05
+   ],
+   "params": {
+    "length": 12,
+    "width": 3,
+    "colour": "#2f5f8a",
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    22.514402753360855,
+    24.195318819892925,
+    0.05
+   ],
+   "params": {
+    "length": 16,
+    "width": 3,
+    "colour": "#a63a2e",
+    "yaw": 75
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -21.583357996072827,
+    19.871466567607364,
+    0.05
+   ],
+   "params": {
+    "length": 12,
+    "width": 3,
+    "colour": "#e8e0c8",
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    29.89875648289575,
+    47.25837857680946,
+    0.05
+   ],
+   "params": {
+    "length": 12,
+    "width": 3,
+    "colour": "#2f7a52",
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    27.2564014166868,
+    35.47360648092279,
+    0.05
+   ],
+   "params": {
+    "length": 12,
+    "width": 3,
+    "colour": "#f1f1ee",
+    "yaw": 75
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    34,
+    22,
+    0.05
+   ],
+   "params": {
+    "length": 24,
+    "width": 6,
+    "colour": "#f1f1ee",
+    "yaw": 80
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -30,
+    -0.1
+   ],
+   "params": {
+    "colour": "#c8362f",
+    "count": 2,
+    "spacing": 3,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "west-row",
+   "footprint": {
+    "rect": [
+     11,
+     62
+    ]
+   },
+   "at": [
+    -54,
+    27
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d2b682",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "arched"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "right"
+     ],
+     "shape": "round",
+     "bay": 4,
+     "opening": 0.6,
+     "height": 0.85,
+     "depth": 0.6
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-row",
+   "footprint": {
+    "rect": [
+     96,
+     10
+    ]
+   },
+   "at": [
+    0,
+    66
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d2b682",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "round",
+     "bay": 4,
+     "opening": 0.6,
+     "height": 0.85,
+     "depth": 0.6
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    2,
+    -22,
+    0.0
+   ],
+   "params": {
+    "length": 26,
+    "width": 6.5,
+    "colour": "#f1f1ee",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     18.2
+    ],
+    "z0": 2.0,
+    "height": 0.4,
+    "colour": "#3f9a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -25.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 19,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -16.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 16,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    20,
+    -26,
+    0.0
+   ],
+   "params": {
+    "length": 22,
+    "width": 6.5,
+    "colour": "#9a3a2c",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     15.399999999999999
+    ],
+    "z0": 2.0,
+    "height": 0.4,
+    "colour": "#3f9a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -29.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 19,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -21.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 16,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    36,
+    -20,
+    0.0
+   ],
+   "params": {
+    "length": 20,
+    "width": 6.5,
+    "colour": "#f1f1ee",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     14.0
+    ],
+    "z0": 2.0,
+    "height": 0.4,
+    "colour": "#3f9a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    -23.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 19,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    -16.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.0,
+    "height": 16,
+    "colour": "#d8d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   116,
+   112
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Horseshoe basin, honey-stone sloped castle bastion with round towers, continuous two-storey arcaded cafe rows, long 90 m mole with walkway and lighthouse and large masted boats on the near apron follow the photo; no mountains, no rocky shoreline or sea beyond the mole, towers have no caps, boats are boxy, quay is flat paving not dirt yard."
+ }
+}

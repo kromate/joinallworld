@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Danmarks_Statistik_-_Danish_Bureau_of_Census_(Copenhagen).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kim Bach",
+   "view": "street",
+   "file": "/tmp/places-evidence/copenhagen/community-no_0.jpg",
+   "used": "the Danmarks Statistik building at Sejr\u00f8gade that houses the agency: six-storey red-brown brick block, vertical brick fin rhythm with dark slit windows, tall corner pier, flat roof with solar panels and railing, low dark entrances at ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2338363",
+   "used": "overall size (about 105 m square ring) and 6 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "n-front",
+   "footprint": {
+    "rect": [
+     96,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -35
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0553a",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.3,
+      "spacing": 2.4,
+      "colour": "#c0602f",
+      "margin": 0.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "n-right",
+   "footprint": {
+    "rect": [
+     22,
+     70
+    ]
+   },
+   "at": [
+    37,
+    11
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#c46a48",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.3,
+      "spacing": 3.0,
+      "colour": "#c0602f",
+      "margin": 0.2,
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "n-left",
+   "footprint": {
+    "rect": [
+     22,
+     70
+    ]
+   },
+   "at": [
+    -37,
+    11
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0553a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "n-back",
+   "footprint": {
+    "rect": [
+     52,
+     22
+    ]
+   },
+   "at": [
+    0,
+    35
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0553a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -38,
+    -54,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.9,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -56,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 4.2,
+    "yaw": 90,
+    "colour": "#eeeeee"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -62,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-pier",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    46.3,
+    -44.3
+   ],
+   "height": 24.8,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4552f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door1",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.8
+    ]
+   },
+   "at": [
+    -8,
+    -46.2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door2",
+   "footprint": {
+    "rect": [
+     0.8,
+     2.4
+    ]
+   },
+   "at": [
+    48.2,
+    -8
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2d"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "on": "n-front",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 16,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "solar-panels",
+   "on": "n-front",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 10,
+    "tilt": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 5,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fins coarser than photo (triangle budget), slit windows not modelled, corner pier sits slightly proud at the top, right face reads dark, no bike racks or rooftop railing; road still wide."
+ }
+}

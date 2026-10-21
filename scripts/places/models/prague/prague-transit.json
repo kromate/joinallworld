@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: I. P. Pavlova metro station on Line C (opened 1974) with a small street-level vestibule at the Vinohrady/Nusle junction beside tram and bus stops; the OSM match is a nearby K+R parking node (85 m away, 2.4 m wide) so no outline is used; the only Commons photos found show the underground platform, not the entrance"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vestibule",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 6.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5aa",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "glassColour": "#4f6f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a78",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "stair-head",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6f8a",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9296",
+    "material": "membrane",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entry-canopy",
+   "at": [
+    6,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 4,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#c9c6bc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entry-steps",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "metro-sign",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#c9302c",
+    "frameColour": "#8e9296",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "tram-shelter",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 3,
+    "height": 3.2,
+    "thickness": 0.3,
+    "columns": 4,
+    "colour": "#8e9296"
+   }
+  },
+  {
+   "type": "car",
+   "id": "bus",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#c8362f",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     4
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of the station vestibule exists in the evidence; form is a typical 1970s Prague metro entrance from the brief (modernist concrete block, glazed front, red marker sign, tram shelter), not verified"
+ }
+}

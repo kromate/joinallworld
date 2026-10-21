@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/331258188",
+   "used": "vestibule outline 31 x 30 m, 1 level (nearest match 5 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Baku_Metro",
+   "used": "opened 1968 as Shaumyan, Soviet metro entrance pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vestibule",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c8a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "glassColour": "#4a5560",
+    "plinth": 0.7,
+    "bands": "#8a8d8f",
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#efe6d0",
+    "roofColour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -8,
+    6
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#8a8d8f",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -14
+   ],
+   "params": {
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found; OSM outline with a typed Soviet-style stone vestibule, arched windows and small portico; real entrance design unknown."
+ }
+}

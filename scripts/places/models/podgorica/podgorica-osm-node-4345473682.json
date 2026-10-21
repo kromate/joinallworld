@@ -1,0 +1,105 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: rendered 3-storey Yugoslav-era faculty block, strip windows, small portico. OSM outline here belongs to Pravni fakultet, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     45,
+     18
+    ]
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3dcc8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b4b0a6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-node-4345473682",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and the OSM outline is another faculty; typical Yugoslav-era block from the brief."
+ }
+}

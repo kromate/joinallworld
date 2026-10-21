@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-346514126",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Boskapel,_Buggenhout_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (see file page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/boskapel1.jpg",
+   "used": "brick gable front with pale stone quoins and surrounds, two arched barred windows, central statue niche, arched door, steep gable, small slate-capped belfry turret on the ridge, cobbled forecourt in forest"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/346514126",
+   "used": "size and use only (154 m2, 1664); outline is irregular so a clean rectangle of the same size is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.6,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8553f",
+    "windows": "none",
+    "plinth": 0.7,
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d9d0b8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f55",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quoin-left",
+   "params": {
+    "rect": [
+     0.6,
+     0.4
+    ],
+    "height": 7.2,
+    "colour": "#d9d0b8"
+   },
+   "at": [
+    -4.5,
+    -8.15,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "quoin-right",
+   "params": {
+    "rect": [
+     0.6,
+     0.4
+    ],
+    "height": 7.2,
+    "colour": "#d9d0b8"
+   },
+   "at": [
+    4.5,
+    -8.15,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 6.4,
+    "colour": "#d9d0b8"
+   },
+   "at": [
+    -1.75,
+    -8.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 6.4,
+    "colour": "#d9d0b8"
+   },
+   "at": [
+    1.75,
+    -8.1,
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -3.0,
+    -8.02,
+    3.5
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.7,
+    "kind": "arch",
+    "trim": "#d9d0b8"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    3.0,
+    -8.02,
+    3.5
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.7,
+    "kind": "arch",
+    "trim": "#d9d0b8"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -8.02,
+    3.9
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.2,
+    "kind": "arch",
+    "trim": "#d9d0b8"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -8.02,
+    0.4
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.6,
+    "arch": true,
+    "trim": "#d9d0b8"
+   }
+  },
+  {
+   "type": "core/tower",
+   "id": "belfry",
+   "at": [
+    0,
+    -6.0,
+    10.9
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 2.0,
+    "cap": "pyramid",
+    "capRise": 2.6,
+    "windows": "none",
+    "colour": "#cfd3d6",
+    "capColour": "#7c8266"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#d9d0b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "line": 20,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "line": 20,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "line": 14,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Statue niche, stone window surrounds, plaques and eaves cornice not modelled; windows slightly pointed; belfry spire proportion approximate; trees are generic"
+ }
+}

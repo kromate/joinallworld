@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-475513360",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Istanbul_Bosphorus_Mimar_Sinan_Fine_Arts_University_IMG_7561_1800.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alexxx1979",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/msgsu1.jpg",
+   "used": "three-storey cream stucco palace block, low red hip roof with small attic lanterns, ground floor square windows, upper floors tall arched windows with pedimented central bays, stone quay wall in front"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Mimar_Sinan_Fine_Arts_University",
+   "used": "twin palaces of 1856 (Munire and Cemile Sultan), so a second near-identical block stands beside the first"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/475513360",
+   "used": "campus extent only (241 x 70 m outline is the campus, not one building), so the blocks are rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 30,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace-a",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9b48c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8956e",
+      "height": 0.5,
+      "at": 0.98
+     },
+     {
+      "type": "bands",
+      "colour": "#e4d9bd",
+      "height": 0.4,
+      "at": 0.9
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9462f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-b",
+   "footprint": {
+    "rect": [
+     38,
+     22
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c6b18a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8956e",
+      "height": 0.5,
+      "at": 0.98
+     },
+     {
+      "type": "bands",
+      "colour": "#e4d9bd",
+      "height": 0.4,
+      "at": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9462f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay",
+   "params": {
+    "rect": [
+     116,
+     3
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#8f9094"
+   },
+   "at": [
+    2,
+    -14
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     30,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 14,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cfc3a5",
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8a8c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay0",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    -44,
+    -12.2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbf9c",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    -24,
+    -12.2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbf9c",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    -4,
+    -12.2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbf9c",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay3",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    24,
+    -12.2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbf9c",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay4",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    40,
+    -12.2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdbf9c",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water",
+   "params": {
+    "rect": [
+     140,
+     20
+    ],
+    "z0": -0.2,
+    "height": 0.25,
+    "colour": "#4d6f80"
+   },
+   "at": [
+    0,
+    -26
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "params": {
+    "rect": [
+     140,
+     40
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#5d6b45"
+   },
+   "at": [
+    0,
+    40
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Palaces now one continuous facade with pedimented bays, attic strip, water and hillside slab; hillside is a plain block (no dense buildings or mosque), pilaster and window detail simplified, ground floor windows still arched."
+ }
+}

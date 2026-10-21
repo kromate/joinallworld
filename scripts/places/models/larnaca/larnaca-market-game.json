@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-market-game",
+   "used": "110 x 60 m paved weekly-market lot with striped awnings, umbrella stalls and two open sheds; brief is a typed placeholder with no layout and the OSM match is an unrelated 176 m2 building 7 m away, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "post_pitch": 4.5,
+    "goods": "crates",
+    "roof_colour": "#d9d4c8",
+    "wall_colour": "#e6dfce"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "post_pitch": 4.5,
+    "goods": "crates",
+    "roof_colour": "#d9d4c8",
+    "wall_colour": "#e6dfce"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c25a45",
+     "#f0ebdf",
+     "#e0a24f",
+     "#8fa0ab"
+    ],
+    "goods_colours": [
+     "#c25a45",
+     "#e0a24f",
+     "#7a9b4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#f0ebdf",
+     "#c25a45",
+     "#8fa0ab",
+     "#e0a24f"
+    ],
+    "goods_colours": [
+     "#e0a24f",
+     "#c25a45",
+     "#7a9b4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c25a45",
+     "#f0ebdf",
+     "#e0a24f",
+     "#8fa0ab"
+    ],
+    "goods_colours": [
+     "#c25a45",
+     "#e0a24f",
+     "#7a9b4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#f0ebdf",
+     "#c25a45",
+     "#8fa0ab",
+     "#e0a24f"
+    ],
+    "goods_colours": [
+     "#e0a24f",
+     "#c25a45",
+     "#7a9b4a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.2,
+    "colours": [
+     "#c25a45",
+     "#f0ebdf"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.2,
+    "colours": [
+     "#c25a45",
+     "#f0ebdf"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 8,
+    "colours": [
+     "#c25a45",
+     "#f0ebdf",
+     "#e0a24f"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Text only; stall layout and shed positions are plausible, not observed."
+ }
+}

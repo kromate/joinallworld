@@ -1,0 +1,274 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/664706893",
+   "used": "setting only: the node sits in the Tanev Bair park (a green slope); the tree itself is a point so only the brief's size is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#5d4630",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.6,
+       2.4
+      ]
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       1.9,
+       1.8
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 10.5,
+      "ellipse": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#4e6a2c",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      5,
+      0.8
+     ],
+     [
+      9.5,
+      3.5
+     ],
+     [
+      10.5,
+      6.5
+     ],
+     [
+      8.5,
+      9.5
+     ],
+     [
+      4.5,
+      11
+     ],
+     [
+      0.1,
+      11.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#2f3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#2f3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#2f3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#2f3033"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -24
+     ],
+     [
+      0,
+      -10
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    4,
+    -9.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; a single old oak in a railed plot per the brief, species, exact size and plaque unverified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-osm-node-6221811642"
+}

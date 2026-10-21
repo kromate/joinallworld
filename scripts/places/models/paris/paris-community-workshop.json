@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Institut_Sup%C3%A9rieur_M%C3%A9canique_Paris_-_Saint-Ouen-sur-Seine_(FR93)_-_2024-02-11_-_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chabe01",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/sup2.jpg",
+   "used": "L-shaped four-storey school: stone ground storey with arched barred windows, yellow-brown brick upper storeys with stone pilasters and pale panels under windows, low slate roof, chimney at the back"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fa%C3%A7ade_principale_de_l%27%C3%A9cole_Supm%C3%A9ca_Paris.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Artvill",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/sup1.jpg",
+   "used": "arched ground-floor windows with keystones, round window by the door, arched door, bay rhythm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/424820207",
+   "used": "L-shaped footprint hint; the OSM way (33 x 16 m) covers only part of the building so the plan is enlarged to the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-front",
+   "footprint": {
+    "rect": [
+     60,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c8bb9a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 4.4,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#d8cfb8",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-front",
+   "footprint": {
+    "rect": [
+     60,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.6,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a89972",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 4.4,
+    "cornice": true,
+    "trimColour": "#d8cfb8",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9a6a52"
+     }
+    ]
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#585a60",
+    "rise": 3.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-wing",
+   "footprint": {
+    "rect": [
+     15,
+     28
+    ]
+   },
+   "at": [
+    -22.5,
+    21.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c8bb9a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 4.4,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#d8cfb8",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-wing",
+   "footprint": {
+    "rect": [
+     15,
+     28
+    ]
+   },
+   "at": [
+    -22.5,
+    21.5
+   ],
+   "z0": 5.6,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a89972",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 4.4,
+    "cornice": true,
+    "trimColour": "#d8cfb8",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9a6a52"
+     }
+    ]
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#585a60",
+    "rise": 3.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -4,
+    0,
+    20
+   ],
+   "params": {
+    "height": 4.5,
+    "radius": 1.2,
+    "material": "brick",
+    "colour": "#8f8068"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    11,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -14,
+    -4.5,
+    20
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 2.2,
+    "colour": "#585a60",
+    "wall_colour": "#c8bb9a",
+    "trim_colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -2,
+    -4.5,
+    20
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 2.2,
+    "colour": "#585a60",
+    "wall_colour": "#c8bb9a",
+    "trim_colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    10,
+    -4.5,
+    20
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 2.2,
+    "colour": "#585a60",
+    "wall_colour": "#c8bb9a",
+    "trim_colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -27,
+    12,
+    20
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 2.2,
+    "colour": "#585a60",
+    "wall_colour": "#c8bb9a",
+    "trim_colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -27,
+    26,
+    20
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.6,
+    "height": 2.2,
+    "colour": "#585a60",
+    "wall_colour": "#c8bb9a",
+    "trim_colour": "#d8cfb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a mansard stand-in for the real low slate hip; only five dormers; corner not chamfered; arched door and round window omitted; stone pilasters between bays and pale panels under windows not modelled (budget)."
+ }
+}

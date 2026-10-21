@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SEEU_(Autumn)_(1).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Liridon",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/13_0.jpg",
+   "used": "low campus pavilions: pale teal single-storey hall with shallow lean roof and white eave, white two-storey block with ribbon punched windows, blue three-storey block with grey cap and wall-mounted air conditioners"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1559869019",
+   "used": "block size (25 x 22 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     24
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a9d0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#f4f6f6",
+    "pitch": 7,
+    "overhang": 0.9,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    10,
+    26
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f0ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e3e6e6",
+    "pitch": 6,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-block",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    13,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5bb0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e949a",
+    "pitch": 6,
+    "overhang": 1.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    15
+   ],
+   "params": {
+    "rect": [
+     9,
+     80
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    -10,
+    -4
+   ],
+   "params": {
+    "rect": [
+     11,
+     16
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench0",
+   "footprint": {
+    "rect": [
+     0.6,
+     1.8
+    ]
+   },
+   "at": [
+    -6.2,
+    -4
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e8e6df",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3028"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     0.6,
+     1.8
+    ]
+   },
+   "at": [
+    -6.2,
+    -9
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e8e6df",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3028"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5.2,
+    6,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5.2,
+    20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "ac0",
+   "at": [
+    7.8,
+    -1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.9
+    ],
+    "z0": 4.2,
+    "height": 0.6,
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac1",
+   "at": [
+    7.8,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.9
+    ],
+    "z0": 7.2,
+    "height": 0.6,
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ac2",
+   "at": [
+    7.8,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.9
+    ],
+    "z0": 4.2,
+    "height": 0.6,
+    "colour": "#e4e6e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   70,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -5.5,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5.5,
+     32
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5.5,
+     34
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6,
+     18
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pavilions sized from a 25 m OSM block; benches, shrubs and umbrellas simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-osm-way-1559869019"
+}

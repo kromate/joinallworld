@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-485353483",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/485353483",
+   "used": "quadrilateral outline about 56 x 42 m, bearing 107 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#6f8a99",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f3f0e8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a74",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant",
+   "at": [
+    3,
+    2
+   ],
+   "params": {
+    "rect": [
+     9,
+     6
+    ],
+    "z0": 14,
+    "height": 2.6,
+    "colour": "#b9b6ae",
+    "topColour": "#8c8a84"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 3.4,
+    "colour": "#6f8a99",
+    "columns": 2
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -6,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building (nearby geotagged photos are other buildings); real outline plus brief facts only; entrance side, roof plant and windows are typical not observed."
+ }
+}

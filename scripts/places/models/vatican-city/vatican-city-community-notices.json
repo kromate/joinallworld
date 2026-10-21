@@ -1,0 +1,244 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palace_of_Saint_Charles_in_the_Vatican_City.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons (P18)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vatican-city/sancarlo.jpg",
+   "used": "two-tone facade: buff stone-coursed ground and first floors below yellow plaster upper floors, arched windows in regular bays, flat terracotta roof with yellow attic block, pink-ochre four-storey wing at right, parked cars and umbrella pines in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255891412",
+   "used": "overall size only (about 50 x 35 m); outline is not a clean rectangle so a rectangle plus wing is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 30,
+  "fovDeg": 48,
+  "aspect": 1.298,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-base",
+   "footprint": {
+    "rect": [
+     50,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c7ab7d",
+    "windows": "arched",
+    "windowRatio": 0.26,
+    "bay": 5.6,
+    "plinth": 0.7,
+    "cornice": true,
+    "windowShape": "arched",
+    "trimColour": "#e8dfc8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a07a",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-upper",
+   "footprint": {
+    "rect": [
+     50,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.4,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b64a",
+    "windows": "arched",
+    "windowRatio": 0.26,
+    "bay": 5.6,
+    "cornice": true,
+    "windowShape": "arched",
+    "trimColour": "#f0e6c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0a08a",
+    "material": "clay-tile",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    33,
+    -1
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa584",
+    "windows": "arched",
+    "windowRatio": 0.24,
+    "bay": 5.6,
+    "plinth": 0.7,
+    "cornice": true,
+    "windowShape": "arched",
+    "trimColour": "#e8dfc8",
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dd9d86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -5,
+    3
+   ],
+   "z0": 18.2,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3bb4e",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0a08a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    20
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3bb4e",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0a08a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -26
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -8,
+    -16
+   ],
+   "params": {
+    "colour": "#7a7f84",
+    "count": 6,
+    "spacing": 2.8,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "rect": [
+     64,
+     12
+    ],
+    "height": 0.08,
+    "colour": "#5f6061",
+    "topColour": "#5f6061"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "rusticated stone texture and shutters not modelled; surrounding townhouses and pines simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-community-notices"
+}

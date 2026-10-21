@@ -1,0 +1,201 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Kyiv",
+   "used": "pastel stucco two/three-storey frontage typical of the historic centre; brief: pastel render, arched windows, shop-front entrance, awnings, green metal hip roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6a98a",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#f3ecda",
+    "cornice": true,
+    "groundKind": "shopfront",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7a5a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-west",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -15.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9d3b3",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#f3ecda",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-east",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    15,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf9a",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#f3ecda",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c5f63",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.5,
+    -6.9,
+    3.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     5.5,
+     1.8
+    ],
+    "height": 0.25,
+    "colour": "#9c4a34"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -6.9,
+    3.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     5.5,
+     1.8
+    ],
+    "height": 0.25,
+    "colour": "#9c4a34"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 4.2,
+    "colour": "#5a2a22",
+    "posts": false
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this venue; modest pastel stucco frontage typed from the brief with neighbours for street context"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-meal-stop"
+}

@@ -1,0 +1,224 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-51446838",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Air_ahus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/oslo/ahus3.jpg",
+   "used": "long stepped hospital wings, pale grey panel cladding with horizontal window bands, one darker grey block at the west end, flat roofs, forest and fields around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ahus-Front_inngang.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bjorn H Stuedal",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/ahus2.jpg",
+   "used": "main entrance: two-storey glass curtain wall under a huge white cantilevered flat roof slab, white side walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13249680",
+   "used": "hospital footprint, scaled to 0.45 to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 70,
+  "pitchDeg": 22,
+  "fovDeg": 30,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-wings",
+   "footprint": {
+    "osm": true,
+    "scale": 0.45,
+    "simplify": 16
+   },
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ccc9",
+    "glassColour": "#a7aeb0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "trimColour": "#b4b8b6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc3c3",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-slab",
+   "at": [
+    2,
+    -35,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     32,
+     16
+    ],
+    "height": 0.9,
+    "colour": "#f6f6f2",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "at": [
+    2,
+    -32,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     9
+    ],
+    "height": 8.2,
+    "colour": "#5d7280",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#7f95a3",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-wall",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 8.2,
+    "colour": "#e4e4df",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "west-block",
+   "at": [
+    -34,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     18
+    ],
+    "height": 22,
+    "colour": "#6f767b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8bbb8",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#6f767b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adab"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -52,
+     40
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     52,
+     40
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -54,
+     0
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     54,
+     -10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -44
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   116,
+   116
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM comb plan at 0.45 scale is one uniform-height mass (3 storeys for the triangle budget) so wings do not step 4 to 6 storeys; west dark block and entrance pavilion are simple boxes; car park is a plain ribbon box; no glass street roof or helipad."
+ }
+}

@@ -1,0 +1,307 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-173534115",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:0001_J_Manicki-Palac_w_Oborach_2wrz2012-elewacja_zach.JPG",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Jaroslaw Manicki",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/dwor.jpg",
+   "used": "long single-storey cream-rendered block, tall terracotta hip roof with two dormers and four white chimneys, central pedimented risalit with door and balustraded terrace, window surrounds with small pediments, lawn and hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173534115",
+   "used": "overall size (about 43 x 21 m); the traced outline is a zigzag of the manor and wings so the plain block seen in the photo is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.9,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "rise": 5.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "risalit",
+   "footprint": {
+    "rect": [
+     10,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -8.0
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dec2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ece0c4",
+    "material": "membrane",
+    "rise": 3.0,
+    "overhang": 0.1
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -9.0,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 1.0,
+    "height": 3.0,
+    "columns": 2,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#efe5cb",
+    "roofColour": "#efe5cb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 0.9,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -11,
+    -4.8,
+    7.9
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#b4573a"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    11,
+    -4.8,
+    7.9
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#b4573a"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -12,
+    0,
+    10.9
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "pots": 0,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3.5,
+    0,
+    10.9
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "pots": 0,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    3.5,
+    0,
+    10.9
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "pots": 0,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    12,
+    0,
+    10.9
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "pots": 0,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.2,
+    "colour": "#2f5a2d"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.2,
+    "colour": "#2f5a2d"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   75,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Long hip roof, cream pedimented risalit, even window rhythm, chimneys on ridge and dormers now match; real roof has a lower eaves tier and second ridge, window surrounds, balustraded terrace and garden planting are not modelled."
+ }
+}

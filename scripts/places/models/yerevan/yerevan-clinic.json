@@ -1,0 +1,225 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Izmirlian_-_Surp_Nerses.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Govorkov",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/clin1.jpg",
+   "used": "seven-storey cream limestone slab, end gable stepped with curved cantilevered balcony ribbons, long front with continuous curved balcony bands, lower two-storey wing on the right raised over an open undercroft, grey stone plinth, lawn and avenue trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/55731080",
+   "used": "identity and level count (7); the zigzag outline is not used because the photo shows a straight slab"
+  }
+ ],
+ "camera": {
+  "yawDeg": -48,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.39,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     56,
+     15
+    ]
+   },
+   "at": [
+    -6,
+    10
+   ],
+   "height": 32,
+   "storeys": 7,
+   "wall": {
+    "material": "stone",
+    "colour": "#f2e4a4",
+    "windows": "rect",
+    "windowRatio": 0.07,
+    "bay": 6,
+    "glassColour": "#a9bcc8",
+    "plinth": 2.4,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "rect",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 2.4,
+      "every": 1,
+      "width": 14,
+      "colour": "#f6edc2",
+      "faces": [
+       "left"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f8f0c8"
+      ],
+      "height": 1.6,
+      "floors": "all",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    46,
+    -8
+   ],
+   "z0": 6,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#ecdca0",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    62,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "z0": 0,
+      "height": 6,
+      "colour": "#cfc9b5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     28,
+     -17
+    ],
+    "end": [
+     66,
+     -17
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-win",
+   "params": {
+    "rect": [
+     5,
+     0.4
+    ],
+    "z0": 13,
+    "height": 4,
+    "colour": "#5d7384"
+   },
+   "at": [
+    52,
+    -19.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -28
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -22
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "curved balcony ribbons are straight cantilevers on the end gable and bands on the front; end gable not stepped; wing arch window is a flat rectangle, undercroft only pilotis"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-clinic"
+}

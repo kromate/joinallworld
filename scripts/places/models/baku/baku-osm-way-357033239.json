@@ -1,0 +1,455 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chelsea_won_UEFA_Europa_League_final_at_Olympic_Stadium_and_President_Ilham_Aliyev_watched_the_final_match_16.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Press Service of the President of the Republic of Azerbaijan",
+   "view": "interior",
+   "file": "/tmp/places-evidence/baku/p18_0.jpg",
+   "used": "continuous elliptical roof ring on exposed steel trusses with a lit rim, two tiers of teal seats, green pitch inside a red track, tall steel-and-membrane outer wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baku_Olympic_Stadium_panorama_1.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eminn",
+   "view": "interior",
+   "file": "/tmp/places-evidence/baku/p18_5.jpg",
+   "used": "bowl proportions: two seating tiers, open oval roof edge, red running track around the pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5327164",
+   "used": "overall size 300 m across, near-circular plan; modelled as a bowl scaled to the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 64,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#b9b6ae"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a5603a",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0.2,
+      "ellipse": [
+       56,
+       46
+      ]
+     },
+     {
+      "z": 35,
+      "ellipse": [
+       57.5,
+       47.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 48,
+    "count": 28,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        0.9
+       ],
+       "height": 34,
+       "colour": "#e8914f"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    34.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 41,
+    "count": 36,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        17,
+        0.8
+       ],
+       "height": 3.2,
+       "colour": "#2f3338"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    36
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58.5,
+    "radiusY": 48.5,
+    "count": 36,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.4,
+        1.2
+       ],
+       "height": 1.0,
+       "colour": "#f4f6f7"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    34.5
+   ],
+   "params": {
+    "colour": "#2f3338",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       58.5,
+       48.5
+      ]
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       58.5,
+       48.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "colour": "#2f3338",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 34,
+      "ellipse": [
+       59,
+       49
+      ]
+     },
+     {
+      "z": 36,
+      "ellipse": [
+       59,
+       49
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 37,
+    "radiusY": 29,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 7,
+    "rise": 0.9,
+    "run": 1.1,
+    "firstHeight": 2.0,
+    "facetDeg": 45,
+    "under": "open",
+    "slab": 0.5,
+    "seatColours": [
+     "#3c9a97",
+     "#e8eeee",
+     "#318582"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c7c1",
+    "underColour": "#aaa8a2",
+    "closeEnds": false
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 47,
+    "radiusY": 38,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 7,
+    "rise": 1.0,
+    "run": 1.1,
+    "firstHeight": 11.5,
+    "facetDeg": 45,
+    "under": "open",
+    "slab": 0.5,
+    "seatColours": [
+     "#e8eeee",
+     "#3c9a97",
+     "#4aa6a2"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c7c1",
+    "underColour": "#aaa8a2",
+    "closeEnds": false
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "colour": "#a8503d",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       36.5,
+       28.5
+      ]
+     },
+     {
+      "z": 0.1,
+      "ellipse": [
+       36.5,
+       28.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     47,
+     31
+    ],
+    "height": 0.1,
+    "colour": "#3f9a3c"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    33.3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#f4f6f7",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       42.5,
+       34.5
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       42.5,
+       34.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    31.0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "colour": "#2f3338",
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       42,
+       34
+      ]
+     },
+     {
+      "z": 2.3,
+      "ellipse": [
+       42,
+       34
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-357033239",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "interior-only photos: outer wall is a copper drum with ribs, not LED-lit membrane; roof ring is a dark band with sparse radial trusses and white rim blocks, not a continuous deep steel structure; upper tier approximate; LOD0 near budget"
+ }
+}

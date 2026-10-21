@@ -1,0 +1,1272 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chisinau_Piata_Centrala.JPG",
+   "licence": "Public domain",
+   "author": "Bdell555",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/market1.jpg",
+   "used": "entrance arch: two green posts carrying a green board with a cream-edged, gold-lettered face (modelled blank), kiosks beside the gate, dense crowd"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_market_of_Chisinau.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bagriton",
+   "view": "street",
+   "file": "/tmp/places-evidence/chisinau/market2.jpg",
+   "used": "aisle view: silver arched-roof pavilion and a brown canopy left, bright yellow shopfront rows right, blue umbrellas, lamp posts, grey residential block at the far end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25195025",
+   "used": "overall extent only (415 x 129 m diagonal block); a 118 m portion of the layout is modelled"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only a portion of the block is modelled; aisle far emptier than the real wall-to-wall crowd and canopies; no hanging goods or banners; gate is a simple arch; ground beyond the paved aisle is bare."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 7,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": -0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "gate-post-5.8",
+   "at": [
+    -5.8,
+    -50,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 7.5,
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-post5.8",
+   "at": [
+    5.8,
+    -50,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 7.5,
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-board",
+   "at": [
+    0,
+    -50,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.6
+    ],
+    "height": 3.4,
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-board-edge",
+   "at": [
+    0,
+    -50.05,
+    6.1
+   ],
+   "params": {
+    "rect": [
+     12.4,
+     0.7
+    ],
+    "height": 2.2,
+    "colour": "#d8c46a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-board-inner",
+   "at": [
+    0,
+    -50.1,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     11.6,
+     0.75
+    ],
+    "height": 1.8,
+    "colour": "#2f6b45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-left",
+   "footprint": {
+    "rect": [
+     22,
+     64
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c6bb",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#b2bcc4",
+    "material": "metal-sheet",
+    "rise": 4.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-left-2",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    -22,
+    52
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c6bb",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#aab4bc",
+    "material": "metal-sheet",
+    "rise": 4.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stalls-right",
+   "footprint": {
+    "rect": [
+     8,
+     84
+    ]
+   },
+   "at": [
+    23,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a81c",
+    "windows": "none",
+    "bands": "#f4c542",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "awnings-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16.4,
+     -30,
+     0
+    ],
+    "end": [
+     16.4,
+     40,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "awning",
+     "rotDeg": -90,
+     "params": {
+      "width": 6,
+      "depth": 1.8,
+      "height": 2.8,
+      "colours": [
+       "#2f4fa8",
+       "#efe9d8",
+       "#e4b823"
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-end",
+   "footprint": {
+    "rect": [
+     46,
+     10
+    ]
+   },
+   "at": [
+    2,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4b823",
+    "windows": "none",
+    "bands": "#2f6b45",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f8a92",
+    "pitch": 5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats",
+   "footprint": {
+    "rect": [
+     60,
+     13
+    ]
+   },
+   "at": [
+    0,
+    70
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c0",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "bay": 15,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8d2c0",
+       "#c4bda8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#707070",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-aisle",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 8,
+    "kind": "umbrella",
+    "size": 1.2,
+    "colours": [
+     "#3d4fa8",
+     "#efe9d8",
+     "#3d4fa8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "blue-umbrellas",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#3d4fa8",
+     "#efe9d8"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    -8,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "id": "t0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -38,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "lod": [
+    0
+   ],
+   "at": [
+    -40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t3",
+   "lod": [
+    0
+   ],
+   "at": [
+    38,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-right",
+   "at": [
+    18.6,
+    5,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     84
+    ],
+    "height": 2.6,
+    "colour": "#e8a81c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "silver-roof-right",
+   "at": [
+    30,
+    5,
+    9
+   ],
+   "params": {
+    "rect": [
+     5,
+     84
+    ],
+    "height": 1.2,
+    "colour": "#aab4bc",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-facade",
+   "at": [
+    -22,
+    -32.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "height": 6.5,
+    "colour": "#c9c6bb",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-arch",
+   "at": [
+    -22,
+    -32.3,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 6.4,
+      "rect": [
+       22,
+       0.6
+      ]
+     },
+     {
+      "z": 8.2,
+      "rect": [
+       16,
+       0.6
+      ]
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       8,
+       0.6
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       2,
+       0.6
+      ]
+     }
+    ],
+    "colour": "#b2bcc4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-left",
+   "at": [
+    -22,
+    -32.9,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 1.6,
+    "colour": "#c8362f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "id": "brown-canopy",
+   "at": [
+    -8.5,
+    -10,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 30,
+    "depth": 3.5,
+    "height": 3.4,
+    "colours": [
+     "#7a4a2a",
+     "#8a5a35"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "aisle-floor",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     110
+    ],
+    "height": 0.05,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-L",
+   "at": [
+    -8,
+    34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 9,
+    "pitch": 6,
+    "kind": "umbrella",
+    "size": 1.5,
+    "colours": [
+     "#2f4fa8",
+     "#8a5a2e",
+     "#e4b823",
+     "#efe9d8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-R",
+   "at": [
+    10,
+    34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 9,
+    "pitch": 6,
+    "kind": "umbrella",
+    "size": 1.5,
+    "colours": [
+     "#e4b823",
+     "#2f4fa8",
+     "#c8362f",
+     "#efe9d8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-C",
+   "at": [
+    1,
+    34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 9,
+    "pitch": 6,
+    "kind": "umbrella",
+    "size": 1.3,
+    "colours": [
+     "#3d4fa8",
+     "#8a5a2e",
+     "#e4b823"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb2",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "colours": [
+     "#3d4fa8",
+     "#efe9d8",
+     "#8a5a2e"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb3",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 6,
+    "colours": [
+     "#e4b823",
+     "#3d4fa8"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-arch",
+   "at": [
+    0,
+    -50.3,
+    7.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "arc": {
+     "steps": 14,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 6.2,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#efe6c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-band",
+   "at": [
+    0,
+    -50.4,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#d4a820"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "id": "gate-kiosk-11",
+   "at": [
+    -11,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.8,
+    "colour": "#2f6b45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "id": "gate-kiosk11",
+   "at": [
+    11,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.8,
+    "colour": "#2f6b45"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "id": "lamps0",
+   "at": [
+    -15,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 26
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "id": "lamps1",
+   "at": [
+    15,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 26
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "wire1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -15,
+      -40,
+      8
+     ],
+     [
+      15,
+      -40,
+      8
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wire2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -15,
+      -14,
+      8
+     ],
+     [
+      15,
+      -14,
+      8
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "array",
+   "id": "crowd0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.0,
+     -44,
+     0
+    ],
+    "end": [
+     3.0,
+     30,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.4
+      ],
+      "height": 1.7,
+      "colour": "#4a5a7a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crowd1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.23,
+     -44,
+     0
+    ],
+    "end": [
+     2.23,
+     30,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.4
+      ],
+      "height": 1.7,
+      "colour": "#b04a4a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crowd2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -1.46,
+     -44,
+     0
+    ],
+    "end": [
+     1.46,
+     30,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.4
+      ],
+      "height": 1.7,
+      "colour": "#d8c8a0"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crowd3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.6900000000000004,
+     -44,
+     0
+    ],
+    "end": [
+     0.6900000000000004,
+     30,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.4
+      ],
+      "height": 1.7,
+      "colour": "#3a3a3a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "boxes",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -30,
+     0
+    ],
+    "end": [
+     -6,
+     36,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "height": 0.9,
+      "colour": "#b8935a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "hang-clothes",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     17,
+     -30,
+     1.8
+    ],
+    "end": [
+     17,
+     40,
+     1.8
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       1.0
+      ],
+      "height": 1.3,
+      "colour": "#5a6a9a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-D",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 6,
+    "kind": "umbrella",
+    "size": 1.5,
+    "colours": [
+     "#2f4fa8",
+     "#8a5a2e",
+     "#e4b823",
+     "#efe9d8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-E",
+   "at": [
+    6,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 6,
+    "kind": "umbrella",
+    "size": 1.5,
+    "colours": [
+     "#e4b823",
+     "#c8362f",
+     "#2f4fa8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "id": "aw-left",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 3,
+    "colours": [
+     "#2f4fa8",
+     "#e4b823",
+     "#8a5a35"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "id": "aw-left2",
+   "at": [
+    -9,
+    20,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 3,
+    "colours": [
+     "#8a5a35",
+     "#efe9d8",
+     "#2f4fa8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   90,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-market-game"
+}

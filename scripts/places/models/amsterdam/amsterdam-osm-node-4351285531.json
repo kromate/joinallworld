@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-node-4351285531",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1102779797",
+   "used": "3.8 x 3.2 m footprint, start 2022 (nearest match, 7 m); no photo of this artwork found (geo photos nearby show the Edam Jewish cemetery, a different thing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": 0.3
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.9,
+      1.6
+     ],
+     [
+      1.3,
+      2.1
+     ],
+     [
+      1.9,
+      -1.6
+     ],
+     [
+      -1.2,
+      -2.1
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#a8a59e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.3,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.5
+    ],
+    "height": 0.7,
+    "colour": "#6b6f74",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -0.9,
+    -0.4,
+    0.35
+   ],
+   "params": {
+    "height": 2.0,
+    "pose": "stand",
+    "colour": "#6b6f74"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0.1,
+    -0.7,
+    0.35
+   ],
+   "params": {
+    "height": 2.4,
+    "pose": "stand",
+    "colour": "#6b6f74"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    1.0,
+    -0.3,
+    0.35
+   ],
+   "params": {
+    "height": 1.5,
+    "pose": "stand",
+    "colour": "#6b6f74"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -7,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   34,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the artwork exists in the evidence; figure group is an assumption from the title."
+ }
+}

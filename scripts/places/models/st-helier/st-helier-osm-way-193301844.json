@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-way-193301844",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/193301844",
+   "used": "real building outline, levels and use tags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.4,
+    "parapet": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f8c9a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea1",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this building; materials and details inferred from the brief and Jersey vernacular (granite, brick, slate)"
+ }
+}

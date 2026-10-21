@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-173167317",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/173167317",
+   "used": "real oval outline (126 x 108 m), height 25 and dome roof tags"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Arena_Sto%C5%BEice",
+   "used": "shell-shaped dome over a four-level bowl, metal cladding in greys; Commons photos found are interiors only, so not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bowl",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb2b6",
+    "windows": "none",
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ca0",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    24
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 100,
+    "depth": 88,
+    "rise": 7,
+    "circle": true,
+    "colour": "#9a9ca0",
+    "material": "metal-sheet",
+    "thickness": 0.6,
+    "res": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 2.2,
+    "run": 2.4,
+    "count": 6,
+    "colour": "#d0cdc6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#6f7d88"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    22,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 4,
+    "colours": [
+     "#ffffff",
+     "#2a4f9a",
+     "#c8362f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     -40
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     72,
+     30
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no exterior photo found (Commons images are interiors): outline and shell dome from OSM and text, shell form simplified to a low cap"
+ }
+}

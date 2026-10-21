@@ -1,0 +1,559 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-596798361",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_en_Cobe%C3%B1a_2.jpg",
+   "licence": "CC BY 3.0 es",
+   "author": "Direccion General de Turismo, Consejeria de Economia e Innovacion Tecnologica (Comunidad de Madrid)",
+   "view": "side",
+   "file": "/tmp/places-evidence/madrid/m_cobena.jpg",
+   "used": "sandstone ashlar walls, tall square west tower with arched belfry and string courses, clay-tile gable roof, projecting arched portal with buttress piers, low east annex"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/596798361",
+   "used": "overall size and annex position"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c8b07c",
+    "windows": "punched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b39a68",
+    "windowShape": "arched",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8643a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -14.5,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 6.2,
+    "depth": 6.2,
+    "height": 22,
+    "cap": "flat",
+    "colour": "#c8b07c",
+    "material": "stone",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 4.5,
+    "colour": "#b8a47c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    17.5
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     6.2
+    ],
+    "height": 5.5,
+    "colour": "#d2bc88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 1,
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    11.0
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "height": 0.5,
+    "colour": "#b39a68",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    17.0
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "height": 0.5,
+    "colour": "#b39a68",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    21.8
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "height": 0.5,
+    "colour": "#b39a68",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -1,
+    23.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 0.4,
+    "colour": "#a8905e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     2.4
+    ],
+    "height": 8.6,
+    "colour": "#d2bc88",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 1,
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -8.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#6b3f2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -8.4,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#e0cf9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.4,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 7.6,
+    "colour": "#c0a870",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.6,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 7.6,
+    "colour": "#c0a870",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.4
+    ],
+    "height": 7.6,
+    "colour": "#c0a870",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.4
+    ],
+    "height": 7.6,
+    "colour": "#c0a870",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.5,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.4
+    ],
+    "height": 7.6,
+    "colour": "#c0a870",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -6.1,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#8f6a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -6.1,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#8f6a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -6.1,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#8f6a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -6.1,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#8f6a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 5.2,
+    "colour": "#c9b58a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy-roof",
+   "footprint": {
+    "rect": [
+     9.4,
+     7.4
+    ]
+   },
+   "at": [
+    17,
+    5
+   ],
+   "z0": 5.2,
+   "height": 0.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b58a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4602f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    0,
+    11.3
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 0.6,
+    "colour": "#6b5a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 0.7,
+    "colour": "#f2e8c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 4.0,
+    "colour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -14,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 0.7,
+    "colour": "#f2e8c0",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Massive 6 m ochre tower with string courses and belfry arches, aedicule portal with buttress piers, patchy infill, stork nest and lamps added; niche/carved detail and ashlar texture simplified"
+ }
+}

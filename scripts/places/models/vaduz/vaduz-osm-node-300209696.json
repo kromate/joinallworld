@@ -1,0 +1,171 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vaduz.json#vaduz-osm-node-300209696",
+   "used": "alpine saddle (Wikidata Q21874719, mountain pass, Raetikon, ~1900 m) with open grass slopes, grey limestone and a path; no OSM building, no photo found; modelled as a small scenic landform"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 110,
+    "depth": 90,
+    "thickness": 1.0,
+    "colour": "#6a8a4a",
+    "underside": false,
+    "res": 14,
+    "heights": [
+     [
+      3,
+      5,
+      8,
+      12,
+      9,
+      5,
+      3
+     ],
+     [
+      4,
+      8,
+      16,
+      24,
+      16,
+      8,
+      4
+     ],
+     [
+      3,
+      6,
+      9,
+      14,
+      10,
+      6,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -36,
+    22,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 28,
+    "height": 26,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#a9a59b",
+    "boulders": 8
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    38,
+    26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "height": 21,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#8f8b82",
+    "boulders": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    6
+   ],
+   "params": {}
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -34
+     ],
+     [
+      0,
+      -18
+     ],
+     [
+      -4,
+      -4
+     ],
+     [
+      2,
+      10
+     ]
+    ],
+    "width": 1.4,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -8,
+    6
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#8f8b82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-node-300209696",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; generic alpine saddle with two rock outcrops, striped terrain facets, no real peaks."
+ }
+}

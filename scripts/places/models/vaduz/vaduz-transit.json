@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahnhof-Nendeln-from_East-01ASD.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Asurnipal",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/nend2.jpg",
+   "used": "old weathered vertical-board timber station shed, gable with deep overhanging eaves and brackets, double plank door centred, blank name board, concrete ramp"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1564495747",
+   "used": "not used: OSM match is the ESTW signal building 68 m away, not the station shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#867562",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d5a4b",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 2.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -6.05,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.2
+    ],
+    "height": 3.6,
+    "colour": "#7a6246"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-panel",
+   "at": [
+    0,
+    -6.15,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.1
+    ],
+    "height": 2.6,
+    "colour": "#6a5238"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-split",
+   "at": [
+    0,
+    -6.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 3.6,
+    "colour": "#4a3a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-board",
+   "at": [
+    0,
+    -6.1,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.15
+    ],
+    "height": 0.8,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-plate",
+   "at": [
+    0,
+    -6.2,
+    5.1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#2d5a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fretwork",
+   "at": [
+    0,
+    -6.15,
+    5.9
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#6a5744"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-a",
+   "at": [
+    -5.6,
+    -6.2,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#4e3f32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-b",
+   "at": [
+    5.6,
+    -6.2,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#4e3f32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-rail-a",
+   "at": [
+    -1.9,
+    -9.5,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     5.5
+    ],
+    "height": 0.9,
+    "colour": "#7b8a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-rail-b",
+   "at": [
+    1.9,
+    -9.5,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     5.5
+    ],
+    "height": 0.9,
+    "colour": "#7b8a96"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp",
+   "footprint": {
+    "rect": [
+     3.4,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8d88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bike-frame",
+   "at": [
+    4.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#d9531e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     4
+    ],
+    "height": 0.35,
+    "colour": "#aeaca6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-a",
+   "at": [
+    0,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.15
+    ],
+    "height": 0.2,
+    "colour": "#6d6a65"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-b",
+   "at": [
+    0,
+    -18.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.15
+    ],
+    "height": 0.2,
+    "colour": "#6d6a65"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -8.5,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 12,
+    "colour": "#6a6d70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast-lamp",
+   "at": [
+    -8.5,
+    -7,
+    12
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 10,
+    "colour": "#6a8a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5,
+    "colour": "#5b8a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": 0,
+  "extent": [
+   32,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "shed enlarged with ramp, rails, mast, bike block and fretwork band; scalloped bargeboards, bracket detail and bike shape are crude, platform/tracks typical (OSM match unusable)"
+ }
+}

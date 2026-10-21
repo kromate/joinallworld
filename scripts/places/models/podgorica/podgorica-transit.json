@@ -1,0 +1,484 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20250920_172849802_Bio%C4%8De_train_station.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Niegodzisie",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/bioce2.jpg",
+   "used": "two-part facade: pale-render ground storey with small ribbon windows, glazed hall and white door; windowless orange-brick upper block under a dark timber-clad flat roof with deep overhang; long grey concrete canopy slab between; blank signboards and round clock; limestone cliff behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bio%C4%8De_railway_station_(20191017_092909).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Simon Legner",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/bioce1.jpg",
+   "used": "same facade from the left: glazed lobby at left, grey lower wall at right, canopy slab, brick colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/839272507",
+   "used": "footprint 25.7 x 12.8 m size check"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "rect": [
+     25,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd8cc",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     24.2,
+     8.6
+    ]
+   },
+   "at": [
+    -0.4,
+    0.3
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9633f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f362e",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.0
+   },
+   "z0": 4.1
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    7.5,
+    -6.3
+   ],
+   "params": {
+    "rect": [
+     34,
+     3.3
+    ],
+    "height": 0.45,
+    "colour": "#9c9a94",
+    "z0": 3.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post-a",
+   "at": [
+    16,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 3.2,
+    "colour": "#a3a19b",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lobby-glass",
+   "at": [
+    6,
+    -4.55
+   ],
+   "params": {
+    "rect": [
+     10.5,
+     0.2
+    ],
+    "height": 3.5,
+    "colour": "#c2c9ca",
+    "z0": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -4,
+    -4.55
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#e8e8e4",
+    "z0": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard-a",
+   "at": [
+    -6.5,
+    -4.1
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#f2f2ee",
+    "z0": 7.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard-b",
+   "at": [
+    -2.5,
+    -4.1
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#f2f2ee",
+    "z0": 7.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard-wide",
+   "at": [
+    -6.5,
+    -4.1
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     0.12
+    ],
+    "height": 1.5,
+    "colour": "#e9ebe8",
+    "z0": 4.9
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "clock",
+   "at": [
+    -10.5,
+    -4.15
+   ],
+   "params": {
+    "radius": 0.8,
+    "n": 12,
+    "height": 0.12,
+    "colour": "#f2f2ee",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "station-platform",
+   "id": "platform",
+   "at": [
+    0,
+    -9
+   ],
+   "params": {
+    "length": 60,
+    "depth": 5,
+    "height": 0.3,
+    "colour": "#a8a49c"
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "track",
+   "at": [
+    0,
+    -16
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-back",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      6
+     ],
+     [
+      -4,
+      5.5
+     ],
+     [
+      6,
+      6.2
+     ],
+     [
+      18,
+      5.5
+     ],
+     [
+      26,
+      6
+     ],
+     [
+      27,
+      11
+     ],
+     [
+      14,
+      13
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      -10,
+      13.5
+     ],
+     [
+      -15,
+      11
+     ]
+    ],
+    "height": 12,
+    "colour": "#aaa699",
+    "z0": 0,
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-face2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      6.5
+     ],
+     [
+      -2,
+      6
+     ],
+     [
+      6,
+      7.3
+     ],
+     [
+      3,
+      11
+     ],
+     [
+      -8,
+      10.5
+     ]
+    ],
+    "height": 15,
+    "colour": "#bdb9ab",
+    "z0": 0,
+    "topScale": 0.75
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-right",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -4
+     ],
+     [
+      22,
+      -5
+     ],
+     [
+      28,
+      -2
+     ],
+     [
+      27,
+      9
+     ],
+     [
+      17,
+      8
+     ],
+     [
+      13,
+      3
+     ]
+    ],
+    "height": 8,
+    "colour": "#a9a598",
+    "z0": 0,
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-right-top",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      18,
+      -1
+     ],
+     [
+      25,
+      -2
+     ],
+     [
+      26,
+      6
+     ],
+     [
+      19,
+      6
+     ]
+    ],
+    "height": 10,
+    "colour": "#c0bcae",
+    "z0": 0,
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub",
+   "at": [
+    -4,
+    11
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.5,
+    "spread": 8,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub2",
+   "at": [
+    20,
+    5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3,
+    "spread": 6,
+    "count": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub3",
+   "at": [
+    -16,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.5,
+    "spread": 3,
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   38,
+   24
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-transit",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Brick block now spans the facade under dark eaves with clock and boards, canopy slab and glazed hall present; brick storey is shorter than the photo's framing suggests, cliff is a few faceted prisms (no rock texture), overall framing is wider than the close photo."
+ }
+}

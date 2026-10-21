@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:T._Mosneaga_Republican_Clinical_Hospital_2023.jpg",
+   "licence": "CC0",
+   "author": "Editor1722",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/clinic1.jpg",
+   "used": "tall pale-grey slab with ribbon windows and dark spandrel piers on top of a windowless vertical-panel silver podium, blue entrance canopy at the base, two rooftop plant boxes, paved forecourt with spruces"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220382981",
+   "used": "footprint 87 x 30 m, 4 levels (podium only; the photo shows a taller slab above)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium-ground",
+   "footprint": {
+    "rect": [
+     87,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3036",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-rear",
+   "footprint": {
+    "rect": [
+     87,
+     16
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b4babf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "podium-slope",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b9bfc4",
+    "topColour": "#aab0b5",
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       87,
+       2
+      ],
+      "cy": -15
+     },
+     {
+      "z": 13,
+      "rect": [
+       87,
+       20
+      ],
+      "cy": 5
+     }
+    ]
+   }
+  },
+  {
+   "type": "surface",
+   "id": "seams",
+   "at": [
+    0,
+    -10.5,
+    5.1
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 87,
+    "depth": 11.5,
+    "rise": 0.3,
+    "folds": 29,
+    "slopeY": 0.7,
+    "thickness": 0.2,
+    "colour": "#c9cfd3",
+    "edgeColour": "#8f959a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     66,
+     17
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 13,
+   "height": 36,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d8d7",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "pattern": {
+     "type": "fins",
+     "width": 0.5,
+     "depth": 0.1,
+     "spacing": 3.0,
+     "colour": "#9aa1a6",
+     "faces": [
+      "front"
+     ],
+     "margin": 0.1
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6b68",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-box",
+   "at": [
+    0,
+    -15.5
+   ],
+   "params": {
+    "rect": [
+     29,
+     6
+    ],
+    "z0": 4.6,
+    "height": 5.0,
+    "colour": "#1f4fc2",
+    "topColour": "#1b45a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-a",
+   "at": [
+    -12,
+    6
+   ],
+   "params": {
+    "rect": [
+     11,
+     7
+    ],
+    "z0": 49.0,
+    "height": 2.6,
+    "colour": "#dcdcd6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-b",
+   "at": [
+    6,
+    6
+   ],
+   "params": {
+    "rect": [
+     11,
+     7
+    ],
+    "z0": 49.0,
+    "height": 2.6,
+    "colour": "#dcdcd6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 2,
+    "colour": "#9a9a96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -24
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -26
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Slab still reads more gridded than the real banded facade; podium slope is a folded sheet, not true standing seams; real footprint is rotated and not used."
+ }
+}

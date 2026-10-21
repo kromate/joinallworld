@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bohemia_restaurant_(Jersey).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lee Carre",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/boh.jpg",
+   "used": "dark red-brown granite podium with five deep glazed bays and railing, hedge and rail along its top, set-back cream render upper storeys with paired French-balcony windows and wavy cornice"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/215114818",
+   "used": "The Club Hotel & Spa containing outline, 4 levels (overall size and bearing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     32,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#3a2c2e",
+    "windows": "punched",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5c5a",
+    "material": "membrane",
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     32,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 5.2,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d0bd",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    0,
+    -8.2,
+    5.2
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.0,
+    "depth": 1.0,
+    "colour": "#3f6b35"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9.3,
+    5.2
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#cfd3d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 5.2,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d4cbb8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.5
+    ],
+    "height": 0.2,
+    "colour": "#2a2224"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       1.2
+      ],
+      "height": 5.2,
+      "colour": "#3a2c2e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -9.9,
+     0
+    ],
+    "end": [
+     12,
+     -9.9,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 6.4,
+      "height": 1.0,
+      "thickness": 0.06,
+      "kind": "rail",
+      "colour": "#b9bdbf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -10.2,
+     0
+    ],
+    "end": [
+     12,
+     -10.2,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.15
+      ],
+      "height": 3.0,
+      "colour": "#101a22"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -13,
+     -9.95,
+     0.3
+    ],
+    "end": [
+     13,
+     -9.95,
+     0.3
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.12
+      ],
+      "height": 2.2,
+      "colour": "#c9d6dc"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -5.4,
+     6.4
+    ],
+    "end": [
+     10,
+     -5.4,
+     6.4
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     5
+    ],
+    "height": 0.05,
+    "colour": "#b7b2a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "podium bays are flush window boxes not deep recesses, no central entrance; upper floor is 3 storeys of horizontal windows not paired French balconies; no wavy cornice; forecourt is wide paving not a narrow pavement"
+ }
+}

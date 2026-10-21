@@ -1,0 +1,1177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-55191054",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:0451-U29-TorenSchans16.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jarkeld",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/sj3.jpg",
+   "used": "two brick towers flanking a gabled front with a big rose window, round-arched windows with stone shafts, stone string courses, slate spires"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uithoorn_029.JPG",
+   "licence": "Public domain",
+   "author": "Arch",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/sj1.jpg",
+   "used": "tower proportions, clock on left tower, tall slate spires with small gables, red-brown brick and pale stone bands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/55191054",
+   "used": "overall extent (about 41 x 35 m); the traced outline is too ragged so the three-aisle plan is composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     30
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 5,
+    "plinth": 0.6,
+    "bands": {
+     "colour": "#c4b8a0",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 36,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisleL",
+   "footprint": {
+    "rect": [
+     5.5,
+     23.5
+    ]
+   },
+   "at": [
+    -8.25,
+    4.25
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "arched",
+     "right": "plain"
+    },
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 22,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisleR",
+   "footprint": {
+    "rect": [
+     5.5,
+     23.5
+    ]
+   },
+   "at": [
+    8.25,
+    4.25
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "plain",
+     "right": "arched"
+    },
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 22,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-7.75",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    -7.75,
+    -10.75
+   ],
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 6.5,
+    "plinth": 0.6,
+    "bands": {
+     "colour": "#c4b8a0",
+     "height": 0.35
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4047",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower7.75",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    7.75,
+    -10.75
+   ],
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 6.5,
+    "plinth": 0.6,
+    "bands": {
+     "colour": "#c4b8a0",
+     "height": 0.35
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d4047",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rose",
+   "footprint": {
+    "rect": [
+     5.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -14.1
+   ],
+   "z0": 8.6,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a2f24",
+    "windows": "round",
+    "windowRatio": 0.9,
+    "faces": {
+     "front": "round",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "glassColour": "#2c3a4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a2f24"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    0,
+    20.5
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 35,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.2
+    ],
+    "z0": 16.6,
+    "height": 2.0,
+    "colour": "#d9d3c2"
+   },
+   "at": [
+    -7.75,
+    -14.2
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum--7.75",
+   "at": [
+    -7.75,
+    -10.75,
+    21
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#a99c84",
+    "profile": [
+     [
+      3.5,
+      0
+     ],
+     [
+      3.3,
+      0.4
+     ],
+     [
+      3.0,
+      3.2
+     ],
+     [
+      3.4,
+      3.5
+     ],
+     [
+      3.3,
+      3.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "spire--7.75",
+   "at": [
+    -7.75,
+    -10.75,
+    24.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3d4047",
+    "profile": [
+     [
+      3.3,
+      0
+     ],
+     [
+      2.4,
+      2.5
+     ],
+     [
+      1.4,
+      7
+     ],
+     [
+      0.1,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer--7.75-0",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -7.75,
+    -13.55
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer--7.75-1",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -7.75,
+    -7.95
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer--7.75-2",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -4.95,
+    -10.75
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer--7.75-3",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -10.55,
+    -10.75
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre--7.75-0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    -7.75,
+    -13.85
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre--7.75-1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    -7.75,
+    -7.65
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre--7.75-2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    -4.65,
+    -10.75
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre--7.75-3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    -10.85,
+    -10.75
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum-7.75",
+   "at": [
+    7.75,
+    -10.75,
+    21
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#a99c84",
+    "profile": [
+     [
+      3.5,
+      0
+     ],
+     [
+      3.3,
+      0.4
+     ],
+     [
+      3.0,
+      3.2
+     ],
+     [
+      3.4,
+      3.5
+     ],
+     [
+      3.3,
+      3.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "spire-7.75",
+   "at": [
+    7.75,
+    -10.75,
+    24.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3d4047",
+    "profile": [
+     [
+      3.3,
+      0
+     ],
+     [
+      2.4,
+      2.5
+     ],
+     [
+      1.4,
+      7
+     ],
+     [
+      0.1,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-7.75-0",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    7.75,
+    -13.55
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-7.75-1",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    7.75,
+    -7.95
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-7.75-2",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    10.55,
+    -10.75
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-7.75-3",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    4.95,
+    -10.75
+   ],
+   "z0": 24.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 50,
+    "colour": "#3d4047",
+    "material": "slate",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-7.75-0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    7.75,
+    -13.85
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre-7.75-1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    7.75,
+    -7.65
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre-7.75-2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    10.85,
+    -10.75
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "louvre-7.75-3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.2
+    ],
+    "z0": 21.7,
+    "height": 1.7,
+    "colour": "#252a30"
+   },
+   "at": [
+    4.65,
+    -10.75
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rose-v",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.08
+    ],
+    "z0": 8.7,
+    "height": 5.4,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    0,
+    -14.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rose-h",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.08
+    ],
+    "z0": 11.3,
+    "height": 0.14,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    0,
+    -14.4
+   ]
+  },
+  {
+   "type": "hospital/arch-portal",
+   "id": "portal",
+   "params": {
+    "width": 6,
+    "height": 6.4,
+    "depth": 0.6,
+    "archWidth": 3.4,
+    "springHeight": 3.4,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    0,
+    -14.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 5,
+    "height": 14,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    -9.6,
+    -14.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 5,
+    "height": 14,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    -5.9,
+    -14.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 5,
+    "height": 14,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    5.9,
+    -14.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 5,
+    "height": 14,
+    "colour": "#c4b8a0"
+   },
+   "at": [
+    9.6,
+    -14.15
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rose-ring",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": "rect",
+    "width": 0.35,
+    "height": 0.35,
+    "points": [
+     [
+      2.6,
+      0,
+      0.0
+     ],
+     [
+      2.25,
+      0,
+      1.3
+     ],
+     [
+      1.3,
+      0,
+      2.25
+     ],
+     [
+      0.0,
+      0,
+      2.6
+     ],
+     [
+      -1.3,
+      0,
+      2.25
+     ],
+     [
+      -2.25,
+      0,
+      1.3
+     ],
+     [
+      -2.6,
+      0,
+      0.0
+     ],
+     [
+      -2.25,
+      0,
+      -1.3
+     ],
+     [
+      -1.3,
+      0,
+      -2.25
+     ],
+     [
+      -0.0,
+      0,
+      -2.6
+     ],
+     [
+      1.3,
+      0,
+      -2.25
+     ],
+     [
+      2.25,
+      0,
+      -1.3
+     ]
+    ],
+    "closed": true,
+    "colour": "#c4b8a0",
+    "curve": true
+   },
+   "at": [
+    0,
+    -14.45,
+    11.4
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -22
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "rose has ring and cross but no spoked tracery, few arched window pairs, photo is a steep worm-eye view so towers look shorter, paving plaza ground and grey backdrop"
+ }
+}

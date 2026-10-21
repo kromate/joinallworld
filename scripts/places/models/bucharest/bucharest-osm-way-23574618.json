@@ -1,0 +1,294 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-23574618",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ospiciul_Central_de_Aliena%C8%9Bi_l%C3%A2ng%C4%83_Bucuresci_%E2%80%93_Pavilionul_Administra%C8%9Biei_%E2%80%93_Fa%C8%9Bada_Principal%C4%83.png",
+   "licence": "Public domain",
+   "author": "Alexandru Obregia (period architectural drawing, not a photo)",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/23574618-0.png",
+   "used": "drawing of the hospital's administration pavilion: long banded-brick wing of two storeys plus attic, central bay with arched entrance and steep pyramidal roof carrying a clock cupola, two end pavilions with tall pointed roofs, tall window rhythm with small balconies"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160548720",
+   "used": "building footprint is a thin diagonal strip that does not match the pavilion drawing, so only size (about 52 m long, 3 levels) is taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 40,
+  "aspect": 1.4,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     52,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b98a",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "glassColour": "#4a505a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#efe5cf"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6a60",
+    "material": "slate",
+    "rise": 3.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b98a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "glassColour": "#4a505a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#efe5cf"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6a60",
+    "material": "slate",
+    "rise": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    -21.5,
+    -1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b98a",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "glassColour": "#4a505a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#efe5cf"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6a60",
+    "material": "slate",
+    "rise": 8.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    21.5,
+    -1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b98a",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "glassColour": "#4a505a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#efe5cf"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6a60",
+    "material": "slate",
+    "rise": 8.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    -1.5,
+    18.5
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 8,
+    "cap": "hip",
+    "clock": true,
+    "colour": "#e5dcc5",
+    "capColour": "#6e6258"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "bars",
+    "pillarEvery": 5,
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "count": 5,
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "count": 5,
+    "min_height": 9,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Composed from a period elevation drawing of the administration pavilion, not a photo of the OSM building; brick stripes, balconies, dormers and the arched entrance detail are simplified."
+ }
+}

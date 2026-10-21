@@ -1,0 +1,313 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toiduturg_Islandi_v%C3%A4ljakul.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Estonian Foreign Ministry",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tallinn/square0.jpg",
+   "used": "square is a flat asphalt plaza with painted parking bays, a row of white pointed market tents at the far side, a wall of tall dark spruces behind, a pale beige slab block beyond, flagpoles in the foreground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43735045",
+   "used": "outline of the square (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8c8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         5,
+         5
+        ]
+       },
+       {
+        "z": 2.4,
+        "rect": [
+         5,
+         5
+        ]
+       },
+       {
+        "z": 4.4,
+        "rect": [
+         0.3,
+         0.3
+        ]
+       }
+      ],
+      "colour": "#efece4"
+     }
+    },
+    "start": [
+     -30,
+     14,
+     0
+    ],
+    "end": [
+     30,
+     14,
+     0
+    ],
+    "count": 8,
+    "mode": "line",
+    "lod2Step": 50,
+    "lod1Step": 2
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 13,
+      "count": 1
+     }
+    },
+    "start": [
+     -44,
+     24,
+     0
+    ],
+    "end": [
+     44,
+     24,
+     0
+    ],
+    "count": 14,
+    "mode": "line",
+    "lod2Step": 50,
+    "lod1Step": 2
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    0,
+    48
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#bfae8c",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 5,
+    "colours": [
+     "#1f4fa8",
+     "#d7262e",
+     "#f2f2f0"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "array",
+   "id": "people",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       },
+       {
+        "z": 1.4,
+        "rect": [
+         0.55,
+         0.4
+        ]
+       },
+       {
+        "z": 1.75,
+        "rect": [
+         0.3,
+         0.3
+        ]
+       }
+      ],
+      "colour": "#3a3d4a"
+     }
+    },
+    "mode": "grid",
+    "cols": 12,
+    "rows": 5,
+    "dx": 2.6,
+    "dy": 2.4,
+    "centred": true,
+    "stagger": 0.6,
+    "lod2Step": 50,
+    "lod1Step": 2
+   },
+   "at": [
+    0,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bays",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       6
+      ],
+      "height": 0.05,
+      "colour": "#f4f4f0"
+     }
+    },
+    "start": [
+     -34,
+     -14,
+     0.52
+    ],
+    "end": [
+     34,
+     -14,
+     0.52
+    ],
+    "count": 14,
+    "mode": "line",
+    "lod2Step": 50,
+    "lod1Step": 2
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.8,
+    "kind": "wall",
+    "colour": "#b9b6ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lighter asphalt with painted bays, tent row, spruce wall, flag row and a crowd of simple figures added; flags are plain pennants not large Iceland/Estonia cloth, tents are boxy, plaza outline is the OSM blob."
+ }
+}

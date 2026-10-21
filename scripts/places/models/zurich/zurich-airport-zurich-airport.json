@@ -1,0 +1,528 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-airport-zurich-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zurich_airport_img_3324.jpg",
+   "licence": "CC BY-SA 2.0 fr",
+   "author": "Rama",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/zurich/airport1.jpg",
+   "used": "layout: terminal/Airside Center cluster with long glazed Dock piers reaching onto the apron, free-standing tower, parking and landside buildings in front, white-grey roofs"
+  },
+  {
+   "kind": "text",
+   "used": "brief and Wikipedia: 41 m control tower (1986), Airside Center hub between Dock A and Dock B, Dock B with viewing terrace; piers, positions and sizes are scaled-down estimates (real complex is far larger); no OSM outline matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "airside-centre",
+   "footprint": {
+    "rect": [
+     90,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c8d0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#5f7c8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c3cfd5",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#6b8796"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dock-a",
+   "footprint": {
+    "rect": [
+     9,
+     88
+    ]
+   },
+   "at": [
+    -38,
+    56
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#58788a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dock-a-head",
+   "footprint": {
+    "rect": [
+     15,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    106
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#58788a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dock-b",
+   "footprint": {
+    "rect": [
+     9,
+     84
+    ]
+   },
+   "at": [
+    36,
+    54
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b2c3cc",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#58788a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dock-b-terrace",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    36,
+    101
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dede",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-a",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -24,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#58788a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-b",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    22,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#e4e6e6",
+    "glassColour": "#58788a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    54,
+    10,
+    0
+   ],
+   "params": {
+    "height": 41,
+    "style": "round",
+    "colour": "#d9dcdc",
+    "cabColour": "#5f7480",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 7,
+    "height": 4.5,
+    "colour": "#dfe2e3",
+    "edgeColour": "#6b7782",
+    "columns": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c8c2",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#8f9496"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a9ab",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "rect": [
+     84,
+     100
+    ]
+   },
+   "at": [
+    0,
+    60
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd0cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "taxiway",
+   "footprint": {
+    "rect": [
+     118,
+     8
+    ]
+   },
+   "at": [
+    0,
+    117
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4d50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "taxi-line",
+   "footprint": {
+    "rect": [
+     118,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    117
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8d44a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d44a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -42,
+    62,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#b52a2a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -42,
+    94,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -17,
+    70,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#eceff1"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    41,
+    66,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#2a4f9a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    41,
+    94,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#b52a2a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    15,
+    82,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#2f6b4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Piers now long thin and glazed but scaled to the 120 m clamp (real ~400 m); apron is a flat grey plate with one taxiway, no runway markings or landscape; 6 aircraft; roofs read grey-tiled in render; landside buildings simplified."
+ }
+}

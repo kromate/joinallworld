@@ -1,0 +1,548 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-412135808",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AttikaZooParkSpata.jpg",
+   "licence": "Wikimedia Commons (see page)",
+   "author": "unknown (Commons category upload)",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/zoo3.jpg",
+   "used": "entrance building: two-storey brick-red block with white banding, hip terracotta roof, lower wings, white gate pillars, car park, curved green sign band, cypress"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Swans_in_Attica_Zoological_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ZoonPolitikon",
+   "view": "side",
+   "file": "/tmp/places-evidence/athens/zoo0.jpg",
+   "used": "flamingo pond ringed by a low rubble-stone wall, olive trees, green mesh aviary behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/412135808",
+   "used": "zoo is 452 x 417 m: only the entrance plaza, aviary and pond portion (118 m) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8654a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#ece6d8",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.0,
+      "depth": 0.5,
+      "pierColour": "#ece6d8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4502e",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    20,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8654a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#ece6d8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4502e",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8654a",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#ece6d8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4502e",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "pergola",
+   "id": "entrance-pergola",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "ticket",
+   "at": [
+    16,
+    -8
+   ],
+   "params": {
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.6,
+    "sign_colour": "#3a6a4a"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "car-park",
+   "at": [
+    0,
+    -24
+   ],
+   "params": {
+    "width": 70,
+    "depth": 22,
+    "density": 0.75
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "flamingo-pond",
+   "at": [
+    -8,
+    38
+   ],
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "shape": "oval",
+    "colour": "#5f8a7a",
+    "bank": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rubble-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.9,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#9c6f55",
+    "points": [
+     [
+      -26,
+      29
+     ],
+     [
+      10,
+      29
+     ]
+    ]
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "id": "aviary-1",
+   "at": [
+    26,
+    34
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "height": 5,
+    "kind": "hip",
+    "roof_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "id": "aviary-2",
+   "at": [
+    44,
+    22
+   ],
+   "params": {
+    "width": 12,
+    "depth": 9,
+    "height": 4.6,
+    "kind": "hip",
+    "roof_colour": "#4f6a5a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "viewing-kiosk",
+   "at": [
+    -40,
+    24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 4,
+    "roof": "hip",
+    "colour": "#8a6a50",
+    "cap_colour": "#a4502e"
+   }
+  },
+  {
+   "type": "lawn",
+   "id": "paddock",
+   "at": [
+    0,
+    40
+   ],
+   "params": {
+    "width": 110,
+    "depth": 40,
+    "colour": "#7d9a55"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "olives-w",
+   "at": [
+    -45,
+    44
+   ],
+   "params": {
+    "width": 26,
+    "depth": 22,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines-e",
+   "at": [
+    50,
+    50
+   ],
+   "params": {
+    "width": 24,
+    "depth": 24,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "cypress",
+   "at": [
+    40,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "sign-band",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -35,
+      -3.2,
+      4.6
+     ],
+     [
+      -28,
+      -4.8,
+      4.6
+     ],
+     [
+      -20,
+      -5.2,
+      4.6
+     ],
+     [
+      -12,
+      -4.6,
+      4.6
+     ],
+     [
+      -8,
+      -3.5,
+      4.6
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#2f5f3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "sign-letters",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -31,
+      -4.15,
+      4.7
+     ],
+     [
+      -26,
+      -5.0,
+      4.7
+     ],
+     [
+      -20,
+      -5.3,
+      4.7
+     ],
+     [
+      -14,
+      -4.9,
+      4.7
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#e8e4d2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -3.2,
+    -10
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#f0ede5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap0",
+   "at": [
+    -3.2,
+    -10
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 5.2,
+    "height": 0.35,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    3.2,
+    -10
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#f0ede5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap1",
+   "at": [
+    3.2,
+    -10
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 5.2,
+    "height": 0.35,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-wall0",
+   "at": [
+    -17.0,
+    -10
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.7
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#a89880"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-wall1",
+   "at": [
+    17.0,
+    -10
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.7
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#a89880"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "backlit photo is much darker; sign band has no legible text; arcade only on the entrance block front; rest of zoo is a sketch"
+ }
+}

@@ -1,0 +1,493 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hovhannavank_Monastery,_09_June_2019.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hayktt",
+   "view": "side",
+   "file": "/tmp/places-evidence/yerevan/hov.jpg",
+   "used": "cruciform church with gabled south transept, octagonal drum under a ribbed pyramidal cap, gavit to the west (left) with a small rotunda tower and conical cap, red-brown and grey tuff blocks, grey slab roofs, canyon edge on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/121823299",
+   "used": "overall extent about 40 x 30 m, long east-west axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     27,
+     9
+    ]
+   },
+   "at": [
+    5.5,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#98645a",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#a2655a",
+      "#7a6e69",
+      "#93605a"
+     ],
+     "mode": "random"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8076",
+    "material": "slate",
+    "pitch": 30,
+    "axis": "x",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     9,
+     25
+    ]
+   },
+   "at": [
+    6.5,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a06a5a",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#a2655a",
+      "#7a6e69",
+      "#93605a"
+     ],
+     "mode": "random"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8076",
+    "material": "slate",
+    "pitch": 34,
+    "axis": "y",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gavit",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -13.5,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d6560",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#a2655a",
+      "#7a6e69",
+      "#93605a"
+     ],
+     "mode": "random"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8076",
+    "material": "slate",
+    "pitch": 30,
+    "axis": "y",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "south-porch-door",
+   "lod": [
+    0
+   ],
+   "at": [
+    6.5,
+    -12.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#3b3532"
+   }
+  },
+  {
+   "type": "array",
+   "id": "gavit-windows",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -15.2,
+     -6.6,
+     2.3
+    ],
+    "end": [
+     -12.8,
+     -6.6,
+     2.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.3
+      ],
+      "height": 1.6,
+      "colour": "#2f2a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    6.5,
+    0,
+    9.8
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 8,
+    "height": 8,
+    "colour": "#9a6a5c",
+    "topColour": "#9a6a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-band",
+   "at": [
+    6.5,
+    0,
+    17.6
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 8,
+    "height": 0.4,
+    "colour": "#6f625d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-cap",
+   "at": [
+    6.5,
+    0,
+    18.0
+   ],
+   "params": {
+    "radius": 3.7,
+    "n": 8,
+    "height": 6.2,
+    "topScale": 0.04,
+    "colour": "#8f8479"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    6.5,
+    0,
+    9.8
+   ],
+   "params": {
+    "radius": 3.5,
+    "n": 8,
+    "height": 14,
+    "topScale": 0.05,
+    "colour": "#9a6a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "at": [
+    6.5,
+    0,
+    24.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#4a4440"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "at": [
+    6.5,
+    0,
+    24.8
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.25
+    ],
+    "height": 0.25,
+    "colour": "#4a4440"
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-slits",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 8,
+    "centre": [
+     6.5,
+     0,
+     12.5
+    ],
+    "radius": 3.45,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#2f2a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-base",
+   "at": [
+    -13.5,
+    0,
+    9.4
+   ],
+   "params": {
+    "radius": 2.3,
+    "n": 8,
+    "height": 0.5,
+    "colour": "#6f625d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -13.5,
+    0,
+    9.9
+   ],
+   "params": {
+    "radius": 2.1,
+    "n": 8,
+    "height": 2.8,
+    "colour": "#9a6258",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "topColour": "#6f625d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-cap",
+   "at": [
+    -13.5,
+    0,
+    12.7
+   ],
+   "params": {
+    "radius": 2.5,
+    "n": 8,
+    "height": 2.6,
+    "topScale": 0.05,
+    "colour": "#8f8479"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit0",
+   "lod": [
+    0
+   ],
+   "at": [
+    5.0,
+    -12.7,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit1",
+   "lod": [
+    0
+   ],
+   "at": [
+    6.5,
+    -12.7,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit2",
+   "lod": [
+    0
+   ],
+   "at": [
+    8.0,
+    -12.7,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit3",
+   "lod": [
+    0
+   ],
+   "at": [
+    -13.5,
+    -6.6,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 2.0,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     34
+    ],
+    "height": 0.25,
+    "colour": "#8a8378"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Octagonal drum and 8-sided cap now read, belfry rotunda on gavit ridge added; no carved relief, ribbed cap facets, blind-arch niches or canyon drop; tuff blocks are random two-tone panels; drum slits dark boxes not arches"
+ }
+}

@@ -1,0 +1,395 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-relation-9993909",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muc2014_62.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "СергейДуханин",
+   "view": "front",
+   "file": "/tmp/places-evidence/moscow/p1_0.jpg",
+   "used": "long low tan-brick wings, tall central slab tower with sloping gabled top and narrow dark window strips, end pavilions, grassy foreground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BA%D0%B0%D0%B4%D0%B5%D0%BC%D0%B8%D1%8F_%D0%A4%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9_%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%8B_%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Svetlov Artem",
+   "view": "detail",
+   "file": "/tmp/places-evidence/moscow/p1_2.jpg",
+   "used": "pale yellow-tan brick, stepped sloping gable ends with dark glazed roof panels, tall narrow window strips"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/878637419",
+   "used": "overall extent (about 190 x 78 m, two levels tagged); modelled as separate rectangular blocks following the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     118,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9ad7c",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9ad7c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7452"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shoulder",
+   "footprint": {
+    "rect": [
+     14,
+     15
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9ad7c",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6f4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crown-1",
+   "at": [
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     15
+    ],
+    "z0": 38,
+    "height": 5,
+    "colour": "#c9ad7c",
+    "windows": "none",
+    "topScale": 0.8,
+    "topColour": "#8a7452"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crown-2",
+   "at": [
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     15
+    ],
+    "z0": 43,
+    "height": 5,
+    "colour": "#c9ad7c",
+    "windows": "none",
+    "topScale": 0.6,
+    "topColour": "#8a7452"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-a",
+   "at": [
+    -30,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 3,
+    "height": 40,
+    "colour": "#2d3540",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-b",
+   "at": [
+    -22,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 3,
+    "height": 40,
+    "colour": "#2d3540",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-c",
+   "at": [
+    -26,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 3,
+    "height": 40,
+    "colour": "#2d3540",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    52,
+    -1.5
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4a574",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -60,
+    -1.5
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4a574",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     70,
+     18
+    ]
+   },
+   "at": [
+    15,
+    20
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9ad7c",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6560"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.2,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 8,
+    "colour": "#2f3338"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 1.1,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#c8d0d8",
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 3,
+    "spread": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "treeKind": "conifer",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower windows only 3 dark strips, crown stepped hip not true gable; wing windows only ribbon rows; river/hill setting omitted; LOD0 about 20.7k slightly over aim"
+ }
+}

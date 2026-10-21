@@ -1,0 +1,769 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Albertslund_Hovedbibliotek.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Champ2100",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/community-wo_0.jpg",
+   "used": "long two-storey dark brown clad upper floor with a ribbon window and a stepped sawtooth rooflight clerestory, glazed ground floor on slim columns above a pond, bridge walkway at right, glazed entrance corner, paved edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/150139286",
+   "used": "overall size about 90 x 85 m, irregular stepped plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": -0.45,
+  "fit": "building",
+  "shiftX": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     80,
+     23
+    ]
+   },
+   "at": [
+    0,
+    6.5
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3830",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon"
+    },
+    "windowRatio": 0.18,
+    "plinth": 0.0,
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6a68",
+    "material": "metal-sheet"
+   },
+   "z0": 3.4
+  },
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     72,
+     14
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f474c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 6,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cdc6"
+   },
+   "z0": 0.4
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "tooth",
+     "footprint": {
+      "rect": [
+       9.2,
+       3.4
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 4.6,
+     "storeys": 1,
+     "wall": {
+      "material": "glass-curtain",
+      "colour": "#7d95a0",
+      "windows": "ribbon",
+      "windowRatio": 0.75,
+      "faces": {
+       "left": "plain",
+       "right": "plain",
+       "back": "plain",
+       "front": "ribbon"
+      }
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#2f2f2d"
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -34,
+     -1.5,
+     9.6
+    ],
+    "end": [
+     36,
+     -1.5,
+     9.6
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-corner",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    43,
+    -1
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a2b4bd",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "trimColour": "#e6e6e2"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 28,
+    "colour": "#d9dedf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    52,
+    22
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#4b3a33",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6a68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pond",
+   "footprint": {
+    "rect": [
+     92,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1d2a31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#22323a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     2.6,
+     20
+    ]
+   },
+   "at": [
+    34,
+    -12
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e6e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e2"
+   },
+   "z0": 0.8
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pond-kerb",
+   "footprint": {
+    "rect": [
+     94,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -24.4
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8b85",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass",
+   "footprint": {
+    "rect": [
+     96,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5f7f3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7f3a"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "height": 3.6,
+    "radius": 0.2,
+    "kind": "round",
+    "beamHeight": 0.3,
+    "colour": "#eeeeea",
+    "roofColour": "#d0cdc6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "colour": "#b9bec1",
+    "points": [
+     [
+      -44,
+      -25,
+      1.1
+     ],
+     [
+      44,
+      -25,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.04,
+    "n": 4,
+    "colour": "#b9bec1",
+    "points": [
+     [
+      -44,
+      -25,
+      0.55
+     ],
+     [
+      44,
+      -25,
+      0.55
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "colour": "#f2f2ee",
+    "points": [
+     [
+      32.7,
+      -22,
+      1.7
+     ],
+     [
+      32.7,
+      -2,
+      1.7
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "colour": "#f2f2ee",
+    "points": [
+     [
+      35.3,
+      -22,
+      1.7
+     ],
+     [
+      35.3,
+      -2,
+      1.7
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#4a423c",
+    "segments": 14,
+    "profile": [
+     [
+      0.8250000000000001,
+      0
+     ],
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      2.4
+     ],
+     [
+      0.8250000000000001,
+      2.4
+     ],
+     [
+      0.8250000000000001,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#4a423c",
+    "segments": 14,
+    "profile": [
+     [
+      0.6050000000000001,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      1.1,
+      1.2
+     ],
+     [
+      0.6050000000000001,
+      1.2
+     ],
+     [
+      0.6050000000000001,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#4a423c",
+    "segments": 14,
+    "profile": [
+     [
+      0.49500000000000005,
+      0
+     ],
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      2.8
+     ],
+     [
+      0.49500000000000005,
+      2.8
+     ],
+     [
+      0.49500000000000005,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#e8f1f4",
+    "segments": 8,
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.05,
+      3.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#e8f1f4",
+    "segments": 8,
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.05,
+      2.4
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -19,
+    -15,
+    0
+   ],
+   "params": {
+    "colour": "#e8f1f4",
+    "segments": 8,
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.05,
+      2.0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plinth-a",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -16,
+    -32
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9aaa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa6"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -16,
+    -32,
+    3.4
+   ],
+   "params": {
+    "colour": "#3d3732",
+    "segments": 14,
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      2.0,
+      0
+     ],
+     [
+      2.0,
+      2.6
+     ],
+     [
+      0.9,
+      2.6
+     ],
+     [
+      0.9,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plinth-b",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -2,
+    -34
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5d83a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d83a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-c",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -26,
+    -33.5
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   100,
+   62
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Building still small in frame (camera fit clamps margin), clerestory fins taller but still boxes, pond fountains/sculptures weak at distance, foreground grass and plinths sparse."
+ }
+}

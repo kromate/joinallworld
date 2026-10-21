@@ -1,0 +1,630 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-relation-6172342",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palac_%C4%8Capskich,_Pryluki.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/pri0.jpg",
+   "used": "ochre stucco palace, two-storey three-arch loggia with gabled attic, white pilasters and trim, crenellated corner turrets, arched windows with white surrounds, round fountain in the forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palace_and_park_complex_in_Priluki.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Julia Boda",
+   "view": "side",
+   "file": "/tmp/places-evidence/minsk/pri1.jpg",
+   "used": "lower side wing with hipped grey metal roof, turret on the corner, overall block depth"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6172342",
+   "used": "name-matched park polygon (45,858 m2) for the setting only; the palace is modelled from the photos, not from the park outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 32
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcb878",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.32,
+    "bay": 4.4,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f6efd8",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "trimColour": "#f4efe2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia",
+   "footprint": {
+    "rect": [
+     17,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d3a0",
+    "windows": "punched",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4,
+      "depth": 1.8,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "windowShape": "arched",
+    "windowRatio": 0.38,
+    "bay": 5.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21.5,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 12.2,
+    "colour": "#e0c386",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 12.2,
+    "colour": "#e0c386",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -33,
+    7
+   ],
+   "height": 7.3,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e5cf94",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.6,
+    "plinth": 0.6,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     11
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "height": 8.3,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcb878",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "plinth": 0.6,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 12,
+    "n": 28,
+    "height": 0.08,
+    "colour": "#b4a58e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.08
+   ],
+   "params": {
+    "radius": 8.5,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#6f9a48"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.18
+   ],
+   "params": {
+    "radius": 4.8,
+    "n": 24,
+    "height": 0.9,
+    "colour": "#9c978c"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "count": 4,
+    "kind": "conifer",
+    "height_min": 5,
+    "height_max": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 26,
+    "count": 12,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     3,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 11.5,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d3a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "rise": 2.4,
+    "overhang": 0.4
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13.6,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#f1e8d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -13.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 11.5,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -13.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 11.5,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -13.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 11.5,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -13.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 11.5,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21.5,
+    -8.2,
+    12.2
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "height": 0.4,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24.0,
+    -10.7,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.0,
+    -10.7,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24.0,
+    -5.699999999999999,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.0,
+    -5.699999999999999,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    -8.2,
+    12.2
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "height": 0.4,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.0,
+    -10.7,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.0,
+    -10.7,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.0,
+    -5.699999999999999,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.0,
+    -5.699999999999999,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#e9deb8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.9
+   ],
+   "params": {
+    "radius": 4.0,
+    "n": 24,
+    "height": 0.05,
+    "colour": "#5d6b70"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     2
+    ],
+    "height": 0.5,
+    "colour": "#a9a498"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "attic is a plain gable, no ornament or finial; turret crenellation coarse; window surrounds colour only; loggia upper level not open; side wings guessed"
+ }
+}

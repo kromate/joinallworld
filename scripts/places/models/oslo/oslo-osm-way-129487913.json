@@ -1,0 +1,343 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Stepped granite tiers, tent, black block, stepping stones and bigger pond added; deck still small in foreground, final camera tweak (fov 42 pitch 8) restored after a worse flat-camera test and not re-rendered; no planters, rippled water or hillside grass."
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nansenparken_Festplassen_og_dam.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Helge Hoifodt",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/nansen1.jpg",
+   "used": "the festival plaza: wide pond, timber deck in the foreground, stepping stones, long grey granite stepped plaza, long pink-red event tent and a dark block, tree line on the horizon"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/129487913",
+   "used": "park is 892 x 676 m, far over the scene clamp; only the Festplassen core (about 110 m) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": -0.15
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 70,
+    "colour": "#7fa9bd",
+    "bank": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     90,
+     22
+    ]
+   },
+   "at": [
+    -10,
+    -30
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a68",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-lip",
+   "footprint": {
+    "rect": [
+     90,
+     1
+    ]
+   },
+   "at": [
+    -10,
+    -18.5
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9092",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9092"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.8,
+      "n": 10,
+      "height": 0.3,
+      "colour": "#7a7568"
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -50,
+     2,
+     0
+    ],
+    "end": [
+     -12,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    75,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "count": 22,
+    "kind": "broadleaf",
+    "height_min": 9,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    10,
+    -14,
+    0.02
+   ],
+   "params": {
+    "width": 50,
+    "depth": 20,
+    "colour": "#5f9a3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier0",
+   "footprint": {
+    "rect": [
+     70,
+     4
+    ]
+   },
+   "at": [
+    0,
+    50.0
+   ],
+   "height": 0.6000000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8184",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8184"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     70,
+     4
+    ]
+   },
+   "at": [
+    0,
+    54.2
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8184",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8184"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     70,
+     4
+    ]
+   },
+   "at": [
+    0,
+    58.4
+   ],
+   "height": 1.4000000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8184",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8184"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     70,
+     4
+    ]
+   },
+   "at": [
+    0,
+    62.6
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8184",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8184"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "tent",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    22,
+    62
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b84a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9697a",
+    "pitch": 8,
+    "axis": "x"
+   },
+   "z0": 1.8
+  },
+  {
+   "type": "mass",
+   "id": "black-block",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    46
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2e31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e31"
+   },
+   "z0": 0
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     45
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-129487913"
+}

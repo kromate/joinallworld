@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/312760420",
+   "used": "real outline of the UDG campus building (name match, 2499 m2, 5 levels per OSM)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/University_of_Donja_Gorica",
+   "used": "private university founded 2007; only photo found was a portrait, so form from outline and brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "udg",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8dd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#7f98a3",
+    "plinth": 0.5,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#7f98a3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#d9741c",
+    "frameColour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   110,
+   80
+  ],
+  "cars": [
+   {
+    "at": [
+     30,
+     -36
+    ],
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     36,
+     -36
+    ],
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     42,
+     -36
+    ],
+    "colour": "#2d3a55"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only a portrait photo exists; real outline used, facade, canopy and colours assumed from brief"
+ }
+}

@@ -1,0 +1,499 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-663814207",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Neftchi_-_Qarabagh_match,_Bakcell_Arena.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eminn",
+   "view": "interior",
+   "file": "/tmp/places-evidence/baku/p20_stadium1.jpg",
+   "used": "low two-tier stand with blue seats, yellow stair aisles, pale concrete fascia, thin open steel lighting truss on slim columns instead of a roof, small tunnel in the middle of the stand"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Neft%C3%A7i_-_Arsenal_Tula_(01.08.2019).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nicat49",
+   "view": "interior",
+   "file": "/tmp/places-evidence/baku/p20_stadium2.jpg",
+   "used": "stand bays with grey-blue panels, roof truss with floodlights on top, white concrete balustrades"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9104673",
+   "used": "overall size 148 x 109 m, height 8 m (oval ground)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     62
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#4e8c3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     72
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -55,
+     -40
+    ],
+    "end": [
+     55,
+     -40
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.6,
+    "seatColour": "#2f5f9e",
+    "concreteColour": "#d9d6cc",
+    "underColour": "#bdb9af",
+    "tiers": [
+     {
+      "rows": 6,
+      "rise": 0.5,
+      "run": 1.0
+     },
+     {
+      "rows": 6,
+      "rise": 0.5,
+      "run": 1.0,
+      "gap": 1.6,
+      "lift": 1.2
+     }
+    ],
+    "seatColours": [
+     "#2f5f9e",
+     "#e0b43a"
+    ],
+    "blocks": 5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     55,
+     40
+    ],
+    "end": [
+     -55,
+     40
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.6,
+    "seatColour": "#2f5f9e",
+    "concreteColour": "#d9d6cc",
+    "underColour": "#bdb9af",
+    "tiers": [
+     {
+      "rows": 6,
+      "rise": 0.5,
+      "run": 1.0
+     },
+     {
+      "rows": 6,
+      "rise": 0.5,
+      "run": 1.0,
+      "gap": 1.6,
+      "lift": 1.2
+     }
+    ],
+    "seatColours": [
+     "#2f5f9e",
+     "#e0b43a"
+    ],
+    "blocks": 5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     58,
+     -34
+    ],
+    "end": [
+     58,
+     34
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.6,
+    "seatColour": "#2f5f9e",
+    "concreteColour": "#d9d6cc",
+    "underColour": "#bdb9af",
+    "seatColours": [
+     "#2f5f9e",
+     "#e0b43a"
+    ],
+    "blocks": 5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -58,
+     34
+    ],
+    "end": [
+     -58,
+     -34
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.6,
+    "seatColour": "#2f5f9e",
+    "concreteColour": "#d9d6cc",
+    "underColour": "#bdb9af",
+    "seatColours": [
+     "#2f5f9e",
+     "#e0b43a"
+    ],
+    "blocks": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tunnel",
+   "at": [
+    0,
+    -41,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.0
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#2b2d30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "truss-top-s",
+   "at": [
+    0,
+    -52,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-bot-s",
+   "at": [
+    0,
+    -52,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b9094"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.8,
+      "colour": "#7d8286"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -52,
+    9.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.5
+      ],
+      "z0": 0,
+      "height": 0.7,
+      "colour": "#f2f0e6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "truss-top-n",
+   "at": [
+    0,
+    52,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-bot-n",
+   "at": [
+    0,
+    52,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b9094"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.8,
+      "colour": "#7d8286"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    52,
+    9.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.5
+      ],
+      "z0": 0,
+      "height": 0.7,
+      "colour": "#f2f0e6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera is outside over the near stand while the photo is pitch-level, so the far-stand truss and floodlights agree but the near stand is a plain wall. No ad boards, balustrade fascia is only implied by concrete bands, no floodlight masts beyond the roof truss."
+ }
+}

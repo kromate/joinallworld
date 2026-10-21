@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-node-4918755823",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: Trollkonufingur is a natural basalt pinnacle on the Vagar west coast seen from a grass hillside path; scene height ~60 m, grey-green basalt (#6e7468), grass (#4f6a3a), path with steps and a low stone wall. The nearest OSM building (76 m away, 24 m2) is unrelated and not used. No photo could be found in Commons or Wikipedia searches."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hillside",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       60,
+       38
+      ],
+      "colour": "#4f6a3a"
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       46,
+       26
+      ],
+      "colour": "#587340"
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       20,
+       12
+      ],
+      "colour": "#4f6a3a"
+     }
+    ],
+    "capTop": true,
+    "curve": false,
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pinnacle",
+   "at": [
+    -6,
+    10,
+    4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -9,
+        -6
+       ],
+       [
+        8,
+        -7
+       ],
+       [
+        11,
+        4
+       ],
+       [
+        0,
+        9
+       ],
+       [
+        -10,
+        4
+       ]
+      ],
+      "colour": "#4a4f48"
+     },
+     {
+      "z": 14,
+      "poly": [
+       [
+        -6,
+        -4
+       ],
+       [
+        5,
+        -5
+       ],
+       [
+        7,
+        3
+       ],
+       [
+        0,
+        6
+       ],
+       [
+        -7,
+        3
+       ]
+      ],
+      "colour": "#5d6359"
+     },
+     {
+      "z": 32,
+      "poly": [
+       [
+        -4,
+        -3
+       ],
+       [
+        3,
+        -3
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        0,
+        4
+       ],
+       [
+        -4,
+        2
+       ]
+      ],
+      "cx": 1,
+      "colour": "#6e7468"
+     },
+     {
+      "z": 46,
+      "poly": [
+       [
+        -2.4,
+        -2
+       ],
+       [
+        2,
+        -2
+       ],
+       [
+        2.6,
+        1.6
+       ],
+       [
+        0,
+        2.6
+       ],
+       [
+        -2.6,
+        1
+       ]
+      ],
+      "cx": 2,
+      "colour": "#6e7468"
+     },
+     {
+      "z": 56,
+      "poly": [
+       [
+        -1.2,
+        -1
+       ],
+       [
+        1,
+        -1
+       ],
+       [
+        1.2,
+        0.8
+       ],
+       [
+        0,
+        1.2
+       ],
+       [
+        -1.2,
+        0.6
+       ]
+      ],
+      "cx": 2.5,
+      "colour": "#7a8076"
+     },
+     {
+      "z": 60,
+      "circle": 0.25,
+      "cx": 2.8,
+      "colour": "#7a8076"
+     }
+    ],
+    "curve": false,
+    "capTop": true,
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "ridge-back",
+   "at": [
+    26,
+    30,
+    4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       14
+      ],
+      "colour": "#4a4f48"
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       14,
+       8
+      ],
+      "colour": "#5d6359"
+     },
+     {
+      "z": 28,
+      "ellipse": [
+       4,
+       3
+      ],
+      "colour": "#6e7468"
+     }
+    ],
+    "capTop": true,
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.0,
+    "colour": "#6e7468"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; real pinnacle is a slender tilted basalt column rising from the sea cliff, here a grass knoll with a stacked-polygon pinnacle; scale 60 m is a scene scale"
+ }
+}

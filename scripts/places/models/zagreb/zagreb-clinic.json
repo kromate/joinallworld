@@ -1,0 +1,380 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bolnica_Vrap%C4%8De_Zagreb.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Suradnik13",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/clinic2.jpg",
+   "used": "three-storey ochre-yellow historicist front, projecting end pavilions with steep dark slate roofs and small round dormers, low slate hip between, arched upper windows on the central block, arched door, stone gate piers with iron arch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Klinika_Vrapce_Zagreb_06102012_2_roberta_f.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roberta F.",
+   "view": "street",
+   "used": "gate piers, wrought-iron arch, tall old trees, ochre colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/77485340",
+   "used": "campus is 417 m across so only the main front block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     24,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c76e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.6,
+    "plinth": 0.8,
+    "bands": "#f1e6c4",
+    "cornice": true,
+    "groundKind": "punched",
+    "faces": {
+     "back": "none"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f58",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-l",
+   "footprint": {
+    "rect": [
+     17,
+     17.5
+    ]
+   },
+   "at": [
+    -20.5,
+    -1.2
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c76e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "bands": "#f4ecd0",
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#3a3e46",
+    "material": "slate",
+    "rise": 7,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-r",
+   "footprint": {
+    "rect": [
+     17,
+     17.5
+    ]
+   },
+   "at": [
+    20.5,
+    -1.2
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c76e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "bands": "#f4ecd0",
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#3a3e46",
+    "material": "slate",
+    "rise": 7,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    -22.5,
+    24
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c068",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4452f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    22.5,
+    24
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c068",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4452f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -7.55,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 6.8,
+    "depth": 0.9,
+    "archWidth": 2.4,
+    "springHeight": 2.6,
+    "colour": "#f1e6c4"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "at": [
+    0,
+    -8.3,
+    6.8
+   ],
+   "params": {
+    "width": 5.5,
+    "rise": 1.0,
+    "depth": 0.6,
+    "colour": "#f1e6c4"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -20.5,
+    -6.0,
+    17.8
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#3a3e46"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    20.5,
+    -6.0,
+    17.8
+   ],
+   "params": {
+    "width": 1.8,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#3a3e46"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 15,
+    "height": 11,
+    "pillar": 2.2,
+    "leaf": "open",
+    "arch": true,
+    "colour": "#b8ae98",
+    "leafColour": "#1f2224"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -4
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -6
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     22
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     20
+    ],
+    "height": 18
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate piers are plain stone with no carved caps and the wrought-iron arch and scrollwork are missing; upper-floor window pattern is uniformly arched on the centre block; pavilion dormers and pediment are simple; rear wings schematic."
+ }
+}

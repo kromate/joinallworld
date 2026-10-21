@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-240694437",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terasa_Promenada_Mall_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marius-Ionut",
+   "view": "detail",
+   "file": "/tmp/places-evidence/bucharest/b-prom1.jpg",
+   "used": "roof terrace only (not an exterior elevation, so no comparison render): white steel-ribbed glazed vault springing from a white fascia, low glazed ground storey, grass mounds, pale paving, colourful seating"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/240694437",
+   "used": "real outline (172 x 99 m, 3 levels, 18 m) scaled to fit 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d3d9",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "parapet": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f1f1ee"
+      ],
+      "height": 0.9,
+      "at": 0.97,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b6",
+    "parapet": 0.8,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "vault",
+   "at": [
+    -8,
+    6,
+    18
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "wave",
+    "width": 60,
+    "depth": 22,
+    "rise": 4.5,
+    "waves": 1,
+    "thickness": 0.4,
+    "colour": "#dfe8ec",
+    "edgeColour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-terrace",
+   "at": [
+    28,
+    -14,
+    18
+   ],
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 0.8,
+    "colour": "#74a357",
+    "topColour": "#74a357"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "bottom": 14,
+    "colour": "#7b8791",
+    "frameColour": "#e7e1d2",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -58,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 26,
+    "depth": 9,
+    "height": 5.2,
+    "rise": 2.2,
+    "columns": 4,
+    "colour": "#f1f1ee",
+    "edgeColour": "#e7e1d2"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 16,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -70
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No exterior photo: facade glazing, vault, terrace and entrance canopy are inferred from a roof-terrace photo and the brief; real outline is rotated and scaled 0.61 to fit 118 m so accessory parts are approximately placed."
+ }
+}

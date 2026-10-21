@@ -1,0 +1,445 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%27H%C3%B4pital_intercommunal_%C3%A0_Steinfort_(HIS).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/hosp2.jpg",
+   "used": "long four-storey white-rendered block with regular single windows and roller blinds, lean-to roof, glazed entrance pavilion with flat canopy at left, taller grey-rendered rear wing with zinc roof, external steel escape stairs at right end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Steinfort,_H%C3%B4pital_intercommunal_(101).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/hosp1.jpg",
+   "used": "garage-level annex with two white garage doors, glazed link bridge between wings, hillside setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/469054630",
+   "used": "site area only; the matched footprint is a small 24x6 m piece so rectangles are used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    14
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "garage-annex",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ccd1",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -6.06,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.14
+    ],
+    "height": 1.6,
+    "colour": "#3a444b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.6,
+    -6.06,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.14
+    ],
+    "height": 1.6,
+    "colour": "#3a444b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -6.08,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.16
+    ],
+    "height": 2.7,
+    "colour": "#f3f4f4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.4,
+    -6.08,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.16
+    ],
+    "height": 2.7,
+    "colour": "#f3f4f4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    4
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ccd1",
+    "windows": "punched",
+    "windowRatio": 0.16
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-bridge",
+   "footprint": {
+    "rect": [
+     22,
+     3
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 7.5,
+   "height": 2.8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb3b0",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "trimColour": "#7a8087"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    5
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "height": 7.5,
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    18,
+    12
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ccd1",
+    "windows": "punched",
+    "windowRatio": 0.16
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d646b",
+    "material": "metal-sheet",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane",
+   "at": [
+    -4,
+    8
+   ],
+   "params": {
+    "rect": [
+     3,
+     22
+    ],
+    "height": 0.06,
+    "colour": "#3b3d41"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     10
+    ],
+    "height": 1.8,
+    "colour": "#5f8a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     8
+    ],
+    "height": 4.0,
+    "colour": "#5a8541"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "height": 6.5,
+    "colour": "#56803e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    9,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 1.4,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#b4b2ad"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    11.4,
+    -3,
+    1.8
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -3.2,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 2.0,
+    "depth": 2.0,
+    "colour": "#6f9a5a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14,
+    -1.5,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.6,
+    "depth": 2.0,
+    "colour": "#587f45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trailer",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    6,
+    -8
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b520",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0b520"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-469054630",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "garage annex moved to front with two white doors and a longer raised ribbon-glazed bridge; hillside is still stepped green blocks, no steps/shrubs/rail; camera is wider than the photo; bridge support minimal"
+ }
+}

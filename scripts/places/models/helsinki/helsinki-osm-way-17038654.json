@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-17038654",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kulosaaren_Casino_(Kulosaari,_Helsinki)_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/casino1.jpg",
+   "used": "stepped massing: tall centre block with balustraded cornice and round window flanked by lower wings, pale yellow render with cream trim, low entrance terrace with canopy, white railing, flagmast, flat roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kulosaari_Casino_and_Wihuritalo_from_air.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "see Commons page",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/helsinki/casino-air.jpg",
+   "used": "flat grey roofs, white walls, plan proportion"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/17038654",
+   "used": "overall size 33 x 29 m (composed from rectangles because the photo shows rectangular blocks)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbc98f",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#efe9d8",
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#686c6f",
+    "material": "membrane",
+    "parapet": 1.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    -17.5,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbc98f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#efe9d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#686c6f",
+    "material": "membrane",
+    "parapet": 1.3,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    17.5,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbc98f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#efe9d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#686c6f",
+    "material": "membrane",
+    "parapet": 1.3,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-terrace",
+   "footprint": {
+    "rect": [
+     20,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a2c26",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.2,
+    "cornice": true,
+    "trimColour": "#2a2220",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efece4",
+    "material": "membrane",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -1,
+    5,
+    10.5
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -4,
+    5,
+    10.5
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.0,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11.0,
+    3.3
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "colour": "#14141a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -3.5,
+    7.6
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.0,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "jetty",
+   "footprint": {
+    "rect": [
+     50,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -15
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4f3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5c44",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dark awning fascia with brown piers (no stripes), no balustrade relief on parapets, timber jetty is a plain deck with thin rail, no reeds/water, trees low-poly"
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-491625232",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/192543943",
+   "used": "31 x 17 m sports-centre building outline inside the leisure park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9b7a55",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e6a64",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3,
+    "colour": "#9b7a55",
+    "cap_colour": "#6e6a64"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#9b7a55"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -35,
+    25,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "depth": 22,
+    "shape": "oval",
+    "colour": "#8aa7a0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    25,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 24,
+    "count": 12
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; outline is only a small hall inside a large park, so the lawns, pond, pavilion and kiosk are brief-based and placed by guess."
+ }
+}

@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:C%C4%8CM_after_rebuillding_2013_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Karelj",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/market-game-0.jpg",
+   "used": "main entrance: glazed block under a long white swept canopy on one slanted strut, white pylon with a round blank disc, lower white wing with dark glass band on the left, checker-panel wing on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/250416859",
+   "used": "overall scale only (382 m outline, a ~140 m entrance portion is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.64,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     36
+    ]
+   },
+   "at": [
+    -33,
+    18
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#eceae6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#f4f4f2",
+    "groundKind": "shopfront"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     32,
+     34
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c4c0",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     48,
+     36
+    ]
+   },
+   "at": [
+    40,
+    18
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d4d0",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#f1f1ef",
+       "#d9d9d6",
+       "#6a6c70"
+      ],
+      "slits": 0.1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "height": 15,
+    "colour": "#f4f4f2"
+   },
+   "at": [
+    17.5,
+    -2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "logo-disc",
+   "params": {
+    "radius": 2.4,
+    "n": 16,
+    "height": 0.4,
+    "colour": "#e6e6e4"
+   },
+   "at": [
+    17.5,
+    -4.2,
+    8.5
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 7.5,
+    "colour": "#f2f2f0",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "canopy",
+   "params": {
+    "section": {
+     "rect": [
+      10,
+      3.6
+     ]
+    },
+    "points": [
+     [
+      -50,
+      -3,
+      17.5
+     ],
+     [
+      -22,
+      -3,
+      14.5
+     ],
+     [
+      0,
+      -3,
+      13.4
+     ],
+     [
+      16,
+      -3,
+      12.6
+     ]
+    ],
+    "colour": "#fbfbfa"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut",
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.6
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -6,
+      0.2
+     ],
+     [
+      -30,
+      -4,
+      13.6
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut2",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -27,
+      -6,
+      0.2
+     ],
+     [
+      -24,
+      -4,
+      15
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-dark-band",
+   "at": [
+    -33,
+    -0.1,
+    3
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#25363a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "lettering",
+   "at": [
+    -6,
+    -0.3,
+    5
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 5,
+    "colour": "#f6f6f4",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lobby-floor",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     3
+    ],
+    "height": 0.15,
+    "colour": "#b9b6ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     -24
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -26
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the entrance portion of the mall is modelled; canopy is a thick swept slab, not a true folded wedge; lettering is a blank board; pink shopfront, mullions and pavement details omitted."
+ }
+}

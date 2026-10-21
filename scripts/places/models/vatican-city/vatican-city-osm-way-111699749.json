@@ -1,0 +1,995 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-osm-way-111699749",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citt%C3%A0_del_Vaticano,_chiesa_dei_Santi_Martino_e_Sebastiano_degli_Svizzeri_-_Esterno.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pufui Pc Pifpef I",
+   "view": "front",
+   "file": "/tmp/places-evidence/vatican-city/v1_0.jpg",
+   "used": "ochre front with four white pilasters, pediment, oculus, framed door and steps, low ochre wing left, fortified wall behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/111699749",
+   "used": "size only (12 x 9 m footprint, rotated)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.5,
+     16
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a23c",
+    "windows": "none",
+    "plinth": 0.7
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b0866a",
+    "material": "clay-tile",
+    "rise": 3.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -7.8,
+    -2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a23c",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#e6dcc0"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a4440",
+    "material": "clay-tile",
+    "rise": 1.0,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -11
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-wall",
+   "footprint": {
+    "rect": [
+     30,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c8a07c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08a68",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "m",
+     "at": [
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       1.5,
+       1.2
+      ],
+      "z0": 13,
+      "height": 1.6,
+      "colour": "#c2997a",
+      "topColour": "#c2997a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18.5,
+     4.2
+    ],
+    "end": [
+     10.5,
+     4.2
+    ],
+    "count": 18
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-screen",
+   "at": [
+    5,
+    -8.15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     11.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 11.4,
+    "colour": "#d9a23c",
+    "topColour": "#d9a23c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil0",
+   "at": [
+    0.9,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0.5,
+    "height": 10.4,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth0",
+   "at": [
+    0.9,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9ad94",
+    "topColour": "#b9ad94"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap0",
+   "at": [
+    0.9,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "z0": 10.5,
+    "height": 0.8,
+    "colour": "#e6dcc4",
+    "topColour": "#e6dcc4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil1",
+   "at": [
+    2.6,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0.5,
+    "height": 10.4,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth1",
+   "at": [
+    2.6,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9ad94",
+    "topColour": "#b9ad94"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap1",
+   "at": [
+    2.6,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "z0": 10.5,
+    "height": 0.8,
+    "colour": "#e6dcc4",
+    "topColour": "#e6dcc4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil2",
+   "at": [
+    7.4,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0.5,
+    "height": 10.4,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth2",
+   "at": [
+    7.4,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9ad94",
+    "topColour": "#b9ad94"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap2",
+   "at": [
+    7.4,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "z0": 10.5,
+    "height": 0.8,
+    "colour": "#e6dcc4",
+    "topColour": "#e6dcc4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil3",
+   "at": [
+    9.1,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0.5,
+    "height": 10.4,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth3",
+   "at": [
+    9.1,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.5,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#b9ad94",
+    "topColour": "#b9ad94"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap3",
+   "at": [
+    9.1,
+    -8.65
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "z0": 10.5,
+    "height": 0.8,
+    "colour": "#e6dcc4",
+    "topColour": "#e6dcc4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    5,
+    -8.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     12.6,
+     1.0
+    ],
+    "z0": 11.2,
+    "height": 0.8,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice2",
+   "at": [
+    5,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     12.0,
+     0.8
+    ],
+    "z0": 12.0,
+    "height": 0.4,
+    "colour": "#f4efe0",
+    "topColour": "#f4efe0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     11.6,
+     1.0
+    ]
+   },
+   "at": [
+    5,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 12.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9a23c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#ece6d4",
+    "material": "concrete",
+    "rise": 2.4,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedi-cross-v",
+   "at": [
+    5,
+    -1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 14.0,
+    "height": 2.2,
+    "colour": "#444444",
+    "topColour": "#444444"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pedi-cross-h",
+   "at": [
+    5,
+    -1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 15.5,
+    "height": 0.3,
+    "colour": "#444444",
+    "topColour": "#444444"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-frame",
+   "at": [
+    5.0,
+    -8.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.0,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 4.9,
+    "colour": "#e0d8c4",
+    "topColour": "#e0d8c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    5.0,
+    -8.95
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "z0": 0.5,
+    "height": 4.2,
+    "colour": "#4a4540",
+    "topColour": "#4a4540"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-pedi",
+   "footprint": {
+    "rect": [
+     3.3,
+     0.6
+    ]
+   },
+   "at": [
+    5.0,
+    -8.75
+   ],
+   "rotDeg": 0,
+   "z0": 5.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e0d8c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#ece6d4",
+    "material": "concrete",
+    "rise": 0.7,
+    "overhang": 0.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    5.0,
+    -9.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c9c3b3",
+    "topColour": "#c9c3b3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    5.0,
+    -9.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#c9c3b3",
+    "topColour": "#c9c3b3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus-ring",
+   "at": [
+    5,
+    -8.95
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      8.6
+     ],
+     "radius": 0.85,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#ece6d4",
+    "n": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus-glass",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.75,
+    "points": [
+     [
+      5,
+      -8.85,
+      8.6
+     ],
+     [
+      5,
+      -9.0,
+      8.6
+     ]
+    ],
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win0-sur",
+   "at": [
+    -11.4,
+    -7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 4.0,
+    "height": 3.8,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win0",
+   "at": [
+    -11.4,
+    -7.35
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 4.4,
+    "height": 3.0,
+    "colour": "#6f7f92",
+    "topColour": "#6f7f92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win1-sur",
+   "at": [
+    -5.0,
+    -7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.4,
+     0.25
+    ],
+    "z0": 4.0,
+    "height": 3.8,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win1",
+   "at": [
+    -5.0,
+    -7.35
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "z0": 4.4,
+    "height": 3.0,
+    "colour": "#4a4038",
+    "topColour": "#4a4038"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "string",
+   "at": [
+    -7.8,
+    -7.15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     14,
+     0.2
+    ],
+    "z0": 3.3,
+    "height": 0.3,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door0-sur",
+   "at": [
+    -12.2,
+    -7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.8000000000000003,
+     0.25
+    ],
+    "z0": 0.5,
+    "height": 3.9,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door0",
+   "at": [
+    -12.2,
+    -7.35
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#403830",
+    "topColour": "#403830"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door1-sur",
+   "at": [
+    -4.2,
+    -7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.6,
+     0.25
+    ],
+    "z0": 0.5,
+    "height": 3.9,
+    "colour": "#ece6d4",
+    "topColour": "#ece6d4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door1",
+   "at": [
+    -4.2,
+    -7.35
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.0,
+     0.2
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#403830",
+    "topColour": "#403830"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-step",
+   "at": [
+    -4.2,
+    -7.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.0,
+     0.8
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#c9c3b3",
+    "topColour": "#c9c3b3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-step2",
+   "at": [
+    -12.2,
+    -7.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.4,
+     0.8
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#c9c3b3",
+    "topColour": "#c9c3b3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wall behind is brick-textured not rendered stone; oculus ring is faceted; wing windows lack glass reflections; no planters or cornice dentils."
+ }
+}

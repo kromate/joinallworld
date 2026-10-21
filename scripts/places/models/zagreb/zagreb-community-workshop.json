@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: long modernist faculty block, concrete frame, wide ribbon windows, lower sports hall wing, 1960s-70s. The only nearby photo (Commons) shows a tram, not the building, and the OSM outline is the whole 430 m campus, so neither was used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     72,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb8ae",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#bdb8ae",
+       "#a9a59c"
+      ]
+     },
+     {
+      "type": "pilotis",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "inset": 2.5,
+      "spacing": 6,
+      "width": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7f",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     28,
+     30
+    ]
+   },
+   "at": [
+    -22,
+    23
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c9c5bb",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7f",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    28,
+    10
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f7d86",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7f"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -8,
+    4.5
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#6f7d86",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     12
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the building; massing is typical for the brief, not measured."
+ }
+}

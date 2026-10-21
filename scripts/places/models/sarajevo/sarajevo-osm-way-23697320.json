@@ -1,0 +1,550 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-23697320",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vraca_Park.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "MOs810",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/qv1.jpg",
+   "used": "wide pale limestone steps in flights, grassy terrace, round ashlar bastion tower left, ashlar fortress wall behind, dark conifers and broadleaf trees around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarajevo_Vraca_Spomen_Park_3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Julian Nyca",
+   "view": "detail",
+   "file": "/tmp/places-evidence/sarajevo/qv2.jpg",
+   "used": "grey granite memorial wall colour and plain slab texture (no inscription modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23697320",
+   "used": "park extent and orientation; only the fortress core is modelled because the whole park is ~600 m long"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 7,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 130,
+    "depth": 110,
+    "colour": "#7a9a5a"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 10,
+    "colour": "#b9b4a6",
+    "border_colour": "#a29d90"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -14
+     ],
+     [
+      -30,
+      -4
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.8,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      30,
+      -14
+     ],
+     [
+      30,
+      -4
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.8,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -48,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 70,
+    "count": 20,
+    "kind": "conifer",
+    "min_height": 9,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    52,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 70,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    46,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 20,
+    "count": 22,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     28
+    ],
+    "z0": 0,
+    "height": 1.7,
+    "colour": "#bdb8aa",
+    "topColour": "#8d9a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     48,
+     22
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#bdb8aa",
+    "topColour": "#8d9a6a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "rise": 1.7,
+    "run": 6.5,
+    "count": 6,
+    "colour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    5,
+    1.7
+   ],
+   "params": {
+    "width": 16,
+    "rise": 1.9,
+    "run": 6,
+    "count": 6,
+    "colour": "#d6d2c6"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8,
+    5,
+    1.7
+   ],
+   "params": {
+    "width": 20,
+    "rise": 1.9,
+    "run": 6,
+    "count": 6,
+    "colour": "#d6d2c6"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    26,
+    5,
+    1.7
+   ],
+   "params": {
+    "width": 16,
+    "rise": 1.9,
+    "run": 6,
+    "count": 6,
+    "colour": "#d6d2c6"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    2,
+    1.8
+   ],
+   "params": {
+    "length": 3,
+    "height": 0.5,
+    "depth": 1.5,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    19,
+    2,
+    1.8
+   ],
+   "params": {
+    "length": 3,
+    "height": 0.5,
+    "depth": 1.5,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    12,
+    3.6
+   ],
+   "params": {
+    "profile": [
+     [
+      3.6,
+      0,
+      "#d8d3c4"
+     ],
+     [
+      3.6,
+      5,
+      "#d8d3c4"
+     ],
+     [
+      3.9,
+      5,
+      "#bfb9aa"
+     ],
+     [
+      3.9,
+      5.5,
+      "#bfb9aa"
+     ],
+     [
+      0,
+      5.5,
+      "#bfb9aa"
+     ]
+    ],
+    "segments": 20,
+    "bottomCap": true,
+    "arcade": {
+     "count": 2,
+     "width": 0.4,
+     "height": 0.9,
+     "sill": 2.4,
+     "shape": "rect",
+     "depth": 0.3
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     40,
+     2.2
+    ],
+    "z0": 3.6,
+    "height": 5.5,
+    "colour": "#d4cfbf",
+    "topColour": "#c2bdae",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bab4a4"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     26,
+     2.2
+    ],
+    "z0": 3.6,
+    "height": 7,
+    "colour": "#d4cfbf",
+    "topColour": "#c2bdae",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bab4a4"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    22,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "rect": [
+     16,
+     2.2
+    ],
+    "z0": 3.6,
+    "height": 4,
+    "colour": "#d4cfbf",
+    "topColour": "#c2bdae",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bab4a4"
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 12,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 24,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -18,
+    6,
+    1.7
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    12,
+    8,
+    1.7
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    36,
+    12,
+    3.6
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.2,
+    "depth": 2.5,
+    "colour": "#4f7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round ashlar bastion is a plain drum with no stone coursing texture; steps are clean (no weed overgrowth); shrubs are simple hedge blocks; camera is from higher/farther than the photo."
+ }
+}

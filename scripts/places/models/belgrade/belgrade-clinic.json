@@ -1,0 +1,178 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-clinic",
+ "name": "Dom zdravlja Zemun",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0414\u043e\u043c_\u0437\u0434\u0440\u0430\u0432\u0459\u0430_\u0417\u0435\u043c\u0443\u043d.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Vano111ru",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/cl1.jpg",
+   "used": "front elevation: pale weathered beige render, three window storeys over a high rusticated basement with barred lights, central porch with four plain columns and a balcony above, two small balconies on brackets, heavy cornice with a flat roof edge, 6-over-6 windows with plain surrounds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242251056",
+   "used": "real footprint (name match, 109 x 66 m, 5 levels, stepped slab with wings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.18,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbd9f",
+    "trimColour": "#e0d8c4",
+    "windows": "none",
+    "windowRatio": 0.42,
+    "bay": 5.2,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 4.0,
+    "cornice": true,
+    "bands": "#b3a68f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d4f40",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    6,
+    -23.5,
+    3.2
+   ],
+   "params": {
+    "width": 11,
+    "depth": 3.5,
+    "height": 7.4,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#cfc6b2",
+    "roofColour": "#b4ad9d"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -23.0,
+    9.8
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3.0,
+       1.6
+      ],
+      "height": 0.4,
+      "colour": "#a39d90"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     12,
+     0
+    ],
+    "count": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -23.8,
+    10.2
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3.0,
+       0.12
+      ],
+      "height": 1.0,
+      "colour": "#2e2e30"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     12,
+     0
+    ],
+    "count": 3
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "windows are ribbon-like punched grid, not tall 6-over-6 portrait panes; no first-floor balconies, barred basement lights, heavy cornice or tile eave; portico is a simplified 4-column porch; OSM outline wider than photo stretch"
+ }
+}

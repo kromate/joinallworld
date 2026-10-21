@@ -1,0 +1,358 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-relation-8257226",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_UTM_main_building_-_nov_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Giku",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/utm1.jpg",
+   "used": "long three-storey neoclassical front in cream and pale yellow render with white cornices, brown rusticated ground storey, projecting central bay with pediment and arched upper windows, arched gable at the right end, 12-storey slab with red balcony panels behind on the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UTM_Chisinau_-_main_entrance.jpg",
+   "licence": "CC0",
+   "author": "Giku",
+   "view": "detail",
+   "file": "/tmp/places-evidence/chisinau/utm2.jpg",
+   "used": "entrance porch on pink-brown plinth with white paired pilasters, balustraded balcony, arched windows, dark red granite steps, yellow walls"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d49a",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f6f2e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#7a5a4a",
+       "#e8d49a",
+       "#e8d49a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6b68",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -28,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d29a",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f6f2e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#7a5a4a",
+       "#e4d29a",
+       "#e4d29a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6b68",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     20,
+     21
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadba8",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f6f2e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#7a5a4a",
+       "#eadba8",
+       "#eadba8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8d92",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tall-slab",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -42,
+    22
+   ],
+   "z0": 0,
+   "height": 40,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6b4",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "colour": "#b04a44",
+      "railColour": "#b04a44",
+      "railKind": "solid",
+      "every": 3.0,
+      "width": 2.6,
+      "depth": 0.9,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#cfc6b4",
+       "#d8cfbd"
+      ],
+      "height": 0.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6b68"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 4,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f1ede0",
+    "roofColour": "#e8e3d2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.2,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#7a3a38"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3.5,
+    -12.5,
+    8
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#c9302c",
+    "count": 1,
+    "colours": [
+     "#0046ae",
+     "#ffd200",
+     "#cc092f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#2f4f8f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rear-left slab, brown ground storey and taller windows done; still missing window pediments, arched gable at right end, balustraded porch, rusticated texture; centre bay pediment is a plain gable."
+ }
+}

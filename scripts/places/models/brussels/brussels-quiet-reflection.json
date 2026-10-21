@@ -1,0 +1,419 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belgi%C3%AB_-_Duisburg_-_Sint-Catharinakerk_-_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (see file page)",
+   "view": "side",
+   "file": "/tmp/places-evidence/brussels/duisburg1.jpg",
+   "used": "pale limestone Gothic church (not brick): square west tower with slender dark slate spire, gabled nave/transept, big polygonal choir with tall lancet windows and buttresses under a dark hipped slate roof, round corner turret with conical cap, low balustraded annex, churchyard wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/35314454",
+   "used": "overall size (46 x 27 m, cross plan); parts composed separately from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 3,
+  "fovDeg": 42
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -19,
+    2
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6d0c0",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3e434a",
+    "material": "slate",
+    "rise": 0.5
+   }
+  },
+  {
+   "type": "core/tower",
+   "id": "spire",
+   "at": [
+    -19,
+    2,
+    16.3
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 0.4,
+    "cap": "pyramid",
+    "capRise": 30,
+    "windows": "none",
+    "colour": "#3e434a",
+    "capColour": "#3e434a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6d0c0",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#464b52",
+    "material": "slate",
+    "pitch": 48,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    2
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6d0c0",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "bay": 6,
+    "plinth": 0.6,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#464b52",
+    "material": "slate",
+    "pitch": 48,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir-bay",
+   "footprint": {
+    "rect": [
+     8,
+     15
+    ]
+   },
+   "at": [
+    3,
+    2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "params": {
+    "points": [
+     [
+      0,
+      -7.5
+     ],
+     [
+      4.5,
+      -7.5
+     ],
+     [
+      7.8,
+      -4
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      7.8,
+      4
+     ],
+     [
+      4.5,
+      7.5
+     ],
+     [
+      0,
+      7.5
+     ]
+    ],
+    "height": 14,
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.4,
+    "plinth": 0.5
+   },
+   "at": [
+    7,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apse-roof",
+   "params": {
+    "points": [
+     [
+      -4,
+      -8
+     ],
+     [
+      4.5,
+      -8
+     ],
+     [
+      8.3,
+      -4.3
+     ],
+     [
+      9.6,
+      0
+     ],
+     [
+      8.3,
+      4.3
+     ],
+     [
+      4.5,
+      8
+     ],
+     [
+      -4,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 5,
+    "topScale": [
+     0.85,
+     0.04
+    ],
+    "topOffset": [
+     -0.5,
+     0
+    ],
+    "colour": "#3e434a",
+    "windows": "none"
+   },
+   "at": [
+    7,
+    2,
+    14
+   ]
+  },
+  {
+   "type": "array",
+   "id": "buttresses",
+   "params": {
+    "mode": "arc",
+    "count": 7,
+    "centre": [
+     7,
+     2
+    ],
+    "radius": 9.2,
+    "radiusY": 7.8,
+    "startDeg": -80,
+    "endDeg": 80,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.8
+      ],
+      "height": 12,
+      "topScale": 0.6,
+      "colour": "#cfc8b6"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    -1,
+    -7
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c1b0",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/tower",
+   "id": "turret",
+   "at": [
+    -1,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 17,
+    "round": true,
+    "cap": "pyramid",
+    "capRise": 3,
+    "windows": "none",
+    "colour": "#e0dacb",
+    "capColour": "#3e434a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.5,
+    "thickness": 0.5,
+    "colour": "#a79c85"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "line": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "graves",
+   "params": {
+    "mode": "grid",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.15
+      ],
+      "height": 0.9,
+      "colour": "#8d8a82"
+     }
+    },
+    "cols": 5,
+    "rows": 2,
+    "dx": 2.2,
+    "dy": 3
+   },
+   "at": [
+    -30,
+    -10,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Choir now a broad polygonal apse with ridged low hipped roof, slim tower with needle spire; lancets only approximate, graves minimal, transept placement approximate"
+ }
+}

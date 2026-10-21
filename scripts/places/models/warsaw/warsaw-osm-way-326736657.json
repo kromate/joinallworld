@@ -1,0 +1,353 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-326736657",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Park_Fosa_i_Stoki_Cytadeli_2017_1.jpg",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Adrian Grycuk (Boston9)",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/fosa.jpg",
+   "used": "grassy moat floor between a sloping earth bank in front and a long red-brick counterscarp wall behind, a low brick arcaded viaduct at the left, small arched casemate openings in the wall at the right, a rampart of trees and scrub above, spring-bare willows in the moat"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/326736657",
+   "used": "the park is a very long strip (about 1200 m) along the Citadel moat; one representative stretch of about 100 m is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "moat-floor",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     200,
+     150
+    ],
+    "z0": -0.3,
+    "height": 0.3,
+    "colour": "#7fa24d",
+    "slot": "grass",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "near-bank",
+   "at": [
+    0,
+    -24
+   ],
+   "params": {
+    "rect": [
+     160,
+     22
+    ],
+    "height": 4.5,
+    "topScale": [
+     1,
+     0.25
+    ],
+    "topOffset": [
+     0,
+     -7.8
+    ],
+    "colour": "#6f9a45",
+    "slot": "grass",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "counterscarp",
+   "footprint": {
+    "rect": [
+     48,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    19
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b0553a",
+    "windows": "none",
+    "bay": 7,
+    "faces": {},
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a33",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "casemates",
+   "footprint": {
+    "rect": [
+     24,
+     3.4
+    ]
+   },
+   "at": [
+    38,
+    19.5
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b8573b",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 3.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-left",
+   "footprint": {
+    "rect": [
+     26,
+     2.4
+    ]
+   },
+   "at": [
+    -60,
+    19
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a94f36",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a33"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -46,
+    15,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     28,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.6
+      ],
+      "height": 4.6,
+      "colour": "#b95a3d",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "viaduct-deck",
+   "at": [
+    -32,
+    15
+   ],
+   "params": {
+    "rect": [
+     30,
+     2.6
+    ],
+    "z0": 4.6,
+    "height": 1.1,
+    "colour": "#b95a3d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rampart",
+   "at": [
+    0,
+    38
+   ],
+   "params": {
+    "rect": [
+     160,
+     34
+    ],
+    "height": 7,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "colour": "#7a8f4a",
+    "slot": "grass",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    34,
+    7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "colour": "#8c8a66",
+    "count": 7,
+    "spread": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    34,
+    7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#8f9a5a",
+    "count": 7,
+    "spread": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    30,
+    7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#a9c466",
+    "count": 4,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#a9c466"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#a9c466"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "colour": "#8c8a66"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    30,
+    7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#8c8a66",
+    "count": 3,
+    "spread": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "camera frames the whole ground slab so the fort wall is small; slab edges still visible; near bank slope reads as a low ridge not a long descent into the moat; viaduct piers and deck are crude; trees are generic lollipops not bare willows"
+ }
+}

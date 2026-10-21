@@ -1,0 +1,603 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-relation-3662657",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stage_in_Vingis_park_Vilnius.JPG",
+   "licence": "see Commons file page",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/vilnius/vingis_stage.jpg",
+   "used": "Song Festival stage: white-rimmed parabolic shell with timber-gold underside, raked grey seating, cream side walls, glazed block at left, balcony stair tower at right, pine backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/348377134",
+   "used": "nearest only (a bistro); not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.0,
+      "rect": [
+       62.0,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 5.1,
+      "rect": [
+       61.69,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       60.75,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 9.3,
+      "rect": [
+       59.14,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 11.4,
+      "rect": [
+       56.82,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       53.69,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 15.6,
+      "rect": [
+       49.6,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 17.7,
+      "rect": [
+       44.28,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 19.8,
+      "rect": [
+       37.2,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 21.9,
+      "rect": [
+       27.03,
+       20
+      ],
+      "colour": "#c9953f"
+     },
+     {
+      "z": 24.0,
+      "rect": [
+       2,
+       20
+      ],
+      "colour": "#c9953f"
+     }
+    ],
+    "colour": "#c9953f",
+    "curve": true,
+    "steps": 3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    6.5,
+    3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.0,
+      2.0
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 31,
+     "radiusY": 21,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     24
+    ],
+    "radius": 46,
+    "radiusY": 18,
+    "startDeg": 196,
+    "endDeg": 344,
+    "rows": 16,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColour": "#c9c9c4",
+    "concreteColour": "#d8d5c8",
+    "under": "open",
+    "facetDeg": 10,
+    "closeEnds": true,
+    "flip": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-34",
+   "footprint": {
+    "rect": [
+     2.5,
+     2
+    ]
+   },
+   "at": [
+    -34,
+    -3
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9953f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-12",
+   "footprint": {
+    "rect": [
+     2.5,
+     2
+    ]
+   },
+   "at": [
+    -12,
+    -3
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9953f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk12",
+   "footprint": {
+    "rect": [
+     2.5,
+     2
+    ]
+   },
+   "at": [
+    12,
+    -3
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9953f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk34",
+   "footprint": {
+    "rect": [
+     2.5,
+     2
+    ]
+   },
+   "at": [
+    34,
+    -3
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9953f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wall",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    -37,
+    14
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -50,
+    14
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9b6b0",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "bands": "#f2f1ec",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6dc",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wall",
+   "footprint": {
+    "rect": [
+     34,
+     4
+    ]
+   },
+   "at": [
+    50,
+    14
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    69,
+    14
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc2",
+    "windows": "none",
+    "pattern": {
+     "type": "balconies"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0c8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    24,
+    70,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.8,
+      "colour": "#d8d8d8"
+     },
+     {
+      "z": 38,
+      "circle": 1.0,
+      "colour": "#d8d8d8"
+     },
+     {
+      "z": 39,
+      "circle": 3.2,
+      "colour": "#9a9a9a"
+     },
+     {
+      "z": 43,
+      "circle": 3.4,
+      "colour": "#9a9a9a"
+     },
+     {
+      "z": 44,
+      "circle": 0.5,
+      "colour": "#c0392b"
+     },
+     {
+      "z": 58,
+      "circle": 0.3,
+      "colour": "#c0392b"
+     }
+    ],
+    "colour": "#d8d8d8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -90,
+     30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -80,
+     34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     90,
+     32
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     80,
+     36
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     44
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     46
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     44
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -56,
+     54
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -42,
+     58
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     54
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     58
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     54
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     42,
+     58
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     56,
+     50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     54
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand tiers read as a low band hidden in front of the shell rather than a tall raked fan; shell is a loft with a front cap, TV tower approximate; masses span slightly over 120 m"
+ }
+}

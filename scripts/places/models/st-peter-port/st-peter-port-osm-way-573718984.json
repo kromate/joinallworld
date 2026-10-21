@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-way-573718984",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8153711",
+   "used": "real campus building outline (about 100 x 52 m, stepped wings and projections)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "fit": 101
+   },
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ded0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#c9ccce",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     4
+    ],
+    "height": 9,
+    "colour": "#5c7a8c",
+    "material": "glass-curtain",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#5c7a8c",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 5,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline used but storey count, facade colours and entrance location come from the brief only"
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "mariehamn", "venueId": "mariehamn-osm-way-165234934",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/165234934", "used": "real outline of S:t Mårtens kyrka (name match, 610 m2), also wikidata Q10676857: Lutheran church, architect Stig Svahnström, built 1969, so modern, not medieval as the brief assumed"},
+  {"kind": "text", "ref": "briefs/mariehamn.json", "used": "whitewashed walls and dark metal roof typical of Åland churches; no photo found, tower and window rhythm are inferred"}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 18, "fovDeg": 50, "aspect": 1.333, "margin": 0.1},
+ "parts": [
+  {"type": "mass", "id": "church-body", "footprint": {"osm": true, "fit": 40}, "at": [0, 0], "height": 7.5, "storeys": 1,
+   "wall": {"material": "render", "colour": "#e9e5da", "windows": "punched", "windowShape": "rect", "windowRatio": 0.07, "bay": 4.5, "plinth": 0.5, "trimColour": "#8a8f94"},
+   "roof": {"form": "gable", "colour": "#3b3d40", "material": "metal-sheet", "pitch": 22, "overhang": 0.6}},
+  {"type": "prism", "at": [-8, 16, 0], "params": {"rect": [2.6, 2.6], "height": 19, "topScale": 0.8, "colour": "#e9e5da", "top": true}},
+  {"type": "core/spire", "at": [-8, 16, 19], "params": {"baseWidth": 2.2, "height": 6, "sides": 4, "colour": "#3b3d40", "finial": true}},
+  {"type": "core/steps", "at": [8, -17.6, 0], "params": {"width": 5, "rise": 0.6, "run": 0.6, "count": 3, "colour": "#b9b6ac"}}
+ ],
+ "site": {"ground": "grass", "forecourt": "garden", "trees": [{"kind": "conifer", "at": [-24, -6]}, {"kind": "conifer", "at": [24, 10]}, {"kind": "broadleaf", "at": [20, -22]}], "extent": [90, 80]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo found: only the real outline is certain; roof form, tower placement and window rhythm are inferred for a 1969 modernist church"}
+}

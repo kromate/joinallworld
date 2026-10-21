@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-node-2788687315",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1337793042",
+   "used": "real 90 m2 outline of the building containing the point, used for the nave"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/minsk.json#minsk-osm-node-2788687315",
+   "used": "cemetery church: white walls, single blue onion dome, belfry gable; no photo found anywhere"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bay": 3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6fa8",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "drum-dome",
+   "at": [
+    0,
+    0,
+    7.2
+   ],
+   "params": {
+    "radius": 2.1,
+    "height": 4.2,
+    "profile": "onion",
+    "drum": 2.2,
+    "drumRadius": 2.0,
+    "finial": 1.6,
+    "colour": "#3f6fa8",
+    "drumColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.6,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -6.4
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6fa8",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mosque-domed/bellcote",
+   "id": "belfry-gable",
+   "at": [
+    0,
+    -8,
+    3.8
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 2.6,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "yard-fence",
+   "at": [
+    -12,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.6,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "cemetery-trees",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 26,
+    "colour": "#5a7f3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: OSM outline plus brief facts only; cruciform plan, porch, belfry gable and dome proportions are typical, not observed."
+ }
+}

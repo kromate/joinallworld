@@ -1,0 +1,949 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Citta_del_Vaticano_train_station_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Krzysztof Golik",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vatican-city/vc_stn2.jpg",
+   "used": "white marble/travertine two-storey wings with window groups, projecting central pavilion with four-column portico, taller attic with green copper barrel vault, terracotta flat roofs behind parapets, Leonine wall and tracks behind, stone pines"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vatikan-Bahnhof.jpg",
+   "licence": "CC BY-SA 2.0 de",
+   "author": "Binter",
+   "view": "aerial",
+   "used": "proportions of pavilion vs wings, rust-red wall behind, tracks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1493786246",
+   "used": "overall size only (about 50 m wide, outline includes the platform sheds)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 24,
+  "fovDeg": 38,
+  "aspect": 1.3,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    -16,
+    1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.6,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5694a",
+    "material": "clay-tile",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    16,
+    1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.6,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5694a",
+    "material": "clay-tile",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     15,
+     15
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5694a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "params": {
+    "rect": [
+     10,
+     12
+    ],
+    "z0": 10,
+    "height": 2.6,
+    "colour": "#e9e5d8",
+    "topColour": "#e9e5d8"
+   },
+   "at": [
+    0,
+    1.5,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -9.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -3.6,
+     0,
+     0
+    ],
+    "end": [
+     3.6,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.55,
+      "n": 10,
+      "z0": 0.6,
+      "height": 7.4,
+      "colour": "#f4f1e8",
+      "topColour": "#f4f1e8"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-entablature",
+   "params": {
+    "rect": [
+     10.4,
+     3.8
+    ],
+    "z0": 8,
+    "height": 1.3,
+    "colour": "#e6e1d2",
+    "topColour": "#e6e1d2"
+   },
+   "at": [
+    0,
+    -8.4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "params": {
+    "rect": [
+     10.5,
+     2.0
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e2ddd0",
+    "topColour": "#e2ddd0"
+   },
+   "at": [
+    0,
+    -11.6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "rect": [
+     8.4,
+     11
+    ],
+    "z0": 12.6,
+    "height": 0.8,
+    "colour": "#d8d3c4",
+    "topColour": "#d8d3c4"
+   },
+   "at": [
+    0,
+    1.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "vault",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 13.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5fae9b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#58b3a0",
+    "material": "copper",
+    "rise": 3.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-pediment",
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "z0": 12.6,
+    "height": 0.9,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   },
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back",
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#4a4a46",
+    "topColour": "#4a4a46"
+   },
+   "at": [
+    0,
+    -6.1,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 5,
+    "arch": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-side-l",
+   "params": {
+    "rect": [
+     0.8,
+     3
+    ],
+    "z0": 0,
+    "height": 9.3,
+    "colour": "#f1eee4",
+    "topColour": "#f1eee4"
+   },
+   "at": [
+    -4.9,
+    -7.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-side-r",
+   "params": {
+    "rect": [
+     0.8,
+     3
+    ],
+    "z0": 0,
+    "height": 9.3,
+    "colour": "#f1eee4",
+    "topColour": "#f1eee4"
+   },
+   "at": [
+    4.9,
+    -7.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "string-w",
+   "params": {
+    "rect": [
+     17,
+     0.3
+    ],
+    "z0": 4,
+    "height": 0.35,
+    "colour": "#d9d4c6",
+    "topColour": "#d9d4c6"
+   },
+   "at": [
+    -16,
+    -5.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "string-e",
+   "params": {
+    "rect": [
+     17,
+     0.3
+    ],
+    "z0": 4,
+    "height": 0.35,
+    "colour": "#d9d4c6",
+    "topColour": "#d9d4c6"
+   },
+   "at": [
+    16,
+    -5.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-w",
+   "params": {
+    "rect": [
+     0.2,
+     2.4
+    ],
+    "z0": 2,
+    "height": 4,
+    "colour": "#cfc9b8",
+    "topColour": "#cfc9b8"
+   },
+   "at": [
+    -24.4,
+    -3,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-e",
+   "params": {
+    "rect": [
+     0.2,
+     2.4
+    ],
+    "z0": 2,
+    "height": 4,
+    "colour": "#cfc9b8",
+    "topColour": "#cfc9b8"
+   },
+   "at": [
+    24.4,
+    -3,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     44,
+     3
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b8b3a6",
+    "topColour": "#b8b3a6"
+   },
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ballast",
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#7a7771",
+    "topColour": "#7a7771"
+   },
+   "at": [
+    0,
+    14.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "rails",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     0,
+     13.6,
+     0
+    ],
+    "end": [
+     0,
+     15.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       70,
+       0.15
+      ],
+      "height": 0.15,
+      "colour": "#3b3a38",
+      "topColour": "#3b3a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-shed",
+   "params": {
+    "rect": [
+     26,
+     2.6
+    ],
+    "z0": 0.5,
+    "height": 0.3,
+    "colour": "#8c8a83",
+    "topColour": "#8c8a83"
+   },
+   "at": [
+    0,
+    10,
+    3.3
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "shed-posts",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    10,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -12,
+     0,
+     0
+    ],
+    "end": [
+     12,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.15,
+      "n": 6,
+      "height": 3,
+      "colour": "#55534e",
+      "topColour": "#55534e"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "leonine-wall",
+   "at": [
+    0,
+    19,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 6,
+    "thickness": 1.6,
+    "colour": "#7d7366"
+   }
+  },
+  {
+   "type": "array",
+   "id": "pine--18--14",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3e5d34",
+      "profile": [
+       [
+        0.35,
+        0,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        7.4399999999999995,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        7.4399999999999995,
+        "#3e5d34"
+       ],
+       [
+        1.44,
+        7.64,
+        "#3e5d34"
+       ],
+       [
+        5.04,
+        8.879999999999999,
+        "#3e5d34"
+       ],
+       [
+        4.800000000000001,
+        10.08,
+        "#3e5d34"
+       ],
+       [
+        1.2000000000000002,
+        11.040000000000001,
+        "#3e5d34"
+       ],
+       [
+        0.01,
+        11.040000000000001,
+        "#3e5d34"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pine--26--4",
+   "at": [
+    -36,
+    2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3e5d34",
+      "profile": [
+       [
+        0.35,
+        0,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        8.06,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        8.06,
+        "#3e5d34"
+       ],
+       [
+        1.56,
+        8.26,
+        "#3e5d34"
+       ],
+       [
+        5.46,
+        9.62,
+        "#3e5d34"
+       ],
+       [
+        5.2,
+        10.92,
+        "#3e5d34"
+       ],
+       [
+        1.3,
+        11.96,
+        "#3e5d34"
+       ],
+       [
+        0.01,
+        11.96,
+        "#3e5d34"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pine-18--16",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3e5d34",
+      "profile": [
+       [
+        0.35,
+        0,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        7.4399999999999995,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        7.4399999999999995,
+        "#3e5d34"
+       ],
+       [
+        1.44,
+        7.64,
+        "#3e5d34"
+       ],
+       [
+        5.04,
+        8.879999999999999,
+        "#3e5d34"
+       ],
+       [
+        4.800000000000001,
+        10.08,
+        "#3e5d34"
+       ],
+       [
+        1.2000000000000002,
+        11.040000000000001,
+        "#3e5d34"
+       ],
+       [
+        0.01,
+        11.040000000000001,
+        "#3e5d34"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pine-27--6",
+   "at": [
+    36,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3e5d34",
+      "profile": [
+       [
+        0.35,
+        0,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        6.82,
+        "#6b5a48"
+       ],
+       [
+        0.3,
+        6.82,
+        "#3e5d34"
+       ],
+       [
+        1.3199999999999998,
+        7.0200000000000005,
+        "#3e5d34"
+       ],
+       [
+        4.62,
+        8.14,
+        "#3e5d34"
+       ],
+       [
+        4.4,
+        9.24,
+        "#3e5d34"
+       ],
+       [
+        1.1,
+        10.120000000000001,
+        "#3e5d34"
+       ],
+       [
+        0.01,
+        10.120000000000001,
+        "#3e5d34"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rails and platform shed barely visible behind wings from this camera, pines still stylised umbrellas, no sculpted attic crest or relief carving detail, wings lack the window-group surrounds"
+ }
+}

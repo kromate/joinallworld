@@ -1,0 +1,603 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Warszawa_Wschodnia_platform.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/wtransit-1.jpg",
+   "used": "platform canopy: pale grey corrugated roof on steel frame with white columns, low pale stone-clad walls, tiled platform edge with yellow line"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/238605130",
+   "used": "overall station extent (about 166 x 65 m): long hall block with platform canopies behind"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1969 modernist station, tall glazed main hall on lattice trusses, travertine and marble walls, seven island platforms, glass facades added 2010-12"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     96,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c5cc",
+    "glassColour": "#8fa4ae",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 6.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.2,
+    "bands": "#c8b79a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c8b79a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7479",
+    "pitch": 9,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "travertine-base",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -15.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c8b79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7479",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    18,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "rise": 1.2,
+    "run": 2.4,
+    "count": 5,
+    "colour": "#d6d1c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    0,
+    -22
+   ],
+   "params": {
+    "rect": [
+     110,
+     16
+    ],
+    "height": 0.1,
+    "colour": "#5d6064",
+    "topColour": "#5d6064"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -22,
+     0
+    ],
+    "end": [
+     40,
+     -22,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#c9ccd0"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trackbed",
+   "at": [
+    0,
+    52
+   ],
+   "params": {
+    "rect": [
+     130,
+     56
+    ],
+    "height": 0.15,
+    "colour": "#7b756c",
+    "topColour": "#7b756c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    36
+   ],
+   "params": {
+    "rect": [
+     100,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#bdbcb6",
+    "topColour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    36,
+    0.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 5.5,
+    "height": 3.9,
+    "thickness": 0.35,
+    "columns": 10,
+    "colour": "#c9c6bd",
+    "edgeColour": "#e3e1da",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stonewall0",
+   "at": [
+    0,
+    36
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 1.1,
+    "z0": 0.9,
+    "colour": "#cfc7b4",
+    "topColour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rails0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    43
+   ],
+   "params": {
+    "rect": [
+     130,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#3f3c38",
+    "topColour": "#4a4743"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    50
+   ],
+   "params": {
+    "rect": [
+     100,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#bdbcb6",
+    "topColour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    50,
+    0.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 5.5,
+    "height": 3.9,
+    "thickness": 0.35,
+    "columns": 10,
+    "colour": "#c9c6bd",
+    "edgeColour": "#e3e1da",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stonewall1",
+   "at": [
+    0,
+    50
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 1.1,
+    "z0": 0.9,
+    "colour": "#cfc7b4",
+    "topColour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rails1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    57
+   ],
+   "params": {
+    "rect": [
+     130,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#3f3c38",
+    "topColour": "#4a4743"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    64
+   ],
+   "params": {
+    "rect": [
+     100,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#bdbcb6",
+    "topColour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    64,
+    0.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 5.5,
+    "height": 3.9,
+    "thickness": 0.35,
+    "columns": 10,
+    "colour": "#c9c6bd",
+    "edgeColour": "#e3e1da",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stonewall2",
+   "at": [
+    0,
+    64
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 1.1,
+    "z0": 0.9,
+    "colour": "#cfc7b4",
+    "topColour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rails2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    71
+   ],
+   "params": {
+    "rect": [
+     130,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#3f3c38",
+    "topColour": "#4a4743"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    78
+   ],
+   "params": {
+    "rect": [
+     100,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#bdbcb6",
+    "topColour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    78,
+    0.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 5.5,
+    "height": 3.9,
+    "thickness": 0.35,
+    "columns": 10,
+    "colour": "#c9c6bd",
+    "edgeColour": "#e3e1da",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stonewall3",
+   "at": [
+    0,
+    78
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 1.1,
+    "z0": 0.9,
+    "colour": "#cfc7b4",
+    "topColour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rails3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    85
+   ],
+   "params": {
+    "rect": [
+     130,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#3f3c38",
+    "topColour": "#4a4743"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-lod2",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    60
+   ],
+   "params": {
+    "rect": [
+     84,
+     50
+    ],
+    "z0": 4.8,
+    "height": 0.4,
+    "colour": "#c9c6bd",
+    "topColour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rails4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    92
+   ],
+   "params": {
+    "rect": [
+     130,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#3f3c38",
+    "topColour": "#4a4743"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -11.5,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0.0,
+    "colour": "#1f3f6b",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the main hall or the exterior found (only platform and train photos), so the hall is a glazed 3-storey block with low gable roof, not the lattice-truss hall; platform canopies from the platform photo; seven platforms reduced to four; travertine/marble walls only as a base block; OSM outline is irregular and not used."
+ }
+}

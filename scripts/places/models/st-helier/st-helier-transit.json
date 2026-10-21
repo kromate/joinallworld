@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Elizabeth_Terminal,_Jersey.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Danrok",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/term2.jpg",
+   "used": "single-storey terminal under a very large low hipped pale metal roof with deep overhang, dark glazed ground floor with brown fascia, ticketing hall, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Elizabeth_Terminal,_Saint_Helier.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Danrok",
+   "view": "side",
+   "used": "long low roofline, hipped end, lean-to wing to the right, lighting masts, containers and lorries on the quay"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166516080",
+   "used": "overall size about 95 x 66 m; building outline simplified to a main hall plus wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     70,
+     26
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3b45",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "bands": "#5a3d2c",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 9,
+    "colour": "#c8c0a8",
+    "material": "corrugated",
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    44,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c3",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#bdb8a8",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -32,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 25
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    38,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     8,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    -14.2
+   ],
+   "z0": 2.6,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a5a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a44",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.4,
+    "yaw": 0,
+    "colour": [
+     "#c9ccd0",
+     "#f2f2f0",
+     "#555a60",
+     "#8a1f1f",
+     "#2a3f66"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -31,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spacing": 3.4,
+    "yaw": 0,
+    "colour": [
+     "#f2f2f0",
+     "#9aa0a6",
+     "#222",
+     "#c9ccd0"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    10,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "van",
+    "density": 0.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "nx": 3,
+    "ny": 2,
+    "levels": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "low wide roof, deep fascia, signboard, muted containers and mixed car park added; cars are simple blocks, lorries and buses on the quay not modelled, masts are thin vs the real tall twin-head masts, no quay edge behind"
+ }
+}

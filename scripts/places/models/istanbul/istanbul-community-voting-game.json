@@ -1,0 +1,360 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eski_Kad%C4%B1k%C3%B6y_%C4%B0skelesi_2018-08-22_14.21.09_1792398555.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/kad1.jpg",
+   "used": "the old Kadikoy ferry building on the square: white two-storey block, hip roof in terracotta tile, two small lead-grey domes, arched windows with ornament bands, open arcade wings, brick-red paving, tyre-fendered pier, small grey kiosk at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1",
+   "used": "not used (a 9 m police kiosk); the photo drives the layout"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     50
+    ],
+    "height": 0.25,
+    "colour": "#c5bfb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-apron",
+   "at": [
+    8,
+    -14,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     56,
+     14
+    ],
+    "height": 0.2,
+    "colour": "#b9705a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0.25,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "bands": "#d9d6cc",
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9634c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-arcade",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    -18.5,
+    7
+   ],
+   "z0": 0.25,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "colour": "#f2f0ea"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6df",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-arcade",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    18.5,
+    7
+   ],
+   "z0": 0.25,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "colour": "#f2f0ea"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6df",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -8,
+    6,
+    10
+   ],
+   "params": {
+    "radius": 2.1,
+    "drum": 2.2,
+    "profile": "hemi",
+    "colour": "#7f8a94",
+    "drumColour": "#f0eee8",
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    8,
+    6,
+    10
+   ],
+   "params": {
+    "radius": 2.1,
+    "drum": 2.2,
+    "profile": "hemi",
+    "colour": "#7f8a94",
+    "drumColour": "#f0eee8",
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     6
+    ],
+    "height": 1.0,
+    "colour": "#6a7075"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -29.2
+    ],
+    "end": [
+     50,
+     -29.2
+    ],
+    "count": 20,
+    "lod1Step": 2,
+    "lod2Step": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.65,
+      "n": 8,
+      "height": 1.0,
+      "colour": "#25272a"
+     }
+    }
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    36,
+    -14,
+    0.25
+   ],
+   "params": {
+    "width": 5,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#8d96a0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    6,
+    12.5
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#d52b1e"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    6,
+    12.5
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#d52b1e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -16,
+    0.25
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -36,
+    -2,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "colours": [
+     "#d9d4c8",
+     "#c25a3c"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Photo shows the old ferry building on the square, used as the square's landmark; plaza paving and sea are flat, no ornament bands over windows, pier fenders approximate, crowd and trees omitted."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-community-voting-game"
+}

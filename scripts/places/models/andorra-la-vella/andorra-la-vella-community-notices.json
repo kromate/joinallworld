@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Govern_d%27Andorra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andrijko Z.",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/govern.jpg",
+   "used": "recessed pilotis ground storey on round concrete columns, ribbon windows over brown-grey spandrels, big overhanging top block clad in vertical concrete fins, entrance with flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/613379897",
+   "used": "overall size (about 93 x 47 m); simplified to rectangles because the real outline is irregular"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.36,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lower",
+   "footprint": {
+    "rect": [
+     80,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9183",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#847c70"
+      ],
+      "height": 0.6,
+      "at": 0.0,
+      "proud": 0.2
+     },
+     {
+      "type": "pilotis",
+      "inset": 5,
+      "spacing": 13,
+      "width": 1.2,
+      "kind": "round",
+      "colour": "#8a8479",
+      "backColour": "#2d2c2a",
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ],
+    "glassColour": "#7b7a70"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f7a70",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fins",
+   "footprint": {
+    "rect": [
+     92,
+     44
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 16,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a193",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 1.8,
+      "depth": 1.0,
+      "width": 0.7,
+      "colour": "#988f80",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "margin": 0.2
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#a8a193",
+       "#a8a193"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8478",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     92,
+     44
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 15.4,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3733",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3733"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    22,
+    -19.5
+   ],
+   "z0": 4.2,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6b665c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b665c"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    30,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 1.6,
+    "colours": [
+     "#2a4a9a",
+     "#e3c230",
+     "#c23b3b"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -21.8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.2,
+    "bottom": 3.4,
+    "colour": "#9a8a5a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "heavier round pilotis in fewer bays, 5 m cantilevered fin block with dark soffit, canopy added; ground-floor glazing and beige blinds approximate; plan is rectangular not the irregular OSM outline"
+ }
+}

@@ -1,0 +1,267 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadtbibliothek_Winterthur_(2016).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JoachimKohler-HB",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/lib2.jpg",
+   "used": "generic Swiss Altstadt row only (photo is the Winterthur Stadtbibliothek, NOT this venue): storeys and colours of a terraced row"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/147970502",
+   "used": "overall extent only (27 x 17 m); individual house fronts placed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 32,
+  "aspect": 0.83,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6ee",
+    "windows": "rect",
+    "windowRatio": 0.28,
+    "plinth": 0.3,
+    "trimColour": "#f2f2f2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange",
+   "footprint": {
+    "rect": [
+     12.5,
+     14
+    ]
+   },
+   "at": [
+    -8.7,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a064",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "trimColour": "#d9d6cf",
+    "windowShape": "rect",
+    "groundKind": "shopfront",
+    "groundHeight": 4,
+    "glassColour": "#2f3b3d",
+    "frameColour": "#2f3b3d"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red",
+   "footprint": {
+    "rect": [
+     13,
+     15
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4624a",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "trimColour": "#d9d6cf",
+    "windowShape": "rect",
+    "groundKind": "shopfront",
+    "groundHeight": 4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e3ddd0",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a38",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4de",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a4a3c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -17,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.4,
+    "colours": [
+     "#f2f2f2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8.7,
+    -7.3,
+    3.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 0.7,
+    "bottom": 3.4,
+    "colour": "#2f3b3d",
+    "frameColour": "#2f3b3d",
+    "posts": false
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -8.7,
+    -3,
+    0
+   ],
+   "on": "orange",
+   "params": {
+    "width": 2.2,
+    "depth": 1.4,
+    "height": 2.2,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4,
+    -3,
+    0
+   ],
+   "on": "red",
+   "params": {
+    "width": 2.2,
+    "depth": 1.4,
+    "height": 2.2,
+    "colour": "#e8e4da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Widths, storeys and colours follow a photo of a different town's row (Winterthur), used only as generic Altstadt style, not the real venue. Shopfront glazing barely reads, no arched stone ground storey, shutters or true pilasters, roofs plain gables with two dormers."
+ }
+}

@@ -1,0 +1,335 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Frescati_hage_husnr_1_(2).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Neum",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/frescati1.jpg",
+   "used": "dark red-brown brick facade, four storeys with regular white-framed windows, cream stone surrounds and central entrance with carved stone portal, steep dark hipped roof with copper dormers, granite retaining wall and gate post in front, pines and oak"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/221105651",
+   "used": "identity only: outline covers the whole campus (313 m), so one building was composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     38,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7e4636",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#d8c9a6",
+    "trimColour": "#e6dcc0",
+    "bay": 4.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    -25,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7e4636",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#d8c9a6",
+    "trimColour": "#d9ceb4",
+    "bay": 4.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    25,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7e4636",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#d8c9a6",
+    "trimColour": "#d9ceb4",
+    "bay": 4.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     5,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -7.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9ceb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ceb4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 2.2,
+    "thickness": 1.0,
+    "kind": "wall",
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 10,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8,
+    -16,
+    2.2
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatepost",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -6,
+    -17
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8680",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "dormer",
+     "at": [
+      0,
+      0,
+      12.6
+     ],
+     "params": {
+      "width": 2.2,
+      "depth": 1.6,
+      "height": 2.2,
+      "colour": "#e2d8bd",
+      "wall_colour": "#e2d8bd",
+      "roof_colour": "#4f8a6c",
+      "trim_colour": "#e6dcc0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -4.4
+    ],
+    "end": [
+     14,
+     -4.4
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-221105651",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Raised to 4 storeys, 40 deg roof, taller portal, 2.2 m granite wall, gate post and lamp; copper dormers array did not render (not visible in the cmp), wall is smooth grey not rough granite, no shrubs, wings guessed."
+ }
+}

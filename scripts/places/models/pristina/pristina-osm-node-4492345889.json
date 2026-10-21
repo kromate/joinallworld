@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-node-4492345889",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/pristina.json#pristina-osm-node-4492345889",
+   "used": "open hillside viewpoint: grassy knoll, small stone terrace with railing, benches and a lone footpath, broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "knoll",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#5e8f3e",
+    "topColour": "#6f9c47",
+    "material": "grass",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        38.29,
+        0.0
+       ],
+       [
+        26.86,
+        16.07
+       ],
+       [
+        9.51,
+        24.11
+       ],
+       [
+        -12.08,
+        30.62
+       ],
+       [
+        -24.62,
+        14.73
+       ],
+       [
+        -33.66,
+        0.0
+       ],
+       [
+        -30.76,
+        -18.4
+       ],
+       [
+        -8.96,
+        -22.7
+       ],
+       [
+        11.33,
+        -28.72
+       ],
+       [
+        28.69,
+        -17.17
+       ]
+      ]
+     },
+     {
+      "z": 3,
+      "poly": [
+       [
+        31.82,
+        2.0
+       ],
+       [
+        19.54,
+        13.66
+       ],
+       [
+        9.06,
+        24.9
+       ],
+       [
+        -9.3,
+        25.52
+       ],
+       [
+        -19.33,
+        13.53
+       ],
+       [
+        -31.38,
+        2.0
+       ],
+       [
+        -22.34,
+        -11.33
+       ],
+       [
+        -7.77,
+        -17.64
+       ],
+       [
+        9.95,
+        -23.15
+       ],
+       [
+        20.44,
+        -10.2
+       ]
+      ]
+     },
+     {
+      "z": 6,
+      "poly": [
+       [
+        18.38,
+        3.0
+       ],
+       [
+        12.74,
+        10.72
+       ],
+       [
+        6.37,
+        19.34
+       ],
+       [
+        -5.18,
+        16.29
+       ],
+       [
+        -13.78,
+        11.34
+       ],
+       [
+        -20.52,
+        3.0
+       ],
+       [
+        -12.62,
+        -4.64
+       ],
+       [
+        -5.77,
+        -11.8
+       ],
+       [
+        6.03,
+        -12.46
+       ],
+       [
+        12.4,
+        -4.51
+       ]
+      ]
+     },
+     {
+      "z": 7.5,
+      "poly": [
+       [
+        7.98,
+        3.0
+       ],
+       [
+        7.3,
+        7.71
+       ],
+       [
+        3.09,
+        11.45
+       ],
+       [
+        -2.37,
+        9.47
+       ],
+       [
+        -7.93,
+        8.12
+       ],
+       [
+        -9.28,
+        3.0
+       ],
+       [
+        -6.33,
+        -1.09
+       ],
+       [
+        -3.18,
+        -5.69
+       ],
+       [
+        2.62,
+        -4.15
+       ],
+       [
+        6.82,
+        -1.41
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     7
+    ],
+    "z0": 7,
+    "height": 0.7,
+    "colour": "#9a9588",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    2.4,
+    7.7
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.0,
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -18,
+      -24
+     ],
+     [
+      -6,
+      -12
+     ],
+     [
+      4,
+      -2
+     ],
+     [
+      0,
+      4
+     ]
+    ],
+    "width": 2,
+    "colour": "#c9c3b0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   90
+  ]
+ }
+}

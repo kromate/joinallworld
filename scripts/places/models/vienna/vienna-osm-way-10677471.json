@@ -1,0 +1,488 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-way-10677471",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HTL_M%C3%B6dling_Front.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Christoph Leeb",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/htl.jpg",
+   "used": "four-storey cream stucco historicist front with grey-beige rusticated ground floor, projecting side risalits with arched upper windows, attic of small arched windows under a strong cornice, central entrance with three glass canopies over gilded double doors, blank sign board, pine tree at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/10677471",
+   "used": "not used for massing (the outline is the whole 500 m campus); identity only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 56,
+  "aspect": 1.49,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6ad",
+    "glassColour": "#7f9bb8",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.2,
+    "cornice": true,
+    "plinth": 1.2,
+    "groundKind": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b8ad92",
+       "#e3d6ad",
+       "#e6dab2",
+       "#e8dcb4"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#a89d84",
+      "height": 0.5,
+      "proud": 0.2,
+      "at": 0.5,
+      "floors": [
+       0
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#cdbf96",
+      "height": 0.7,
+      "proud": 0.3,
+      "at": 0.0
+     }
+    ],
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "risalit-west",
+   "footprint": {
+    "rect": [
+     13,
+     26
+    ]
+   },
+   "at": [
+    -27,
+    -5.5
+   ],
+   "height": 22.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d9b0",
+    "glassColour": "#7f9bb8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b8ad92",
+       "#e6d9b0",
+       "#e6d9b0",
+       "#e6d9b0"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#cdbf96",
+      "height": 0.7,
+      "proud": 0.3,
+      "at": 0.0
+     }
+    ],
+    "windowShape": "arched",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "risalit-east",
+   "footprint": {
+    "rect": [
+     13,
+     26
+    ]
+   },
+   "at": [
+    27,
+    -5.5
+   ],
+   "height": 22.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d9b0",
+    "glassColour": "#7f9bb8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b8ad92",
+       "#e6d9b0",
+       "#e6d9b0",
+       "#e6d9b0"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#cdbf96",
+      "height": 0.7,
+      "proud": 0.3,
+      "at": 0.0
+     }
+    ],
+    "windowShape": "arched",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 18,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcb4",
+    "glassColour": "#7f9bb8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "bay": 4.6,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ris-attic-w",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    -27,
+    -5.5
+   ],
+   "z0": 22.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcb4",
+    "glassColour": "#7f9bb8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ris-attic-e",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    27,
+    -5.5
+   ],
+   "z0": 22.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcb4",
+    "glassColour": "#7f9bb8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "granite-entrance",
+   "footprint": {
+    "rect": [
+     17,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8d8f8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8180"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -5.4,
+    -12.8,
+    4.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 4.4,
+    "depth": 2.6,
+    "height": 0.0,
+    "thickness": 0.3,
+    "colour": "#9fc4c8",
+    "edgeColour": "#cfd8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.4,
+    -10.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#c7a24c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -12.8,
+    4.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 4.4,
+    "depth": 2.6,
+    "height": 0.0,
+    "thickness": 0.3,
+    "colour": "#9fc4c8",
+    "edgeColour": "#cfd8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#c7a24c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    5.4,
+    -12.8,
+    4.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 4.4,
+    "depth": 2.6,
+    "height": 0.0,
+    "thickness": 0.3,
+    "colour": "#9fc4c8",
+    "edgeColour": "#cfd8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.4,
+    -10.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#c7a24c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.7,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 1.6,
+    "bottom": 5.0,
+    "colour": "#2f7f86",
+    "frameColour": "#e8eeee",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Three gilded-door entrances with three glass canopies and teal sign, granite entrance block, taller projecting risalits with stepped attics, grey-beige rusticated ground floor and pine added. Upper-floor windows are still plain rectangles (no paired arched heads or decorated panels, windowShape arched not visible), canopies are flat not tilted, no pilaster strips."
+ }
+}

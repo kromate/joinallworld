@@ -1,0 +1,387 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aria_Centar_in_Sarajevo,_2023.01.29.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons user Niegodzisie",
+   "file": "/tmp/places-evidence/sarajevo/aria1.jpg",
+   "view": "street",
+   "used": "glazed three-storey podium with white fascia, brown-red piers and storey band, tall tower behind right with red-brown front face and blue-grey glass sides, blank sign boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11628269",
+   "used": "overall extent only (81x73 m outline is irregular; the photo massing was composed by hand)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     66,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8798",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6f8798",
+    "bands": "#8c3d2e",
+    "plinth": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     60,
+     34
+    ]
+   },
+   "at": [
+    -1,
+    2.5
+   ],
+   "z0": 13.5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dfd8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     3,
+     40
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#8c3d2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3d2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "storey-band",
+   "footprint": {
+    "rect": [
+     68,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 4.4,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8c3d2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3d2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    22,
+    8
+   ],
+   "z0": 16,
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9db0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#7f9db0",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-face",
+   "footprint": {
+    "rect": [
+     14,
+     1.6
+    ]
+   },
+   "at": [
+    19,
+    -3.6
+   ],
+   "z0": 16,
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#8e3f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3f2f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-crown",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    18,
+    6
+   ],
+   "z0": 50,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0c0",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#8fb0c0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20.6,
+    9.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#d9d6d0",
+    "frameColour": "#5a5f63",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -20.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.8,
+    "bottom": 0.6,
+    "colour": "#e8408f",
+    "frameColour": "#4a2a30",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    24,
+    -27
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a3a2c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "glassColour": "#3a3f44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f63",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-a",
+   "footprint": {
+    "rect": [
+     7,
+     2
+    ]
+   },
+   "at": [
+    4,
+    -28
+   ],
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8c3d2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-b",
+   "footprint": {
+    "rect": [
+     7,
+     2
+    ]
+   },
+   "at": [
+    -6,
+    -28
+   ],
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8c3d2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4a3c"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 4,
+    "colours": [
+     "#2a5aa8",
+     "#e8e4da",
+     "#a8438a",
+     "#d9d6d0",
+     "#7d3f8c"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower too tall vs podium; podium a plain glazed box without stepped terraces; LED screen and kiosk simplified; sign boards blank"
+ }
+}

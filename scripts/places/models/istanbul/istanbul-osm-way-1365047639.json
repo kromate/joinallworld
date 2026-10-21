@@ -1,0 +1,207 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C5%9Eamlar_K%C3%B6y%C3%BC_Camii_2026-10-15_16.11.22_1792341622.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kubra alphard",
+   "view": "side",
+   "file": "/tmp/places-evidence/istanbul/1365047639_1.jpg",
+   "used": "rubble-stone walls in warm buff, long side wall with small arched window frames, white square minaret base at the corner rising to a slender white scalloped shaft with one balcony and a dark pointed cone, low dark hipped roof with eaves"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C5%9Eamlar_K%C3%B6y%C3%BC_Camii_2026-10-15_16.08.26_1792341635.jpeg",
+   "licence": "unknown",
+   "author": "",
+   "view": "side",
+   "used": "dark mud-mortared stone wall with whitewashed plinth, blue glazed entrance lean-to with green roof at the east end, brick-paved steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1365047639",
+   "used": "overall size 20.7 x 8.8 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20.7,
+     8.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a57f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "bay": 4.6,
+    "plinth": 1.0,
+    "glassColour": "#3b4046",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 20,
+    "colour": "#5b5e62",
+    "material": "metal-sheet",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-base",
+   "at": [
+    -10.9,
+    -5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "z0": 0,
+    "height": 9.6,
+    "colour": "#e9e6dc",
+    "topColour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -10.9,
+    -5.3,
+    9.6
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.75,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#dcdad2",
+    "capColour": "#3c4147"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.6,
+     3.6
+    ]
+   },
+   "at": [
+    11.4,
+    -6.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c4a86",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#2f4f94"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7fa89a",
+    "material": "metal-sheet",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "retaining-wall",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#8e877a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    7,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.6
+    ],
+    "height": 0.5,
+    "colour": "#a2796a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     8
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-1365047639",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "No flag mural or satellite dish; minaret scallop texture and balcony detail simplified; window frames plain."
+ }
+}

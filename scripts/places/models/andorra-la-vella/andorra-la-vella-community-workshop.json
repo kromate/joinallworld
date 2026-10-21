@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universitat_d%27Andorra-entrada_pl._Germandat.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zo'Ihana",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/uni.jpg",
+   "used": "glazed dark-blue box behind curved gold-beige vertical fins, white stone plinth with entrance steps, pale render wing and grey stone wing with punched windows and balcony slabs on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/270902310",
+   "used": "overall size 54 x 35 m, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    -13,
+    3
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2f48",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "pattern": [],
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4",
+    "parapet": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     28,
+     5
+    ]
+   },
+   "at": [
+    -13,
+    -12
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e6e2d8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.4,
+       1.2
+      ],
+      "colours": [
+       "#e6e2d8",
+       "#dcd7cb"
+      ],
+      "mode": "checker"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     8,
+     22
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d6cf",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b5b8bb"
+      ],
+      "height": 0.4,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    15.5,
+    0
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8b86",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.6,
+      "every": 4,
+      "width": 5,
+      "colour": "#7a7873",
+      "railKind": "solid",
+      "faces": [
+       "front"
+      ],
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7276",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 2.2,
+    "colour": "#c8c8c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4,
+    "count": 1
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.6
+      ],
+      "z0": 4.5,
+      "height": 14.8,
+      "topScale": [
+       1.9,
+       1.3
+      ],
+      "colour": "#cdb68a",
+      "topColour": "#cdb68a"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "mode": "line",
+    "start": [
+     -26.5,
+     -7.8
+    ],
+    "end": [
+     0.5,
+     -7.8
+    ],
+    "count": 28
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "fin-band",
+   "footprint": {
+    "rect": [
+     28.5,
+     1.2
+    ]
+   },
+   "at": [
+    -13,
+    -7.8
+   ],
+   "z0": 4.5,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dfd2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dfd2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-band-top",
+   "footprint": {
+    "rect": [
+     28.5,
+     1.2
+    ]
+   },
+   "at": [
+    -13,
+    -7.8
+   ],
+   "z0": 17.4,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dfd2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dfd2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
+   "at": [
+    -13,
+    -15.4
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.9
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#cfc9bc",
+    "topColour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    -13,
+    -16.3
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.9
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#cfc9bc",
+    "topColour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    -13,
+    -17.2
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.9
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#cfc9bc",
+    "topColour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "at": [
+    -6,
+    -14.6
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.1
+    ],
+    "z0": 4.5,
+    "height": 1.1,
+    "colour": "#a9c4cc",
+    "topColour": "#a9c4cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    2.8,
+    -9.1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#2a3238"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    -5,
+    34
+   ],
+   "params": {
+    "radius": 30,
+    "n": 10,
+    "z0": 0,
+    "height": 30,
+    "topScale": [
+     0.3,
+     0.15
+    ],
+    "colour": "#7a7261",
+    "topColour": "#6f7a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fins are tapered straight prisms standing 1.8 m clear of a deeper-set glass box, not truly wavy; plinth steps and glass balustrade added; wings rise above fin block; wing windows and white stone detailing simplified"
+ }
+}

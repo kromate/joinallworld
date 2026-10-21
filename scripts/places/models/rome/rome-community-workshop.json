@@ -1,0 +1,733 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Villa_mondragone_view.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "R Clemens",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/mondview.jpg",
+   "used": "long ochre-orange front range under clay hips, taller central block with a four-arched belvedere loggia, left wing with large hipped roof, big brown arcaded loggia wing on the right, wooded hill setting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Frascati_vila_Mondragone_06.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ljuba brank",
+   "view": "side",
+   "file": "/tmp/places-evidence/rome/mond06.jpg",
+   "used": "tan-brown peperino stone and the pilastered arcade (round arches, giant order) of the garden loggia wing; clipped box parterre with octagonal basin"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5763542",
+   "used": "overall extent (about 128 x 114 m, wings around a courtyard); composed by hand from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     72,
+     13
+    ]
+   },
+   "at": [
+    -16,
+    -8
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#e9d8b2",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#f4ecd8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9d5a3c",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     38
+    ]
+   },
+   "at": [
+    -48,
+    8
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8a56c",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "bay": 8,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#e9d8b2",
+    "faces": {
+     "back": "none",
+     "front": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a45f3e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    4
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8a56c",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "bay": 5.5,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#f2ead6",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#f4ecd8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9d5a3c",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belvedere",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    4
+   ],
+   "z0": 20,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8d6a8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#e9d8b2",
+    "windowShape": "arched",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#2a1d15",
+    "trimColour": "#f4ecd8",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 0.9,
+      "pierColour": "#f0e6c8",
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a45f3e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-wing",
+   "footprint": {
+    "rect": [
+     52,
+     13
+    ]
+   },
+   "at": [
+    48,
+    2
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#9c7048",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 10,
+      "opening": 0.66,
+      "height": 0.9,
+      "depth": 1.4,
+      "pierColour": "#a97c52",
+      "faces": [
+       "front"
+      ],
+      "storeys": 2
+     }
+    ],
+    "glassColour": "#241810",
+    "trimColour": "#d9c49a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a49",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-core",
+   "footprint": {
+    "rect": [
+     50,
+     6
+    ]
+   },
+   "at": [
+    48,
+    10
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#8f6c4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a49"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    20,
+    24
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8a56c",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "bay": 6,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#e9d8b2",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9d5a3c",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "waterColour": "#6fa8c4",
+    "rimColour": "#cfc5ae"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#d6c8a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-0",
+   "at": [
+    22,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-1",
+   "at": [
+    32,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-2",
+   "at": [
+    42,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-3",
+   "at": [
+    52,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-4",
+   "at": [
+    62,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-5",
+   "at": [
+    72,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "z0": 0,
+    "height": 12.8,
+    "colour": "#b58a5f",
+    "topColour": "#c79d70"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dormer-0",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -44,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-1",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -35,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-2",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -26,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-3",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -17,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-4",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -8,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-5",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    1,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-6",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    10,
+    -5
+   ],
+   "z0": 11.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2a863",
+    "windows": "none",
+    "trimColour": "#f4ecd8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d5a3c",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Loggia wing now open dark arches with pilasters, belvedere has four open arches, attic dormers and lighter ochre front added; centre block lacks the real pediments and stepped white-stone trim, courtyard and rear wings inferred, loggia is brown but lacks the carved giant-order detail; overall width 137 m exceeds 120 m clamp."
+ }
+}

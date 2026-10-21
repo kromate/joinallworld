@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/111090408",
+   "used": "real 21.6 x 10.3 m rotated outline (222 m2, containing the venue point); height, timber cladding and terrace typed from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "fit": 22
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b6a47",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bands": "#d8cdb5",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "rise": 3.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-porch",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb5",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -7,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#efe9dc",
+     "#8b6a47"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#7a3b2c",
+    "frameColour": "#efe9dc",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#4a5a6a",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline from OSM, timber upper storey and render ground floor assumed from the brief; terrace not modelled separately"
+ }
+}

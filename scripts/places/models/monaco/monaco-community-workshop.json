@@ -1,0 +1,554 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:International_University_of_Monaco_(INSEEC_-_OMNES_Education).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mediterraneo 138430",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/monaco-community-workshop-2.jpg",
+   "used": "white tower above a white podium: glass front with white diagonal bracing, curved wavy balcony slabs on the right, a tall louvred fin blade on the left, planted roof terraces, blank sign band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus_mon%C3%A9gasque.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mediterraneo 138430",
+   "view": "front",
+   "used": "proportions of the tower and wave rhythm of the balconies"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/487572480",
+   "used": "Le Stella apartments, 12 levels (the university occupies its base): height and tower plan size only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 0.75,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-front",
+   "at": [
+    -2,
+    -10.2,
+    0
+   ],
+   "params": {
+    "colour": "#50666f",
+    "sections": [
+     {
+      "z": 1.0,
+      "rect": [
+       19,
+       0.5
+      ],
+      "cy": 0
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       23,
+       0.5
+      ],
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    3,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     8
+    ],
+    "z0": 10,
+    "height": 32,
+    "colour": "#efede6",
+    "topColour": "#f3f1ea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -6,
+    10
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.4,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -10.7,
+      1.2
+     ],
+     [
+      -5,
+      -10.7,
+      8.8
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      -5,
+      -10.7,
+      1.2
+     ],
+     [
+      -11,
+      -10.7,
+      8.8
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      -5,
+      -10.7,
+      8.8
+     ],
+     [
+      0,
+      -10.7,
+      1.2
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      0,
+      -10.7,
+      1.2
+     ],
+     [
+      4,
+      -10.7,
+      8.8
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      7.5,
+      -10.7,
+      1.2
+     ],
+     [
+      1.5,
+      -10.7,
+      8.8
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.22,
+      0.22
+     ]
+    },
+    "points": [
+     [
+      -2,
+      -10.7,
+      1.2
+     ],
+     [
+      -8,
+      -10.7,
+      8.8
+     ]
+    ],
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     13
+    ],
+    "end": [
+     0,
+     0,
+     40
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        1.8,
+        1.1
+       ]
+      },
+      "curve": true,
+      "steps": 6,
+      "points": [
+       [
+        1.5,
+        -3.2,
+        0
+       ],
+       [
+        5,
+        -5.6,
+        0.5
+       ],
+       [
+        8.6,
+        -3.6,
+        1.1
+       ],
+       [
+        9.8,
+        0.5,
+        0.6
+       ],
+       [
+        8.4,
+        4.6,
+        0.9
+       ],
+       [
+        5,
+        6.2,
+        0.3
+       ]
+      ],
+      "colour": "#f3f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#cfcdc4",
+    "sections": [
+     {
+      "z": 10,
+      "rect": [
+       2.2,
+       6.5
+      ],
+      "cx": -6.2,
+      "cy": -4.0
+     },
+     {
+      "z": 18,
+      "rect": [
+       2.2,
+       6.5
+      ],
+      "cx": -5.2,
+      "cy": -3.0
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       6.5
+      ],
+      "cx": -4.6,
+      "cy": 0.5
+     },
+     {
+      "z": 41,
+      "rect": [
+       2.2,
+       6.5
+      ],
+      "cx": -4.4,
+      "cy": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.4,
+     -4.5,
+     10.5
+    ],
+    "end": [
+     -3.6,
+     -1.5,
+     25
+    ],
+    "count": 14,
+    "lod1Step": 3,
+    "lod2Step": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.9,
+       7.0
+      ],
+      "z0": 0,
+      "height": 0.35,
+      "colour": "#f3f1ea",
+      "topColour": "#f3f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.4,
+     1.5,
+     26
+    ],
+    "end": [
+     -3.4,
+     1.5,
+     40.5
+    ],
+    "count": 14,
+    "lod1Step": 3,
+    "lod2Step": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.9,
+       7.0
+      ],
+      "z0": 0,
+      "height": 0.35,
+      "colour": "#f3f1ea",
+      "topColour": "#f3f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -6,
+    10
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.4,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    2,
+    41.8
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 2.2,
+    "count": 5,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -8,
+    10
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 1.6,
+    "count": 6,
+    "spread": 10
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "podium is a box; glass front widens upward but has no angular taper at the right corner; X lattice is approximate; balconies are fewer deeper ribbons but not truly undulating; fin is stepped slabs; sparse planting"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

@@ -1,0 +1,554 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-24985922",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bratislava_2007-6-26_30.jpg",
+   "licence": "CC BY-SA (Commons, article image of the Galeria Lamac page)",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/galeria1.jpg",
+   "used": "long low flat-roofed retail shed: blue-clad left half, white right half, red framed entrance portal with a canopy, rooftop plant, surface car park, pylon sign, petrol canopy at right (signage kept blank)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24985922",
+   "used": "overall size about 118 m long; the zig-zag outline is replaced by straight wings so the cladding colours sit on one long front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "blue-wing",
+   "footprint": {
+    "rect": [
+     52,
+     30
+    ]
+   },
+   "at": [
+    -32,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a4a9a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-wing",
+   "footprint": {
+    "rect": [
+     58,
+     30
+    ]
+   },
+   "at": [
+    31,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#eeeeea",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-core",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a4a9a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-frame-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     2
+    ]
+   },
+   "at": [
+    -5.2,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8372d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-frame-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     2
+    ]
+   },
+   "at": [
+    5.2,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8372d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-frame-top",
+   "footprint": {
+    "rect": [
+     12.4,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 9.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8372d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -18,
+    3.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 15,
+    "depth": 3.5,
+    "height": 0.5,
+    "thickness": 0.4,
+    "colour": "#c8372d",
+    "edgeColour": "#a82a22"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-entrance",
+   "footprint": {
+    "rect": [
+     9,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -15.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5c6770",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c6770"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -50,
+    -15.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -40,
+    -15.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -30,
+    -15.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -20,
+    -15.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    14,
+    -15.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    40,
+    -15.2,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    40,
+    -15.3,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "core/array",
+   "params": {
+    "count": 9,
+    "start": [
+     -52,
+     2,
+     8.6
+    ],
+    "end": [
+     56,
+     2,
+     8.6
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       6,
+       5
+      ],
+      "height": 1.8,
+      "colour": "#c9cbcd"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/array",
+   "params": {
+    "count": 7,
+    "start": [
+     -48,
+     8,
+     8.6
+    ],
+    "end": [
+     56,
+     8,
+     8.6
+    ],
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       3,
+       3
+      ],
+      "height": 1.2,
+      "colour": "#b5b8ba"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 13,
+    "colour": "#7d8286"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22,
+    -24,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.6
+    ],
+    "height": 4.2,
+    "colour": "#e8d36a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    58,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 10,
+    "height": 4.8,
+    "columns": 4,
+    "colour": "#e6e8e8",
+    "edgeColour": "#2f8f4f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    70,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 9,
+    "colour": "#2f8f4f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 3,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       170,
+       40
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       120,
+       24
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       70,
+       14
+      ]
+     }
+    ],
+    "colour": "#3f6a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Straight wings replace the zig-zag OSM outline; blue left, red portal centre, white right, long low parapet with rooftop plant, pylon and petrol canopy now present; no hillside detail, cars sparse, blank panels simplified"
+ }
+}

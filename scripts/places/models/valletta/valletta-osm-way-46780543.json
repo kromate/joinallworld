@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-46780543",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta_-_Birzebbuga_-_Triq_Benghajsa_-_Fort_Benghajsa_01_ies.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Frank Vincentz",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/fort.jpg",
+   "used": "dry ditch with coursed limestone scarp wall, sloping grassy earth rampart topped with rubble, scrub in the ditch ; OSM name 'Fortizza ta Benghisa' (wikidata Q3748520) and the photo is the wikidata P18 image, so photo and way are the same fort"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/46780543",
+   "used": "polygonal outline (357x187 m, scaled to fit)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ditch-wall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4aa7c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbd95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glacis-0",
+   "footprint": {
+    "osm": true,
+    "scale": 0.96
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8a8452",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8452"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glacis-1",
+   "footprint": {
+    "osm": true,
+    "scale": 0.9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8a8452",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8452"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4,
+    "count": 10,
+    "spread": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "scarp wall raised to 7.5 m and a two-step stepped glacis replaces the flat slab; photo is the wikidata image of this same fort (evidence ok); no sloped rubble crest, gate, or dry-ditch floor strip in the final model (placement of extras failed against the OSM frame and were removed), scrub is sparse trees, ground is cobble not pale rock"
+ }
+}

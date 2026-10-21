@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-228188022",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/228188022",
+   "used": "real 45.6 x 15.9 m outline (name match), 3 levels"
+  },
+  {
+   "kind": "text",
+   "used": "facade typed from similar Sandyford office buildings; nearby Commons photos show only a car and a tram stop, none of the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c2",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#6d7f8c",
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#b0b4b6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.4,
+    "colour": "#6d7f8c",
+    "frameColour": "#b0b4b6"
+   },
+   "rotDeg": -30
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -11,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.6
+   },
+   "rotDeg": -30
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 8,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists; real footprint only, facade typed from similar office buildings"
+ }
+}

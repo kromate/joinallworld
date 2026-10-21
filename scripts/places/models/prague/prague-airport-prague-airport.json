@@ -1,0 +1,338 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-airport-prague-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VaclavHavelAirport.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jklamo",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/airport.jpg",
+   "used": "long low terminal with glazed ground band and white-grey upper band, raised central sign fascia, glass block with control tower cab behind, curved vault roof at right, left glass block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/8094707",
+   "used": "facts only (Terminal 1, 15 m height, 429 m long); a 190 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lower-band",
+   "footprint": {
+    "rect": [
+     116,
+     26
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d5f6a",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cfd3",
+    "overhang": 1.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-band",
+   "footprint": {
+    "rect": [
+     100,
+     18
+    ]
+   },
+   "at": [
+    11,
+    3
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3e6e8",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b9bec2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bec2",
+    "parapet": 0.3
+   },
+   "z0": 5
+  },
+  {
+   "type": "mass",
+   "id": "sign-fascia",
+   "footprint": {
+    "rect": [
+     48,
+     20
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a4650",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cfd3",
+    "overhang": 0.4
+   },
+   "z0": 9
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     21,
+     20
+    ]
+   },
+   "at": [
+    20,
+    14
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8ea3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bands": "#aeb7bc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    14
+   ],
+   "height": 11.899999999999999,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-left-low",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "height": 8.399999999999999,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7c9aa6",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-hall",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    56,
+    14
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5f70",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#4a5f70",
+    "material": "glass",
+    "rise": 3.5,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    20,
+    14,
+    21
+   ],
+   "params": {
+    "height": 11,
+    "style": "round",
+    "colour": "#8a949a",
+    "shaftRadius": 1.8,
+    "cabRadius": 3.6,
+    "cabColour": "#4a5a66",
+    "bandColour": "#c9cfd3"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab2",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    20,
+    14
+   ],
+   "z0": 30.5,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5260",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cfd3",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 30,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a 120 m portion of the 430 m terminal; glazing is still more vertical-mullioned than the real ribbon glazing; tower cab is a two-tier simplification; vault canopy lacks the long sweeping glazed end; no jet-bridges."
+ }
+}

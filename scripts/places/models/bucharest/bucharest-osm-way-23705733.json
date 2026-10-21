@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-23705733",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bucharest_-_Bucur_Obor_(53716011569).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge Franganillo",
+   "view": "interior",
+   "used": "viewed only: it shows the Obor market hall interior, not the park, so nothing modelled from it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23705733",
+   "used": "park outline (177 x 117 m, 16,486 m2) as the lawn, scaled 0.67 to fit 118 m; plaza, paths, trees, fountain and kiosk follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.3,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     26,
+     20
+    ],
+    "height": 0.12,
+    "colour": "#c9c3b4",
+    "topColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "radius": 3.2,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -14
+     ],
+     [
+      -8,
+      -4
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      26,
+      17
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -30
+     ],
+     [
+      -2,
+      -10
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      2,
+      10
+     ],
+     [
+      7,
+      30
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -9,
+    -8,
+    0.2
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    8,
+    0.2
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    14,
+    -8,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "count": 8,
+    "gap": 3,
+    "height_min": 8,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    18,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "count": 12,
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 18,
+    "count": 10,
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No park photo exists (Commons images are of the Obor market hall): lawn from the real outline scaled 0.56; plaza, fountain, kiosk, benches, paths and trees are placed from the brief, not observed."
+ }
+}

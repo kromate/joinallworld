@@ -1,0 +1,98 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "small restaurant in an old town-centre house on Hverfisgata, dark corrugated iron, tiny frontage (OSM match is a different building, Kjorgardur, not used)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3a40",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#ffffff",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3c4650",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "rect": [
+     1.2,
+     0.15
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#e1c25a"
+   },
+   "at": [
+    -1.5,
+    -7.08,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "z0": 2.6,
+    "height": 0.6,
+    "colour": "#e1c25a"
+   },
+   "at": [
+    1.5,
+    -7.1,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   30,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical Reykjavik corrugated-iron town house, true dimensions and openings unknown"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-meal-stop"
+}

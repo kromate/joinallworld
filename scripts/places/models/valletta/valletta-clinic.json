@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta,_Mount_Carmel_Hospital_in_1905.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/valletta/mc2.jpg",
+   "used": "historic front elevation: long low wings ending in gable-ended pavilions, central colonnaded gate pavilion with crested attic, small pinnacles, rubble boundary walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Simcoe_Triq_Il-Pitkali,_%C4%A6%27Attard,_Malta_-_panoramio_(144).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alan C. Bonnici",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/mc1.jpg",
+   "used": "side photo only informs limestone colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1123868346",
+   "used": "not used for plan (the OSM polygon is a 157 m2 fragment); text size 140 x 50 m from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.225,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    -28,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c299",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0b08c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c299",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0b08c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-l",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    -45,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c299",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 25,
+    "colour": "#c9b98f",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-r",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    45,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c299",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 25,
+    "colour": "#c9b98f",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-back",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfbf96",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0b08c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d5ae",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0b08c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sm-l",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    3
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0d1a8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 35,
+    "colour": "#bfb08a",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sm-r",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0d1a8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 35,
+    "colour": "#bfb08a",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -15,
+    -1.5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "count": 11,
+    "height": 7.5,
+    "radius": 0.3,
+    "kind": "round",
+    "beamHeight": 0.7,
+    "colour": "#e3d5ae"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -0.6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 9,
+    "depth": 0.8,
+    "archWidth": 4.2,
+    "springHeight": 5,
+    "pointed": false,
+    "colour": "#ebdfbd"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -16,
+    2,
+    7.5
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4,
+    "colour": "#d8c79c"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    16,
+    2,
+    7.5
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4,
+    "colour": "#d8c79c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#c9b98f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#c9b98f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Colonnade, crested attic and gable-ended pavilions are simplified; no rubble texture or ornamental crest; wing windows omitted; walls drawn as plain limestone."
+ }
+}

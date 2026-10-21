@@ -1,0 +1,342 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Xhamia_Karamanli_-_Vushtrri.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Blerim Shabani (Commons user)",
+   "view": "street",
+   "file": "/tmp/places-evidence/pristina/karam_1.jpg",
+   "used": "Karamanli mosque in Vushtrri: tile-roofed gatehouse with teal door, pale blue-grey ornamental boundary fence with orange posts on an ochre base, mosque block behind, tall grey stone minaret with dark pointed cap"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/922901334",
+   "used": "nearest-only match, not used for the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Fence lattice pattern is plain panels; gate ornament flat; neighbouring apartment block generic and oversized; minaret octagonal detail missing."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeece6",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf",
+   "at": [
+    -8,
+    -12.2
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     0.2
+    ],
+    "z0": 0.2,
+    "height": 3.0,
+    "colour": "#2fb09c",
+    "topColour": "#1f9a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-frame",
+   "at": [
+    -8,
+    -12.05
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.3
+    ],
+    "z0": 0.1,
+    "height": 3.4,
+    "colour": "#1f8a80",
+    "topColour": "#2a8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-panel",
+   "at": [
+    -8,
+    -12.1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.15
+    ],
+    "z0": 3.5,
+    "height": 0.7,
+    "colour": "#2f7a4a",
+    "topColour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence-base",
+   "at": [
+    14,
+    -12
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.7
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#a8723a",
+    "topColour": "#a8723a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "fence-panels",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3.4,
+       0.25
+      ],
+      "z0": 1.1,
+      "height": 1.8,
+      "colour": "#aebfc4",
+      "topColour": "#aebfc4"
+     }
+    },
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -1,
+     -12,
+     0
+    ],
+    "end": [
+     32,
+     -12,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "fence-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 1.1,
+      "height": 1.9,
+      "colour": "#d98a3a",
+      "topColour": "#f2f2ee"
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -2.7,
+     -12,
+     0
+    ],
+    "end": [
+     33.3,
+     -12,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    14,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfd9db",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    26,
+    3,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "radius": 1.1,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#9c9a94",
+    "capColour": "#2a2e34"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -2,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dfe3de",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4cc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c4423a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a8a",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "extent": [
+   60,
+   50
+  ],
+  "trees": []
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-quiet-reflection"
+}

@@ -1,0 +1,327 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Junta_Municipal_del_Distrito_de_Moncloa-Aravaca_-_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Carlos Delgado",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/moncloa0.jpg",
+   "used": "round central hall: stone pilaster loggia, grey lead dome with glazed lantern, brick wings with slate hip roofs, low glazed base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Junta_Municipal_del_Distrito_de_Moncloa-Aravaca_(Trasera).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown (Wikimedia Commons)",
+   "view": "side",
+   "file": "/tmp/places-evidence/madrid/moncloa5.jpg",
+   "used": "dark red-brown brick, stone corner quoins, slate roof, window surrounds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29993310",
+   "used": "overall size (about 38 x 40 m, rounded lobe on the east side)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#3d312d",
+    "profile": [
+     [
+      10.5,
+      0,
+      "#3d312d"
+     ],
+     [
+      10.5,
+      12.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.7
+      ],
+      "height": 12.2,
+      "colour": "#b9b3a9"
+     }
+    },
+    "mode": "arc",
+    "count": 12,
+    "radius": 12.4,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    12.2
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#b9b3a9",
+    "profile": [
+     [
+      13.2,
+      0
+     ],
+     [
+      13.2,
+      1.8
+     ],
+     [
+      12.6,
+      1.8,
+      "#8d949a"
+     ],
+     [
+      12.4,
+      2.4
+     ],
+     [
+      9.5,
+      3.4
+     ],
+     [
+      7.5,
+      4.3
+     ],
+     [
+      4.6,
+      5.0
+     ],
+     [
+      4.6,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    17.4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#9fb4bb",
+    "profile": [
+     [
+      4.3,
+      0
+     ],
+     [
+      4.3,
+      2.6
+     ],
+     [
+      4.8,
+      2.6,
+      "#8d949a"
+     ],
+     [
+      4.8,
+      3.0
+     ],
+     [
+      3.0,
+      3.4
+     ],
+     [
+      0,
+      3.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    21.3
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#2b2d2f",
+    "profile": [
+     [
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      3.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     17,
+     14
+    ]
+   },
+   "at": [
+    -19,
+    11
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a56a4c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#585d62",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     17,
+     14
+    ]
+   },
+   "at": [
+    19,
+    11
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a56a4c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#585d62",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-base",
+   "footprint": {
+    "rect": [
+     24,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9a96",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#c8202c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -16
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   85,
+   75
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "loggia interior is dark flat cylinder; no rear brick drum arc, ramp balustrade or louvred base; wing roofs plainer than the dormered original"
+ }
+}

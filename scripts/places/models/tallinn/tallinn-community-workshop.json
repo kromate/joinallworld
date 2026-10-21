@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buildings_of_Estonian_Academy_of_Security_Sciences_on_2015_(3).jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/tallinn/academy2.jpg",
+   "used": "single-storey flat-roofed pavilion clad in dark red vertical sheets with white panels, small square windows, concrete entrance steps, black railing fence along the road, bare birches"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buildings_of_Estonian_Academy_of_Security_Sciences_on_2015.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/tallinn/academy3.jpg",
+   "used": "gate in a red metal fence, straight service road between low red-brick blocks behind, the pavilion beside the gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/484178253",
+   "used": "campus is ~690 m long: only the gate pavilion and the first brick blocks are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.7,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e2a27",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a2321",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -15,
+    -6.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "width": 4,
+    "rise": 0.45,
+    "run": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.1,
+    "kind": "railing",
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-left",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    36
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#9a4a32",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-right",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    28,
+    38
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a65438",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "array",
+   "id": "white-panels",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       0.15
+      ],
+      "height": 1.6,
+      "colour": "#dcdcd6"
+     }
+    },
+    "start": [
+     -13,
+     -5.6,
+     2.7
+    ],
+    "end": [
+     13,
+     -5.6,
+     2.7
+    ],
+    "count": 6,
+    "mode": "line"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "birches",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.45,
+         0.45
+        ]
+       },
+       {
+        "z": 9,
+        "rect": [
+         0.2,
+         0.2
+        ]
+       },
+       {
+        "z": 13,
+        "rect": [
+         0.05,
+         0.05
+        ]
+       }
+      ],
+      "colour": "#d6d2c6"
+     }
+    },
+    "start": [
+     6,
+     14,
+     0
+    ],
+    "end": [
+     36,
+     18,
+     0
+    ],
+    "count": 6,
+    "mode": "line"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   80,
+   50
+  ],
+  "forecourtDepth": 10
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion wider with white upper panels, steps, railing, lamp and bare birch trunks; brick blocks pushed back, but camera is not close enough, stray birch poles read as tall masts and the pavement and kerb are plain."
+ }
+}

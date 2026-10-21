@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-way-173383813",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mariehamn_2021-08-02_image14.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hakan Skogsjo",
+   "view": "street",
+   "file": "/tmp/places-evidence/mariehamn/zeipels.jpg",
+   "used": "two-storey flat-roofed 1950s store: ribbed beige-grey clad bands, upper ribbon window, full glass shopfront, green awning, rooftop plant box, yellow hip-roof building behind with brown chimney stack"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173383813",
+   "used": "size check only (22 x 18 m tagged outline is smaller than the long store seen in the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     24,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#a99f86",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "right": "ribbon",
+     "left": "plain",
+     "back": "plain"
+    },
+    "bands": "#8a8068",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "curtain",
+    "groundHeight": 4.0,
+    "glassColour": "#4a5a5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7570",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    10
+   ],
+   "z0": 8.5,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d7b62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f6a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-hip",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    -4
+   ],
+   "rotDeg": 90,
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c06d",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b7479",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -16,
+    12,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "width": 2.2,
+    "colour": "#6a5a4e"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    12.2,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "height": 3.0,
+    "colours": [
+     "#2f7d5a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12.5,
+    -2,
+    5.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#b32d2f",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ribbed brick-like banding only as colour, shopfront glazing reads darker than the lit shop windows, camera slightly high, street furniture omitted"
+ }
+}

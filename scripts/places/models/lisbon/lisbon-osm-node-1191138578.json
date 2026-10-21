@@ -1,0 +1,492 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-node-1191138578",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hipogeo_2_de_Quinta_do_Anjo_(50450876603).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/hipogeo.jpg",
+   "used": "rock-cut Neolithic hypogeum: open trench in a dry ochre grassy mound leading to a dark arched chamber mouth, pitted limestone lips either side, olive trees behind"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1404363",
+   "used": "identity: artificial caves of Casal do Pardo / Quinta do Anjo, no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 0.65,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "field-left",
+   "params": {
+    "points": [
+     [
+      -9,
+      -9
+     ],
+     [
+      -1.5,
+      -9
+     ],
+     [
+      -1.0,
+      2
+     ],
+     [
+      -9,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#c9a95c",
+    "topColour": "#d2b46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "field-right",
+   "params": {
+    "points": [
+     [
+      1.5,
+      -9
+     ],
+     [
+      9,
+      -9
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      1.0,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#c9a95c",
+    "topColour": "#d2b46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-back",
+   "params": {
+    "points": [
+     [
+      -9,
+      2
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      9,
+      9
+     ],
+     [
+      -9,
+      9
+     ]
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#c9a95c",
+    "topColour": "#d2b46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trench-floor",
+   "params": {
+    "points": [
+     [
+      -1.5,
+      -9
+     ],
+     [
+      1.5,
+      -9
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      -1,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8c7a62",
+    "topColour": "#8c7a62"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lip-left",
+   "params": {
+    "points": [
+     [
+      -1.4045454545454545,
+      -8
+     ],
+     [
+      -1.3136363636363637,
+      -6
+     ],
+     [
+      -1.2227272727272727,
+      -4
+     ],
+     [
+      -1.1318181818181818,
+      -2
+     ],
+     [
+      -1.0409090909090908,
+      0
+     ],
+     [
+      -0.9545454545454544,
+      1.9
+     ],
+     [
+      -1.7053409617879918,
+      1.9
+     ],
+     [
+      -1.6241666387488858,
+      0
+     ],
+     [
+      -1.759304317219387,
+      -2
+     ],
+     [
+      -1.9707563940326132,
+      -4
+     ],
+     [
+      -1.9152193807517217,
+      -6
+     ],
+     [
+      -2.072569499414172,
+      -8
+     ]
+    ],
+    "z0": 1.0,
+    "height": 0.8835910086175438,
+    "colour": "#a9a39a",
+    "topColour": "#c4bfb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lip-right",
+   "params": {
+    "points": [
+     [
+      1.4045454545454545,
+      -8
+     ],
+     [
+      1.3136363636363637,
+      -6
+     ],
+     [
+      1.2227272727272727,
+      -4
+     ],
+     [
+      1.1318181818181818,
+      -2
+     ],
+     [
+      1.0409090909090908,
+      0
+     ],
+     [
+      0.9545454545454544,
+      1.9
+     ],
+     [
+      1.590877719188139,
+      1.9
+     ],
+     [
+      1.729250412629816,
+      0
+     ],
+     [
+      1.9501581859055888,
+      -2
+     ],
+     [
+      1.8836913605724315,
+      -4
+     ],
+     [
+      2.246217664889083,
+      -6
+     ],
+     [
+      2.354771630293359,
+      -8
+     ]
+    ],
+    "z0": 1.0,
+    "height": 0.721236658486306,
+    "colour": "#a9a39a",
+    "topColour": "#c4bfb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "patch1",
+   "params": {
+    "points": [
+     [
+      -0.8,
+      -7
+     ],
+     [
+      0.7,
+      -7
+     ],
+     [
+      0.9,
+      -4
+     ],
+     [
+      -0.6,
+      -4
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#d8d4c8",
+    "topColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "patch2",
+   "params": {
+    "points": [
+     [
+      -0.6,
+      -3.5
+     ],
+     [
+      0.6,
+      -3.5
+     ],
+     [
+      0.4,
+      -1
+     ],
+     [
+      -0.5,
+      -1
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#cfcabd",
+    "topColour": "#cfcabd"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "chamber-mouth",
+   "at": [
+    0,
+    1.9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.6
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       1.25,
+       0.6
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       1.0,
+       0.6
+      ]
+     },
+     {
+      "z": 2.1,
+      "ellipse": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       0.25,
+       0.6
+      ]
+     }
+    ],
+    "colour": "#26221e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "rocks-l",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0.9,
+        "ellipse": [
+         0.8,
+         0.6
+        ]
+       },
+       {
+        "z": 1.4,
+        "ellipse": [
+         0.55,
+         0.45
+        ]
+       },
+       {
+        "z": 1.7,
+        "ellipse": [
+         0.25,
+         0.2
+        ]
+       }
+      ],
+      "colour": "#a39d92"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.4,
+     -6,
+     0
+    ],
+    "end": [
+     -3.1,
+     1,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "rocks-r",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0.9,
+        "ellipse": [
+         0.8,
+         0.6
+        ]
+       },
+       {
+        "z": 1.4,
+        "ellipse": [
+         0.55,
+         0.45
+        ]
+       },
+       {
+        "z": 1.7,
+        "ellipse": [
+         0.25,
+         0.2
+        ]
+       }
+      ],
+      "colour": "#b0aaa0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     3.3,
+     -5,
+     0
+    ],
+    "end": [
+     3.5,
+     1,
+     0
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     11
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   26,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "lips are blocky prisms not pitted limestone; rocks smooth lumps; no dry-grass tufts; olive trees generic and green; chamber mouth is a smooth ellipse"
+ }
+}

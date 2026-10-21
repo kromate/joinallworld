@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-378932257",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/378932257",
+   "used": "real outline of the Linnais iron mine workings (51 x 28 m): rock rim, pit water"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/helsinki.json",
+   "used": "flooded open-cast pit amid pine forest, granite spoil"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    2,
+    0.0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 20,
+    "shape": "oval",
+    "colour": "#41616b",
+    "bank": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -4.3
+     ],
+     [
+      -24.7,
+      -9.4
+     ],
+     [
+      -19.1,
+      -12.3
+     ],
+     [
+      -11,
+      -12.7
+     ],
+     [
+      16.3,
+      -10.9
+     ],
+     [
+      21.7,
+      -8.8
+     ],
+     [
+      25.3,
+      -2.1
+     ],
+     [
+      24,
+      5.1
+     ],
+     [
+      17.2,
+      9.6
+     ],
+     [
+      4.4,
+      15.7
+     ],
+     [
+      -1.2,
+      16.3
+     ],
+     [
+      -4.8,
+      15.5
+     ],
+     [
+      -19.5,
+      4.8
+     ],
+     [
+      -24.5,
+      0.4
+     ],
+     [
+      -26,
+      -4.3
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 2.2,
+    "kind": "wall",
+    "colour": "#7f7c73"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "height": 4,
+    "seed": 3,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#8d8a80"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    22,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 12,
+    "height": 3,
+    "seed": 7,
+    "stairs": false,
+    "boulders": 6,
+    "rock_colour": "#7a7870"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 20,
+    "count": 22,
+    "kind": "conifer",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -38,
+    0,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 50,
+    "count": 14,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    38,
+    2,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 50,
+    "count": 14,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real pit outline only, rock rim and pit water are typical."
+ }
+}

@@ -1,0 +1,287 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Casa_Cristo_(2).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kippelboy",
+   "view": "street",
+   "file": "/tmp/places-evidence/andorra-la-vella/cc.jpg",
+   "used": "rubble-stone walls with a lime-render patch low left, steep gable with dark slate roof and deep eaves, small timber-shuttered windows in irregular rhythm, timber lintel door, timber beam courses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202617257",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#5f5a50",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.6,
+    "plinth": 0.6,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d4147",
+    "material": "slate",
+    "pitch": 33,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "render-patch",
+   "footprint": {
+    "rect": [
+     4.2,
+     0.5
+    ]
+   },
+   "at": [
+    -3,
+    -13.2
+   ],
+   "z0": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9aa8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9aa8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "render-patch2",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    0.2,
+    -13.35
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c2b498",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c2b498"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    1.6,
+    -13.6
+   ],
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4a3220",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3220"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-lintel",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    1.6,
+    -13.6
+   ],
+   "z0": 2.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a2818",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2818"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-a",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -4.5,
+    -13.4
+   ],
+   "z0": 4.6,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5a3e28",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3e28"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-b",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    0.5,
+    -13.5
+   ],
+   "z0": 4.6,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5a3e28",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3e28"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-c",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -2.2,
+    -13.4
+   ],
+   "z0": 7.4,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5a3e28",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3e28"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#6e6659"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3,
+    0,
+    9
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rounds 2: overhang cut, darker rubble; rubble is a mass material not individual stones; shutters/door blocks; no attic window; wall does not curve with lane"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-202617257"
+}

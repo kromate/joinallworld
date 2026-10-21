@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/26785732",
+   "used": "real retail outline (136 x 94 m, 7-vertex irregular polygon)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1980s two-storey brick and render suburban centre with large surface car park; Commons photo found (geograph 628565) shows only the roundabout so was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a2603f",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#d8d2c2",
+    "plinth": 0.5,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#6a6e70"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 3,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    38,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "width": 2.6,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -5,
+    -75,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 16,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -70
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -70
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo of the building: outline from OSM only; massing, brick/render finishes and canopy are typical, not observed."
+ }
+}

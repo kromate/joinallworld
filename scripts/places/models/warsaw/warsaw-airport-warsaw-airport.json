@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-airport-warsaw-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lotnisko_Chopina_w_Warszawie_2018b.jpg",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Adrian Grycuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/airport1.jpg",
+   "used": "landside elevation of Terminal A: grey-teal glass curtain wall under a pale-grey angled metal cladding band, white recessed end bay, glass entrance canopy, big dark sloping canopy of the 2008 hall at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_A_of_Warsaw_Chopin_Airport_July_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/warsaw/airport2.jpg",
+   "used": "glazing grid (wide pale panels with thin mullions), grey-blue-green tint, strut-supported eaves"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.73,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "south-hall",
+   "footprint": {
+    "rect": [
+     72,
+     36
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b4c8c8",
+    "glassColour": "#a9c6c6",
+    "windows": "curtain",
+    "windowRatio": 0.78,
+    "bay": 4.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "parapet": 1.8,
+    "bands": "#c9ced1"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c3c8cb",
+    "material": "metal-sheet",
+    "parapet": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cladding-band",
+   "footprint": {
+    "rect": [
+     72,
+     36
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "z0": 13,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cdd2d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c3c8cb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-end-bay",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    -64,
+    -2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e9e6",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e3",
+    "overhang": 3.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-hall",
+   "footprint": {
+    "rect": [
+     64,
+     34
+    ]
+   },
+   "at": [
+    50,
+    2
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b4c8c8",
+    "glassColour": "#a9c6c6",
+    "windows": "curtain",
+    "windowRatio": 0.78,
+    "bay": 4.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#40454a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 7,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    14,
+    -20,
+    4.6
+   ],
+   "params": {
+    "form": "shed",
+    "width": 18,
+    "depth": 9,
+    "height": 0,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#b9d0d0",
+    "edgeColour": "#9aa5a8",
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 25
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -80,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "surface",
+   "id": "cladding-slope",
+   "at": [
+    -18,
+    -14,
+    12.8
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 72,
+    "depth": 6,
+    "rise": 2.4,
+    "folds": 12,
+    "thickness": 0.3,
+    "colour": "#cfd4d6",
+    "edgeColour": "#b5babd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 22,
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glass still renders darker than the pale grey-teal panels; sloped cladding band and strut canopy are only approximated; north-hall canopy direction approximate."
+ }
+}

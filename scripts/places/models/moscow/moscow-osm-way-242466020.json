@@ -1,0 +1,315 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-way-242466020",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Znamenie_v_Aksinyino_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "NVO",
+   "view": "front",
+   "file": "/tmp/places-evidence/moscow/p4_0.jpg",
+   "used": "red brick walls with white trim and cross reliefs, arched white-framed windows, low hipped grey metal roofs, grey dome on a drum with a gold band over the crossing, tall bell tower with a grey dome at the left, small shrine at far left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%BD%D0%B0%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%86%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C_%D0%B2_%D0%90%D0%BA%D1%81%D0%B8%D0%BD%D1%8C%D0%B8%D0%BD%D0%BE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "\u0412\u0438\u0441\u0430\u0440\u0438\u043a",
+   "view": "side",
+   "file": "/tmp/places-evidence/moscow/p4_1.jpg",
+   "used": "confirms vivid red brick, white window frames, three arched windows and cross reliefs on the side wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242466020",
+   "used": "size check only: roughly 19 x 18 m footprint, tagged red/white brick with grey metal roof; the brief's white-and-gold typed church was wrong"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.14,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "belfry openings and brick-pattern trim are simplified, no blind arches or gold band on the bell dome, ornamental cornices are plain"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -4,
+    -5.55
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 0.1,
+    "height": 3.6,
+    "colour": "#3b2a22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4605a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#eeeae0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a5c60",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     7.5,
+     14.5
+    ]
+   },
+   "at": [
+    4,
+    1
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4605a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5c60",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    1
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c75049",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "left": "arched",
+     "right": "arched",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#eeeae0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "bell-dome",
+   "at": [
+    -9.5,
+    1,
+    15
+   ],
+   "params": {
+    "radius": 3.1,
+    "profile": "hemi",
+    "drum": 1.6,
+    "drumRadius": 2.8,
+    "finial": 2.4,
+    "colour": "#4d5055",
+    "drumColour": "#c75049"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "main-dome",
+   "at": [
+    4,
+    1,
+    7.2
+   ],
+   "params": {
+    "radius": 5.2,
+    "profile": "hemi",
+    "drum": 2.2,
+    "drumRadius": 5.0,
+    "lantern": 0.6,
+    "finial": 3.2,
+    "colour": "#4d5055",
+    "drumColour": "#c4605a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-gold-band",
+   "at": [
+    4,
+    1,
+    9.6
+   ],
+   "params": {
+    "profile": [
+     [
+      5.25,
+      0,
+      "#d1ad4f"
+     ],
+     [
+      5.25,
+      0.35,
+      "#d1ad4f"
+     ],
+     [
+      5.05,
+      0.35,
+      "#d1ad4f"
+     ]
+    ],
+    "segments": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrine",
+   "at": [
+    -17,
+    -4
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#7a2f2c",
+    "topScale": 0.15,
+    "windows": "none",
+    "topColour": "#26292d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "porch-step",
+   "at": [
+    -4,
+    -6.3
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 5,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 5,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ }
+}

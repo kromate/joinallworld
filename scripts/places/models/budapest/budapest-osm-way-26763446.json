@@ -1,0 +1,374 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hungary_Budapest_Kispest_Shopmark_IMG_20181101_132429-2000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Misibacsi",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/p3-26763446-0.jpg",
+   "used": "white-clad box with one tall corner block, long fully glazed entrance bay with slim dark columns under a deep cantilevered white flat roof, dark side tower block, paved ramp and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26763446",
+   "used": "239 x 77 m size; outline is a zigzag diagonal, modelled as a 112 m portion of the entrance front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     112,
+     34
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e6e1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "right",
+       "left",
+       "back"
+      ],
+      "colours": [
+       "#e9e9e4",
+       "#dedfda"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     76,
+     7
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#252b2f",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#34444e",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e6"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -6,
+    -17,
+    18.2
+   ],
+   "params": {
+    "form": "curved",
+    "width": 110,
+    "depth": 26,
+    "height": 0.1,
+    "thickness": 1.8,
+    "colour": "#eeeeea",
+    "edgeColour": "#f4f4f0",
+    "rise": 2.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 19.4,
+      "colour": "#2a2e31",
+      "topColour": "#2a2e31"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -21
+    ],
+    "end": [
+     44,
+     -21
+    ],
+    "count": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tall-corner",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    52,
+    2
+   ],
+   "height": 29,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e8e3",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#ececE7",
+       "#dcdcd7"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-end",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    -54,
+    -8
+   ],
+   "height": 25,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3f45",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-red",
+   "at": [
+    -6,
+    -17.1,
+    18.8
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b23a35",
+    "topColour": "#b23a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#a9a79f",
+    "topColour": "#a9a79f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -41.2,
+    0.5
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "pillarEvery": 3,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-round",
+   "at": [
+    52,
+    2,
+    29
+   ],
+   "params": {
+    "rect": [
+     21,
+     25
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#f2f2ee",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopmark-sign",
+   "at": [
+    10,
+    -9.8,
+    21
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.6
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2c3a52",
+    "topColour": "#2c3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-edge",
+   "at": [
+    40,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     16
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#4f7a36",
+    "topColour": "#4f7a36"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -44,
+    -30,
+    0.5
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "pillarEvery": 3,
+    "colour": "#2a2d30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-26763446",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tall glazed bay, deep sweeping canopy and taller corner/side blocks added; roof sweep still gentler than the real rising cantilever; zigzag OSM outline reduced to a rectangular portion; ramp and lawn are simple slabs"
+ }
+}

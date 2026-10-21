@@ -1,0 +1,584 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campona_-_Budapest_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Zdvihak",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/market-game-0.jpg",
+   "used": "entrance pavilion with pitched roof and glazed triangular gable, long flat-roofed canopy walkway on square columns, brown brick lower walls, glazed corner bays"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%A6_%D0%9A%D0%B0%D0%BC%D0%BF%D0%BE%D0%BD%D0%B0_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "karel291",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/market-game-1.jpg",
+   "used": "warm orange-brown brick and cream upper bands, low dark-teal pylon sign with triangular lattice top, several lower gabled roof blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/105668758",
+   "used": "overall size only: a 118 m end of the mall is modelled because of the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftX": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-a",
+   "footprint": {
+    "rect": [
+     96,
+     46
+    ]
+   },
+   "at": [
+    -8,
+    12
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b06a3a",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e3d9c2",
+    "plinth": 0.4,
+    "cornice": false,
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-b",
+   "footprint": {
+    "rect": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    -44,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b06a3a",
+    "windows": "ribbon",
+    "bands": "#e3d9c2",
+    "plinth": 0.4,
+    "windowRatio": 0.1,
+    "bay": 15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    24,
+    -6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6b4430",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#9fb4c0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a34",
+    "material": "metal-sheet",
+    "pitch": 62,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-gable",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    -28,
+    36
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0713f",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6b73",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cinema-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    34,
+    24
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b06a3a",
+    "windows": "none",
+    "bands": "#e3d9c2",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 48,
+    "depth": 10,
+    "height": 5.2,
+    "thickness": 1.2,
+    "columns": 7,
+    "colour": "#ebe6da",
+    "edgeColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 10,
+    "height": 4.6,
+    "thickness": 1.2,
+    "columns": 2,
+    "colour": "#ebe6da",
+    "edgeColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 4.5,
+    "bottom": 6,
+    "colour": "#2f6b57",
+    "frameColour": "#2f6b57",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.9,
+      -0.6
+     ],
+     [
+      0.9,
+      -0.6
+     ],
+     [
+      0.9,
+      0.6
+     ],
+     [
+      -0.9,
+      0.6
+     ]
+    ],
+    "height": 6,
+    "colour": "#2f6b57"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#c8362f",
+     "#f1f1ee",
+     "#2f6b57"
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -36,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -36,
+    -50,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    24,
+    -13.4,
+    14
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14.4,
+       0.6
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       9.6,
+       0.6
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       4.8,
+       0.6
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ],
+    "colour": "#e0b865",
+    "capTop": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    24,
+    -13.9,
+    14
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -6.5,
+      0,
+      0.2
+     ],
+     [
+      0,
+      0,
+      8
+     ],
+     [
+      6.5,
+      0,
+      0.2
+     ],
+     [
+      -3,
+      0,
+      0.2
+     ],
+     [
+      3,
+      0,
+      5
+     ]
+    ],
+    "colour": "#7a4a2a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    24,
+    -13.9,
+    14
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -2.5,
+      0,
+      0.3
+     ],
+     [
+      2.5,
+      0,
+      6
+     ],
+     [
+      2.5,
+      0,
+      0.3
+     ],
+     [
+      -2.5,
+      0,
+      6
+     ]
+    ],
+    "colour": "#7a4a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -13.4,
+    10.5
+   ],
+   "params": {
+    "points": [
+     [
+      -8.4,
+      0
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -6,
+      0.7
+     ],
+     [
+      -8.4,
+      0.7
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#6b4430"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -13.9,
+    7.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#c8362f",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    44,
+    -30,
+    5.9
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ],
+    "colour": "#2f6b57"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Only the north-west ~100 m of the mall is modelled; photo is a night shot so colours come from the daytime street photo; gable lattice is a few diagonal bars, Campona sign is a blank red board; no atrium roof, bus bays or Tropicarium."
+ }
+}

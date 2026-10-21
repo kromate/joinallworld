@@ -1,0 +1,504 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sidewalk_in_front_of_the_Athens_Concert_Hall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "StrangeTraveler",
+   "view": "street",
+   "file": "/tmp/places-evidence/athens/transit-Sidewalk_in_fr.jpg",
+   "used": "pale green iron railing on a white marble kerb with tall blank colourful vertical boards (orange, lime, blue, red), olive trees behind, large white marble panels of the hall wall, brick-paved pavement"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ice_rink_at_the_Athens_Concert_Hall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "StrangeTraveler",
+   "view": "detail",
+   "used": "white square columns and curved white soffit over a glazed foyer"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Megaron_Garden_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "StrangeTraveler",
+   "view": "detail",
+   "used": "white marble stair walls with grid joints and steel handrails"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     40,
+     38
+    ]
+   },
+   "at": [
+    -22,
+    14
+   ],
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "marble",
+    "colour": "#ebe8e0",
+    "windows": "none",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       6,
+       4.5
+      ],
+      "colours": [
+       "#ece9e1",
+       "#e4e0d6",
+       "#f1efe9"
+      ],
+      "mode": "random",
+      "gap": 0.04,
+      "slits": {
+       "fraction": 0.05,
+       "colour": "#5d6770"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd1d0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-east",
+   "footprint": {
+    "rect": [
+     34,
+     34
+    ]
+   },
+   "at": [
+    26,
+    12
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "marble",
+    "colour": "#ebe8e0",
+    "windows": "none",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       6,
+       4.5
+      ],
+      "colours": [
+       "#ece9e1",
+       "#e4e0d6",
+       "#f1efe9"
+      ],
+      "mode": "random",
+      "gap": 0.04,
+      "slits": {
+       "fraction": 0.05,
+       "colour": "#5d6770"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd1d0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage-tower",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 34,
+   "storeys": 5,
+   "wall": {
+    "material": "marble",
+    "colour": "#ebe8e0",
+    "windows": "none",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       6,
+       4.5
+      ],
+      "colours": [
+       "#ece9e1",
+       "#e4e0d6",
+       "#f1efe9"
+      ],
+      "mode": "random",
+      "gap": 0.04,
+      "slits": {
+       "fraction": 0.05,
+       "colour": "#5d6770"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd1d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     80,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c4cb",
+    "glassColour": "#4f6672",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe9",
+    "overhang": 3.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "columns",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "length": 78,
+    "count": 10,
+    "height": 13,
+    "radius": 0.55,
+    "kind": "square",
+    "beamHeight": 0.0,
+    "colour": "#f1efe9"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#e6e3da"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -45,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.3,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#8b9a7c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    -45,
+    -40.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.8
+    ],
+    "height": 0.7,
+    "colour": "#e4e1d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board0",
+   "at": [
+    -38,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#e6932a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board1",
+   "at": [
+    -27,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.7,
+    "colour": "#c8cf3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board2",
+   "at": [
+    -16,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 5.2,
+    "colour": "#5a7fc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board3",
+   "at": [
+    -5,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#7aa9d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board4",
+   "at": [
+    6,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.7,
+    "colour": "#d9482b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board5",
+   "at": [
+    17,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 5.2,
+    "colour": "#e6932a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board6",
+   "at": [
+    28,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#c8cf3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board7",
+   "at": [
+    39,
+    -40,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.7,
+    "colour": "#5a7fc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "olive0",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6f8460"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "olive1",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6f8460"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "olive2",
+   "at": [
+    46,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6f8460"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "olive3",
+   "at": [
+    52,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6f8460"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the whole complex found: massing, heights and plan are estimates from the brief (85 x 65 m, stripped-classical marble and glass); only the railing, marble cladding and foyer columns come from photos."
+ }
+}

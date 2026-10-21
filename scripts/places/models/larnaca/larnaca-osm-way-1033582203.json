@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-1033582203",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1033582203",
+   "used": "real ground outline scaled to 75% to fit the size limit (real about 117 x 199 m, long axis rotated about 50 degrees) and the pitch orientation; no photo found on Commons or Wikidata, stand/floodlights follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "params": {
+    "points": [
+     [
+      -80.8,
+      -30.7
+     ],
+     [
+      -41.5,
+      16.6
+     ],
+     [
+      3.4,
+      70.1
+     ],
+     [
+      10.1,
+      77.2
+     ],
+     [
+      48.5,
+      54.0
+     ],
+     [
+      59.4,
+      46.8
+     ],
+     [
+      79.8,
+      25.2
+     ],
+     [
+      41.1,
+      -17.4
+     ],
+     [
+      -13.1,
+      -78.2
+     ],
+     [
+      -33.3,
+      -64.5
+     ],
+     [
+      -70.1,
+      -38.6
+     ],
+     [
+      -72.2,
+      -37.5
+     ],
+     [
+      -73.1,
+      -36.5
+     ],
+     [
+      -78.8,
+      -32.5
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#b3a98c",
+    "topColour": "#b3a98c",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 50,
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 50,
+   "params": {
+    "start": [
+     -24,
+     -38
+    ],
+    "end": [
+     24,
+     -38
+    ],
+    "rows": 5,
+    "seatColour": "#c9c6bd",
+    "seatColours": [
+     "#c9c6bd",
+     "#4f7aa8"
+    ],
+    "blocks": 4,
+    "canopy": {
+     "height": 5.2,
+     "depth": 6,
+     "colour": "#8e8a82",
+     "slopeDeg": 6,
+     "supports": 5
+    },
+    "backWall": 1.0,
+    "under": "solid"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -4,
+    60,
+    0.12
+   ],
+   "rotDeg": 50,
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "post_height": 2.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -6.6,
+    -70.1,
+    0.12
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -67.9,
+    -18.7,
+    0.12
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    67.9,
+    18.7,
+    0.12
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    6.6,
+    70.1,
+    0.12
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 50,
+   "params": {
+    "points": [
+     [
+      -55,
+      -36
+     ],
+     [
+      55,
+      -36
+     ],
+     [
+      55,
+      36
+     ],
+     [
+      -55,
+      36
+     ],
+     [
+      -55,
+      -36
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "mesh",
+    "colour": "#6b7078"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -31.0,
+     -68.0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22.0,
+     72.9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80.7,
+     10.6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   140,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: stand, floodlights, scoreboard and fence are typical village-ground elements from the brief; ground outline scaled to 75%; no dugouts or terraces"
+ }
+}

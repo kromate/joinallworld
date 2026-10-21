@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/858882318",
+   "used": "nearest government building, 50.6 x 50.5 m, 10 m high; plan and height only (match quality nearest, not name)"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q7251339",
+   "used": "identity: Protection and Guard Service HQ, secured building behind a high perimeter wall; no usable exterior photo of the building was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6d0c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#b9b3a2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.5,
+    "height": 7.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#e8e3d4",
+    "roofColour": "#7a746e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#a9a496"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    42,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#a9a496"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 16,
+    "colours": [
+     "#002b7f",
+     "#fcd116",
+     "#ce1126"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.5,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#a9a496"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     34
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     34
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the real building; plan and height from the nearest OSM government building, facade neoclassical guess"
+ }
+}

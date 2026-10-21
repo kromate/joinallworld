@@ -1,0 +1,79 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-way-182787368",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/182787368",
+   "used": "real building outline, levels and use tags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39a90",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f666c",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 16,
+    "round": false,
+    "cap": "flat",
+    "colour": "#9b5a44",
+    "windows": "none",
+    "material": "brick"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this building; materials and details inferred from the brief and Jersey vernacular (granite, brick, slate)"
+ }
+}

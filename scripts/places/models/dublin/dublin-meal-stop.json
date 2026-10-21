@@ -1,0 +1,492 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BonAppetitMalahide.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rossyxan",
+   "view": "street",
+   "file": "/tmp/places-evidence/dublin/bon1.jpg",
+   "used": "cream painted-render Georgian terrace, three storeys, tall sash windows, pilastered doorcase with teal door and carved brackets, black spear-top railings, stone steps, low roof behind parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1308651193",
+   "used": "house footprint 14.7 x 7.4 m, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.777,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "h1",
+   "footprint": {
+    "rect": [
+     6.6,
+     7.4
+    ]
+   },
+   "at": [
+    -10.7,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": 0.5,
+    "bay": 3.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "h2",
+   "footprint": {
+    "rect": [
+     8.2,
+     7.4
+    ]
+   },
+   "at": [
+    -3.3,
+    0
+   ],
+   "height": 11.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": 0.6,
+    "bay": 3.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "h3",
+   "footprint": {
+    "rect": [
+     7.0,
+     7.4
+    ]
+   },
+   "at": [
+    4.3,
+    0
+   ],
+   "height": 10.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfb98c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": 0.45,
+    "bay": 3.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "h4",
+   "footprint": {
+    "rect": [
+     6.2,
+     7.4
+    ]
+   },
+   "at": [
+    10.9,
+    0
+   ],
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa5",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": 0.4,
+    "bay": 3.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "at": [
+    -3.3,
+    -3.72,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.12
+    ],
+    "z0": 0.8,
+    "height": 2.9,
+    "colour": "#1f8a94",
+    "topColour": "#1f8a94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fanlight",
+   "at": [
+    -3.3,
+    -3.74,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.1
+    ],
+    "z0": 3.5,
+    "height": 0.6,
+    "colour": "#9fb4bd",
+    "topColour": "#9fb4bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-l",
+   "at": [
+    -4.449999999999999,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "z0": 0.8,
+    "height": 3.6,
+    "colour": "#f2eee2",
+    "topColour": "#f2eee2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-r",
+   "at": [
+    -2.15,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "z0": 0.8,
+    "height": 3.6,
+    "colour": "#f2eee2",
+    "topColour": "#f2eee2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-l",
+   "at": [
+    -4.35,
+    -4.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.6
+    ],
+    "z0": 3.7,
+    "height": 0.6,
+    "colour": "#e4dfd0",
+    "topColour": "#e4dfd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-r",
+   "at": [
+    -2.25,
+    -4.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.6
+    ],
+    "z0": 3.7,
+    "height": 0.6,
+    "colour": "#e4dfd0",
+    "topColour": "#e4dfd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hood",
+   "at": [
+    -3.3,
+    -4.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.0
+    ],
+    "z0": 4.3,
+    "height": 0.3,
+    "colour": "#ebe6d8",
+    "topColour": "#ebe6d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign1",
+   "at": [
+    -8.0,
+    -3.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.1
+    ],
+    "z0": 5.0,
+    "height": 0.9,
+    "colour": "#7a2a4a",
+    "topColour": "#7a2a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign1-arm",
+   "at": [
+    -8.0,
+    -3.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     0.8
+    ],
+    "z0": 5.8,
+    "height": 0.06,
+    "colour": "#1f2225",
+    "topColour": "#1f2225"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign2",
+   "at": [
+    0.2,
+    -3.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.1
+    ],
+    "z0": 4.6,
+    "height": 0.9,
+    "colour": "#2f7f86",
+    "topColour": "#2f7f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign2-arm",
+   "at": [
+    0.2,
+    -3.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     0.8
+    ],
+    "z0": 5.3,
+    "height": 0.06,
+    "colour": "#1f2225",
+    "topColour": "#1f2225"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-wall-l",
+   "at": [
+    -9.2,
+    -5.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8a867d",
+    "topColour": "#8a867d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-wall-r",
+   "at": [
+    5.9,
+    -5.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.2,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8a867d",
+    "topColour": "#8a867d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3.3,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "rise": 0.7,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#8a867d"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -9.2,
+    -5.6,
+    0.5
+   ],
+   "params": {
+    "length": 9.6,
+    "height": 1.4,
+    "colour": "#14161a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    5.9,
+    -5.6,
+    0.5
+   ],
+   "params": {
+    "length": 16.2,
+    "height": 1.4,
+    "colour": "#14161a"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -12.5,
+    0,
+    11
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 1.4,
+    "pots": 2,
+    "colour": "#9b5a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a tight oblique of one doorcase: carved brackets, fanlight detail and spear-top finials only approximated; terrace stepping simplified to four plain-fronted houses."
+ }
+}

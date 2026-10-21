@@ -1,0 +1,330 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barajas_Ayuntamiento01.jpg",
+   "licence": "CC BY 2.5",
+   "author": "H\u00e5kan Svensson (Xauxa)",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/notices0.jpg",
+   "used": "orange-red brick facade in three storeys, flat front with a slightly proud centre bay, low hip roof of orange clay tile, rooftop clock cage, round windows at the wings, black railed balconies, three flagpoles, plaza with fountain"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23290568",
+   "used": "real footprint (917 m2), rotated so the long street front faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": -38
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c27a52",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.9,
+    "bands": "#a8603f",
+    "cornice": true,
+    "bay": 5.0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4633a",
+    "material": "clay-tile",
+    "pitch": 6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8603f",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 1.0,
+    "bay": 3.0,
+    "cornice": true,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4633a",
+    "material": "clay-tile",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-cage",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 12.4,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3d40",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5156"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#c8202c",
+     "#f1bf00",
+     "#a31d3e"
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.5,
+    "height": 0.5,
+    "count": 3,
+    "colour": "#9c9c98"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 0.4,
+    "colour": "#e8e2d6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9c9c98"
+     ],
+     [
+      4,
+      0,
+      "#9c9c98"
+     ],
+     [
+      4,
+      0.7,
+      "#9c9c98"
+     ],
+     [
+      3.4,
+      0.7,
+      "#6aa0c8"
+     ],
+     [
+      3.4,
+      0.4,
+      "#6aa0c8"
+     ],
+     [
+      0,
+      0.4,
+      "#6aa0c8"
+     ]
+    ],
+    "colour": "#9c9c98"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16.1,
+    2
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 10.5,
+      "colour": "#8a4a30"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5.6,
+     0
+    ],
+    "end": [
+     5.6,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -15.3,
+    16.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f2f2ee"
+     ],
+     [
+      1.6,
+      0,
+      "#f2f2ee"
+     ],
+     [
+      1.6,
+      0.15,
+      "#2c2c2c"
+     ],
+     [
+      0,
+      0.15,
+      "#f2f2ee"
+     ]
+    ],
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "centre bay only modestly proud of the OSM-rotated hall; clock face not rendered on a vertical plane; no round wing windows or balcony rails; pilaster strips as plain prisms"
+ }
+}

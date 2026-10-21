@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-463111184",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/463111184",
+   "used": "real campus outline (75 x 42 m, two linked blocks, building:levels 2); no photo found, facade typed in warm render"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "fit": 75
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cfa8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f0eee8",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4a38",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-wing",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "z0": 10,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d8b4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4a38",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -28,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -28,
+    -25,
+    0
+   ],
+   "params": {
+    "heading": 90
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: upper wing and glass link are typed from the brief; only the outline and 2 levels are real."
+ }
+}

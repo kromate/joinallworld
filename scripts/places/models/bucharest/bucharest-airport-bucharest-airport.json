@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-airport-bucharest-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HC_arrivals.jpg",
+   "licence": "Public domain",
+   "author": "Cristibur (en.wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/airport2.jpg",
+   "used": "arrivals frontage: a long blue-tinted glass wall under a row of concrete arch hoods, projecting canopy band at the ground floor, light end blocks"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20180412-141411-henri-coanda-airport-2018.jpg",
+   "licence": "CC0",
+   "author": "Rakoon",
+   "view": "interior",
+   "used": "white walls, steel truss roof and glazed gable (colour check only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16476195",
+   "used": "overall extent only (489 m wide); a 108 m portion of the arrivals front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     100,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a4f78",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "plain"
+    },
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-band",
+   "footprint": {
+    "rect": [
+     100,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -17.6
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a4f78",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea4a8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-left",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    -55,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d9d4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-right",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    55,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d9d4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "arch-hoods",
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -19,
+     6
+    ],
+    "end": [
+     42,
+     -19,
+     6
+    ],
+    "count": 7,
+    "lod1Step": 1,
+    "lod2Step": 4,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        1.4,
+        10
+       ]
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        0
+       ],
+       "radius": 6.6,
+       "radiusY": 10,
+       "startDeg": 180,
+       "endDeg": 0,
+       "plane": "xz"
+      },
+      "steps": 10,
+      "colour": "#a9aeb1"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "arch-backs",
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -18.2,
+     6
+    ],
+    "end": [
+     42,
+     -18.2,
+     6
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       11,
+       0.6
+      ],
+      "height": 9,
+      "colour": "#232d38"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -78,
+    48,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#d9dcdc",
+    "cabColour": "#4a6c86"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 11,
+    "colour": "#b7bbbf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "hoods now 7 taller arches but read as ribbed shells with pointed dark openings, not smooth pillow arches; glass wall still a flat curtain; tower position a guess"
+ }
+}

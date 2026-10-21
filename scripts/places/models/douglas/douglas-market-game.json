@@ -1,0 +1,213 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "douglas",
+  "venueId": "douglas-market-game",
+  "verified": "photo",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Douglas_(2023-05-03)_07.jpg",
+      "licence": "CC0",
+      "author": "Simon Cobb",
+      "view": "street",
+      "file": "/tmp/places-evidence/douglas/market1.jpg",
+      "used": "grey-brown brick walls, terracotta arched window surrounds and string courses, hipped slate roof with raised glazed clerestory ridge, pedimented end entrance, corner chimneys/finials (round2: red terracotta bands, red-brown lantern, terracotta entrance)"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Douglas_Market_Hall_-_geograph.org.uk_-_4614269.jpg",
+      "licence": "CC BY-SA 2.0",
+      "author": "Mike Faherty",
+      "view": "street",
+      "used": "window rhythm (4 arched bays on long side), red clerestory side, stone pediment bay at the end"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/58706857",
+      "used": "footprint 26.7 x 18.3 m, 1 level, brick, 1899"
+    }
+  ],
+  "camera": {
+    "yawDeg": 40,
+    "pitchDeg": 6,
+    "fovDeg": 50
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "hall",
+      "footprint": {
+        "osm": true
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0,
+      "height": 7.2,
+      "storeys": 1,
+      "wall": {
+        "material": "brick",
+        "colour": "#7a6a52",
+        "windows": "arched",
+        "windowRatio": 0.4,
+        "bay": 4.6,
+        "bands": "#b5502f",
+        "plinth": 0.5,
+        "cornice": true,
+        "windowShape": "arched"
+      },
+      "roof": {
+        "form": "hip",
+        "colour": "#4f565c",
+        "material": "slate",
+        "pitch": 11,
+        "overhang": 0.4
+      }
+    },
+    {
+      "type": "mass",
+      "id": "clerestory",
+      "footprint": {
+        "rect": [
+          12,
+          3.6
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 7.2,
+      "height": 1.6,
+      "storeys": 1,
+      "wall": {
+        "material": "render",
+        "colour": "#8a4a32",
+        "windows": "curtain",
+        "windowRatio": 0.35,
+        "bands": "#8a4a32"
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 22,
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "mass",
+      "id": "entrance-bay",
+      "footprint": {
+        "rect": [
+          5,
+          1.2
+        ]
+      },
+      "at": [
+        0,
+        -9.4
+      ],
+      "z0": 0,
+      "height": 6.8,
+      "storeys": 1,
+      "wall": {
+        "material": "brick",
+        "colour": "#b5502f",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#b5502f",
+        "material": "slate",
+        "pitch": 35
+      }
+    },
+    {
+      "type": "church-door",
+      "at": [
+        0,
+        -10.0,
+        0
+      ],
+      "params": {
+        "width": 2.4,
+        "height": 3.4,
+        "arch": true,
+        "colour": "#3a2a22",
+        "trim": "#b5502f"
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        -12.06,
+        -8.096,
+        6.4
+      ],
+      "params": {
+        "width": 1.0,
+        "height": 1.6,
+        "pots": 1,
+        "colour": "#b5502f"
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        12.06,
+        -8.096,
+        6.4
+      ],
+      "params": {
+        "width": 1.0,
+        "height": 1.6,
+        "pots": 1,
+        "colour": "#b5502f"
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        -12.06,
+        8.096,
+        6.4
+      ],
+      "params": {
+        "width": 1.0,
+        "height": 1.6,
+        "pots": 1,
+        "colour": "#b5502f"
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        12.06,
+        8.096,
+        6.4
+      ],
+      "params": {
+        "width": 1.0,
+        "height": 1.6,
+        "pots": 1,
+        "colour": "#b5502f"
+      }
+    }
+  ],
+  "site": {
+    "ground": "paving",
+    "forecourt": "plaza",
+    "extent": [
+      60,
+      50
+    ]
+  },
+  "review": {
+    "rounds": 2,
+    "match": "fair",
+    "gaps": "terracotta arch surrounds and string courses still not rendered red (bands colour not applied), pedimented end bay and door not visible from this angle, two corner finials float off the hip roof, forecourt paving grey not buff"
+  }
+}

@@ -1,0 +1,360 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-airport-vaduz-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hubschrauberlandeplatz_Balzers_Liechtenstein.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "St9191",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/heli1.jpg",
+   "used": "hangar as a long grey vertical-panel shed with ribbon window strips and a blank board on its end, lower white operations block behind with ribbon glazing, concrete pad with white H on lawn, wire fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Balzers_Heliport_LSXB.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Kecko",
+   "view": "aerial",
+   "used": "relative placing of hangar, ops block and pad"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37902079",
+   "used": "site only: the 12.6k m2 outline is the whole airfield, the buildings are modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ridge backdrop is a smooth green mound, helicopters are simple boxes, pad is a round disc not the real taper slab"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     32,
+     17
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5a636c",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "ribbon",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "glassColour": "#2c3a40"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4c545b",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ops",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    6,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcdcd6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    },
+    "glassColour": "#3d4b55"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8387",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tanker-shed",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -3,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "colour": "#8c9096",
+    "markColour": "#f0f0ea",
+    "ringColour": "#e8e8e2",
+    "ground": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 5.6,
+    "colour": "#e9ece9",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 22,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 4,
+    "spread": 14
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#7d8387"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli1-body",
+   "at": [
+    22,
+    -4,
+    0.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "height": 1.6,
+    "colour": "#b3262a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli1-tail",
+   "at": [
+    19.4,
+    -4,
+    1.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3.5,
+     0.35
+    ],
+    "height": 0.4,
+    "colour": "#2d2f33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli1-rotor",
+   "at": [
+    22,
+    -4,
+    2.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "height": 0.08,
+    "colour": "#222222",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli2-body",
+   "at": [
+    2,
+    -6,
+    0.6
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "height": 1.6,
+    "colour": "#f2f2ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli2-tail",
+   "at": [
+    -0.6000000000000001,
+    -6,
+    1.4
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     3.5,
+     0.35
+    ],
+    "height": 0.4,
+    "colour": "#2d2f33",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "heli2-rotor",
+   "at": [
+    2,
+    -6,
+    2.3
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "height": 0.08,
+    "colour": "#222222",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "ridge",
+   "at": [
+    0,
+    62,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 30,
+    "height": 26,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#3f5240",
+    "boulders": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "extent": [
+   110,
+   80
+  ]
+ }
+}

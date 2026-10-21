@@ -1,0 +1,408 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Jumbo_in_July_2025.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JIP",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/jumbo2.jpg",
+   "used": "main entrance: warm timber-clad upper box with chevron boarding over a dark fascia band and glazed shopfront, wide timber-soffit canopy on white round columns, grey paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5052826",
+   "used": "overall size (335 x 261 m, 3 levels); only the entrance front and a trimmed part of the mall are modelled, outline too big for the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     50,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6dcc4",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d40",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     48,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#26292b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26292b",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "mass",
+   "id": "timber-box",
+   "footprint": {
+    "rect": [
+     46,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a5e38",
+    "windows": "none",
+    "bands": "#a96a40"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4f33",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "z0": 5.3
+  },
+  {
+   "type": "canopy",
+   "id": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 76,
+    "depth": 22,
+    "height": 14.5,
+    "thickness": 1.2,
+    "columns": 0,
+    "colour": "#a8734a",
+    "edgeColour": "#a8734a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -18,
+     0
+    ],
+    "end": [
+     34,
+     -18,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "segments": 16,
+       "profile": [
+        [
+         0.95,
+         0,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         0.4,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         4,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         4.1,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         4.5,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         4.6,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         8,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         8.1,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         8.5,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         8.6,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         12,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         12.1,
+         "#f2f2ee"
+        ],
+        [
+         0.98,
+         12.5,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         12.6,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         13.3,
+         "#f2f2ee"
+        ]
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       2
+      ],
+      "params": {
+       "segments": 6,
+       "profile": [
+        [
+         0.9,
+         0,
+         "#f2f2ee"
+        ],
+        [
+         0.9,
+         13.3,
+         "#f2f2ee"
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "z0": 15.5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd8dc",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench0",
+   "footprint": {
+    "rect": [
+     4,
+     1.4
+    ]
+   },
+   "at": [
+    -28,
+    -26
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8734a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8734a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     4,
+     1.4
+    ]
+   },
+   "at": [
+    24,
+    -27
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8734a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8734a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     4,
+     1.4
+    ]
+   },
+   "at": [
+    30,
+    -20
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8734a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8734a",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     35
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glass still reads dark blue (curtain material tint); no logo or flowers (blank by rule); no clerestory strip behind canopy sky; forecourt is tiled plate not worn concrete"
+ }
+}

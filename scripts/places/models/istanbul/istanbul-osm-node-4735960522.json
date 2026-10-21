@@ -1,0 +1,264 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-node-4735960522",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Church_of_Santa_Maria,_Istanbul",
+   "used": "Franciscan church of 1864-1866 by Gaspare Fossati, neoclassical two-storey basilica plan with a pedimented front; interior photos on Commons (Viktoryuksel, CC0) confirmed a single nave with round-arched windows and pale stone tones, but no exterior photo of this church was found"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/4735960522",
+   "used": "identity only; the containing OSM outline (59 x 56 m) is a wider precinct, not the church, so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     42
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d3a8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 4.8,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f3efe6",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d3a8",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    0,
+    -21
+   ],
+   "params": {
+    "rect": [
+     13,
+     4
+    ],
+    "z0": 7.6,
+    "height": 1.1,
+    "colour": "#f3efe6",
+    "topColour": "#f3efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "landing",
+   "at": [
+    0,
+    -21
+   ],
+   "params": {
+    "rect": [
+     13,
+     4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#cfc8b8",
+    "topColour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -5.5,
+     -22.2
+    ],
+    "end": [
+     5.5,
+     -22.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.55,
+      "n": 12,
+      "z0": 0,
+      "height": 7.6,
+      "colour": "#f3efe6",
+      "topColour": "#f3efe6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -19.1
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#5a3b2a",
+    "topColour": "#5a3b2a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -24.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellcote",
+   "at": [
+    0,
+    -17
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.4
+    ],
+    "z0": 13.5,
+    "height": 5,
+    "colour": "#e6d3a8",
+    "topColour": "#a8553a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -11.5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 23,
+    "height": 1.8,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9cfb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     19,
+     -28
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found so proportions, window count and the bell tower are typical neoclassical, not measured"
+ }
+}

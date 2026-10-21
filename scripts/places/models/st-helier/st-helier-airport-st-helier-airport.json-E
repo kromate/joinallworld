@@ -1,0 +1,182 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jersey_Airport_2009.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Dan Marsh",
+   "view": "airside",
+   "file": "/tmp/places-evidence/st-helier/st-helier-airport-st-helier-airport-1.jpg",
+   "used": "only airside buildings visible (pale green-grey low sheds, brick and white two-storey block, dark pitched roofs behind); NOT the terminal front, so not used as a comparison"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166385457",
+   "used": "terminal outline (183 m, fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "fit": 116
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#c9ccce",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea1",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-1937",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f2eee4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 8,
+    "height": 4.6,
+    "colour": "#c9ccce",
+    "edgeColour": "#7f9aa8",
+    "columns": 6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    10,
+    14,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#d8dcdf",
+    "cabColour": "#7f9aa8",
+    "bandColour": "#c9ccce"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#ffffff",
+     "#c8102e"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no terminal-front photo found; massing from OSM outline and brief only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-airport-st-helier-airport"
+}

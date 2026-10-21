@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tirana,_palazzo_dell'universit%C3%A0_08.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sailko",
+   "view": "street",
+   "used": "travertine University Rectorate across the square: central 5-storey block with arched top windows and ground arcade, lower flanking wings, flagpole; giant-order colonnade in left foreground; grey setts paving, tall lamp posts",
+   "file": "/tmp/places-evidence/tirana/square1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1292145197",
+   "used": "square outline (14,262 m2); plaza extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.48,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rectorate-centre",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    0,
+    62
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbd96",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "bands": "#d8cdb0",
+    "plinth": 1.2,
+    "faces": {
+     "front": "punched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.5,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rectorate-west",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -21.400000000000002,
+    60
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfbf9c",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rectorate-east",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    21.400000000000002,
+    60
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfbf9c",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    53.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     2
+    ],
+    "height": 0.8,
+    "colour": "#bdb49c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    -52,
+    5,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     72
+    ],
+    "height": 2.2,
+    "colour": "#cfc2a2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -52,
+    5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     0,
+     -32,
+     0
+    ],
+    "end": [
+     0,
+     32,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       2.6
+      ],
+      "height": 14.5,
+      "colour": "#d6c9a9",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -52,
+    -40,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     -5,
+     2.1
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       12,
+       1.6
+      ],
+      "height": 0.6,
+      "colour": "#d6cdb8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    3,
+    60,
+    24
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c8102e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "count": 5,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     80
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     84
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     82
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     82
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     86
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     62,
+     80
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     78,
+     76
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -78,
+     76
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rectorate top-storey arched windows are the wall's arched punched windows not a distinct row of eight; no terraced retaining wall; foreground colonnade piers/entablature simplified; steps are a stack of slabs; few conifers; people and car omitted. Step slabs and the colonnade sides render with a blue tint (unresolved colour artefact in the trim material)."
+ }
+}

@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-airport-san-marino-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroclub_San_Marino.png",
+   "licence": "CC BY-SA 3.0",
+   "author": "Giancy",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-marino/airport.png",
+   "used": "white two-storey clubhouse with raised sign parapet, blue-grey hangar door block, long open hangar with flat grey roof on the right, low wing on the left, grass apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188112632",
+   "used": "overall size only (35 x 12 m terminal strip)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    -1,
+    2
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6df",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-door",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    3,
+    -1
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7c8fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9096",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "open-hangar",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    17.5,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4b4e",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9298",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -11,
+    -1
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcdad2",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9399",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -2.75,
+    6.9
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#2f5fa8",
+    "frameColour": "#dfe3e6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -15,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#5eb6e4"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0.5,
+    -5.6,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#cfcc9c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3,
+    1,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.0,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4,
+    2,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.0,
+    "colour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -9
+    ],
+    "height": 4.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hillside slope not modelled (flat grass); hangar front dark box not truly open; mast and sign are simple stand-ins; low wing terrace simplified"
+ }
+}

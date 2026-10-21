@@ -1,0 +1,306 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malmi_hospital_6.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Htm",
+   "view": "side",
+   "file": "/tmp/places-evidence/helsinki/1_2.jpg",
+   "used": "cream plastered four-storey main block with regular punched windows, hipped dark standing-seam metal roof with dormer skylights, balcony pillars at the right end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malmi_hospital.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hehkuviini",
+   "view": "front",
+   "used": "dark brown-grey rendered ward block with flat roof next to the cream block, low canopy entrance on pillars"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malmi_hospital_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Htm",
+   "view": "front",
+   "used": "new red-brick wing with slit windows and black glass link"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/333579518",
+   "used": "campus overall size only (398 m); a main block cluster is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfcf",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.8,
+    "bands": "#cdc8b8",
+    "cornice": true,
+    "bay": 3.6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5056",
+    "material": "metal-sheet",
+    "pitch": 34,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-bay",
+   "footprint": {
+    "rect": [
+     7,
+     16
+    ]
+   },
+   "at": [
+    19.5,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfcf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.6,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5056",
+    "pitch": 34,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    -44,
+    16
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f5a55",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.8,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7075",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -38,
+    -8
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a544f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "rect",
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#7d8387"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -18,
+    -4.6,
+    17.8
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#4a5056",
+    "wall_colour": "#e4dfcf"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -8,
+    -4.6,
+    17.8
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#4a5056",
+    "wall_colour": "#e4dfcf"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    2,
+    -4.6,
+    17.8
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#4a5056",
+    "wall_colour": "#e4dfcf"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    12,
+    -4.6,
+    17.8
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#4a5056",
+    "wall_colour": "#e4dfcf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes already in spec (pitched dark roof, 4 storeys, dormers, dark rendered ward block, lawn); remaining: no ridge skylight strip, balcony bay square not round-cornered, no string-course detail, windows less tall than photo."
+ }
+}

@@ -1,0 +1,377 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Laxey_Woollen_Mill_-_geograph.org.uk_-_2588611.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Richard Hoare",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/mills_0.jpg",
+   "used": "two-storey rubble stone mill: taller hipped end block, long slate gable block, tall stone chimney, blue window frames in brick reveals, cream shop bay and cream single-storey annexe with blue roof, green railings and roadside wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Laxey_Woollen_Mills.jpg",
+   "licence": "CC0",
+   "author": "Manx_James",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/mills_1.jpg",
+   "used": "long wall rhythm, glen setting, stream beside the road. Name board left blank."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/71521258",
+   "used": "38.5 x 10.2 m footprint size; modelled as a straight hipped block plus gable block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6a62",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 0.3,
+    "glassColour": "#6f93b8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     28,
+     9.4
+    ]
+   },
+   "at": [
+    8,
+    0.3
+   ],
+   "rotDeg": 0,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a665e",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 0.3,
+    "glassColour": "#6f93b8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f666c",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.35,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-bay",
+   "at": [
+    -4,
+    -5.8
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#e8e0b8",
+    "windows": "none",
+    "topColour": "#e8e0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-glass",
+   "at": [
+    -4,
+    -6.65
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.12
+    ],
+    "z0": 0.6,
+    "height": 2.2,
+    "colour": "#40586a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annexe",
+   "at": [
+    -18,
+    -9
+   ],
+   "params": {
+    "rect": [
+     8,
+     5
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#e8e6b0",
+    "windows": "none",
+    "topColour": "#3a78b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annexe-door",
+   "at": [
+    -18,
+    -11.55
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#27315a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    -5.5,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "z0": 6.2,
+    "height": 4.2,
+    "colour": "#6f6b63",
+    "windows": "none",
+    "topColour": "#575650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-pots",
+   "at": [
+    -5.5,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 10.4,
+    "height": 0.8,
+    "colour": "#a2553d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -14,
+    -13.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.2
+    ],
+    "z0": 1.5,
+    "height": 1.2,
+    "colour": "#1f2a6b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roadside-wall",
+   "at": [
+    2,
+    -13.6
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.8
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#7a7468",
+    "windows": "none",
+    "topColour": "#a7a396"
+   }
+  },
+  {
+   "type": "array",
+   "id": "railing",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -14.6,
+     0
+    ],
+    "end": [
+     26,
+     -14.6,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 1.1,
+      "colour": "#2d6a5e",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-bar",
+   "at": [
+    10,
+    -14.6
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.08
+    ],
+    "z0": 1.0,
+    "height": 0.1,
+    "colour": "#2d6a5e",
+    "windows": "none",
+    "topColour": "#2d6a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-bar2",
+   "at": [
+    10,
+    -14.6
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.08
+    ],
+    "z0": 0.6,
+    "height": 0.1,
+    "colour": "#2d6a5e",
+    "windows": "none",
+    "topColour": "#2d6a5e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   90,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "L-shape simplified to hipped end block plus gable block; no brick window surrounds, roof dormers or valley stream; stone texture is regular coursing"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-way-71521258"
+}

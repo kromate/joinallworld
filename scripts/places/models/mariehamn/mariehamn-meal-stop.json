@@ -1,0 +1,699 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:F.P._von_Knorring_(02).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Erik Wannee",
+   "view": "front",
+   "file": "/tmp/places-evidence/mariehamn/m59-knor1.jpg",
+   "used": "black steel hull with red waterline, white upper deck with window band, blue-green wheelhouse at stern with black funnel, mast with sign board at bow, gangway to quay"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:F.P._von_Knorring_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Erik Wannee",
+   "view": "side",
+   "file": "/tmp/places-evidence/mariehamn/m59-knor2.jpg",
+   "used": "relative positions of mast, wheelhouse, quay and harbour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/111858376",
+   "used": "length of the ship (about 46 m) and beam"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "hull-red",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      0
+     ],
+     [
+      -14,
+      -3.5
+     ],
+     [
+      -8,
+      -3.9
+     ],
+     [
+      20,
+      -3.9
+     ],
+     [
+      23,
+      -3.2
+     ],
+     [
+      23,
+      3.2
+     ],
+     [
+      20,
+      3.9
+     ],
+     [
+      -8,
+      3.9
+     ],
+     [
+      -14,
+      3.5
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#a3342c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull",
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      0
+     ],
+     [
+      -14,
+      -3.5
+     ],
+     [
+      -8,
+      -3.9
+     ],
+     [
+      20,
+      -3.9
+     ],
+     [
+      23,
+      -3.2
+     ],
+     [
+      23,
+      3.2
+     ],
+     [
+      20,
+      3.9
+     ],
+     [
+      -8,
+      3.9
+     ],
+     [
+      -14,
+      3.5
+     ]
+    ],
+    "height": 2.8,
+    "colour": "#1d2125",
+    "windows": "none",
+    "topColour": "#6b6f73"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deckhouse",
+   "at": [
+    -3,
+    0,
+    3.6
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      -2.6
+     ],
+     [
+      15,
+      -2.6
+     ],
+     [
+      15,
+      2.6
+     ],
+     [
+      -15,
+      2.6
+     ]
+    ],
+    "height": 2.4,
+    "colour": "#eeeeea",
+    "windows": "punched",
+    "windowRatio": 0.72,
+    "storeys": 1,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#8fa4ad",
+    "topColour": "#27402f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    13,
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     11,
+     6
+    ],
+    "height": 2.6,
+    "colour": "#3f7a78",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "storeys": 1,
+    "glassColour": "#9ab4bd",
+    "topColour": "#27402f",
+    "plinth": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "funnel",
+   "at": [
+    14,
+    0,
+    11.4
+   ],
+   "params": {
+    "segments": 14,
+    "profile": [
+     [
+      1.0,
+      0,
+      "#1c1f22"
+     ],
+     [
+      1.0,
+      1.0
+     ],
+     [
+      1.05,
+      1.05,
+      "#f2f2ee"
+     ],
+     [
+      1.05,
+      1.5
+     ],
+     [
+      1.1,
+      1.55,
+      "#1c1f22"
+     ],
+     [
+      1.1,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mast",
+   "at": [
+    -17,
+    0,
+    3.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a2d30",
+    "profile": [
+     [
+      0.22,
+      0
+     ],
+     [
+      0.22,
+      9.5
+     ],
+     [
+      0.1,
+      9.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    -17,
+    -0.3,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 1.5,
+    "colour": "#d8a823",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "quay",
+   "at": [
+    20,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     6
+    ],
+    "height": 0.5,
+    "colour": "#c2b6a3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gangway",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -1,
+      -3.9,
+      3.7
+     ],
+     [
+      -11,
+      -8.5,
+      0.6
+     ]
+    ],
+    "colour": "#d8dbde"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bow-raise",
+   "at": [
+    0,
+    0,
+    3.6
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      0
+     ],
+     [
+      -14,
+      -3.5
+     ],
+     [
+      -6,
+      -3.9
+     ],
+     [
+      -6,
+      3.9
+     ],
+     [
+      -14,
+      3.5
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#1d2125",
+    "windows": "none",
+    "topColour": "#6b6f73"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bow-raise2",
+   "at": [
+    0,
+    0,
+    4.4
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      0
+     ],
+     [
+      -17,
+      -2.4
+     ],
+     [
+      -12,
+      -3.4
+     ],
+     [
+      -12,
+      3.4
+     ],
+     [
+      -17,
+      2.4
+     ]
+    ],
+    "height": 0.7,
+    "colour": "#1d2125",
+    "windows": "none",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "bulwark-rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      -14,
+      -3.5,
+      3.55
+     ],
+     [
+      -6,
+      -3.9,
+      3.55
+     ],
+     [
+      20,
+      -3.9,
+      3.55
+     ],
+     [
+      23,
+      -3.2,
+      3.55
+     ],
+     [
+      23,
+      3.2,
+      3.55
+     ],
+     [
+      20,
+      3.9,
+      3.55
+     ],
+     [
+      -6,
+      3.9,
+      3.55
+     ],
+     [
+      -14,
+      3.5,
+      3.55
+     ],
+     [
+      -23,
+      0,
+      3.55
+     ]
+    ],
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "name-outline",
+   "at": [
+    -12,
+    -3.6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.15
+    ],
+    "height": 1.3,
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "name-panel",
+   "at": [
+    -12,
+    -3.68,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#14171a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "gang-rail-a",
+   "params": {
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -1,
+      -3.4,
+      4.7
+     ],
+     [
+      -11,
+      -8,
+      1.6
+     ]
+    ],
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "gang-rail-b",
+   "params": {
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -1,
+      -4.4,
+      4.7
+     ],
+     [
+      -11,
+      -9,
+      1.6
+     ]
+    ],
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    -3,
+    3.6
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "step": [
+     8,
+     0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#2a2d30",
+      "profile": [
+       [
+        0.06,
+        0
+       ],
+       [
+        0.06,
+        4.5
+       ],
+       [
+        0.03,
+        4.6
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-upper",
+   "at": [
+    14,
+    0,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     5
+    ],
+    "height": 2.2,
+    "colour": "#3f7a78",
+    "windows": "punched",
+    "windowRatio": 0.65,
+    "storeys": 1,
+    "glassColour": "#9ab4bd",
+    "topColour": "#27402f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water-main",
+   "at": [
+    0,
+    12,
+    -0.35
+   ],
+   "params": {
+    "rect": [
+     100,
+     32
+    ],
+    "height": 0.5,
+    "colour": "#5f7f78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water-bow",
+   "at": [
+    -38,
+    -9,
+    -0.35
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 0.5,
+    "colour": "#5f7f78",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Hull sheer is stepped slabs; ship small in frame, quay/water simplified; no rigging, chain or lifebuoys; string lights are poles only; name panel blank"
+ }
+}

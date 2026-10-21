@@ -1,0 +1,271 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stad_hrv_drg2.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Danijel Majic",
+   "view": "side",
+   "file": "/tmp/places-evidence/zagreb/spajic.jpg",
+   "used": "long low covered terrace with thin dark roof on slim blue steel posts, concrete terrace and low wall in front, small glazed press box on the roof, tall plain grass pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261119216",
+   "used": "ground extent only (261 m leisure area, too large for the scene): pitch 100 x 64 m modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.46,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     80
+    ],
+    "height": 0.12,
+    "colour": "#5f9a3a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     38
+    ],
+    "end": [
+     -56,
+     38
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 0.6,
+    "seatColour": "#b9b4a6",
+    "concreteColour": "#c4bfb1",
+    "under": "solid",
+    "backWall": 0.6,
+    "canopy": {
+     "height": 6.2,
+     "depth": 10,
+     "colour": "#2b3948",
+     "slopeDeg": 6,
+     "supports": 24,
+     "thickness": 1.6
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-cladding",
+   "footprint": {
+    "rect": [
+     104,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    44.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#59666a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3948",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-slab",
+   "footprint": {
+    "rect": [
+     104,
+     10
+    ]
+   },
+   "at": [
+    0,
+    39.5
+   ],
+   "rotDeg": 0,
+   "z0": 5.6,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2b3948",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3948",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    33.5,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.0,
+    "thickness": 0.25,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     7,
+     3.4
+    ]
+   },
+   "at": [
+    -14,
+    43
+   ],
+   "rotDeg": 0,
+   "z0": 7.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5c6b78",
+    "windows": "ribbon",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4654",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flat-a",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -48,
+    66
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flat-b",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    44,
+    70
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    56,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 8,
+    "count": 12,
+    "min_height": 10,
+    "max_height": 15,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "trees are generic round crowns, flats have blue-white windows not grey panels, ground pad grey beyond pitch, roof still dark edge; side terraces removed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-261119216"
+}

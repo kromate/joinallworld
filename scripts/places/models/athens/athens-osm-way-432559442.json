@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-432559442",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Penteli_observatory_NOA_202202.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Panosor",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/athens-osm-way-432559442-2.jpg",
+   "used": "two-tier round limestone block building: wide base with arched door and white window panels, narrower drum with tall white slit, silver ribbed dome with two ladder rails, curved external stair, pine and bare hilltop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Penteli_observatory_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Nagaremono",
+   "view": "street",
+   "used": "dome silhouette seen over pine trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/432559442",
+   "used": "checked only; the 43 x 25 m outline covers the whole station, the model shows the dome building seen in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.25
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "body",
+   "params": {
+    "segments": 28,
+    "colour": "#d9d3c1",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      6.9,
+      0,
+      "#d6cfba"
+     ],
+     [
+      6.9,
+      4.4,
+      "#e0dac6"
+     ],
+     [
+      6.9,
+      4.6,
+      "#bdb5a0"
+     ],
+     [
+      6.0,
+      4.6,
+      "#bdb5a0"
+     ],
+     [
+      6.0,
+      8.9,
+      "#e2dccb"
+     ],
+     [
+      6.2,
+      9.0,
+      "#bdb5a0"
+     ],
+     [
+      6.2,
+      9.15,
+      "#8e969b"
+     ],
+     [
+      5.9,
+      9.3,
+      "#8c9499"
+     ],
+     [
+      5.4,
+      10.9,
+      "#9aa2a7"
+     ],
+     [
+      4.3,
+      12.4,
+      "#8a9297"
+     ],
+     [
+      2.6,
+      13.5,
+      "#97a0a5"
+     ],
+     [
+      0,
+      13.9,
+      "#97a0a5"
+     ]
+    ],
+    "slot": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-arch",
+   "at": [
+    0,
+    -6.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -7.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.2
+    ],
+    "height": 2.5,
+    "colour": "#1f2a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-l",
+   "at": [
+    -4.2,
+    -6.35,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-r",
+   "at": [
+    4.2,
+    -6.35,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 1.9,
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit",
+   "at": [
+    0,
+    -5.95,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.25
+    ],
+    "height": 3.4,
+    "colour": "#f4f3ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-l",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.35
+     ]
+    },
+    "colour": "#7d8387",
+    "curve": true,
+    "points": [
+     [
+      -1.9,
+      -5.4,
+      9.6
+     ],
+     [
+      -1.9,
+      -4.6,
+      11.6
+     ],
+     [
+      -1.9,
+      -2.4,
+      13.2
+     ],
+     [
+      -1.9,
+      0,
+      13.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-r",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.35
+     ]
+    },
+    "colour": "#7d8387",
+    "curve": true,
+    "points": [
+     [
+      1.9,
+      -5.4,
+      9.6
+     ],
+     [
+      1.9,
+      -4.6,
+      11.6
+     ],
+     [
+      1.9,
+      -2.4,
+      13.2
+     ],
+     [
+      1.9,
+      0,
+      13.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "stair-front",
+   "at": [
+    0,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#cdc7b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    -6,
+    -9.4,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.0,
+    "thickness": 0.15,
+    "colour": "#8a8f93"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     11,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     -7
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Dome shows stone-block texture instead of smooth silver metal, no curved external stair or arched door surround, rear OSM annex not modelled, terrain is flat sand."
+ }
+}

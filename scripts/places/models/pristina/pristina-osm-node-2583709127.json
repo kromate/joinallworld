@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-node-2583709127",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1349811813",
+   "used": "real staggered outline (41 x 17 m, 576 m2), generic building tag"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/pristina.json#pristina-osm-node-2583709127",
+   "used": "two-storey roadside restaurant, hipped terracotta roof, cream render, awning, terrace, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "colours": [
+     "#a8553a",
+     "#f4f1e6"
+    ]
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 2.6,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -22,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.8,
+    "colour": "#a8553a",
+    "frameColour": "#f4f1e6",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

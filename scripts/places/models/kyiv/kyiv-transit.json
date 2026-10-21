@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/957363285",
+   "used": "not used: the nearest building is 69 m away and is not the stop; only the brief and Wikidata (railway stop, Q4381289) inform this model"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this stop exists in the evidence; a modest suburban Kyiv railway halt (side platform, two light shelters, a blank name board, track pair, ramp) typed from text, so dimensions and layout are plausible not measured."
+ },
+ "parts": [
+  {
+   "type": "station-platform",
+   "at": [
+    -6,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 4.5,
+    "height": 1.0,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -14,
+    -2.5,
+    1.0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 3.2,
+    "height": 3.1,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#5f7f98",
+    "accent": "#e0ddd2"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    14,
+    -2.5,
+    1.0
+   ],
+   "params": {
+    "length": 9,
+    "depth": 3.2,
+    "height": 3.1,
+    "form": "flat",
+    "support": "steel",
+    "colour": "#5f7f98",
+    "accent": "#e0ddd2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -4.5,
+    1.0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.2,
+    "bottom": 2.2,
+    "colour": "#2f5f9e",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      4
+     ],
+     [
+      40,
+      4
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#6d7378"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    8.2,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.12
+    ],
+    "height": 0.25,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9.65,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.12
+    ],
+    "height": 0.25,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     9,
+     0
+    ],
+    "end": [
+     38,
+     9,
+     0
+    ],
+    "count": 38,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       2.6
+      ],
+      "height": 0.15,
+      "colour": "#7a6a58"
+     }
+    },
+    "lod1Step": 4,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -5,
+    1.0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -38,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 1.0,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b9b4aa"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -13
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   50
+  ]
+ }
+}

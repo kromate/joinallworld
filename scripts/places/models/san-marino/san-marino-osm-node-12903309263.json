@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-node-12903309263",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/san-marino.json#san-marino-osm-node-12903309263",
+   "used": "roadside bar-cafe, ~14 x 10 m, one storey, flat roof, glazed front, awning, three umbrellas; the OSM way containing it is a 414 m2 irregular block so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0c9",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "bands": "#c0583a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49c",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#c0583a",
+     "#f4efe3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#c0583a",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#c0583a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "colour": "#f4efe3"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#c0583a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed placeholder: no photo and the OSM block is unusable; dimensions, colours and furniture are assumed."
+ }
+}

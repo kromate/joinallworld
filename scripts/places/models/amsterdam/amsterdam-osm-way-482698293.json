@@ -1,0 +1,975 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-482698293",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:02_juni_2025_IP_Images_-Telstar-01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "IPimages.nl",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/amsterdam/bk1.jpg",
+   "used": "layout: pitch with long anthracite brick main stand carrying a white roof with solar panels along one side, covered stand with blue seats opposite, open steel stand at one end, low covered stand at the other, four corner floodlight masts, trees all round"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Westtribunetatasteelstadion.jpg",
+   "licence": "Public domain",
+   "author": "niels eriks",
+   "view": "side",
+   "file": "/tmp/places-evidence/amsterdam/bk2.jpg",
+   "used": "blue and red seating under timber-beamed white fabric roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/482698293",
+   "used": "overall extent (the OSM polygon also holds training pitches, so pitch and stands are composed from the photo instead)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 30,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     104,
+     68
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f8a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#459444"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-stand",
+   "footprint": {
+    "rect": [
+     84,
+     15
+    ]
+   },
+   "at": [
+    -2,
+    -44
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#46484c",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7f98a4",
+    "plinth": 0.5,
+    "pattern": []
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "pitch": 6,
+    "colour": "#ffffff",
+    "material": "membrane",
+    "overhang": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "params": {
+    "rect": [
+     7,
+     0.6
+    ],
+    "z0": 0,
+    "height": 8.5,
+    "colour": "#7e9aa6"
+   },
+   "at": [
+    -2,
+    -52
+   ]
+  },
+  {
+   "type": "stand",
+   "id": "north-stand",
+   "params": {
+    "start": [
+     -42,
+     36
+    ],
+    "end": [
+     42,
+     36
+    ],
+    "rows": 7,
+    "seatColours": [
+     "#2d4fa0",
+     "#2d4fa0"
+    ],
+    "seatColour": "#2d4fa0",
+    "blocks": 2,
+    "flip": true,
+    "backWall": 0.6,
+    "under": "open",
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "colour": "#f4f4f2",
+     "slopeDeg": 8,
+     "supports": 12
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "id": "west-stand",
+   "params": {
+    "start": [
+     -56,
+     -28
+    ],
+    "end": [
+     -56,
+     28
+    ],
+    "rows": 7,
+    "seatColour": "#2d4fa0",
+    "seatColours": [
+     "#2d4fa0",
+     "#8a8f93"
+    ],
+    "blocks": 2,
+    "under": "open",
+    "concreteColour": "#a6a8a6"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clubhouse",
+   "params": {
+    "rect": [
+     20,
+     10
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#a85a42",
+    "topColour": "#4a4a4d"
+   },
+   "at": [
+    -18,
+    70
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast0",
+   "at": [
+    -60,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps0",
+   "at": [
+    -60,
+    -40
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "z0": 30,
+    "height": 2.2,
+    "colour": "#d9dadb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast1",
+   "at": [
+    60,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps1",
+   "at": [
+    60,
+    -40
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "z0": 30,
+    "height": 2.2,
+    "colour": "#d9dadb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast2",
+   "at": [
+    -60,
+    42,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps2",
+   "at": [
+    -60,
+    42
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "z0": 30,
+    "height": 2.2,
+    "colour": "#d9dadb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast3",
+   "at": [
+    60,
+    42,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps3",
+   "at": [
+    60,
+    42
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.8
+    ],
+    "z0": 30,
+    "height": 2.2,
+    "colour": "#d9dadb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "solar0",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10.5,
+       5
+      ],
+      "z0": 8.9,
+      "height": 0.15,
+      "colour": "#1b2a4a",
+      "topColour": "#2b3d63"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -34,
+     -40.5
+    ],
+    "end": [
+     26,
+     -40.5
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "solar1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10.5,
+       5
+      ],
+      "z0": 8.9,
+      "height": 0.15,
+      "colour": "#1b2a4a",
+      "topColour": "#2b3d63"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -24,
+     -45
+    ],
+    "end": [
+     36,
+     -45
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-stand",
+   "params": {
+    "start": [
+     58,
+     28
+    ],
+    "end": [
+     58,
+     -28
+    ],
+    "rows": 5,
+    "seatColour": "#2d4fa0",
+    "seatColours": [
+     "#2d4fa0",
+     "#2d4fa0"
+    ],
+    "blocks": 2,
+    "under": "open",
+    "concreteColour": "#8a8f93"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "football-pitch",
+   "id": "marks",
+   "params": {
+    "length": 100,
+    "width": 64
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "params": {
+    "rect": [
+     110,
+     6
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#5a5d61"
+   },
+   "at": [
+    0,
+    -60
+   ]
+  },
+  {
+   "type": "core/car",
+   "id": "cars",
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   },
+   "at": [
+    8,
+    -57,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "wood0",
+   "at": [
+    -86,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood1",
+   "at": [
+    -68,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood2",
+   "at": [
+    -50,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood3",
+   "at": [
+    -32,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood4",
+   "at": [
+    -14,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood5",
+   "at": [
+    4,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood6",
+   "at": [
+    22,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood7",
+   "at": [
+    40,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood8",
+   "at": [
+    58,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood9",
+   "at": [
+    76,
+    66,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood10",
+   "at": [
+    -76,
+    -40,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood11",
+   "at": [
+    -76,
+    -20,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood12",
+   "at": [
+    -76,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood13",
+   "at": [
+    -76,
+    20,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood14",
+   "at": [
+    -76,
+    40,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood15",
+   "at": [
+    76,
+    -40,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood16",
+   "at": [
+    76,
+    -20,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood17",
+   "at": [
+    76,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood18",
+   "at": [
+    76,
+    20,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood19",
+   "at": [
+    76,
+    40,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood20",
+   "at": [
+    -70,
+    -72,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood21",
+   "at": [
+    -45,
+    -72,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood22",
+   "at": [
+    45,
+    -72,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "wood23",
+   "at": [
+    70,
+    -72,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "main stand roof reads grey not white, solar panels flat not tilted, trees low-poly and sparser than the forest, no white scalloped canopy edge, no neighbouring buildings, grey backdrop plane"
+ }
+}

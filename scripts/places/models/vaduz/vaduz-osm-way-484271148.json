@@ -1,0 +1,328 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-484271148",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vaduz_University,_Liechtenstein_(46391036655).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Pom' from France, European Union",
+   "view": "side",
+   "file": "/tmp/places-evidence/vaduz/uni1.jpg",
+   "used": "glass and louvred box raised on slim columns and a concrete core, external stair, white render former mill with gabled sawtooth bays and red tile roof, meadow setting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Liechtenstein.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/uni2.jpg",
+   "used": "long glazed bar proportions (about 4:1), columns, white lower wings with pitched gables and red-framed windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/484271148",
+   "used": "campus area only; the real outline is a bulky 56 m block, so the mill is composed as a long low wing from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     3.3,
+     0,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3.3,
+       13
+      ]
+     },
+     "height": 4.4,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#f1eee7",
+      "windows": "punched",
+      "windowRatio": 0.3,
+      "faces": {
+       "front": "punched",
+       "back": "none",
+       "left": "none",
+       "right": "none"
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#a4503a",
+      "material": "clay-tile",
+      "pitch": 52,
+      "overhang": 0.1,
+      "axis": "y"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mill-base",
+   "at": [
+    -13.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     26.4,
+     13
+    ],
+    "height": 1.0,
+    "colour": "#f1eee7",
+    "topColour": "#f1eee7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pavilion",
+   "at": [
+    11,
+    -1
+   ],
+   "params": {
+    "rect": [
+     28,
+     11
+    ],
+    "z0": 4.2,
+    "height": 3.8,
+    "colour": "#b4b8ba",
+    "topColour": "#8e969b",
+    "windows": "none",
+    "storeys": 1,
+    "trimColour": "#6c747a",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "colour": "#c6cacc",
+      "backColour": "#7d878c",
+      "pitch": 0.22,
+      "band": 0.8,
+      "at": 0.1,
+      "margin": 0.4
+     }
+    ],
+    "faces": {
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "glassColour": "#5f7d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-strip",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6,
+    -6.65
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.3
+    ],
+    "z0": 4.5,
+    "height": 2.6,
+    "colour": "#5f7d88",
+    "topColour": "#5f7d88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "core",
+   "at": [
+    6,
+    -1
+   ],
+   "params": {
+    "rect": [
+     5,
+     6
+    ],
+    "height": 4.2,
+    "colour": "#b9b7b1",
+    "topColour": "#b9b7b1"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -2,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     4.5,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.2,
+      "colour": "#8f969a",
+      "topColour": "#8f969a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -2,
+    3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     4.5,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.2,
+      "colour": "#8f969a",
+      "topColour": "#8f969a"
+     }
+    },
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.5,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4,
+      -9,
+      0.2
+     ],
+     [
+      4.5,
+      -6,
+      4.0
+     ]
+    ],
+    "colour": "#5d646a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -16
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mountain backdrop and sloping meadow absent; no glazed end face detail or interior visible behind louvres; mill is a straight 8-bay wing instead of the real larger campus outline; stair and columns simplified."
+ }
+}

@@ -1,0 +1,599 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vantaanpuiston_ostoskeskus2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paju",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/mg1.jpg",
+   "used": "low single-storey flat-roofed parade, pale brick end wing with dark fascia, white-rendered shop frontage with glazed units, blue-white striped awning on the kiosk, green sign board at the far end, conifer backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27518041",
+   "used": "real irregular outline (name match), rotated so the long side faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 2.0,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "parade",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeece6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#f4f3ef"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      0
+     ],
+     [
+      18,
+      0
+     ],
+     [
+      18,
+      14
+     ],
+     [
+      0,
+      14
+     ]
+    ]
+   },
+   "at": [
+    -46,
+    -22
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#3a3c3f",
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44474a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      0,
+      7
+     ]
+    ]
+   },
+   "at": [
+    -28,
+    -26
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44474a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-a",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      2
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   },
+   "at": [
+    -22,
+    -20
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ef",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44474a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-b",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   },
+   "at": [
+    -6,
+    -20
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ef",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44474a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-c",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      2
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   },
+   "at": [
+    8,
+    -20
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ef",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44474a",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "green-board",
+   "at": [
+    28,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 2.4,
+    "colour": "#3c7a4a",
+    "frameColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "kiosk-sign",
+   "at": [
+    -27,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.8,
+    "bottom": 3.7,
+    "colour": "#f2c230",
+    "frameColour": "#2b5aa8"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "kiosk-awning",
+   "at": [
+    -28,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 3,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#2b5aa8",
+     "#f1f1ee"
+    ],
+    "stripe": 1.1
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "carpark",
+   "at": [
+    -6,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55.0,
+     20.855575525102697
+    ],
+    "height": 20.353833802367614
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -51.2,
+     22.439461998576952
+    ],
+    "height": 20.831360308769554
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -47.4,
+     25.508643649296648
+    ],
+    "height": 16.524230873918505
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -43.6,
+     18.15801589865849
+    ],
+    "height": 22.69975265677168
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -39.8,
+     21.11224817193609
+    ],
+    "height": 17.87464768837357
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -36.0,
+     29.947738026125553
+    ],
+    "height": 19.762108060179585
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -32.2,
+     28.037537415292665
+    ],
+    "height": 19.810825669594678
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -28.400000000000002,
+     25.66881768652994
+    ],
+    "height": 17.204931392188193
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24.6,
+     25.618327899422262
+    ],
+    "height": 22.944362457146376
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20.800000000000004,
+     24.278174524599617
+    ],
+    "height": 21.930014849611922
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -17.0,
+     26.05693770443511
+    ],
+    "height": 16.51225150581598
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -13.200000000000003,
+     27.098762955441806
+    ],
+    "height": 20.72879666345054
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -9.400000000000006,
+     21.61521191418855
+    ],
+    "height": 16.248094011758
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5.600000000000001,
+     28.386326843747348
+    ],
+    "height": 19.781992709323735
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -1.8000000000000043,
+     26.62588708878964
+    ],
+    "height": 23.030502402043854
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     2.0,
+     26.56955380333443
+    ],
+    "height": 23.368789340670997
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     5.799999999999997,
+     22.739560848008928
+    ],
+    "height": 22.407270167881826
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9.599999999999994,
+     23.33545267260913
+    ],
+    "height": 23.484693773636167
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     13.399999999999991,
+     28.5463999240565
+    ],
+    "height": 16.77963447784702
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     17.200000000000003,
+     19.631626322408028
+    ],
+    "height": 17.735895529865097
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     21.0,
+     29.585761666778435
+    ],
+    "height": 19.489294933019433
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24.799999999999997,
+     25.519779490401646
+    ],
+    "height": 18.408209587404045
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28.599999999999994,
+     24.086915805948713
+    ],
+    "height": 19.08693007075922
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32.39999999999999,
+     22.21092586524216
+    ],
+    "height": 20.680592859242907
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36.19999999999999,
+     25.011021515642387
+    ],
+    "height": 23.2336141667822
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40.0,
+     26.1837856396196
+    ],
+    "height": 23.431564809600136
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     43.8,
+     28.27680679676107
+    ],
+    "height": 23.92791715895052
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     47.599999999999994,
+     26.055282505950217
+    ],
+    "height": 17.304796975768557
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     51.39999999999999,
+     28.327650397395217
+    ],
+    "height": 23.71706357847249
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     55.19999999999999,
+     28.85635181414684
+    ],
+    "height": 20.552860027794587
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-market-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "larger brick end wing, attached kiosk awning, smaller forecourt car park and denser conifers; OSM outline still gives a long uniform parade without glazed-unit rhythm; no ribbed canopy detail"
+ }
+}

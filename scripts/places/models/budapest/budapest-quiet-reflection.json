@@ -1,0 +1,530 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:R%C3%B3mai_katolikus_pl%C3%A9b%C3%A1niatemplom_(7400._sz%C3%A1m%C3%BA_m%C5%B1eml%C3%A9k)_3.jpg",
+   "licence": "CC BY-SA 2.5 hu",
+   "author": "Szvitek Peter",
+   "view": "side",
+   "file": "/tmp/places-evidence/budapest/quiet-reflection-0.jpg",
+   "used": "whitewashed nave with yellow pilasters, huge red tile hip roof, west tower with clock and arched belfry under dark tent roof, rubble stone plinth and buttresses, cobbled hill square"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/75922434",
+   "used": "overall 37 x 15 m plan: tower, nave, apse and sacristy positions"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     40
+    ],
+    "z0": -0.02,
+    "height": 0.05,
+    "colour": "#a39b88",
+    "topColour": "#a39b88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     28,
+     13.2
+    ]
+   },
+   "at": [
+    3,
+    -1.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6dc82",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.2,
+    "bay": 5.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.1,
+      "depth": 0.4,
+      "spacing": 6,
+      "colour": "#e2bd48",
+      "margin": 1.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 1.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.4,
+     6.4
+    ]
+   },
+   "at": [
+    -13.5,
+    -1.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f0d98a",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 1.2,
+    "bay": 7.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.8,
+      "depth": 0.3,
+      "spacing": 4.6,
+      "colour": "#e6b92e",
+      "margin": 0.2
+     },
+     {
+      "type": "bands",
+      "height": 0.5,
+      "colour": "#e6b92e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2b2d30",
+    "rise": 4.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    10,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f6dc82",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     5.5,
+     8
+    ]
+   },
+   "at": [
+    17,
+    -0.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f6dc82",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     0
+    ],
+    "end": [
+     14,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.45,
+        0
+       ],
+       [
+        0.45,
+        0
+       ],
+       [
+        0.45,
+        -0.7
+       ],
+       [
+        0.2,
+        -1.0
+       ],
+       [
+        -0.2,
+        -1.0
+       ],
+       [
+        -0.45,
+        -0.7
+       ]
+      ],
+      "height": 5.5,
+      "topScale": 0.7,
+      "colour": "#e0d8c0",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -13.5,
+    -4.45,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -13.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.5,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.2
+    ],
+    "z0": 13.0,
+    "height": 1.9,
+    "colour": "#f4f2ea",
+    "topColour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -13.5,
+    -1.2,
+    21.0
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 2.0,
+    "sides": 8,
+    "colour": "#2e302f",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -1.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     28.8,
+     14.0
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.5,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.5,
+    -1.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.9,
+     7.0
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#8d887c",
+    "topColour": "#8d887c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      0
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      22,
+      -3
+     ],
+     [
+      -20,
+      -3
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#6f9a3c",
+    "topColour": "#6f9a3c"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -13.5,
+    -1.2,
+    19.0
+   ],
+   "params": {
+    "radius": 0.9,
+    "height": 1.4,
+    "profile": "onion",
+    "colour": "#2b2d30",
+    "finial": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -15
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "low three-quarter photo; hip roof enlarged with low eaves, slimmer cream tower with dark tent roof and onion lantern, rubble plinth; clock face and belfry arch simplified, cobble ground is flat tint, grass verge a thin strip"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-quiet-reflection"
+}

@@ -1,0 +1,680 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jrvezh_Forest,_Armenia_-_\u054b\u0580\u057e\u0565\u056a\u056b_\u0561\u0576\u057f\u0561\u057c,_\u0540\u0561\u0575\u0561\u057d\u057f\u0561\u0576.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GeoO",
+   "view": "street",
+   "file": "/tmp/places-evidence/yerevan/jrv.jpg",
+   "used": "narrow cracked asphalt park road with kerb edging running straight between two tall rows of slim poplars, dark pines on the left bank, grass verge, pale spring green"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "timber picnic shelters and a stone-edged gravel path (no OSM outline: match none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     100
+    ],
+    "height": 0.12,
+    "colour": "#7a7b7d",
+    "topColour": "#6f7174"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-l",
+   "at": [
+    -3.3,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     100
+    ],
+    "height": 0.2,
+    "colour": "#d8d4c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb-r",
+   "at": [
+    3.3,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     100
+    ],
+    "height": 0.2,
+    "colour": "#d8d4c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "verge-l",
+   "at": [
+    -5.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     100
+    ],
+    "height": 0.05,
+    "colour": "#7fa24a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gravel-r",
+   "at": [
+    5.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     100
+    ],
+    "height": 0.06,
+    "colour": "#b9b2a2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crack",
+   "at": [
+    0.6,
+    0,
+    0.13
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     90
+    ],
+    "height": 0.02,
+    "colour": "#4d4e50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "poplars-l",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -6.5,
+     -38,
+     0
+    ],
+    "end": [
+     -6.5,
+     40,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b8cf72",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.25
+       },
+       {
+        "z": 4,
+        "circle": 0.3
+       },
+       {
+        "z": 5,
+        "ellipse": [
+         0.5850000000000001,
+         0.5850000000000001
+        ]
+       },
+       {
+        "z": 12,
+        "ellipse": [
+         0.9099999999999999,
+         0.9099999999999999
+        ]
+       },
+       {
+        "z": 20,
+        "ellipse": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 26,
+        "circle": 0.1
+       }
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "poplars-l-2",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12.35,
+     -30,
+     0
+    ],
+    "end": [
+     -12.35,
+     38,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b8cf72",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.25
+       },
+       {
+        "z": 4,
+        "circle": 0.3
+       },
+       {
+        "z": 5,
+        "ellipse": [
+         0.5850000000000001,
+         0.5850000000000001
+        ]
+       },
+       {
+        "z": 12,
+        "ellipse": [
+         0.9099999999999999,
+         0.9099999999999999
+        ]
+       },
+       {
+        "z": 20,
+        "ellipse": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 26,
+        "circle": 0.1
+       }
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "poplars-r",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     6.8,
+     -38,
+     0
+    ],
+    "end": [
+     6.8,
+     40,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b8cf72",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.25
+       },
+       {
+        "z": 4,
+        "circle": 0.3
+       },
+       {
+        "z": 5,
+        "ellipse": [
+         0.5850000000000001,
+         0.5850000000000001
+        ]
+       },
+       {
+        "z": 12,
+        "ellipse": [
+         0.9099999999999999,
+         0.9099999999999999
+        ]
+       },
+       {
+        "z": 20,
+        "ellipse": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 26,
+        "circle": 0.1
+       }
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "poplars-r-2",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     12.92,
+     -30,
+     0
+    ],
+    "end": [
+     12.92,
+     38,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b8cf72",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.25
+       },
+       {
+        "z": 4,
+        "circle": 0.3
+       },
+       {
+        "z": 5,
+        "ellipse": [
+         0.5850000000000001,
+         0.5850000000000001
+        ]
+       },
+       {
+        "z": 12,
+        "ellipse": [
+         0.9099999999999999,
+         0.9099999999999999
+        ]
+       },
+       {
+        "z": 20,
+        "ellipse": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 26,
+        "circle": 0.1
+       }
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "pines",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -13,
+     -30,
+     0
+    ],
+    "end": [
+     -14,
+     36,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2d4a30",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.3
+       },
+       {
+        "z": 2,
+        "circle": 0.3
+       },
+       {
+        "z": 2.5,
+        "circle": 2.2
+       },
+       {
+        "z": 8,
+        "circle": 1.2
+       },
+       {
+        "z": 13,
+        "circle": 0.15
+       }
+      ]
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub0",
+   "at": [
+    -9.5,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     3
+    ],
+    "height": 1.4,
+    "colour": "#3f5f34",
+    "topScale": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub1",
+   "at": [
+    -9.5,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     3
+    ],
+    "height": 1.4,
+    "colour": "#3f5f34",
+    "topScale": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub2",
+   "at": [
+    -9.8,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     3
+    ],
+    "height": 1.4,
+    "colour": "#3f5f34",
+    "topScale": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub3",
+   "at": [
+    -9.5,
+    28,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     3
+    ],
+    "height": 1.4,
+    "colour": "#3f5f34",
+    "topScale": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "pavilion",
+   "id": "shelter",
+   "at": [
+    15,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "gable",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#8b6b4a",
+    "cap_colour": "#6f5a45",
+    "floor_colour": "#a09a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "pavilion",
+   "id": "shelter-2",
+   "at": [
+    15,
+    14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "gable",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#8b6b4a",
+    "cap_colour": "#6f5a45",
+    "floor_colour": "#a09a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "branch-path",
+   "at": [
+    10.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.6
+    ],
+    "height": 0.08,
+    "colour": "#cbc6bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "branch-path2",
+   "at": [
+    10.5,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.6
+    ],
+    "height": 0.08,
+    "colour": "#cbc6bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench1",
+   "at": [
+    15,
+    -8.8,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 0.4,
+    "colour": "#6b4f35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench2",
+   "at": [
+    15,
+    13.2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 0.4,
+    "colour": "#6b4f35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   110
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Road, kerbs, tall columnar poplars, pine group and picnic shelters now compose a linear avenue; road is straight (photo bends), poplars are smooth lofts without bare branches, no cracked-asphalt texture, shelters sit out of the main view"
+ }
+}

@@ -1,0 +1,390 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Prishtina_Bus_Station_(14479).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Edukatori",
+   "view": "front",
+   "file": "/tmp/places-evidence/pristina/bus_1.jpg",
+   "used": "two-storey bus station: cream lower walls, dark roof band with three white arched gables, glazed entrance box with canopy, balcony railing, exterior spiral stair at left, rooftop sign letters, car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/148226346",
+   "used": "rejected: that outline is the railway station, not the bus station"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Spiral stair is straight treads; roof gables approximate and rooftop sign is a blank board; no arcade detail; car park cars generic."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8780",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-floor",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    2,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ede6d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8780"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-band",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    2,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 8.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2e2622",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f3631",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "gables",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "g",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       8,
+       0.8
+      ],
+      "z0": 8.6,
+      "height": 3.0,
+      "colour": "#f2efe8",
+      "topColour": "#f2efe8",
+      "windowShape": "arched"
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -10,
+     -7.4,
+     0
+    ],
+    "end": [
+     14,
+     -7.4,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    5,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9b3b0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6de",
+    "parapet": 0.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass-upper",
+   "at": [
+    5,
+    -8.2
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.4
+    ],
+    "z0": 4.6,
+    "height": 3.2,
+    "colour": "#e0b66a",
+    "topColour": "#e0b66a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-rail",
+   "at": [
+    2,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.15
+    ],
+    "z0": 4.6,
+    "height": 1.1,
+    "colour": "#f2f2ee",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-slab",
+   "at": [
+    2,
+    -10.0
+   ],
+   "params": {
+    "rect": [
+     40,
+     2.2
+    ],
+    "z0": 4.4,
+    "height": 0.25,
+    "colour": "#cfc8b8",
+    "topColour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    0,
+    9.8
+   ],
+   "params": {
+    "width": 26,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#fbfbf6",
+    "frameColour": "#fbfbf6",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "stair-treads",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "t",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.4,
+       1.0
+      ],
+      "z0": 0,
+      "height": 0.25,
+      "colour": "#d8d3c6",
+      "topColour": "#d8d3c6"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -22,
+     -14,
+     0.2
+    ],
+    "end": [
+     -18,
+     -10.5,
+     4.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-rail2",
+   "at": [
+    -20,
+    -12.3
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     0.15,
+     6
+    ],
+    "z0": 2.2,
+    "height": 1.0,
+    "colour": "#f2f2ee",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcade-sign",
+   "at": [
+    5,
+    -8.6
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 3.7,
+    "height": 0.8,
+    "colour": "#f2f0e8",
+    "topColour": "#f2f0e8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "extent": [
+   80,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -9
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -22
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -24
+    ],
+    "height": 4
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-transit"
+}

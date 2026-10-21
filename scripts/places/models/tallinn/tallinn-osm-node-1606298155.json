@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-node-1606298155",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/313147572",
+   "used": "nearest building (25 m away, a hut by the clearing) ignored for the model; only the brief's boulder size of about 7 x 6 x 3.5 m is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.7,
+       3.1
+      ],
+      "cx": 0,
+      "colour": "#5c5b57"
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       3.9,
+       3.3
+      ],
+      "cx": 0,
+      "colour": "#76736d"
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       3.4,
+       2.9
+      ],
+      "cx": 0.2,
+      "colour": "#85827b"
+     },
+     {
+      "z": 2.9,
+      "ellipse": [
+       2.4,
+       2.1
+      ],
+      "cx": 0.4,
+      "colour": "#8c8982"
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       1.2,
+       1.1
+      ],
+      "cx": 0.5,
+      "colour": "#908d86"
+     },
+     {
+      "z": 3.8,
+      "ellipse": [
+       0.4,
+       0.4
+      ],
+      "cx": 0.5,
+      "colour": "#8f9078"
+     }
+    ],
+    "colour": "#82807a",
+    "topColour": "#8f9078",
+    "curve": true,
+    "smooth": true,
+    "steps": 4,
+    "round": 18
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.7,
+    0,
+    3.3
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "colour": "#7d8a5a"
+     },
+     {
+      "z": 0.4,
+      "ellipse": [
+       0.9,
+       0.7
+      ],
+      "cx": 0,
+      "colour": "#7d8a5a"
+     },
+     {
+      "z": 0.55,
+      "ellipse": [
+       0.2,
+       0.2
+      ],
+      "cx": 0,
+      "colour": "#7d8a5a"
+     }
+    ],
+    "colour": "#7d8a5a",
+    "curve": true,
+    "round": 10
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    6.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "colour": "#5c5b57"
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "colour": "#78756f"
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "colour": "#85827b"
+     }
+    ],
+    "colour": "#78756f",
+    "curve": true,
+    "round": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     7
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     3,
+     12
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; boulder size and colour from the brief (about 7 x 6 x 3.5 m granite), shape typical of an Estonian erratic"
+ }
+}

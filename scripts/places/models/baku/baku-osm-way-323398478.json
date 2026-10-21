@@ -1,0 +1,947 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KVVMKU_main_entrance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Killer queen1",
+   "view": "front",
+   "file": "/tmp/places-evidence/baku/p16_0.jpg",
+   "used": "main gate: two pink-grey marble piers with sloped marble side walls, a long dark green-black sign board between the piers on top of the piers, black bar gate, statue on a plinth inside, umbrella pines; behind it a yellow three-storey block with four tall white columns over a balcony and white window surrounds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/323398478",
+   "used": "identity only: the 911 x 387 m campus outline is not a single building, so the entrance block seen in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 36,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     56
+    ],
+    "height": 0.1,
+    "colour": "#8d8f8c",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5cb72",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.2,
+    "bands": "#f1ead2",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    -33,
+    -1.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5cb72",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bay": 3.2,
+    "bands": "#f1ead2",
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    33,
+    -1.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5cb72",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bay": 3.2,
+    "bands": "#f1ead2",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#d9d4c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 6.0,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#3a3631"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#2a7ab8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#2a7ab8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.2,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     19,
+     3.5
+    ],
+    "height": 4.2,
+    "colour": "#f1ead2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.6,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     20,
+     3.4
+    ],
+    "height": 0.5,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.9,
+    5.1
+   ],
+   "params": {
+    "rect": [
+     19.6,
+     0.25
+    ],
+    "height": 1.1,
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.2,
+     -10.6
+    ],
+    "end": [
+     7.2,
+     -10.6
+    ],
+    "count": 4,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.1
+      ],
+      "params": {
+       "radius": 0.9,
+       "n": 12,
+       "height": 9.2,
+       "colour": "#f8f6ef"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.2,
+    14.3
+   ],
+   "params": {
+    "rect": [
+     20.5,
+     3.6
+    ],
+    "height": 0.9,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.2
+    ],
+    "height": 9,
+    "colour": "#c9b3ad"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.2
+    ],
+    "height": 9,
+    "colour": "#c9b3ad"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.3,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     1.8
+    ],
+    "height": 4.0,
+    "colour": "#bda59f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26.3,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     1.8
+    ],
+    "height": 4.0,
+    "colour": "#bda59f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -39,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.8
+    ],
+    "height": 2.8,
+    "colour": "#bda59f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    39,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.8
+    ],
+    "height": 2.8,
+    "colour": "#bda59f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.9
+    ],
+    "height": 3.0,
+    "colour": "#1f2a26"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -15,
+    -40,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 30,
+    "height": 5.6,
+    "thickness": 0.05,
+    "kind": "railing",
+    "colour": "#1a1c1e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     -44,
+     0
+    ],
+    "end": [
+     -22,
+     -36,
+     0
+    ],
+    "count": 3,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     31,
+     -44,
+     0
+    ],
+    "end": [
+     22,
+     -36,
+     0
+    ],
+    "count": 3,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     16,
+     0
+    ],
+    "end": [
+     36,
+     16,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     24,
+     0
+    ],
+    "end": [
+     30,
+     24,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -8,
+     0
+    ],
+    "end": [
+     -44,
+     14,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     44,
+     -8,
+     0
+    ],
+    "end": [
+     44,
+     14,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     32,
+     0
+    ],
+    "end": [
+     36,
+     32,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#6e5a48",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.4,
+        15
+       ],
+       [
+        0.5,
+        15.3,
+        "#2f4a2c"
+       ],
+       [
+        4,
+        15.8
+       ],
+       [
+        6,
+        16.8
+       ],
+       [
+        5,
+        18
+       ],
+       [
+        2.5,
+        18.6
+       ],
+       [
+        0.3,
+        18.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-323398478",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "marble is flat pink-grey without veining and wall tops not sloped; umbrella pines are simple flat discs on tall trunks; gate bars are a thin rail; balcony and window surrounds simplified"
+ }
+}

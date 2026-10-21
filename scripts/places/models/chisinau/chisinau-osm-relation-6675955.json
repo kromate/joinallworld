@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-relation-6675955",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zimbru_Stadium_in_26_April_2025.jpg",
+   "licence": "CC0",
+   "author": "Lovecookie22",
+   "view": "interior",
+   "file": "/tmp/places-evidence/chisinau/zim1.jpg",
+   "used": "four stands under a flat translucent roof carried on steel trusses, green seating blocks with yellow stair aisles, white concrete fascia, tall floodlight mast beyond the stands, scoreboard on the corner"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zimbru_Stadium_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Editor1722",
+   "view": "interior",
+   "file": "/tmp/places-evidence/chisinau/zim2.jpg",
+   "used": "low rectangular bowl, dark steel roof edge, two floodlight masts on slim poles, mixed green and dark seating"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6675955",
+   "used": "site extent and orientation only (the outline includes the surrounding grounds)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -38.0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 100,
+    "depth": 14,
+    "height": 9,
+    "roof": "cantilever",
+    "rear": "none",
+    "storeys": 1,
+    "seat_colour": "#2f8f4a",
+    "seat_colour2": "#2a7d42"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    38.0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 100,
+    "depth": 14,
+    "height": 9,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1,
+    "seat_colour": "#2f8f4a",
+    "seat_colour2": "#2a7d42"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    -58.5,
+    0,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "length": 70,
+    "depth": 14,
+    "height": 9,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1,
+    "seat_colour": "#2f8f4a",
+    "seat_colour2": "#d9a516"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    58.5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 70,
+    "depth": 14,
+    "height": 9,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1,
+    "seat_colour": "#2f8f4a",
+    "seat_colour2": "#d9a516"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    45,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    45,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    64,
+    -38,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 9,
+    "height": 4.5,
+    "post_height": 3,
+    "facing": "south",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 8,
+    "line": 115
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Near long side is a plain back with posts (tier not visible from outside); roofs still read as dark pitched cantilevers, not one flat translucent truss roof (stadium-stand has no flat roof option); end heights raised to 9 m."
+ }
+}

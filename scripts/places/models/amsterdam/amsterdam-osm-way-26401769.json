@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-26401769",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ACTA_building.jpg",
+   "licence": "see Commons",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/acta2.jpg",
+   "used": "three volumes: tall dark-blue glass tower behind, long lighter blue glass block in front, white punched-window block on the left over a coloured timber soffit; V-shaped white struts at ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zuidas_VU_15.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MrAronymous",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/acta1.jpg",
+   "used": "row of white V struts under the glass block, stepped glass facade rhythm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26401769",
+   "used": "60 x 57 m plan, 57.5 m height, 13 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     60,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 6.5,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a3b8cc",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "glassColour": "#9db6cf",
+    "trimColour": "#8aa2b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     52,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26405a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 5,
+    "trimColour": "#2a3f55"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    17,
+    16
+   ],
+   "z0": 0,
+   "height": 57.5,
+   "storeys": 13,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c4f86",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "glassColour": "#35609a",
+    "trimColour": "#2a4770"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f8a96",
+    "rise": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    -15,
+    16
+   ],
+   "z0": 8,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e7e2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     34,
+     27
+    ]
+   },
+   "at": [
+    -15,
+    16
+   ],
+   "z0": 5.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b8672a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5530"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -24.5,
+     0
+    ],
+    "end": [
+     27,
+     -24.5,
+     0
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0efe9",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": -2.5
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": 0
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0efe9",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": 2.5
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": 0
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     22,
+     0
+    ],
+    "end": [
+     -3,
+     22,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0efe9",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": -2.5
+        },
+        {
+         "z": 7.8,
+         "rect": [
+          2.2,
+          1.4
+         ],
+         "cx": 0
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Front glass block lighter blue-grey with finer grid and tower darker/taller at rear right, orange soffit under white block and bolder V struts added; tower crown is a shed cut not the true angle, glass has no mirror reflections, white block has no overhang/raking struts."
+ }
+}

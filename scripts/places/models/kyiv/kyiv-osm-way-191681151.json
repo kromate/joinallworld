@@ -1,0 +1,363 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lybidska.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Skoropadsky",
+   "view": "street",
+   "file": "/tmp/places-evidence/kyiv/1681151_1.jpg",
+   "used": "exterior at dusk: curved volumes clad in a blue faceted triangular panel skin, a tall glazed entrance bay with a swept-up curved brown roof edge, wide paved plaza in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191681151",
+   "used": "real outline (214 x 193 m, 7 levels), fitted to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-base",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#101c2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#25303c",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 7,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a62ec",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "size": [
+       3.4,
+       3.4
+      ],
+      "colours": [
+       "#1530c0",
+       "#2a62ec",
+       "#5a9aff"
+      ],
+      "mode": "random",
+      "skipGround": false,
+      "slits": {
+       "fraction": 0.25,
+       "colour": "#bfe0ff"
+      }
+     }
+    ],
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a6a80",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-step",
+   "footprint": {
+    "rect": [
+     50,
+     36
+    ]
+   },
+   "at": [
+    20,
+    10
+   ],
+   "rotDeg": -40,
+   "z0": 28,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a62ec",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "size": [
+       6,
+       4
+      ],
+      "colours": [
+       "#1a3ccf",
+       "#2a62ec",
+       "#4a86ff"
+      ],
+      "mode": "random",
+      "slits": {
+       "fraction": 0.1,
+       "colour": "#9fc4ff"
+      }
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a6a80"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -1,
+    -55
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9a060",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#e8b866"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c070"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hood",
+   "at": [
+    -1,
+    -55,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      22,
+      2.2
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "points": [
+     [
+      0,
+      -8,
+      22
+     ],
+     [
+      0,
+      -3,
+      24
+     ],
+     [
+      0,
+      3,
+      30
+     ],
+     [
+      0,
+      7,
+      38
+     ],
+     [
+      0,
+      7.5,
+      45
+     ]
+    ],
+    "colour": "#a9743c",
+    "material": "copper"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glow",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -1,
+    -57
+   ],
+   "z0": 0.1,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#ffd488",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#f2b860"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5f3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "blue-bulge",
+   "at": [
+    -28,
+    -14,
+    7
+   ],
+   "params": {
+    "curve": true,
+    "steps": 5,
+    "colour": "#2a62ec",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9,
+       8
+      ],
+      "colour": "#1f48d8"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       11,
+       9
+      ],
+      "colour": "#2a62ec"
+     },
+     {
+      "z": 19,
+      "ellipse": [
+       8,
+       7
+      ],
+      "colour": "#4a86ff"
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "glass-dome",
+   "at": [
+    -1,
+    -55,
+    26
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e8b866",
+    "profile": [
+     [
+      9,
+      0,
+      "#e8b866"
+     ],
+     [
+      8,
+      2.5,
+      "#f2cf88"
+     ],
+     [
+      5,
+      4.2,
+      "#f2cf88"
+     ],
+     [
+      0,
+      5,
+      "#e8b866"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "skin is random square panels, not a faceted triangular lattice, and no emissive glow or lit shopfronts; blue bulge is a simple loft rather than a facade curved in plan; hood and gold dome are approximate in position; massing still follows scaled OSM outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-191681151"
+}

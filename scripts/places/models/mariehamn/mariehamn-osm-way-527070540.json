@@ -1,0 +1,370 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mariehamn_maj_2018_12.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Johan Jonsson (Julle)",
+   "view": "street",
+   "file": "/tmp/places-evidence/mariehamn/osm-way-527070540-0.jpg",
+   "used": "long white flat-roofed office wing with strip windows and pergola posts on the left, curved white glazed Lagting block ahead, mown lawn, paved footpath on the right edged with kerb, globe lamps, bollards, benches, bare broadleaf trees on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/527070540",
+   "used": "park outline (about 17 m wide, 94 m long)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 58
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      3,
+      -48
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      4,
+      56
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#8e8a86"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      3,
+      -48
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      4,
+      56
+     ]
+    ],
+    "width": 4.3,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -4,
+      30
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#b8b2a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-wing",
+   "footprint": {
+    "rect": [
+     11,
+     90
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "right": "ribbon",
+     "left": "plain",
+     "front": "plain",
+     "back": "plain"
+    },
+    "parapet": 0.4,
+    "bands": {
+     "colour": "#fbfaf6",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 3.3,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#f1efe8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f1efe8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.5,
+     -44
+    ],
+    "count": 12,
+    "end": [
+     -7.5,
+     36
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pergola-beam",
+   "footprint": {
+    "rect": [
+     2.2,
+     84
+    ]
+   },
+   "at": [
+    -7.5,
+    -4
+   ],
+   "z0": 3.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lagting",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    6,
+    68
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe8ea",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.3,
+      "depth": 0.4,
+      "spacing": 2.5,
+      "colour": "#f6f5f0",
+      "margin": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lagting-core",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    6,
+    68
+   ],
+   "z0": 13,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe8ea",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -26,
+    0.3
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -2,
+    50,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#2a5aa0",
+     "#e6c31e",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 4,
+    "line": 60,
+    "colour": "#7a8a52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -40
+    ],
+    "height": 2
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     10
+    ],
+    "height": 1.8
+   }
+  ],
+  "extent": [
+   80,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-way-527070540",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wing and glazed Lagting block now match the critic fixes but the camera still shows a high 3/4 view, not the street-level path view; no kerb relief, globe lamps are plain posts, trees are leafy not bare."
+ }
+}

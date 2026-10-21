@@ -1,0 +1,113 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "douglas",
+  "venueId": "douglas-meal-stop",
+  "verified": "footprint",
+  "evidence": [
+    {
+      "kind": "osm",
+      "ref": "way/79143392",
+      "used": "footprint 9.1 x 5.4 m, name match (Isola, 7 John Street, registered building)"
+    },
+    {
+      "kind": "text",
+      "ref": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+      "used": "mid-18th-century merchants house, three storeys, pitched slate roof"
+    }
+  ],
+  "camera": {
+    "yawDeg": 20,
+    "pitchDeg": 8,
+    "fovDeg": 45
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "house",
+      "footprint": {
+        "osm": true
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0,
+      "height": 9.5,
+      "storeys": 3,
+      "wall": {
+        "material": "render",
+        "colour": "#e6e0cf",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "bay": 2.6,
+        "plinth": 0.6,
+        "cornice": true,
+        "bands": "#8d8a80"
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 38,
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "awning",
+      "at": [
+        0,
+        -3.2,
+        2.7
+      ],
+      "on": null,
+      "params": {
+        "width": 3.2,
+        "depth": 1.1,
+        "colours": [
+          "#2f3438",
+          "#2f3438"
+        ]
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        -3.2,
+        0,
+        11.5
+      ],
+      "params": {
+        "width": 0.9,
+        "height": 2.2,
+        "pots": 2
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        3.2,
+        0,
+        11.5
+      ],
+      "params": {
+        "width": 0.9,
+        "height": 2.2,
+        "pots": 2
+      }
+    }
+  ],
+  "site": {
+    "ground": "paving",
+    "forecourt": "road",
+    "extent": [
+      30,
+      24
+    ]
+  },
+  "review": {
+    "rounds": 0,
+    "match": "rough",
+    "gaps": "no photo; OSM outline 9x5 m with typed Georgian render/slate; no sash detail or shopfront"
+  }
+}

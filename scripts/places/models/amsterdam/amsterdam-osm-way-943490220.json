@@ -1,0 +1,1042 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wandelbos_Hoofddorp.jpeg",
+   "licence": "CC BY 2.0",
+   "author": "Joosteto",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/amsterdam-osm-way-943490220-0.jpg",
+   "used": "straight dark canal bordered by mown bank, rhododendron and tall bare broadleaf trees, leaf-litter bank on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadspark_hoofddorp_in_de_sneeuw_pic4.JPG",
+   "licence": "Public domain",
+   "author": "Alf van Beem",
+   "view": "street",
+   "used": "white wooden footbridge across the winding canal under yews"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/943490220",
+   "used": "park is a 700 x 120 m diagonal strip; a 110 m portion is shown with the canal along it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 200,
+    "depth": 260,
+    "colour": "#6f8a50"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    27,
+    40,
+    0.02
+   ],
+   "params": {
+    "width": 22,
+    "depth": 260,
+    "colour": "#5a4030"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    40,
+    0.03
+   ],
+   "params": {
+    "width": 22,
+    "depth": 260,
+    "shape": "rect",
+    "colour": "#3e5250",
+    "bank": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -16,
+      -10
+     ],
+     [
+      -15,
+      20
+     ],
+     [
+      -17,
+      50
+     ],
+     [
+      -15,
+      100
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#b49b78"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -14,
+    40,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 3.6,
+    "depth": 4,
+    "colour": "#2c4a2a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -19,
+    40,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 3.6,
+    "depth": 4,
+    "colour": "#26402a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "hedge",
+   "at": [
+    16,
+    40,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 5,
+    "depth": 4,
+    "colour": "#24402a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "hedge",
+   "at": [
+    13,
+    40,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 5,
+    "depth": 4,
+    "colour": "#2c4a2a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -24,
+     5
+    ],
+    "end": [
+     -24,
+     120
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "height": 18,
+       "topScale": 0.45,
+       "colour": "#4a4038",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     26,
+     0
+    ],
+    "end": [
+     26,
+     120
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        0.8
+       ],
+       "height": 22,
+       "topScale": 0.4,
+       "colour": "#453b33",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     34,
+     10
+    ],
+    "end": [
+     36,
+     130
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 20,
+       "topScale": 0.4,
+       "colour": "#50463c",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -12,
+      0,
+      0.2
+     ],
+     [
+      12,
+      0,
+      0.2
+     ]
+    ],
+    "bulge": 2.6,
+    "curve": true,
+    "colour": "#efefea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    16.9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -12,
+      0,
+      1.2
+     ],
+     [
+      12,
+      0,
+      1.2
+     ]
+    ],
+    "bulge": 2.6,
+    "curve": true,
+    "colour": "#efefea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    19.1,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -12,
+      0,
+      1.2
+     ],
+     [
+      12,
+      0,
+      1.2
+     ]
+    ],
+    "bulge": 2.6,
+    "curve": true,
+    "colour": "#efefea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    20,
+    12
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      3,
+      -1.0481414916324345,
+      5
+     ],
+     [
+      6,
+      0.26537535177571137,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    20,
+    12
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -4.5,
+      -0.520179333807683,
+      5
+     ],
+     [
+      -9.0,
+      0.6235202315771669,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    45,
+    13
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      3,
+      0.5028812164322161,
+      5
+     ],
+     [
+      6,
+      -2.6068268445611213,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    45,
+    13
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -4.5,
+      -1.9473280337805035,
+      5
+     ],
+     [
+      -9.0,
+      2.02481449257876,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    70,
+    12
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      3,
+      -0.9625839426879694,
+      5
+     ],
+     [
+      6,
+      -1.5940142337198218,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    70,
+    12
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -4.5,
+      1.9825793420418512,
+      5
+     ],
+     [
+      -9.0,
+      -0.17841895486531234,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    15,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -3,
+      1.345845805097555,
+      5
+     ],
+     [
+      -6,
+      -0.1418807478039903,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    15,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      4.5,
+      0.5562725621766478,
+      5
+     ],
+     [
+      9.0,
+      -2.0963014558588564,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    40,
+    16
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -3,
+      0.5394426331407538,
+      5
+     ],
+     [
+      -6,
+      2.20827184285978,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    40,
+    16
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      4.5,
+      0.09272484153320537,
+      5
+     ],
+     [
+      9.0,
+      1.4475111372089415,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    65,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -3,
+      0.6856459014783702,
+      5
+     ],
+     [
+      -6,
+      -2.615811370638016,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    65,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      4.5,
+      1.0329209851472694,
+      5
+     ],
+     [
+      9.0,
+      0.5465974975879053,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    90,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -3,
+      -0.7949293619371507,
+      5
+     ],
+     [
+      -6,
+      -2.8139294911815,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    26,
+    90,
+    15
+   ],
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      4.5,
+      1.4621089479157825,
+      5
+     ],
+     [
+      9.0,
+      -0.163505468007199,
+      9
+     ]
+    ],
+    "colour": "#453b33"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    38.497840700754686,
+    20,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    37.642746877410744,
+    38,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    37.34339257464852,
+    56,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    35.418582091431325,
+    74,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    43.80204821871017,
+    92,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    35.98653197561355,
+    110,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.4,
+      0,
+      "#2a2a22"
+     ],
+     [
+      0.4,
+      3,
+      "#2a2a22"
+     ],
+     [
+      4,
+      5,
+      "#1f3a24"
+     ],
+     [
+      5,
+      10,
+      "#1f3a24"
+     ],
+     [
+      3,
+      16,
+      "#1f3a24"
+     ],
+     [
+      0,
+      20,
+      "#1f3a24"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-943490220",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Wider canal, yew masses, arched white bridge in view; trees still bare sticks without branch crowns, no reflections or leaf-litter detail, clipped hedge rhododendron."
+ }
+}

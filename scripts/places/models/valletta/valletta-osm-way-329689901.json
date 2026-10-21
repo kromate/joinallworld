@@ -1,0 +1,376 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-329689901",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dock_no._1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Continentaleurope",
+   "view": "street",
+   "file": "/tmp/places-evidence/valletta/aum.jpg",
+   "used": "Dock No.1 waterfront: long three-storey ashlar limestone range, arched windows with small balustraded balconies, stepped parapet, ground floor arches behind site hoarding"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/329689901",
+   "used": "long thin footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range-low",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -38.0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9b48a",
+    "windowShape": "arched",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "groundKind": "arcade",
+    "groundHeight": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "range-mid",
+   "footprint": {
+    "rect": [
+     32,
+     15
+    ]
+   },
+   "at": [
+    -5.0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9b48a",
+    "windowShape": "arched",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "groundKind": "arcade",
+    "groundHeight": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "range-high",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    33.0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9b48a",
+    "windowShape": "arched",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "groundKind": "arcade",
+    "groundHeight": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.9,
+    6.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#d8c9a2",
+      "windows": "none"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.9,
+    11.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#d8c9a2",
+      "windows": "none"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.9,
+    6.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#d8c9a2",
+      "windows": "none"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.9,
+    10.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#d8c9a2",
+      "windows": "none"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.9,
+    5.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     -24,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "height": 0.9,
+      "colour": "#d8c9a2",
+      "windows": "none"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "height": 2.4,
+    "thickness": 0.1,
+    "colour": "#8f9ca5"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -22,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     120,
+     14
+    ],
+    "height": 0.35,
+    "colour": "#1f3b4d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#a39c8a",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   120,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stepped three-section roofline, arched windows with individual balconies, hoarding and quay water added; ground arcade hidden behind hoarding, ruined open window holes and hoarding banners not modelled, windows still small and regular"
+ }
+}

@@ -1,0 +1,402 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pavillon-beim-Gerlache-Park.jpg",
+   "licence": "CC BY-SA 1.0",
+   "author": "Cornischong",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/gerl1.jpg",
+   "used": "round sandstone pavilion: low plinth, arched glazed bays with a glazed door, projecting cornice, steep slate bell-dome with a small lantern; colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pavillon_Parc_Gerlache,_D%C3%A9ifferdeng.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jwh",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/gerl2.jpg",
+   "used": "confirms the pavilion's round plan and surrounding lawn/trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/39054579",
+   "used": "park outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.7,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "id": "park-lawn",
+   "at": [
+    2,
+    2,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 112,
+    "colour": "#6f8f4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     12
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#e0e3e4",
+    "top": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavilion",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9a8a6c"
+     ],
+     [
+      4.1,
+      0,
+      "#9a8a6c"
+     ],
+     [
+      4.1,
+      0.5,
+      "#9a8a6c"
+     ],
+     [
+      3.8,
+      0.5,
+      "#9a8a6c"
+     ],
+     [
+      3.8,
+      1.1,
+      "#b0a083"
+     ],
+     [
+      3.5,
+      1.1,
+      "#b0a083"
+     ],
+     [
+      3.5,
+      4.6,
+      "#b0a083"
+     ],
+     [
+      4.3,
+      4.6,
+      "#9a8a6c"
+     ],
+     [
+      4.3,
+      5.1,
+      "#9a8a6c"
+     ],
+     [
+      3.7,
+      5.1,
+      "#5d6168"
+     ],
+     [
+      3.5,
+      5.4,
+      "#5d6168"
+     ],
+     [
+      3.1,
+      6.4,
+      "#5d6168"
+     ],
+     [
+      2.4,
+      7.5,
+      "#5d6168"
+     ],
+     [
+      1.8,
+      8.3,
+      "#5d6168"
+     ],
+     [
+      1.4,
+      8.8,
+      "#5d6168"
+     ],
+     [
+      1.4,
+      8.8,
+      "#6c6e70"
+     ],
+     [
+      1.5,
+      9.0,
+      "#6c6e70"
+     ],
+     [
+      1.5,
+      9.7,
+      "#6c6e70"
+     ],
+     [
+      0.9,
+      9.9,
+      "#6c6e70"
+     ],
+     [
+      0,
+      9.9,
+      "#6c6e70"
+     ]
+    ],
+    "segments": 24,
+    "arcade": {
+     "from": 1.3,
+     "to": 4.6,
+     "count": 8,
+     "width": 1.3,
+     "height": 2.9,
+     "sill": 0.25,
+     "shape": "arched",
+     "depth": 0.12
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame",
+   "at": [
+    0,
+    -3.55,
+    0.12
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.15
+    ],
+    "z0": 1.3,
+    "height": 2.9,
+    "colour": "#f6f6f2",
+    "top": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -10
+     ],
+     [
+      -20,
+      -30
+     ],
+     [
+      -40,
+      -45
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      8,
+      0
+     ],
+     [
+      25,
+      15
+     ],
+     [
+      35,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    35,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.55,
+    "startDeg": 22,
+    "endDeg": 382,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        0.35
+       ],
+       "z0": 1.1,
+       "height": 3.5,
+       "colour": "#a99a7e",
+       "top": true
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-post",
+   "at": [
+    -9,
+    -6,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "height": 3.0,
+    "colour": "#9aa0a3",
+    "top": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Taller 8-bay pavilion with flared bell dome, cornice, lantern, pale plaza; no glazing bars/fan lights, glass renders dark, no slate scale texture, trees generic."
+ }
+}

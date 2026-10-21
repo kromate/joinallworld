@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-relation-17854343",
+ "verified": "footprint",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: facade colours, chapel wing position and bellcote are inferred from the brief; block rotated square to the camera (real bearing 40 degrees)"
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/62001370",
+   "used": "main block size (28.4 x 18.7 m, 530 m2); modelled with the same dimensions, rotated square to the camera"
+  },
+  {
+   "kind": "text",
+   "used": "brief: modest four-storey Church-run college block with a small chapel wing; stucco/brick, tiled hip roof; no photo of this building found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "college-block",
+   "footprint": {
+    "rect": [
+     28.4,
+     18.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb98a",
+    "glassColour": "#4f5d66",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#efe3c8",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a8593d"
+      ],
+      "height": 0.4,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-wing",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    18.7,
+    -1
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/bellcote",
+   "at": [
+    18.7,
+    -9.4,
+    12.5
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.2
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    18.7,
+    -9.1,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 0.5,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cdbf9f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ }
+}

@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C4%8Cunovo_04_10.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lure",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/p-quiet-reflection-0.jpg",
+   "used": "yellow plastered nave with white pilasters and arched windows, dark metal gable roof, tall square west tower with clock faces, arched belfry windows, grey pyramidal spire and cross, scrolled gable shoulder beside the tower, ivy-topped wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49293383",
+   "used": "overall size of the church (22 x 15 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 0.667
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45e",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "bay": 5.5,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.2,
+      "spacing": 5.5,
+      "colour": "#eeeae0",
+      "margin": 0.5
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f1eee4"
+      ],
+      "height": 0.9,
+      "at": 0.0,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5a5c",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    15
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45e",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d5a5c",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7.4,
+     7.4
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 11.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45e",
+    "windows": "none",
+    "windowRatio": 0.08,
+    "windowShape": "arched",
+    "bay": 3,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.2,
+      "spacing": 6.2,
+      "colour": "#f1eee4",
+      "margin": 0.1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4",
+    "parapet": 0.25,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 12.0,
+   "footprint": {
+    "rect": [
+     7.0,
+     7.0
+    ]
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.17,
+    "bay": 3.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.2,
+      "spacing": 6.2,
+      "colour": "#f1eee4",
+      "margin": 0.1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4",
+    "parapet": 0.35,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "capstep",
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 17.2,
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-front",
+   "at": [
+    0,
+    -12.2
+   ],
+   "z0": 15.3,
+   "footprint": {
+    "rect": [
+     2.0,
+     0.6
+    ]
+   },
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-left",
+   "at": [
+    -3.7,
+    -8.5
+   ],
+   "z0": 15.3,
+   "footprint": {
+    "rect": [
+     0.6,
+     2.0
+    ]
+   },
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -8.5,
+    17.7
+   ],
+   "params": {
+    "baseWidth": 7.8,
+    "height": 7.2,
+    "sides": 4,
+    "colour": "#5d5a5e",
+    "finial": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.8,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a9a59a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "volute-l",
+   "at": [
+    -4.2,
+    -7.1,
+    6.6
+   ],
+   "params": {
+    "colour": "#e2c45e",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.2
+      ],
+      "cx": 0
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       1.8,
+       2.2
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       1.0,
+       2.2
+      ],
+      "cx": 0.9
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       0.4,
+       2.2
+      ],
+      "cx": 1.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "volute-r",
+   "at": [
+    4.2,
+    -7.1,
+    6.6
+   ],
+   "params": {
+    "colour": "#e2c45e",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.2
+      ],
+      "cx": 0
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       1.8,
+       2.2
+      ],
+      "cx": -0.5
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       1.0,
+       2.2
+      ],
+      "cx": -0.9
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       0.4,
+       2.2
+      ],
+      "cx": -1.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    1.8
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.9,
+    "kind": "wall",
+    "colour": "#3f6a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "oculus",
+   "at": [
+    3.2,
+    -12.1
+   ],
+   "z0": 3.4,
+   "footprint": {
+    "rect": [
+     1.6,
+     0.6
+    ]
+   },
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b2b2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-cornice",
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 17.0,
+   "footprint": {
+    "rect": [
+     7.8,
+     7.8
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -6.5,
+     -11
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6.5,
+     -11
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Clock faces are small square plates not round discs; volute is a stepped loft; ivy wall is a plain green strip; oculus is a small block."
+ }
+}

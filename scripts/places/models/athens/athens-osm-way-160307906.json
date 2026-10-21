@@ -1,0 +1,375 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-160307906",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UniWa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Michalis Andreakos",
+   "view": "street",
+   "file": "/tmp/places-evidence/athens/uniwa0.jpg",
+   "used": "only the small white chapel with a red dome and a tile-roofed gatehouse seen across the campus car park, plane trees; no teaching block visible so the blocks are not photo-verified"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160307906",
+   "used": "campus is 519 x 459 m (former Athens technological institute): a 118 m portion with the main block cluster is modelled; light render block colours from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "id": "plaza",
+   "at": [
+    0,
+    -4
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "border": 2,
+    "colour": "#cfc9bb",
+    "border_colour": "#a8a59e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    -20,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "bands": "#a8a59e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     18,
+     40
+    ]
+   },
+   "at": [
+    -52,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1d8c4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "bands": "#a8a59e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "at": [
+    28,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4d3",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "bands": "#c98f5e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    34,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d1bd",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "bands": "#c98f5e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-hall",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -30,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dac6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "bands": "#a8a59e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0583a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -20,
+    15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#c98f5e",
+    "edgeColour": "#a8a59e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     9,
+     11
+    ]
+   },
+   "at": [
+    48,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a84632",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "drum-dome",
+   "id": "chapel-dome",
+   "at": [
+    48,
+    -4,
+    6.5
+   ],
+   "params": {
+    "radius": 2.6,
+    "drum_height": 2.2,
+    "cap": "dome",
+    "colour": "#f1eee6",
+    "cap_colour": "#b24a34"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "car-park",
+   "at": [
+    -6,
+    -48
+   ],
+   "params": {
+    "width": 44,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "avenue",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "length": 50,
+    "count": 5,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 7,
+    "height_max": 9
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp1",
+   "at": [
+    -8,
+    -6
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp2",
+   "at": [
+    14,
+    -6
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "campus blocks inferred from the brief (photo shows only chapel and car park); no hand-checked photo match"
+ }
+}

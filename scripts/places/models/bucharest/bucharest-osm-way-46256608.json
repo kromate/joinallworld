@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-46256608",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/46256608",
+   "used": "real outline (192 x 83 m, 3 levels, 18 m, 2008) scaled to fit 118 m; the Wikidata image is Liberty Center, a different mall, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9d4c6",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "parapet": 0.9,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2d5a8e"
+      ],
+      "height": 2.2,
+      "at": 0.8,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.9,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 5,
+    "bottom": 14,
+    "colour": "#2d5a8e",
+    "frameColour": "#eeeadf",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 3,
+    "drop": 0.7,
+    "height": 4.2,
+    "colours": [
+     "#2d5a8e",
+     "#eeeadf"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 18,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of this building (Wikidata image is a different mall): metal-clad big box with blue band, ribbon windows, sign board and awning follow the brief only; outline scaled 0.60."
+ }
+}

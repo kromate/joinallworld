@@ -1,0 +1,419 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-13860708",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sala_Polivalent%C4%83_Bucure%C8%99ti_Exterior.jpg",
+   "licence": "CC0",
+   "author": "Darius291209",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/13860708-0.jpg",
+   "used": "long front: recessed ground colonnade behind a wide stair, two glazed storeys with vertical grey mullions, deep flat roof slab with white panel fascia, red kiosks, setted plaza and timber planters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parcul_Tineretului2.JPG",
+   "licence": "CC BY 2.5",
+   "author": "Ana Zecheru",
+   "view": "street",
+   "used": "low wide hall silhouette with pale roof edge on a slope above the lake"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/13860708",
+   "used": "104.7 x 79 m footprint, 1974"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 0.9,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     105,
+     79
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9cdca",
+    "glassColour": "#c6d4d2",
+    "windows": "curtain",
+    "windowRatio": 0.62,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "curtain"
+    },
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 4,
+      "spacing": 4.2,
+      "width": 0.8,
+      "colour": "#b9b8b1",
+      "storeys": 1,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "fins",
+      "spacing": 6,
+      "depth": 1.0,
+      "width": 0.8,
+      "colour": "#8a9092",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "overhang": 5,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -47
+     ],
+     [
+      58,
+      -47
+     ],
+     [
+      58,
+      45
+     ],
+     [
+      -58,
+      45
+     ]
+    ],
+    "z0": 12,
+    "height": 3.8,
+    "colour": "#e8e8e4",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.5,
+      -46.5
+     ],
+     [
+      57.5,
+      -46.5
+     ],
+     [
+      57.5,
+      44.5
+     ],
+     [
+      -57.5,
+      44.5
+     ]
+    ],
+    "z0": 11.7,
+    "height": 0.3,
+    "colour": "#e2dfd6",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "poster0",
+   "at": [
+    14,
+    -39.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.2
+    ],
+    "z0": 6,
+    "height": 3.2,
+    "colour": "#6a3d4d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "poster1",
+   "at": [
+    20,
+    -39.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.2
+    ],
+    "z0": 6,
+    "height": 3.2,
+    "colour": "#3d4a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "poster2",
+   "at": [
+    26,
+    -39.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.2
+    ],
+    "z0": 6,
+    "height": 3.2,
+    "colour": "#8a6a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "poster3",
+   "at": [
+    32,
+    -39.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.2
+    ],
+    "z0": 6,
+    "height": 3.2,
+    "colour": "#4d5a4a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -8,
+    -41,
+    0
+   ],
+   "params": {
+    "width": 66,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 7,
+    "colour": "#c9c6bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk1",
+   "footprint": {
+    "rect": [
+     4,
+     3.2
+    ]
+   },
+   "at": [
+    27,
+    -45
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2352c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4463a",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk2",
+   "footprint": {
+    "rect": [
+     4,
+     3.2
+    ]
+   },
+   "at": [
+    33,
+    -45
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2352c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4463a",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -53,
+     0
+    ],
+    "end": [
+     10,
+     -53,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     "height": 1.1,
+     "wall": {
+      "material": "timber",
+      "colour": "#6a4a30",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#4a3a2a"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -51,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -46,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glazing still renders darker and bluer than the pale reflective glass; stair reads weakly; poster panels and side-face mullions approximate; sky and lake slope not modelled."
+ }
+}

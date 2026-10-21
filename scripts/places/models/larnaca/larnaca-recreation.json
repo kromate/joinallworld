@@ -1,0 +1,880 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fontanna_artemidy_w_larnace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Panek",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/artemis.jpg",
+   "used": "three-step low round base, wide pool with small jets, central fluted column, upper saucer bowl, tall figure holding a globe; sits in the middle of a road roundabout with black-white kerb, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/558250319",
+   "used": "roundabout island about 16 m across"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 42
+ },
+ "parts": [
+  {
+   "type": "roundabout",
+   "id": "road",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 13,
+    "road_width": 5,
+    "island_colour": "#b8b3a6",
+    "trees": 0,
+    "kerb": false
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d6d2c6",
+    "segments": 40,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      7.6,
+      0
+     ],
+     [
+      7.6,
+      0.25
+     ],
+     [
+      6.5,
+      0.25
+     ],
+     [
+      6.5,
+      0.55
+     ],
+     [
+      5.5,
+      0.55
+     ],
+     [
+      5.5,
+      0.95
+     ],
+     [
+      5.0,
+      0.95
+     ],
+     [
+      5.0,
+      0.78
+     ],
+     [
+      0,
+      0.78
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "water",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "colour": "#6f8d93",
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5.0,
+      0
+     ],
+     [
+      5.0,
+      0.02
+     ],
+     [
+      0,
+      0.02
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "col-base",
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "colour": "#cfcdc6",
+    "segments": 16,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.5,
+      0
+     ],
+     [
+      1.2,
+      0.4
+     ],
+     [
+      0.9,
+      0.6
+     ],
+     [
+      0,
+      0.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.85,
+    "n": 14,
+    "z0": 1.4,
+    "height": 1.9,
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bowl",
+   "at": [
+    0,
+    0,
+    3.3
+   ],
+   "params": {
+    "colour": "#d3d0c6",
+    "segments": 24,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.85,
+      0
+     ],
+     [
+      1.9,
+      0.45
+     ],
+     [
+      1.9,
+      0.65
+     ],
+     [
+      1.7,
+      0.65
+     ],
+     [
+      1.0,
+      0.4
+     ],
+     [
+      0,
+      0.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stem",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "z0": 3.9,
+    "height": 0.9,
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "robe",
+   "at": [
+    0,
+    0,
+    4.8
+   ],
+   "params": {
+    "colour": "#cfcdc6",
+    "segments": 12,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.48,
+      0
+     ],
+     [
+      0.44000000000000006,
+      0.8
+     ],
+     [
+      0.36000000000000004,
+      1.8
+     ],
+     [
+      0.32000000000000006,
+      2.1
+     ],
+     [
+      0.2,
+      2.25
+     ],
+     [
+      0.128,
+      2.4
+     ],
+     [
+      0.136,
+      2.65
+     ],
+     [
+      0.096,
+      2.85
+     ],
+     [
+      0.0,
+      2.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arm",
+   "at": [
+    0.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 6.5,
+    "height": 1.3,
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "globe",
+   "at": [
+    0.25,
+    0,
+    7.8
+   ],
+   "params": {
+    "colour": "#e2e0da",
+    "segments": 14,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.3,
+      0.12
+     ],
+     [
+      0.4,
+      0.4
+     ],
+     [
+      0.3,
+      0.68
+     ],
+     [
+      0,
+      0.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-0",
+   "at": [
+    8.05,
+    0.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-1",
+   "at": [
+    7.776,
+    2.083
+   ],
+   "rotDeg": 105,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-2",
+   "at": [
+    6.972,
+    4.025
+   ],
+   "rotDeg": 120,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-3",
+   "at": [
+    5.692,
+    5.692
+   ],
+   "rotDeg": 135,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-4",
+   "at": [
+    4.025,
+    6.972
+   ],
+   "rotDeg": 150,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-5",
+   "at": [
+    2.083,
+    7.776
+   ],
+   "rotDeg": 165,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-6",
+   "at": [
+    0.0,
+    8.05
+   ],
+   "rotDeg": 180,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-7",
+   "at": [
+    -2.083,
+    7.776
+   ],
+   "rotDeg": 195,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-8",
+   "at": [
+    -4.025,
+    6.972
+   ],
+   "rotDeg": 210,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-9",
+   "at": [
+    -5.692,
+    5.692
+   ],
+   "rotDeg": 225,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-10",
+   "at": [
+    -6.972,
+    4.025
+   ],
+   "rotDeg": 240,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-11",
+   "at": [
+    -7.776,
+    2.083
+   ],
+   "rotDeg": 255,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-12",
+   "at": [
+    -8.05,
+    0.0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-13",
+   "at": [
+    -7.776,
+    -2.083
+   ],
+   "rotDeg": 285,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-14",
+   "at": [
+    -6.972,
+    -4.025
+   ],
+   "rotDeg": 300,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-15",
+   "at": [
+    -5.692,
+    -5.692
+   ],
+   "rotDeg": 315,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-16",
+   "at": [
+    -4.025,
+    -6.972
+   ],
+   "rotDeg": 330,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-17",
+   "at": [
+    -2.083,
+    -7.776
+   ],
+   "rotDeg": 345,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-18",
+   "at": [
+    -0.0,
+    -8.05
+   ],
+   "rotDeg": 360,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-19",
+   "at": [
+    2.083,
+    -7.776
+   ],
+   "rotDeg": 15,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-20",
+   "at": [
+    4.025,
+    -6.972
+   ],
+   "rotDeg": 30,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-21",
+   "at": [
+    5.692,
+    -5.692
+   ],
+   "rotDeg": 45,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-22",
+   "at": [
+    6.972,
+    -4.025
+   ],
+   "rotDeg": 60,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-23",
+   "at": [
+    7.776,
+    -2.083
+   ],
+   "rotDeg": 75,
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1e1e20"
+   }
+  },
+  {
+   "type": "array",
+   "id": "jets",
+   "params": {
+    "mode": "circle",
+    "count": 12,
+    "radius": 3.7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.24,
+      "n": 6,
+      "z0": 0.8,
+      "height": 1.2,
+      "topScale": 0.7,
+      "colour": "#f2f8fa"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-r",
+   "at": [
+    16,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backdrop",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    2,
+    24
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "pattern": {
+     "type": "balconies"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bc",
+    "parapet": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Column not fluted; statue is a simplified robe with globe; backdrop and palms generic; island texture rough."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-recreation"
+}

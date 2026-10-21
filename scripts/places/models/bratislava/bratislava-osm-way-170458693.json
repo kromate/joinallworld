@@ -1,0 +1,511 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-170458693",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dev%C3%ADnska_Nov%C3%A1_Ves_kostol_02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lure",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/v4_0.jpg",
+   "used": "west tower with grey-and-white quoin corners, arched belfry and slits, steep four-sided spire with corner pinnacles; white plastered nave under a red tile gable; two small south chapels; red tile and white walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bratislava,_Dev%C3%ADnska_Nov%C3%A1_Ves,_kostol,_Slovensko.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "LMih",
+   "view": "side",
+   "used": "south side: arched windows, lower chapels with their own red gables, low rubble boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/170458693",
+   "used": "overall size (31 x 17 m); outline is jagged so masses were composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     9.5
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "arched",
+    "plinth": 0.2,
+    "windowRatio": 0.07,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    15.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "arched",
+    "plinth": 0.2,
+    "windowRatio": 0.06,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.8,
+     4.8
+    ]
+   },
+   "at": [
+    -10,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "arched",
+    "plinth": 0.2,
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7da",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-s1",
+   "footprint": {
+    "rect": [
+     5.5,
+     4.2
+    ]
+   },
+   "at": [
+    -1,
+    -6.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.35,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-s2",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.0
+    ]
+   },
+   "at": [
+    6,
+    -6.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.35,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-front",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -12.75,
+    -2.75
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.1,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8e8e92",
+       "#f5f2ea"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-front2",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -7.25,
+    -2.75
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.1,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8e8e92",
+       "#f5f2ea"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-back",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -12.75,
+    3.75
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.1,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8e8e92",
+       "#f5f2ea"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7da"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -10,
+    0.5,
+    19
+   ],
+   "params": {
+    "baseWidth": 5.0,
+    "height": 8.5,
+    "sides": 4,
+    "colour": "#c8ccd0",
+    "finial": true,
+    "shaftHeight": 0
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -12.51,
+    -2.4,
+    19.1
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 2.4,
+    "sides": 4,
+    "colour": "#c8ccd0",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -6.89,
+    -2.4,
+    19.1
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 2.4,
+    "sides": 4,
+    "colour": "#c8ccd0",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -12.51,
+    3.4,
+    19.1
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 2.4,
+    "sides": 4,
+    "colour": "#c8ccd0",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -6.89,
+    3.4,
+    19.1
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 2.4,
+    "sides": 4,
+    "colour": "#c8ccd0",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.45,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-back2",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -7.25,
+    3.75
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.1,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8e8e92",
+       "#f5f2ea"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     0
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     25,
+     8
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower is a bit wide for its height and quoins protrude as separate posts, belfry arches/louvres and door simplified, no hedge/gravel ground, conifers low-poly"
+ }
+}

@@ -1,0 +1,562 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-airport-baku-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GYD_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anar Aliyev (PR at Azerbaijan Airlines)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/baku/gyd2.jpg",
+   "used": "Terminal 1 plan and massing: long glazed curved body under a white undulating roof with oculus lights, glazed pier wing, older terminal with grey roofs and domed tower in front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "t1-glass",
+   "footprint": {
+    "polygon": [
+     [
+      -36,
+      20
+     ],
+     [
+      -20,
+      13
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      20,
+      13
+     ],
+     [
+      36,
+      22
+     ],
+     [
+      28,
+      34
+     ],
+     [
+      0,
+      37
+     ],
+     [
+      -28,
+      34
+     ]
+    ]
+   },
+   "at": [
+    -14,
+    8
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f78",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "t1-roof",
+   "at": [
+    -14,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      -44,
+      22
+     ],
+     [
+      -34,
+      14
+     ],
+     [
+      -14,
+      9
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      16,
+      9
+     ],
+     [
+      34,
+      13
+     ],
+     [
+      46,
+      20
+     ],
+     [
+      44,
+      28
+     ],
+     [
+      30,
+      36
+     ],
+     [
+      0,
+      40
+     ],
+     [
+      -26,
+      37
+     ],
+     [
+      -40,
+      30
+     ]
+    ],
+    "z0": 9,
+    "height": 1.3,
+    "topScale": 0.97,
+    "colour": "#f6f6f2",
+    "topColour": "#f6f6f2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus0",
+   "at": [
+    -28,
+    34
+   ],
+   "params": {
+    "radius": 2.3,
+    "n": 16,
+    "z0": 10.25,
+    "height": 0.15,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus1",
+   "at": [
+    -14,
+    32
+   ],
+   "params": {
+    "radius": 2.3,
+    "n": 16,
+    "z0": 10.25,
+    "height": 0.15,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus2",
+   "at": [
+    0,
+    34
+   ],
+   "params": {
+    "radius": 2.3,
+    "n": 16,
+    "z0": 10.25,
+    "height": 0.15,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus3",
+   "at": [
+    -16,
+    39
+   ],
+   "params": {
+    "radius": 2.3,
+    "n": 16,
+    "z0": 10.25,
+    "height": 0.15,
+    "colour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "t1-pier",
+   "footprint": {
+    "rect": [
+     32,
+     9
+    ]
+   },
+   "at": [
+    -52,
+    34
+   ],
+   "rotDeg": 12,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8f92",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#d9dcdc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f979a",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -60,
+    22,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eef1f2",
+    "tailColour": "#1b4fa0"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "rotDeg": 60,
+   "params": {
+    "scale": 0.9,
+    "colour": "#f2f2f2",
+    "tailColour": "#c8283a"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -42,
+    22,
+    5
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "old-chevron",
+   "at": [
+    10,
+    -20
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -8
+     ],
+     [
+      -14,
+      -14
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      30,
+      -8
+     ],
+     [
+      26,
+      6
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -12,
+      10
+     ],
+     [
+      -26,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#d9d6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "storeys": 2,
+    "glassColour": "#2f3b40",
+    "topColour": "#8f8c86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "old-roofband",
+   "at": [
+    10,
+    -20
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -8
+     ],
+     [
+      -14,
+      -14
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      30,
+      -8
+     ],
+     [
+      26,
+      6
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -12,
+      10
+     ],
+     [
+      -26,
+      6
+     ]
+    ],
+    "z0": 8,
+    "height": 1.2,
+    "topScale": 0.96,
+    "colour": "#8d9195"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "old-wing2",
+   "at": [
+    16,
+    -32
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -3
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      22,
+      -3
+     ],
+     [
+      20,
+      5
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      -20,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#e4e2dc",
+    "topColour": "#8d9195"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "at": [
+    10,
+    -20
+   ],
+   "params": {
+    "radius": 7,
+    "n": 8,
+    "z0": 9,
+    "height": 4,
+    "colour": "#2f3b40",
+    "topColour": "#8b8f90"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-drum",
+   "at": [
+    10,
+    -20,
+    13
+   ],
+   "params": {
+    "profile": [
+     [
+      6.5,
+      0,
+      "#3a464b"
+     ],
+     [
+      8.5,
+      2.5,
+      "#3a464b"
+     ],
+     [
+      8.5,
+      4,
+      "#d8d4c8"
+     ],
+     [
+      7,
+      5,
+      "#d8d4c8"
+     ],
+     [
+      7,
+      8.5,
+      "#2f3b40"
+     ],
+     [
+      5.5,
+      9.5,
+      "#59666b"
+     ],
+     [
+      2.8,
+      12,
+      "#59666b"
+     ],
+     [
+      0.4,
+      13,
+      "#59666b"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 20,
+  "cars": [
+   {
+    "at": [
+     -10,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#d8d8d8"
+   },
+   {
+    "at": [
+     -3,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#2b2b2e"
+   },
+   {
+    "at": [
+     4,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#b02a2a"
+   },
+   {
+    "at": [
+     11,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#e5e5e5"
+   },
+   {
+    "at": [
+     25,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#d8d8d8"
+   }
+  ],
+  "extent": [
+   100,
+   84
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "T1 roof is a tapered white slab with four oculi, not the true manta wing; old terminal is a chevron prism approximating the hexagonal zigzag with smaller drum tower; no stand detail or hangar."
+ }
+}

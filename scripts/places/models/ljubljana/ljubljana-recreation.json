@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Park_slovenske_reformacije.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fialajakub",
+   "view": "street",
+   "file": "/tmp/places-evidence/ljubljana/lj-park.jpg",
+   "used": "open mown lawn, rows of plane trees along the far edge, pale modernist apartment block behind with ground-floor shops, rust-roofed neighbours at the left, small pink sculpture, shrub beds"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15045329",
+   "used": "park outline for the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     100,
+     50
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f9a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9a3c"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     56,
+     9
+    ]
+   },
+   "at": [
+    10,
+    28
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ea",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "floors",
+      "colour": "#e6e2d6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops",
+   "footprint": {
+    "rect": [
+     44,
+     3
+    ]
+   },
+   "at": [
+    8,
+    22.5
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8f9aa0",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-left",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -42,
+    26
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bf94",
+    "windows": "rect",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4630",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pink-sculpture",
+   "at": [
+    -26,
+    12
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b5457a",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.4,
+      5.5
+     ],
+     [
+      0.25,
+      6.5
+     ],
+     [
+      0,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "shrub-bed",
+   "at": [
+    -44,
+    -2
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.9,
+    "thickness": 2.0,
+    "colour": "#4e7a38"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "shrub-bed-2",
+   "at": [
+    -42,
+    6
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.8,
+    "thickness": 1.8,
+    "colour": "#7a6a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     17
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     17
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     17
+    ],
+    "height": 19
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Camera fit still frames the whole lawn from afar (fit override); block long with balconies, single rust-roofed house, fewer taller trees, taller pink post; beds are thin strips."
+ }
+}

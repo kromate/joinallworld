@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-4019771",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metropole_Zli%C4%8D%C3%ADn,_vchod_%C4%8D%C3%ADslo_3_(02).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:SJu (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/zl1.jpg",
+   "used": "entrance 3 elevation: central glazed hall with a barrel-roofed glazed clerestory, terracotta-red panel wings either side, grey flat-roofed ends, long flat white canopy on slim posts, blank red sign bands, paved forecourt with cars"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praha,_Zli%C4%8D%C3%ADn,_Metropole_Zli%C4%8D%C3%ADn.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/prague/zl2.jpg",
+   "used": "side elevation: long grey metal-clad box with dark flat roof, low cladding colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4019771",
+   "used": "overall size only (388 x 187 m, 2 levels, flat roof); the entrance block of about 90 m is modelled because the full outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.56,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "red-wing-l",
+   "footprint": {
+    "rect": [
+     30,
+     40
+    ]
+   },
+   "at": [
+    -30,
+    8
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "wall": {
+    "material": "render",
+    "colour": "#9c4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "red-wing-r",
+   "footprint": {
+    "rect": [
+     30,
+     40
+    ]
+   },
+   "at": [
+    30,
+    8
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "wall": {
+    "material": "render",
+    "colour": "#9c4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "grey-wing-l",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    -56,
+    5
+   ],
+   "z0": 0,
+   "height": 8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a6abaf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "grey-wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    56,
+    5
+   ],
+   "z0": 0,
+   "height": 8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a6abaf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     30,
+     40
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9cdc8",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#b4d6d1"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea0",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     46,
+     24
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 12.5,
+   "height": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9cdc8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "glassColour": "#b4d6d1"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6,
+    "colour": "#b4babe",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-glass",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -12.3
+   ],
+   "z0": 9.0,
+   "height": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#b8352a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8352a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-top",
+   "footprint": {
+    "rect": [
+     34,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -4.3
+   ],
+   "z0": 15,
+   "height": 3.6,
+   "wall": {
+    "material": "render",
+    "colour": "#b8352a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8352a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 5,
+    "height": 12.4,
+    "thickness": 0.35,
+    "columns": 4,
+    "colour": "#f0f1f2",
+    "edgeColour": "#d4d7d9"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "door-canopy",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 3,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 0,
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-front",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -30,
+     -30,
+     0
+    ],
+    "end": [
+     30,
+     -30,
+     0
+    ],
+    "of": {
+     "type": "car",
+     "params": {
+      "count": 1,
+      "yaw": 90
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -18
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -17
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -17
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the ~90 m entrance block of the 388 m centre is modelled; no legible CINEMA CITY/METROPOLE lettering, terracotta panel joints and canopy slats are flat colour, wing red still more saturated than photo."
+ }
+}

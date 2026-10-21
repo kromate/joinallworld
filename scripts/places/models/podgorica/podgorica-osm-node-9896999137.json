@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-node-9896999137",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "name-only mountain holiday complex in the Cemi valley: two stone-and-timber chalet wings, steep clay roofs, terrace, car park, signboard. OSM nearest match is a 79 m2 chapel 63 m away, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chalet-a",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.8,
+    "bands": "#6b4a35",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chalet-b",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "rotDeg": 90,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.8,
+    "bands": "#6b4a35",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    -7
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#6b4a35",
+    "frameColour": "#3e2c20"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94",
+    "count": 3,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; plausible chalet complex typed from the brief only."
+ }
+}

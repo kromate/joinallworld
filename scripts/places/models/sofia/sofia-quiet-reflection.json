@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Balsha_monastery_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Spiritia",
+   "view": "side",
+   "file": "/tmp/places-evidence/sofia/bal1.jpg",
+   "used": "white plastered single-nave church, four arched brown-framed windows in the porch front, open arcaded porch at west end, pink stone plinth band, orange clay-tile roof, square white bell tower with arched belfry and small dome cap"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Balsha_monastery_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Spiritia",
+   "view": "street",
+   "file": "/tmp/places-evidence/sofia/bal2.jpg",
+   "used": "monastery context: two-storey whitewashed cell range with timber balcony and tiled roofs to the west"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/406567025",
+   "used": "overall size about 20 x 8.5 m (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 5,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     16,
+     7.5
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "arched",
+    "plinth": 1.2,
+    "trimColour": "#c9a090",
+    "faces": {
+     "back": "none"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9693f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -2,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 15,
+    "cap": "hip",
+    "cap_height": 1.5,
+    "belfry": true,
+    "colour": "#f4f1ea",
+    "cap_colour": "#b8bcb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     3.6,
+     4.8
+    ]
+   },
+   "at": [
+    13,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9693f",
+    "material": "clay-tile",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    4,
+    -5.2,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 3.6,
+    "thickness": 1.6,
+    "bays": 6,
+    "shape": "round",
+    "recess": 0.8,
+    "roof": true,
+    "parapet": false,
+    "colour": "#efe8d8",
+    "trim": "#7a5a40",
+    "cap_colour": "#c9693f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.6
+    ],
+    "height": 1.2,
+    "colour": "#c9a090",
+    "material": "stone"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arcade is a generic arch part (no timber piers); cell range dropped; bell cap approximated; stone plinth is a plain band"
+ }
+}

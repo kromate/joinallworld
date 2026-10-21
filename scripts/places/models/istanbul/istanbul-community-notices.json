@@ -1,0 +1,496 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Anadolu_Adliyesi_C_Blok.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/court1.jpg",
+   "used": "stone-grey blocks with blue ribbon glazing, curved podium on blue columns, central entrance canopy between stone piers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C4%B0stanbulAnadoluJusticePalace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/court2.jpg",
+   "used": "entrance canopy with sloped fascia on stone piers, grey granite cladding"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/341045630",
+   "used": "round-ish plan of the main block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#c2c0b8",
+    "windows": "ribbon",
+    "windowRatio": 0.83,
+    "glassColour": "#4a8fb0",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#d2d0c8",
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     32,
+     20
+    ]
+   },
+   "at": [
+    -43,
+    6
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdbbb3",
+    "windows": "ribbon",
+    "windowRatio": 0.9,
+    "glassColour": "#4a8fb0",
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#d2d0c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    45,
+    8
+   ],
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdbbb3",
+    "windows": "ribbon",
+    "windowRatio": 0.88,
+    "glassColour": "#4a8fb0",
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "trimColour": "#d2d0c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     96,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bbb8",
+    "windows": "none",
+    "bands": "#3f78a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aaa8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium2",
+   "footprint": {
+    "rect": [
+     70,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b2b4b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aaa8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    0,
+    -31,
+    13
+   ],
+   "params": {
+    "rect": [
+     40,
+     20
+    ],
+    "height": 1.2,
+    "colour": "#bdbbb2",
+    "topScale": 0.8,
+    "topOffset": [
+     0,
+     -3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -40,
+    11.4
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.4
+    ],
+    "height": 3.2,
+    "colour": "#8a8c8e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -25
+    ],
+    "end": [
+     17,
+     -25
+    ],
+    "count": 5,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b0aea4",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         4.2,
+         4.6
+        ],
+        "cy": 0
+       },
+       {
+        "z": 7,
+        "rect": [
+         3.4,
+         3.6
+        ],
+        "cy": -2.5
+       },
+       {
+        "z": 13,
+        "rect": [
+         3.0,
+         3.0
+        ],
+        "cy": -6
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    -27,
+    6,
+    17
+   ],
+   "params": {
+    "rect": [
+     22,
+     4
+    ],
+    "height": 4,
+    "colour": "#6aa3c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-r",
+   "at": [
+    28,
+    8,
+    17
+   ],
+   "params": {
+    "rect": [
+     20,
+     4
+    ],
+    "height": 4,
+    "colour": "#6aa3c2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#a6a8a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -33
+    ],
+    "end": [
+     34,
+     -33
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       2.4
+      ],
+      "height": 0.9,
+      "colour": "#7f9a6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "podium-curve",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     10
+    ],
+    "height": 1.2,
+    "colour": "#b4b6b3",
+    "topScale": 0.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -38,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#a6a8a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    38,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#a6a8a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -38
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance canopy on 5 splayed tilted piers with sloped fascia, blue-teal glazing on light stone; podium is stepped rectangles not curved, glass bridges are simple boxes, round-plan block approximate."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-community-notices"
+}

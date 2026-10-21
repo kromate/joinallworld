@@ -1,0 +1,780 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-149466626",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Panagia_Aggeloktisti_(5).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chris06",
+   "view": "back",
+   "file": "/tmp/places-evidence/larnaca/pan1.jpg",
+   "used": "east end: three apses, central drum with tile-capped dome, gabled nave with parapet, lower aisle with tiled roof, small plaster domes, pale rubble limestone walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Panagia_Aggeloktisti,_Kiti.jpg",
+   "licence": "CC BY 2.0",
+   "author": "George Groutas",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/pan2.jpg",
+   "used": "west front: plain ashlar gable wall, bellcote on the gable, single arched door and window, golden limestone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/149466626",
+   "used": "overall extent about 24 x 23 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.55,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10,
+     17
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4b28a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f6a58",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     7,
+     15
+    ]
+   },
+   "at": [
+    8.2,
+    3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b5a37e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f6a58",
+    "material": "clay-tile",
+    "high": "back"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wall",
+   "footprint": {
+    "rect": [
+     11,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    10.8
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4b28a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b28a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10.2,
+       0.8
+      ]
+     },
+     {
+      "z": 6.8,
+      "rect": [
+       10.2,
+       0.8
+      ]
+     },
+     {
+      "z": 7.4,
+      "rect": [
+       8.2,
+       0.8
+      ]
+     },
+     {
+      "z": 8.0,
+      "rect": [
+       8.2,
+       0.8
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       6.4,
+       0.8
+      ]
+     },
+     {
+      "z": 8.96,
+      "rect": [
+       6.296,
+       0.8
+      ]
+     },
+     {
+      "z": 9.306,
+      "rect": [
+       5.986,
+       0.8
+      ]
+     },
+     {
+      "z": 9.628,
+      "rect": [
+       5.477,
+       0.8
+      ]
+     },
+     {
+      "z": 9.911,
+      "rect": [
+       4.783,
+       0.8
+      ]
+     },
+     {
+      "z": 10.148,
+      "rect": [
+       3.919,
+       0.8
+      ]
+     },
+     {
+      "z": 10.329,
+      "rect": [
+       2.901,
+       0.8
+      ]
+     },
+     {
+      "z": 10.447,
+      "rect": [
+       1.741,
+       0.8
+      ]
+     },
+     {
+      "z": 10.498,
+      "rect": [
+       1.0,
+       0.8
+      ]
+     }
+    ],
+    "colour": "#c8b690",
+    "topColour": "#b9a67f",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.7,
+    -7.02,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.12
+    ],
+    "height": 1.1,
+    "colour": "#1d1812",
+    "topColour": "#1d1812"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.7,
+    -7.02,
+    7.4
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#1d1812",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.15,
+      0.2
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.7,
+    -7.02,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.12
+    ],
+    "height": 1.1,
+    "colour": "#1d1812",
+    "topColour": "#1d1812"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.7,
+    -7.02,
+    7.4
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#1d1812",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.15,
+      0.2
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    10.8,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.0
+    ],
+    "height": 3.0,
+    "colour": "#b9a67f",
+    "topColour": "#9a8a68"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    10.25,
+    10.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 1.4,
+    "colour": "#1d1812",
+    "topColour": "#1d1812"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -0.5,
+    10.8,
+    12.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       1.2
+      ]
+     },
+     {
+      "z": 0.7,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ],
+    "colour": "#7f6a58"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.2,
+    -4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 4.6,
+    "colour": "#9a937f",
+    "topColour": "#9a937f",
+    "material": "limestone"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.5,
+     6.0
+    ],
+    "height": 0.35,
+    "colour": "#9d9680",
+    "topColour": "#9d9680",
+    "slot": "stone-blocks"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     10.5,
+     5.2
+    ],
+    "height": 0.75,
+    "colour": "#a39c86",
+    "topColour": "#a39c86",
+    "slot": "stone-blocks"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.0,
+     6.5
+    ],
+    "height": 0.4,
+    "colour": "#9d9680",
+    "topColour": "#9d9680",
+    "slot": "stone-blocks"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    7.2
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#cdb88c",
+    "slot": "stone-blocks",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#c2b08a"
+     ],
+     [
+      3.6,
+      3.0
+     ],
+     [
+      3.9,
+      3.0,
+      "#7f6a58"
+     ],
+     [
+      3.6,
+      3.4
+     ],
+     [
+      2.2,
+      4.6
+     ],
+     [
+      0.8,
+      5.4
+     ],
+     [
+      0,
+      5.7
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 2.8,
+     "count": 4,
+     "width": 0.55,
+     "height": 1.3,
+     "sill": 0.8,
+     "shape": "arch",
+     "depth": 0.2
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -7.2,
+    0.4
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#a8a08a",
+    "slot": "stone-blocks",
+    "profile": [
+     [
+      3.2,
+      0,
+      "#a8a08a"
+     ],
+     [
+      3.2,
+      5.8
+     ],
+     [
+      3.5,
+      5.8,
+      "#7f6a58"
+     ],
+     [
+      3.2,
+      6.2
+     ],
+     [
+      1.8,
+      7.1
+     ],
+     [
+      0,
+      7.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 5.5,
+     "count": 1,
+     "width": 0.9,
+     "height": 1.9,
+     "sill": 2.3,
+     "shape": "arch",
+     "depth": 0.25,
+     "phase": 0
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4.8,
+    -6.4,
+    0.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a8a08a",
+    "slot": "stone-blocks",
+    "profile": [
+     [
+      2.0,
+      0,
+      "#a8a08a"
+     ],
+     [
+      2.0,
+      4.0
+     ],
+     [
+      2.2,
+      4.0,
+      "#7f6a58"
+     ],
+     [
+      1.8,
+      4.4
+     ],
+     [
+      0,
+      5.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    7.2,
+    -6.0,
+    0.4
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#9a937f",
+    "slot": "stone-blocks",
+    "profile": [
+     [
+      3.9,
+      0,
+      "#9a937f"
+     ],
+     [
+      3.9,
+      4.4
+     ],
+     [
+      3.6,
+      4.4,
+      "#e6dcc0"
+     ],
+     [
+      3.0,
+      5.1
+     ],
+     [
+      1.6,
+      5.7
+     ],
+     [
+      0,
+      6.0
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 4.0,
+     "count": 1,
+     "width": 0.5,
+     "height": 0.45,
+     "sill": 2.8,
+     "shape": "arch",
+     "depth": 0.2
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6.2,
+    -4.5,
+    4.6
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e6dcc0",
+    "slot": "plain-render",
+    "profile": [
+     [
+      2.0,
+      0
+     ],
+     [
+      1.7,
+      0.8
+     ],
+     [
+      0.9,
+      1.4
+     ],
+     [
+      0,
+      1.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.8
+    ],
+    "height": 10.5,
+    "colour": "#c8b690",
+    "topColour": "#b9a67f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "apses are regular stone-block revolves not irregular rubble; east gable is a small curved-shoulder loft hidden behind the apses, windows are dark stand-ins; step platform is flat slabs; massing proportions still approximate"
+ }
+}

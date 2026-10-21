@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tyndale_Theological_Seminary_(Europe).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JordySchaap",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/workshop1.jpg",
+   "used": "single-storey flat-roofed pavilion: blank grey-brown brick end wall, long white-framed ribbon glazing with white fascia, lower brick wing and white-glazed entrance behind, birches on lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3606162",
+   "used": "real irregular outline 38.6 x 33.7 m (1971)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "seminary",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8d7a69",
+    "windows": "ribbon",
+    "windowRatio": 0.9,
+    "glassColour": "#a9bcc6",
+    "bands": "#f4f4f1",
+    "plinth": 0.3,
+    "parapet": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f3",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-screen",
+   "footprint": {
+    "rect": [
+     13,
+     0.8
+    ]
+   },
+   "at": [
+    -4,
+    -19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#86705f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9088",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 11,
+    "count": 4,
+    "spread": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-gable-block",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    -16,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a7565",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7565",
+    "parapet": 0.1,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    6,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6e8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#b8cad2",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f3",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -16,
+    6.9,
+    2.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#2b2b2b",
+    "frameColour": "#2b2b2b",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   100,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -25
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glazing now light, white fascia, taller blank brick end block, entrance wing and 4 white birches; seminary lettering and brick footpath not modelled; OSM plan differs from photo angle"
+ }
+}

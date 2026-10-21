@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small whitewashed village chapel-shrine, gable roof, cross, in open farmland with conifers; Commons photos near the point show only a stone cross and a village sign (no chapel)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1269071854",
+   "used": "nearest chapel is 6.3 m square (32 m away, nearest quality), used for size only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     6.3,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "trimColour": "#8a6a4a",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     3.4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    5.2
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -4.8
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "drum-dome",
+   "at": [
+    0,
+    -1.5,
+    6.7
+   ],
+   "params": {
+    "radius": 1.1,
+    "drum_height": 1.4,
+    "cap": "dome",
+    "colour": "#f1eee6",
+    "cap_colour": "#c9a85a",
+    "cross": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.45,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#b8b4aa"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -9
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "kind": "bars",
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    -3
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    2
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the chapel found (only a stone cross and village sign); form typed from brief and a 6.3 m OSM chapel; details like bell tower omitted."
+ }
+}

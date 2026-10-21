@@ -1,0 +1,1004 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-way-31662730",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yerevan_Vernissage_hats.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Shaun Dunphy",
+   "view": "street",
+   "file": "/tmp/places-evidence/yerevan/vern0.jpg",
+   "used": "stalls in rows on pale paved ground under tall plane trees, tan and orange parasols and awnings, goods hung on stands"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dolls,_Vernissage,_Yerevan_(5048978554).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Shaun Dunphy",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yerevan/vern2.jpg",
+   "used": "open timber shelf stalls with warm yellow backing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31662730",
+   "used": "elongated narrow strip proportions (about 290 x 56 m, modelled as a 118 x 24 m strip)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-ground",
+   "footprint": {
+    "rect": [
+     118,
+     26
+    ]
+   },
+   "rotDeg": 15,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d3c19f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3c19f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb",
+   "footprint": {
+    "rect": [
+     118,
+     1.2
+    ]
+   },
+   "at": [
+    3.57,
+    -13.33
+   ],
+   "rotDeg": 15,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#aaa59a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-hut",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -60.41,
+    -14.11
+   ],
+   "rotDeg": 15,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e08a4a",
+    "windows": "rect",
+    "trimColour": "#f2dcc0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452e",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "stalls-a",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48.42,
+     -20.22
+    ],
+    "end": [
+     52.04,
+     6.7
+    ],
+    "count": 18,
+    "yaw": 15,
+    "lod1Step": 4,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        1.3
+       ],
+       "height": 0.9,
+       "colour": "#7a3f2a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.6,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        0.15
+       ],
+       "height": 1.6,
+       "colour": "#b9823f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -0.9,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#b3342a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.4,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#2d6a8a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.3,
+       -0.5,
+       1.5
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.06
+       ],
+       "height": 0.6,
+       "colour": "#e0b050"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.0,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#2f78a8"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#d9c27a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#b33a2a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stalls-b",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49.84,
+     -14.91
+    ],
+    "end": [
+     50.62,
+     12.01
+    ],
+    "count": 18,
+    "yaw": 15,
+    "lod1Step": 4,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        1.3
+       ],
+       "height": 0.9,
+       "colour": "#2f5d70"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.6,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        0.15
+       ],
+       "height": 1.6,
+       "colour": "#b9823f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -0.9,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#b3342a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.4,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#2d6a8a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.3,
+       -0.5,
+       1.5
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.06
+       ],
+       "height": 0.6,
+       "colour": "#e0b050"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.0,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#2f78a8"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#d9c27a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#b33a2a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stalls-c",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -51.39,
+     -9.11
+    ],
+    "end": [
+     49.06,
+     17.81
+    ],
+    "count": 18,
+    "yaw": 15,
+    "lod1Step": 4,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        1.3
+       ],
+       "height": 0.9,
+       "colour": "#a8702f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.6,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        0.15
+       ],
+       "height": 1.6,
+       "colour": "#b9823f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -0.9,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#b3342a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.4,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#2d6a8a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.3,
+       -0.5,
+       1.5
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.06
+       ],
+       "height": 0.6,
+       "colour": "#e0b050"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.0,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#2f78a8"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#d9c27a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#b33a2a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stalls-d",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.82,
+     -3.8
+    ],
+    "end": [
+     47.64,
+     23.12
+    ],
+    "count": 18,
+    "yaw": 15,
+    "lod1Step": 4,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        1.3
+       ],
+       "height": 0.9,
+       "colour": "#8a3a30"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.6,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        3.4,
+        0.15
+       ],
+       "height": 1.6,
+       "colour": "#b9823f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -0.9,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#b3342a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.4,
+       -0.5,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.06
+       ],
+       "height": 1.2,
+       "colour": "#2d6a8a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.3,
+       -0.5,
+       1.5
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.06
+       ],
+       "height": 0.6,
+       "colour": "#e0b050"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.0,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#2f78a8"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#d9c27a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1,
+       0.1,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.08,
+       "colour": "#b33a2a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "parasols-0",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -47.21,
+     -17.0
+    ],
+    "end": [
+     49.38,
+     8.88
+    ],
+    "count": 14,
+    "lod1Step": 3,
+    "lod2Step": 14,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#d9a35a",
+      "profile": [
+       [
+        0,
+        3.6
+       ],
+       [
+        2.3,
+        3.0
+       ],
+       [
+        2.4,
+        2.85
+       ],
+       [
+        0.05,
+        2.85
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "parasol-poles-0",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -47.21,
+     -17.0
+    ],
+    "end": [
+     49.38,
+     8.88
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 2.9,
+      "colour": "#5a4a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "parasols-1",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.16,
+     -5.99
+    ],
+    "end": [
+     46.43,
+     19.9
+    ],
+    "count": 14,
+    "lod1Step": 3,
+    "lod2Step": 14,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#e08a3a",
+      "profile": [
+       [
+        0,
+        3.6
+       ],
+       [
+        2.3,
+        3.0
+       ],
+       [
+        2.4,
+        2.85
+       ],
+       [
+        0.05,
+        2.85
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "parasol-poles-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.16,
+     -5.99
+    ],
+    "end": [
+     46.43,
+     19.9
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 2.9,
+      "colour": "#5a4a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "id": "plane-0",
+   "at": [
+    -41.01,
+    -20.82,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "id": "plane-1",
+   "at": [
+    -23.58,
+    3.0,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "id": "plane-2",
+   "at": [
+    4.39,
+    -8.66,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "id": "plane-3",
+   "at": [
+    22.78,
+    15.42,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "id": "plane-4",
+   "at": [
+    48.69,
+    3.73,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stalls are blocky counters with flat goods, no hats on poles or hung rugs in canopy; trees are low-poly; ground is paved tile not sandy earth; real photo is a close-up so scale is approximate"
+ }
+}

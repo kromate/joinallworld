@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-7990496",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_de_Hielo_(Madrid_-_2022).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "KingValid04",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/hielo1.jpg",
+   "used": "cream concrete podium, ochre-yellow ground canopy, deep soffit with raking struts under the glazed upper box, dark blue-black glass top, grey glass tower box at the left corner"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palacio_del_Hielo_(8965605200).jpg",
+   "licence": "CC0",
+   "author": "Daniel Lobo",
+   "view": "side",
+   "file": "/tmp/places-evidence/madrid/hielo2.jpg",
+   "used": "curved cream wall with louvre vents, raked struts, big stair ramp with blue rails"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/7990496",
+   "used": "footprint of the podium (197 x 67 m, scaled to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 7,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     98,
+     39
+    ]
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a6544",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#8a6a3a",
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     99,
+     40.5
+    ]
+   },
+   "z0": 3.6,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe3cc",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "glassColour": "#6a6a66",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "curved-corner",
+   "at": [
+    -46,
+    -19,
+    3.6
+   ],
+   "params": {
+    "profile": [
+     [
+      11,
+      0,
+      "#e6dec6"
+     ],
+     [
+      11,
+      7.4
+     ],
+     [
+      0,
+      7.4
+     ]
+    ],
+    "segments": 28,
+    "colour": "#dcd3bb",
+    "arcade": {
+     "count": 6,
+     "width": 1.4,
+     "height": 4,
+     "sill": 1.2,
+     "shape": "rect",
+     "depth": 0.4
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-glass",
+   "footprint": {
+    "rect": [
+     106,
+     46
+    ]
+   },
+   "at": [
+    3,
+    -1
+   ],
+   "z0": 11,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1c2430",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#18202c",
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-tower",
+   "footprint": {
+    "rect": [
+     15,
+     14
+    ]
+   },
+   "at": [
+    -46,
+    -16
+   ],
+   "z0": 11,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aeb3b8",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#6a7680",
+    "bands": "#8f9499",
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8086"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "ochre-canopy",
+   "at": [
+    0,
+    -23,
+    3.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 106,
+    "depth": 6,
+    "height": 0,
+    "thickness": 0.6,
+    "colour": "#d49a1f",
+    "edgeColour": "#e0a928"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "ochre-canopy-l",
+   "at": [
+    -53,
+    0,
+    3.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 44,
+    "height": 0,
+    "thickness": 0.6,
+    "colour": "#d49a1f",
+    "edgeColour": "#e0a928"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -21,
+     10.5
+    ],
+    "end": [
+     46,
+     -21,
+     10.5
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       9
+      ],
+      "height": 1.0,
+      "colour": "#b9b1a0"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "soffit-deck",
+   "at": [
+    8,
+    -20,
+    10.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 8,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#9ba3ab"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -46,
+    -23.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6,
+    "colour": "#34ad7a",
+    "bottom": 21,
+    "posts": false,
+    "frameColour": "#34ad7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -22.2,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "height": 2.6,
+    "colour": "#14202c",
+    "bottom": 18,
+    "posts": false,
+    "frameColour": "#14202c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream podium band now reads under canopy but curved wall only at the corner, struts are boxes not diagonals, upper glass boxy, no curved front"
+ }
+}

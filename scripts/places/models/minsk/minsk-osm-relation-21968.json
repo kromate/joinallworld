@@ -1,0 +1,529 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-relation-21968",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belarusian_State_Medical_University_p1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Homoatrox",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/med1.jpg",
+   "used": "dark brown brick tower with white balcony-banded centre, low white three-storey entrance block with glass ribbon and three tan portals, grey hipped roof behind, pink paved forecourt, spruces"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/21968",
+   "used": "name-matched campus outline (184 x 169 m, 44 vertices); only the main entrance group seen in the photo is modelled, the outline is too large for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     50
+    ],
+    "height": 0.12,
+    "colour": "#b8827a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west-pylon",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -41.5,
+    14
+   ],
+   "height": 46,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#6d3b31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east-pylon",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    -15.5,
+    14
+   ],
+   "height": 44,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#6d3b31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-centre",
+   "footprint": {
+    "rect": [
+     17,
+     12
+    ]
+   },
+   "at": [
+    -28.5,
+    12
+   ],
+   "height": 40,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeeea",
+    "windows": "none",
+    "glassColour": "#3b4650",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#f2f2ee",
+       "#d9dad6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-rear",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    -28,
+    26
+   ],
+   "height": 42,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6d3b31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     84,
+     15
+    ]
+   },
+   "at": [
+    27,
+    5
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebebe6",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "glassColour": "#8aa3b3",
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "cornice": true,
+    "bands": "#f4f4f0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7c7e",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-1",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -1,
+    -7
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c7a982",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c4a0",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-2",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    18,
+    -7
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c7a982",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c4a0",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-3",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    38,
+    -7
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c7a982",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c4a0",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     36,
+     22
+    ]
+   },
+   "at": [
+    26,
+    20
+   ],
+   "z0": 11,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfc9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e737a",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "kind": "railing",
+    "colour": "#555555",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "white-fin",
+   "footprint": {
+    "rect": [
+     1.2,
+     3
+    ]
+   },
+   "at": [
+    -28.5,
+    6
+   ],
+   "height": 48,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-red",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    45,
+    30
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a04a3c",
+    "windows": "none",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     13,
+     15
+    ],
+    "end": [
+     34,
+     13,
+     15
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        2.4,
+        2.4
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 2.6,
+      "storeys": 1,
+      "wall": {
+       "material": "painted-render",
+       "colour": "#cfcfc9",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "gable",
+       "colour": "#6e737a",
+       "rise": 1.2
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -14,
+     0
+    ],
+    "end": [
+     40,
+     -14,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.25,
+       "n": 5,
+       "height": 0.9,
+       "colour": "#e3c230"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -12,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     70,
+     22
+    ],
+    "height": 0.04,
+    "colour": "#c99a94"
+   },
+   "rotDeg": 0
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower balconies generic, hall dormers are small boxes, no roof lettering, forecourt pattern flat tint, portals only modestly deeper"
+ }
+}

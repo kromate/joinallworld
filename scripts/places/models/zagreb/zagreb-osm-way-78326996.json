@@ -1,0 +1,820 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-78326996",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KB_Dubrava_Zagreb.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SpeedyGonsales",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/326996_0.jpg",
+   "used": "long stepped block of rounded-corner teal cladding pods with oval windows, varied pod heights, dark glazed louvred base, silver duct at the east end, rooftop plant boxes"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KB_Dubrava.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SuperbAlien",
+   "view": "detail",
+   "used": "pod cladding colours (teal to blue-green), oval windows with pale glass, rounded soffit corners over the glazed base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42386475",
+   "used": "scale only: the real 340 m multi-wing outline exceeds the scene clamp, so a 116 m portion of the main teal block seen in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 2.47,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     110,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.0,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f2a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7274"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod0",
+   "footprint": {
+    "rect": [
+     11.4,
+     18
+    ]
+   },
+   "at": [
+    -52.2,
+    0
+   ],
+   "z0": 5.0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f9aa0",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod1",
+   "footprint": {
+    "rect": [
+     11.4,
+     20
+    ]
+   },
+   "at": [
+    -40.6,
+    0
+   ],
+   "z0": 5.0,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3b9f93",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod2",
+   "footprint": {
+    "rect": [
+     11.4,
+     20
+    ]
+   },
+   "at": [
+    -29.000000000000004,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#44a0a0",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod3",
+   "footprint": {
+    "rect": [
+     11.4,
+     22
+    ]
+   },
+   "at": [
+    -17.400000000000006,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a9a9c",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod4",
+   "footprint": {
+    "rect": [
+     11.4,
+     22
+    ]
+   },
+   "at": [
+    -5.800000000000004,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 20.5,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f9aa0",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod5",
+   "footprint": {
+    "rect": [
+     11.4,
+     22
+    ]
+   },
+   "at": [
+    5.799999999999997,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3b9f93",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod6",
+   "footprint": {
+    "rect": [
+     11.4,
+     22
+    ]
+   },
+   "at": [
+    17.39999999999999,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#44a0a0",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod7",
+   "footprint": {
+    "rect": [
+     11.4,
+     22
+    ]
+   },
+   "at": [
+    29.0,
+    -1
+   ],
+   "z0": 5.0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a9a9c",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod8",
+   "footprint": {
+    "rect": [
+     11.4,
+     20
+    ]
+   },
+   "at": [
+    40.599999999999994,
+    0
+   ],
+   "z0": 5.0,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f9aa0",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod9",
+   "footprint": {
+    "rect": [
+     11.4,
+     18
+    ]
+   },
+   "at": [
+    52.19999999999999,
+    2
+   ],
+   "z0": 5.0,
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3b9f93",
+    "windows": "round",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "bay": 3.7,
+    "glassColour": "#e8f0ee",
+    "faces": {
+     "front": "round",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fb2ad",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pipe",
+   "at": [
+    56.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 34,
+    "colour": "#9aa0a4",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant1",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    12,
+    -2
+   ],
+   "z0": 22,
+   "height": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a9a95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58aaa5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant2",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -26,
+    -1
+   ],
+   "z0": 19,
+   "height": 2.6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a9a95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58aaa5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "at": [
+    -52,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "at": [
+    -39,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "at": [
+    -26,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "at": [
+    -13,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col4",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col5",
+   "at": [
+    13,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col6",
+   "at": [
+    26,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col7",
+   "at": [
+    39,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col8",
+   "at": [
+    52,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 5.0,
+    "colour": "#d0d4d4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant3",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -44,
+    0
+   ],
+   "z0": 17.5,
+   "height": 2.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a9a9c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant4",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -1
+   ],
+   "z0": 22.5,
+   "height": 2.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a9a9c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -54,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     54,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Pods are still sharp-edged boxes with round windows (no rounded corners/soffits); undercroft is dark band with columns not glazed louvres; only a 116 m portion modelled."
+ }
+}

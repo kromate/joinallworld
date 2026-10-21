@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-28310118",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metropolitn%C3%AD_univerzita_Praha_10_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "VitVit",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/mup1.jpg",
+   "used": "1930s functionalist campus building in ochre-yellow render: low two-storey front range with brown plinth and pale string courses, entrance pavilion with three tall dark windows between cream piers, taller four-storey wings behind left and right, blue spruces on the lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metropolitn%C3%AD_univerzita_Praha_10_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "VitVit",
+   "view": "side",
+   "used": "long four-storey right wing with regular windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27756596",
+   "used": "facts only: 4 levels, flat roof; the irregular outline is not followed, composition follows the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 24,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     62,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b050",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#4a3f3a",
+    "plinth": 1.5,
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#f0e2b8",
+    "plinthColour": "#4a3326"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a58",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     15,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d8a0",
+    "windows": "punched",
+    "windowRatio": 0.6,
+    "glassColour": "#3a2a28",
+    "plinth": 1.5,
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinthColour": "#4a3326"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58f62",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-left",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b050",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#4a3f3a",
+    "plinth": 1.5,
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#f0e2b8",
+    "plinthColour": "#4a3326"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a58",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    30,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b050",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#4a3f3a",
+    "plinth": 1.5,
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#f0e2b8",
+    "plinthColour": "#4a3326"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a58",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     11,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -9.8
+   ],
+   "z0": 2.4,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5a2a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7050"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1
+      ],
+      "height": 9.8,
+      "colour": "#e3c872",
+      "topColour": "#a58f62"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -10.2
+    ],
+    "end": [
+     6,
+     -10.2
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.0,
+    9.5
+   ],
+   "params": {
+    "width": 10,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#e8d9a0",
+    "frameColour": "#8a7050",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 3,
+    "spread": 5,
+    "colour": "#2a4a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 2,
+    "spread": 4,
+    "colour": "#2a4a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion is taller than real and lacks the projecting canopy and door glazing detail; side blocks plain boxes, sign board blank"
+ }
+}

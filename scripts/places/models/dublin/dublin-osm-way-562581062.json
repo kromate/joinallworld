@@ -1,0 +1,284 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_pic_Parnell_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Derekdub",
+   "view": "street",
+   "file": "/tmp/places-evidence/dublin/parnell2.jpg",
+   "used": "single-tier covered main stand with long dark flat cantilever roof, pale seats with a blue block, blue advertising hoardings, tall floodlight masts, low terraces opposite"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parnell_Park.jpg",
+   "licence": "Public domain",
+   "author": "Gnevin",
+   "view": "street",
+   "used": "floodlight mast positions and low open terracing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40812066",
+   "used": "159 x 85 m ground outline, pitch 141 x 82 m (axis-aligned here)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 141,
+    "depth": 82,
+    "colour": "#4f8a3a"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     50
+    ],
+    "end": [
+     -56,
+     50
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColour": "#c9ced1",
+    "seatColours": [
+     "#c9ced1",
+     "#2f5fae"
+    ],
+    "blocks": 5,
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 10.5,
+     "depth": 12,
+     "colour": "#30363b",
+     "slopeDeg": 3,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "south-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -60,
+     -46
+    ],
+    "end": [
+     60,
+     -46
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#9aa0a4",
+    "backWall": 0.6,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     74,
+     -30
+    ],
+    "end": [
+     74,
+     30
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#8c9296",
+    "backWall": 0.6,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -74,
+     30
+    ],
+    "end": [
+     -74,
+     -30
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#8c9296",
+    "backWall": 0.6,
+    "under": "open"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    58,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    58,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -72,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 2.5,
+    "thickness": 0.4,
+    "colour": "#b5aea3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    85,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#3f6a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    88,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#3f6a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-562581062",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "stand shorter and plainer than photo; no hoarding colours or seat-block detail; generic terraces and masts"
+ }
+}

@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-airport-chisinau-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chisinau_Airport_KIV.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Simiprof",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/airport1.jpg",
+   "used": "long dark glazed hall under a huge dark overhanging sloped roof with a pale fascia band, red entrance canopy, white annex at the right, control tower far right, conifers and low hedge on the forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chisinau_Airport_1.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Ciscoman1965",
+   "view": "side",
+   "file": "/tmp/places-evidence/chisinau/airport2.jpg",
+   "used": "brown composite roof soffit, blue-framed glazing, white lower annex with a row of small blue-framed windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26375875",
+   "used": "overall size 134 x 40 m only (match is 841 m from the venue)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     92,
+     28
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1c2733",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3330"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "big-roof",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#2b2220",
+    "topColour": "#4a3e39",
+    "sections": [
+     {
+      "z": 6.0,
+      "rect": [
+       100,
+       30
+      ],
+      "cy": -7
+     },
+     {
+      "z": 11.2,
+      "rect": [
+       100,
+       22
+      ],
+      "cy": -3
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    -12,
+    -14.2
+   ],
+   "params": {
+    "rect": [
+     100,
+     1.2
+    ],
+    "z0": 11.2,
+    "height": 1.3,
+    "colour": "#c9d1d6",
+    "topColour": "#d5dbdf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-annex",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    58,
+    -3
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 2.2,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -24.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 4.6,
+    "thickness": 0.6,
+    "colour": "#a3221d",
+    "edgeColour": "#8d1c18",
+    "columns": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    92,
+    8
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 26,
+    "colour": "#e3e3df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "at": [
+    92,
+    8
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 26,
+    "height": 4.5,
+    "topScale": 1.15,
+    "colour": "#7f8f9a",
+    "topColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -10,
+    12.4
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f4f4f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#d9d9d6",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-wing",
+   "at": [
+    -64,
+    -6
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -18
+     ],
+     [
+      5,
+      -14
+     ],
+     [
+      5,
+      12
+     ],
+     [
+      -5,
+      12
+     ]
+    ],
+    "height": 14,
+    "topScale": [
+     0.35,
+     1
+    ],
+    "colour": "#aeb5ba",
+    "topColour": "#c9d0d4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 0.9,
+      "depth": 1.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -31.5,
+     0
+    ],
+    "end": [
+     40,
+     -31.5,
+     0
+    ],
+    "count": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     -31
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     -31
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -31
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -31
+    ]
+   }
+  ],
+  "extent": [
+   145,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Not the real 134 m terminal outline; end wing is a simple wedge; no glazing mullion detail; rooftop lettering is a blank white board; hedges are boxes."
+ }
+}

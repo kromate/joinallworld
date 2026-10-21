@@ -1,0 +1,220 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universiteti_N%C3%ABn%C3%AB_Tereza_n%C3%AB_Shkup_01.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Edukatori",
+   "view": "front",
+   "file": "/tmp/places-evidence/skopje/11_0.jpg",
+   "used": "central rubble-stone entrance tower rising above white three-storey wings, dark flat entrance canopy on two posts, glazed doors, white render wings with railed balconies and dark window frames, red gutter line"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1486501468",
+   "used": "campus polygon far larger than the building; not used, size from photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    -9.5,
+    4.5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#8a2e20"
+     }
+    ],
+    "faces": {
+     "front": "punched"
+    },
+    "bay": 4.5,
+    "windowShape": "rect",
+    "glassColour": "#2c3238"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    9.5,
+    4.5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#8a2e20"
+     }
+    ],
+    "faces": {
+     "front": "punched"
+    },
+    "bay": 4.5,
+    "windowShape": "rect",
+    "glassColour": "#2c3238"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4ad82",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     5.2,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -2.4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd6d4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4048"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -3.4,
+    3.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10.5,
+    "depth": 1.5,
+    "height": 0,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#2a323c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close crop so wings are cut off; stone coursing generic; balcony rails and gutters approximate; no entrance trim"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-osm-way-1486501468"
+}

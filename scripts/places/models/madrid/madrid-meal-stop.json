@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: corner diner of a Spanish restaurant chain, glass-fronted ground floor under an awning, two storeys, render upper floor; no photo of this branch found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242366558",
+   "used": "containing building only (about 24 x 14 m, a different name): used as size hint, not as outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed from text: real branch layout, colours and corner geometry are unverified."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "diner",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2c2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "back": "none",
+     "right": "punched"
+    },
+    "groundKind": "curtain",
+    "groundHeight": 3.6,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.6,
+    "trimColour": "#a8553a",
+    "bands": "#a8553a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-back",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    7,
+    12
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c6bd",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 2.4,
+    "drop": 0.6,
+    "height": 3.4,
+    "colours": [
+     "#a8553a",
+     "#f0ece2"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "bottom": 5.4,
+    "colour": "#a8553a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14.4,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 12,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 3.4,
+    "colours": [
+     "#a8553a",
+     "#f0ece2"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 2.2,
+    "dy": 2.2,
+    "centre": [
+     -8,
+     -12.5,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "radius": 0.5,
+       "n": 8,
+       "height": 0.75,
+       "colour": "#3a3a3a"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ]
+ }
+}

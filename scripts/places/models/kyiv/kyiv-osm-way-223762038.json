@@ -1,0 +1,643 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-223762038",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyiv_ukraine_temple_lds.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (see file page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/k223762038.jpg",
+   "used": "pale cream granite ashlar, stepped central tower rising to a slim dark spire with a gilded figure, low entrance annex with tall glazed bay above it, narrow slit windows on the side, frieze bands, low planter walls and young trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/223762038",
+   "used": "plan extent about 32 x 24 m, rotated 142 deg; modelled axis-aligned as seen in the photo"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kyiv_Ukraine_Temple",
+   "used": "total height 42 m including the statue"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 0,
+  "fovDeg": 40,
+  "aspect": 0.835,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0dac9",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c9c1ae"
+      ],
+      "height": 0.9,
+      "at": 0.92,
+      "proud": 0.12,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 0.25,
+      "spacing": 2.0,
+      "colour": "#d6d0c0"
+     }
+    ],
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0dac9",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 5,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    15,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0dac9",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    3,
+    -12
+   ],
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0dac9",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    },
+    "groundKind": "door"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-step1",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 15,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "none",
+    "cornice": false,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-step2",
+   "footprint": {
+    "rect": [
+     9.5,
+     8.5
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 18,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "none",
+    "cornice": false,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     6,
+     4.8
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 21,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 1.4,
+      "colour": "#cbc4b2"
+     }
+    ],
+    "windowShape": "rect",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     4.4,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 26,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 1.4,
+      "colour": "#cbc4b2"
+     }
+    ],
+    "windowShape": "rect",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 31,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 1.4,
+      "colour": "#cbc4b2"
+     }
+    ],
+    "windowShape": "rect",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass0",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.5
+    ]
+   },
+   "at": [
+    0.7999999999999998,
+    -10.3
+   ],
+   "z0": 7.2,
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#161d24",
+    "glassColour": "#161d24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass1",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -10.3
+   ],
+   "z0": 7.2,
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#161d24",
+    "glassColour": "#161d24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass2",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.5
+    ]
+   },
+   "at": [
+    5.2,
+    -10.3
+   ],
+   "z0": 7.2,
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#161d24",
+    "glassColour": "#161d24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bay-surround",
+   "footprint": {
+    "rect": [
+     8.6,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -10.5
+   ],
+   "z0": 6.8,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6d0c0",
+    "windows": "none",
+    "cornice": true,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "parapet": 0.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    3,
+    -14.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "height": 5.4,
+    "columns": 6,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#dcd6c6",
+    "roofColour": "#cfc8b6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    1,
+    35
+   ],
+   "params": {
+    "colour": "#555b62",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       0.25,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    1,
+    45.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d4a82a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.7,
+      1.2
+     ],
+     [
+      0.8,
+      2.6
+     ],
+     [
+      0.5,
+      3.8
+     ],
+     [
+      0.1,
+      4.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.7,
+    "thickness": 0.8,
+    "colour": "#d0cabb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.7,
+    "thickness": 0.8,
+    "colour": "#d0cabb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -17
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     -19
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slimmer stepped tiers, narrow dark glass bay and portico added; frieze bands, arched side windows, curved planters, trumpet on Moroni and smooth ashlar still missing (block texture coarse)."
+ }
+}

@@ -1,0 +1,328 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-29504327",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cherry_Orchard_Hospital,_Ballyfermot_Dublin_-_geograph.org.uk_-_553435.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Harold Strong",
+   "view": "street",
+   "file": "/tmp/places-evidence/dublin/cherry1.jpg",
+   "used": "site entrance: low brick-and-white gatehouse with hip roof on the left, white gates between stone piers, rubble boundary wall, tall brick tower with cream vertical panels, mature trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29504327",
+   "used": "identity only: the 745 m campus outline is too large; entrance and pavilion blocks placed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -27.5,
+    0,
+    0
+   ],
+   "params": {
+    "length": 25,
+    "height": 2.3,
+    "thickness": 0.6,
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    23.5,
+    0,
+    0
+   ],
+   "params": {
+    "length": 33,
+    "height": 2.3,
+    "thickness": 0.6,
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "ball-gate-piers",
+   "at": [
+    -8,
+    0,
+    0
+   ],
+   "params": {
+    "gap": 9,
+    "height": 2.4,
+    "colour": "#7b766a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -8,
+    0.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.0,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#e6e6e2",
+    "leafColour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -22,
+    5
+   ],
+   "rotDeg": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4a38",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#cfd8dc",
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e6e2d6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    5,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4a38",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": "all"
+     }
+    ],
+    "trimColour": "#e8e2d0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    44
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#a2603f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4b36",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    -30,
+    70
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#a2603f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4b36",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-c",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    18,
+    70
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a2603f",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "trimColour": "#d8d2c2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4b36",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -15,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 0.6,
+    "colour": "#f2f2ee",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#2a5fa8",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 5,
+    "line": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower narrower and taller with cream strips as fins but no mast and strips run full height; gatehouse flat-roof with ribbon glazing but shorter than real; wall is plain grey not rubble texture; pavilion roofs show behind (not in photo); trees sparser than real mature canopy"
+ }
+}

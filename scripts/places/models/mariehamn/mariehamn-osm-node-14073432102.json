@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-node-14073432102",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: single-storey retail-park unit, render with glass shopfront; the OSM match is the airport terminal and was rejected"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "unit",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e1d2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "parapet": 0.5,
+    "bands": "#c4452f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#c4452f",
+     "#f1efe8"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -5.1
+   ],
+   "z0": 4.6,
+   "height": 1.4,
+   "wall": {
+    "colour": "#c4452f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4452f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     3,
+     2
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "z0": 4.6,
+   "height": 1.1,
+   "wall": {
+    "colour": "#9da2a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f95"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo and no OSM footprint: generic modest retail unit from the brief only"
+ }
+}

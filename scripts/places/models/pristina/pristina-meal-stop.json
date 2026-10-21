@@ -1,0 +1,135 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386855541",
+   "used": "real outline of Hotel Motel Aviano (name match, about 56 x 18 m, 740 m2, building=hotel, long bent block on the Prishtina-Peja road); no photo found, so storeys, roof and colours come from the brief (two storeys, hip roof, terrace) and typical roadside motels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "motel",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#a8553a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#a8553a",
+     "#f4f1e6"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3,
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    13,
+    -14,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline only; no photo found, so facade, roof and terrace details are typical for a roadside motel."
+ }
+}

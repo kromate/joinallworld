@@ -1,0 +1,536 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardim_Afonso_de_Albuquerque_-_Lisboa_-_Portugal_(46875098061).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Vitor Oliveira",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/afon2.jpg",
+   "used": "slender stone column on stepped carved base with dark bronze statue, round hedge-edged central lawn, pink gravel paths, rectangular lawn with hedges, tall lamps, broadleaf trees around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardim_Praca_Afonso_de_Albuquerque_04.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Patricia",
+   "view": "side",
+   "file": "/tmp/places-evidence/lisbon/afon1.jpg",
+   "used": "clipped box hedges, pink gravel, stone urns on balustrade posts, dense crowns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/19647778",
+   "used": "garden outline about 105 x 105 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 42,
+  "aspect": 1.4,
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pink-gravel",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     100
+    ],
+    "height": 0.08,
+    "colour": "#c9a592"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-lawn",
+   "at": [
+    0,
+    -30,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     44,
+     26
+    ],
+    "height": 0.25,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "round-lawn",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 20,
+    "n": 28,
+    "z0": 0.08,
+    "height": 0.35,
+    "colour": "#7aa650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-1",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     18
+    ],
+    "height": 1.2,
+    "colour": "#cfc8b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-2",
+   "at": [
+    0,
+    10,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 1.4,
+    "colour": "#d8d1bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-3",
+   "at": [
+    0,
+    10,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "height": 2.4,
+    "colour": "#d3ccb9",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "loft",
+   "id": "column",
+   "at": [
+    0,
+    10,
+    6.6
+   ],
+   "params": {
+    "colour": "#d6cfbd",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.0,
+       3.0
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 15.5,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "stadium/statue-figure",
+   "id": "bronze",
+   "at": [
+    0,
+    10,
+    22.1
+   ],
+   "params": {
+    "height": 4.2,
+    "colour": "#2a2620"
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedge-ring",
+   "params": {
+    "of": {
+     "type": "core/fence-wall",
+     "params": {
+      "length": 5,
+      "height": 0.7,
+      "thickness": 0.8,
+      "colour": "#3f6b30"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     10
+    ],
+    "radius": 21,
+    "count": 18,
+    "facing": "outward"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lamps-w",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 10
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -8
+    ],
+    "end": [
+     -40,
+     34
+    ],
+    "count": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lamps-e",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 10
+     }
+    },
+    "mode": "line",
+    "start": [
+     40,
+     -8
+    ],
+    "end": [
+     40,
+     34
+    ],
+    "count": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "trees-w",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 14,
+      "colour": "#5d7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -30
+    ],
+    "end": [
+     -46,
+     44
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "trees-e",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 12
+     }
+    },
+    "mode": "line",
+    "start": [
+     46,
+     -30
+    ],
+    "end": [
+     46,
+     44
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "trees-back",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 12
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     46
+    ],
+    "end": [
+     30,
+     46
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-f0",
+   "at": [
+    0,
+    -43.5,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     45,
+     1.2
+    ],
+    "height": 0.9,
+    "colour": "#2f5a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-f1",
+   "at": [
+    0,
+    -16.5,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     45,
+     1.2
+    ],
+    "height": 0.9,
+    "colour": "#2f5a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-f2",
+   "at": [
+    -22.6,
+    -30,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     27
+    ],
+    "height": 0.9,
+    "colour": "#2f5a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-f3",
+   "at": [
+    22.6,
+    -30,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     27
+    ],
+    "height": 0.9,
+    "colour": "#2f5a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-ring-outer",
+   "at": [
+    0,
+    10,
+    0.08
+   ],
+   "params": {
+    "radius": 22,
+    "n": 32,
+    "height": 0.7,
+    "colour": "#2f5a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "round-lawn-top",
+   "at": [
+    0,
+    10,
+    0.43
+   ],
+   "params": {
+    "radius": 19.2,
+    "n": 28,
+    "height": 0.1,
+    "colour": "#7aa650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-4",
+   "at": [
+    0,
+    10,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "height": 1.6,
+    "colour": "#d8d1bf"
+   }
+  },
+  {
+   "type": "array",
+   "id": "balustrade-n",
+   "params": {
+    "of": {
+     "type": "core/fence-wall",
+     "params": {
+      "length": 5,
+      "height": 1.0,
+      "thickness": 0.6,
+      "colour": "#d8d1bf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -47.5,
+     -49
+    ],
+    "end": [
+     47.5,
+     -49
+    ],
+    "count": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hedge borders, muted gravel, 4-tier base, tall column, 10 m lamps; no river/palace backdrop, no curving paths, urns omitted, hedge ring plain."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-community-voting-game"
+}

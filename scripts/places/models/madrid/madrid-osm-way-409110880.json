@@ -1,0 +1,522 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-409110880",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CerrodelEspino19.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Medios del C.F. Rayo Majadahonda, S.A.D.",
+   "view": "interior",
+   "file": "/tmp/places-evidence/madrid/m_espino.jpg",
+   "used": "orange raked seating on long sides and small stand at the end, blue advertising boards, floodlight masts, grass pitch, low ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/409110880",
+   "used": "pitch outline 105x69 m and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 60,
+  "aspect": 1.78,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     120,
+     84
+    ],
+    "height": 0.02,
+    "colour": "#a9a8a2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     105,
+     69
+    ],
+    "height": 0.12,
+    "colour": "#4f8a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "start": [
+     -52,
+     -36
+    ],
+    "end": [
+     52,
+     -36
+    ],
+    "rows": 10,
+    "seatColour": "#e0542a",
+    "under": "open",
+    "backWall": 0.6,
+    "blocks": 1,
+    "canopy": {
+     "height": 11,
+     "depth": 8,
+     "colour": "#c9cdd2",
+     "slopeDeg": 4,
+     "supports": 6
+    },
+    "concreteColour": "#bdbbb3"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "start": [
+     52,
+     36
+    ],
+    "end": [
+     -52,
+     36
+    ],
+    "rows": 10,
+    "seatColour": "#e0542a",
+    "under": "open",
+    "backWall": 0.6,
+    "blocks": 1,
+    "concreteColour": "#bdbbb3"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "start": [
+     -58,
+     22
+    ],
+    "end": [
+     -58,
+     -22
+    ],
+    "rows": 6,
+    "seatColour": "#e0542a",
+    "under": "open",
+    "backWall": 0.6,
+    "blocks": 1,
+    "concreteColour": "#bdbbb3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "points": [
+     [
+      -53,
+      -35
+     ],
+     [
+      53,
+      -35
+     ],
+     [
+      53,
+      35
+     ],
+     [
+      -53,
+      35
+     ],
+     [
+      -53,
+      -35
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.2,
+    "colour": "#1f2f5a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -57,
+    -42,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -57,
+    42,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    57,
+    -42,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    57,
+    42,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     0.25,
+     69
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     105,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47.5,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47.5,
+    20.15,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47.5,
+    -20.15,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -39.25,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     0.25,
+     40.3
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    47.5,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    47.5,
+    20.15,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    47.5,
+    -20.15,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     16.5,
+     0.25
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    39.25,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "rect": [
+     0.25,
+     40.3
+    ],
+    "height": 0.02,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 52,
+   "params": {
+    "segments": 24,
+    "colour": "#f2f2f2",
+    "profile": [
+     [
+      9.3,
+      0
+     ],
+     [
+      9.3,
+      0.02
+     ],
+     [
+      9.0,
+      0.02
+     ],
+     [
+      9.0,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     50
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Raked orange tiers on both long sides plus end, light-grey roof, navy boards, markings, grey surround added; masts not lattice, centre circle renders filled, fence/goals detail missing; photo is an interior view"
+ }
+}

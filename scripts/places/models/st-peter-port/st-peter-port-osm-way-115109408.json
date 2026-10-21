@@ -1,0 +1,509 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-way-115109408",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Footes_Lane.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kane Brooker",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/footes1.jpg",
+   "used": "main stand: blue plastic seats in raked rows split by two stair aisles, glazed upper gallery with a dark flat overhanging roof, green and white advertising hoardings along the pitch edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/115109408",
+   "used": "identity and site scale only; the OSM outline covers the whole sports ground (200 m) so a single stand and pitch edge are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     28,
+     0
+    ],
+    "end": [
+     -28,
+     0
+    ],
+    "rows": 11,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "seatColour": "#3f95d6",
+    "seatColours": [
+     "#3f95d6",
+     "#52a6e2"
+    ],
+    "blocks": 3,
+    "concreteColour": "#a9aeb0",
+    "underColour": "#8e9496",
+    "under": "solid",
+    "backWall": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     58,
+     5
+    ]
+   },
+   "at": [
+    0,
+    12.2
+   ],
+   "z0": 5.9,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a343a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e32",
+    "material": "metal-sheet",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     11
+    ],
+    "z0": 9.1,
+    "height": 0.7,
+    "colour": "#2e3236",
+    "topColour": "#24272a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.1,
+      "colour": "#3a3e42"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     4.4
+    ],
+    "end": [
+     28,
+     4.4
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.14
+      ],
+      "z0": 5.9,
+      "height": 3.2,
+      "colour": "#171b1e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28.5,
+     9.55
+    ],
+    "end": [
+     28.5,
+     9.55
+    ],
+    "count": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.2
+    ],
+    "z0": 5.9,
+    "height": 2.5,
+    "colour": "#101315"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.15
+    ],
+    "z0": 5.9,
+    "height": 2.0,
+    "colour": "#4a5a62"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     9.2
+    ],
+    "z0": 0.4,
+    "height": 0.25,
+    "colour": "#c9cccd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.3,
+    4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     9.2
+    ],
+    "z0": 0.4,
+    "height": 0.25,
+    "colour": "#c9cccd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.25
+      ],
+      "height": 1.0,
+      "colour": "#1f6b57"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     -2.2
+    ],
+    "end": [
+     24,
+     -2.2
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.28
+      ],
+      "height": 1.0,
+      "colour": "#f2f4f4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -25.2,
+     -2.2
+    ],
+    "end": [
+     25.8,
+     -2.2
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 0.08,
+    "colour": "#1f6b57"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     84
+    ],
+    "height": 0.03,
+    "colour": "#3f8f3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       90,
+       4
+      ],
+      "z0": 0.03,
+      "height": 0.02,
+      "colour": "#5fb04a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -5
+    ],
+    "end": [
+     0,
+     -85
+    ],
+    "count": 11
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.3
+    ],
+    "z0": 0.05,
+    "height": 0.02,
+    "colour": "#f4f4f4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -34,
+    10,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -34,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "facing": "west"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stand, dark overhanging roof, mullioned glazed gallery, aisles and green/white hoardings now present; seat rows may still read pale at distance and camera frames whole ground so stand is small; pitch, other stands, floodlights and scoreboard are only suggested"
+ }
+}

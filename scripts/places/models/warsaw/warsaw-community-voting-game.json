@@ -1,0 +1,891 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plac_konfederacji_warsaw.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Shalom",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/square1.jpg",
+   "used": "square as a grass-and-path green bounded by a wet asphalt street: row of cream and yellow render houses with steep red-tile roofs at left, pale beige four-storey modernist block with flat roof and rooftop box at right, reed beds, small dark monument, black lamp posts, bare trees, parked cars"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    -5,
+    2,
+    0.03
+   ],
+   "params": {
+    "width": 70,
+    "depth": 26,
+    "colour": "#7f9a58"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -35,
+      -8
+     ],
+     [
+      0,
+      -2
+     ],
+     [
+      45,
+      6
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#9ea0a0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -18,
+      14
+     ],
+     [
+      -6,
+      -3
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#9ea0a0"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.8,
+    "depth": 3,
+    "colour": "#b58a50"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -32,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.7,
+    "depth": 2,
+    "colour": "#6a7c42"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    28,
+    9,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "depth": 3,
+    "colour": "#a98450"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-1",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -46,
+    19
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cc",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a1503b",
+    "material": "clay-tile",
+    "pitch": 48,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-2",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -28,
+    20
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7cf7e",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a1503b",
+    "material": "clay-tile",
+    "pitch": 48,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-3",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -11,
+    21
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#98493a",
+    "material": "clay-tile",
+    "pitch": 48,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "modernist-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    42,
+    24
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#e2ddd0",
+    "faces": {
+     "left": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7e",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    46,
+    25
+   ],
+   "z0": 16,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdb7a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#4a6f9e",
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#e8e2c8",
+    "count": 2,
+    "spacing": 7,
+    "yaw": 20
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -26
+     ],
+     [
+      -20,
+      -22
+     ],
+     [
+      20,
+      -18
+     ],
+     [
+      62,
+      -6
+     ]
+    ],
+    "width": 11,
+    "colour": "#3d4245"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      12
+     ],
+     [
+      -30,
+      11
+     ],
+     [
+      10,
+      13
+     ],
+     [
+      40,
+      14
+     ]
+    ],
+    "width": 5,
+    "colour": "#42474a"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reeds-1",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.6,
+    "depth": 3,
+    "colour": "#c4a164"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reeds-2",
+   "at": [
+    20,
+    4,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.5,
+    "depth": 3,
+    "colour": "#bd9a5e"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "reeds-3",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.3,
+    "depth": 3,
+    "colour": "#c9a96c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "monument",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    6,
+    5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2c2e30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2e30"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -38,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#3f7a74",
+    "count": 3,
+    "spacing": 6,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#e8e2c8",
+    "count": 2,
+    "spacing": 6,
+    "yaw": 8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -40,
+      8,
+      0
+     ],
+     [
+      -40,
+      8,
+      8.25
+     ]
+    ],
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -40,
+      8,
+      5.25
+     ],
+     [
+      -41.400569929469754,
+      6.435262362993368,
+      9.0
+     ],
+     [
+      -42.8011398589395,
+      4.870524725986735,
+      12.75
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -40,
+      8,
+      6.1499999999999995
+     ],
+     [
+      -38.94464598404924,
+      6.184448320477603,
+      9.75
+     ],
+     [
+      -37.88929196809847,
+      4.368896640955207,
+      13.05
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -40,
+      8,
+      7.05
+     ],
+     [
+      -37.94718541850898,
+      8.442664990729835,
+      10.5
+     ],
+     [
+      -35.89437083701796,
+      8.88532998145967,
+      13.35
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.32
+    },
+    "points": [
+     [
+      -24,
+      10,
+      0
+     ],
+     [
+      -24,
+      10,
+      8.8
+     ]
+    ],
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -24,
+      10,
+      5.6
+     ],
+     [
+      -23.049839023565127,
+      12.028495530894837,
+      9.6
+     ],
+     [
+      -22.099678047130254,
+      14.056991061789676,
+      13.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -24,
+      10,
+      6.56
+     ],
+     [
+      -25.635598003822864,
+      11.530496380227888,
+      10.4
+     ],
+     [
+      -27.271196007645724,
+      13.060992760455775,
+      13.92
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -24,
+      10,
+      7.52
+     ],
+     [
+      -25.961016134728883,
+      8.91740325174468,
+      11.2
+     ],
+     [
+      -27.922032269457766,
+      7.83480650348936,
+      14.24
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -6,
+      12,
+      0
+     ],
+     [
+      -6,
+      12,
+      8.25
+     ]
+    ],
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -6,
+      12,
+      5.25
+     ],
+     [
+      -3.9836423980342315,
+      12.586772546217745,
+      9.0
+     ],
+     [
+      -1.967284796068463,
+      13.17354509243549,
+      12.75
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -6,
+      12,
+      6.1499999999999995
+     ],
+     [
+      -5.934965087918947,
+      14.098992725144756,
+      9.75
+     ],
+     [
+      -5.869930175837893,
+      16.19798545028951,
+      13.05
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -6,
+      12,
+      7.05
+     ],
+     [
+      -7.976163815844316,
+      12.710476300060481,
+      10.5
+     ],
+     [
+      -9.952327631688632,
+      13.420952600120962,
+      13.35
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c5248",
+    "n": 4
+   },
+   "id": "bare-tree"
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Reed beds, monument, street, cars, bare trees and larger buildings added; no dormers, trees sparser than photo, green is a rectangle rather than curved beds."
+ }
+}

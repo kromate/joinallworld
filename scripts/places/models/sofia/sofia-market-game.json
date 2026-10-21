@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/170658898",
+   "used": "real outline of Sofia Ring Mall (name match, building=retail, 3 levels); drawn at half scale because the real outline is 329 m wide, over the scene clamp"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bus_in_Sofia_-_Mercedes-Benz_Citaro_CNG_n%C2%B05001_(2).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Kyah117",
+   "view": "street",
+   "file": "/tmp/places-evidence/sofia/market-game-0.jpg",
+   "used": "background only: beige-grey horizontal metal cladding, a taller glazed/steel tower beside the mall; not a view of the mall, so not used for comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 0.36
+   },
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc9bb",
+    "windows": "ribbon",
+    "windowRatio": 0.05,
+    "plinth": 0.5,
+    "bands": "#9a9588",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-tower",
+   "at": [
+    -20,
+    -36
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 0,
+    "height": 28,
+    "colour": "#9fb4bd",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "storeys": 3,
+    "glassColour": "#8fa7b2",
+    "trimColour": "#6f7a80"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    18,
+    -50,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 7,
+    "height": 5,
+    "columns": 4,
+    "colour": "#c0603a",
+    "edgeColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-a",
+   "at": [
+    -5,
+    -46,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 11,
+    "colour": "#c0603a",
+    "frameColour": "#d0d0cc",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "no photo of the mall itself; outline drawn at 0.36 scale (real 329 m), cladding colours and glazing assumed from the brief and a background glimpse"
+ }
+}

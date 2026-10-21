@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baltoji_Vok%C4%97._%C5%BDem%C4%97s_%C5%ABkio_mokykla_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vilensija",
+   "view": "front",
+   "used": "three-storey pale buff silicate-brick block, regular rhythm of dark-framed rectangular windows (about 11 bays on the front), flat roof with stair/chimney box, small red-framed entrance with flat canopy and low steps, car park at left",
+   "file": "/tmp/places-evidence/vilnius/vilnius-community-workshop-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/66631698",
+   "used": "overall size and wing arrangement (large multi-wing campus building); front block modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     70,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3c9ae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.7,
+    "bay": 8.0,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     13,
+     40
+    ]
+   },
+   "at": [
+    -28.5,
+    26.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#cdbd98",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "bay": 10.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     13,
+     32
+    ]
+   },
+   "at": [
+    28.5,
+    22.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#cdbd98",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "bay": 10.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshops",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    46
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-box",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378"
+   },
+   "z0": 11.5
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -7.2
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 6,
+    "colour": "#b8b6ae"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -7.7,
+    3.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 2,
+    "height": 0,
+    "thickness": 0.3,
+    "columns": 0,
+    "colour": "#3d3f44"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -14
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -18
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the front block matches the photo; side wings and workshop hall are guesses from OSM size; entrance frame colour missing"
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-33556227",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta_-_Dingli_-_Triq_Panoramika_-_St._Mary_Magdalene_03_ies.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Frank Vincentz",
+   "view": "front",
+   "file": "/tmp/places-evidence/valletta/chapel.jpg",
+   "used": "plain gabled limestone box, low pitched slab roof, round oculus and brown timber door in the gable, cross finial, rocky garigue ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33556227",
+   "used": "size 5.6x7.9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     5.6,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4bf93",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdb88d",
+    "pitch": 28,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    0,
+    -4.05,
+    0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.3,
+    "arch": false,
+    "colour": "#a8844f",
+    "trim": "#c9b48a"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -3.9,
+    5.5
+   ],
+   "params": {
+    "colour": "#d9c9a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   24,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "no oculus window, door is simplified, rubble garigue ground is a flat sand tile"
+ }
+}

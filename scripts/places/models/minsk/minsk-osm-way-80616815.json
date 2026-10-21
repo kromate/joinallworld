@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-way-80616815",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: late-Soviet 12-storey hospital tower with lower clinic wings; no photo of the hospital exists in the evidence (street photos are of other buildings)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/80616815",
+   "used": "campus is ~340 m wide, far larger than the scene clamp; only the arrangement (tower + wings) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0,
+   "height": 40,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c9c3",
+    "trimColour": "#efefea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.8,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -43,
+    -4
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3d1c8",
+    "trimColour": "#efefea",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reception",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    34,
+    -8
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#6f93a8",
+    "trimColour": "#c9c9c3",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#c9c9c3"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    34,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    -28
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    62,
+    -14
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this hospital found; tower/wing arrangement is typed from the brief, campus far larger than modelled, no balconies or red-cross board."
+ }
+}

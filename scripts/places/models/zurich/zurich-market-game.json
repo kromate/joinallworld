@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:T%C3%B6ss_Einkaufszentrum_1971.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ETH-Bibliothek Zuerich, Bildarchiv / Kurt Schollenberger",
+   "view": "front",
+   "used": "raw board-marked concrete 2-storey podium with deep roof slab on square piers, 14-storey slab tower with staggered projecting balconies on its long side, slim hotel block behind, plaza steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:T%C3%B6ss_Zentrum.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paebi",
+   "view": "street",
+   "used": "tower and terraced hotel wing colours (pale grey render and concrete), ground-floor shop band, flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/35203442",
+   "used": "diagonal podium footprint (name match, 4722 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop-band",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -47
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a4d4f",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#3d4a50"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-slab",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -47
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b4b0a6",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a95",
+    "material": "concrete",
+    "overhang": 4.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -36,
+    -12
+   ],
+   "z0": 7.7,
+   "height": 42,
+   "storeys": 14,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb9ae",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "depth": 1.7,
+      "width": 2.6,
+      "every": 5,
+      "slab": 0.35,
+      "railKind": "solid",
+      "colour": "#a8a49a",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-wing",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    6
+   ],
+   "z0": 7.7,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c2",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#a9a399"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-deck",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -28,
+    2
+   ],
+   "z0": 7.7,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9a59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a95",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -31,
+    3.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e9e6de",
+    "frameColour": "#8e8b83",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "rise": 3.5,
+    "run": 1.2,
+    "count": 14,
+    "colour": "#a9a59b"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -30.5,
+     0
+    ],
+    "end": [
+     14,
+     -30.5,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 7.7,
+      "colour": "#aaa69c",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     33,
+     -20,
+     0
+    ],
+    "end": [
+     55,
+     -20,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 7.7,
+      "colour": "#aaa69c",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     14,
+     1.8
+    ],
+    "height": 0.7,
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "at": [
+    -34,
+    -37,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     16,
+     1.8
+    ],
+    "height": 1.1,
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "at": [
+    -14,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     12,
+     1.8
+    ],
+    "height": 0.6,
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "at": [
+    6,
+    -36,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     10,
+     1.8
+    ],
+    "height": 1.4,
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "at": [
+    -24,
+    -44,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     12,
+     1.8
+    ],
+    "height": 0.9,
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "at": [
+    -2,
+    -46,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open piered front, cantilevered roof slab and 14-storey tower at front-left now present; OSM podium outline orientation approximate, balconies on two faces rather than staggered, no terraced fountain-planter detail beyond low blocks, hotel wing placement approximate."
+ }
+}

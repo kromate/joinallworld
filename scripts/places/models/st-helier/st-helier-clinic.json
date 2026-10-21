@@ -1,0 +1,265 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_jersey.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Danrok",
+   "view": "street",
+   "file": "/tmp/places-evidence/st-helier/st-helier-clinic-0.jpg",
+   "used": "red-brown brick walls, five storeys, flat roof, regular white-framed windows, glazed stair strip at the left corner, pale blank panels, louvred bays, ground plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/802048130",
+   "used": "footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     48,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a604c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.4,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#e8e6e0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7377",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-wing",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    10,
+    15
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a604c",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#e8e6e0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7377",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-strip",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.8
+    ]
+   },
+   "at": [
+    -24.2,
+    6.8
+   ],
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c0ca",
+    "windows": "none",
+    "trimColour": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-ground",
+   "footprint": {
+    "rect": [
+     9,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -8.6
+   ],
+   "height": 3,
+   "z0": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe9e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe9e3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-ground2",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    10,
+    -8.6
+   ],
+   "height": 3,
+   "z0": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe9e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe9e3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-up1",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -8.6
+   ],
+   "height": 4.4,
+   "z0": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe9e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe9e3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-up2",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -19,
+    -8.6
+   ],
+   "height": 4.4,
+   "z0": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe9e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe9e3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-left",
+   "footprint": {
+    "rect": [
+     0.5,
+     8
+    ]
+   },
+   "at": [
+    -24.2,
+    -0.5
+   ],
+   "height": 3,
+   "z0": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe9e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe9e3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "corner block now reads with glazed strip and pale panels; windows still wider-spaced than photo, no louvred bays, ground storey lacks the white window band, trees/road setting differ"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-clinic"
+}

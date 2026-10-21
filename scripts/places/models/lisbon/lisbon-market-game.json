@@ -1,0 +1,620 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Freeport_Alcochete_4.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Koshelyev",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/freeport.jpg",
+   "used": "white box mall with curved end behind a paved plaza, timber round pavilion with steel arch, cylindrical striped tower, water channel"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1453147005",
+   "used": "footprint of the main curved white hall (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "none",
+    "plinth": 0.5,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dadb",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway-block",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "rotDeg": 15,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "ribbon",
+    "windowRatio": 0.45
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-pavilion",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     28,
+     28
+    ]
+   },
+   "at": [
+    42,
+    -34
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6d4a2e",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8a6a45",
+    "material": "timber-shingle",
+    "rise": 3.2,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "steel-arch",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.6
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 22,
+     "startDeg": 0,
+     "endDeg": 75
+    },
+    "colour": "#2e2e30"
+   },
+   "at": [
+    30,
+    -35.4,
+    3
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "steel-arch-b",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.6
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 22,
+     "startDeg": 0,
+     "endDeg": 75
+    },
+    "colour": "#2e2e30"
+   },
+   "at": [
+    30,
+    -32.6,
+    3
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#f4f4f2"
+     ],
+     [
+      3.2,
+      9,
+      "#f4f4f2"
+     ],
+     [
+      3.2,
+      9.01,
+      "#8a6240"
+     ],
+     [
+      3.2,
+      20,
+      "#8a6240"
+     ],
+     [
+      3.2,
+      20.01,
+      "#f4f4f2"
+     ],
+     [
+      3.2,
+      34,
+      "#f4f4f2"
+     ],
+     [
+      0,
+      34,
+      "#f4f4f2"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "params": {
+    "points": [
+     [
+      -20,
+      -40
+     ],
+     [
+      60,
+      -40
+     ],
+     [
+      60,
+      -46
+     ],
+     [
+      -20,
+      -46
+     ]
+    ],
+    "z0": 0.05,
+    "height": 0.1,
+    "colour": "#3f9fb0",
+    "topColour": "#4fb0c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-left",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -56,
+    -6
+   ],
+   "rotDeg": 10,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-left-round",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -44,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     34,
+     1.2
+    ]
+   },
+   "at": [
+    8,
+    -24.5
+   ],
+   "height": 5,
+   "z0": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4f86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "boardwalk",
+   "params": {
+    "points": [
+     [
+      -20,
+      -32
+     ],
+     [
+      34,
+      -32
+     ],
+     [
+      34,
+      -40
+     ],
+     [
+      -20,
+      -40
+     ]
+    ],
+    "z0": 0.02,
+    "height": 0.25,
+    "colour": "#8a6a4a",
+    "topColour": "#9a7a56"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-rail",
+   "params": {
+    "points": [
+     [
+      -20,
+      -46
+     ],
+     [
+      60,
+      -46
+     ],
+     [
+      60,
+      -45.7
+     ],
+     [
+      -20,
+      -45.7
+     ]
+    ],
+    "z0": 0.1,
+    "height": 1.1,
+    "colour": "#9fc9d0",
+    "topColour": "#b8d8de"
+   }
+  },
+  {
+   "type": "array",
+   "id": "planters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -1,
+        -1
+       ],
+       [
+        1,
+        -1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        -1,
+        1
+       ]
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#7a5638",
+      "topColour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     -30,
+     0
+    ],
+    "end": [
+     26,
+     -30,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "roof-fins",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.35,
+        -0.35
+       ],
+       [
+        0.35,
+        -0.35
+       ],
+       [
+        0.35,
+        0.35
+       ],
+       [
+        -0.35,
+        0.35
+       ]
+      ],
+      "z0": 6,
+      "height": 6,
+      "colour": "#b8894e",
+      "topColour": "#b8894e"
+     }
+    },
+    "mode": "arc",
+    "count": 14,
+    "centre": [
+     42,
+     -34,
+     0
+    ],
+    "radius": 11,
+    "facing": "outward"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "arch-braces",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.3,
+        -1.6
+       ],
+       [
+        0.3,
+        -1.6
+       ],
+       [
+        0.3,
+        1.6
+       ],
+       [
+        -0.3,
+        1.6
+       ]
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#2e2e30",
+      "topColour": "#2e2e30"
+     }
+    },
+    "mode": "arc",
+    "count": 8,
+    "centre": [
+     30,
+     -34,
+     3
+    ],
+    "radius": 22,
+    "facing": "outward"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "hall-colonnade",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.4,
+        -0.4
+       ],
+       [
+        0.4,
+        -0.4
+       ],
+       [
+        0.4,
+        0.4
+       ],
+       [
+        -0.4,
+        0.4
+       ]
+      ],
+      "z0": 0,
+      "height": 5.5,
+      "colour": "#f4f4f2",
+      "topColour": "#f4f4f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4,
+     -26,
+     0
+    ],
+    "end": [
+     28,
+     -26,
+     0
+    ],
+    "count": 9
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     2,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arch is a double solid arc with braces, not a true lattice; pavilion roof still pyramidal with plain posts for sails; hall front has only column row, no sign text or palm colonnade; far shops simplified"
+ }
+}

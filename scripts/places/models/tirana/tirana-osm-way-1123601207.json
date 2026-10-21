@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-1123601207",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/476441788",
+   "used": "real outline of the Universiteti i Sporteve building (55 x 11 m, bearing 26 deg), taken as the main teaching block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1123601207",
+   "used": "campus area 10,382 m2: sizes the low gymnasium hall and forecourt beside the block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#8b8f8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gym-hall",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    -30
+   ],
+   "rotDeg": 26,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.4,
+    "bands": "#8b8f8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "rotDeg": 26,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db3bd",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eeeae0",
+    "material": "concrete",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    38,
+    -40,
+    0
+   ],
+   "rotDeg": 26,
+   "params": {
+    "length": 50,
+    "width": 30,
+    "stripes": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    18,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -8,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     32
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists (nearby street photos show other blocks); form follows the real small OSM outline and the brief text; facade details and the sports hall are assumed."
+ }
+}

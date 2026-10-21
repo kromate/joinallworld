@@ -1,0 +1,265 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Pokrovsky_Park_4.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Александр Гурешов",
+   "view": "front",
+   "file": "/tmp/places-evidence/moscow/pk1.jpg",
+   "used": "wrought-iron entrance arch with side fences, brick-paved path into a meadow, birch/maple trees, small red-roofed chapel across the grass; this photographs the containing Pokrovsky Park, not an object at the node, so it is not claimed as a match"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2369059",
+   "used": "context only: containing park, 207,000 m2, too large to model"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    -8.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 6,
+    "colour": "#1c1c1e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.5,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 6,
+    "colour": "#1c1c1e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -12,
+    2.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 8.5,
+     "radiusY": 6.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -12,
+    4.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 7.5,
+     "radiusY": 4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     7,
+     40
+    ],
+    "height": 0.1,
+    "colour": "#9d8a84",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -26,
+    38,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 16,
+    "shape": "oval",
+    "colour": "#6b8fa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    24,
+    46
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5503c",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     56
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     62
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is of the containing Pokrovsky Park gate, not the node; arch simplified without scrollwork, camera framing small, verified kept as text."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-node-4862008461"
+}

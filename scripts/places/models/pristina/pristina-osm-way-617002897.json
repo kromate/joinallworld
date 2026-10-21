@@ -1,0 +1,681 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Prishtina_Bear_Sanctuary_entrance_(OSCAL19_trip).jpg",
+   "licence": "CC0",
+   "author": "albinfo",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/pristina/osm-way-6170_0.jpg",
+   "used": "visitor building: white upper storey with black vertical fins over a timber-slat band, overhang on steel posts, glazed cafe pavilion with striped white roof, forested slope behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bear_Sanctury_Prishtina_overview_(OSCAL19_trip).jpg",
+   "licence": "CC0",
+   "author": "albinfo",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/pristina/osm-way-6170_5.jpg",
+   "used": "wooded hillside enclosure with perimeter mesh fence, small red-roofed outbuilding and green-roofed hide"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/617002897",
+   "used": "570 m enclosure: too big for the scene, only the entrance/visitor area at its edge is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Hillside is stepped blocks with generic trees; timber entrance and deck approximate; roof stripes are blocks; no mural or sign detail."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     38,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.25,
+      "depth": 0.3,
+      "spacing": 0.9,
+      "colour": "#25262a",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 0.25,
+      "depth": 0.3,
+      "spacing": 0.9,
+      "colour": "#25262a",
+      "faces": [
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slat-band",
+   "footprint": {
+    "rect": [
+     38,
+     10.4
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a0724a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6240"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    11,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f6340",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5638",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-rail",
+   "footprint": {
+    "rect": [
+     13,
+     0.5
+    ]
+   },
+   "at": [
+    11,
+    -3.4
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b08050",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08050"
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "colour": "#202225",
+      "topColour": "#202225"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -21,
+     -2.5,
+     0
+    ],
+    "end": [
+     -9,
+     -2.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    20,
+    -4.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26292d",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e6",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    -6,
+    -3.2,
+    5.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#5a3d28",
+    "frameColour": "#5a3d28",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    7,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "kind": "fence",
+    "colour": "#4a5a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hide",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -28,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7a6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2f7a6a",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess",
+   "at": [
+    11,
+    -3.1
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#f1f1ee",
+    "topColour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-glass",
+   "at": [
+    11,
+    -3.35
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#31404a",
+    "topColour": "#31404a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cafe-roof-base",
+   "at": [
+    20,
+    -4.5
+   ],
+   "params": {
+    "rect": [
+     16.6,
+     9.6
+    ],
+    "z0": 3.6,
+    "height": 0.5,
+    "colour": "#2a2c30",
+    "topColour": "#2a2c30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cafe-stripes",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "s",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       9.8
+      ],
+      "z0": 4.1,
+      "height": 0.35,
+      "colour": "#f4f4f1",
+      "topColour": "#f4f4f1"
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     12.6,
+     -4.5,
+     0
+    ],
+    "end": [
+     27.4,
+     -4.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cafe-ridge",
+   "at": [
+    20,
+    -4.5
+   ],
+   "params": {
+    "rect": [
+     15,
+     5
+    ],
+    "z0": 4.1,
+    "height": 0.7,
+    "colour": "#e9e9e6",
+    "topColour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope0",
+   "at": [
+    0,
+    16
+   ],
+   "params": {
+    "rect": [
+     110,
+     8
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#4f7a3c",
+    "topColour": "#3f6a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "slopetrees0",
+   "at": [
+    -48,
+    16,
+    4
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     96,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope1",
+   "at": [
+    0,
+    24
+   ],
+   "params": {
+    "rect": [
+     110,
+     8
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#4f7a3c",
+    "topColour": "#3f6a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "slopetrees1",
+   "at": [
+    -48,
+    24,
+    8
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 10,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     96,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope2",
+   "at": [
+    0,
+    32
+   ],
+   "params": {
+    "rect": [
+     110,
+     8
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#4f7a3c",
+    "topColour": "#3f6a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "slopetrees2",
+   "at": [
+    -48,
+    32,
+    13
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 10,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     96,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope3",
+   "at": [
+    0,
+    40
+   ],
+   "params": {
+    "rect": [
+     110,
+     8
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#4f7a3c",
+    "topColour": "#3f6a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "slopetrees3",
+   "at": [
+    -48,
+    40,
+    19
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 10,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     96,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    11,
+    -6
+   ],
+   "params": {
+    "rect": [
+     11,
+     3
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#a9784c",
+    "topColour": "#b8895a",
+    "material": "timber"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -8
+    ],
+    "height": 4
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -8
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ],
+    "height": 6
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-way-617002897"
+}

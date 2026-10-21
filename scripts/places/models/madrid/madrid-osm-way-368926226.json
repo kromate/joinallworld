@@ -1,0 +1,736 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UPM-FI--Bloque-5.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Santiago Uruena Pascual",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/etsi1.jpg",
+   "used": "Bloque 5 front: pale travertine-coloured cladding, small square dark windows in rows, projecting bronze-glazed entrance bay with glass pyramid skylight above, stepped wings, cypress trees, gravel forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UPM-FI--01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Santiago Uruena Pascual",
+   "view": "aerial",
+   "used": "cluster massing, glass pyramids on the roof, pine and holm oak setting"
+  },
+  {
+   "kind": "wikidata",
+   "used": "Q5854950 school, inception 1976; the OSM outline is a 290 m campus so one block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    4,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     84,
+     60
+    ],
+    "height": 0.15,
+    "colour": "#a39b88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -24,
+    8
+   ],
+   "rotDeg": -16,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dac7",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "punched"
+    },
+    "plinth": 0.3,
+    "glassColour": "#2a2f35",
+    "cornice": false,
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dac7",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "glassColour": "#2a2f35",
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dac7",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a6a2f",
+    "glassColour": "#6e5424",
+    "windows": "curtain",
+    "windowRatio": 0.72,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b9",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skylight-plinth",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skylight",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 16.2,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb0b6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#aab7bd",
+    "material": "glass",
+    "rise": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dac7",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7.5,
+    "glassColour": "#2a2f35"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.0,
+    "run": 1.2,
+    "count": 4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     1.6
+    ],
+    "height": 1.3,
+    "colour": "#3f5f30",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -34,
+    -15,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 3.6,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 4.5,
+      "circle": 2.5200000000000005
+     },
+     {
+      "z": 6.75,
+      "circle": 3.06
+     },
+     {
+      "z": 8.549999999999999,
+      "circle": 1.08
+     },
+     {
+      "z": 9,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    -21,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 2.4000000000000004,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 3.0,
+      "circle": 1.6800000000000002
+     },
+     {
+      "z": 4.5,
+      "circle": 2.04
+     },
+     {
+      "z": 5.699999999999999,
+      "circle": 0.72
+     },
+     {
+      "z": 6,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    -17,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 4.0,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 5.0,
+      "circle": 2.8000000000000003
+     },
+     {
+      "z": 7.5,
+      "circle": 3.4000000000000004
+     },
+     {
+      "z": 9.5,
+      "circle": 1.2
+     },
+     {
+      "z": 10,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    -14,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 3.2,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 4.0,
+      "circle": 2.24
+     },
+     {
+      "z": 6.0,
+      "circle": 2.72
+     },
+     {
+      "z": 7.6,
+      "circle": 0.96
+     },
+     {
+      "z": 8,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10,
+    22,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 5.6000000000000005,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 7.0,
+      "circle": 3.9200000000000004
+     },
+     {
+      "z": 10.5,
+      "circle": 4.760000000000001
+     },
+     {
+      "z": 13.299999999999999,
+      "circle": 1.68
+     },
+     {
+      "z": 14,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 5.2,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 6.5,
+      "circle": 3.6400000000000006
+     },
+     {
+      "z": 9.75,
+      "circle": 4.42
+     },
+     {
+      "z": 12.35,
+      "circle": 1.56
+     },
+     {
+      "z": 13,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -44,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 4.4,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 5.5,
+      "circle": 3.08
+     },
+     {
+      "z": 8.25,
+      "circle": 3.74
+     },
+     {
+      "z": 10.45,
+      "circle": 1.3199999999999998
+     },
+     {
+      "z": 11,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    46,
+    2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 0.35,
+      "colour": "#5b4636"
+     },
+     {
+      "z": 6.0,
+      "circle": 3.3600000000000003
+     },
+     {
+      "z": 9.0,
+      "circle": 4.08
+     },
+     {
+      "z": 11.399999999999999,
+      "circle": 1.44
+     },
+     {
+      "z": 12,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a2a",
+    "round": 7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -10,
+    -11,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       0.4,
+       0.4
+      ]
+     }
+    ],
+    "colour": "#243f27",
+    "round": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   84,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "cream cladding, angled stepped wings, bronze entrance strip, flat glass pyramid, gravel forecourt, dark pines and hedge applied; panel-joint texture, wall depth variation and dense shrub masses missing, trees are lollipop-shaped"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-368926226"
+}

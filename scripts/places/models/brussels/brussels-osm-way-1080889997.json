@@ -1,0 +1,600 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-1080889997",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kasteel_Groenenberg_te_Vlezenbeek_-_371604_-_onroerenderfgoed.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Vandevorst, Kris",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/bru-groen1.jpg",
+   "used": "historic photo of the c.1890 castle at the park edge: brick with pale stone banding, tall round tower with a pointed slate cone at the left, a smaller round tower at the right, central stepped gable with dormers, steep slate roofs, grass slope in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1080889997",
+   "used": "park area only (1.05 km x 0.92 km); a lawn corner with the castle is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     25,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#80482f",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "plinth": 1.0,
+    "trimColour": "#cfc6b0",
+    "bands": "#cfc6b0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#43484f",
+    "material": "slate",
+    "pitch": 62,
+    "overhang": 0.25,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-bay",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    1,
+    -6.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#80482f",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "trimColour": "#cfc6b0",
+    "bands": "#cfc6b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#43484f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gstep0",
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.0,
+     3.0
+    ],
+    "z0": 11.5,
+    "height": 1.3,
+    "colour": "#80482f",
+    "topColour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gstep1",
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     3.0
+    ],
+    "z0": 12.8,
+    "height": 1.3,
+    "colour": "#80482f",
+    "topColour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gstep2",
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     3.0
+    ],
+    "z0": 14.1,
+    "height": 1.3,
+    "colour": "#80482f",
+    "topColour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gstep3",
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.0
+    ],
+    "z0": 15.4,
+    "height": 1.3,
+    "colour": "#80482f",
+    "topColour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gstep4",
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     3.0
+    ],
+    "z0": 16.7,
+    "height": 1.3,
+    "colour": "#80482f",
+    "topColour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-fin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 18,
+    "height": 1.8,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-roof",
+   "at": [
+    1,
+    -5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     5.0
+    ],
+    "z0": 11.5,
+    "height": 3.0,
+    "colour": "#43484f",
+    "topScale": [
+     0.2,
+     0.2
+    ],
+    "topOffset": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-left",
+   "at": [
+    -10.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#80482f",
+    "profile": [
+     [
+      2.4,
+      0,
+      "#8e8a80"
+     ],
+     [
+      2.4,
+      1.2
+     ],
+     [
+      2.48,
+      1.2,
+      "#80482f"
+     ],
+     [
+      2.48,
+      17
+     ],
+     [
+      3.12,
+      16.4,
+      "#7a4331"
+     ],
+     [
+      3.12,
+      17.6,
+      "#cfc6b0"
+     ],
+     [
+      2.8,
+      17.6,
+      "#43484f"
+     ],
+     [
+      0.0,
+      25.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-right",
+   "at": [
+    10.5,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#80482f",
+    "profile": [
+     [
+      1.92,
+      0,
+      "#8e8a80"
+     ],
+     [
+      1.92,
+      1.2
+     ],
+     [
+      2.0,
+      1.2,
+      "#80482f"
+     ],
+     [
+      2.0,
+      13.5
+     ],
+     [
+      2.64,
+      12.9,
+      "#7a4331"
+     ],
+     [
+      2.64,
+      14.1,
+      "#cfc6b0"
+     ],
+     [
+      2.32,
+      14.1,
+      "#43484f"
+     ],
+     [
+      0.0,
+      22.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "finial-left",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 25.5,
+    "height": 3.0,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "finial-right",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10.5,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 20.5,
+    "height": 2.5,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "z0": 11.2,
+      "height": 2.2,
+      "colour": "#80482f",
+      "topColour": "#43484f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9,
+     -3.8
+    ],
+    "end": [
+     -4,
+     -3.8
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers-r",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "z0": 11.2,
+      "height": 2.2,
+      "colour": "#80482f",
+      "topColour": "#43484f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     6.5,
+     -3.8
+    ],
+    "end": [
+     9.5,
+     -3.8
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "id": "chimneys",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 14,
+      "height": 5.5,
+      "colour": "#80482f",
+      "topColour": "#cfc6b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     0.5
+    ],
+    "end": [
+     8,
+     1.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "portico",
+   "id": "porch",
+   "at": [
+    -2,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.0,
+    "height": 2.8,
+    "columns": 2,
+    "pediment": true,
+    "steps": 2,
+    "colour": "#cfc6b0",
+    "roofColour": "#43484f"
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "pond",
+   "at": [
+    -50,
+    48,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 22,
+    "shape": "oval",
+    "colour": "#566b5e",
+    "bank": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "wood-left",
+   "at": [
+    -52,
+    6
+   ],
+   "params": {
+    "width": 30,
+    "depth": 34,
+    "count": 14,
+    "min_height": 9,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "wood-right",
+   "at": [
+    54,
+    10
+   ],
+   "params": {
+    "width": 30,
+    "depth": 34,
+    "count": 14,
+    "min_height": 9,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "wood-back",
+   "at": [
+    0,
+    50
+   ],
+   "params": {
+    "width": 120,
+    "depth": 14,
+    "count": 16,
+    "min_height": 10,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -28
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -34
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     28
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is a steep gable plus stepped bay not the fully broken multi-ridge roof, left tower is round from the ground not square-to-round, dormers and chimneys simple, brick tone inferred from a sepia print, park is lawn/pond/woods only"
+ }
+}

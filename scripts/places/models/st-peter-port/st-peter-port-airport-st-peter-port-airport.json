@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-airport-st-peter-port-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GuernseyInternationalAirportApron.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "User:Madmedea",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/airport-apron.jpg",
+   "used": "airside elevation: long two-storey glazed terminal with cream render end blocks, thin dark flat-curved roof edge, lower glazed wings left and right, dark roof over a ground-floor arcade"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guernsey_Airport_Terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wdollivier",
+   "view": "detail",
+   "used": "sweeping oval canopy roof on slender steel V-struts, silver louvres over glazing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/454667705",
+   "used": "overall size (116 x 55 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     62,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#e0d4b6"
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#3c444c",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 2.5,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-end",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d4b6",
+    "windows": "none",
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c444c",
+    "overhang": 1.5,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    45,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#3c444c",
+    "material": "metal-sheet",
+    "rise": 1.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -54,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#3c444c",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    12,
+    -26,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f1f3f4",
+    "tailColour": "#e8b923"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -18,
+    20,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#e8e6df",
+    "shaftRadius": 2,
+    "cabRadius": 3.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "swept oval roof edge and V-struts simplified; generic airliner stand-in (not ATR); arcade ground floor not recessed; photo is oblique, render frontal"
+ }
+}

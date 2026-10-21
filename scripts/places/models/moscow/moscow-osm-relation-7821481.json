@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-relation-7821481",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%82%D0%B0%D0%B4%D0%B8%D0%BE%D0%BD_%22%D0%97%D0%BE%D1%80%D0%BA%D0%B8%D0%B9%22-1_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "karel291",
+   "view": "side",
+   "file": "/tmp/places-evidence/moscow/p0_0.jpg",
+   "used": "single long main stand with dark navy roof, yellow/blue seat blocks, red running track, green pitch, lattice floodlight mast, pine backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zorky_Stadium_2013-08_1377784470.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Artyom Svetlov",
+   "view": "street",
+   "file": "/tmp/places-evidence/moscow/p0_1.jpg",
+   "used": "entrance pavilion: flat grey roof with green fascia on square piers, blue benches, birch trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7821481",
+   "used": "name match; overall sports-complex extent only (stadium itself modelled at real-stand scale)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 9,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "width": 68,
+    "colour": "#b5523f"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     54,
+     42
+    ],
+    "end": [
+     -54,
+     42
+    ],
+    "rows": 18,
+    "rise": 0.7,
+    "run": 0.85,
+    "seatColours": [
+     "#d9b43a",
+     "#2f5c93"
+    ],
+    "blocks": 10,
+    "canopy": {
+     "height": 15,
+     "depth": 18,
+     "colour": "#1b2640",
+     "slopeDeg": 3,
+     "supports": 11
+    },
+    "backWall": 1.0,
+    "under": "solid",
+    "concreteColour": "#a9a8a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "press-box",
+   "at": [
+    0,
+    41.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 0.5,
+    "height": 4,
+    "colour": "#e8e6df",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-front",
+   "at": [
+    0,
+    -42
+   ],
+   "params": {
+    "length": 130,
+    "height": 2.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 6,
+    "colour": "#7b8086"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-piers",
+   "at": [
+    -72,
+    -52
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#9aa49a",
+    "windows": "none",
+    "topColour": "#8a9099"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-roof",
+   "at": [
+    -72,
+    -52
+   ],
+   "params": {
+    "rect": [
+     18,
+     8
+    ],
+    "z0": 3.6,
+    "height": 0.7,
+    "colour": "#3f7a62",
+    "topColour": "#c9ccce"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -80,
+     84
+    ],
+    "end": [
+     80,
+     84
+    ],
+    "count": 24,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 21,
+      "spread": 5
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    43.5
+   ],
+   "params": {
+    "rect": [
+     108,
+     1.4
+    ],
+    "z0": 14.0,
+    "height": 2.4,
+    "colour": "#1b2640",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    46
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 4,
+  "treeKind": "conifer",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "canopy still thinner than photo; seat lettering only as colour blocks; trees overlap canopy from this camera"
+ }
+}

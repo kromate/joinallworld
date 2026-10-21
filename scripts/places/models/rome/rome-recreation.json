@@ -1,0 +1,594 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roma_EUR_Laghetto_vista_dal_basso.jpg",
+   "licence": "CC BY-SA 3.0 it",
+   "author": "Blackcat",
+   "view": "front",
+   "used": "view across the EUR lake: open water, lawn and cypress/pine bank on the left, dark brown stepped tower left of centre, blue-green glass slab right, rock-lined bank and pontoon in the right foreground, low bridge behind",
+   "file": "/tmp/places-evidence/rome/lago1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LAGOEUR10082021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "it:indeciso42",
+   "view": "aerial",
+   "used": "terraced lawn gardens along the left bank, pine trees, glass slab with gridded facade, road bridge",
+   "file": "/tmp/places-evidence/rome/lago2.jpg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: EUR lake park, plane trees, 1930s EUR context. The OSM relation is 1 km across and too large; the model shows the lake basin and its facing bank only."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "id": "lake",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 230,
+    "depth": 170,
+    "shape": "oval",
+    "colour": "#2f5f8f",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "lake-bay",
+   "at": [
+    -100,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 90,
+    "shape": "oval",
+    "colour": "#2f5f8f",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-slab",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    58,
+    95
+   ],
+   "height": 44,
+   "storeys": 12,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4fa9a5",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#4fa9a5",
+       "#6dbdb8",
+       "#3f8f8b"
+      ],
+      "cell": [
+       3.5,
+       3.4
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bec0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-tower",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    100
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#4a3a36",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4a3a36",
+       "#2f2626"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c3433",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dark-tower-set1",
+   "at": [
+    -26,
+    100,
+    28
+   ],
+   "params": {
+    "rect": [
+     20,
+     14
+    ],
+    "height": 8,
+    "colour": "#4a3a36",
+    "topColour": "#3c3433"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dark-tower-set2",
+   "at": [
+    -26,
+    100,
+    36
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "height": 6,
+    "colour": "#3a2f2c",
+    "topColour": "#3c3433"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-tower-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    102
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#5a4a44",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#5a4a44",
+       "#3a2f2c"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c3433",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pale-block",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -52,
+    78
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d9c2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4ccb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-block",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    8,
+    112
+   ],
+   "height": 30,
+   "storeys": 9,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d2c2",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9d2c2",
+       "#b8b1a0"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "promenade",
+   "footprint": {
+    "rect": [
+     118,
+     16
+    ]
+   },
+   "at": [
+    0,
+    80
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c2a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     50,
+     5
+    ]
+   },
+   "at": [
+    60,
+    72
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b7b3a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rock-bank",
+   "at": [
+    96,
+    -45,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 70,
+    "height": 3.5,
+    "thickness": 5,
+    "colour": "#7a7462"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -59.5,
+    70,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 10,
+    "spread": 8,
+    "line": 8
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52.699999999999996,
+    66,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 10,
+    "spread": 8,
+    "line": 8
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45.9,
+    72,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 10,
+    "spread": 8,
+    "line": 8
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25.5,
+    76,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 6,
+    "line": 6
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.8,
+    72,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 1,
+    "spread": 6,
+    "line": 6
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11.9,
+    76,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 1,
+    "spread": 6,
+    "line": 6
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28.9,
+    74,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "spread": 6,
+    "line": 6
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45.9,
+    72,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 1,
+    "spread": 6,
+    "line": 6
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "lawn0",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -60,
+    62
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn1",
+   "footprint": {
+    "rect": [
+     50,
+     8
+    ]
+   },
+   "at": [
+    -10,
+    64
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn2",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    40,
+    62
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lake now fills foreground with deep blue water, dark stepped tower behind conifer bank, teal gridded slab right; rock bank sits off-frame, shoreline mostly oval, no ducks, far bridge only a low slab"
+ }
+}

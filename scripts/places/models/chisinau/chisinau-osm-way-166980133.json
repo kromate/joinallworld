@@ -1,0 +1,353 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-166980133",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biserica_%E2%80%9EBuna_Vestire%E2%80%9D_din_Chi%C8%99in%C4%83u._Intrarea_%C3%AEn_biseric%C4%83.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TotalAnarchy",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/bv1.jpg",
+   "used": "west front: peach-beige porch with big white arched frame and green scalloped edge, black arched double door, white pilasters and denticulated cornice, white belfry tower rising behind with a gold cross, green metal roof edges, downpipes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166980133",
+   "used": "22 x 12 m nave rectangle and its bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -69,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece7da",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "glassColour": "#3b4a52",
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d8a5a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    -8.2,
+    -3.2
+   ],
+   "rotDeg": 21,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "glassColour": "#3b4a52",
+    "cornice": true,
+    "bands": "#d9cfb4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d8a5a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7.6,
+     3.4
+    ]
+   },
+   "at": [
+    -12.6,
+    -4.5
+   ],
+   "rotDeg": 21,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcba96",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d8a5a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-door",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14.3,
+    -5.1
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     0.2,
+     2.2
+    ],
+    "z0": 0.3,
+    "height": 3.4,
+    "colour": "#14110f",
+    "topColour": "#14110f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    -15.2,
+    -5.6
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     1.6,
+     4.0
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#b9b3a4",
+    "topColour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cross-tower",
+   "at": [
+    -8.2,
+    -3.2,
+    14.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      2.0
+     ],
+     [
+      0.5,
+      2.0
+     ],
+     [
+      0.5,
+      2.3
+     ],
+     [
+      0.15,
+      2.3
+     ],
+     [
+      0.15,
+      2.8
+     ],
+     [
+      0,
+      2.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-outer",
+   "at": [
+    -14.45,
+    -5.1,
+    2.4
+   ],
+   "rotDeg": 21,
+   "params": {
+    "section": {
+     "circle": 0.2
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 2.5,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "yz"
+    },
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-inner",
+   "at": [
+    -14.5,
+    -5.1,
+    0.3
+   ],
+   "rotDeg": 21,
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      2.0
+     ],
+     "radius": 1.5,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "yz"
+    },
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-l",
+   "at": [
+    -14.4,
+    -7.4
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     0.4,
+     0.7
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-r",
+   "at": [
+    -14.4,
+    -2.8
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     0.4,
+     0.7
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-cap-l",
+   "at": [
+    -14.5,
+    -7.4
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     0.7,
+     1.0
+    ],
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#f4f1e8",
+    "topColour": "#4d8a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-cap-r",
+   "at": [
+    -14.5,
+    -2.8
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     0.7,
+     1.0
+    ],
+    "z0": 4.4,
+    "height": 0.4,
+    "colour": "#f4f1e8",
+    "topColour": "#4d8a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "porch is a gabled peach block with arch rings and pilasters but the large white scalloped arch frame, denticulated cornice and black arched door are only approximated; photo is a close crop so render shows the whole church; nave dome dropped"
+ }
+}

@@ -1,0 +1,759 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:M%C3%B3stoles_-_Universidad_Rey_Juan_Carlos_(URJC)_09.jpg",
+   "licence": "CC0",
+   "author": "Zarateman / Wikimedia Commons",
+   "view": "side",
+   "file": "/tmp/places-evidence/madrid/urjc6.jpg",
+   "used": "long four-storey orange-red brick teaching block with small dark punched windows in sparse rows, thin white string courses, grey plinth, avenue of tall poplars along a paved path (file recorded as the URJC Mostoles campus photo from the evidence list)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2962284",
+   "used": "campus is about 1 km across, so only one teaching block is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "rect": [
+     118,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#bf5f40",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 1.4,
+    "bands": "#ece6dc",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     5
+    ],
+    "height": 0.12,
+    "colour": "#a9a8a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -54,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -42,
+    -16.5,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    -16.5,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    6,
+    -16.5,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    18,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    -16.5,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    42,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    54,
+    -16.5,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 13.0,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 18.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 20,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 12.35,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 17.1,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 19,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    36,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#b4c47e",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 6,
+      "circle": 0.25,
+      "colour": "#e4e0d4"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       1.0,
+       1.0
+      ],
+      "colour": "#a8bc70"
+     },
+     {
+      "z": 12.35,
+      "ellipse": [
+       1.5,
+       1.5
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 17.1,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "colour": "#b4c47e"
+     },
+     {
+      "z": 19,
+      "circle": 0.1,
+      "colour": "#b4c47e"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "block 118 m (clamp); poplars are lofted spindles with green crowns, not bare pale-trunk trees; camera cannot reproduce the receding path view; window slots plain; grass strips only the site ground"
+ }
+}

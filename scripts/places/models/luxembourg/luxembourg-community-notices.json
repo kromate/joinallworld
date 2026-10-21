@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/937113397",
+   "used": "real rhombus outline (44 x 17 m), 8 levels and 27 m height tags; matched by containing the venue point, no name"
+  },
+  {
+   "kind": "text",
+   "used": "brief: government survey and land-registry office, render with glazed accent, flags and a car park; no photo exists, so facade colours are the brief's"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd8cc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#5f6f7c",
+    "bands": "#b9b5aa",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -17
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "rotDeg": 42,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f7c88",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#7f98a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555b61",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#3d5a6b",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c63b32",
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#7d8a95",
+    "count": 5,
+    "spacing": 2.8,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; facade colours from brief, outline and 27 m height from OSM tags."
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: paved city square 60x50 with trees, central lawn and a fountain; nearby Commons photos show only street frontage and plaques of adjacent apartment blocks, so they were not used. A 6-storey apartment block fronts one side per OSM (nearest 26 m)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apartments",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#d8cdb5",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 4.5,
+    "plinth": 0.8,
+    "bands": "#b8aa8c",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7f80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -27,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 2,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence of the real layout"
+ }
+}

@@ -1,0 +1,313 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-26426519",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:State_University_of_Moldova_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TotalAnarchy",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/usm1.jpg",
+   "used": "four-storey block whose facade is a gold-brown lattice screen over grey storeys, flat grey roofline, white cylindrical stair tower, low entrance block with ochre canopy, green roof and glass terrace, steps and paved forecourt, two flagpoles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universitatea_de_Stat_din_Moldova.jpg",
+   "licence": "Public domain",
+   "author": "Giku",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/usm2.jpg",
+   "used": "entrance canopy shape, lattice rhythm, grey stone-clad upper band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/68031789",
+   "used": "65 x 19 m main block outline and bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d7f7c",
+    "windows": "none",
+    "glassColour": "#3a3d3c",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8b8d88",
+       "#8b8d88",
+       "#8b8d88",
+       "#b4b2a8"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#b8a050",
+      "height": 0.55,
+      "proud": 0.15,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "colour": "#b8a050",
+      "width": 0.22,
+      "depth": 0.3,
+      "spacing": 1.7,
+      "margin": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9094",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    -10,
+    -16
+   ],
+   "params": {
+    "radius": 5.0,
+    "n": 24,
+    "z0": 0,
+    "height": 24,
+    "colour": "#f4f2ec",
+    "topColour": "#e6e3db"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     20,
+     7
+    ]
+   },
+   "at": [
+    10,
+    -11.5
+   ],
+   "rotDeg": 40,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f3a3a",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a40",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-board",
+   "at": [
+    10,
+    -14
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     22,
+     9
+    ],
+    "z0": 4.2,
+    "height": 1.6,
+    "colour": "#b8a050",
+    "topColour": "#3d6e5a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "logo-disc",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10.5,
+    -18.6,
+    5.0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "segments": 20,
+    "colour": "#3f8a3a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.0,
+      0
+     ],
+     [
+      2.0,
+      0.4
+     ],
+     [
+      0,
+      0.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    9,
+    -16.5
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6c716f",
+    "topColour": "#6c716f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-roof",
+   "at": [
+    -12,
+    -13
+   ],
+   "rotDeg": 40,
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 3.4,
+    "height": 0.4,
+    "colour": "#3d6e5a",
+    "topColour": "#3d6e5a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag1",
+   "params": {
+    "radius": 0.07,
+    "points": [
+     [
+      18,
+      -17,
+      0
+     ],
+     [
+      18,
+      -17,
+      9
+     ]
+    ],
+    "colour": "#2a8a4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag2",
+   "params": {
+    "radius": 0.07,
+    "points": [
+     [
+      20,
+      -18.5,
+      0
+     ],
+     [
+      20,
+      -18.5,
+      9
+     ]
+    ],
+    "colour": "#2a8a4a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "mode": "line",
+    "start": [
+     2,
+     -18,
+     0
+    ],
+    "end": [
+     18,
+     -18,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0,
+      "height": 4.4,
+      "colour": "#b8a050",
+      "topColour": "#b8a050"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 8,
+  "treeKind": "conifer",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gold lattice over grey storeys now reads, but is a regular grid not the photo's intricate square-frame pattern; stair tower is a plain white cylinder without glazed slit; entrance is a slab with dark box and disc, no steps/columns detail or terrace"
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/44164594",
+   "used": "real 21 x 13 m outline of the municipal office in the village (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33363a",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#9b9a95"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#2b2926"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    7,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 1.4,
+    "colours": [
+     "#2f5fa5",
+     "#ffffff",
+     "#c8372d"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building (nearby photo is a hotel); OSM outline with a typical white village office and dark gable roof."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-community-voting-game"
+}

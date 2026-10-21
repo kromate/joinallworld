@@ -1,0 +1,264 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vaarala_church_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Htm",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/vaarala.jpg",
+   "used": "low dark hip roof over a glazed white-mullioned front wall, tall narrow triangular glazed A-frame gable with pale grey edge frames, white picket fence, birch and pine behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/119591025",
+   "used": "overall size only (30.8 x 18.8 m chapel, 1960)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 0.63,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     17,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe8e0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 1.6,
+    "glassColour": "#3a4650",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b4045",
+    "material": "metal-sheet",
+    "rise": 3.4,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -2.0,
+    6.0
+   ],
+   "params": {
+    "colour": "#b4babe",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.4,
+       0.9
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       5.9,
+       0.9
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       4.4,
+       0.9
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       2.9,
+       0.9
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       1.4,
+       0.9
+      ]
+     },
+     {
+      "z": 14.2,
+      "rect": [
+       0.25,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -2.5,
+    6.1
+   ],
+   "params": {
+    "colour": "#26343d",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.3,
+       0.25
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       4.9,
+       0.25
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       3.4,
+       0.25
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       2.0,
+       0.25
+      ]
+     },
+     {
+      "z": 11.6,
+      "rect": [
+       0.4,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -2.55,
+    6.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.4,
+     0,
+     0
+    ],
+    "end": [
+     2.4,
+     0,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.1
+      ],
+      "height": 4.0,
+      "colour": "#d8dcde"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -9.0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.0,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mullion rhythm in the A-frame glazing is thinned, front fence is a plain rail, vegetation is generic, roof has no vents."
+ }
+}

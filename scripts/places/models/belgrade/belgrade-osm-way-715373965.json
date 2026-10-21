@@ -1,0 +1,511 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hotel_%22Avala%22_na_Avali.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Irvaas",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/avala1.jpg",
+   "used": "flat-roofed cream render blocks with two taller square towers, narrow shuttered windows, round-arched open terrace at left, grey stone retaining wall with steps, conifers behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A5%D0%BE%D1%82%D0%B5%D0%BB_%D0%90%D0%B2%D0%B0%D0%BB%D0%B0_%D0%BC%D0%B0%D1%80%D1%82_2013-1.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Mihailo Jovanovic",
+   "view": "side",
+   "file": "/tmp/places-evidence/belgrade/avala2.jpg",
+   "used": "side massing: tall cubic block rising behind the arcaded terrace, flat roofs, mast on roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/715373965",
+   "used": "plan size 23 x 20 m, 3 levels, 1928"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base-wall",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    -2,
+    -13.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8578",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8578"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     23,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": "#d2c6a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b3",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    -6.5,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 9.1,
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9dec4",
+    "windows": "punched",
+    "windowRatio": 0.035,
+    "cornice": true,
+    "bands": "#d2c6a6",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b3",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     8.5,
+     10
+    ]
+   },
+   "at": [
+    6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9.1,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9dec4",
+    "windows": "punched",
+    "windowRatio": 0.035,
+    "cornice": true,
+    "bands": "#d2c6a6",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b3",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -9.5,
+    2.6
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#d9d3c3",
+    "frameColour": "#8b6a4a",
+    "posts": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "antenna",
+   "at": [
+    7,
+    0,
+    15.6
+   ],
+   "params": {
+    "profile": [
+     [
+      0.25,
+      0,
+      "#8a8d90"
+     ],
+     [
+      0.12,
+      3,
+      "#8a8d90"
+     ],
+     [
+      0.05,
+      4,
+      "#8a8d90"
+     ]
+    ],
+    "segments": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 3,
+    "spread": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-roof",
+   "footprint": {
+    "rect": [
+     13,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 5.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe1c8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bc",
+    "parapet": 0.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "terrace-columns",
+   "at": [
+    0,
+    0,
+    2.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14.5,
+     -12.5,
+     0
+    ],
+    "end": [
+     -3.5,
+     -12.5,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.45
+      ],
+      "height": 3.0,
+      "colour": "#ebe1c8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-veranda",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 5.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9ab8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab8c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     4,
+     2.6
+    ]
+   },
+   "at": [
+    -12,
+    -13.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9689",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a496"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balustrade",
+   "footprint": {
+    "rect": [
+     34,
+     0.5
+    ]
+   },
+   "at": [
+    -2,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0ab9d",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ab9d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lion-plinth",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -17,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8a496",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a496"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lion",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.6
+    ]
+   },
+   "at": [
+    -17,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 3.8,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c2bdae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c2bdae"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 5,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    16
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "count": 7,
+    "spread": 16
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Moorish arches and real lion/steps are blocky stand-ins; retaining wall still hides ground floor; towers show more windows than the shuttered slots; conifers are light green low-poly"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-715373965"
+}

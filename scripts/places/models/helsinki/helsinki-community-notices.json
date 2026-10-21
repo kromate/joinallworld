@@ -1,0 +1,321 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terveyden_ja_hyvinvoinnin_laitos_2020-04-18.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Joneikifi",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/helsinki/2_0.jpg",
+   "used": "cluster of 3-4 storey cream and light-grey plastered blocks with ribbon windows, flat dark roofs, a green-copper roofed middle block, brick chimney stack"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1537107750",
+   "used": "overall extent (226 x 97 m) and the clustered blocks; the 60-vertex outline is too detailed so simplified blocks are placed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "l-block",
+   "footprint": {
+    "polygon": [
+     [
+      -50,
+      -30
+     ],
+     [
+      10,
+      -30
+     ],
+     [
+      10,
+      -16
+     ],
+     [
+      -34,
+      -16
+     ],
+     [
+      -34,
+      14
+     ],
+     [
+      -50,
+      14
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2cf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5e62",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-block",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    24,
+    -26
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 4.5,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5e62",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-tower",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    16
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c8c8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 4.5,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-roof-block",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    28,
+    12
+   ],
+   "rotDeg": -8,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bay": 4.5,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f9985",
+    "material": "copper",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 1.7,
+    "colour": "#8a5a44"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -80,
+      -52
+     ],
+     [
+      80,
+      -52
+     ]
+    ],
+    "width": 16,
+    "colour": "#6c6e70"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 160,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -40
+     ],
+     [
+      40,
+      -40
+     ]
+    ],
+    "width": 9,
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 16,
+    "count": 16,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 16,
+    "count": 16,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    52,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 16,
+    "count": 16,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes already in spec (varied heights, green copper roof, tram street with rails, conifer groves, chimney against L-block); remaining: ground reads as grey cobble not lawn/paving, no rooftop plant boxes, layout approximate."
+ }
+}

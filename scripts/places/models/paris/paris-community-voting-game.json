@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mairie_Noisy_Grand_24.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chabe01",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/mairie1.jpg",
+   "used": "red brick and stone-quoin hotel de ville: two slate mansard pavilions flanking a lower centre block, clock tower with lantern, glazed entrance under a balcony, dormers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1449454801",
+   "used": "plan size 22.8 x 15.8 m (the brief's modern stone and glass guess was wrong; the photo shows a brick town hall)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a3a",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#d8ccb2"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4e57",
+    "rise": 4.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-w",
+   "footprint": {
+    "rect": [
+     7.4,
+     15.8
+    ]
+   },
+   "at": [
+    -7.7,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a3a",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#d8ccb2"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4e57",
+    "rise": 9.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     7.4,
+     15.8
+    ]
+   },
+   "at": [
+    7.7,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a3a",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#d8ccb2"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4e57",
+    "rise": 9.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     5.6,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -7.6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f6e75",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8ccb2",
+    "parapet": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    -0.5,
+    13.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 6.5,
+    "cap": "dome",
+    "clockRadius": 0.7,
+    "colour": "#3d4047",
+    "trimColour": "#d8ccb2",
+    "capColour": "#5d6168",
+    "finial": 1.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#d8ccb2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "No dormers, round oculi, balcony or stone quoins; tower lantern is a plain cap; mansard pavilions slightly boxier than real."
+ }
+}

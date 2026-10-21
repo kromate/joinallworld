@@ -1,0 +1,698 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gariunu_turgus_by_Augustas_Didzgalvis.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "BigHead",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vilnius/gar2.jpg",
+   "used": "four long white gabled tent halls with yellow edge cladding in stepped parallel rows, a small square tent, green striped stall rows, big orange logistics hall behind, asphalt yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gariunai_Marked_and_3rd_Vilnius_power_station.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Bearas",
+   "view": "street",
+   "used": "setting only (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/9054286",
+   "used": "overall size only (817 m long): a representative slice about 120 m across is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 36,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gravel-yard",
+   "footprint": {
+    "rect": [
+     118,
+     112
+    ]
+   },
+   "at": [
+    15,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9bfae",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbc2b2",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road",
+   "footprint": {
+    "rect": [
+     118,
+     7
+    ]
+   },
+   "at": [
+    15,
+    50
+   ],
+   "rotDeg": -8,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6f7378",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-1",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    45.8,
+    -63.0
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0392b",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-2",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    43.4,
+    -57.8
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f9a5f",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-3",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    40.9,
+    -52.5
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f55",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-4",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    38.5,
+    -47.3
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f9a5f",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-5",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    36.0,
+    -42.0
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f55",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-6",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    33.5,
+    -36.7
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f9a5f",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-row-7",
+   "footprint": {
+    "rect": [
+     44,
+     2.8
+    ]
+   },
+   "at": [
+    31.1,
+    -31.5
+   ],
+   "rotDeg": 25,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f55",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-hall",
+   "footprint": {
+    "rect": [
+     66,
+     26
+    ]
+   },
+   "at": [
+    40,
+    -86
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e7a15a",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bands": "#c9763a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-wing",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    10,
+    -82
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d99049",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-upper",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    58,
+    -92
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c6c0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    77,
+    -56
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8e44ad",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e44ad",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    70,
+    -46
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c0392b",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0392b",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    84,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8e44ad",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e44ad",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-4",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    62,
+    -64
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c0392b",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0392b",
+    "material": "metal-sheet"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-1",
+   "footprint": {
+    "rect": [
+     90,
+     17
+    ]
+   },
+   "at": [
+    -6,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b92e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e3",
+    "material": "metal-sheet",
+    "rise": 4.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-2",
+   "footprint": {
+    "rect": [
+     84,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b92e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e3",
+    "material": "metal-sheet",
+    "rise": 4.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-3",
+   "footprint": {
+    "rect": [
+     78,
+     17
+    ]
+   },
+   "at": [
+    6,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b92e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e3",
+    "material": "metal-sheet",
+    "rise": 4.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-4",
+   "footprint": {
+    "rect": [
+     72,
+     17
+    ]
+   },
+   "at": [
+    12,
+    33
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b92e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e6e3",
+    "material": "metal-sheet",
+    "rise": 4.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-small",
+   "footprint": {
+    "rect": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    48,
+    46
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b92e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8e8e4",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "green rows now 7 fanned flat-roof rows with aisles (shed roofs dropped for LOD1 budget); orange complex moved back with stepped wings; gravel yard, road, purple/red kiosks added; containers, surrounding roads/forest and exact fan geometry simplified; scene span exceeds 120 m clamp so it is scaled slightly"
+ }
+}

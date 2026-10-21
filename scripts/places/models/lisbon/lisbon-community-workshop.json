@@ -1,0 +1,487 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus_do_IPS_em_Set%C3%BAbal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Instituto Politecnico de Setubal",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/lisbon/ips1.jpg",
+   "used": "campus layout: long white rendered blocks with dark grey flat roofs, one wing with an open ground-floor loggia, small roof pavilions, rows of long white dormitory-like blocks behind, oak trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/172215520",
+   "used": "not used: OSM match is the Barreiro polytechnic, a different campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     68,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 8,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia-wing",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    22,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "none",
+    "windowRatio": 0.14,
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -28,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efefe9",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    8,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 7,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-small",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    44,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dorm-blocks",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "d",
+     "footprint": {
+      "rect": [
+       44,
+       10
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "z0": 0,
+     "height": 9,
+     "storeys": 3,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f1eee6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8a8a86",
+      "parapet": 0.3
+     }
+    },
+    "mode": "line",
+    "start": [
+     60,
+     50
+    ],
+    "end": [
+     60,
+     86
+    ],
+    "count": 3
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "oaks",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8,
+      "colour": "#3e5a2c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -30
+    ],
+    "end": [
+     60,
+     -34
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dry-grass",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     140
+    ],
+    "height": 0.06,
+    "colour": "#b5a65a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion-2",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -18,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 7,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion-3",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    24,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 7,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5f61"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "oaks-2",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7,
+      "colour": "#3e5a2c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -62,
+     40
+    ],
+    "end": [
+     -20,
+     70
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "access-road",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      4,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -70,
+      60,
+      0.1
+     ],
+     [
+      -30,
+      42,
+      0.1
+     ],
+     [
+      0,
+      38,
+      0.1
+     ],
+     [
+      30,
+      45,
+      0.1
+     ],
+     [
+      60,
+      34,
+      0.1
+     ]
+    ],
+    "colour": "#8e8a82"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dorm-balcony-strips",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "s",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       44.2,
+       0.3
+      ],
+      "height": 1.0,
+      "colour": "#8a4a34"
+     }
+    },
+    "mode": "line",
+    "start": [
+     60,
+     44.8,
+     4.5
+    ],
+    "end": [
+     60,
+     80.8,
+     4.5
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "oaks-3",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "colour": "#34502a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -50,
+     -24
+    ],
+    "end": [
+     50,
+     32
+    ],
+    "count": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "2-storey blocks, roof pavilions, golden ground, extra row of dark oaks near buildings, access road, dorm rows; oaks small not wide flat-topped, road thin, green patch from site, no balcony detail on loggia wing."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-community-workshop"
+}

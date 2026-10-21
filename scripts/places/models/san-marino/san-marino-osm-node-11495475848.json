@@ -1,0 +1,98 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-node-11495475848",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/366954645",
+   "used": "footprint of the containing building (27 x 14 m, 385 m2, tagged apartments) in the historic centre"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/san-marino.json#san-marino-osm-node-11495475848",
+   "used": "old stone building, three storeys, hip tile roof; nearby Commons photos are views and a licence plate, not this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbc9c",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "bands": "#ece5d3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    3,
+    0,
+    12
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.0,
+    "pots": 2
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.9,
+    "run": 2.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Real outline only, no photo of the facade; windows, entrance steps and chimney are assumed and the entrance may not face the model front."
+ }
+}

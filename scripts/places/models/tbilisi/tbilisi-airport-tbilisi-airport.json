@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-airport-tbilisi-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tbilisi_airport_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gmaisuradze15",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/airport1.jpg",
+   "used": "2007 terminal: long low glazed block with green-tinted curtain wall, big shallow-vaulted grey metal roof, red-brick end block at the left, forecourt car park and canopy"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     72,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fcfa8",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 2.5,
+    "colour": "#9aa5ae",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-end",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -44,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24a36",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arrivals-ext",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    48,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fcfa8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3,
+    "colour": "#9aa1a6",
+    "material": "metal-sheet",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 6,
+    "height": 5,
+    "form": "flat",
+    "columns": 6,
+    "colour": "#9aa1a6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -19
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fcfa8",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "plinth": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa5ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": 2,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glass reads blue-grey not lit green, no curved approach loop or grass island, no sculpted wavy roof or angled glass wing, 1952 stone terminal omitted"
+ }
+}

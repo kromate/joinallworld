@@ -1,0 +1,674 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landschaftsschutzgebiet_Blankenfelde_L%C3%BCbarser_H%C3%B6he_lub_2024-09-01_img01.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Lukas Beck",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/berlin-recreation-0.jpg",
+   "used": "flat summit: cracked asphalt path with granite kerb edge, low graffiti-covered concrete walls round the plateau, a white boulder, dry meadow grass and scrub, open sky, no big trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%C3%BCbarser_H%C3%B6he_-_Gipfelstein.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "unknown",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/berlin-recreation-1.jpg",
+   "used": "summit stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/255109",
+   "used": "park size only (900 x 838 m); a 118 m window around the summit is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      9,
+      "#a39a5a"
+     ],
+     [
+      15,
+      9,
+      "#a39a5a"
+     ],
+     [
+      17,
+      8.2,
+      "#a89d5c"
+     ],
+     [
+      24,
+      5.5,
+      "#9a9a58"
+     ],
+     [
+      32,
+      2.2,
+      "#8f9a52"
+     ],
+     [
+      38,
+      0,
+      "#8f9a52"
+     ]
+    ],
+    "segments": 32,
+    "bottomCap": false,
+    "colour": "#a39a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "summit-pad",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 14.5,
+    "n": 20,
+    "z0": 8.9,
+    "height": 0.2,
+    "colour": "#7b7b78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dry-patch",
+   "at": [
+    2,
+    6
+   ],
+   "params": {
+    "radius": 6,
+    "n": 12,
+    "z0": 9.0,
+    "height": 0.15,
+    "colour": "#b0a45e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    9.15
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -4
+     ],
+     [
+      -4,
+      -5
+     ],
+     [
+      8,
+      -3
+     ],
+     [
+      14,
+      3
+     ]
+    ],
+    "width": 3,
+    "colour": "#6c6c6a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    9.2
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -6.7
+     ],
+     [
+      -4,
+      -6.7
+     ],
+     [
+      8,
+      -4.7
+     ],
+     [
+      14,
+      0.8
+     ]
+    ],
+    "width": 0.35,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -1,
+    5,
+    9.1
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 1.8,
+    "height": 1.6,
+    "colour": "#f0efea",
+    "statue": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14.0,
+    0.0,
+    9.0
+   ],
+   "rotDeg": 90.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13.155696691002717,
+    4.788282006559362,
+    9.0
+   ],
+   "rotDeg": 110.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e8d44a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10.724622203665692,
+    8.999026535611549,
+    9.0
+   ],
+   "rotDeg": 130.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e07a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    7.000000000000002,
+    12.12435565298214,
+    9.0
+   ],
+   "rotDeg": 150.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e8d44a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2.4310744873370256,
+    13.787308542170912,
+    9.0
+   ],
+   "rotDeg": 170.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#8a4ad0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2.4310744873370242,
+    13.787308542170912,
+    9.0
+   ],
+   "rotDeg": 190.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e07a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6.999999999999997,
+    12.124355652982143,
+    9.0
+   ],
+   "rotDeg": 210.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#8a4ad0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10.72462220366569,
+    8.999026535611552,
+    9.0
+   ],
+   "rotDeg": 230.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e07a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -13.155696691002717,
+    4.788282006559364,
+    9.0
+   ],
+   "rotDeg": 250.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e07a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14.0,
+    1.7145055188062944e-15,
+    9.0
+   ],
+   "rotDeg": 270.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -13.155696691002717,
+    -4.788282006559362,
+    9.0
+   ],
+   "rotDeg": 290.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#d84a8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10.724622203665696,
+    -8.999026535611545,
+    9.0
+   ],
+   "rotDeg": 310.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#8a4ad0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -7.000000000000006,
+    -12.124355652982137,
+    9.0
+   ],
+   "rotDeg": 330.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#4ab87a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2.4310744873370247,
+    -13.787308542170912,
+    9.0
+   ],
+   "rotDeg": 350.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#8a4ad0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2.4310744873370194,
+    -13.787308542170914,
+    9.0
+   ],
+   "rotDeg": 10.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#3a7bd5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    6.999999999999991,
+    -12.124355652982146,
+    9.0
+   ],
+   "rotDeg": 29.999999999999943,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#e07a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10.724622203665689,
+    -8.999026535611554,
+    9.0
+   ],
+   "rotDeg": 50.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#d84a8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13.155696691002717,
+    -4.788282006559361,
+    9.0
+   ],
+   "rotDeg": 70.0,
+   "params": {
+    "length": 5.2,
+    "height": 0.8,
+    "thickness": 0.4,
+    "colour": "#3a7bd5"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14.962908707393227,
+    12.894754306617667,
+    6.66135142798421
+   ],
+   "rotDeg": 63,
+   "params": {
+    "length": 4.1422737511342955,
+    "height": 1.3019744021739155,
+    "colour": "#7d8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    17.673669836933467,
+    1.459595500128582,
+    7.569772718330147
+   ],
+   "rotDeg": 71,
+   "params": {
+    "length": 3.546226991333336,
+    "height": 2.0674590942690183,
+    "colour": "#8a8a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    12.037238260298782,
+    18.86379860292852,
+    5.4802708308476635
+   ],
+   "rotDeg": 35,
+   "params": {
+    "length": 4.853778554889244,
+    "height": 1.6448356861375215,
+    "colour": "#7d8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    22.96980959370682,
+    0.2561650687774402,
+    5.212942918992582
+   ],
+   "rotDeg": 53,
+   "params": {
+    "length": 5.320781109083023,
+    "height": 2.1601271002174998,
+    "colour": "#7d8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    12.73762996783371,
+    -13.159465964514013,
+    7.3085013961110645
+   ],
+   "rotDeg": 50,
+   "params": {
+    "length": 4.617670406612432,
+    "height": 1.8778304772505923,
+    "colour": "#7d8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    9.88575372639016,
+    21.593076434336073,
+    4.863195612383552
+   ],
+   "rotDeg": 50,
+   "params": {
+    "length": 5.8996929369515865,
+    "height": 2.0937416775764786,
+    "colour": "#5a6e35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    19.142094417322717,
+    2.6103226950129255,
+    6.856335838158118
+   ],
+   "rotDeg": 37,
+   "params": {
+    "length": 3.7914358168499107,
+    "height": 1.531854487220638,
+    "colour": "#6b7a3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -17.84050160791798,
+    -12.285485409507926,
+    5.8023658512798795
+   ],
+   "rotDeg": 16,
+   "params": {
+    "length": 3.9298737948093865,
+    "height": 2.018518074647071,
+    "colour": "#8a8a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -5.773587261187664,
+    -16.497050439975073,
+    7.68481633564542
+   ],
+   "rotDeg": 120,
+   "params": {
+    "length": 5.114007402422728,
+    "height": 1.25700092953579,
+    "colour": "#6b7a3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    17.909260022556726,
+    -5.916204851499703,
+    7.062481365788197
+   ],
+   "rotDeg": 103,
+   "params": {
+    "length": 3.0542026061355902,
+    "height": 1.9877383039804344,
+    "colour": "#5a6e35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -16.209741781342895,
+    15.93396960070173,
+    5.321557256335898
+   ],
+   "rotDeg": 115,
+   "params": {
+    "length": 3.1401813560968246,
+    "height": 1.3809194879510478,
+    "colour": "#7d8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    13.17406296023631,
+    12.219576132889937,
+    7.46408755371899
+   ],
+   "rotDeg": 118,
+   "params": {
+    "length": 4.033145439159036,
+    "height": 1.5547932050579123,
+    "colour": "#5a6e35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.7012680409933036,
+    -16.64667872256044,
+    8.7
+   ],
+   "rotDeg": 94,
+   "params": {
+    "length": 5.57908295756274,
+    "height": 1.2366315799428276,
+    "colour": "#6b7a3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    5.184739055847267,
+    19.422943020992932,
+    6.503631804891085
+   ],
+   "rotDeg": 92,
+   "params": {
+    "length": 5.754261556599936,
+    "height": 1.5399595266258446,
+    "colour": "#6b7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "scrub as hedge clumps; graffiti as multicolour wall segments; hill reduced to the summit cone; plateau paths simplified"
+ }
+}

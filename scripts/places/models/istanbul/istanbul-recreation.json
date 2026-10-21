@@ -1,0 +1,390 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Istanbul_Emin%C3%B6n%C3%BC_to_Sar%C4%B1yer_38d_Bebek_Park_photo_session_3194crop.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dosseman",
+   "view": "street",
+   "file": "/tmp/places-evidence/istanbul/bebek1.jpg",
+   "used": "two-step stone quay edge, wide paved promenade, mown lawn, huge plane trunk, low natural-timber picket fence, concrete bollard seats (close-up from the water, not comparable as a whole-place view)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41724831",
+   "used": "park outline, central 118 m stretch at true scale (outline is 229 m long)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 75,
+  "pitchDeg": 6,
+  "fovDeg": 35,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -39.5,
+      -58
+     ],
+     [
+      40.5,
+      -58
+     ],
+     [
+      37.3,
+      58
+     ],
+     [
+      -35.8,
+      58
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#6f9a4a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "promenade",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.5,
+      -58
+     ],
+     [
+      4.5,
+      -58
+     ],
+     [
+      3.2,
+      58
+     ],
+     [
+      -4.5,
+      58
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#cfc9b8",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay-step-1",
+   "at": [
+    40.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     116
+    ],
+    "height": 0.45,
+    "colour": "#bdb9a8",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay-step-2",
+   "at": [
+    41.6,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     116
+    ],
+    "height": 0.2,
+    "colour": "#a9a596",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-deck",
+   "at": [
+    50,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     8
+    ],
+    "height": 0.6,
+    "colour": "#b4b0a2",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "pier-canopy",
+   "at": [
+    52,
+    -6,
+    0.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4.5,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#8f959a",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    22,
+    22
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f8a92",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bandstand",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 3.6,
+    "height": 0.5,
+    "colour": "#d6d0c0",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "bandstand-roof",
+   "at": [
+    -8,
+    -24,
+    0.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6.4,
+    "depth": 6.4,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "picket",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palisade",
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.1,
+    "colour": "#d9b06a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "seats",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     30,
+     -48,
+     0
+    ],
+    "end": [
+     30,
+     48,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       2.2
+      ],
+      "height": 0.45,
+      "colour": "#7f8a92"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     36,
+     -50,
+     0
+    ],
+    "end": [
+     36,
+     50,
+     0
+    ],
+    "of": {
+     "type": "lamp",
+     "params": {}
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -30
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -4
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     34
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     10
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     44
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -40
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     26
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -42
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only a close-up quay photo exists, not comparable to a whole-park view; central 118 m of 229 m park modelled; plane tree trunks, fence and play areas are simple stand-ins."
+ }
+}

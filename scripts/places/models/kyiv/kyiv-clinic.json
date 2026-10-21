@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyiv_Emergency_Hospital._-_\u041a\u041c\u041a\u041b\u0428\u041c\u0414.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dctrzl",
+   "file": "/tmp/places-evidence/kyiv/cl1.jpg",
+   "view": "front",
+   "used": "tall cream concrete-panel slab with window strips, blank-gabled end block, low 3-storey ribbon-glazed wing with brick ground floor and entrance canopy at right, poplars"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3430089",
+   "used": "identity only (193 m multi-wing outline too large; modelled the photographed wings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -62,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.8,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     45,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    16
+   ],
+   "height": 36,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2bc",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6e70",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     14,
+     15
+    ]
+   },
+   "at": [
+    3.5,
+    16
+   ],
+   "height": 40,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2bc",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "plain",
+     "left": "plain"
+    },
+    "bands": "#c6c2b2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c5f61"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    16,
+    -8
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dfd4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "groundKind": "plain",
+    "plinth": 0.3,
+    "bands": "#a9a79c",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d3f41",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-ground",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    16,
+    -8
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8e4a3a",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d3f41"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcdc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    66,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#cfcfcb",
+    "columns": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -17,
+    2.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#1f7a4d",
+    "posts": false
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    58,
+    -20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#a02a2a",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 6,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -26
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     -26
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     -26
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     -26
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -26
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     -26
+    ],
+    "height": 20
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slab shortened with punched windows in cream, gable end block flush; low wing ribbon with full-length brick band; end block plain but poplars are generic conifers and further wings absent."
+ }
+}

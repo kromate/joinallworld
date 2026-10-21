@@ -1,0 +1,152 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/105375217",
+   "used": "the matched outline is the University Library (a different building, name Biblioteka Universitare), so it was NOT used; modest Yugoslav-era institute block from the brief (about 45 x 18 m, three storeys, flat roof, ribbon windows, entrance steps)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     45,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d2c6",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#9a9a96",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a78",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9a96",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a78",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 1.0,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -10.5,
+    2
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "colour": "#eef0f1"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-node-1309233007",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; matched OSM outline was the University Library so a generic Yugoslav-era block is used."
+ }
+}

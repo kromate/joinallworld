@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-1015392049",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bah%C3%A7ek%C3%B6yAqueduct_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "CeeGee",
+   "view": "street",
+   "file": "/tmp/places-evidence/istanbul/aq1.jpg",
+   "used": "single tier of tall pointed-arch openings on thick rubble-ashlar piers, flat parapet band on top, weathered grey-buff stone with moss, road in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1015392049",
+   "used": "height 11 m, 1762, length about 375 m (a clamped 70 m portion of the arcade is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -33,
+     0
+    ],
+    "end": [
+     33,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4,
+        6
+       ],
+       "z0": 0,
+       "height": 5,
+       "material": "stone-blocks",
+       "colour": "#8f8a78",
+       "topColour": "#7a7666"
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "material": "stone-blocks",
+       "colour": "#a39b86",
+       "sections": [
+        {
+         "z": 5,
+         "rect": [
+          4,
+          6
+         ]
+        },
+        {
+         "z": 6,
+         "rect": [
+          4.14,
+          6
+         ]
+        },
+        {
+         "z": 7,
+         "rect": [
+          4.58,
+          6
+         ]
+        },
+        {
+         "z": 8,
+         "rect": [
+          5.4,
+          6
+         ]
+        },
+        {
+         "z": 9,
+         "rect": [
+          6.8,
+          6
+         ]
+        },
+        {
+         "z": 9.6,
+         "rect": [
+          8.26,
+          6
+         ]
+        },
+        {
+         "z": 9.98,
+         "rect": [
+          11,
+          6
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "rect": [
+     72,
+     6
+    ],
+    "z0": 10,
+    "height": 1.2,
+    "material": "stone-blocks",
+    "colour": "#b5ab92",
+    "topColour": "#6f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "params": {
+    "rect": [
+     72.4,
+     6.4
+    ],
+    "z0": 11.2,
+    "height": 0.7,
+    "material": "stone-blocks",
+    "colour": "#9d957f",
+    "topColour": "#6f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     72,
+     8
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#4a4c4f",
+    "topColour": "#4a4c4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -3.6
+   ],
+   "params": {
+    "rect": [
+     72,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#d9b81c",
+    "topColour": "#d9b81c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "tufts",
+   "at": [
+    0,
+    0,
+    11.9
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     0,
+     0
+    ],
+    "end": [
+     32,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        0.8
+       ],
+       "z0": 0,
+       "height": 0.7,
+       "colour": "#4f6b36",
+       "topColour": "#4f6b36"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   90,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "7-bay portion only; arches rounder and smaller than the tall pointed arches in photo; stone is a generic block texture with no moss, only green parapet tufts; no kerbs or traffic furniture"
+ }
+}

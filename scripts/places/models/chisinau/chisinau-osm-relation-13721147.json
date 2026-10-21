@@ -1,0 +1,517 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-relation-13721147",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Rose_Valley_Park,_Chisinau.jpg",
+   "licence": "CC0",
+   "author": "Iurie Nistor",
+   "view": "street",
+   "file": "/tmp/places-evidence/chisinau/rose2.jpg",
+   "used": "wide grey paved alley between rows of pale plane trees, black double-headed lamp posts on the left with blue spruces in grass strips behind kerbs, green timber benches and brown bins on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RoseValley3_Chisinau.JPG",
+   "licence": "Public domain",
+   "author": "unknown",
+   "view": "street",
+   "file": "/tmp/places-evidence/chisinau/rose1.jpg",
+   "used": "birch groves in open meadow grass, sand footpath"
+  },
+  {
+   "kind": "text",
+   "ref": "https://ro.wikipedia.org/wiki/Valea_Trandafirilor_din_Chi%C8%99in%C4%83u",
+   "used": "three lakes, 1,000-seat open-air stage, Ferris wheel, kiosks, lake beach and jetty"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -60,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      150
+     ]
+    ],
+    "width": 10.0,
+    "colour": "#8f9091"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    60,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      45,
+      20
+     ],
+     [
+      80,
+      20
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#cdbb9d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -5.3,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 0.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9b8b2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    5.3,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 0.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9b8b2"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "count": 20,
+    "kind": "broadleaf",
+    "gap": 4.2,
+    "height_min": 18,
+    "height_max": 22
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -55.5,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 5.5,
+    "height_min": 16,
+    "height_max": 21
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "start": [
+     -6.2,
+     -55,
+     0
+    ],
+    "end": [
+     -6.2,
+     100,
+     0
+    ],
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 8,
+      "count": 2
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "start": [
+     -7.4,
+     -52,
+     0
+    ],
+    "end": [
+     -7.4,
+     95,
+     0
+    ],
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 7,
+      "count": 1,
+      "colour": "#6f8f95"
+     }
+    }
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6.4,
+    -45,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 11
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6.4,
+    10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 11
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6.4,
+    60,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 11
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "start": [
+     6.2,
+     -40,
+     0
+    ],
+    "end": [
+     6.2,
+     70,
+     0
+    ],
+    "of": {
+     "type": "kiosk",
+     "params": {
+      "kind": "container",
+      "width": 0.7,
+      "depth": 0.7,
+      "height": 1.0,
+      "colour": "#6b4a33"
+     }
+    }
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -55,
+    10,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 90,
+    "count": 7,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -55,
+    -65,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 40,
+    "count": 3,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    60,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 35,
+    "count": 4,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    125,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 25,
+    "count": 4,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    70,
+    125,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 25,
+    "count": 3,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -90,
+    60,
+    0
+   ],
+   "params": {
+    "width": 25,
+    "depth": 160,
+    "count": 6,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    70,
+    40,
+    0
+   ],
+   "params": {
+    "width": 55,
+    "depth": 38,
+    "shape": "ellipse",
+    "colour": "#6f8f9a",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    100,
+    85,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 26,
+    "shape": "ellipse",
+    "colour": "#6f8f9a",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    55,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 22,
+    "shape": "ellipse",
+    "colour": "#6f8f9a",
+    "bank": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    40,
+    40,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      -20
+     ]
+    ],
+    "width": 6,
+    "colour": "#dcc99a"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    44,
+    50,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "width": 2.6,
+    "height": 0.7,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -38,
+    95,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "height": 6
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    -38,
+    115,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "depth": 10,
+    "height": 6,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    35,
+    115,
+    0
+   ],
+   "params": {
+    "radius": 14,
+    "gondolas": 16
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    10,
+    95,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "height": 6.5,
+    "colour": "#d94f4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo is a ground-level alley view; model is an oblique whole-park view. Denser plane avenue, lamps, spruces, three lakes, jetty, groves present, but crowns are green low-poly (no pale trunks) and avenue density is capped by the LOD0 budget."
+ }
+}

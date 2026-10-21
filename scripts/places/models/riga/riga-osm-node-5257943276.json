@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-node-5257943276",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Daugavgrīvas_cietoksnis_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Evita wiki",
+   "view": "side",
+   "file": "/tmp/places-evidence/riga/fort01.jpg",
+   "used": "ruined rubble-stone bastion wall block with arched casemate openings and exposed brick vault, grey limestone rubble colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Daugavgrīvas_cietoksnis_08.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Evita wiki",
+   "view": "interior",
+   "file": "/tmp/places-evidence/riga/fort08.jpg",
+   "used": "casemate proportions only (barrel vault about 5 m wide, window at the end, plastered walls); not modelled inside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1228651128",
+   "used": "the irregular bastioned fortress outline, scaled to a 100 m model; Wikidata Q56025454 coordinates verified"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "moat",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5f7f8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7f8c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart",
+   "footprint": {
+    "osm": true,
+    "fit": 100
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7da05a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ruined-bastion-block",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -18,
+    -12
+   ],
+   "z0": 5,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c9a90",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "casemate-barracks",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    6,
+    8
+   ],
+   "z0": 5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8f5240",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.5,
+      "depth": 0.8,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#6a5a4a",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "z0": 5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8f5240",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.5,
+      "depth": 1.0,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#6a5a4a",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 6,
+    "spread": 20,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 6,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only ruin and casemate interiors are photographed; the earth bastions, moat and barracks are composed from the real outline and the brief, positions of the ruin, barracks and gate are assumed"
+ }
+}

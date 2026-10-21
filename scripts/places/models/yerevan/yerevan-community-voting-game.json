@@ -1,0 +1,250 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Myasnikyan_statue,_Yerevan,_WLM_09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GeoO",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yerevan/sq1.jpg",
+   "used": "the Myasnikyan monument: two dark basalt monoliths, a slender carved column and a wide battered slab with courses of ashlar, seen from below against sky"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Myasnikyan_statue,_Yerevan,_WLM_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GeoO",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yerevan/sq2.jpg",
+   "used": "slab proportions, ashlar course lines, grey-black stone colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31664263",
+   "used": "nothing: the nearest OSM building is an unrelated office, so the square is composed as open paving"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "rect": [
+     40,
+     16
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#8e8a86"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slab",
+   "at": [
+    6,
+    0,
+    1.2
+   ],
+   "params": {
+    "colour": "#33373d",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       24,
+       8
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       20,
+       7
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       15,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column",
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 1.2,
+    "height": 36,
+    "colour": "#2e3237",
+    "topScale": 0.9
+   },
+   "at": [
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "column-relief",
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "z0": 3,
+    "height": 31,
+    "colour": "#454b52"
+   },
+   "at": [
+    -14,
+    -2.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "column-cap",
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "z0": 37.2,
+    "height": 1,
+    "colour": "#454a50"
+   },
+   "at": [
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.3,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#a9a49c"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     22.7,
+     0.25
+    ],
+    "z0": 6.2,
+    "height": 0.25,
+    "colour": "#1f2226"
+   },
+   "at": [
+    6,
+    -3.9333333333333336
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     21.3,
+     0.25
+    ],
+    "z0": 11.2,
+    "height": 0.25,
+    "colour": "#1f2226"
+   },
+   "at": [
+    6,
+    -3.7666666666666666
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     20,
+     0.25
+    ],
+    "z0": 16.2,
+    "height": 0.25,
+    "colour": "#1f2226"
+   },
+   "at": [
+    6,
+    -3.6
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     18.3,
+     0.25
+    ],
+    "z0": 21.2,
+    "height": 0.25,
+    "colour": "#1f2226"
+   },
+   "at": [
+    6,
+    -3.4333333333333336
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     16.7,
+     0.25
+    ],
+    "z0": 26.2,
+    "height": 0.25,
+    "colour": "#1f2226"
+   },
+   "at": [
+    6,
+    -3.2666666666666666
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "column relief is a plain lighter band, ashlar courses are thin ledges, surrounding square omitted (photo shows only sky)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-community-voting-game"
+}

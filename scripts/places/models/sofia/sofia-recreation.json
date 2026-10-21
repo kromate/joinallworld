@@ -1,0 +1,585 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Peter_and_Paul_Park_Sofia_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Spiritia",
+   "view": "street",
+   "file": "/tmp/places-evidence/sofia/park2.jpg",
+   "used": "straight asphalt avenue with kerbs running away, double rows of tall bare chestnut trunks, benches, mown lawns either side, small timber kiosks and a carousel at the far end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Peter_and_Paul_Park_Sofia_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Spiritia",
+   "view": "street",
+   "file": "/tmp/places-evidence/sofia/park1.jpg",
+   "used": "colourful timber playground frames on rubber surfacing, lamp posts, red apartment block beyond the trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/21397443",
+   "used": "park is 370 m across: a representative central 130 x 110 m piece is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 2.17,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": 0.0
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 110,
+    "colour": "#8a9a50"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      40
+     ],
+     [
+      -20,
+      38
+     ],
+     [
+      0,
+      40
+     ],
+     [
+      25,
+      42
+     ],
+     [
+      60,
+      38
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#9c9c9a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22.0,
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 0.08,
+    "colour": "#7a2f2b"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22.0,
+    55,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 3.2,
+    "colour": "#2f8fb0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -18.0,
+    55,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     5
+    ],
+    "height": 2.4,
+    "colour": "#3aa84a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22.0,
+    55,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 2.6,
+    "colour": "#e8962e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -22.0,
+    55,
+    3.28
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.5,
+    "colour": "#5a4632"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4.5,
+    "depth": 3,
+    "height": 2.8,
+    "colour": "#7a3a28"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -9,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.5,
+    "depth": 2.6,
+    "height": 2.6,
+    "colour": "#9a5a35"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -3.6,
+    10,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -3.6,
+    14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    3.6,
+    22,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      90
+     ]
+    ],
+    "width": 6,
+    "colour": "#7c7c7a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.4000000000000004,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     100
+    ],
+    "height": 0.15,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.4000000000000004,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     100
+    ],
+    "height": 0.15,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    96
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8452f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    72,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    72,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    88,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.5,
+    88,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#6e6454"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt2",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    38,
+    96
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c0",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "tree crowns are leafy blobs not bare chestnut branching; avenue camera partly off-centre; central part of a 370 m park only"
+ }
+}

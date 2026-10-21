@@ -1,0 +1,478 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sant_Pere_del_Tarter1.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Simonjoan",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/sp0.jpg",
+   "used": "lime-rendered gable facade with centred round-arched door and two flanking arched barred windows with pale surrounds, rough dark slate-stone side walls with dressed corner quoins, deep-eaved dark slate roof, stone bellcote with arched bell opening on the gable, small square window above the door"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202636510",
+   "used": "15 x 9.4 m footprint, nave axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.4,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3e3a34",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#3f3a34"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4348",
+    "material": "slate",
+    "rise": 2.3,
+    "overhang": 1.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "facade",
+   "at": [
+    0,
+    -7.58
+   ],
+   "params": {
+    "rect": [
+     9.1,
+     0.2
+    ],
+    "height": 4.1000000000000005,
+    "z0": 0.1,
+    "colour": "#b5a68a",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-render",
+   "at": [
+    0,
+    -7.58
+   ],
+   "params": {
+    "rect": [
+     9.1,
+     0.2
+    ],
+    "height": 2.1,
+    "z0": 4.15,
+    "topScale": [
+     0.02,
+     1
+    ],
+    "colour": "#b5a68a",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-surround",
+   "at": [
+    -0.2,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "height": 2.5,
+    "z0": 0.1,
+    "colour": "#e0c9a2",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -0.2,
+    -7.77
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "height": 2.2,
+    "z0": 0.1,
+    "colour": "#3a2d26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-arch",
+   "at": [
+    -0.2,
+    -7.77
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "height": 0.5,
+    "z0": 2.3,
+    "topScale": [
+     0.4,
+     1
+    ],
+    "colour": "#3a2d26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "win-l",
+   "at": [
+    -3.0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 1.3,
+    "z0": 0.9,
+    "colour": "#e0c9a2",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 1.3,
+    "z0": 0.9,
+    "colour": "#e0c9a2",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.0,
+    -7.77
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.1
+    ],
+    "height": 0.95,
+    "z0": 1.05,
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0,
+    -7.77
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.1
+    ],
+    "height": 0.95,
+    "z0": 1.05,
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.6,
+    -7.75
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 0.5,
+    "z0": 3.0,
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.1
+    ],
+    "height": 1.9,
+    "z0": 6.0,
+    "colour": "#6b6356"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.5,
+    "z0": 7.9,
+    "colour": "#3b3733",
+    "topScale": [
+     0.1,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 1.2,
+    "z0": 6.3,
+    "colour": "#2a2623"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 0.4,
+    "z0": 7.5,
+    "colour": "#2a2623",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 0.5,
+    "z0": 6.3,
+    "colour": "#7a6a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 0.35,
+    "z0": 6.15,
+    "colour": "#7a6a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.2,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "height": 0.4,
+    "z0": 2.6,
+    "colour": "#d8cfba",
+    "topScale": [
+     0.3,
+     1
+    ],
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 0.4,
+    "z0": 2.2,
+    "colour": "#d8cfba",
+    "topScale": [
+     0.3,
+     1
+    ],
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 0.4,
+    "z0": 2.2,
+    "colour": "#d8cfba",
+    "topScale": [
+     0.3,
+     1
+    ],
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.55,
+    -7.55
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "z0": 0,
+    "colour": "#d8cfba",
+    "material": "render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.55,
+    -7.55
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "z0": 0,
+    "colour": "#d8cfba",
+    "material": "render"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     11,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -11,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Side wall rubble is a flat texture; arches stepped prisms; bellcote lacks a visible bell"
+ }
+}

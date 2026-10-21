@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/936228482",
+   "used": "real outline (15.7 x 12.4 m rhombus), 3 levels, office use, named Managementul Statiei Chitila (station management building)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biserica_Chitila.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bogdan Giusca",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/chitila1.jpg",
+   "used": "viewed only: it shows the town church, not the station, so no geometry was taken from it"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcd0a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f3efe4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "depth": 5,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 3,
+    "spacing": 5.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.4,
+    "bottom": 2.6,
+    "colour": "#2d5f8c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the station exists in the evidence, so the building is the real outline with typed storeys, stucco and hip roof from the brief; platform and tracks are typical, their position is guessed"
+ }
+}

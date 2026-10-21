@@ -1,0 +1,418 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kauppakeskus_Kaari_ulkoa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Otto Karikoski",
+   "view": "street",
+   "file": "/tmp/places-evidence/helsinki/kaari1.jpg",
+   "used": "Kaari shopping centre that houses the unit: low dark brown-clad block with fully glazed shopfront ground floor and fascia signage bands, pale rendered centre block, taller brick-and-glass corner block, rooftop glass plant box, winter forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31820492",
+   "used": "host block only (233 m, building=block, 4 m); a trimmed street-front section is modelled, the unit itself has no evidence"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dark-wing",
+   "footprint": {
+    "rect": [
+     75,
+     16
+    ]
+   },
+   "at": [
+    36.5,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5b3f33",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "windowRatio": 0.55,
+    "bands": "#3a2b25",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront-ground",
+   "footprint": {
+    "rect": [
+     75.4,
+     16.4
+    ]
+   },
+   "at": [
+    36.5,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e0bd78",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26292b",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     27,
+     16
+    ]
+   },
+   "at": [
+    -13.5,
+    2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bands": "#b9b6ac"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-block",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -35,
+    4
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#9a6a52",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8590",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "z0": 9
+  },
+  {
+   "type": "awning",
+   "id": "unit-awning",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "drop": 0.4,
+    "height": 3.4,
+    "colours": [
+     "#8a2f2a",
+     "#ece8de"
+    ],
+    "stripe": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbrellas",
+   "params": {
+    "mode": "line",
+    "start": [
+     10,
+     -14,
+     0
+    ],
+    "end": [
+     18,
+     -14,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 8,
+       "colour": "#b8332a",
+       "profile": [
+        [
+         0.1,
+         0
+        ],
+        [
+         0.1,
+         2.0
+        ],
+        [
+         1.2,
+         2.0,
+         "#b8332a"
+        ],
+        [
+         0.1,
+         2.6
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "pylon",
+   "at": [
+    -6,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 6,
+    "bottom": 4,
+    "colour": "#e4e0d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-top",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -35,
+    4
+   ],
+   "z0": 14,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db3bd",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     76,
+     16.8
+    ]
+   },
+   "at": [
+    36.5,
+    0
+   ],
+   "z0": 4.2,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a1f1a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a1f1a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "prisma",
+   "at": [
+    6,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 4.4,
+    "colour": "#3c8a4a",
+    "frameColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "dressmann",
+   "at": [
+    24,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 6,
+    "colour": "#c23a2e",
+    "frameColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign3",
+   "at": [
+    44,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.4,
+    "bottom": 5.6,
+    "colour": "#e8e4d8",
+    "frameColour": "#3a2b25"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag",
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      30,
+      -14,
+      0
+     ],
+     [
+      30,
+      -14,
+      14
+     ]
+    ],
+    "colour": "#d0d0d0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -16
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-node-9712397575",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pale centre block now plain and corner block ribbon-windowed with stepped glass top; plant box on dark wing; plaza not curved, no neon, cars or snow banks; unit itself not identifiable"
+ }
+}

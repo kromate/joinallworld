@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Technische_Universit%C3%A4t,_am_Karlsplatz_Wien_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor (see file page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/tu1.jpg",
+   "used": "central six-column Corinthian portico over a rusticated arched ground storey with balustrade, attic with statues and mansard cap, plain cream four-storey wings with regular punched windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/354383419",
+   "used": "not used: the nearest OSM match is a 3 m2 shed, extent taken from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-front",
+   "footprint": {
+    "rect": [
+     110,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3aa",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#cdbf9a",
+    "groundKind": "arched",
+    "groundHeight": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-back-l",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    -46,
+    24
+   ],
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3aa",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "cornice": false,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "front": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-back-r",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    46,
+    24
+   ],
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3aa",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "cornice": false,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "front": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbf9a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "cornice": true,
+    "groundKind": "arched",
+    "groundHeight": 7,
+    "bands": "#cdbf9a",
+    "bay": 5.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 23,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b0",
+    "windows": "round",
+    "plinth": 0,
+    "windowRatio": 0.3,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#6f857b",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -13,
+    7
+   ],
+   "params": {
+    "width": 25,
+    "depth": 4.5,
+    "height": 15,
+    "columns": 6,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#efe4c0",
+    "roofColour": "#d9cca2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balustrade",
+   "footprint": {
+    "rect": [
+     34,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e2d6b0",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2d6b0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.5,
+     -12,
+     22
+    ],
+    "end": [
+     10.5,
+     -12,
+     22
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 4,
+      "colour": "#c9c6b4"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "statues are plain prisms, oval roundels approximated, forecourt balustrade short"
+ }
+}

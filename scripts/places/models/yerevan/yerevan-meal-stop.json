@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tavern_Yerevan_Teryan23.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Edgar Zaqar\u00e9",
+   "view": "interior",
+   "used": "material palette only (dark basalt blocks mixed with orange tuff blocks, honey timber posts, cream plaster); no exterior photo exists on Commons"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/133008184",
+   "used": "real outline (containing match, 2 levels, elongated bent plan about 84 x 23 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tavern",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c8a07a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "bay": 4.2,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5239",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bake-bay",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "rotDeg": 42,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5b4a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3b2c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -14,
+    3.2
+   ],
+   "rotDeg": 42,
+   "params": {
+    "width": 16,
+    "depth": 2.4,
+    "height": 0.5,
+    "form": "flat",
+    "colour": "#6b4a35"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -3,
+    5.6
+   ],
+   "rotDeg": 42,
+   "params": {
+    "width": 5,
+    "height": 1.1,
+    "colour": "#3f2a1e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo exists; walls use the interior palette (basalt and orange tuff); wooden balcony and arches from the brief not verifiable"
+ }
+}

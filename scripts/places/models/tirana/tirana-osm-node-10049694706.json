@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-node-10049694706",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 64,
+    "depth": 46,
+    "height": 9,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#9c9686",
+    "boulders": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      11
+     ],
+     [
+      -24,
+      -2
+     ],
+     [
+      -22,
+      -14
+     ]
+    ],
+    "height": 4.5,
+    "thickness": 1.6,
+    "kind": "wall",
+    "colour": "#8c8578"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      24,
+      6
+     ],
+     [
+      14,
+      15
+     ],
+     [
+      -4,
+      17
+     ]
+    ],
+    "height": 4.5,
+    "thickness": 1.6,
+    "kind": "wall",
+    "colour": "#8c8578"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -14
+     ],
+     [
+      -6,
+      -17
+     ],
+     [
+      10,
+      -15
+     ],
+     [
+      22,
+      -8
+     ]
+    ],
+    "height": 4.5,
+    "thickness": 1.6,
+    "kind": "wall",
+    "colour": "#8c8578"
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    22,
+    -8,
+    8
+   ],
+   "params": {
+    "radius": 4,
+    "height": 11,
+    "kind": "round",
+    "cap": "none",
+    "ruin": true
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12,
+    2,
+    8
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 1.2,
+    "colour": "#8c8578"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 3,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or footprint: generic ruined hill fort (rock mound, broken wall ring, one round tower)"
+ }
+}

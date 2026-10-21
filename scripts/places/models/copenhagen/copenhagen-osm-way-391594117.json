@@ -1,0 +1,384 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-391594117",
+ "name": "Royal Arena",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RoyalArena_20170811_N8B0024_(36517811566).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jenny Andersson / News Oresund",
+   "view": "front",
+   "used": "oval drum wrapped in tapered vertical timber-coloured fins over a dark glazed base, wide grey concrete steps on the entrance side, flat dark roof edge (the sign was left out)",
+   "file": "/tmp/places-evidence/copenhagen/arena1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/391594117",
+   "used": "overall extent (about 190 x 112 m including the stair terraces); the drum itself is an ellipse about 125 x 105 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 62,
+  "aspect": 1.6
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "glass-base",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       54,
+       44
+      ]
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       54,
+       44
+      ]
+     }
+    ],
+    "colour": "#4f6f82",
+    "topColour": "#2d3b44",
+    "material": "glass"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "core-drum",
+   "params": {
+    "sections": [
+     {
+      "z": 6.5,
+      "ellipse": [
+       52,
+       43
+      ],
+      "colour": "#2e2b28"
+     },
+     {
+      "z": 32,
+      "ellipse": [
+       63,
+       53
+      ],
+      "colour": "#2e2b28"
+     },
+     {
+      "z": 33.5,
+      "ellipse": [
+       63,
+       53
+      ],
+      "colour": "#4a4f54"
+     }
+    ],
+    "capTop": true,
+    "colour": "#3d3a36",
+    "topColour": "#4a4f54"
+   }
+  },
+  {
+   "type": "array",
+   "id": "timber-fins",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 53.5,
+    "radiusY": 44.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 150,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 75,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       6
+      ],
+      "params": {
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.8,
+          1.0
+         ],
+         "cy": 0
+        },
+        {
+         "z": 13,
+         "rect": [
+          0.9,
+          1.2
+         ],
+         "cy": -6
+        },
+        {
+         "z": 26,
+         "rect": [
+          0.6,
+          1.0
+         ],
+         "cy": -11.5
+        }
+       ],
+       "colour": "#cdbb98",
+       "topColour": "#cdbb98"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "roof-lip",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 32,
+      "ellipse": [
+       64.5,
+       54.5
+      ]
+     },
+     {
+      "z": 33.8,
+      "ellipse": [
+       64.5,
+       54.5
+      ]
+     }
+    ],
+    "colour": "#4a4f54",
+    "topColour": "#4a4f54"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "front-stair",
+   "at": [
+    0,
+    -74,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 90,
+    "rise": 0.35,
+    "run": 1.4,
+    "count": 14,
+    "colour": "#b5b3ad"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sign-band",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 4.6,
+      "ellipse": [
+       55,
+       45
+      ]
+     },
+     {
+      "z": 6.4,
+      "ellipse": [
+       55,
+       45
+      ]
+     }
+    ],
+    "colour": "#5a5f63",
+    "topColour": "#5a5f63"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -44,
+      -73.8,
+      1.0
+     ],
+     [
+      -44,
+      -54.4,
+      5.9
+     ]
+    ],
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -22,
+      -73.8,
+      1.0
+     ],
+     [
+      -22,
+      -54.4,
+      5.9
+     ]
+    ],
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      0,
+      -73.8,
+      1.0
+     ],
+     [
+      0,
+      -54.4,
+      5.9
+     ]
+    ],
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      22,
+      -73.8,
+      1.0
+     ],
+     [
+      22,
+      -54.4,
+      5.9
+     ]
+    ],
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail4",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      44,
+      -73.8,
+      1.0
+     ],
+     [
+      44,
+      -54.4,
+      5.9
+     ]
+    ],
+    "colour": "#9ea3a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Flared oval drum with leaning tapered fins over recessed glass base matches; front stair still reads as a thin flat strip at the plaza edge (core/steps placement unresolved), railings barely read, no sign lettering, plaza dark asphalt"
+ }
+}

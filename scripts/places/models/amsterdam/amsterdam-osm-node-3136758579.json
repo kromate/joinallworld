@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-node-3136758579",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1228383921",
+   "used": "4.2 x 4.1 m footprint: tower base width"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small square timber lookout tower, ~14 m, stair up the frame, railed top platform, in dune sand with conifers; no photo of the tower exists (geo photos nearby show a farm)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.0,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "leg-1-1",
+   "params": {
+    "colour": "#7a6a55",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": -1.9,
+      "cy": -1.9
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -1.4,
+      "cy": -1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-11",
+   "params": {
+    "colour": "#7a6a55",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": -1.9,
+      "cy": 1.9
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -1.4,
+      "cy": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg1-1",
+   "params": {
+    "colour": "#7a6a55",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": 1.9,
+      "cy": -1.9
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 1.4,
+      "cy": -1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg11",
+   "params": {
+    "colour": "#7a6a55",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "cx": 1.9,
+      "cy": 1.9
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 1.4,
+      "cy": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 0.3,
+    "colour": "#6b6f74",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mid-landing",
+   "at": [
+    0,
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "height": 0.2,
+    "colour": "#6b6f74",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -2.6,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "rise": 6,
+    "run": 8,
+    "count": 12,
+    "colour": "#7a6a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     7,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the tower exists; generic timber legged lookout from the 4 m OSM footprint and brief, no bracing or railing detail"
+ }
+}

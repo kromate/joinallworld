@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-way-370461335",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LUISS_sede_centrale_Via_Pola.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlo Dani",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/luiss0.jpg",
+   "used": "the Viale Pola entrance: ochre-orange gate piers with rusticated bands, scroll caps and spire finials either side of a dark iron gate, umbrella pines behind (a gate photo, not the building) ; gate only, the building massing is NOT confirmed by this photo"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biblioteca_Luiss_-_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlo Dani",
+   "view": "street",
+   "file": "/tmp/places-evidence/rome/luiss2.jpg",
+   "used": "LUISS campus building character: long four-storey cream stucco facade, buff brick pilasters and quoins, dark green shutters, arched ground-floor windows (building identity within the campus not confirmed)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/370461335",
+   "used": "building outline, rotated to the long wing axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.8,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-main",
+   "footprint": {
+    "rect": [
+     62,
+     18
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9d6a4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 4.8,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#b8935f",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.6,
+      "depth": 0.35,
+      "spacing": 6.2,
+      "colour": "#c9a56e",
+      "margin": 0.8
+     }
+    ],
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf98",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-front",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    -23,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9d6a4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 4.8,
+    "plinth": 0.9,
+    "cornice": true,
+    "trimColour": "#b8935f",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.6,
+      "depth": 0.35,
+      "spacing": 6.2,
+      "colour": "#c9a56e",
+      "margin": 0.8
+     }
+    ],
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf98",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.2,
+    -46
+   ],
+   "params": {
+    "colour": "#e0903f",
+    "height": 7,
+    "rect": [
+     3.2,
+     3.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.2,
+    -46,
+    7
+   ],
+   "params": {
+    "colour": "#cf7f33",
+    "height": 0.8,
+    "rect": [
+     3.8,
+     3.8
+    ]
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -5.2,
+    -46,
+    7.8
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 3.6,
+    "colour": "#e0903f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.2,
+    -46
+   ],
+   "params": {
+    "colour": "#e0903f",
+    "height": 7,
+    "rect": [
+     3.2,
+     3.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.2,
+    -46,
+    7
+   ],
+   "params": {
+    "colour": "#cf7f33",
+    "height": 0.8,
+    "rect": [
+     3.8,
+     3.8
+    ]
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.2,
+    -46,
+    7.8
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 3.6,
+    "colour": "#e0903f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 7.2,
+    "height": 4.2,
+    "pillar": 0.0,
+    "leaf": "bars",
+    "colour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -46
+   ],
+   "params": {
+    "colour": "#e8cf9a",
+    "height": 2.6,
+    "rect": [
+     22,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -46
+   ],
+   "params": {
+    "colour": "#e8cf9a",
+    "height": 2.6,
+    "rect": [
+     22,
+     0.8
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "array",
+   "at": [
+    0,
+    -0.2,
+    5.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#2f5a3c"
+     }
+    }
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "array",
+   "at": [
+    0,
+    -0.2,
+    10.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#2f5a3c"
+     }
+    }
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "array",
+   "at": [
+    0,
+    -0.2,
+    14.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#2f5a3c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    9,
+    19
+   ],
+   "params": {
+    "rect": [
+     63,
+     19
+    ],
+    "height": 0.5,
+    "colour": "#b8935f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     22
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo is a gate/other campus building, so verified downgraded to text: massing provisional (flat roof, arched windows, buff pilasters, green shutters, annex removed); shutters poorly aligned, no oculi or balcony rails."
+ }
+}

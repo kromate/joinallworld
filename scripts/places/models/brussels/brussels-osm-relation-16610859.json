@@ -1,0 +1,619 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-relation-16610859",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Park_%27Drie_Fonteinen%27_te_Vilvoorde_Oranjerie_-_370128_-_onroerenderfgoed.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Vandevorst, Kris",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/bru-df1.jpg",
+   "used": "orangery: white-rendered long single-storey pavilion with round-arched tall windows and red curtains, low grey slate hip roof, steps and clipped yew cones in front, lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lendrikkapel.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wormke-Grutman",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/bru-df3.jpg",
+   "used": "baroque chapel: red brick with pale stone quoins, curved gable, slim slate spire"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bloedgrotten_-_landscape.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wormke-Grutman",
+   "view": "side",
+   "file": "/tmp/places-evidence/brussels/bru-blood1.jpg",
+   "used": "Bloedgrotten rough stone gallery bridge with two arches over the pond, mossy wall, beech woodland, viaduct beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16610859",
+   "used": "park is 2.1 km x 0.9 km so a representative 120 x 90 m corner is composed instead of the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "orangery",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.92,
+    "glassColour": "#9a4a3e",
+    "cornice": true,
+    "bay": 3.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3c424b",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orangery-centre",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.92,
+    "glassColour": "#9a4a3e",
+    "cornice": true,
+    "bay": 3.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3c424b",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orangery-end-1",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    -19,
+    0.8
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.92,
+    "glassColour": "#9a4a3e",
+    "cornice": true,
+    "bay": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3c424b",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orangery-end1",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    19,
+    0.8
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.92,
+    "glassColour": "#9a4a3e",
+    "cornice": true,
+    "bay": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3c424b",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "id": "orangery-steps",
+   "at": [
+    -5,
+    -11.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#c4bfb2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "yews",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#2f5232",
+      "profile": [
+       [
+        1.6,
+        0
+       ],
+       [
+        1.2,
+        2
+       ],
+       [
+        0,
+        5
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -13
+    ],
+    "end": [
+     14,
+     -13
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -16
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.2
+    ],
+    "height": 1.6,
+    "colour": "#2e4a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    -36,
+    20
+   ],
+   "rotDeg": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a94a33",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 1.0,
+    "trimColour": "#d8d2bd",
+    "bands": "#d8d2bd",
+    "pattern": null
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f57",
+    "material": "slate",
+    "pitch": 50,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "chapel-spire",
+   "at": [
+    -36,
+    25,
+    0
+   ],
+   "params": {
+    "colour": "#40454d",
+    "sections": [
+     {
+      "z": 10,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "pond",
+   "at": [
+    26,
+    32,
+    0
+   ],
+   "params": {
+    "width": 72,
+    "depth": 18,
+    "shape": "rect",
+    "colour": "#50625a",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bloedgrotten",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    26,
+    30
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a7a52",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 10,
+     "opening": 0.85,
+     "height": 0.85,
+     "depth": 0.6,
+     "colour": "#6d7658",
+     "faces": [
+      "front",
+      "back"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c60",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bloedgrotten-upper",
+   "footprint": {
+    "rect": [
+     16,
+     3.4
+    ]
+   },
+   "at": [
+    26,
+    30
+   ],
+   "z0": 4.8,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#767d62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c60",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "wood-back",
+   "at": [
+    0,
+    62
+   ],
+   "params": {
+    "width": 110,
+    "depth": 26,
+    "count": 22,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "wood-left",
+   "at": [
+    -52,
+    30
+   ],
+   "params": {
+    "width": 22,
+    "depth": 50,
+    "count": 10,
+    "min_height": 9,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-pedestal",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#b9b4a6",
+    "topColour": "#cfcabc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "statue",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -24,
+    3.2
+   ],
+   "params": {
+    "colour": "#c9c4b6",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       1.62,
+       1.08
+      ]
+     },
+     {
+      "z": 2.16,
+      "rect": [
+       1.4400000000000002,
+       0.9
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       1.08,
+       0.9
+      ]
+     },
+     {
+      "z": 4.5,
+      "circle": 0.45
+     },
+     {
+      "z": 5.22,
+      "circle": 0.18000000000000002
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "chapel-gable",
+   "at": [
+    -36,
+    12.0,
+    0
+   ],
+   "params": {
+    "colour": "#d8d2bd",
+    "curve": true,
+    "sections": [
+     {
+      "z": 8,
+      "rect": [
+       9.2,
+       0.9
+      ]
+     },
+     {
+      "z": 9.2,
+      "rect": [
+       8.2,
+       0.9
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       5.4,
+       0.9
+      ]
+     },
+     {
+      "z": 11.4,
+      "rect": [
+       3.0,
+       0.9
+      ]
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       1.6,
+       0.9
+      ]
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -6
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arched windows still slightly shorter than the real near-floor-to-eaves ones, central pavilion projects only slightly, statue is a slim abstract figure, bridge is a rough two-arch block, no hills or viaduct; park corner is representative not the 2 km outline"
+ }
+}

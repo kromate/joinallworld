@@ -1,0 +1,219 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Library_of_the_Faroe_Islands.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Maciej Brencz",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/lib1.jpg",
+   "used": "two-storey long block, white board-marked concrete band, two ribbon-glazing bands with teal frames and red casements, dark fascia, taller white end block, rubble-stone retaining wall, grass bank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30704456",
+   "used": "size (38 x 27 m, 1979, Jakup Pauli Gregoriussen)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#ecebe4",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#2f5f66",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "bands",
+     "colour": "#eeece5"
+    },
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     37,
+     12.8
+    ],
+    "height": 1.4,
+    "z0": 7.6,
+    "colour": "#2e3236"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     7,
+     13
+    ]
+   },
+   "at": [
+    -21,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#efede6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6ce",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-wall",
+   "params": {
+    "points": [
+     [
+      -30,
+      -8
+     ],
+     [
+      -22,
+      -9
+     ],
+     [
+      -18,
+      -3
+     ],
+     [
+      -22,
+      4
+     ],
+     [
+      -30,
+      4
+     ]
+    ],
+    "height": 3.2,
+    "colour": "#6f6b63",
+    "material": "stone",
+    "slot": "rubble-flint"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    8,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4c9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6b7a85",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#9c2f35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Two-storey ribbon block, dark fascia, taller white end block and rubble plinth match; no white middle band between glazing, red casement frames, hedge, slope or the stepped end wing; footprint is rect not the OSM outline."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-community-workshop"
+}

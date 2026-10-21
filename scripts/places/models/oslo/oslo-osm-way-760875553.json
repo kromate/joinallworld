@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-760875553",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jordal_Amfi_(Oslo,_NOR)_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Helge Høifødt",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/jordal.jpg",
+   "used": "2020 hall: long dark glazed volume with light-green glazing strip, wavy silver standing-seam roof, timber-clad base wing and entrance fascia band, grass park slope in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/760875553",
+   "used": "overall size only (105 x 76 m); outline belongs to the 1951 hall so the 2020 hall is composed as a long rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.64
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     58
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3238",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#1d262c",
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "wave",
+    "waves": 2,
+    "rise": 4,
+    "thickness": 0.8,
+    "colour": "#98a4aa",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "infill": "wall"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    -29.2
+   ],
+   "z0": 7,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9a8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#b4d6b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#98a4aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-base",
+   "footprint": {
+    "rect": [
+     48,
+     8
+    ]
+   },
+   "at": [
+    -26,
+    -33
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d3b48a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9094",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-band",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    16,
+    -31.5
+   ],
+   "z0": 5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8b891",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9094"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    2,
+    -33
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cccd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea1"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -44
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -42
+    ],
+    "height": 5
+   }
+  ],
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "roof has two waves instead of one long sweeping form; park slope, ramps, steps and lamp rhythm simplified; photo is of the 2020 hall while OSM outline is the 1951 hall"
+ }
+}

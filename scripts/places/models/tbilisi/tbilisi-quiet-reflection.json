@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/401580108",
+   "used": "real outline of the church (name match, about 20 by 20 m, 3 levels, Georgian Orthodox)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rustavi_-_Vladimer_Meskhishvili_Street.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tiia Monto",
+   "view": "street",
+   "used": "setting only (Soviet apartment blocks, conifers, paved street); the church is not visible so no appearance was taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa5",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7468",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.5,
+    0.5,
+    10
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#cfc4a8",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      4.5
+     ],
+     [
+      3.2,
+      5.0
+     ]
+    ],
+    "arcade": {
+     "from": 0.8,
+     "to": 4.4,
+     "count": 8,
+     "width": 0.7,
+     "height": 2.4,
+     "sill": 1.1,
+     "shape": "arched",
+     "depth": 0.25,
+     "innerColour": "#3a3128"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.5,
+    0.5,
+    15
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7b7468",
+    "profile": [
+     [
+      3.3,
+      0
+     ],
+     [
+      1.2,
+      3.2
+     ],
+     [
+      0.5,
+      4.6
+     ],
+     [
+      0.3,
+      4.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.5,
+    0.5,
+    19.8
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9a84a",
+    "profile": [
+     [
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    -8
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa5",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7b7468",
+    "material": "metal-sheet",
+    "rise": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.45,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "note": "Cream stone cross-in-square church with a central drum and conical cap and a small bell tower: typical Georgian Orthodox form, not photo-confirmed.",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the church exists; outline is real but drum, bell tower and roof are typical Georgian form, not confirmed."
+ }
+}

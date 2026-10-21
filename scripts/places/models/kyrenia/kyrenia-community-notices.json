@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/686121404",
+   "used": "real outline of the Presidential Palace, North Nicosia (610 m2, name match, Wikidata Q25479734, built 1930)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale limestone official building, columned portico, flag poles, walled garden; Commons only holds photos of the Greek-Cypriot palace (a different building) so none were used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0d2b0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "bay": 3.6,
+    "bands": "#b9a37a",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5593c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    2,
+    -16,
+    0
+   ],
+   "rotDeg": 58,
+   "params": {
+    "width": 10,
+    "depth": 3.5,
+    "height": 8,
+    "columns": 4,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f6f1e4",
+    "roofColour": "#b5593c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#d8c9a3"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#d8c9a3"
+   }
+  },
+  {
+   "type": "array",
+   "id": "flags",
+   "params": {
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12,
+     -22
+    ],
+    "end": [
+     12,
+     -22
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this palace; outline real, storeys, hip roof, portico and colours inferred from the brief."
+ }
+}

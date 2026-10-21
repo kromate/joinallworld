@@ -1,0 +1,436 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Perafita.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Joan Simon (Simonjoan)",
+   "view": "side",
+   "file": "/tmp/places-evidence/andorra-la-vella/perafita.jpg",
+   "used": "stone shepherd/refuge hut with grey slate gable roof, small green-capped chimney, open stone porch pier at one end, tussock meadow with boulders, scattered pines"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "UNESCO glacial valley, dry-stone field walls, conifer slopes; no building at the coordinate"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     9,
+     5.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a7d68",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e6368",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    4.6,
+    -3.2
+   ],
+   "height": 2.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-beam",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.8
+    ]
+   },
+   "at": [
+    4.6,
+    0
+   ],
+   "z0": 2.3,
+   "height": 0.5,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a4430",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a4430"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    4.6,
+    3.0
+   ],
+   "height": 2.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#8c8678",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    -2.5,
+    0.5
+   ],
+   "z0": 3.4,
+   "height": 0.9,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8478",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e7a52",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4,
+    "spread": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -11.6,
+    9.5,
+    0
+   ],
+   "params": {
+    "width": 1.5,
+    "depth": 1.2,
+    "height": 0.9,
+    "colour": "#7d786d",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -5.3,
+    11.3,
+    0
+   ],
+   "params": {
+    "width": 2.55,
+    "depth": 2.1,
+    "height": 1.35,
+    "colour": "#7d786d",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -3.9,
+    5.3,
+    0
+   ],
+   "params": {
+    "width": 2.25,
+    "depth": 1.8,
+    "height": 1.2,
+    "colour": "#7d786d",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -2.5,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 1.65,
+    "depth": 1.2,
+    "height": 0.9,
+    "colour": "#8d8372",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    0.2,
+    11.0,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 1.95,
+    "height": 1.35,
+    "colour": "#7d786d",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -3.7,
+    6.4,
+    0
+   ],
+   "params": {
+    "width": 1.65,
+    "depth": 1.35,
+    "height": 0.9,
+    "colour": "#9a948a",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -9.4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 2.7,
+    "depth": 2.1,
+    "height": 1.5,
+    "colour": "#8d8372",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    8.7,
+    10.7,
+    0
+   ],
+   "params": {
+    "width": 2.1,
+    "depth": 1.65,
+    "height": 1.2,
+    "colour": "#9a948a",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    9.9,
+    -7.8,
+    0
+   ],
+   "params": {
+    "width": 2.85,
+    "depth": 2.25,
+    "height": 1.5,
+    "colour": "#9a948a",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -14.2,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 2.25,
+    "depth": 1.8,
+    "height": 1.2,
+    "colour": "#8d8372",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -8.4,
+    6.1,
+    0
+   ],
+   "params": {
+    "width": 2.85,
+    "depth": 2.25,
+    "height": 1.5,
+    "colour": "#7d786d",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    2,
+    20,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 8,
+    "count": 16,
+    "kind": "conifer",
+    "min_height": 5,
+    "max_height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     26
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ],
+  "groundColour": "#8f8a52"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-node-4516461789",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hut, boulders, pines and olive meadow match; flat ground with no mountain backdrop or slope, stone courses too regular"
+ }
+}

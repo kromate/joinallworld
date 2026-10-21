@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1118157812",
+   "used": "prayer-hall outline 33 x 22 m, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4dcc2",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "glassColour": "#4a7f86",
+    "plinth": 0.6,
+    "faces": {
+     "front": "arched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d0b4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "radius": 7.5,
+    "height": 6,
+    "profile": "hemi",
+    "drum": 2.5,
+    "windows": 8,
+    "colour": "#4aa59f",
+    "drum_colour": "#e4dcc2",
+    "finial": true
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -14,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "pencil",
+    "colour": "#f1ead4",
+    "cap_colour": "#4aa59f",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.2,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#d9d0b4"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3,
+    "height": 5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#f4efde",
+    "roofColour": "#4aa59f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found for this mosque; outline and levels from OSM, teal dome and one minaret from the brief, portico, steps and colours typed."
+ }
+}

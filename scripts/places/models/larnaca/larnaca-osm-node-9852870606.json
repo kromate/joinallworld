@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-node-9852870606",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-osm-node-9852870606",
+   "used": "24 x 12 m low beach restaurant on a sand terrace with eight umbrellas; the one listed Commons image is an insect plate, so unusable; OSM containing block (306 m2 zig-zag) is a shared block, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     17,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#5f8fa8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    9,
+    5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 19,
+    "depth": 4.5,
+    "height": 3.2,
+    "columns": 5,
+    "colour": "#c9a56a",
+    "edgeColour": "#f0ebdf"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.5,
+    "colours": [
+     "#5f8fa8",
+     "#f0ebdf"
+    ]
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -2,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.6,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#5f8fa8",
+     "#f0ebdf",
+     "#c9a56a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 3.5,
+    "colour": "#5f8fa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Text only; real building unseen."
+ }
+}

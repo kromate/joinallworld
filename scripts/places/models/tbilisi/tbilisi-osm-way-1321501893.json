@@ -1,0 +1,351 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-1321501893",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Georgian_Betania.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gaeser",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/bet1.jpg",
+   "used": "cross-in-square plan seen from the south-west: tall west gable with two arched windows and carved frames, steep red standing-seam roofs, low gabled porch on the west end, 12-sided drum with blind arcade and four windows under a red conical cap with cross, buff ashlar walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Betania_church.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jaba1977",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tbilisi/bet3.jpg",
+   "used": "red roofs, drum off-centre to the east, setting in wooded valley, ruined gatehouse and hall to the north-west"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1321501893",
+   "used": "monastery precinct outline for the walled enclosure"
+  }
+ ],
+ "camera": {
+  "yawDeg": -48,
+  "pitchDeg": 6,
+  "fovDeg": 36,
+  "aspect": 0.86
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     8.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9ad72",
+    "windows": "arched",
+    "windowRatio": 0.07,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a88d58"
+      ],
+      "height": 0.5,
+      "at": 0.5,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a63b33",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     8.4,
+     17
+    ]
+   },
+   "at": [
+    1.5,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9ad72",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a63b33",
+    "material": "metal-sheet",
+    "pitch": 34,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     3.5,
+     5.5
+    ]
+   },
+   "at": [
+    12.7,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9ad72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a63b33",
+    "material": "metal-sheet",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    -13.5,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cfb47a",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "colour": "#a88d58",
+     "faces": "front",
+     "bays": 3
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a63b33",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2.5,
+    0,
+    10.0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c9ad72",
+    "profile": [
+     [
+      2.3,
+      -2.4,
+      "#c9ad72"
+     ],
+     [
+      2.3,
+      4.6
+     ],
+     [
+      2.5,
+      4.65,
+      "#a88d58"
+     ],
+     [
+      2.9,
+      5.0,
+      "#a63b33"
+     ],
+     [
+      0.12,
+      8.4
+     ],
+     [
+      0.12,
+      9.3,
+      "#403c38"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    2.5,
+    0,
+    10.0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 12,
+    "radius": 2.32,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "of": {
+     "type": "mass",
+     "id": "pil",
+     "footprint": {
+      "rect": [
+       0.22,
+       0.12
+      ]
+     },
+     "height": 3.6,
+     "z0": 0.6,
+     "wall": {
+      "material": "stone",
+      "colour": "#a88d58",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a88d58"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    2.5,
+    0,
+    10.0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 4,
+    "radius": 2.32,
+    "startDeg": 15,
+    "endDeg": 375,
+    "facing": "outward",
+    "of": {
+     "type": "mass",
+     "id": "w",
+     "footprint": {
+      "rect": [
+       0.3,
+       0.1
+      ]
+     },
+     "height": 2.0,
+     "z0": 1.6,
+     "wall": {
+      "material": "stone",
+      "colour": "#3b3028",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#3b3028"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "drum shorter than photo and no carved frames; west porch arcade renders as one large arched opening, not 3 arches; no carved window frames on west gable; enclosure wall removed; roofs lack fine ribs"
+ }
+}

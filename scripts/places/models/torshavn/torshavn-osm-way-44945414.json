@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-44945414",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vestmanna_kirkja._28-05.2007.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Erik Christensen",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/-44945414_0.jpg",
+   "used": "white rendered nave, grey-green metal roof with green eave line, six red-leaded pointed windows, white square tower with pyramid roof at the west end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vestmanna_2026_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pasztilla aka Attila Terbocs",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/-44945414_1.jpg",
+   "used": "tower height vs nave, roof lights, low grey stone plinth, cemetery in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44945414",
+   "used": "identity only (outline is skewed, nave scaled from the photo instead)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "pointed-arch",
+    "windowRatio": 0.26,
+    "bay": 4.2,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.2,
+    "trimColour": "#9a9992",
+    "glassColour": "#6a2a24"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a989c",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7.6,
+     7.6
+    ]
+   },
+   "at": [
+    -11.2,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "none",
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7d8a8f",
+    "material": "metal-sheet",
+    "rise": 6.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    -16,
+    1
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f8a80",
+    "material": "metal-sheet",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     3,
+     3.5
+    ]
+   },
+   "at": [
+    -6.2,
+    -6.6
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f7b82",
+    "material": "metal-sheet",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-red",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -20,
+    16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a83a32",
+    "windows": "punched",
+    "windowRatio": 0.14
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d42",
+    "pitch": 35,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-teal",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    19
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeee8",
+    "windows": "punched",
+    "windowRatio": 0.14
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f8a80",
+    "pitch": 35,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-white",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    12,
+    20
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "punched",
+    "windowRatio": 0.14
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a949a",
+    "pitch": 35,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 0.6,
+    "thickness": 0.5,
+    "colour": "#7d7a72"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -18,
+    -9,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 2,
+    "dx": 5,
+    "dy": 3.5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.3
+      ],
+      "height": 1.1,
+      "colour": "#8d8c88",
+      "windows": "none"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No dense hillside backdrop or stone retaining wall; hillside houses are three simple blocks; roof ridge strip, rooflights and small tower louvre omitted. Attribution confirmed as Vestmanna kirkja (Wikidata P18)."
+ }
+}

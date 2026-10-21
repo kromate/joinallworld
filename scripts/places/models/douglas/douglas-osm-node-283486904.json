@@ -1,0 +1,137 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "douglas",
+  "venueId": "douglas-osm-node-283486904",
+  "verified": "footprint",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Dub_CottageIMG_0127.JPG",
+      "licence": "Attribution",
+      "author": "A.G.Jones",
+      "view": "street",
+      "file": "/tmp/places-evidence/douglas/dub.jpg",
+      "used": "whitewashed gable end with slate-coloured pitch, hedge and rubble wall to the road, bare broadleaf trees, TT course road setting"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/1168570385",
+      "used": "footprint 14.3 x 9 m (nearest match, 7.6 m away)"
+    }
+  ],
+  "camera": {
+    "yawDeg": -20,
+    "pitchDeg": 3,
+    "fovDeg": 55
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "cottage",
+      "footprint": {
+        "osm": true
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0,
+      "height": 4.8,
+      "storeys": 2,
+      "wall": {
+        "material": "render",
+        "colour": "#efece2",
+        "windows": "punched",
+        "windowRatio": 0.07,
+        "bay": 4.5,
+        "plinth": 0.5
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 38,
+        "overhang": 0.1
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        -5,
+        0,
+        5.2
+      ],
+      "params": {
+        "width": 0.9,
+        "height": 2,
+        "pots": 1,
+        "colour": "#efece2"
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        5,
+        0,
+        5.2
+      ],
+      "params": {
+        "width": 0.9,
+        "height": 2,
+        "pots": 1,
+        "colour": "#efece2"
+      }
+    },
+    {
+      "type": "hedge",
+      "at": [
+        0,
+        -9,
+        0
+      ],
+      "params": {
+        "length": 22,
+        "height": 1.4,
+        "depth": 1.2,
+        "colour": "#3f5a34"
+      }
+    }
+  ],
+  "site": {
+    "ground": "grass",
+    "forecourt": "road",
+    "trees": [
+      {
+        "kind": "broadleaf",
+        "at": [
+          14,
+          -4
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          -14,
+          6
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          16,
+          8
+        ]
+      }
+    ],
+    "extent": [
+      50,
+      40
+    ]
+  },
+  "review": {
+    "rounds": 2,
+    "match": "rough",
+    "gaps": "photo shows only a whitewashed gable end, so massing/windows are a guess and verified is downgraded to footprint; hedge reads as separate bushes, grass bank and pavement not modelled, camera sees long side"
+  }
+}

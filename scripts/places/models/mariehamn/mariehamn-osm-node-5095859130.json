@@ -1,0 +1,291 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-node-5095859130",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%96nningeby_2025-06-26_image08.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "H\u00e5kan Skogsj\u00f6",
+   "view": "side",
+   "file": "/tmp/places-evidence/mariehamn/onn5.jpg",
+   "used": "long granite-walled barn with low steel-sheet gable roof, red timber lean-to and red cross gable, pale timber extension at the left, bare rock ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%96nningeby_2025-06-26_image01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "H\u00e5kan Skogsj\u00f6",
+   "view": "street",
+   "file": "/tmp/places-evidence/mariehamn/onn4.jpg",
+   "used": "the long metal roof and red end wall seen from the road, red gravel road"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/523432603",
+   "used": "overall length (36 m) and width (10 m) of the containing building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-barn",
+   "footprint": {
+    "rect": [
+     24,
+     9.5
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a7a6c",
+    "windows": "none",
+    "windowRatio": 0.035,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.2,
+    "windowShape": "rect",
+    "trimColour": "#f1eee8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9c0c4",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-leanto",
+   "footprint": {
+    "rect": [
+     17,
+     3.4
+    ]
+   },
+   "at": [
+    -1,
+    -6.4
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e2f26",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa3a8",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-cross-gable",
+   "footprint": {
+    "rect": [
+     5.5,
+     7
+    ]
+   },
+   "at": [
+    -6.5,
+    1.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2c24",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#aab3b8",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-extension",
+   "footprint": {
+    "rect": [
+     8.5,
+     7.5
+    ]
+   },
+   "at": [
+    -15,
+    3.5
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cdb48e",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c4b08c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -17,
+    -1.2,
+    0.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "colour": "#6b5a48"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    11.5,
+    -4.78,
+    0
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 0.7,
+    "bottom": 1.2,
+    "colour": "#2a2c30",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14.5,
+    -4.78,
+    0
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 0.7,
+    "bottom": 1.2,
+    "colour": "#2a2c30",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16.8,
+    -4.78,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 0.5,
+    "bottom": 1.0,
+    "colour": "#2b2e30",
+    "frameColour": "#4a4d50",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-gravel-road",
+   "footprint": {
+    "rect": [
+     8,
+     40
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "z0": -0.45,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a0453a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0453a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "stone is block-pattern not irregular rubble; ground is flat green grass not grey rock outcrop; red gravel road is a flat pad; no ramp (railing only) and no roof rust streaks; windows are small dark boards"
+ }
+}

@@ -1,0 +1,462 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SA-06-NOvember-2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Margarita kiril86",
+   "view": "front",
+   "file": "/tmp/places-evidence/sofia/airport1.jpg",
+   "used": "Terminal 2 landside: long low two-storey glazed wings under a thin white flat roof edge, central faceted glass vault with taller dark block behind, curved silver-blue vaulted connector on concrete piers at right, elevated concrete guideway in front, flagpoles and tall lamp masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53563578",
+   "used": "size only: outline is 415 m long and irregular, a 150 m landside front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.58,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     46,
+     20
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5c66",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f5f5",
+    "material": "metal-sheet",
+    "overhang": 4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5c66",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f5f5",
+    "material": "metal-sheet",
+    "overhang": 4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dfe3e5",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceeee",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-block",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    4,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4b5258",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a7075",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "colour": "#9cc4d6",
+    "material": "glass-curtain",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       20
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       29,
+       19
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       26,
+       17
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       22,
+       14
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       17,
+       11
+      ]
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       11,
+       7
+      ]
+     },
+     {
+      "z": 16.5,
+      "rect": [
+       6,
+       4
+      ]
+     },
+     {
+      "z": 17.5,
+      "rect": [
+       3,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "colour": "#6f98ab",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       20
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       4,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "connector",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    58,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4c4",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6,
+    "colour": "#c4ccd2",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    -30,
+    7
+   ],
+   "params": {
+    "rect": [
+     100,
+     4.5
+    ],
+    "height": 1.6,
+    "colour": "#a8a7a3"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -44,
+     -30,
+     0
+    ],
+    "end": [
+     40,
+     -30,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        3,
+        4
+       ],
+       "height": 7,
+       "colour": "#a2a19e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     44,
+     -6,
+     0
+    ],
+    "end": [
+     72,
+     -6,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        4,
+        5
+       ],
+       "height": 6,
+       "colour": "#b0afac"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 4,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#ffffff",
+     "#00966e",
+     "#d62612"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -42
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -38
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -37
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -30
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-airport-sofia-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Scene framing is small and wide (guideway and pad shrink the fit); connector vault less ribbed and sweeping than real; ground is green not dry gold and trees are not autumn coloured; no train on the guideway"
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: plain 3-4 storey 20th-century concrete office block with ribbon windows, two flagpoles, signage board; OSM match is only a small containing commercial polygon so not trusted"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     48,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9dcd8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "bands": "#8a8f94"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-core",
+   "footprint": {
+    "rect": [
+     9,
+     17
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "height": 14.2,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bdb9",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -10
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8aa0aa",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    12,
+    13
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d2d5d1",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.2,
+    "height": 3.8,
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.5
+    ],
+    "height": 2,
+    "colour": "#ffffff",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -3,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; modest typical Reykjavik ministry office block from the brief."
+ }
+}

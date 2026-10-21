@@ -1,0 +1,664 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Luxembourg.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OlhaHutych",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/uni1.jpg",
+   "used": "dark square-grid facade of the long podium block with a deep cantilevered entrance overhang at right, tall grid tower behind, reflecting pool, rust-red weathering-steel sculpture, white scaffold-like pavilion at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maison_du_Savoir.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/luxembourg/uni2.jpg",
+   "used": "white deep-set concrete grid cells (about 1.5 m) on podium and tower, tower height about 3x the podium, black wayfinding stele"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/374566530",
+   "used": "podium footprint size (78x54 m, 7 levels); modelled as simplified rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     66,
+     26
+    ]
+   },
+   "at": [
+    -7,
+    0
+   ],
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4e55",
+    "windows": "punched",
+    "windowRatio": 0.9,
+    "bay": 3.6,
+    "glassColour": "#4a4e55",
+    "trimColour": "#d9dbdc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7277",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     40,
+     40
+    ]
+   },
+   "at": [
+    -20,
+    7
+   ],
+   "z0": 26,
+   "height": 52,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4e55",
+    "windows": "punched",
+    "windowRatio": 0.9,
+    "bay": 7.5,
+    "glassColour": "#4a4e55",
+    "trimColour": "#d9dbdc",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "overhang",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "z0": 17,
+   "height": 9,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3136",
+    "windows": "none",
+    "windowRatio": 0.88,
+    "bay": 4.0,
+    "glassColour": "#3c4047",
+    "trimColour": "#d9dbdc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#50545a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "passage-back",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    33,
+    12
+   ],
+   "height": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2e33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     76,
+     14
+    ],
+    "height": 0.15,
+    "colour": "#161d22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -35.5,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -35.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.5,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -15.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.5,
+    -15.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -18,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -12.5,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -15.25,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.5,
+    -15.25,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -18,
+    9
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33.25,
+    -12.5,
+    9
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -15.25,
+    9
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26.5,
+    -15.25,
+    9
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#eef0f1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.4
+    ],
+    "height": 14,
+    "colour": "#8c3f26"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -25,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    29,
+    -33.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.3,
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -38,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-460847721",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower and podium now uniform dark grid with coarse cells (7.5 m / 3.6 m bays vs real 1.5 m) because of triangle budget; no blue glazed cells; overhang is a plain dark slab; scaffold pavilion is a thin post frame"
+ }
+}

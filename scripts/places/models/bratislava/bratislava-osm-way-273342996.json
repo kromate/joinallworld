@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-273342996",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Be%C5%88adick%C3%A1_16_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wizzard",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/p-osm-way-273342996-0.jpg",
+   "used": "two-storey block with a flat roof, lime-green rendered walls, white ribbon windows, white-rendered end wing, small entrance, hedge and pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/273342996",
+   "used": "real outline of the college (93.7 x 51.7 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fc43c",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#ffffff"
+      ],
+      "height": 0.25,
+      "at": 0.5,
+      "proud": 0.08,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "endwing",
+   "at": [
+    26,
+    -48
+   ],
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ec",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "at": [
+    -4,
+    -46.5
+   ],
+   "footprint": {
+    "rect": [
+     6,
+     3.4
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -22,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#e9e8df",
+    "frameColour": "#8a8d8c",
+    "posts": true
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -30,
+    -53,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "depth": 1.6,
+    "colour": "#2f6a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     -56
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -58
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -54
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo's two-storey wing is only partly matched by the large OSM outline; white end wing and porch are approximate, tree screen and parked cars not modelled, ribbon windows still fine."
+ }
+}

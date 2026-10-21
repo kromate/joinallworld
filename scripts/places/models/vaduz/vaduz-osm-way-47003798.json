@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-47003798",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/47003798",
+   "used": "narrow 34 x 6.6 m outline, bearing 18 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 3.0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "house",
+   "at": [
+    0,
+    -0.5,
+    -1
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 1.6,
+    "colour": "#e6dcc2",
+    "roof_colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "on": "house",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building found (nearby geotagged photos show other buildings); outline-only composition from OSM and brief; dormer/chimney placement guessed."
+ }
+}

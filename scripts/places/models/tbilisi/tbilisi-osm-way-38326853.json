@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-38326853",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_-_%E1%83%A9%E1%83%90%E1%83%A9%E1%83%90%E1%83%95%E1%83%90%E1%83%A1_%E1%83%99%E1%83%9A%E1%83%98%E1%83%9C%E1%83%98%E1%83%99%E1%83%90_0580.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phyrexian",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/cc1.jpg",
+   "used": "four-storey stucco facade in grey-green with cream pilasters and window surrounds, regular window rhythm, grey low roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E1%83%97%E1%83%91%E1%83%98%E1%83%9A%E1%83%98%E1%83%A1%E1%83%98_-_%E1%83%A9%E1%83%90%E1%83%A9%E1%83%90%E1%83%95%E1%83%90%E1%83%A1_%E1%83%99%E1%83%9A%E1%83%98%E1%83%9C%E1%83%98%E1%83%99%E1%83%90_0729.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phyrexian",
+   "view": "side",
+   "file": "/tmp/places-evidence/tbilisi/cc2.jpg",
+   "used": "courtyard-side elevation, warm grey stucco, projecting cornice, tall windows, stepped stair to a small entrance canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38326853",
+   "used": "real outline (name match): winged complex about 93 by 41 m, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -33
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8f988a",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bands": {
+     "colour": "#e3dcc2",
+     "height": 0.5
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 7.0,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#e8e2cc",
+    "windowShape": "rect",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.7,
+      "depth": 0.35,
+      "spacing": 7.0,
+      "colour": "#e3dcc2",
+      "margin": 0.3
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e3dcc2",
+      "height": 0.35,
+      "proud": 0.3,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7378",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#bdb6a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6,
+     -32
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Art Nouveau stucco relief (curved attic gable, sill brackets, window surrounds) only approximated by pilaster fins and bands; OSM outline hip roof fitted to bounding rectangle; windows still 2x2 pane and smaller than real; entrance canopy reduced to steps."
+ }
+}

@@ -1,0 +1,334 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-way-435833503",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Agridaki_Church_09.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Julian Nyca",
+   "view": "side",
+   "file": "/tmp/places-evidence/kyrenia/church1.jpg",
+   "used": "yellow limestone walls with tall blind round arches on the long side, row of five small tiled gables along the left aisle, terracotta tile roofs, tall square stone bell tower with belfry and balustrade, rubble stone boundary wall in front, scrub and trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/435833503",
+   "used": "size only (about 26 x 12 m incl. apse)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c28e",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.9,
+    "bay": 4.4,
+    "glassColour": "#7d6a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bf6340",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.5,
+     -3
+    ],
+    "end": [
+     8.5,
+     -3
+    ],
+    "count": 6,
+    "of": {
+     "type": "mass",
+     "id": "gable",
+     "footprint": {
+      "rect": [
+       2.6,
+       5.4
+      ]
+     },
+     "z0": 9.5,
+     "height": 1.8,
+     "storeys": 1,
+     "wall": {
+      "material": "limestone",
+      "colour": "#d6bf8c",
+      "windows": "none",
+      "plinth": 0.1
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#bf6340",
+      "material": "clay-tile",
+      "overhang": 0.15,
+      "pitch": 40,
+      "axis": "y"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6bf8c",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bf6340",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "pitch": 30,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    -12,
+    -3.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfb784",
+    "windows": "none",
+    "plinth": 0.9,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.4,
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfb784"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -12,
+    -3.4,
+    20
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 4.5,
+    "cap": "pyramid",
+    "belfry": true,
+    "colour": "#d3bb8c",
+    "cap_colour": "#bf6340",
+    "cap_height": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    13.5,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6bf8c",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bf6340",
+    "material": "clay-tile",
+    "overhang": 0.4,
+    "pitch": 30,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a8a091",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a091"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -19.5,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.0,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#8f8470"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     14
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arches remain open recesses not pilastered blind arcade; belfry balustrade, apse curve and scrub hillside simplified"
+ }
+}

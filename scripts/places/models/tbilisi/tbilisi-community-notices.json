@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/10574535",
+   "used": "triangular real footprint and level count; no photo (government compound), so cladding is a plain modern guess"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 5.5,
+    "plinth": 0.5,
+    "bands": "#8d8b85"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f82",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "pillar": 0.6
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 15,
+  "trees": 2,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; facade and fence are generic guarded-compound styling"
+ }
+}

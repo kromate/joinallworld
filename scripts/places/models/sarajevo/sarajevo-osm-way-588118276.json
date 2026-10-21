@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-588118276",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stari_grad_Dubrovnik,_Ilija%C5%A1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tarik Alimanovic",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/qd1.jpg",
+   "used": "one tall, slightly polygonal grey-cream rubble-stone tower with flat crenel-less top standing on a rock outcrop above a densely wooded hill"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dubrovnik,_stari_grad_u_BiH.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tarik Alimanovic",
+   "view": "side",
+   "file": "/tmp/places-evidence/sarajevo/qd2.jpg",
+   "used": "low rough rubble curtain wall with pinkish-white lime stones, partially ruined, grass inside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/588118276",
+   "used": "elongated ~53 x 16 m ruined enclosure orientation (wall run along ENE-WSW), tower at the west end"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -4,
+  "fovDeg": 32,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 40,
+    "height": 17,
+    "seed": 4,
+    "stairs": false,
+    "rock_colour": "#5c6650",
+    "boulders": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    0,
+    0
+   ],
+   "params": {
+    "n": 12,
+    "radius": 5.2,
+    "z0": 14,
+    "height": 7.5,
+    "colour": "#b9b3a0",
+    "topColour": "#9a9588"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    0,
+    0
+   ],
+   "params": {
+    "n": 12,
+    "radius": 5.3,
+    "z0": 21.5,
+    "height": 0.7,
+    "colour": "#b9b3a0",
+    "topColour": "#9a9588"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    6,
+    1,
+    15.0
+   ],
+   "rotDeg": 6,
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 1.0,
+    "colour": "#d9c3b6",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    15,
+    3,
+    15.0
+   ],
+   "rotDeg": 22,
+   "params": {
+    "length": 7,
+    "height": 1.6,
+    "thickness": 1.0,
+    "colour": "#d9c3b6",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    8,
+    7.5,
+    15.0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "length": 9,
+    "height": 1.2,
+    "thickness": 1.0,
+    "colour": "#d9c3b6",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    20,
+    6,
+    15.0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "length": 6,
+    "height": 0.9,
+    "thickness": 1.0,
+    "colour": "#d9c3b6",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 14,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 40,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 40,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is a 12-sided drum on a generic rock-hill; no stone coursing or crag detail, hillside tree cover cannot be placed on the slope so the hill reads as a bare mound, ruin walls are small."
+ }
+}

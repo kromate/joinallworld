@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-319084318",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/319084318",
+   "used": "real 6-point outline (21 x 14 m), height 18 m, flat concrete roof"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1960s-70s polykatoikia-type concrete block, six storeys, balcony bands, roof water tank, shop awnings; Wikidata Q781330; nearby street photos in the evidence set show only the Koukaki streets and Acropolis, not this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-body",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#b8b0a2",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e3dccb",
+       "#d8d0bd"
+      ]
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-floor",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 16.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4ccb8",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "balconies",
+   "at": [
+    -6,
+    -6,
+    3.3
+   ],
+   "params": {
+    "length": 12,
+    "floors": 4,
+    "storeyHeight": 3.3,
+    "proud": 1.2,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "roof-tank",
+   "at": [
+    2,
+    2,
+    19.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.2,
+    "tankHeight": 1.8,
+    "legHeight": 1.2,
+    "legs": 4,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning-1",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.4,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#5c7a6a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "street-tree",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "parked-car",
+   "id": "street-car",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#b0b3b6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; OSM outline and height only, balconies and tank from the brief"
+ }
+}

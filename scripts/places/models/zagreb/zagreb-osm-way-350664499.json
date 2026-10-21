@@ -1,0 +1,318 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ksaver-4.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Boris Ilic",
+   "view": "street",
+   "file": "/tmp/places-evidence/zagreb/veleuciliste.jpg",
+   "used": "dark brown-grey glazed and metal-clad block, white concrete piers and stair core, projecting dark panelled bay, lower stepped dark wing on the right with flag, white render annex behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/676228361",
+   "used": "main building footprint 29 x 18 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dark-block",
+   "footprint": {
+    "rect": [
+     18,
+     15
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18.5,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f3a3c",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#2c282a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-pier",
+   "footprint": {
+    "rect": [
+     3.1,
+     15.5
+    ]
+   },
+   "at": [
+    -1.4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6d0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clad-bay",
+   "footprint": {
+    "rect": [
+     10,
+     15
+    ]
+   },
+   "at": [
+    5.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5c5048",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#3a3430"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a554f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-projection",
+   "footprint": {
+    "rect": [
+     8,
+     2.6
+    ]
+   },
+   "at": [
+    5.6,
+    -8.8
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a3d38",
+    "windows": "punched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4038",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-pier-2",
+   "footprint": {
+    "rect": [
+     2.8000000000000003,
+     15.5
+    ]
+   },
+   "at": [
+    11.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.0,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6d0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stepped-wing",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    19,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3c3839",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#3a3638"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9da0",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    31,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd9d0",
+    "windows": "ribbon",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b3",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    22,
+    -7.5,
+    4
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#b8323a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    5.6,
+    -7.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2e2a28",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2a28",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -11,
+    0
+   ],
+   "params": {
+    "colour": "#b9bdc1",
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window strips are generic ribbon not paired vertical recesses, car and lamp small and plain, no air-conditioners or street furniture, annex depth guessed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-350664499"
+}

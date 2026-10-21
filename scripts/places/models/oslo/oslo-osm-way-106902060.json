@@ -1,0 +1,276 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/106902060",
+   "used": "real outline of the square (name match, 4638 m2, 113 x 63 m), as the paved surface"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/oslo.json#oslo-osm-way-106902060",
+   "used": "small paved square with trees and benches between apartment blocks; render palette #d9d2c0 / #8a8d8f; no usable photo of the square itself was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "osm": true,
+    "fit": 112
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a7a49c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a49c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    -28,
+    6,
+    0.16
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "colour": "#6f8f58"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    26,
+    -6,
+    0.16
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "colour": "#6f8f58"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -28,
+    6,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.6
+      ],
+      "height": 0.5,
+      "colour": "#7a5a3c"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -12,
+     -6,
+     0.15
+    ],
+    "end": [
+     12,
+     -6,
+     0.15
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.17
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -2
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      40,
+      3
+     ]
+    ],
+    "width": 3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-north",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -5,
+    40
+   ],
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    58,
+    0
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cdc4ad",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    -58,
+    -2
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the square itself; blocks around it are typical Oslo apartment slabs, only the square outline is real."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-106902060"
+}

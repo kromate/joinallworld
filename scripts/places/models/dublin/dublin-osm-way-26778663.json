@@ -1,0 +1,461 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-26778663",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Morton_stadium.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Peter Gerken",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/morton1.jpg",
+   "used": "main covered stand seen across the red track: long raking canopy in teal-blue cladding, green glazed box, green seats with yellow rails, white concrete walls, floodlight masts, clubhouse to the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Morton_Stadium_terracing.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Riverside Regular",
+   "view": "side",
+   "file": "/tmp/places-evidence/dublin/morton2.jpg",
+   "used": "open concrete terracing with sloping white side wall, tall floodlight masts, blue run-up strips"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26778663",
+   "used": "identity; the 324 m site outline is too large, the track and stands are placed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 10,
+  "fovDeg": 26,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 190,
+    "width": 104,
+    "colour": "#a63f2f",
+    "lane_width": 8.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     48
+    ],
+    "end": [
+     -42,
+     48
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 2.2,
+    "seatColour": "#3f8f5f",
+    "concreteColour": "#d9dad6",
+    "underColour": "#c9cbc6",
+    "backWall": 1.0,
+    "canopy": {
+     "height": 7.6,
+     "depth": 12,
+     "colour": "#4a7f93",
+     "slopeDeg": 15,
+     "supports": 6
+    },
+    "under": "solid"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "at": [
+    -52,
+    56
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a7f93",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4f8f72"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a7f93",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "pitch": 22,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    0,
+    57
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f7285",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#3f8a64"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7f93",
+    "material": "metal-sheet",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -52
+    ],
+    "end": [
+     50,
+     -52
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "seatColour": "#8d8f8e",
+    "concreteColour": "#a3a4a0",
+    "underColour": "#8d8f8e",
+    "backWall": 0.5,
+    "under": "solid"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     46,
+     0
+    ],
+    "radius": 44,
+    "radiusY": 46,
+    "startDeg": -65,
+    "endDeg": 65,
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "facetDeg": 18,
+    "seatColour": "#8d8f8e",
+    "concreteColour": "#a3a4a0",
+    "underColour": "#8d8f8e",
+    "under": "solid"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -40,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 2.4,
+    "facing": "north",
+    "colour": "#3a5f8a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    0,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    62,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glazed-box",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    52
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f8f72",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "glassColour": "#3f8a64"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7f93",
+    "material": "metal-sheet",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-block",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    56
+   ],
+   "rotDeg": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7f93",
+    "material": "metal-sheet",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "jump-apron",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    56,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcdc6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "canopy now raked and attached over the seats with glazed box and tall plant block, but the stand is small against a whole-stadium view; track lacks per-lane lines and curved bend close-up; camera cannot sit at the bend as in the photo; side walls and yellow rails omitted"
+ }
+}

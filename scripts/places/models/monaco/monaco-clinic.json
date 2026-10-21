@@ -1,0 +1,491 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cardiothoracic_Center_of_Monaco.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/monaco-clinic-1.jpg",
+   "used": "street front: cream render base with arched drive-in entrance and flat window pediments, terraced upper storeys stepping back behind arcaded balconies and balustrades, round corner tower with green dome at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monaco_-_Avenue_d%27Ostende.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tiia Monto",
+   "view": "street",
+   "used": "cream and peach colours, white-framed windows, balustraded roof edge, arched service gateway"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94252399",
+   "used": "overall size only (about 49 x 41 m); the stepped massing follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8d6b4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "plinth": 0.8,
+    "cornice": true,
+    "glassColour": "#4d5c6b",
+    "bands": "#f1ead8",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a193",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     38,
+     8
+    ]
+   },
+   "at": [
+    -3,
+    2.5
+   ],
+   "z0": 9,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c39b",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "cornice": true,
+    "glassColour": "#4d5c6b",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a193",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    -5,
+    5
+   ],
+   "z0": 15.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8d6b4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "cornice": true,
+    "glassColour": "#4d5c6b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a193",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4,
+    -8.3,
+    0
+   ],
+   "params": {
+    "colour": "#1f2224",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       1.4
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       9,
+       1.4
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       8,
+       1.4
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       6,
+       1.4
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       3.4,
+       1.4
+      ]
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       0.6,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "olive",
+    "height": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    21.5,
+    -1,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#e8d6b0",
+    "profile": [
+     [
+      9.12,
+      0
+     ],
+     [
+      9.12,
+      19.0
+     ],
+     [
+      9.96,
+      19.3,
+      "#f1ead8"
+     ],
+     [
+      9.96,
+      20.0
+     ],
+     [
+      8.16,
+      20.2,
+      "#e8d6b0"
+     ],
+     [
+      7.92,
+      19.0
+     ],
+     [
+      7.92,
+      23.5
+     ],
+     [
+      8.4,
+      23.6,
+      "#f1ead8"
+     ],
+     [
+      8.4,
+      24.0
+     ]
+    ],
+    "arcade": {
+     "from": 8.0,
+     "to": 16.5,
+     "count": 8,
+     "width": 2.0,
+     "height": 4.2,
+     "sill": 0.6,
+     "shape": "round",
+     "depth": 0.6
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    21.5,
+    -1,
+    24
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#6f9b86",
+    "profile": [
+     [
+      8.16,
+      0,
+      "#e8d6b0"
+     ],
+     [
+      8.16,
+      0.4
+     ],
+     [
+      7.68,
+      0.6,
+      "#6f9b86"
+     ],
+     [
+      6.96,
+      1.6
+     ],
+     [
+      5.04,
+      3.0
+     ],
+     [
+      2.4,
+      4.0
+     ],
+     [
+      1.08,
+      4.5
+     ],
+     [
+      1.08,
+      5.4,
+      "#e8d6b0"
+     ],
+     [
+      0.36,
+      5.8
+     ],
+     [
+      0.12,
+      7.2,
+      "#33383a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -3,
+    -8.5,
+    9
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -3,
+    -3.6,
+    15.5
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.0,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -5,
+    1.0,
+    21
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -16,
+      -3.8,
+      9.4
+     ],
+     [
+      -2,
+      -3.8,
+      12.0
+     ],
+     [
+      10,
+      -3.8,
+      15.0
+     ]
+    ],
+    "colour": "#e2cfa8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8.5,
+    7.6
+   ],
+   "params": {
+    "width": 13,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#efe3c2",
+    "frameColour": "#c9a96a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.5
+    ],
+    "z0": 1.0,
+    "height": 6.0,
+    "colour": "#1f2c3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -8.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "z0": 6.4,
+    "height": 1.2,
+    "colour": "#f1ead8"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper terraces are arched-window slabs not open columned arcades; ramp is a plain bar; drum has arched openings but no balcony rail; portal not deeply recessed; no pedimented windows or carved pilasters"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

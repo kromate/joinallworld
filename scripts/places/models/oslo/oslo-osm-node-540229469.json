@@ -1,0 +1,323 @@
+{
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Closer to photo: lower roof, red barge board, red door, long wing, porch dormer, visible chimney; hillside slope, red window frames and rough granite not modelled."
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kobberhaughytta1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rart",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/kobber1.jpg",
+   "used": "massing: granite-block ground storey, black-stained vertical board upper storey, red-edged gable roof, long wing stepping down to the right, white chimney at the left gable, porch with red rail"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/oslo.json#oslo-osm-node-540229469",
+   "used": "walkers' hut in Nordmarka; OSM containing building (retail) is a different thing and is NOT used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": -4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-base",
+   "footprint": {
+    "rect": [
+     18.4,
+     9.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8a7d6e",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8b7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2a2928",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.2,
+    "cornice": false
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a3a34",
+    "material": "timber-shingle",
+    "pitch": 28,
+    "overhang": 0.7,
+    "axis": "x"
+   },
+   "z0": 1.9
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     6.5
+    ]
+   },
+   "at": [
+    17,
+    0.5
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2a2928",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3030",
+    "material": "timber-shingle",
+    "pitch": 26,
+    "overhang": 0.5,
+    "axis": "x"
+   },
+   "z0": 1.2
+  },
+  {
+   "type": "mass",
+   "id": "wing-base",
+   "footprint": {
+    "rect": [
+     16.3,
+     6.8
+    ]
+   },
+   "at": [
+    17,
+    0.5
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a8b7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8b7a"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -8,
+    0,
+    6.3
+   ],
+   "params": {
+    "height": 3.2,
+    "radius": 0.9,
+    "colour": "#ece8dd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-deck",
+   "footprint": {
+    "rect": [
+     7,
+     2.4
+    ]
+   },
+   "at": [
+    12,
+    -4.3
+   ],
+   "z0": 0.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    12,
+    -5.6,
+    1.2
+   ],
+   "params": {
+    "length": 7,
+    "height": 0.9,
+    "thickness": 0.08,
+    "colour": "#8e3b2f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-door",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.6
+    ]
+   },
+   "at": [
+    -9.3,
+    -2.5
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2f"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "porch-dormer",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    9.5,
+    -4.2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e3b2f",
+    "pitch": 35,
+    "overhang": 0.3,
+    "axis": "y"
+   },
+   "z0": 1.9
+  },
+  {
+   "type": "mass",
+   "id": "fascia-front",
+   "footprint": {
+    "rect": [
+     18.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.6
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2f"
+   },
+   "z0": 5.2
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -2
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-node-540229469"
+}

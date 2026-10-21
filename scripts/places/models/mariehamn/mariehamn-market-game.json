@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Telegrafen_Mariehamn.jpg",
+   "licence": "CC0",
+   "author": "Jaakko.kulta",
+   "view": "front",
+   "file": "/tmp/places-evidence/mariehamn/m59-tele1.jpg",
+   "used": "four-storey terracotta render block, grey arched ground storey with pale cornice band and blank signboard, tall paired windows, white eave band, dark roof, yellow neighbour with dormers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/953317231",
+   "used": "irregular footprint of the Telegrafen block (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 0.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4714f",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 5.5,
+    "plinth": 0.5,
+    "cornice": false,
+    "trimColour": "#ece6d8",
+    "groundKind": "arcade",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5.0,
+      "opening": 0.8,
+      "height": 1.0,
+      "depth": 1.2,
+      "pierColour": "#6f6f72",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 9,
+    "colour": "#3c3f43",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -36.5
+   ],
+   "z0": 4.6,
+   "height": 1.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eee9de"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-neighbour",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    38,
+    -26
+   ],
+   "rotDeg": -7,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a93f",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#e7e0cc",
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 28,
+    "colour": "#4a4d52",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    34,
+    -28,
+    12
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "step": [
+     5,
+     0,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     "height": 2.4,
+     "wall": {
+      "colour": "#8a8f94",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#6c7176"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "eave-band",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 16.2,
+   "height": 0.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c3f43"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    34.5,
+    -26,
+    15
+   ],
+   "rotDeg": -7,
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "step": [
+     3.3,
+     0,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.8,
+       2.2
+      ]
+     },
+     "height": 2.2,
+     "wall": {
+      "colour": "#e7e0cc",
+      "windows": "punched",
+      "windowRatio": 0.4
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 40,
+      "colour": "#4a4d52"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-wall",
+   "footprint": {
+    "rect": [
+     0.5,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    -18
+   ],
+   "height": 12,
+   "wall": {
+    "colour": "#4f7d3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f7d3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Block still OSM-shaped; windows still denser than the photo's tall paired ones; yellow-neighbour dormers and green wall strip approximate; no street furniture"
+ }
+}

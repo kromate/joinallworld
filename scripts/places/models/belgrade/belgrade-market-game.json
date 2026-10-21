@@ -1,0 +1,235 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/503379357",
+   "used": "real footprint outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/belgrade.json#belgrade-market-game",
+   "used": "2017 three-level flat-roofed mall, glazed entrance, pale cladding and glazing, car park; no Belgrade exterior photo found (Commons files are of the Ashdod namesake)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e1e0dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#7f93a0",
+    "bands": "#b9b6af",
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f90",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f93a0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6af",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -40,
+    5
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 0.5,
+    "form": "flat",
+    "colour": "#b9b6af"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -33,
+    14
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.6,
+    "colour": "#b9b6af"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "cars": [
+   {
+    "at": [
+     -70,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -58,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3d42"
+   },
+   {
+    "at": [
+     -46,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#9a2f2f"
+   },
+   {
+    "at": [
+     -34,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -22,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -10,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3d42"
+   },
+   {
+    "at": [
+     2,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#9a2f2f"
+   },
+   {
+    "at": [
+     14,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     26,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     38,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3d42"
+   },
+   {
+    "at": [
+     50,
+     -62
+    ],
+    "yawDeg": 0,
+    "colour": "#9a2f2f"
+   },
+   {
+    "at": [
+     62,
+     -62
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   }
+  ],
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; outline scaled 0.51 to 118 m, so entrance position and glazing pattern are generic"
+ }
+}

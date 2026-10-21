@@ -1,0 +1,550 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-976381108",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akranes_stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FV82",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/akranes1.jpg",
+   "used": "single long main stand on the far side: flat roof over the upper tier, yellow banner band on the roof edge, dark glazed back wall, orange/black/white seats, lower grey-roofed open terraces at both ends, ad boards along the pitch edge, flat grass pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/976381108",
+   "used": "overall size only (168 x 114 m outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     40
+    ],
+    "end": [
+     -40,
+     40
+    ],
+    "rows": 13,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.8,
+    "stepped": true,
+    "seatColours": [
+     "#e0902f",
+     "#2e2e30",
+     "#e6dcd8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d4d4d0",
+    "underColour": "#3a3d42",
+    "under": "open",
+    "bay": 8,
+    "canopy": {
+     "height": 0.4,
+     "depth": 10,
+     "thickness": 1.2,
+     "slopeDeg": 0,
+     "colour": "#2b2e33",
+     "edgeColour": "#e3b52f",
+     "overhangBack": 0.5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     40
+    ],
+    "end": [
+     42,
+     40
+    ],
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColours": [
+     "#c8506a",
+     "#2e2e30",
+     "#e6dcd8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d4d4d0",
+    "under": "open",
+    "canopy": {
+     "height": 2.6,
+     "depth": 3.5,
+     "thickness": 0.3,
+     "slopeDeg": 0,
+     "colour": "#c9ccd0",
+     "edgeColour": "#c9ccd0"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     40
+    ],
+    "end": [
+     -62,
+     40
+    ],
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColours": [
+     "#c8506a",
+     "#2e2e30",
+     "#e6dcd8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d4d4d0",
+    "under": "open",
+    "canopy": {
+     "height": 2.6,
+     "depth": 3.5,
+     "thickness": 0.3,
+     "slopeDeg": 0,
+     "colour": "#c9ccd0",
+     "edgeColour": "#c9ccd0"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46.0,
+     -35
+    ],
+    "end": [
+     28.0,
+     -35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#2f78b8"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46.0,
+     35
+    ],
+    "end": [
+     28.0,
+     35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#2f78b8"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.3,
+     -35
+    ],
+    "end": [
+     31.700000000000003,
+     -35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#e8e8e4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.3,
+     35
+    ],
+    "end": [
+     31.700000000000003,
+     35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#e8e8e4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38.6,
+     -35
+    ],
+    "end": [
+     35.4,
+     -35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#c8302e"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38.6,
+     35
+    ],
+    "end": [
+     35.4,
+     35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#c8302e"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.9,
+     -35
+    ],
+    "end": [
+     39.1,
+     -35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#1f2a44"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.9,
+     35
+    ],
+    "end": [
+     39.1,
+     35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#1f2a44"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31.2,
+     -35
+    ],
+    "end": [
+     42.8,
+     -35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#e3b52f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31.2,
+     35
+    ],
+    "end": [
+     42.8,
+     35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.2
+      ],
+      "height": 0.9,
+      "colour": "#e3b52f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -31
+    ],
+    "end": [
+     -54,
+     31
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       3.6
+      ],
+      "height": 0.9,
+      "colour": "#c8302e"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     54,
+     -31
+    ],
+    "end": [
+     54,
+     31
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       3.6
+      ],
+      "height": 0.9,
+      "colour": "#2f78b8"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is Akranesvollur itself (critic's evidenceOk=false was wrong: OSM venue is Akranes). Main stand still a bit tall/short vs photo; no flags or glazed back-wall detail."
+ }
+}

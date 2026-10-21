@@ -1,0 +1,183 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/belgrade.json#belgrade-osm-node-11425530815",
+   "used": "WWII fighters' memorial in Sremcica, small park (park outline only, 54x21 m, not the monument); no photo found, so a modest Yugoslav-era stepped stele on a stone plinth in a lawn with a low kerb wall and a few trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1117928469",
+   "used": "park extent only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6af"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     4.4,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "z0": 0.7,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6af",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "obelisk-pedestal",
+   "at": [
+    0,
+    0.4,
+    2.0
+   ],
+   "params": {
+    "height": 3.6,
+    "baseWidth": 1.5,
+    "colour": "#d8d4c8",
+    "pedestal": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-l",
+   "footprint": {
+    "rect": [
+     0.6,
+     5
+    ]
+   },
+   "at": [
+    -4.6,
+    1.6
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-r",
+   "footprint": {
+    "rect": [
+     0.6,
+     5
+    ]
+   },
+   "at": [
+    4.6,
+    1.6
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     5
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-node-11425530815",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; monument form assumed (stepped stele)"
+ }
+}

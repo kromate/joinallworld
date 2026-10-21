@@ -1,0 +1,371 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Стадион_«Локомотив»_в_Киеве.JPG",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kyiv/loko1.jpg",
+   "used": "green artificial-turf pitch inside a dark asphalt running track, white perimeter wall, steel floodlight mast, long red-brown corrugated gable roofed hall beside the pitch, white block with blue panels, trees around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lokomotyv_Stadium_in_Kyiv_after_Russian_attack,_2024-01-23_(01).jpg",
+   "licence": "CC BY 4.0",
+   "author": "State Emergency Service of Ukraine",
+   "view": "side",
+   "file": "/tmp/places-evidence/kyiv/loko2.jpg",
+   "used": "red-brown pitched metal roof, pale render walls with red and green club-colour end wall, stone plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/70145536",
+   "used": "main hall size (38 x 18 m); the rest laid out from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.08
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#3a3a3e"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -54,
+      -36,
+      1.3
+     ],
+     [
+      54,
+      -36,
+      1.3
+     ],
+     [
+      54,
+      36,
+      1.3
+     ],
+     [
+      -54,
+      36,
+      1.3
+     ],
+     [
+      -54,
+      -36,
+      1.3
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.3,
+      2.6
+     ]
+    },
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -51,
+      -33,
+      1.6
+     ],
+     [
+      51,
+      -33,
+      1.6
+     ],
+     [
+      51,
+      33,
+      1.6
+     ],
+     [
+      -51,
+      33,
+      1.6
+     ],
+     [
+      -51,
+      -33,
+      1.6
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.12,
+      3.2
+     ]
+    },
+    "colour": "#1f4a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     62,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3da",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.0,
+    "bands": "#b3262d",
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "left",
+      "right"
+     ],
+     "colours": [
+      "#b3262d",
+      "#f2f2f2"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -62,
+    -36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f2",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bands": "#2d63b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -56,
+    38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    56,
+    38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    56,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -37,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 3,
+    "dx": 14,
+    "dy": 6,
+    "stagger": 3,
+    "of": [
+     {
+      "type": "tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 12
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      -39,
+      0.6
+     ],
+     [
+      56,
+      -39,
+      0.6
+     ],
+     [
+      56,
+      39,
+      0.6
+     ],
+     [
+      -56,
+      39,
+      0.6
+     ],
+     [
+      -56,
+      -39,
+      0.6
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.3,
+      1.2
+     ]
+    },
+    "colour": "#eeeeea"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hall roof ribs and red/white end striping simplified, mesh fence is a dark strip, trees denser than before but not the real canopy mass, surrounding housing absent"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-relation-14694175"
+}

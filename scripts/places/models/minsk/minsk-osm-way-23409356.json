@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-way-23409356",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tarpeda_(Torpedo)_stadium_in_Minsk_3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Homoatrox",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/tar2.jpg",
+   "used": "long low concrete stand across the pitch with banded teal, red and ochre seat blocks, dark back wall, press box on top, lattice floodlight masts, tower blocks behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Tarpeda_(Torpedo)_stadium_in_Minsk.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "used": "yellow ochre rear service building and railing fence colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23409356",
+   "used": "name-matched leisure=stadium, 250 x 121 m site at bearing 25; modelled as a reduced ground inside the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     100
+    ],
+    "height": 0.15,
+    "colour": "#6f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     100,
+     56
+    ],
+    "height": 0.1,
+    "colour": "#9a8a72"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     94,
+     50
+    ],
+    "height": 0.08,
+    "colour": "#4f8a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     57,
+     16
+    ],
+    "end": [
+     -57,
+     16
+    ],
+    "rows": 11,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#2f9a98",
+     "#b5483c",
+     "#d3a03e",
+     "#2f9a98",
+     "#d3a03e",
+     "#b5483c"
+    ],
+    "seatColour": "#2f9a98",
+    "blocks": 20,
+    "concreteColour": "#8a8a85",
+    "underColour": "#2d2d2c",
+    "backWall": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    26
+   ],
+   "z0": 6.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6d6e",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    22,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    22,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.1,
+    "kind": "railing",
+    "colour": "#8a8a86",
+    "pillarEvery": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     14
+    ],
+    "height": 56,
+    "colour": "#e2e0d8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "storeys": 18,
+    "topColour": "#4f8f84",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#dcdedd",
+       "#d0d4d6"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    48,
+    56
+   ],
+   "params": {
+    "rect": [
+     17,
+     15
+    ],
+    "height": 4,
+    "colour": "#4f8f84"
+   }
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    44
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b2402f",
+    "rise": 3
+   },
+   "id": "house-1"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    48
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b2402f",
+    "rise": 3
+   },
+   "id": "house-2"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    46
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b2402f",
+    "rise": 3
+   },
+   "id": "house-3"
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -24,
+     0
+    ],
+    "end": [
+     48,
+     -24,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.22,
+       "n": 6,
+       "height": 7,
+       "colour": "#7a6246"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "seat pattern is blocks not the real zigzag, stand still reads muted, no wires, houses and tower generic massings, press box small"
+ }
+}

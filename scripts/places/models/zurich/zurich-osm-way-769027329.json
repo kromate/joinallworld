@@ -1,0 +1,813 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-769027329",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muehlau_Storchen.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Voyager",
+   "view": "street",
+   "file": "/tmp/places-evidence/zurich/storchen.jpg",
+   "used": "Gasthof zum Storchen in Muehlau: white rendered ground floor with stair entrance, two timber-framed upper storeys in red-brown with diagonal braces, green shutters, brown balcony, very steep dark brown tile roof with deep eaves, small gabled dormer on the right, gable end with half-timbering to the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/769027329",
+   "used": "footprint size 19.5 x 10.5 m and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     19.5,
+     11.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadd",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "glassColour": "#3e4f45",
+    "bay": 3.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     19.5,
+     11.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a4533",
+    "windows": "punched",
+    "plinth": 0,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.18,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "colour": "#7e3326",
+      "height": 0.25,
+      "proud": 0.05,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a3a2c",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 1.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-gable",
+   "footprint": {
+    "rect": [
+     4.2,
+     3.0
+    ]
+   },
+   "at": [
+    6.0,
+    -4.6
+   ],
+   "z0": 7.6,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a4533",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a4636",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    3.5,
+    -5.8,
+    4.0
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 1.4,
+    "railing_colour": "#4a3427"
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3,
+    0.5,
+    12.5
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "colour": "#d9d2c3"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6.2,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "rise": 0.8,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#9a958a"
+   }
+  },
+  {
+   "type": "office-tower/half-timber-wall",
+   "at": [
+    0,
+    -5.8,
+    4.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 19.5,
+    "height": 3.4,
+    "floors": 1,
+    "timber_colour": "#8e3a2b",
+    "plaster_colour": "#d8c9a8",
+    "windows": true
+   }
+  },
+  {
+   "type": "office-tower/half-timber-wall",
+   "at": [
+    0,
+    5.8,
+    4.0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 19.5,
+    "height": 3.4,
+    "floors": 1,
+    "timber_colour": "#8e3a2b",
+    "plaster_colour": "#d8c9a8",
+    "windows": true
+   }
+  },
+  {
+   "type": "office-tower/half-timber-wall",
+   "at": [
+    -9.8,
+    0,
+    4.0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 11.5,
+    "height": 3.4,
+    "floors": 1,
+    "timber_colour": "#8e3a2b",
+    "plaster_colour": "#d8c9a8",
+    "windows": true
+   }
+  },
+  {
+   "type": "office-tower/half-timber-wall",
+   "at": [
+    9.8,
+    0,
+    4.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 11.5,
+    "height": 3.4,
+    "floors": 1,
+    "timber_colour": "#8e3a2b",
+    "plaster_colour": "#d8c9a8",
+    "windows": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6.5,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.9,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.2,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.4,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    3.0,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-5",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.6,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-6",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-7",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    9.4,
+    -5.75
+   ],
+   "z0": 1.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6.5,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-9",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.9,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.2,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-11",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.4,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-12",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    3.0,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-13",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.6,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-14",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutters-15",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    9.4,
+    -5.75
+   ],
+   "z0": 4.8,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6a3c",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -6
+    ],
+    "height": 5
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     16,
+     -8
+    ],
+    "yawDeg": 90,
+    "colour": "#2c3034"
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "steep deep-eaved roof, timber upper storey and green shutters added; roof gable orientation, half-timbered attic gable, diagonal braces, timber balcony and entrance stair are only approximated"
+ }
+}

@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-28505596",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Forum-steglitz.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "A.Savin",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/28505596_0.jpg",
+   "used": "three-level pale concrete podium with continuous balcony bands and glass shopfront ground floor, large cantilevered upper blocks with louvred facades, red tower fin, blank advertising boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28505596",
+   "used": "plan of the main shopping block, 165 x 55 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d6d4cc",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 10,
+    "glassColour": "#8fa6b2",
+    "groundKind": "shopfront",
+    "groundHeight": 4.4,
+    "pattern": [
+     {
+      "type": "balconies",
+      "colour": "#c4c2ba"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block-a",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    37.7,
+    -22
+   ],
+   "rotDeg": -30,
+   "z0": 13,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#f0eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "glassColour": "#9aa7ab",
+    "trimColour": "#f2f0e8",
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block-b",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "rotDeg": -30,
+   "z0": 13,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#f0eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "glassColour": "#9aa7ab",
+    "trimColour": "#f2f0e8",
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-fin",
+   "at": [
+    50.7,
+    -29.5,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     4,
+     1.6
+    ],
+    "z0": 0,
+    "height": 20,
+    "colour": "#a52d33",
+    "topColour": "#a52d33"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board-a",
+   "at": [
+    48,
+    -18,
+    8
+   ],
+   "rotDeg": 60,
+   "params": {
+    "width": 20,
+    "height": 6,
+    "colour": "#d9553e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board-b",
+   "at": [
+    40,
+    -12,
+    8
+   ],
+   "rotDeg": 60,
+   "params": {
+    "width": 16,
+    "height": 6,
+    "colour": "#2d5aa8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board-c",
+   "at": [
+    30,
+    2,
+    8
+   ],
+   "rotDeg": 60,
+   "params": {
+    "width": 14,
+    "height": 5,
+    "colour": "#c9a24a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "cantilevered ribbon-glazed upper blocks; podium corner not chamfered, shopfront and balcony bands simplified, signs blank boards, camera far wider than photo"
+ }
+}

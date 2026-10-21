@@ -1,0 +1,161 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1058105046",
+   "used": "real outline of Muhleholzmarkt (name match, 57.7 x 55.1 m, bearing 172)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vaduz.json#vaduz-market-game",
+   "used": "supermarket-style hall, render and timber, low pitched roof, loading front, car park (the 2019 street photos listed for it show only the road and neighbouring houses, not the hall, so no photo comparison)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e7e0d0",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#8a4a35",
+    "plinth": 0.5,
+    "parapet": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f6b66",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 4.2,
+    "thickness": 0.4,
+    "colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 7,
+    "bottom": 0.5,
+    "colour": "#c63a2f",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 2.5,
+    "colour": "#ffffff",
+    "frameColour": "#8a4a35"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Outline and massing from OSM; no photo of the hall exists (street photos show only road), so facade, canopy and roof are typed from the brief."
+ }
+}

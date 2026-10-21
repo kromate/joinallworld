@@ -1,0 +1,769 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-389682249",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_Jos_Haupert.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tm",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/stade.jpg",
+   "used": "single covered main stand: deep dark-grey metal roof sloping down to the pitch over exposed steel trusses, grey cladded back and end walls, red-brick plinth, seat rows in black with yellow blocks, glazed end bay and external stair at the right end, low perspex dugouts, advertising boards on the touchline, tall floodlight masts, striped grass pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/389682249",
+   "used": "stadium site is a large irregular polygon (leisure=stadium); the stand and pitch are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     20,
+     0
+    ],
+    "end": [
+     -20,
+     0
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "under": "open",
+    "slab": 0.5,
+    "seatColours": [
+     "#25282d",
+     "#e6b422",
+     "#25282d",
+     "#e6b422",
+     "#25282d"
+    ],
+    "blocks": 12,
+    "concreteColour": "#8d8f93",
+    "underColour": "#3a3c40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     42,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -0.6
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backwall",
+   "footprint": {
+    "rect": [
+     42,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    12.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e747b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "endwall-r",
+   "footprint": {
+    "rect": [
+     0.8,
+     12
+    ]
+   },
+   "at": [
+    21,
+    6.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e747b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end",
+   "footprint": {
+    "rect": [
+     0.6,
+     4
+    ]
+   },
+   "at": [
+    21,
+    0.6
+   ],
+   "height": 8.0,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7184",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    0,
+    5.2
+   ],
+   "z0": 5.4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3e4348",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a4f56",
+    "material": "metal-sheet",
+    "rise": 5.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 6.0,
+      "colour": "#3d4147"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19,
+     -0.5
+    ],
+    "end": [
+     19,
+     -0.5
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.0,
+      "colour": "#3d4147"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19,
+     5
+    ],
+    "end": [
+     19,
+     5
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.8,
+    "thickness": 0.15,
+    "colour": "#d4562f"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 4,
+    "colour": "#8a9097"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    10,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 4,
+    "colour": "#8a9097"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    35,
+    -40,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 16,
+    "markings": false,
+    "goals": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    23,
+    1.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      3.2,
+      6
+     ],
+     [
+      0,
+      6
+     ]
+    ],
+    "height": 3.5,
+    "colour": "#9a9da1",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       12
+      ],
+      "height": 0.5,
+      "colour": "#2e3236"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     6
+    ],
+    "end": [
+     20,
+     6
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24,
+    3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 8,
+    "colour": "#d9d9d6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.2
+    ],
+    "height": 1.4,
+    "colour": "#bcd0d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.2
+    ],
+    "height": 1.4,
+    "colour": "#bcd0d8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -4.8,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.8,
+    "thickness": 0.15,
+    "colour": "#d9d9d9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -19.0,
+      -0.8,
+      6.0
+     ],
+     [
+      -19.0,
+      5,
+      8.5
+     ],
+     [
+      -19.0,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -14.25,
+      -0.8,
+      6.0
+     ],
+     [
+      -14.25,
+      5,
+      8.5
+     ],
+     [
+      -14.25,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -9.5,
+      -0.8,
+      6.0
+     ],
+     [
+      -9.5,
+      5,
+      8.5
+     ],
+     [
+      -9.5,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -4.75,
+      -0.8,
+      6.0
+     ],
+     [
+      -4.75,
+      5,
+      8.5
+     ],
+     [
+      -4.75,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      -0.8,
+      6.0
+     ],
+     [
+      0.0,
+      5,
+      8.5
+     ],
+     [
+      0.0,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      4.75,
+      -0.8,
+      6.0
+     ],
+     [
+      4.75,
+      5,
+      8.5
+     ],
+     [
+      4.75,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      9.5,
+      -0.8,
+      6.0
+     ],
+     [
+      9.5,
+      5,
+      8.5
+     ],
+     [
+      9.5,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      14.25,
+      -0.8,
+      6.0
+     ],
+     [
+      14.25,
+      5,
+      8.5
+     ],
+     [
+      14.25,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      19.0,
+      -0.8,
+      6.0
+     ],
+     [
+      19.0,
+      5,
+      8.5
+     ],
+     [
+      19.0,
+      12,
+      10.8
+     ]
+    ],
+    "colour": "#2f3338"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     2
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof deeper with thicker fascia and visible trusses but still simple shed; seat pattern approximate; perspex dugouts plain boxes; advert boards blank; glazed end bay simplified"
+ }
+}

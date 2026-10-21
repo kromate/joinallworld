@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-30296204",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gottlieb_Duttweiler_Institut_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sparrow",
+   "view": "street",
+   "file": "/tmp/places-evidence/zurich/gdi_1.jpg",
+   "used": "white flat roof slabs, grey panel upper storey, rubble basalt wall pier, flat entrance canopy on slim columns, cobble forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GDI_GottliebDuttweilerInstitute_2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GDInstitute",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/zurich/gdi_0.jpg",
+   "used": "terraced green-roofed wings stepping down the slope, taller glazed conference block, old stone house with slate roof behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30296204",
+   "used": "footprint of the terraced wings (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.06,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terraces",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe9",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.0,
+    "bands": "#ffffff",
+    "glassColour": "#8d9496"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a9468",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "conference-block",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    23
+   ],
+   "rotDeg": -25,
+   "z0": 7,
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a3a9aa",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#a3a9aa",
+      "#92989a"
+     ],
+     "faces": [
+      "left",
+      "back",
+      "front",
+      "right"
+     ]
+    },
+    "bands": "#f4f2ec",
+    "glassColour": "#8d9496"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e4de",
+    "material": "membrane",
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -24,
+    -14
+   ],
+   "rotDeg": -25,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f6b64",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -26,
+    3.4
+   ],
+   "rotDeg": -70,
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 3.4,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "rotDeg": -70,
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#5f5d58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-stone-house",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8b8478",
+    "windows": "punched",
+    "windowRatio": 0.14
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4440",
+    "material": "slate",
+    "pitch": 48,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 7,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/fence-wall",
+     "params": {
+      "length": 4.5,
+      "height": 1.2,
+      "thickness": 0.7,
+      "kind": "wall",
+      "colour": "#5f5d58"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     -2,
+     -8
+    ],
+    "radius": 28,
+    "radiusY": 22,
+    "startDeg": 200,
+    "endDeg": 330,
+    "count": 9,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 1.6,
+      "count": 1,
+      "spread": 0.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -30
+    ],
+    "end": [
+     14,
+     -30
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Flag slabs and neutral glass added, camera moved to street view, conifers removed; real white slab-edged villa with recessed glazing, curved rubble wall, forecourt and canopy are not reproduced; stone pier hidden/blocky"
+ }
+}

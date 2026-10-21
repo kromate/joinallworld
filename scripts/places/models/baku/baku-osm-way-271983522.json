@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-271983522",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/271983522",
+   "used": "academy campus outline (about 326 x 282 m, scaled to fit); perimeter wall follows it. Wikidata image is only the academy badge, so it was not used. No photo of the buildings was found."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a699",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b2afa3"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#cfc6b0",
+    "points": [
+     [
+      -63.2,
+      -30.7
+     ],
+     [
+      -61.6,
+      14.5
+     ],
+     [
+      -58.9,
+      49.4
+     ],
+     [
+      52.8,
+      43.9
+     ],
+     [
+      54.0,
+      6.4
+     ],
+     [
+      54.8,
+      -59.6
+     ],
+     [
+      7.1,
+      -57.5
+     ],
+     [
+      6.9,
+      -54.4
+     ],
+     [
+      0.2,
+      -54.3
+     ],
+     [
+      0.2,
+      -33.0
+     ],
+     [
+      -63.2,
+      -30.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "z0": 0.5,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbc9a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 4.4,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b9b2a4",
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "z0": 0.5,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#ece4d2",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks-a",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -26
+   ],
+   "z0": 0.5,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c39d",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks-b",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    34,
+    -24
+   ],
+   "z0": 0.5,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c39d",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -4,
+    -24,
+    0.5
+   ],
+   "params": {
+    "width": 34,
+    "depth": 22,
+    "border": 0.6,
+    "colour": "#b8b5aa",
+    "border_colour": "#9e9b90"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0.5
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#2b7fb8",
+     "#d7263d",
+     "#3f9a5a"
+    ]
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -22,
+    -52,
+    0.5
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.4,
+    "height": 2.8,
+    "colour": "#cfc6b0",
+    "roofColour": "#8a8d90"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -4,
+    -30,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "count": 6,
+    "kind": "conifer",
+    "gap": 4,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    20,
+    0.5
+   ],
+   "params": {
+    "width": 26,
+    "depth": 30,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the buildings; U block, barracks and gate are typical Soviet-style guesses on the real campus outline."
+ }
+}

@@ -1,0 +1,430 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landssj%C3%BAkrah%C3%BAsi%C3%B0_T%C3%B3rshavn_2012.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "EileenSanda",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/hosp1.jpg",
+   "used": "teal-green tower with tall chimney stack, pale teal glazed low wing, long dark grey block with ribbon windows, pale block behind right, black timber boathouses in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2_Torshavn_hospital_300918.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NAC",
+   "view": "front",
+   "used": "teal louvred tower with red cross, white pitched-roof old wing, grey slab blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43249742",
+   "used": "overall size only (182 x 90 m complex), blocks composed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    -28,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fb5a8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4f8f88",
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "bay": 4.5,
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front",
+      "left",
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7f7c",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "stack",
+   "at": [
+    -28,
+    14,
+    24
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3a3d40",
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      0.9,
+      10
+     ],
+     [
+      1.1,
+      11
+     ],
+     [
+      1.1,
+      11.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9cfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#6e9f99",
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8b88",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-block",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4f53",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#aab2b6",
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3e41",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-back",
+   "footprint": {
+    "rect": [
+     40,
+     9
+    ]
+   },
+   "at": [
+    48,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3dc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#8e9aa0",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8e90",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-wing",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    -44,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeee9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f3236",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "bh",
+     "footprint": {
+      "rect": [
+       3.2,
+       7
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "z0": 0,
+     "height": 4,
+     "storeys": 1,
+     "wall": {
+      "material": "timber",
+      "colour": "#2c2a28",
+      "windows": "punched",
+      "windowRatio": 0.12
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#222222",
+      "material": "slate",
+      "pitch": 35
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     6,
+     -24
+    ],
+    "end": [
+     20,
+     -24
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 1.6,
+    "z0": 20,
+    "colour": "#c8372d"
+   },
+   "at": [
+    -28,
+    1.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "water",
+   "params": {
+    "rect": [
+     130,
+     50
+    ],
+    "height": 0.15,
+    "z0": 0,
+    "colour": "#2d5f86"
+   },
+   "at": [
+    0,
+    -52
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shore",
+   "params": {
+    "rect": [
+     130,
+     5
+    ],
+    "height": 1.0,
+    "z0": 0,
+    "colour": "#5a5750"
+   },
+   "at": [
+    0,
+    -27
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f7a52",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       60,
+       22
+      ],
+      "cx": 0,
+      "cy": 58
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       48,
+       15
+      ],
+      "cx": 0,
+      "cy": 62
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       28,
+       8
+      ],
+      "cx": -8,
+      "cy": 66
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Water, rubble shore, grass hill, long low dark block, slimmer louvred tower with thin stack and gabled old wing added; no stepped end on dark block, hillside houses and boats absent, boathouses sit near the block rather than on the shore edge."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-clinic"
+}

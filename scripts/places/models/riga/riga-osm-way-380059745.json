@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-380059745",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RSU_-_Dzirciema_iela_16.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Olgerts V",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/14_0.jpg",
+   "used": "dark brown brick base storeys, cream upper storeys with narrow slit windows, dark cornices, set-back top block, red banner, lawn and parking in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/380059745",
+   "used": "campus area only; outline covers many wings so the photographed block was composed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     52,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#5b4439",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#5b4439",
+       "#e4e0d3",
+       "#e4e0d3"
+      ]
+     }
+    ],
+    "cornice": true,
+    "trimColour": "#3d2e27"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3b34",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    6,
+    3
+   ],
+   "z0": 10,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e0d3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3b34",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     20,
+     15
+    ]
+   },
+   "at": [
+    36,
+    3
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a5144",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3b34"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stairs",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3a32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3b34"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    3,
+    20
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 0.4,
+    "colour": "#b5314a",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 2.8,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -14
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Slit-window fins, banner, RSU roof letters and trees in front only approximated; outline hand-composed."
+ }
+}

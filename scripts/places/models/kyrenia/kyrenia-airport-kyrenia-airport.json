@@ -1,0 +1,557 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-airport-kyrenia-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ercan_Uluslararas\u0131_Havaliman\u0131.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "YamanB",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/ap1.jpg",
+   "used": "long three-storey landside facade clad in dark perforated metal panels with scattered glazed panes, flat roof with planting edge, white open truss entrance canopy on the roof at the right with a blank sign board, yellow-black bollards along the kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/624460625",
+   "used": "terminal scale only (about 290 m long); a 118 m stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     118,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#454a51",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3.0,
+       3.0
+      ],
+      "colours": [
+       "#3f444b",
+       "#4b5058"
+      ],
+      "mode": "checker",
+      "faces": [
+       "front"
+      ],
+      "proud": 0.06
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "array",
+   "id": "glaze-strips",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.15
+      ],
+      "height": 8.5,
+      "colour": "#7f98ad"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -22,
+     -13.1
+    ],
+    "end": [
+     -6,
+     -13.1
+    ]
+   },
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "glaze-strips-r",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.15
+      ],
+      "height": 8.5,
+      "colour": "#7f98ad"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     24,
+     -13.1
+    ],
+    "end": [
+     33,
+     -13.1
+    ]
+   },
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-ground",
+   "footprint": {
+    "rect": [
+     40,
+     2
+    ]
+   },
+   "at": [
+    -30,
+    -13.6
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8799",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      16,
+      -4.5,
+      17.0
+     ],
+     [
+      52,
+      -4.5,
+      23.0
+     ]
+    ],
+    "colour": "#eceae4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      16,
+      -12.5,
+      17.0
+     ],
+     [
+      52,
+      -12.5,
+      22.0
+     ]
+    ],
+    "colour": "#eceae4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      16,
+      -4.5,
+      17.0
+     ],
+     [
+      52,
+      -4.5,
+      23.0
+     ]
+    ],
+    "colour": "#eceae4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      16,
+      -4.5,
+      15
+     ],
+     [
+      16,
+      -4.5,
+      20
+     ]
+    ],
+    "colour": "#eceae4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "truss-cross",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       9.5
+      ],
+      "height": 0.7,
+      "colour": "#eceae4"
+     }
+    },
+    "mode": "line",
+    "count": 22,
+    "start": [
+     17,
+     -8.5
+    ],
+    "end": [
+     51,
+     -8.5
+    ],
+    "dz": 0.28
+   },
+   "at": [
+    0,
+    0,
+    16.8
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "truss-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 5,
+      "colour": "#eceae4"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     17,
+     -12.5
+    ],
+    "end": [
+     50,
+     -12.5
+    ],
+    "dz": 1.7
+   },
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    33,
+    -13.4,
+    17.2
+   ],
+   "params": {
+    "width": 30,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#1f4f9e",
+    "frameColour": "#eceae4",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "bollards",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.7,
+       1.7
+      ],
+      "height": 2.0,
+      "colour": "#e2b92a",
+      "topColour": "#2b2b2b"
+     }
+    },
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -45,
+     -21
+    ],
+    "end": [
+     48,
+     -21
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    -19.6,
+    0
+   ],
+   "params": {
+    "length": 93,
+    "height": 1.3,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#d0d4d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "planters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       2.2
+      ],
+      "height": 1.0,
+      "colour": "#e9e7e1"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -52,
+     -22
+    ],
+    "end": [
+     -32,
+     -22
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "planter-trees",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 3.2
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -52,
+     -22
+    ],
+    "end": [
+     -32,
+     -22
+    ]
+   },
+   "at": [
+    0,
+    0,
+    1.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "glaze-mid",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.15
+      ],
+      "height": 5.5,
+      "colour": "#7f98ad"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -3,
+     -13.1
+    ],
+    "end": [
+     15,
+     -13.1
+    ]
+   },
+   "at": [
+    0,
+    0,
+    6
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only 118 m of ~290 m terminal; glazing is checker panels plus vertical strips, not the real diagonal glass band; roof truss is simplified chords with cross members and a blank blue board; railing is a plain fence; bollards are plain yellow."
+ }
+}

@@ -1,0 +1,995 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-relation-6912449",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moskvoretsky dendropark 1.JPG",
+   "licence": "CC0",
+   "author": "Andreykor",
+   "view": "street",
+   "used": "young staked saplings on open lawn, winding gravel path, wooden rail fence, bare birch tree line"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moskvoretsky dendropark 2.JPG",
+   "licence": "CC0",
+   "author": "Andreykor",
+   "view": "street",
+   "used": "red-brown timber arch pavilion with steps and box end, paved path, lamp posts, fence beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6912449",
+   "used": "park outline (name match), auto-fitted to 118 m, as the lawn pad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 56
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7f8c52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8c52",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gravel-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -50,
+      -30,
+      0
+     ],
+     [
+      -28,
+      -12,
+      0
+     ],
+     [
+      -8,
+      -4,
+      0
+     ],
+     [
+      10,
+      6,
+      0
+     ],
+     [
+      30,
+      14,
+      0
+     ],
+     [
+      48,
+      34,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 12,
+    "colour": "#b4a48c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "paved-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      4.6,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -14,
+      -46,
+      0
+     ],
+     [
+      -2,
+      -30,
+      0
+     ],
+     [
+      3,
+      -8,
+      0
+     ],
+     [
+      6,
+      10,
+      0
+     ],
+     [
+      8,
+      22,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#9d9a96"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 2.5,
+    "colour": "#a8693a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -20,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#5e4a38",
+    "topColour": "#5e4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -30,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     18,
+     9
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#5e4a38",
+    "topColour": "#5e4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    10,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#5e4a38",
+    "topColour": "#5e4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -10,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     12,
+     7
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#5e4a38",
+    "topColour": "#5e4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -50.095240892980364,
+    -13.880455227839008,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -35.15157883195254,
+    -14.068699859800454,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8.630679312290248,
+    -13.97618272191639,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    19.188246912458435,
+    -14.393197474750949,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    33.18134107498368,
+    -13.380710931265645,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -49.03561315840244,
+    2.9295155622511335,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -35.69215493293232,
+    2.2311254091571415,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -7.943237467659042,
+    1.11910221033771,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    5.380416525595859,
+    1.4838860273304295,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    19.060165178449576,
+    1.927868922446569,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    33.881062233313315,
+    2.684854257037064,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -21.004687599073833,
+    18.9913832833124,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -7.319568901014277,
+    18.4156192429959,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    5.6305544340311,
+    17.45933180321581,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    19.578079894628406,
+    17.140446999119852,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    34.53257577282081,
+    17.800799609836982,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    48.69316724376236,
+    17.77302706341187,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "colour": "#8a9650"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-0",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 6,
+    "colour": "#7a3a22",
+    "arc": {
+     "steps": 14,
+     "centre": [
+      16,
+      30,
+      -8
+     ],
+     "radius": 16,
+     "startDeg": 68,
+     "endDeg": 150,
+     "plane": "xz"
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-1",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 6,
+    "colour": "#7a3a22",
+    "arc": {
+     "steps": 14,
+     "centre": [
+      16,
+      34,
+      -8
+     ],
+     "radius": 16,
+     "startDeg": 68,
+     "endDeg": 150,
+     "plane": "xz"
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "tie0",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 4,
+    "colour": "#8a4a2a",
+    "points": [
+     [
+      18.78,
+      30,
+      7.76
+     ],
+     [
+      18.78,
+      34,
+      7.76
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "tie1",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 4,
+    "colour": "#8a4a2a",
+    "points": [
+     [
+      13.22,
+      30,
+      7.76
+     ],
+     [
+      13.22,
+      34,
+      7.76
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "tie2",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 4,
+    "colour": "#8a4a2a",
+    "points": [
+     [
+      8.0,
+      30,
+      5.86
+     ],
+     [
+      8.0,
+      34,
+      5.86
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "tie3",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 4,
+    "colour": "#8a4a2a",
+    "points": [
+     [
+      3.74,
+      30,
+      2.28
+     ],
+     [
+      3.74,
+      34,
+      2.28
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-box",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    22.5,
+    32
+   ],
+   "z0": 0.55,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a4a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3a22",
+    "pitch": 10,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    26,
+    0.55
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b4ac"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -61.6,
+    55.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.022708003766112,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -48.6,
+    56.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.263137149197911,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -39.9,
+    55.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.843553245253707,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -27.3,
+    55.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.659199193237832,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -16.5,
+    54.3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.13644920689925,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.5,
+    54.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.274176055257772,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4.6,
+    54.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.790536925283252,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.0,
+    56.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.685910348270752,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22.8,
+    54.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.250510792430864,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    34.7,
+    54.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.254509685329605,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    45.0,
+    58.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.260322274315808,
+    "colour": "#a39f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    55.1,
+    57.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.280253396202198,
+    "colour": "#a39f84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion is a single sloping arch with ties and box end; lacks the photo's laminated mass and roof, saplings are generic small trees without stakes, tree line is muted grey-green balls not bare birch, bare-soil patches are plain rectangles."
+ }
+}

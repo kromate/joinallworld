@@ -1,0 +1,372 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ljubljana,_Town_House_at_Krekov_trg.jpg",
+   "licence": "CC0",
+   "author": "Ajzn",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/krekov.jpg",
+   "used": "Mestni dom (1898) on the north side of the square: yellow stucco, rusticated ground storey with five arched openings, five tall arched windows between white pilasters on the main floor, projecting end bays, low dark roof, slate clock tower with spire, round fountain basin in the right foreground, car park, wooded castle hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23097553",
+   "used": "extent of the square (car park) about 43 x 40 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 3,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mestni-dom",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bf7a",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "bay": 5.2,
+    "plinth": 4,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 0.2,
+      "spacing": 5.2,
+      "colour": "#f0ebe0",
+      "from": 1,
+      "to": 1,
+      "margin": 0.5
+     },
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 5.2,
+      "opening": 0.7
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e3a32",
+    "material": "slate",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-w",
+   "footprint": {
+    "rect": [
+     8,
+     17
+    ]
+   },
+   "at": [
+    -19,
+    13
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc078",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e3a32",
+    "material": "slate",
+    "pitch": 15,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-e",
+   "footprint": {
+    "rect": [
+     8,
+     17
+    ]
+   },
+   "at": [
+    19,
+    13
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc078",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e3a32",
+    "material": "slate",
+    "pitch": 15,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    19,
+    12.5
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 6,
+    "cap": "hip",
+    "capRise": 11,
+    "clock": true,
+    "belfry": true,
+    "colour": "#4a4d52",
+    "trimColour": "#cfcac0",
+    "capColour": "#3b3d42",
+    "finial": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#b8b4aa"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "rimColour": "#8c8a85",
+    "waterColour": "#6d7373"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 7,
+    "line": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 3,
+    "spacing": 3.3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#8a9096",
+    "count": 2,
+    "spacing": 3.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "castle-hill",
+   "at": [
+    10,
+    42,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#3a4a2f"
+     ],
+     [
+      38,
+      0,
+      "#3a4a2f"
+     ],
+     [
+      34,
+      3,
+      "#4a5b3a"
+     ],
+     [
+      26,
+      7,
+      "#34452c"
+     ],
+     [
+      16,
+      10,
+      "#4d6038"
+     ],
+     [
+      6,
+      12,
+      "#3a4a2f"
+     ],
+     [
+      0,
+      12.5,
+      "#3a4a2f"
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "castle-tower",
+   "at": [
+    10,
+    42,
+    12.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7d776c"
+     ],
+     [
+      2.4,
+      0,
+      "#7d776c"
+     ],
+     [
+      2.4,
+      5,
+      "#7d776c"
+     ],
+     [
+      3,
+      5.4,
+      "#5e5a52"
+     ],
+     [
+      0,
+      8,
+      "#4a3a36"
+     ]
+    ],
+    "segments": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 8,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stucco ornament and balustrade absent, ground arcade openings shallow, hill is a smooth revolve without tree texture, neighbouring houses and funicular omitted"
+ }
+}

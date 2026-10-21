@@ -1,0 +1,523 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico now larger with capitals, tympanum band and acroterion, wings 3 storeys; real portico is deeper and taller, no relief sculpture, window shutters or basement windows only as railings."
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_University_of_Oslo.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "hirotomo t from japan",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/uio1.jpg",
+   "used": "central university building on Karl Johans gate: grey granite four-column Ionic portico with pediment, flanking ochre-yellow plastered wings with plinth and string courses, shallow dark metal roofs"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/oslo.json#oslo-osm-relation-7757342",
+   "used": "university as a whole; the OSM containing match (19x16 m apartments) is unrelated and NOT used; the neoclassical central campus building is modelled as the icon"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 1.3,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    -25.5,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3c78a",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 5.5,
+    "plinth": 2.0,
+    "cornice": true,
+    "bands": "#d8b97a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5056",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    25.5,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3c78a",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 5.5,
+    "plinth": 2.0,
+    "cornice": true,
+    "bands": "#d8b97a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5056",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 12.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#5d5853",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5056"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     3.6,
+     5.6
+    ]
+   },
+   "at": [
+    -11.6,
+    -8
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8a817b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a817b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     3.6,
+     5.6
+    ]
+   },
+   "at": [
+    11.6,
+    -8
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8a817b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a817b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     27,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#756e69",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5853",
+    "pitch": 22,
+    "axis": "y",
+    "overhang": 0.3
+   },
+   "z0": 12
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.3,
+      "n": 14,
+      "height": 12,
+      "colour": "#8f8782"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -7.2,
+     -10.2,
+     0
+    ],
+    "end": [
+     7.2,
+     -10.2,
+     0
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    2,
+    15
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -13,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    13,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-7",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -7.2,
+    -10.2
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39b95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b95"
+   },
+   "z0": 11.3
+  },
+  {
+   "type": "mass",
+   "id": "cap-2",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -2.4,
+    -10.2
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39b95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b95"
+   },
+   "z0": 11.3
+  },
+  {
+   "type": "mass",
+   "id": "cap2",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    2.4,
+    -10.2
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39b95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b95"
+   },
+   "z0": 11.3
+  },
+  {
+   "type": "mass",
+   "id": "cap7",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    7.2,
+    -10.2
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39b95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b95"
+   },
+   "z0": 11.3
+  },
+  {
+   "type": "mass",
+   "id": "tympanum",
+   "footprint": {
+    "rect": [
+     24,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -11.6
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#403c39",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#403c39",
+    "pitch": 22,
+    "axis": "y"
+   },
+   "z0": 14.2
+  },
+  {
+   "type": "mass",
+   "id": "acroterion",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8a817b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a817b"
+   },
+   "z0": 17.2
+  },
+  {
+   "type": "mass",
+   "id": "loggia-dark",
+   "footprint": {
+    "rect": [
+     18,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -6.3
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#2a2725",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2725"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "railings-l",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    -30,
+    -6.8
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2b2b2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2b"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "railings-r",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    30,
+    -6.8
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2b2b2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2b2b"
+   },
+   "z0": 0
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-relation-7757342"
+}

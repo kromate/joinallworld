@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-node-283522771",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niarbyl_-_Thatched_cottage_and_cabin_by_Irish_Sea_-_geograph.org.uk_-_1717709.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/niarbyl.jpg",
+   "used": "long low whitewashed cottage with grey-brown thatch hip roof and three white chimney stacks, cafe building to the right with white walls, pink end and dark sloping solar roof, road curving behind, grassy headland and rocks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/62393619",
+   "used": "cafe size only (21 m bbox, odd diagonal outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cottage",
+   "footprint": {
+    "rect": [
+     13,
+     5.4
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeebe0",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.35
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 40,
+    "colour": "#7d7560",
+    "material": "thatch",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "ch1",
+   "on": "cottage",
+   "at": [
+    -9.8,
+    0.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.2,
+    "pots": 1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "ch2",
+   "on": "cottage",
+   "at": [
+    -3.5,
+    0.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.2,
+    "pots": 1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "ch3",
+   "on": "cottage",
+   "at": [
+    1.8,
+    0.2
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.2,
+    "pots": 1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     9,
+     6.5
+    ]
+   },
+   "at": [
+    10.5,
+    3.5
+   ],
+   "rotDeg": -8,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1eeea",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 20,
+    "colour": "#2a3550",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "rise": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe-pink",
+   "footprint": {
+    "rect": [
+     0.7,
+     6.7
+    ]
+   },
+   "at": [
+    5.75,
+    3.5
+   ],
+   "rotDeg": -8,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9c9c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9c9c8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    1,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#2a2f3a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "headland",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       9
+      ],
+      "cx": 24,
+      "cy": 16,
+      "colour": "#6f6a3c"
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       22,
+       8
+      ],
+      "cx": 27,
+      "cy": 17,
+      "colour": "#7a7468"
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       17,
+       6
+      ],
+      "cx": 30,
+      "cy": 18,
+      "colour": "#6f6a3c"
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       10,
+       4
+      ],
+      "cx": 34,
+      "cy": 19,
+      "colour": "#6f6a3c"
+     }
+    ],
+    "curve": true,
+    "steps": 4,
+    "capTop": true,
+    "colour": "#6f6a3c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "crag",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9,
+       7
+      ],
+      "colour": "#7a7468"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       7,
+       5
+      ],
+      "cx": 1,
+      "colour": "#8a8478"
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       4,
+       3
+      ],
+      "cx": 2,
+      "colour": "#7a7468"
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       1.8,
+       1.5
+      ],
+      "cx": 2,
+      "colour": "#8f897c"
+     }
+    ],
+    "curve": true,
+    "steps": 4,
+    "capTop": true,
+    "colour": "#7a7468"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "shore-rocks",
+   "at": [
+    -18,
+    -3,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       3.5
+      ],
+      "colour": "#6e6a60"
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       3.5,
+       2
+      ],
+      "cx": 1,
+      "colour": "#8a8478"
+     }
+    ],
+    "curve": true,
+    "steps": 4,
+    "capTop": true,
+    "colour": "#6e6a60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sea",
+   "at": [
+    -38,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     36
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#1f3f7a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "road",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5.5,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      24,
+      18,
+      0.08
+     ],
+     [
+      22,
+      10,
+      0.08
+     ],
+     [
+      17,
+      3,
+      0.08
+     ],
+     [
+      8,
+      -4,
+      0.08
+     ],
+     [
+      -5,
+      -5,
+      0.08
+     ],
+     [
+      -14,
+      -8,
+      0.08
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    8,
+    -0.2,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "length": 2.5,
+    "width": 1.1,
+    "colour": "#d8d4ca"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "headland still a smooth loft (no crags); solar panels as dark colour without panel grid; sea plane simplified"
+ }
+}

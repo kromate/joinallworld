@@ -1,0 +1,844 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%9A%CF%81%CE%AE%CE%BD%CE%B7_%CE%9C%CE%B5%CF%84%CE%B1%CE%BE%CE%BF%CF%85%CF%81%CE%B3%CE%B5%CE%AF%CE%BF%CF%85_9663.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "C messier",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/athens-community-voting-game-0.jpg",
+   "used": "marble fountain monument of four small ionic columns round a closed core on a square plinth in a wide round stone basin, red-brick edged lawn, olive and cypress, brick paving, lamp posts, apartment blocks behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Building_around_plateia_Karaiskakis_in_Metaxourgeio_Athens_Greece_7.jpg",
+   "licence": "CC0",
+   "author": "Eleniath43",
+   "view": "street",
+   "file": "/tmp/places-evidence/athens/athens-community-voting-game-2.jpg",
+   "used": "neighbouring polykatoikia: five storeys, stacked projecting balconies, shops with awnings on the ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/456012298",
+   "used": "not used: nearest match is an unrelated 20 x 17 m building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#b9ad98",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      10.5,
+      0
+     ],
+     [
+      10.5,
+      0.85
+     ],
+     [
+      9.6,
+      0.85
+     ],
+     [
+      9.6,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "water",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#9fa6a2",
+    "profile": [
+     [
+      0,
+      0.5
+     ],
+     [
+      9.6,
+      0.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "step",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d9d3c4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      3.8,
+      0
+     ],
+     [
+      3.6,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 0.6,
+    "height": 2.4,
+    "colour": "#e2dccd",
+    "topColour": "#e2dccd",
+    "topScale": 0.96
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-cap",
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "z0": 3.0,
+    "height": 0.4,
+    "colour": "#f0ebdf",
+    "topColour": "#f0ebdf"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "core",
+   "at": [
+    0,
+    0,
+    3.4
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#ddd6c6",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      3.0
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "circle",
+    "count": 4,
+    "radius": 1.95,
+    "startDeg": 45,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      3.4
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#f4f0e6",
+      "profile": [
+       [
+        0,
+        0
+       ],
+       [
+        0.4,
+        0
+       ],
+       [
+        0.28,
+        0.25
+       ],
+       [
+        0.24,
+        2.7
+       ],
+       [
+        0.42,
+        2.85
+       ],
+       [
+        0.42,
+        3.0
+       ],
+       [
+        0,
+        3.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "entablature",
+   "at": [
+    0,
+    0,
+    6.4
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#eeeadf",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      0.4
+     ],
+     [
+      2.0,
+      0.5
+     ],
+     [
+      2.0,
+      0.9
+     ],
+     [
+      1.6,
+      1.0
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    0,
+    0,
+    7.4
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.6,
+      0
+     ],
+     [
+      0.4,
+      0.4
+     ],
+     [
+      0.35,
+      1.4
+     ],
+     [
+      0.65,
+      1.7
+     ],
+     [
+      0.65,
+      1.9
+     ],
+     [
+      0,
+      1.9
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lawn-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#a14e3f",
+    "profile": [
+     [
+      11.2,
+      0
+     ],
+     [
+      12.2,
+      0
+     ],
+     [
+      12.2,
+      0.35
+     ],
+     [
+      11.2,
+      0.35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn-edge-left",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -3
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a14e3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a14e3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn-edge-right",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    14,
+    -3
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a14e3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a14e3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-left",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -15,
+    19
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c0ae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#7f8f98",
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "every": 3.6,
+      "width": 2.6,
+      "colour": "#b9b0a0",
+      "railColour": "#5a5d60",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-mid",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ded2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "glassColour": "#8d9ba3",
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "every": 3.6,
+      "width": 2.6,
+      "colour": "#d0ccc0",
+      "railColour": "#5a5d60",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    17,
+    18
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfbc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#8d9ba3",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -15,
+    11.600000000000001,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 1.4,
+    "height": 3,
+    "colours": [
+     "#2f5f9e",
+     "#f0ece0"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    17,
+    11.600000000000001,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 1.4,
+    "height": 3,
+    "colours": [
+     "#2f5f9e",
+     "#f0ece0"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#5d6e4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#667553"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -5,
+    8,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    9,
+    -5,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab24",
+   "params": {
+    "rect": [
+     40,
+     12
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#a8604a",
+    "topColour": "#a8604a"
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    14.6,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 1.4,
+    "height": 3,
+    "colours": [
+     "#a8452f",
+     "#f0ece0"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 2,
+    "spacing": 1.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    12,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 2,
+    "spacing": 1.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "colour": "#3d5a34"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "colour": "#3d5a34"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6a7a52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    19,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#6a7a52"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "colour": "#3d5a34"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   54,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wider basin, taller four-column monument, brick paving and double lamps; no carved capitals, blocks still generic, trees schematic"
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/360782167",
+   "used": "real hospital complex outline (Alands centralsjukhus, 1953), fitted to scene; levels and colours from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a8553a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 7,
+    "height": 4,
+    "columns": 4,
+    "colour": "#a8553a",
+    "edgeColour": "#8a432d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -70
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real OSM complex outline scaled to 118 m as one 4-storey block, wings/helipad not distinguished"
+ }
+}

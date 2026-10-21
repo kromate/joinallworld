@@ -1,0 +1,472 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zagreb_Bundek_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Daniel Nikolic",
+   "view": "side",
+   "file": "/tmp/places-evidence/zagreb/bundek.jpg",
+   "used": "lake in front, pale sand beach strip, row of tall bare broadleaf trees behind, small red-roofed gazebo, beige kiosk and lifeguard tower on the shore"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29023160",
+   "used": "park is 1.7 km long, far beyond scene clamp: one shore stretch of the big lake modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 114,
+    "shape": "rect",
+    "colour": "#454e4d",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     14
+    ],
+    "height": 0.2,
+    "colour": "#bdb6a8",
+    "slot": "sand"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.6
+    ]
+   },
+   "at": [
+    -4,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c9a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a99a7a",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 1.8,
+    "height": 1.6,
+    "colour": "#7a3a2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "n": 6,
+    "radius": 2.2,
+    "height": 1.1,
+    "topScale": 0.08,
+    "colour": "#8c2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lifeguard",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    42,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 1.8,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    41,
+    14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 1.8,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 1.8,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 5,
+       "radius": 0.4,
+       "height": 11.0,
+       "topScale": 0.5,
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 9.0,
+       "height": 11.0,
+       "topScale": 0.4,
+       "topOffset": [
+        4.800000000000001,
+        2.0
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 10.0,
+       "height": 10.0,
+       "topScale": 0.4,
+       "topOffset": [
+        -4.800000000000001,
+        -2.0
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 12.0,
+       "height": 8.0,
+       "topScale": 0.4,
+       "topOffset": [
+        2.4000000000000004,
+        4.800000000000001
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 13.0,
+       "height": 7.0,
+       "topScale": 0.4,
+       "topOffset": [
+        -2.4000000000000004,
+        -4.800000000000001
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 15.0,
+       "height": 5.0,
+       "topScale": 0.4,
+       "topOffset": [
+        0.0,
+        0.0
+       ],
+       "colour": "#4a4038"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -56,
+     24
+    ],
+    "end": [
+     56,
+     24
+    ],
+    "count": 15,
+    "yaw": 0,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 5,
+       "radius": 0.4,
+       "height": 8.25,
+       "topScale": 0.5,
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 6.75,
+       "height": 8.25,
+       "topScale": 0.4,
+       "topOffset": [
+        3.6,
+        1.5
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 7.5,
+       "height": 7.5,
+       "topScale": 0.4,
+       "topOffset": [
+        -3.6,
+        -1.5
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 9.0,
+       "height": 6.0,
+       "topScale": 0.4,
+       "topOffset": [
+        1.8,
+        3.6
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 9.75,
+       "height": 5.25,
+       "topScale": 0.4,
+       "topOffset": [
+        -1.8,
+        -3.6
+       ],
+       "colour": "#4a4038"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "n": 4,
+       "radius": 0.22,
+       "z0": 11.25,
+       "height": 3.75,
+       "topScale": 0.4,
+       "topOffset": [
+        0.0,
+        0.0
+       ],
+       "colour": "#4a4038"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -47,
+     30
+    ],
+    "end": [
+     53,
+     31
+    ],
+    "count": 13,
+    "yaw": 0,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "sky stays clear blue (cannot set overcast), trees are regular sticks with simple forks, water flat colour without reflections, only one shore stretch"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-29023160"
+}

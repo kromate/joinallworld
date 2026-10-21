@@ -1,0 +1,659 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pyrénées_Andorra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lks.poch",
+   "view": "street",
+   "file": "/tmp/places-evidence/andorra-la-vella/pyr.jpg",
+   "used": "corner entrance block clad in grey granite panels with big recessed blank sign panel, arched timber-clad ground bays with glazed shopfronts, black slate multi-tier hipped mansard roof, red crescent roof emblem as blank red shapes, flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/352338250",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#8e918c",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#5b5750"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mansard1",
+   "params": {
+    "points": [
+     [
+      -41.54,
+      20.17
+     ],
+     [
+      -41.24,
+      25.42
+     ],
+     [
+      -8.07,
+      50.66
+     ],
+     [
+      17.67,
+      21.06
+     ],
+     [
+      14.7,
+      19.08
+     ],
+     [
+      26.28,
+      4.03
+     ],
+     [
+      22.81,
+      1.66
+     ],
+     [
+      36.08,
+      -34.87
+     ],
+     [
+      32.71,
+      -42.3
+     ],
+     [
+      21.13,
+      -47.05
+     ],
+     [
+      21.82,
+      -50.51
+     ],
+     [
+      10.93,
+      -53.78
+     ],
+     [
+      3.41,
+      -52.99
+     ],
+     [
+      2.62,
+      -25.76
+     ],
+     [
+      -7.68,
+      -24.68
+     ],
+     [
+      -18.47,
+      -11.81
+     ],
+     [
+      -18.37,
+      -8.54
+     ]
+    ],
+    "z0": 18,
+    "height": 4.5,
+    "topScale": 0.93,
+    "colour": "#2a2d31",
+    "material": "slate"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mansard2",
+   "params": {
+    "points": [
+     [
+      -37.36,
+      17.21
+     ],
+     [
+      -37.09,
+      21.98
+     ],
+     [
+      -6.94,
+      44.93
+     ],
+     [
+      16.46,
+      18.02
+     ],
+     [
+      13.76,
+      16.22
+     ],
+     [
+      24.29,
+      2.54
+     ],
+     [
+      21.14,
+      0.38
+     ],
+     [
+      33.2,
+      -32.83
+     ],
+     [
+      30.14,
+      -39.58
+     ],
+     [
+      19.61,
+      -43.9
+     ],
+     [
+      20.24,
+      -47.05
+     ],
+     [
+      10.34,
+      -50.02
+     ],
+     [
+      3.5,
+      -49.3
+     ],
+     [
+      2.78,
+      -24.55
+     ],
+     [
+      -6.58,
+      -23.56
+     ],
+     [
+      -16.39,
+      -11.86
+     ],
+     [
+      -16.3,
+      -8.89
+     ]
+    ],
+    "z0": 22.5,
+    "height": 3.5,
+    "topScale": 0.85,
+    "colour": "#303338",
+    "material": "slate"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mansard3",
+   "params": {
+    "points": [
+     [
+      -29.01,
+      11.3
+     ],
+     [
+      -28.79,
+      15.11
+     ],
+     [
+      -4.67,
+      33.47
+     ],
+     [
+      14.05,
+      11.95
+     ],
+     [
+      11.89,
+      10.51
+     ],
+     [
+      20.31,
+      -0.44
+     ],
+     [
+      17.79,
+      -2.17
+     ],
+     [
+      27.44,
+      -28.73
+     ],
+     [
+      24.99,
+      -34.13
+     ],
+     [
+      16.57,
+      -37.59
+     ],
+     [
+      17.07,
+      -40.11
+     ],
+     [
+      9.15,
+      -42.49
+     ],
+     [
+      3.68,
+      -41.91
+     ],
+     [
+      3.1,
+      -22.11
+     ],
+     [
+      -4.38,
+      -21.32
+     ],
+     [
+      -12.23,
+      -11.96
+     ],
+     [
+      -12.16,
+      -9.58
+     ]
+    ],
+    "z0": 26,
+    "height": 2.5,
+    "topScale": 0.8,
+    "colour": "#2a2d31",
+    "material": "slate"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    7.0,
+    -53.0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f7273",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8e8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-panel",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    7.0,
+    -55.7
+   ],
+   "z0": 9,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2d30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2d30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-front",
+   "footprint": {
+    "rect": [
+     9,
+     0.5
+    ]
+   },
+   "at": [
+    7.0,
+    -55.7
+   ],
+   "z0": 0.3,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1d2226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d2226"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-bay-l",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -4.800000000000001,
+    -50.5
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a5a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-bay-r",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    19.2,
+    -50.5
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a5a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flag0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    3.0,
+    -53
+   ],
+   "z0": 28.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c8c8c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c8c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flag1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    11.0,
+    -53
+   ],
+   "z0": 28.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c8c8c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c8c8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "points": [
+     [
+      6.65,
+      -54.5,
+      30.86
+     ],
+     [
+      5.4,
+      -54.5,
+      31.77
+     ],
+     [
+      3.87,
+      -54.5,
+      31.98
+     ],
+     [
+      2.41,
+      -54.5,
+      31.45
+     ],
+     [
+      1.37,
+      -54.5,
+      30.3
+     ],
+     [
+      1.0,
+      -54.5,
+      28.8
+     ],
+     [
+      1.37,
+      -54.5,
+      27.3
+     ],
+     [
+      2.41,
+      -54.5,
+      26.15
+     ],
+     [
+      3.87,
+      -54.5,
+      25.62
+     ],
+     [
+      5.4,
+      -54.5,
+      25.83
+     ],
+     [
+      6.65,
+      -54.5,
+      26.74
+     ]
+    ],
+    "curve": true,
+    "colour": "#b8322c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "points": [
+     [
+      9.35,
+      -54.5,
+      30.86
+     ],
+     [
+      10.6,
+      -54.5,
+      31.77
+     ],
+     [
+      12.13,
+      -54.5,
+      31.98
+     ],
+     [
+      13.59,
+      -54.5,
+      31.45
+     ],
+     [
+      14.63,
+      -54.5,
+      30.3
+     ],
+     [
+      15.0,
+      -54.5,
+      28.8
+     ],
+     [
+      14.63,
+      -54.5,
+      27.3
+     ],
+     [
+      13.59,
+      -54.5,
+      26.15
+     ],
+     [
+      12.13,
+      -54.5,
+      25.62
+     ],
+     [
+      10.6,
+      -54.5,
+      25.83
+     ],
+     [
+      9.35,
+      -54.5,
+      26.74
+     ]
+    ],
+    "curve": true,
+    "colour": "#b8322c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "rounds 2: crescents now a mirrored pair; OSM footprint is the whole mall not the corner block, mansard tiers follow scaled outline, entrance bay and timber bays approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-352338250"
+}

@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-node-5840181047",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/766502801",
+   "used": "real outline of the university building (about 30 x 15 m, 3 levels, half-hipped roof); containing match"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Marino_(city)_-_2017_by-RaBoe_266.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Ra Boe / Wikipedia",
+   "view": "street",
+   "used": "historic-centre streetscape only: warm sandstone ashlar, brick, shuttered punched windows, balconies, awnings (the university building itself is not shown, so verified stays footprint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 150,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "university",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4ab82",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.4,
+    "plinth": 1.0,
+    "cornice": true,
+    "groundKind": "door",
+    "bands": "#a99370"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65b3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "university",
+   "params": {
+    "width": 0.9,
+    "height": 2.2,
+    "pots": 2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 1,
+    "count": 4,
+    "colour": "#b5a58a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the building: OSM outline with stone walls and tile hip roof typical of the historic centre; facade details guessed."
+ }
+}

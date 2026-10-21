@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-node-7930513065",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/49209502",
+   "used": "containing residential-block outline (long curved slab, 76 x 17 m, bearing 38 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 14,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; five-storey ochre residential-care slab on the real outline with balcony bands; details assumed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a86c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f1e9d6"
+      ],
+      "height": 0.4,
+      "at": 0.2,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "care-plate",
+   "at": [
+    0,
+    -26,
+    3.2
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-a",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-b",
+   "at": [
+    32,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

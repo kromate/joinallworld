@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/97562929",
+   "used": "real hospital outline (527 x 284 m site, auto-fitted to the scene clamp); no photo of the building was found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ded0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e3ded0",
+      "#c9ccce"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    8,
+    -4
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a44",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bands": "#d8d3c6",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; footprint auto-scaled 0.27 from a 442 m site, wings uniform height, real ward blocks and later additions unknown"
+ }
+}

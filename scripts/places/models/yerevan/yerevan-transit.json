@@ -1,0 +1,1055 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sasuntsi_David_and_Railway_station_at_night.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aleksey Chalabyan (Xelgen)",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/stn2.jpg",
+   "used": "long low hall with ground-storey arcades each side, taller central pavilion with a large arched portal, two-stage square tower with an open arched belfry and a thin needle spire, warm cream-orange tuff, flat roofs with cornice"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yerevan_Railway_Station_2019_-_Statue_David_of_Sassoun.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Textfabrikant",
+   "view": "street",
+   "used": "forecourt fountain pool with the David of Sassoun rock and horseman statue, tuff buildings, metal-roof platform sheds behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/993678521",
+   "used": "not used: nearest match is a 13 m outbuilding, not the station hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e0a56f",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f0dcc2",
+      "height": 0.8,
+      "at": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7566",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    -27,
+    1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e3aa73",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.4,
+      "opening": 0.62,
+      "height": 0.88,
+      "depth": 0.8,
+      "colour": "#f0dcc2",
+      "pierColour": "#e8c9a5",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#f0dcc2",
+      "height": 0.6,
+      "at": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7566",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    27,
+    1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e3aa73",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.4,
+      "opening": 0.62,
+      "height": 0.88,
+      "depth": 0.8,
+      "colour": "#f0dcc2",
+      "pierColour": "#e8c9a5",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#f0dcc2",
+      "height": 0.6,
+      "at": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7566",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-frame",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -10.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.8
+    ],
+    "height": 12.5,
+    "colour": "#ecd2b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-glass",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -10.8,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.4
+    ],
+    "height": 7.6,
+    "colour": "#3d3a3c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "portal-arch",
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "at": [
+    0,
+    -11.2,
+    7.0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e4bd96",
+    "profile": [
+     [
+      2.9,
+      0
+     ],
+     [
+      2.9,
+      0.4
+     ],
+     [
+      0,
+      0.4
+     ]
+    ],
+    "openTop": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "at": [
+    0,
+    1,
+    16
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 5,
+    "colour": "#e2a870",
+    "topColour": "#c9a082",
+    "windows": "none",
+    "plinth": 0.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-belfry",
+   "at": [
+    0,
+    1,
+    21
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 5,
+    "colour": "#ebb987",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "topColour": "#c9a082"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    0,
+    1,
+    26
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "height": 2.2,
+    "colour": "#e8c9a5",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "loft",
+   "id": "needle",
+   "at": [
+    0,
+    1,
+    28.2
+   ],
+   "params": {
+    "colour": "#b9b4ae",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       0.25,
+       0.25
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       0.08,
+       0.08
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "id": "pool",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 14,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "canopy-1",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 8,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "tracks",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 90,
+    "tracks": 3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "david-rock",
+   "at": [
+    -22,
+    -30,
+    0.3
+   ],
+   "params": {
+    "colour": "#b9aa97",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        6.14,
+        0.0
+       ],
+       [
+        5.05,
+        3.79
+       ],
+       [
+        0.99,
+        6.51
+       ],
+       [
+        -4.02,
+        6.68
+       ],
+       [
+        -7.17,
+        2.09
+       ],
+       [
+        -6.56,
+        -2.13
+       ],
+       [
+        -2.98,
+        -5.0
+       ],
+       [
+        1.05,
+        -7.95
+       ],
+       [
+        5.98,
+        -4.98
+       ]
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 2,
+      "poly": [
+       [
+        6.83,
+        0.0
+       ],
+       [
+        4.31,
+        4.12
+       ],
+       [
+        1.16,
+        6.86
+       ],
+       [
+        -3.51,
+        4.39
+       ],
+       [
+        -5.97,
+        2.23
+       ],
+       [
+        -5.74,
+        -1.81
+       ],
+       [
+        -3.01,
+        -4.39
+       ],
+       [
+        1.24,
+        -6.88
+       ],
+       [
+        4.75,
+        -3.59
+       ]
+      ],
+      "cx": 0.04
+     },
+     {
+      "z": 4,
+      "poly": [
+       [
+        5.87,
+        0.0
+       ],
+       [
+        4.46,
+        3.69
+       ],
+       [
+        0.88,
+        4.78
+       ],
+       [
+        -2.62,
+        4.23
+       ],
+       [
+        -4.08,
+        1.58
+       ],
+       [
+        -5.33,
+        -1.4
+       ],
+       [
+        -2.05,
+        -4.58
+       ],
+       [
+        0.8,
+        -5.02
+       ],
+       [
+        3.81,
+        -3.02
+       ]
+      ],
+      "cx": 0.08
+     },
+     {
+      "z": 6.5,
+      "poly": [
+       [
+        5.41,
+        0.0
+       ],
+       [
+        3.32,
+        2.54
+       ],
+       [
+        0.82,
+        4.02
+       ],
+       [
+        -2.12,
+        4.29
+       ],
+       [
+        -3.92,
+        1.58
+       ],
+       [
+        -4.93,
+        -1.28
+       ],
+       [
+        -1.85,
+        -3.47
+       ],
+       [
+        0.86,
+        -4.64
+       ],
+       [
+        3.08,
+        -2.69
+       ]
+      ],
+      "cx": 0.13
+     },
+     {
+      "z": 9,
+      "poly": [
+       [
+        2.98,
+        0.0
+       ],
+       [
+        2.15,
+        2.39
+       ],
+       [
+        0.69,
+        4.02
+       ],
+       [
+        -1.89,
+        3.54
+       ],
+       [
+        -2.59,
+        1.08
+       ],
+       [
+        -3.85,
+        -1.31
+       ],
+       [
+        -1.66,
+        -3.52
+       ],
+       [
+        0.62,
+        -3.82
+       ],
+       [
+        2.42,
+        -1.93
+       ]
+      ],
+      "cx": 0.18
+     },
+     {
+      "z": 11,
+      "poly": [
+       [
+        2.59,
+        0.0
+       ],
+       [
+        1.93,
+        2.03
+       ],
+       [
+        0.43,
+        2.08
+       ],
+       [
+        -1.08,
+        1.98
+       ],
+       [
+        -2.78,
+        0.85
+       ],
+       [
+        -2.27,
+        -0.76
+       ],
+       [
+        -1.58,
+        -2.21
+       ],
+       [
+        0.41,
+        -2.13
+       ],
+       [
+        1.66,
+        -1.47
+       ]
+      ],
+      "cx": 0.22
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horse-body",
+   "at": [
+    -22,
+    -30,
+    10.8
+   ],
+   "params": {
+    "colour": "#8a6a3f",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       1.0499999999999998,
+       1.6500000000000001
+      ],
+      "cx": -1.7999999999999998
+     },
+     {
+      "z": 2.25,
+      "ellipse": [
+       1.35,
+       2.25
+      ],
+      "cx": -0.44999999999999996
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       1.275,
+       1.9500000000000002
+      ],
+      "cx": 0.8999999999999999
+     },
+     {
+      "z": 6.8999999999999995,
+      "ellipse": [
+       0.75,
+       1.0499999999999998
+      ],
+      "cx": 2.0999999999999996
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horse-head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -30,
+    17.7
+   ],
+   "params": {
+    "colour": "#8a6a3f",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       0.5249999999999999,
+       0.75
+      ],
+      "cx": 2.0999999999999996
+     },
+     {
+      "z": 2.4000000000000004,
+      "ellipse": [
+       0.44999999999999996,
+       0.6000000000000001
+      ],
+      "cx": 3.3000000000000003
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "foreleg",
+   "lod": [
+    0
+   ],
+   "at": [
+    -22,
+    -30,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.6
+     ]
+    },
+    "points": [
+     [
+      1.7999999999999998,
+      0,
+      4.800000000000001
+     ],
+     [
+      3.5999999999999996,
+      0,
+      6.6000000000000005
+     ],
+     [
+      4.5,
+      0,
+      5.699999999999999
+     ]
+    ],
+    "colour": "#8a6a3f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hindleg",
+   "lod": [
+    0
+   ],
+   "at": [
+    -22,
+    -30,
+    10.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.6
+     ]
+    },
+    "points": [
+     [
+      -1.5,
+      0,
+      1.5
+     ],
+     [
+      -2.4000000000000004,
+      0,
+      0.0
+     ],
+     [
+      -2.25,
+      0,
+      -0.75
+     ]
+    ],
+    "colour": "#8a6a3f"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rider",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -30,
+    15.600000000000001
+   ],
+   "params": {
+    "colour": "#a58a5a",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       0.5249999999999999,
+       0.6000000000000001
+      ],
+      "cx": 0.30000000000000004
+     },
+     {
+      "z": 2.4000000000000004,
+      "ellipse": [
+       0.44999999999999996,
+       0.5249999999999999
+      ],
+      "cx": 0.75
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       0.22499999999999998,
+       0.22499999999999998
+      ],
+      "cx": 0.8999999999999999
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rider-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    -22,
+    -30,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     3.0
+    ],
+    "height": 6,
+    "colour": "#8a6a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess-w",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -27.0,
+    -6.2,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.5
+    ],
+    "height": 4.4,
+    "colour": "#3a2c24"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cols-w",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -43,
+     -7.4,
+     0
+    ],
+    "end": [
+     -11,
+     -7.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 5.2,
+      "colour": "#f0d9b8"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-w",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -27.0,
+    -7.4,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     34,
+     1.2
+    ],
+    "height": 0.9,
+    "colour": "#f0dcc2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess-e",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    27.0,
+    -6.2,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.5
+    ],
+    "height": 4.4,
+    "colour": "#3a2c24"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cols-e",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     11,
+     -7.4,
+     0
+    ],
+    "end": [
+     43,
+     -7.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 5.2,
+      "colour": "#f0d9b8"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-e",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    27.0,
+    -7.4,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     34,
+     1.2
+    ],
+    "height": 0.9,
+    "colour": "#f0dcc2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38,
+     -20
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Jagged rock pedestal in a wide pool carries a stylised rearing horseman built from lofts (no sculpted detail); loggia is free-standing columns over a dark recess but not true arches; portal has no radial fan glazing; platform sheds behind are out of the view; station lettering omitted"
+ }
+}

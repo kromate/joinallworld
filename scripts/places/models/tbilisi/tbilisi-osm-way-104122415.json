@@ -1,0 +1,414 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-104122415",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tbilisi_Zoo.jpg",
+   "licence": "CC BY 2.0",
+   "author": "rugbyxm",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tbilisi/zoo1.jpg",
+   "used": "a hillside enclosure: bare dirt paddock, long grey-beige concrete retaining wall, flat-roofed cream render animal houses with grey roofs and parapets on a terrace behind, brown timber shelter with low red-brown roof, shrubs, wooded slope behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/104122415",
+   "used": "park outline is 759 x 213 m, far beyond the 118 m scene; only one enclosure group is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 52,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paddock",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     76,
+     40
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#a89478",
+    "slot": "plain"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-slab",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    16
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8afa0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    2,
+    20
+   ],
+   "z0": 3.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3b4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f858a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "z0": 3.2,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3b4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f858a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     10,
+     6.5
+    ]
+   },
+   "at": [
+    19,
+    4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a4630",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b4a38",
+    "pitch": 12,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-wall",
+   "footprint": {
+    "rect": [
+     50,
+     1.0
+    ]
+   },
+   "at": [
+    -6,
+    8.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69b",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a978c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall",
+   "footprint": {
+    "rect": [
+     1.0,
+     34
+    ]
+   },
+   "at": [
+    -31,
+    -8
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69b",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a978c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope",
+   "at": [
+    8,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     22
+    ],
+    "z0": 0,
+    "height": 16,
+    "topScale": [
+     0.9,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     4
+    ],
+    "colour": "#3f5a30",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope2",
+   "at": [
+    8,
+    32,
+    6
+   ],
+   "params": {
+    "rect": [
+     70,
+     14
+    ],
+    "z0": 0,
+    "height": 10,
+    "topScale": [
+     0.8,
+     0.6
+    ],
+    "colour": "#4d6b38",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shed-dark",
+   "at": [
+    19,
+    0.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 0.4,
+    "height": 2.4,
+    "colour": "#2a1e18"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub-24",
+   "at": [
+    -24,
+    6.8,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 8,
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.5,
+    "colour": "#4c6d36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub-16",
+   "at": [
+    -16,
+    6.8,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 8,
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.5,
+    "colour": "#4c6d36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub-8",
+   "at": [
+    -8,
+    6.8,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 8,
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.5,
+    "colour": "#4c6d36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub0",
+   "at": [
+    0,
+    6.8,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 8,
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.5,
+    "colour": "#4c6d36"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub8",
+   "at": [
+    8,
+    6.8,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 8,
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 0.5,
+    "colour": "#4c6d36"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     34
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     36
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     38
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Long grey wall joined to roof terrace, two cream flat-roofed houses against a wooded slope, open-fronted timber shelter and shrubs added; slope is a smooth green block not a tree mass, shelter walls not slatted, no animals, only one enclosure of the 759 m park."
+ }
+}

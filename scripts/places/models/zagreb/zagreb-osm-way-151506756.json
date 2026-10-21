@@ -1,0 +1,351 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-151506756",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dvorac_Brezovica_ju%C5%BEni_ulaz.jpg",
+   "licence": "CC BY 3.0",
+   "author": "SpeedyGonsales",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/brez1.jpg",
+   "used": "two-storey off-white plaster block under a steep red-brown hip roof, five window axes with dark sashes, small flat porch canopy at ground floor, chimney"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dvorac_Brezovica_sjeverno_pro%C4%8Delje.jpg",
+   "licence": "CC BY 3.0",
+   "author": "SpeedyGonsales",
+   "view": "side",
+   "file": "/tmp/places-evidence/zagreb/brez2.jpg",
+   "used": "round corner tower with green copper dome, pilastered pale facade, L-shaped plan with lower wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/151506756",
+   "used": "overall extent (about 44 x 35 m, bent plan); real outline hip-roof span too large so rect wings used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "manor",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e0cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#f6f2e6",
+    "glassColour": "#3a4046"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9573b",
+    "material": "clay-tile",
+    "pitch": 45,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -13,
+    14
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e0cc",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#dcd3b8",
+    "glassColour": "#3a4046"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9573b",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    -10,
+    -7,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e8e0cc",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      3,
+      0.6
+     ],
+     [
+      3,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -10,
+    -7,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#5f9a8a",
+    "profile": [
+     [
+      3.4,
+      0
+     ],
+     [
+      3.6,
+      0.5
+     ],
+     [
+      3.0,
+      2.0
+     ],
+     [
+      1.8,
+      3.2
+     ],
+     [
+      0.5,
+      3.9
+     ],
+     [
+      0.1,
+      4.8
+     ],
+     [
+      0,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.2
+    ],
+    "height": 3.0,
+    "colour": "#f2eee2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    3,
+    0,
+    9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 6,
+    "colour": "#b8a898"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "axis",
+   "at": [
+    0,
+    -7.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 9.5,
+    "colour": "#ece5d2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-strip",
+   "at": [
+    0,
+    -8,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     0.6
+    ],
+    "height": 0.8,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster",
+   "at": [
+    -9.7,
+    -7.3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 8.2,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster",
+   "at": [
+    -4,
+    -7.3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 8.2,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster",
+   "at": [
+    4,
+    -7.3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 8.2,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster",
+   "at": [
+    9.7,
+    -7.3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 8.2,
+    "colour": "#f6f2e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -20
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -14
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5,
+     -30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo view is the rear/south approach so the round tower is visible but not in the photo; plan is rectangles not the real bent L; porch and axis pediment crude."
+ }
+}

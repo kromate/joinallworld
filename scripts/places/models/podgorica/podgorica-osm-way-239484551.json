@@ -1,0 +1,345 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-239484551",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/239484551",
+   "used": "overall stadium size and long-side orientation (120 x 67 m outline, named match); no photograph of this ground is on Commons or Wikipedia"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small Prva CFL ground, one covered main stand, open concrete terraces, four floodlights; blue and white for the home club (FK Zeta) is an assumption"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     76
+    ],
+    "height": 0.1,
+    "colour": "#a39e92",
+    "topColour": "#a39e92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     102,
+     62
+    ],
+    "height": 0.12,
+    "colour": "#5d8c45",
+    "topColour": "#5d8c45",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -32,
+     -35
+    ],
+    "end": [
+     32,
+     -35
+    ],
+    "rows": 13,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColours": [
+     "#2f5f9e",
+     "#e8e8e2"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b4b0a6",
+    "backWall": 1.2,
+    "under": "solid",
+    "canopy": {
+     "height": 9,
+     "depth": 9,
+     "colour": "#8a8f94",
+     "slopeDeg": 6,
+     "supports": 7
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     45,
+     36
+    ],
+    "end": [
+     -45,
+     36
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#b4b0a6",
+    "concreteColour": "#b4b0a6",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     57,
+     -22
+    ],
+    "end": [
+     57,
+     22
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#a8a49a",
+    "concreteColour": "#b4b0a6",
+    "under": "open"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -59,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -37
+     ],
+     [
+      0,
+      37
+     ],
+     [
+      118,
+      37
+     ]
+    ],
+    "height": 1.6,
+    "colour": "#7b7a74",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -56,
+    -32,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 24,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -56,
+    -32,
+    24
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56,
+    -32,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 24,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56,
+    -32,
+    24
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -56,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 24,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -56,
+    34,
+    24
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 24,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56,
+    34,
+    24
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -36,
+    -41,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f5f9e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     68,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photograph found; stand size, canopy and number of terraces are from the brief, not seen"
+ }
+}

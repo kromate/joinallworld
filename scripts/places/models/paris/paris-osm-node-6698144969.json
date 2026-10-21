@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Telecom_Paris_main_court.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Strawhat42",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/telecom.jpg",
+   "used": "four-to-five storey pale sand-coloured block with vertical fins and tall window strips, glazed lower floor, lawn court with young trees and circular basin"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9903423",
+   "used": "campus outline (191 x 97 m, 5 levels, flat roof); a reduced U courtyard layout is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north",
+   "footprint": {
+    "rect": [
+     70,
+     18
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9c59a",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#4d5a63",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 1.8,
+      "depth": 0.7,
+      "width": 0.4,
+      "colour": "#e3d3b0",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "pilotis",
+      "inset": 1.5,
+      "spacing": 5,
+      "width": 0.7,
+      "colour": "#bfb08e",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    -30,
+    -8
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9c59a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#4d5a63",
+    "faces": {
+     "back": "none",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.45,
+      "width": 0.3,
+      "colour": "#e3d3b0",
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    30,
+    -8
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9c59a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#4d5a63",
+    "faces": {
+     "back": "none",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.45,
+      "width": 0.3,
+      "colour": "#e3d3b0",
+      "faces": [
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-glass",
+   "footprint": {
+    "rect": [
+     40,
+     4
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3ac",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7d8a8c"
+     ],
+     [
+      13.5,
+      0,
+      "#7d8a8c"
+     ],
+     [
+      13.5,
+      0.1,
+      "#c8c6c0"
+     ],
+     [
+      14.3,
+      0.1,
+      "#c8c6c0"
+     ],
+     [
+      14.3,
+      0.5,
+      "#c8c6c0"
+     ],
+     [
+      13.5,
+      0.5,
+      "#c8c6c0"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   130,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -38
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -42
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -42
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -38
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -4
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -4
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fins read as thin; no recessed top floor or terraces; basin is a flat disc ring; trees stylised, young slender trees only approximated"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-node-6698144969"
+}

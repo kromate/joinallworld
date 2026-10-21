@@ -1,0 +1,151 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-peter-port.json#st-peter-port-osm-node-13544152092",
+   "used": "low two-storey A&E wing, render with ribbon glazing, flat roof, ambulance bay canopy, red cross plate (no photo; the OSM outline is the whole 520 m hospital site and is not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ded0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9ccce",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c2cc",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#c9ccce",
+    "roofColour": "#e3ded0",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -8,
+    -8.7,
+    3.2
+   ],
+   "params": {
+    "size": 1.8,
+    "colour": "#c9302c",
+    "facing": "front"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    7,
+    -10,
+    0
+   ],
+   "params": {
+    "heading": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -13,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccce",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   64,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-13544152092",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; wing size and layout inferred, OSM hospital outline unusable."
+ }
+}

@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-975669150",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/975669150",
+   "used": "site outline (113 x 95 m, long axis at 45 deg) drawn as the paved apron, pitch aligned to its long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: football stadium, covered main stand on the long side, four floodlights, scoreboard board, perimeter fence; club blue and white. No photo of this venue was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 24,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -45,
+   "params": {
+    "points": [
+     [
+      -64.9,
+      -18.2
+     ],
+     [
+      -45,
+      2
+     ],
+     [
+      -56.4,
+      13.3
+     ],
+     [
+      3.2,
+      73.7
+     ],
+     [
+      71.2,
+      6.7
+     ],
+     [
+      -8.3,
+      -73.9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#5c5f62",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 0,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -40
+    ],
+    "end": [
+     34,
+     -40
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "stepped": true,
+    "seatColours": [
+     "#3f6f9a",
+     "#ffffff",
+     "#2c4f73"
+    ],
+    "blocks": 4,
+    "concreteColour": "#cfcfc9",
+    "underColour": "#b9b9b3",
+    "under": "open",
+    "bay": 6,
+    "canopy": {
+     "height": 3.2,
+     "depth": 13,
+     "thickness": 0.7,
+     "slopeDeg": 4,
+     "colour": "#3c4650",
+     "edgeColour": "#f2f2f0",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     41
+    ],
+    "end": [
+     -24,
+     41
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#3f6f9a",
+     "#ffffff"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfcfc9",
+    "under": "open"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "club-house",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    48,
+    -34
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f6f9a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 5,
+    "bottom": 3,
+    "colour": "#1f2a36",
+    "frameColour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     50
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     -55
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; layout from the brief and OSM outline only (stand side, stand length and colours are estimates)."
+ }
+}

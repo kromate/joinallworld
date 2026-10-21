@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-relation-2680527",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fakultet_strojarstva_i_brodogradnje_Zagreb_glavna_zgrada.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ex13",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/fsb1.jpg",
+   "used": "13-storey main slab: sandy exposed concrete, flat roof with deep parapet fascia, continuous ribbon windows with balcony-like railing bands, plain end wall, roof antenna and gantries"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2680527",
+   "used": "campus extent only; low laboratory wings modelled as podium blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 45,
+   "storeys": 13,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d4a56a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#8a8a80",
+    "bands": "#c4935a",
+    "faces": {
+     "right": "none",
+     "left": "none"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a80",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    11
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a89c86",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "glassColour": "#56626a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#76797b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-hall",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    10,
+    34
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb8aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "tower",
+   "id": "antenna",
+   "at": [
+    -28,
+    3,
+    45
+   ],
+   "params": {
+    "width": 0.6,
+    "depth": 0.6,
+    "height": 14,
+    "colour": "#777777"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard",
+   "at": [
+    35.4,
+    0,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "height": 8,
+    "colour": "#243a6b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard-frame",
+   "at": [
+    35.6,
+    0,
+    32
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     7
+    ],
+    "height": 4,
+    "colour": "#f1f1f1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gantry",
+   "at": [
+    8,
+    0,
+    46.6
+   ],
+   "params": {
+    "rect": [
+     12,
+     1
+    ],
+    "height": 2.5,
+    "colour": "#777777"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gantry2",
+   "at": [
+    -10,
+    0,
+    46.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     1
+    ],
+    "height": 1.8,
+    "colour": "#777777"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    0,
+    -8.6,
+    46.6
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#8d8a80"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -16
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -20
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Windows read as dark ribbons rather than paired windows with balcony rails; billboard is a plain panel; low lab wings only a podium."
+ }
+}

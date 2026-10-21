@@ -1,0 +1,1596 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Europe_square_in_Larnaca_Republic_of_Cyprus.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Petros3",
+   "view": "street",
+   "file": "/tmp/places-evidence/larnaca/sq1.jpg",
+   "used": "row of whitewashed gabled old warehouses with sandstone arched doors, round gable windows and terracotta roofs; paved sand square with a pink brick strip, palms, lamp posts; hotel block behind"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Larnaca",
+   "used": "Europe Square as the seafront civic square"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#d9c08e"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-paving-strip",
+   "at": [
+    -24,
+    -20
+   ],
+   "params": {
+    "rect": [
+     80,
+     3
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#d49a8a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    6,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -14,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -54,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-0",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    0.0,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s0",
+   "at": [
+    0.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d0",
+   "at": [
+    0.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s0",
+   "at": [
+    0.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d0",
+   "at": [
+    0.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s0",
+   "at": [
+    0.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d0",
+   "at": [
+    0.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil0",
+   "at": [
+    -4.7,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-1",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -9.4,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s1",
+   "at": [
+    -9.4,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d1",
+   "at": [
+    -9.4,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s1",
+   "at": [
+    -9.4,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d1",
+   "at": [
+    -9.4,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s1",
+   "at": [
+    -9.4,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d1",
+   "at": [
+    -9.4,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil1",
+   "at": [
+    -14.100000000000001,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-2",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -18.8,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s2",
+   "at": [
+    -18.8,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d2",
+   "at": [
+    -18.8,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s2",
+   "at": [
+    -18.8,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d2",
+   "at": [
+    -18.8,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s2",
+   "at": [
+    -18.8,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d2",
+   "at": [
+    -18.8,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil2",
+   "at": [
+    -23.5,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-3",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -28.200000000000003,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s3",
+   "at": [
+    -28.200000000000003,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d3",
+   "at": [
+    -28.200000000000003,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s3",
+   "at": [
+    -28.200000000000003,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d3",
+   "at": [
+    -28.200000000000003,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s3",
+   "at": [
+    -28.200000000000003,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d3",
+   "at": [
+    -28.200000000000003,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil3",
+   "at": [
+    -32.900000000000006,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-4",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -37.6,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s4",
+   "at": [
+    -37.6,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d4",
+   "at": [
+    -37.6,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s4",
+   "at": [
+    -37.6,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d4",
+   "at": [
+    -37.6,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s4",
+   "at": [
+    -37.6,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d4",
+   "at": [
+    -37.6,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil4",
+   "at": [
+    -42.300000000000004,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-5",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -47.0,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s5",
+   "at": [
+    -47.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d5",
+   "at": [
+    -47.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s5",
+   "at": [
+    -47.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d5",
+   "at": [
+    -47.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s5",
+   "at": [
+    -47.0,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d5",
+   "at": [
+    -47.0,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil5",
+   "at": [
+    -51.7,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "warehouse-6",
+   "footprint": {
+    "rect": [
+     9,
+     20
+    ]
+   },
+   "at": [
+    -56.400000000000006,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d6b98a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#d9784a",
+    "material": "clay-tile",
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-s6",
+   "at": [
+    -56.400000000000006,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-d6",
+   "at": [
+    -56.400000000000006,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 4.8,
+    "colour": "#4a2e22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-s6",
+   "at": [
+    -56.400000000000006,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win-d6",
+   "at": [
+    -56.400000000000006,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 6.7,
+    "height": 1.8,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-s6",
+   "at": [
+    -56.400000000000006,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 2.0,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ocu-d6",
+   "at": [
+    -56.400000000000006,
+    -10.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 10.7,
+    "height": 1.0,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil6",
+   "at": [
+    -61.10000000000001,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pil-end",
+   "at": [
+    -51.7,
+    -10.15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#cfa972"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hotel-block",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    32
+   ],
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8dc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bay": 7,
+    "bands": "#d9d4c6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat0",
+   "at": [
+    -8,
+    -17
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.9
+    ],
+    "z0": 0.5,
+    "height": 0.12,
+    "colour": "#a8552a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back0",
+   "at": [
+    -8,
+    -17.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.1
+    ],
+    "z0": 0.8,
+    "height": 0.7,
+    "colour": "#a8552a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-leg0",
+   "at": [
+    -8,
+    -17
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#2a2a2e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat1",
+   "at": [
+    -24,
+    -17
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.9
+    ],
+    "z0": 0.5,
+    "height": 0.12,
+    "colour": "#a8552a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back1",
+   "at": [
+    -24,
+    -17.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.1
+    ],
+    "z0": 0.8,
+    "height": 0.7,
+    "colour": "#a8552a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-leg1",
+   "at": [
+    -24,
+    -17
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#2a2a2e"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gables lack stepped coping and real arched heads; oculus is a square plate; paving not sandy; lamp posts thin and benches simplified"
+ }
+}

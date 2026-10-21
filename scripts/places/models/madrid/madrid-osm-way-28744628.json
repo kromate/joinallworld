@@ -1,0 +1,381 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Facultad_de_Ciencias_Jur%C3%ADdicas_y_Sociales_(URJC)_3.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mabel Velastegui",
+   "view": "street",
+   "file": "/tmp/places-evidence/madrid/urjc1.jpg",
+   "used": "red brick blocks with ribbons of small square windows and grey cornices, pale flat canopy at left, gabled metal-roofed hall in the middle, low brick shed with pale monopitch roof in the foreground right, open paved car park, poplars"
+  },
+  {
+   "kind": "wikidata",
+   "used": "Q17295517 faculty of law and social sciences, inception 1996; OSM campus outline (383 m) is far beyond the scene clamp so one teaching court is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4573f",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#b9b3a6",
+    "plinth": 0.5,
+    "trimColour": "#a9a49b",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    -4,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9593f",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#575a5e",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "axis": "x",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    34,
+    44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#bd5a40",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#b9b3a6",
+    "trimColour": "#8c867c",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8387",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-shed",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#ad4d3b",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3,
+    "bands": {
+     "colour": "#d9d9d4"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e8e9e6",
+    "material": "metal-sheet",
+    "rise": 3.8,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -62,
+    12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 4.2,
+    "thickness": 0.5,
+    "columns": 3,
+    "colour": "#e1ddd2",
+    "edgeColour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "density": 0.3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 7.5,
+    "count": 1,
+    "spacing": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    20,
+    26,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.25,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 2.8000000000000003,
+      "circle": 0.3,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 3.5,
+      "circle": 0.8999999999999999
+     },
+     {
+      "z": 7.700000000000001,
+      "circle": 1.5
+     },
+     {
+      "z": 11.9,
+      "circle": 0.8250000000000001
+     },
+     {
+      "z": 14,
+      "circle": 0.15
+     }
+    ],
+    "colour": "#b0ad55",
+    "round": 6,
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.25,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 3.6,
+      "circle": 0.3,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 4.5,
+      "circle": 0.8999999999999999
+     },
+     {
+      "z": 9.9,
+      "circle": 1.5
+     },
+     {
+      "z": 15.299999999999999,
+      "circle": 0.8250000000000001
+     },
+     {
+      "z": 18,
+      "circle": 0.15
+     }
+    ],
+    "colour": "#b0ad55",
+    "round": 6,
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    58,
+    38,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.25,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 3.8000000000000003,
+      "circle": 0.3,
+      "colour": "#6b5a46"
+     },
+     {
+      "z": 4.75,
+      "circle": 0.8999999999999999
+     },
+     {
+      "z": 10.450000000000001,
+      "circle": 1.5
+     },
+     {
+      "z": 16.15,
+      "circle": 0.8250000000000001
+     },
+     {
+      "z": 19,
+      "circle": 0.15
+     }
+    ],
+    "colour": "#b0ad55",
+    "round": 6,
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.4
+    ],
+    "height": 1.0,
+    "colour": "#3a3d40",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   120,
+   80
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ribbon windows, dark metal hall roof, pale monopitch shed, poplars and paving applied; render camera still frames wider than the photo, trees sparser and cars reduced to fit LOD1 budget"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-28744628"
+}

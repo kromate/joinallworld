@@ -1,0 +1,268 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/155087370",
+   "used": "real ferry-terminal outline (about 53 x 52 m), height 10 m from the brief"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ferries_in_Mariehamn_harbor.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pjt56",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/mariehamn/transit-0.jpg",
+   "used": "not the terminal building (too distant); the ferries only: white superstructure, dark red hull on one, white hull with blue stripes and blue funnel on the other, and the four-masted barque beyond"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "fit": 60
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd8cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4f6a8c",
+    "parapet": 0.5,
+    "bands": {
+     "colour": "#4f6a8c",
+     "height": 0.6
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "depth": 14,
+    "water_depth": 60
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    56,
+    -1
+   ],
+   "params": {
+    "colour": "#7b1f2a",
+    "topColour": "#f4f2ec",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       10
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       56,
+       16
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       58,
+       16
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    56,
+    8
+   ],
+   "params": {
+    "rect": [
+     48,
+     14
+    ],
+    "height": 7,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#2f3f55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    56,
+    15
+   ],
+   "params": {
+    "rect": [
+     28,
+     11
+    ],
+    "height": 5,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#2f3f55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    56,
+    20
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.4,
+    "height": 4.5,
+    "colour": "#8f1f2d",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -62,
+    58,
+    -1
+   ],
+   "params": {
+    "colour": "#25282c",
+    "topColour": "#6a553f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       3
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       44,
+       7
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       46,
+       7.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 6,
+      "radius": 0.3,
+      "height": 30,
+      "colour": "#7a6a55",
+      "topColour": "#7a6a55"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -72,
+     58,
+     4
+    ],
+    "end": [
+     -52,
+     58,
+     4
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#c8362f",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#2a5aa0",
+     "#e6c31e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the terminal building: outline only. Ferry and barque are simple lofts; model dips below z=0 and spans over the 120 m clamp."
+ }
+}

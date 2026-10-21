@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-23093458",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Prague_Kr%C4%8D_IKEM.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Packa (Czech Wikipedia)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/prague/ikem.jpg",
+   "used": "stepped cluster of flat-roofed blocks: a tall cream-grey central slab with a regular white window grid, a taller left block, a pale rear wing with ribbon windows, an orange-brown end block, dark rooftop plant box, poplars in front, parkland around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23093458",
+   "used": "campus facts only (75,000 m2 area); the matched building way is only a small part, so the clustered mass follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 30,
+  "aspect": 1.4,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "central",
+   "footprint": {
+    "rect": [
+     50,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc6b3",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     28,
+     17
+    ]
+   },
+   "at": [
+    -39,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a89c86",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     74,
+     13
+    ]
+   },
+   "at": [
+    8,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dedcd4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-rear",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a89c86",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-orange",
+   "footprint": {
+    "rect": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    33,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b36a40",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-low",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    2,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a6e5a",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#52606d",
+    "plinth": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-plant",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 20,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5c4a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a625c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 12,
+    "count": 3,
+    "spread": 8,
+    "line": 10,
+    "colour": "#3f6a35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped cluster now has lower left block, rear-left wing and taller orange end; real site has many more terraced wings, ribbon bands and neighbouring housing"
+ }
+}

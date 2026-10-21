@@ -1,0 +1,365 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-relation-2819550",
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof folded plate approximated by a regular fold surface (no floodlight row detail at LOD1); diagonal ramps and tents omitted; track is a clamped oval not the full 330 m ring; ribbon glazing still renders blue-tinted (glassColour ignored); walls too tall/boxy vs photo"
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tor_di_Valle_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Claudio Caravano",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/tv1.jpg",
+   "used": "two grandstands seen across the sand track: large right stand with glazed lower floors, white upper wall and a deep undulating dark cantilever roof carrying a row of floodlights; smaller twin stand left; stepped terraces and diagonal ramps in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ippodromo_Tor_di_Valle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Claudio Caravano",
+   "view": "interior",
+   "file": "/tmp/places-evidence/rome/tv2.jpg",
+   "used": "terrace seating rows, white track rail, floodlight masts around the oval, grey concrete colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2819550",
+   "used": "track oval (about 330 x 400 m) is far beyond the scene clamp: only the grandstand frontage and a stretch of track are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 2.4,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-glass",
+   "footprint": {
+    "rect": [
+     66,
+     14
+    ]
+   },
+   "at": [
+    16,
+    22
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cccb",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#dfe2e1",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-white",
+   "footprint": {
+    "rect": [
+     66,
+     9
+    ]
+   },
+   "at": [
+    16,
+    24.5
+   ],
+   "z0": 14,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcdad2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f70"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    16,
+    12,
+    21
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 78,
+    "depth": 46,
+    "rise": 4.0,
+    "thickness": 1.2,
+    "colour": "#3f4345",
+    "underColour": "#34383a",
+    "edgeColour": "#4a4e50",
+    "folds": 7
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -3.5,
+    23.4
+   ],
+   "params": {
+    "mode": "line",
+    "count": 26,
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.5
+      ],
+      "height": 1.0,
+      "colour": "#2a2d30"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -14,
+     3,
+     0
+    ],
+    "end": [
+     46,
+     3,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       4
+      ],
+      "height": 14,
+      "colour": "#b9b6ac"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -14,
+     3.6,
+     0.0
+    ],
+    "end": [
+     46,
+     3.6,
+     0.0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       56,
+       2.4
+      ],
+      "height": 1.0,
+      "colour": "#a9a69c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     3
+    ],
+    "height": 1.2,
+    "colour": "#b4b1a7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    3.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     3
+    ],
+    "height": 2.4,
+    "colour": "#aeaba1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-glass",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -48,
+    30
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cccb",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#dfe2e1",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-white",
+   "footprint": {
+    "rect": [
+     30,
+     7
+    ]
+   },
+   "at": [
+    -48,
+    31.5
+   ],
+   "z0": 9,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3d0c7",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f70"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -48,
+    24,
+    13.5
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 38,
+    "depth": 26,
+    "rise": 2.8,
+    "thickness": 1.0,
+    "colour": "#3f4345",
+    "underColour": "#34383a",
+    "folds": 5,
+    "edgeColour": "#4a4e50"
+   }
+  },
+  {
+   "type": "race-track",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 90,
+    "track_width": 20,
+    "colour": "#cfc3a8",
+    "rail": true,
+    "rail_colour": "#f0efe8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   116,
+   100
+  ]
+ }
+}

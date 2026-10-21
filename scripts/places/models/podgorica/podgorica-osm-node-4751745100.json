@@ -1,0 +1,126 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/482327053",
+   "used": "Spomen podrucje Barutana, 1975 memorial site (170x86 m area, not a building; only its date used)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: stone memorial slab on stepped base in karst grassland"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 35
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base-low",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89f8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-mid",
+   "footprint": {
+    "rect": [
+     12,
+     6.5
+    ]
+   },
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b4b0a6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slab",
+   "at": [
+    0,
+    0,
+    1.0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8,
+       2.2
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       6.4,
+       1.6
+      ]
+     }
+    ],
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.8,
+    "colour": "#6b6460"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-node-4751745100",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; small stone slab on stepped base typed from the brief; the OSM area is a 170 m memorial site, not used."
+ }
+}

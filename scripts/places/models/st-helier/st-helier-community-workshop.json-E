@@ -1,0 +1,117 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jersey_library_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Danrok",
+   "view": "front-left street",
+   "file": "/tmp/places-evidence/st-helier/st-helier-community-workshop-0.jpg",
+   "used": "pink-brown rusticated granite ground storey with round arches, two upper storeys of tall arched dark-framed windows in a row of seven, blank brick-granite end wing, flat roof with railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/185953209",
+   "used": "footprint (name match, 3 levels, brown masonry)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#a98577",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 3.0,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#2e3a4d",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    13.5
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.1,
+    "kind": "rail",
+    "colour": "#d8dadc"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -22,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3,
+    "yaw": 0,
+    "colour": "#2a2d33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": ""
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-community-workshop"
+}

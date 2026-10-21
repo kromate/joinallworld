@@ -1,0 +1,551 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A._Le_Coq_Arena_on_15.08.2018,_before_uefa_super_cup.jpg",
+   "licence": "CC0",
+   "author": "Rim555",
+   "view": "front",
+   "file": "/tmp/places-evidence/tallinn/arena2.jpg",
+   "used": "low, wide main stand: yellow lower cladding with a pale upper band and ribbon glazing, concrete columns at the ground floor, grey roof edge with a row of white truss masts, two black screen boards on the facade, asphalt car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A._Le_Coq_Arena_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Erko",
+   "view": "side",
+   "file": "/tmp/places-evidence/tallinn/arena3.jpg",
+   "used": "yellow facade band, sloping roof with white diagonal struts, grey concrete frame"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/401610",
+   "used": "overall bowl extent (about 150 x 115 m); pitch 105 x 68 m from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     54
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#5f9a4a",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-stand",
+   "footprint": {
+    "rect": [
+     112,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -38
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "ribbon",
+    "glassColour": "#2f3a44",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#3a3d42",
+       "#e6c21c",
+       "#e4e3dc"
+      ]
+     }
+    ],
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-stand",
+   "footprint": {
+    "rect": [
+     112,
+     13
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-stand",
+   "footprint": {
+    "rect": [
+     13,
+     64
+    ]
+   },
+   "at": [
+    -53,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-stand",
+   "footprint": {
+    "rect": [
+     13,
+     64
+    ]
+   },
+   "at": [
+    53,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-0",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -53,
+    -34
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-1",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    53,
+    -34
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-2",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -53,
+    34
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-3",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    53,
+    34
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6c21c",
+    "windows": "none",
+    "glassColour": "#2f3a44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19,
+    -45.4,
+    8.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 6,
+    "colour": "#1b2230"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -45.4,
+    8.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 6,
+    "colour": "#1b2230"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -38,
+    14.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 6,
+    "lod2Step": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 6,
+      "topScale": 0.3,
+      "colour": "#f0f0ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -38,
+    14.3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.3,
+       3
+      ],
+      "height": 3.5999999999999996,
+      "topScale": [
+       1,
+       0.1
+      ],
+      "colour": "#f0f0ee"
+     }
+    },
+    "lod1Step": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    38,
+    12.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 6,
+    "lod2Step": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 5,
+      "topScale": 0.3,
+      "colour": "#f0f0ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    38,
+    12.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     52,
+     0,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.3,
+       3
+      ],
+      "height": 3.0,
+      "topScale": [
+       1,
+       0.1
+      ],
+      "colour": "#f0f0ee"
+     }
+    },
+    "lod1Step": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -42,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 8,
+    "spacing": 14
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 18,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "closed ring of yellow stands with sloping grey roofs, larger screens and strut masts added; ground storey is dark band not an open column colonnade, corners are boxy infill, roof slope direction and truss edge only approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-230751799"
+}

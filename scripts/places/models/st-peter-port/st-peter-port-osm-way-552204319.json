@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-way-552204319",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/80438539",
+   "used": "pitch outline 101 x 61 m at about 7 degrees (OSM leisure=pitch named Cambridge Park); park extent from brief (about 100 x 70 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 7.3,
+   "params": {
+    "width": 112,
+    "depth": 72,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 7.3,
+   "params": {
+    "length": 101,
+    "width": 61,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#9a9a96",
+    "points": [
+     [
+      -60,
+      -42
+     ],
+     [
+      60,
+      -28
+     ],
+     [
+      52,
+      42
+     ],
+     [
+      -60,
+      32
+     ],
+     [
+      -60,
+      -42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -40,
+    -44,
+    0
+   ],
+   "rotDeg": 7,
+   "params": {
+    "width": 9,
+    "depth": 5.5,
+    "height": 3.2,
+    "kind": "hip",
+    "floor": true,
+    "roof_colour": "#5c6368"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -38
+     ],
+     [
+      -40,
+      -40
+     ],
+     [
+      -40,
+      -48
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      38
+     ],
+     [
+      -58,
+      -36
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 80,
+    "count": 9,
+    "min_height": 8,
+    "max_height": 13,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 36
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 5,
+    "spread": 4,
+    "line": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; park layout (single full pitch, pavilion position, boundary wall, tree lines) is typical, only the pitch outline is real"
+ }
+}

@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landtagsgeb%C3%A4ude_des_F%C3%BCrstentums_Liechtenstein.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Presse- und Informationsamt, Vaduz",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/landtag2.jpg",
+   "used": "steep A-frame hall whose gable face and roof are one buff brick skin with a solar strip on the ridge side, perforated brick screen and ribbon vent at the base, low glazed entrance, long low wing with vertical fins, flag, brick plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liechtenstein_asv2022-10_img17_Vaduz_Landtag.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "A.Savin",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/landtag1.jpg",
+   "used": "colour of the buff brick, proportions of the hall to the wing, slit window band, wing fin rhythm, plaza paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/297699594",
+   "used": "checked only: containing match with an irregular outline, not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.58,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "brick texture is coarse, perforated screen and slit band are flat colour patches, no solar strip on the roof slope, no hillside backdrop, wing fins uniform"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d8bf90",
+    "material": "brick",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       21,
+       26
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       21,
+       26
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       19.6,
+       26
+      ]
+     },
+     {
+      "z": 29,
+      "rect": [
+       0.6,
+       26
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.2,
+    -13.1,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#7a5a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5,
+    -13.2,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#2e3d44",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.5,
+    -13.2,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.4
+    ],
+    "height": 1.3,
+    "colour": "#7a5a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    33,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8bf90",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#3b4348",
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "width": 0.5,
+     "depth": 0.7,
+     "spacing": 1.4,
+     "colour": "#cfae7a",
+     "skipGround": true
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99e72",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#b8333a",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "rise": 0.25,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#c9b080"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "extent": [
+   130,
+   80
+  ]
+ }
+}

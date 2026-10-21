@@ -1,0 +1,527 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baku_Botanical_Garden_5.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Roman Ismayilov",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/baku/p20_garden2.jpg",
+   "used": "dense dark-green pine and broadleaf canopy over the whole garden, a pale winding elevated walkway through the trees, small low grey-roofed pavilions at the edge, lawn terraces with pale paths"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baku_Botanical_Garden_13.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Roman Ismayilov",
+   "view": "street",
+   "file": "/tmp/places-evidence/baku/p20_garden1.jpg",
+   "used": "pale pea-gravel paths edged with low ferns and shrubs, plane trees with autumn leaves, copper-brown timber pergola posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/152322861",
+   "used": "park polygon is 1 km across: only a 120 m window is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 24,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     90
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#5c7a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "leaf0",
+   "at": [
+    -30,
+    10,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     30,
+     20
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#8a6a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "leaf1",
+   "at": [
+    25,
+    -10,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     26,
+     18
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#9a6a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "leaf2",
+   "at": [
+    5,
+    30,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     24,
+     16
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#7a6a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "leaf3",
+   "at": [
+    -20,
+    -30,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#8f6a30"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -40
+     ],
+     [
+      -20,
+      -25
+     ],
+     [
+      0,
+      -5
+     ],
+     [
+      25,
+      5
+     ],
+     [
+      50,
+      30
+     ]
+    ],
+    "width": 4.0,
+    "colour": "#e2d6bd"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -5
+     ],
+     [
+      -10,
+      20
+     ],
+     [
+      -30,
+      40
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#e2d6bd"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    3.5
+   ],
+   "params": {
+    "section": "rect",
+    "width": 2.2,
+    "height": 0.5,
+    "points": [
+     [
+      -45,
+      10
+     ],
+     [
+      -25,
+      18
+     ],
+     [
+      -5,
+      12
+     ],
+     [
+      10,
+      25
+     ],
+     [
+      30,
+      22
+     ],
+     [
+      48,
+      10
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#e6e1d6"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -25,
+    25
+   ],
+   "params": {
+    "width": 55,
+    "depth": 40,
+    "count": 40,
+    "kind": "conifer",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    22
+   ],
+   "params": {
+    "width": 40,
+    "depth": 40,
+    "count": 30,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -25
+   ],
+   "params": {
+    "width": 35,
+    "depth": 25,
+    "count": 20,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "at": [
+    -48,
+    -42
+   ],
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c8a0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b8084",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "at": [
+    32,
+    -22
+   ],
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7478",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -45
+     ],
+     [
+      55,
+      -45
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#a58a64"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 4,
+    "colour": "#8a4a2a"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 4,
+    "colour": "#8a4a2a"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    7,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 4,
+    "colour": "#8a4a2a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -28
+   ],
+   "params": {
+    "width": 70,
+    "depth": 28,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    35,
+    30
+   ],
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    38
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 12,
+    "kind": "shrub",
+    "min_height": 1.2,
+    "max_height": 2.4
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -2.8,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -42.8
+     ],
+     [
+      -20,
+      -27.8
+     ],
+     [
+      0,
+      -7.8
+     ],
+     [
+      25,
+      2.2
+     ],
+     [
+      50,
+      27.2
+     ]
+    ],
+    "width": 0.8,
+    "colour": "#2f5a2a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    2.8,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -37.2
+     ],
+     [
+      -20,
+      -22.2
+     ],
+     [
+      0,
+      -2.2
+     ],
+     [
+      25,
+      7.8
+     ],
+     [
+      50,
+      32.8
+     ]
+    ],
+    "width": 0.8,
+    "colour": "#2f5a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Tree density raised about 2.5x within the 20k triangle budget and mixed conifer/broadleaf with shrubs, darker leaf-strewn ground, wider gravel path with fern edging, taller copper-brown pergolas, solid-walled grey-roofed pavilion; still no white plane trunks, no autumn orange or yellow crowns (tree-grove has only green), and the elevated walkway and pavilion are generic."
+ }
+}

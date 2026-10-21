@@ -1,0 +1,218 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LagafellskirkjaRvkIce.JPG",
+   "licence": "Public domain",
+   "author": "TommyBee",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/lag1.jpg",
+   "used": "white vertical-clad nave with steep green corrugated roof, front gable with arched door and arched window, small tower with green spire and cross over the gable, lower gabled annex at the back, arched windows along the side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/221045291",
+   "used": "size and orientation (about 18 x 8 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7.6,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f3f2ec",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.5,
+    "plinth": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#2f5a40",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    9.2
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f3f2ec",
+    "windows": "arched",
+    "windowRatio": 0.07,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#2f5a40",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -5.2
+   ],
+   "z0": 4.6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f3f2ec",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f5a40",
+    "material": "corrugated",
+    "rise": 3.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -8.55,
+    0.5
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "arch": true,
+    "colour": "#5a3a22",
+    "trim": "#f3f2ec"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -5.2,
+    12.6
+   ],
+   "params": {
+    "baseWidth": 0.1,
+    "height": 1.6,
+    "sides": 4,
+    "colour": "#f3f2ec",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.15,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#8a8a84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   44,
+   36
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -13,
+     12
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "belfry spire is a plain pyramid without flared eaves; door is a generic church-door at the gable but no white railing or stone retaining wall; annex link porch omitted; roof pitch too steep"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-221045291"
+}

@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-1457886531",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_%C3%AEn_memoria_cons%C4%83tenilor_c%C4%83zu%C8%9Bi_%C3%AEn_1941-1945,_monument_ocrotit_de_stat_amplasat_%C3%AEn_Tru%C8%99eni_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Criss90kf",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/tru1.jpg",
+   "used": "two tall tapering grey concrete fins of different height rising from a curved band wall that wraps a semicircular recess, a star on the taller fin, low stepped plinth, grass mound, bare trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_%C3%AEn_memoria_cons%C4%83tenilor_c%C4%83zu%C8%9Bi_%C3%AEn_1941-1945,_monument_ocrotit_de_stat_amplasat_%C3%AEn_Tru%C8%99eni_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Criss90kf",
+   "view": "street",
+   "file": "/tmp/places-evidence/chisinau/tru3.jpg",
+   "used": "setting: paved avenue with flower beds leading to the monument, lamp posts, lawns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1457886531",
+   "used": "round paved plot about 17 m across"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 0.8,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true,
+    "scale": 0.55
+   },
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5f7a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.6
+    ],
+    "z0": 0.9,
+    "height": 0.2,
+    "colour": "#8f8c85",
+    "topColour": "#8f8c85"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fin-tall",
+   "params": {
+    "colour": "#85827c",
+    "sections": [
+     {
+      "z": 0.9,
+      "rect": [
+       3.8,
+       1.3
+      ],
+      "cx": -2.4,
+      "cy": 4.4
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       1.8,
+       0.9
+      ],
+      "cx": -1.5,
+      "cy": 4.4
+     },
+     {
+      "z": 6,
+      "rect": [
+       1.0,
+       0.7
+      ],
+      "cx": -0.9,
+      "cy": 4.4
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.6,
+       0.55
+      ],
+      "cx": -0.55,
+      "cy": 4.4
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       0.4,
+       0.5
+      ],
+      "cx": -0.4,
+      "cy": 4.4
+     }
+    ],
+    "curve": true
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "fin-short",
+   "params": {
+    "colour": "#8d8a84",
+    "sections": [
+     {
+      "z": 0.9,
+      "rect": [
+       3.4,
+       1.3
+      ],
+      "cx": 2.4,
+      "cy": 4.4
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       1.6,
+       0.9
+      ],
+      "cx": 1.7,
+      "cy": 4.4
+     },
+     {
+      "z": 5,
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "cx": 1.1,
+      "cy": 4.4
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.5,
+       0.55
+      ],
+      "cx": 0.7,
+      "cy": 4.4
+     },
+     {
+      "z": 9.8,
+      "rect": [
+       0.4,
+       0.5
+      ],
+      "cx": 0.55,
+      "cy": 4.4
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "band-wall",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      3.6,
+      1.55
+     ],
+     "radius": 3.9,
+     "startDeg": 10,
+     "endDeg": 190,
+     "plane": "xy"
+    },
+    "colour": "#898680"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "star",
+   "at": [
+    -0.7,
+    3.95
+   ],
+   "params": {
+    "n": 5,
+    "radius": 0.9,
+    "z0": 8.6,
+    "height": 0.15,
+    "colour": "#e8e8e6",
+    "topColour": "#e8e8e6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "steps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -3.5,
+     0
+    ],
+    "end": [
+     -6,
+     -0.5,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.5,
+       0.7
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#9a978f",
+      "topColour": "#9a978f"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fins now flare from a low curved ring wall on a small grass mound, but still straight-edged and not leaning together as in photo; star is a thin flat prism; steps/rail simplified"
+ }
+}

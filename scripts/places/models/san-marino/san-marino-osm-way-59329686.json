@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-59329686",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Second_Tower_in_San_Marino_and_Paragliding.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commonists",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-marino/59329686_0.jpg",
+   "used": "grey-buff limestone, tall tower with arched corbel machicolation and merloned parapet and small tiled top cabin, lower battlemented block with tiled roof and small windows, little bell turret at the right, sheer rock under it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/59329686",
+   "used": "footprint of the summit enclosure, drawn as the lower walls"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.15,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "rock",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -9
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      16,
+      -2
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      -4,
+      13
+     ],
+     [
+      -14,
+      4
+     ]
+    ],
+    "height": 12,
+    "topScale": 0.95,
+    "colour": "#857b6c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walls",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a78f",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9380",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    0,
+    0,
+    20
+   ],
+   "params": {
+    "length": 14,
+    "depth": 0,
+    "height": 1.0,
+    "merlon": 1.0,
+    "gap": 0.9,
+    "colour": "#b3a78f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "at": [
+    -5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5aa92",
+    "windows": "punched",
+    "windowRatio": 0.02
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5aa92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cesta-corbel",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     7.5
+    ],
+    "z0": 26,
+    "height": 1.0,
+    "topScale": 1.0,
+    "colour": "#b5aa92",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cesta-corbel-arch",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.1,
+     9.1
+    ],
+    "z0": 26.5,
+    "height": 3.2,
+    "topScale": 1.0,
+    "colour": "#b5aa92",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 1.6
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    -5,
+    -1,
+    29.7
+   ],
+   "params": {
+    "length": 9.1,
+    "depth": 9.1,
+    "height": 1.1,
+    "merlon": 0.9,
+    "gap": 0.8,
+    "colour": "#b5aa92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cesta-cabin",
+   "footprint": {
+    "rect": [
+     5.3,
+     5.3
+    ]
+   },
+   "at": [
+    -5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 29.7,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5aa92",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -9,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a58d",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-turret",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a58d",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -1,
+    32.5
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "rock is a tapered prism with brick-like stone texture and no vegetation; lower block is rounded OSM footprint with merlons only on part, lean-to and bell turret approximate"
+ }
+}

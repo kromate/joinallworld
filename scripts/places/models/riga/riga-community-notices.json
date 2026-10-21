@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BEREC_Office_Headquarters_in_Riga.jpg",
+   "licence": "Public domain",
+   "author": "Boyko Novev",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/berec.jpg",
+   "used": "four-storey Historicist block: sage-teal stucco, white window surrounds with pediments, arched first-floor windows, central arched door under a balcony, richly banded cornice, EU/agency flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1363108",
+   "used": "approximate size (39 x 34 m, 4 levels); a straight frontage is used because the match is only containing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#93b2a7",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.8,
+    "bands": "#efe9d6",
+    "plinth": 1.2,
+    "cornice": true,
+    "groundKind": "arched",
+    "groundHeight": 7.0,
+    "trimColour": "#efe9d6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c4",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.4,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    0,
+    -9.1,
+    7.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.3,
+    "railing_colour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -9.1,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 6,
+    "depth": 0.5,
+    "archWidth": 2.4,
+    "springHeight": 4.2,
+    "colour": "#e8e6dc"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -7.700000000000001,
+    -9.6,
+    8.5
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#2a4fa8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3.3000000000000003,
+    -9.6,
+    8.5
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#2a4fa8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice-cap",
+   "footprint": {
+    "rect": [
+     41,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 21,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe9d6",
+    "windows": "none",
+    "bands": "#d9d2bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c4",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no pediments, dentil frieze relief or columned balcony (only banding, a cream cap and a small balcony); windows still squat; flags are plain blue boards; rectangular plan instead of irregular OSM footprint"
+ }
+}

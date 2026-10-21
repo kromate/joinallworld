@@ -1,0 +1,380 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CampusofUCLanCyprus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "UCLanCyprus",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/uc1.jpg",
+   "used": "dark grey marble-clad entrance block with deep recessed glazed portico on tall piers and a broad flight of steps; white render wings with grey horizontal bands and a projecting window bay"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1465359719",
+   "used": "checked only: the outline is the whole 190 m campus site, not a building, so not used as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-core",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "marble",
+    "colour": "#6c7078",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    -10,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     13
+    ],
+    "z0": 0,
+    "height": 14.5,
+    "colour": "#5f646c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    10,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     13
+    ],
+    "z0": 0,
+    "height": 14.5,
+    "colour": "#5f646c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-mid-l",
+   "at": [
+    -3.6,
+    -2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#7a7e86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-mid-r",
+   "at": [
+    3.6,
+    -2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#7a7e86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-top",
+   "at": [
+    0,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     26,
+     13
+    ],
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#6c7078"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-recess",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e94"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "rise": 0.25,
+    "run": 0.7,
+    "count": 10,
+    "colour": "#9a9ea4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    3
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#8d95a3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6be",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "bands": "#8d95a3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6be",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-tower",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -14.5,
+    -5
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6be",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -7,
+    -9,
+    14.5
+   ],
+   "params": {
+    "height": 4,
+    "count": 3,
+    "spacing": 7,
+    "colours": [
+     "#d5d8dc",
+     "#e0e0e0",
+     "#e8e4dc"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -32,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance steps not visible in render (core/steps flight not showing); no lettering; handrails omitted; projecting window bay simplified"
+ }
+}

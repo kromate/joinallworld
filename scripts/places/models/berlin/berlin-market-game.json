@@ -1,0 +1,806 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B-Tempelhof_10-2012_-_Hafen1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor (see file page)",
+   "view": "front",
+   "used": "long cream-plaster warehouse, steep red clay-tile roof with dormer rows, two half-timbered gables, arched red-brick ground floor, grassy mole in front, four historic cranes",
+   "file": "/tmp/places-evidence/berlin/b5-hafen.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4663217",
+   "used": "marina basin extent only (warehouse is not its own OSM outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 46,
+  "aspect": 1.54,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "speicher",
+   "footprint": {
+    "rect": [
+     118,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 20,
+    "plinth": 2.6,
+    "cornice": true,
+    "groundKind": "arcade",
+    "groundHeight": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4421f",
+    "material": "metal-sheet",
+    "pitch": 36,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-17",
+   "footprint": {
+    "rect": [
+     15,
+     25.6
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4421f",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable17",
+   "footprint": {
+    "rect": [
+     15,
+     25.6
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4421f",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay",
+   "params": {
+    "rect": [
+     118,
+     4
+    ],
+    "height": 1.2,
+    "colour": "#9a4e3a"
+   },
+   "at": [
+    0,
+    -17,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mole",
+   "params": {
+    "points": [
+     [
+      -34.0,
+      -25.200000000000003
+     ],
+     [
+      30.0,
+      -25.200000000000003
+     ],
+     [
+      36.0,
+      -33.2
+     ],
+     [
+      28.0,
+      -42.800000000000004
+     ],
+     [
+      -26.0,
+      -42.800000000000004
+     ],
+     [
+      -34.0,
+      -34.8
+     ]
+    ],
+    "height": 2.2,
+    "colour": "#4a5f33",
+    "material": "grass"
+   },
+   "at": [
+    0,
+    0,
+    0.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mole-wall",
+   "params": {
+    "points": [
+     [
+      -34,
+      -36
+     ],
+     [
+      -26,
+      -46
+     ],
+     [
+      28,
+      -46
+     ],
+     [
+      36,
+      -34
+     ]
+    ],
+    "height": 2.2,
+    "colour": "#1e2a28"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-house-44",
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 4,
+    "colour": "#e0742a",
+    "top": true
+   },
+   "at": [
+    -44,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "crane-jib-44",
+   "params": {
+    "radius": 0.35,
+    "n": 4,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      -4,
+      6
+     ],
+     [
+      0,
+      -12,
+      16
+     ]
+    ],
+    "colour": "#d9681f"
+   },
+   "at": [
+    -44,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-leg-44",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 7,
+    "colour": "#d9681f",
+    "topScale": 0.8
+   },
+   "at": [
+    -44,
+    -15,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-house-18",
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 4,
+    "colour": "#e0742a",
+    "top": true
+   },
+   "at": [
+    -18,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "crane-jib-18",
+   "params": {
+    "radius": 0.35,
+    "n": 4,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      -4,
+      6
+     ],
+     [
+      0,
+      -12,
+      16
+     ]
+    ],
+    "colour": "#d9681f"
+   },
+   "at": [
+    -18,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-leg-18",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 7,
+    "colour": "#d9681f",
+    "topScale": 0.8
+   },
+   "at": [
+    -18,
+    -15,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-house28",
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 4,
+    "colour": "#e0742a",
+    "top": true
+   },
+   "at": [
+    28,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "crane-jib28",
+   "params": {
+    "radius": 0.35,
+    "n": 4,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      -4,
+      6
+     ],
+     [
+      0,
+      -12,
+      16
+     ]
+    ],
+    "colour": "#d9681f"
+   },
+   "at": [
+    28,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-leg28",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 7,
+    "colour": "#d9681f",
+    "topScale": 0.8
+   },
+   "at": [
+    28,
+    -15,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-house50",
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 4,
+    "colour": "#e0742a",
+    "top": true
+   },
+   "at": [
+    50,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "crane-jib50",
+   "params": {
+    "radius": 0.35,
+    "n": 4,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      -4,
+      6
+     ],
+     [
+      0,
+      -12,
+      16
+     ]
+    ],
+    "colour": "#d9681f"
+   },
+   "at": [
+    50,
+    -15,
+    7
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crane-leg50",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 7,
+    "colour": "#d9681f",
+    "topScale": 0.8
+   },
+   "at": [
+    50,
+    -15,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "half-timber-wall",
+   "id": "timber-gable-17",
+   "params": {
+    "width": 14,
+    "height": 12,
+    "floors": 2,
+    "timber_colour": "#2d2018",
+    "plaster_colour": "#f0ebe0",
+    "windows": true
+   },
+   "at": [
+    -17,
+    -12.9,
+    3.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "half-timber-wall",
+   "id": "timber-gable17",
+   "params": {
+    "width": 14,
+    "height": 12,
+    "floors": 2,
+    "timber_colour": "#2d2018",
+    "plaster_colour": "#f0ebe0",
+    "windows": true
+   },
+   "at": [
+    17,
+    -12.9,
+    3.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "doors",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -12.8,
+     0
+    ],
+    "end": [
+     52,
+     -12.8,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.4
+      ],
+      "height": 2.6,
+      "colour": "#a3203a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "dormers-w",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -8.0,
+     19.2
+    ],
+    "end": [
+     -26,
+     -8.0,
+     19.2
+    ],
+    "count": 8,
+    "of": {
+     "type": "dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 1.6,
+      "wall_colour": "#f0ebe0",
+      "roof_colour": "#6a2a1a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "dormers-e",
+   "params": {
+    "mode": "line",
+    "start": [
+     26,
+     -8.0,
+     19.2
+    ],
+    "end": [
+     50,
+     -8.0,
+     19.2
+    ],
+    "count": 8,
+    "of": {
+     "type": "dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 1.6,
+      "wall_colour": "#f0ebe0",
+      "roof_colour": "#6a2a1a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "dormers-mid",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -8.0,
+     19.2
+    ],
+    "end": [
+     10,
+     -8.0,
+     19.2
+    ],
+    "count": 5,
+    "of": {
+     "type": "dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 1.6,
+      "wall_colour": "#f0ebe0",
+      "roof_colour": "#6a2a1a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "id": "boat0",
+   "params": {
+    "length": 9,
+    "width": 2.8,
+    "colour": "#e8e8e4",
+    "yaw": 90
+   },
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "id": "boat1",
+   "params": {
+    "length": 9,
+    "width": 2.8,
+    "colour": "#f4f0e8",
+    "yaw": 90
+   },
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "id": "boat2",
+   "params": {
+    "length": 9,
+    "width": 2.8,
+    "colour": "#2f5f8a",
+    "yaw": 90
+   },
+   "at": [
+    24,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "id": "boat3",
+   "params": {
+    "length": 9,
+    "width": 2.8,
+    "colour": "#c9382a",
+    "yaw": 90
+   },
+   "at": [
+    40,
+    -26,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "launch-boat",
+   "id": "boat4",
+   "params": {
+    "length": 9,
+    "width": 2.8,
+    "colour": "#f2f2ee",
+    "yaw": 90
+   },
+   "at": [
+    -46,
+    -23,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 40,
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dormers are small single-row boxes, timbered gables simplified, arches are red door blocks, mole is a flat dark wall without sheet-pile ribs, boats and cranes stylised, backdrop and reflections omitted."
+ }
+}

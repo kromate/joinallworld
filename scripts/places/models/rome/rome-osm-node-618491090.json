@@ -1,0 +1,355 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-node-618491090",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Galeria_Antica_-_Campanile_della_chiesa_di_S._Nicola.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Livioandronico2013",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/rome-osm-node-618491090-0.jpg",
+   "used": "roofless church of S. Nicola with square bell tower (stucco pink-grey, round-arched belfry opening, string courses, moss-capped flat top), broken rubble tuff curtain walls beside it, holm oak and ivy all around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Galeria_Antica_-_Rovine_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Livioandronico2013",
+   "view": "side",
+   "file": "/tmp/places-evidence/rome/rome-osm-node-618491090-1.jpg",
+   "used": "dark grey-brown tuff rubble with brick courses, jagged broken gable, a window gap, no roofs, overgrowth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/224651973",
+   "used": "not used for geometry: the reserve outline is 1.5 km long, the village core (about 90 m x 55 m) is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church-nave",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    -6.2,
+    4
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "flint",
+    "colour": "#5f5648",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "faces": {
+     "left": "none"
+    },
+    "windowShape": "arched",
+    "bay": 4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a5a44"
+     }
+    ]
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6f6a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-tower",
+   "at": [
+    3,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "height": 20,
+    "topScale": 0.95,
+    "colour": "#b8a0a0",
+    "topColour": "#7f8f4a",
+    "windows": "none",
+    "trimColour": "#d0c0b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-belfry",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    3,
+    4
+   ],
+   "z0": 14.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b8a0a0",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8f4a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 8,
+    "thickness": 1.1,
+    "colour": "#5a5244",
+    "gaps": 0.4
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "rotDeg": 78,
+   "params": {
+    "length": 18,
+    "height": 5,
+    "thickness": 0.9,
+    "colour": "#6d6757",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -20,
+    20,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 4.5,
+    "thickness": 0.9,
+    "colour": "#625c4e",
+    "gaps": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-shell",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    20,
+    14
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "flint",
+    "colour": "#5f5848",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6f6a5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-shell-2",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    -2
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "flint",
+    "colour": "#5f5848",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6f6a5c"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 50,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 13,
+    "keep_out": [
+     [
+      -26,
+      -14,
+      16,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22.400000000000002,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 3,
+    "spread": 4,
+    "line": 24,
+    "colour": "#2f4a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22.400000000000002,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 4,
+    "line": 18,
+    "colour": "#2f4a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "string-course-1",
+   "footprint": {
+    "rect": [
+     5.9,
+     5.9
+    ]
+   },
+   "at": [
+    3,
+    4
+   ],
+   "z0": 7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d0c0b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0c0b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "string-course-2",
+   "footprint": {
+    "rect": [
+     5.9,
+     5.9
+    ]
+   },
+   "at": [
+    3,
+    4
+   ],
+   "z0": 14,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d0c0b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0c0b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower abuts the ruined nave, belfry opening, string courses, rubble walls and dense dark trees placed; trees are lighter low-poly crowns than the real ivy-clad holm oak, no ivy texture on walls, no clock disc, village plan inferred, reserve outline unused."
+ }
+}

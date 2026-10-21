@@ -1,0 +1,141 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/909763114",
+   "used": "irregular building outline with amenity=cafe (295 m2, containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-peter-port.json#st-peter-port-osm-node-1552743655",
+   "used": "small granite cafe-restaurant with slate roof, painted-render terrace wing, umbrellas, blank sign board; Commons photos nearby (panoramio 4969/4970) show only the wooded Le Gouffre cliff valley, used for tree type (wind-bent pine and scrub) and no building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8d9296",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    0,
+    2,
+    5.2
+   ],
+   "params": {
+    "width": 1,
+    "height": 2,
+    "pots": 2,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.4,
+    "height": 2.3,
+    "colours": [
+     "#eee9dc",
+     "#44505a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#44505a",
+    "frameColour": "#eee9dc"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   56,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-1552743655",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the cafe; gable roof fitted to bounding box of irregular outline."
+ }
+}

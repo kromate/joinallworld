@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-airport-belgrade-airport",
+ "name": "Belgrade Nikola Tesla Airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belgrade_Nikola_Tesla_Airport_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "kallerna",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/ap2.jpg",
+   "used": "Terminal 2 landside front: long low charcoal block faced with a diamond glass lattice, dark flat projecting canopy over the kerb on slim piers, blank sign letters along the top"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belgrade_Nikola_Tesla_Airport_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "kallerna",
+   "view": "street",
+   "file": "/tmp/places-evidence/belgrade/ap1.jpg",
+   "used": "departures viaduct on concrete piers, glazed hall behind canopy, older grey glass block to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23926058",
+   "used": "overall scale only (570 x 456 m both terminals); only the recognisable ~105 m front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.7,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "t2-front",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a3d44",
+    "glassColour": "#c9d6ec",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2125",
+    "material": "membrane",
+    "parapet": 2.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -18,
+    7.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 88,
+    "depth": 14,
+    "height": 0.0,
+    "thickness": 1.8,
+    "columns": 0,
+    "colour": "#121315",
+    "edgeColour": "#0c0c0d",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 7,
+      "colour": "#2a2c30"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     0
+    ],
+    "end": [
+     48,
+     0
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     78,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#7a7d80"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -5,
+    -32,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f0",
+    "count": 3,
+    "spacing": 4.5,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    30,
+    -32,
+    0
+   ],
+   "params": {
+    "colour": "#d9d9d9",
+    "count": 2,
+    "spacing": 4.5,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -11.3,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sweep-path",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.35
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        6
+       ],
+       [
+        12,
+        0,
+        18
+       ]
+      ],
+      "colour": "#2e3136"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -32,
+     0
+    ],
+    "end": [
+     40,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -11.3,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sweep-path",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.35
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        18
+       ],
+       [
+        12,
+        0,
+        6
+       ]
+      ],
+      "colour": "#2e3136"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -32,
+     0
+    ],
+    "end": [
+     40,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    10,
+    -11.5,
+    16.2
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.5
+    ],
+    "height": 1.8,
+    "colour": "#eceae6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "diamond lattice only approximated by crossed mullions on dark-blue glass (photo is paler sky/pink); sign letters are one blank strip; only ~105 m of 570 m terminal; lower grey block and tower removed"
+ }
+}

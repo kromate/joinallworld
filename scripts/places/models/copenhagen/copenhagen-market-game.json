@@ -1,0 +1,495 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:City2taastrupdk.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "www.fotokongen.dk",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/city2a.jpg",
+   "used": "long low concrete-panel box with ribbon windows, black rooftop box carrying red sign letters, pale ribbed roof to the right, glass entrance and bus shelter"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25665260",
+   "used": "footprint (353 x 198 m, fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-box",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c85",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "ribbon"
+    },
+    "plinth": 0.3,
+    "bands": "#8e8b85",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront-glass",
+   "footprint": {
+    "rect": [
+     26,
+     1.2
+    ]
+   },
+   "at": [
+    -26,
+    -23.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2d31",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4e52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "black-box",
+   "footprint": {
+    "rect": [
+     45,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#23282e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ribbed-roof",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    24,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c7ccd0",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.2,
+    "colour": "#b9bec3",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    40,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3340",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4350",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    52,
+    -33,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 16,
+    "depth": 4,
+    "height": 3.0,
+    "colour": "#c4d2d8",
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#e9e9e6",
+    "count": 4,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#2a2d31",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 3,
+    "spread": 4,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -40,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -33,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -19,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#c8302a",
+    "frameColour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-panel-0",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -44,
+    -24.6
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9a21b",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a21b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-panel-1",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -36,
+    -24.6
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7f8f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7f8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-panel-2",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -28,
+    -24.6
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c8302a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8302a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-panel-3",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -18,
+    -24.6
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a7fb0",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-panel-4",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -24.6
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0b13a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0b13a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Letters are blank red boards; 118 m fit of the 350 m box; bus shelter is a curved canopy not a ribbed vault."
+ }
+}

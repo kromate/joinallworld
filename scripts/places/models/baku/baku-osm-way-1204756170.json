@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-1204756170",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moskva_Dövlət_Universitetinin_Bakı_filialı_-_Birinci_bina_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nemoralis",
+   "view": "detail",
+   "file": "/tmp/places-evidence/baku/msu1.jpg",
+   "used": "only wall material and colour: cream coursed limestone ashlar with pilasters and dark window frames; the building outline and storey count are NOT visible in it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1204756170",
+   "used": "campus site outline (about 278 x 249 m, scaled to fit), drawn as paving; the U-shaped block inside is composed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aaa395",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3ad9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     50,
+     26
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0.5,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0cfa8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.0,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#cdb88e",
+      "height": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "hospital/portico-pedimented",
+   "at": [
+    0,
+    -11.5,
+    0.5
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 11,
+    "columns": 6,
+    "pediment": false,
+    "steps": 4,
+    "kind": "square",
+    "colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -24,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 28,
+    "colours": [
+     "#d7d3c8",
+     "#d7d3c8"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -38,
+    0,
+    0.5
+   ],
+   "params": {
+    "width": 14,
+    "depth": 40,
+    "count": 9,
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    38,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 14,
+    "depth": 40,
+    "count": 9,
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -45
+     ],
+     [
+      0,
+      -14
+     ]
+    ],
+    "width": 5,
+    "colour": "#d2cbbb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Building shape, storey count and entrance are guesses (only wall colour seen in plaque photos); campus outline scaled to 118 m."
+ }
+}

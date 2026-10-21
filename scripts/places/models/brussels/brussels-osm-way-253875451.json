@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-253875451",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:King_Baudouin_Stadium_from_Atomium.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Belgian man",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/brussels/v18_2.jpg",
+   "used": "oval bowl under a verdigris-green ribbed roof that slopes down to the outer edge, white lower facade with a ring of slim columns and a dark glazed band, white floodlight pylons at the ends, long cream entrance block in front with red-brick gables and a flat dark roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atomium_panorama_with_King_Baudouin_Stadium.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Belgian man",
+   "view": "aerial",
+   "used": "cross-check of oval, roof colour and entrance block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/253875451",
+   "used": "overall oval size (about 240 x 200 m), modelled at roughly half scale to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 26,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building",
+  "pitch": 24
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#e4e6e2",
+    "capBottom": false,
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       58,
+       50
+      ]
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       58,
+       50
+      ]
+     },
+     {
+      "z": 14.01,
+      "ellipse": [
+       58,
+       50
+      ],
+      "colour": "#4a5a58"
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       58,
+       50
+      ],
+      "colour": "#4a5a58"
+     },
+     {
+      "z": 16.01,
+      "ellipse": [
+       61,
+       53
+      ],
+      "colour": "#4f8a70"
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       35,
+       28
+      ],
+      "colour": "#6fa88a"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#5e9a45",
+    "capBottom": false,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 8,
+      "ellipse": [
+       44,
+       36
+      ]
+     },
+     {
+      "z": 8.2,
+      "ellipse": [
+       44,
+       36
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58.6,
+    "radiusY": 50.6,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 36,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 14,
+      "colour": "#f0f0ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -63,
+     -2
+    ],
+    "end": [
+     -63,
+     26
+    ],
+    "count": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f1f2f0",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.6,
+         1.6
+        ]
+       },
+       {
+        "z": 14,
+        "rect": [
+         1.1,
+         1.1
+        ]
+       },
+       {
+        "z": 27,
+        "rect": [
+         0.9,
+         0.9
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     63,
+     -2
+    ],
+    "end": [
+     63,
+     26
+    ],
+    "count": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f1f2f0",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.6,
+         1.6
+        ]
+       },
+       {
+        "z": 14,
+        "rect": [
+         1.1,
+         1.1
+        ]
+       },
+       {
+        "z": 27,
+        "rect": [
+         0.9,
+         0.9
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     90,
+     18
+    ]
+   },
+   "at": [
+    2,
+    -51
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#26323f",
+    "bands": "#f0ece0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -60.5
+    ],
+    "end": [
+     34,
+     -60.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "mass",
+     "id": "gable",
+     "footprint": {
+      "rect": [
+       4,
+       2.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 3.2,
+     "storeys": 1,
+     "wall": {
+      "material": "brick",
+      "colour": "#c9a08a",
+      "windows": "none",
+      "windowRatio": 0
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#b07a66",
+      "pitch": 40
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rotunda",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    44,
+    -57
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3e5a78",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is now a wide continuous green band sloping outward with pitch inside, long low cream entrance block with small brick gables, 2 pylons per end; roof faceted with no ribs, no stepped-gable shop front or sloped curved pylons, ground paving plane remains, entrance block simplistic."
+ }
+}

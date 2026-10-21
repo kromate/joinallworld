@@ -1,0 +1,622 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AldershvileSlotsruin_8.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Praeceptor",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/204999475_0.jpg",
+   "used": "roofless two-storey ruin: granite-ashlar ground floor with square openings and a central doorway, red brick upper floor with tall openings between brick piers, stepped broken brick gable end on the left, rubble-stone garden walls either side, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/204999475",
+   "used": "size 26 x 13 m, ruins tag (footprint rotated to the photo viewpoint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     26,
+     12.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdb487",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 5.2,
+    "plinth": 0.2,
+    "cornice": false
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#6b6a68"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.05,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.7
+    ],
+    "height": 0.8,
+    "colour": "#c0603f",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.25,
+     -6.05,
+     5.0
+    ],
+    "end": [
+     3.75,
+     -6.05,
+     5.0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.7,
+       0.7
+      ],
+      "height": 3.5,
+      "colour": "#b5523a",
+      "material": "brick"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.05,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.7
+    ],
+    "height": 1.3,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.7,
+    -6.05,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.7
+    ],
+    "height": 4.8,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.7,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.7
+    ],
+    "height": 3.7,
+    "colour": "#a84a33",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.9,
+    -6.05,
+    13.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "height": 0.7,
+    "colour": "#a84a33",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.45,
+    -6.05,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     7.1,
+     0.7
+    ],
+    "height": 3.5,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.65,
+    0,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     12.8
+    ],
+    "height": 5.6,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.0,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.7
+    ],
+    "height": 1.2,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.6,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.7
+    ],
+    "height": 0.5,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.4,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.7
+    ],
+    "height": 0.9,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.0,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.7
+    ],
+    "height": 0.4,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.2,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.7
+    ],
+    "height": 1.1,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.6,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.7
+    ],
+    "height": 0.6,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.7
+    ],
+    "height": 1.0,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.6,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.7
+    ],
+    "height": 0.5,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.2,
+    -6.05,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.7
+    ],
+    "height": 0.9,
+    "colour": "#b5523a",
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -6.42,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.12
+    ],
+    "height": 2.6,
+    "colour": "#18161a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -6.42,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.12
+    ],
+    "height": 2.6,
+    "colour": "#18161a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -6.42,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.12
+    ],
+    "height": 2.6,
+    "colour": "#18161a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -6.42,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.12
+    ],
+    "height": 2.6,
+    "colour": "#18161a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "height": 3.5,
+    "colour": "#d4bf98"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.12
+    ],
+    "height": 3.0,
+    "colour": "#18161a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.5,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "height": 0.35,
+    "colour": "#d4bf98"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13.2,
+    -6.6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      -1.5
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.9,
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -3.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      17.5,
+      0
+     ]
+    ],
+    "height": 2.6,
+    "thickness": 0.8,
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13.6,
+    -6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      -1
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.8,
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13.6,
+    -6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      7
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.8,
+    "colour": "#9a968a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     2
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     14
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-204999475",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Ground voids are flat dark panels; ground ashlar coursing regular; trees partly hide the right retaining wall; no rubble slope"
+ }
+}

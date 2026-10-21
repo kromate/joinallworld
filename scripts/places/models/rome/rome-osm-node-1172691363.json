@@ -1,0 +1,295 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-node-1172691363",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Babington%27s_Tea_Rooms_(8136327600).jpg",
+   "licence": "CC BY 2.0",
+   "author": "fourthandfifteen",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/rome-osm-node-1172691363-1.jpg",
+   "used": "faded rose-ochre stucco with scored horizontal courses, tall dark-framed shop window left, stone plaque panel with scrolled cartouche (blank here), right doorway with shell pediment and dark door, stone bollard, grey travertine plinth and steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Babington%27s_tea_rooms.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Slayer",
+   "view": "detail",
+   "file": "/tmp/places-evidence/rome/rome-osm-node-1172691363-0.jpg",
+   "used": "shopfront glazing reflecting the piazza, lace curtains, pitted rose render, plaque colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202080263",
+   "used": "plan size and the canted party-wall angle (about 20 m x 17 m, five storeys per the brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tea-house",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      -7
+     ],
+     [
+      9,
+      -7
+     ],
+     [
+      9,
+      7
+     ],
+     [
+      -9,
+      7
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cf9566",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 3.6,
+    "groundKind": "shopfront",
+    "groundHeight": 5.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b9805a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1.2,
+    -7.1,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 3.0,
+    "bottom": 1.8,
+    "colour": "#d8cfb6",
+    "frameColour": "#c9bfa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3.4,
+    -8.0,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#bdb5a0"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-window-frame",
+   "footprint": {
+    "rect": [
+     3.8,
+     0.5
+    ]
+   },
+   "at": [
+    -5.2,
+    -7.25
+   ],
+   "z0": 0.8,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8cfb6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-glass",
+   "footprint": {
+    "rect": [
+     3.0,
+     0.5
+    ]
+   },
+   "at": [
+    -5.2,
+    -7.5
+   ],
+   "z0": 1.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    3.4,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 5.2,
+    "depth": 0.5,
+    "archWidth": 2.0,
+    "springHeight": 3.8,
+    "pointed": false,
+    "colour": "#d8cfb6"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    1.6,
+    -9.2,
+    0
+   ],
+   "params": {
+    "kind": "ground",
+    "radius": 0.5,
+    "tankHeight": 1.5,
+    "legHeight": 0,
+    "legs": 0,
+    "colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-dark",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    3.4,
+    -7.4
+   ],
+   "z0": 0.6,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2e2822",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2822"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shell-pediment",
+   "footprint": {
+    "rect": [
+     3.0,
+     0.6
+    ]
+   },
+   "at": [
+    3.4,
+    -7.3
+   ],
+   "z0": 5.2,
+   "height": 1.1,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8cfb6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rose-ochre block with shop window, cartouche plaque, stone-framed doorway with pediment, bollard and steps placed; photo is a ground-floor close-up so framing differs; no carved shell relief or rustication relief, upper storeys inferred."
+ }
+}

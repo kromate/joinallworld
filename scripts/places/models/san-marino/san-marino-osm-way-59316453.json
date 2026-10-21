@@ -1,0 +1,224 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-59316453",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Santuario_della_Beata_Vergine_della_Consolazione.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cezar Suceveanu",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-marino/59316453_1.jpg",
+   "used": "cream roughcast walls with small irregular recessed square windows, tall arched front under a swept copper-brown roof that curves down over a lower side nave, concrete bell block at the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/59316453",
+   "used": "footprint of the church"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave-low",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cdbf9d",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f4d42",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d3c7a8",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "bay": 7
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "sweep",
+    "colour": "#6f4d42",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arch-recess",
+   "at": [
+    -4,
+    -9.7,
+    0
+   ],
+   "params": {
+    "colour": "#7d725c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.5,
+       0.5
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       8.2,
+       0.5
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       6.8,
+       0.5
+      ]
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       4,
+       0.5
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       1.2,
+       0.5
+      ]
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-block",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b4a994",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9382",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-slab",
+   "at": [
+    -18,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     3
+    ],
+    "z0": 9,
+    "height": 1.4,
+    "colour": "#a69b88",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "copper roof is a shed plus swept front block, arch recess is a flat loft; no irregular scatter windows, concrete bell block hidden/simplified"
+ }
+}

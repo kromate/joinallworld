@@ -1,0 +1,441 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-airport-tirana-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Building_of_Tirana_airpot_2018_1.jpg",
+   "licence": "Public domain",
+   "author": "Karelj",
+   "view": "street",
+   "used": "dark grey metal-clad long low terminal, pitched entrance canopy on V struts at the end, V-column car-park canopies, palms, red-white radar mast, bus bays",
+   "file": "/tmp/places-evidence/tirana/airport2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1122239339",
+   "used": "terminal outline (9,845 m2, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4d5459",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bands": "#6b7176",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9599",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     46,
+     8
+    ],
+    "height": 8,
+    "colour": "#4d5459",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8,
+      "rect": [
+       54,
+       18
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       54,
+       18
+      ]
+     },
+     {
+      "z": 11.2,
+      "rect": [
+       54,
+       2
+      ]
+     }
+    ],
+    "colour": "#3f464b"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -20,
+     0,
+     0
+    ],
+    "end": [
+     20,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          0.7
+         ]
+        },
+        {
+         "z": 8,
+         "rect": [
+          0.7,
+          0.7
+         ],
+         "cx": -2.6
+        }
+       ],
+       "colour": "#d9dcde"
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          0.7
+         ]
+        },
+        {
+         "z": 8,
+         "rect": [
+          0.7,
+          0.7
+         ],
+         "cx": 2.6
+        }
+       ],
+       "colour": "#d9dcde"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -62,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 12,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#5b6166",
+    "edgeColour": "#aab0b4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -62,
+    -38,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 12,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#5b6166",
+    "edgeColour": "#aab0b4"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -80,
+    20,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "baseWidth": 3,
+    "topWidth": 1,
+    "panels": 6,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -20,
+    52,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    20,
+    52,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -5,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "kind": "coach",
+    "density": 0.5,
+    "colours": [
+     "#e8872a"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -30,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.6
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    28,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -60
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -60,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#cfd2d4"
+   },
+   {
+    "at": [
+     -54,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#2b2f33"
+   },
+   {
+    "at": [
+     -48,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#e8c11c"
+   },
+   {
+    "at": [
+     -42,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#e8c11c"
+   },
+   {
+    "at": [
+     -36,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#8a9096"
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Distant corner view: terminal is a plain dark box, entrance canopy is a hipped slab on V struts rather than the true swept gable; grass is flat with no hedge mound, no lamp mast row, taxis omitted."
+ }
+}

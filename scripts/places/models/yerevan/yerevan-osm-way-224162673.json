@@ -1,0 +1,553 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-way-224162673",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Mesrop_Mashtots_Cathedral.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Beko",
+   "view": "side",
+   "file": "/tmp/places-evidence/yerevan/church0.jpg",
+   "used": "long basalt wall with blind arches and arched windows, round bell tower with arcaded belfry and conical cap at the end, door arch in the wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mesrop_Mashtots_Church,_Oshakan,_2015,_ArmAg_(10).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Armineaghayan",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/church1.jpg",
+   "used": "west gable end with tall arched window and door, plain gable roof, grey basalt with pink tuff arch frames"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/224162673",
+   "used": "plan: 29.5 x 10.7 m nave with round east apse"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 0.84
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 180
+   },
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f6862",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 3.7,
+    "glassColour": "#d8dde0",
+    "plinth": 0.9,
+    "trimColour": "#b27a68",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.45,
+      "colour": "#b27a68"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b625b",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 0.45,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    11.3,
+    -1.6,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7d746c",
+    "profile": [
+     [
+      5.3,
+      0,
+      "#675f58"
+     ],
+     [
+      4.8,
+      0.8
+     ],
+     [
+      4.8,
+      11.8
+     ],
+     [
+      5.3,
+      11.9,
+      "#b27a68"
+     ],
+     [
+      5.3,
+      12.6
+     ],
+     [
+      4.7,
+      12.7,
+      "#6f6862"
+     ],
+     [
+      4.7,
+      13.1
+     ],
+     [
+      5.2,
+      13.2,
+      "#b27a68"
+     ],
+     [
+      5.2,
+      13.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "belfry-columns",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     11.3,
+     -1.6,
+     0
+    ],
+    "radius": 3.9,
+    "count": 8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      13.9
+     ],
+     "params": {
+      "segments": 8,
+      "colour": "#c59a86",
+      "profile": [
+       [
+        0.42,
+        0
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        0.3,
+        3.0
+       ],
+       [
+        0.42,
+        3.2
+       ],
+       [
+        0.0,
+        3.2
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "drum-slits",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     11.3,
+     -1.6,
+     0
+    ],
+    "radius": 4.819999999999999,
+    "count": 6,
+    "startDeg": 10,
+    "endDeg": 370,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      8.2
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.2
+      ],
+      "height": 1.5,
+      "colour": "#2e2a27"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-slits-low",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     11.3,
+     -1.6,
+     0
+    ],
+    "radius": 4.819999999999999,
+    "count": 6,
+    "startDeg": 40,
+    "endDeg": 400,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      4.0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.2
+      ],
+      "height": 1.8,
+      "colour": "#2e2a27"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "blind-arches",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11.4,
+     -5.55
+    ],
+    "end": [
+     3.5,
+     -5.55
+    ],
+    "count": 5,
+    "lod2Step": 5,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        2.8,
+        0.3
+       ],
+       "height": 5.6,
+       "colour": "#4f4944"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.5,
+       0,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.35,
+        0.4
+       ],
+       "height": 5.9,
+       "colour": "#b27a68"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.5,
+       0,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        0.35,
+        0.4
+       ],
+       "height": 5.9,
+       "colour": "#b27a68"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       6.7
+      ],
+      "params": {
+       "radius": 0.17,
+       "n": 6,
+       "arc": {
+        "steps": 10,
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 1.5,
+        "startDeg": 0,
+        "endDeg": 180,
+        "plane": "xz"
+       },
+       "colour": "#b27a68"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.1,
+       2.4
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.25
+       ],
+       "height": 2.6,
+       "colour": "#e3e6e8"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       -0.1,
+       5.0
+      ],
+      "params": {
+       "radius": 0.1,
+       "n": 6,
+       "arc": {
+        "steps": 8,
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 0.5,
+        "startDeg": 0,
+        "endDeg": 180,
+        "plane": "xz"
+       },
+       "colour": "#b27a68"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "at": [
+    -13.4,
+    -5.55,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "door-arch",
+   "at": [
+    -13.4,
+    -5.55,
+    3.7
+   ],
+   "params": {
+    "radius": 0.18,
+    "n": 6,
+    "arc": {
+     "steps": 8,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#b27a68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "belfry-cap",
+   "at": [
+    11.3,
+    -1.6,
+    17.1
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a8705c",
+    "profile": [
+     [
+      5.2,
+      0,
+      "#b27a68"
+     ],
+     [
+      5.2,
+      0.4
+     ],
+     [
+      4.3,
+      0.5,
+      "#a8705c"
+     ],
+     [
+      3.0,
+      2.2
+     ],
+     [
+      0,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    11.3,
+    -1.6,
+    21.3
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#3a3633"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-step",
+   "at": [
+    -9.6,
+    -6.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#9a918a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Blind arches are flat-fronted bays; belfry columns are plain shafts without arched openings; tower drum lacks carved cornice friezes; nave ridge not hidden behind a parapet; no lawn or hedge"
+ }
+}

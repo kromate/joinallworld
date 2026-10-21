@@ -1,0 +1,112 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/40775107",
+   "used": "real outline of the office building under the pin (145 x 62 m, building=office, Potsdam Behlertstrasse area); height from the brief (4 storeys, 15 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 5
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 20,
+    "glassColour": "#8fa3ad",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f82",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#3d6b8f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#d8d4c4",
+     "#c9352f",
+     "#222222"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.5
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 4,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists on Commons; massing is the real outline plus brief height, facade and colours are typical pale render with ribbon glazing"
+ }
+}

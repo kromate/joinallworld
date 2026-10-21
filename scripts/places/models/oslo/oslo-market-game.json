@@ -1,0 +1,192 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/229971808",
+   "used": "real outline of the centre (38 x 34 m, bearing 16 deg), Wikidata Q12011939 shopping center"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+   "used": "1970s Baerum suburban centre typed from the brief: painted render, metal-clad accents, flat roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dccf",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#7a8f8a",
+    "plinth": 0.5,
+    "parapet": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55595d",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 3.2,
+    "colours": [
+     "#7a8f8a",
+     "#8a8d8f"
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -23,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -24,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "width": 2.2,
+    "colour": "#7a8f8a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 16,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    24
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; outline real, facade typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-market-game"
+}

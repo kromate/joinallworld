@@ -1,0 +1,273 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Esgl\u00e9sia_de_Sant_Andreu_d'Arinsal_1b.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Matiasjoseriba",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/arinsal.jpg",
+   "used": "rough grey-brown rubble stone, gable facade with round oculus and plain door, dark slate roof with small eaves, square belfry tower behind the nave with arched openings and pyramidal slate roof, rock outcrop at the foot, stepped stone terrace with iron railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202616749",
+   "used": "small plan about 11 x 9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#625d53",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 3.0,
+   "height": 4.6,
+   "wall": {
+    "material": "stone",
+    "colour": "#625d53",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4348",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    2.4,
+    4.8
+   ],
+   "z0": 3.0,
+   "height": 11,
+   "wall": {
+    "material": "stone",
+    "colour": "#5f5a50",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f3236",
+    "material": "slate",
+    "pitch": 60,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.85
+   ],
+   "z0": 3.0,
+   "height": 2.3,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3322",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3322"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -4.1,
+    7.6
+   ],
+   "params": {
+    "radius": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    3.0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#55585e",
+    "points": [
+     [
+      -5,
+      -6.3
+     ],
+     [
+      5,
+      -6.3
+     ],
+     [
+      5,
+      -1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    6.0,
+    -6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.5,
+    "rise": 3.0,
+    "run": 5.0,
+    "count": 8,
+    "colour": "#7d786d"
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    -6.8,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 3,
+    "height": 3,
+    "colour": "#8a867c",
+    "statue": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.6,
+    "thickness": 0.5,
+    "colour": "#6f6a60",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   40
+  ],
+  "groundColour": "#7a756c"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-202616749",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "rubble terrace with stair, oculus gable, tower behind right present; oblique photo view and sloped street, railings along stair, neighbouring houses and regular stone courses differ"
+ }
+}

@@ -1,0 +1,178 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/839842453",
+   "used": "real outline and 7 levels of the apartment block (85 x 35 m zig-zag plan) that contains the restaurant premises"
+  },
+  {
+   "kind": "text",
+   "used": "The only nearby photo (Ialoveni district council, Commons CC0) shows a different building, so it was rejected. Restaurant is a blank-boarded awning and terrace on the ground floor, colours from the brief."
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this block; panel colour, balconies and restaurant frontage position on the facade are assumed; a freestanding-restaurant reading from the brief was set aside because OSM says the venue is inside a 7-storey block."
+ },
+ "camera": {
+  "yawDeg": 26,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21.5,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9c9a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 11,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18.8,
+    -38.9,
+    0
+   ],
+   "rotDeg": 26,
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "height": 3.0,
+    "colours": [
+     "#9a5a45",
+     "#efe9d8"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18.4,
+    -38.4,
+    3.4
+   ],
+   "rotDeg": 26,
+   "params": {}
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "terrace",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    -45,
+    0
+   ],
+   "rotDeg": 26,
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "colours": [
+     "#9a5a45",
+     "#efe9d8"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   100,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-meal-stop"
+}

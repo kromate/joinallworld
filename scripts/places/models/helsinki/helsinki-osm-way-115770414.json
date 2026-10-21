@@ -1,0 +1,551 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Viikki_Campus_Biokeskus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tiia Monto",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/viikki1.jpg",
+   "used": "Biocenter entrance: glass cube lobby with steel lattice frame and wide stone steps, blue-glass corner tower, louvre-screened wing, beige render blocks and further glass towers behind, flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/115770414",
+   "used": "campus area only (757 m, university amenity); the Biocenter building is modelled instead of the whole area"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.6,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9cc",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -9,
+    3
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8fae",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre-wing",
+   "footprint": {
+    "rect": [
+     52,
+     14
+    ]
+   },
+   "at": [
+    30,
+    5
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9ea39b",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bay": 6,
+    "bands": "#6f8f6a",
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beige-block-a",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    26,
+    28
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa6",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beige-block-b",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    58,
+    30
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c7ae",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    44,
+    22
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a8ea6",
+    "windows": "ribbon",
+    "windowRatio": 0.85,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -32,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.28,
+    "run": 1.1,
+    "count": 8,
+    "colour": "#a5a6a4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag1",
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      -12,
+      -15,
+      0
+     ],
+     [
+      -12,
+      -15,
+      12
+     ]
+    ],
+    "colour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag2",
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      -8,
+      -15,
+      0
+     ],
+     [
+      -8,
+      -15,
+      12
+     ]
+    ],
+    "colour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flag3",
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      -4,
+      -15,
+      0
+     ],
+     [
+      -4,
+      -15,
+      12
+     ]
+    ],
+    "colour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace0",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -35,
+      -9.1,
+      0.5
+     ],
+     [
+      -29,
+      -9.1,
+      15.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace1",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -35,
+      -9.1,
+      15.5
+     ],
+     [
+      -29,
+      -9.1,
+      0.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace2",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -29,
+      -9.1,
+      0.5
+     ],
+     [
+      -23,
+      -9.1,
+      15.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace3",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -29,
+      -9.1,
+      15.5
+     ],
+     [
+      -23,
+      -9.1,
+      0.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace4",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -23,
+      -9.1,
+      0.5
+     ],
+     [
+      -17,
+      -9.1,
+      15.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace5",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -23,
+      -9.1,
+      15.5
+     ],
+     [
+      -17,
+      -9.1,
+      0.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace6",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -17,
+      -9.1,
+      0.5
+     ],
+     [
+      -13,
+      -9.1,
+      15.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace7",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -17,
+      -9.1,
+      15.5
+     ],
+     [
+      -13,
+      -9.1,
+      0.5
+     ]
+    ],
+    "colour": "#8d9aa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "granite-wall",
+   "footprint": {
+    "rect": [
+     16,
+     0.7
+    ]
+   },
+   "at": [
+    -5,
+    -15
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8a8d8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     2,
+     -17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -17
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   140,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-115770414",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "steps not visible from camera; louvre fins only approximated; beige blocks behind approximate; no planted ribbon or street cars; ground is flat asphalt"
+ }
+}

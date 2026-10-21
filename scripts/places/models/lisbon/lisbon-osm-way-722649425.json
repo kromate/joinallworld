@@ -1,0 +1,410 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-722649425",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia_da_Fonte_da_Telha_-_Portugal_(8444265813).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Vitor Oliveira",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/mc1.jpg",
+   "used": "narrow-gauge double track running straight into sand dunes, white sand ballast with sparse sleepers, dark weathered timber huts with low corrugated roofs at the left, dune scrub and a low timber fence at the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia_da_Fonte_da_Telha_-_Portugal_(9287929674).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Vitor Oliveira",
+   "view": "detail",
+   "used": "track junction curving apart in the sand with concrete buffer block, kiosk-like hut with yellow edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/229896387",
+   "used": "nearest building is a 16 x 14 m restaurant called Terminus; used only as a hint that a small terminus building stands here"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0.5,
+  "fovDeg": 54,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": 0
+ },
+ "parts": [
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    45
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 3.2,
+    "gauge": 0.9,
+    "wall_colour": "#f4ecd8",
+    "roof_colour": "#7a5a40",
+    "trim_colour": "#8a8a86",
+    "accent_colour": "#f4ecd8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sand-bed",
+   "footprint": {
+    "rect": [
+     9,
+     80
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8f2e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f8f2e4"
+   },
+   "z0": -0.6
+  },
+  {
+   "type": "mass",
+   "id": "hut-a",
+   "footprint": {
+    "rect": [
+     3.5,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a342e",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.5,
+    "colour": "#8a7a5a",
+    "material": "corrugated",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut-b",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -5.5,
+    12.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a423a",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.4,
+    "colour": "#8a7a5a",
+    "material": "corrugated",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    7,
+    28,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#8a7d68",
+    "points": [
+     [
+      7,
+      16
+     ],
+     [
+      7,
+      40
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    11,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a36",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       9
+      ]
+     },
+     {
+      "z": 2.04,
+      "ellipse": [
+       4.0,
+       7.2
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       2.0,
+       3.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    14,
+    52,
+    0
+   ],
+   "params": {
+    "colour": "#37522f",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       11
+      ]
+     },
+     {
+      "z": 2.6999999999999997,
+      "ellipse": [
+       4.800000000000001,
+       8.8
+      ]
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       2.4000000000000004,
+       4.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    10,
+    70,
+    0
+   ],
+   "params": {
+    "colour": "#4a6a3c",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       10
+      ]
+     },
+     {
+      "z": 1.7999999999999998,
+      "ellipse": [
+       4.0,
+       8.0
+      ]
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       2.0,
+       4.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -9,
+    40,
+    0
+   ],
+   "params": {
+    "colour": "#6f8a4a",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3,
+       8
+      ]
+     },
+     {
+      "z": 0.54,
+      "ellipse": [
+       2.4000000000000004,
+       6.4
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       1.2000000000000002,
+       3.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -10,
+    60,
+    0
+   ],
+   "params": {
+    "colour": "#6f8a4a",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4,
+       9
+      ]
+     },
+     {
+      "z": 0.72,
+      "ellipse": [
+       3.2,
+       7.2
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       1.6,
+       3.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    7,
+    18,
+    0
+   ],
+   "params": {
+    "colour": "#5d7d44",
+    "capTop": true,
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       4
+      ]
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       1.7600000000000002,
+       3.2
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.8800000000000001,
+       1.6
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "groundColour": "#f8f2e4",
+  "extent": [
+   60,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "camera fit follows the huts so the view is a side-on oblique, not down the track axis; track short and ballast reads blue; scrub domes smooth; renderer fixes sky/sea (no blue sky or sea strip) and flat ground; blue band at bottom is the sub-ground sand-bed mass underside"
+ }
+}

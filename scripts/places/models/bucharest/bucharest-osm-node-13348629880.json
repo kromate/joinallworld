@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-node-13348629880",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "name only: a MiG-21 displayed as a monument; delta-wing about 15 m long with 7 m span, mounted on a pylon; OSM building match is 32 m away and 60 m2 so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "rect": [
+     16,
+     12
+    ],
+    "height": 0.3,
+    "colour": "#a9aeb0",
+    "topColour": "#b8b8b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 1.4,
+    "colour": "#8e9498",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pylon",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "colour": "#9aa3a8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fuselage",
+   "params": {
+    "section": {
+     "circle": 0.9
+    },
+    "points": [
+     [
+      0,
+      -7.5,
+      7.2
+     ],
+     [
+      0,
+      2.5,
+      7.2
+     ]
+    ],
+    "colour": "#aeb4b8",
+    "n": 10
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "nose",
+   "params": {
+    "section": {
+     "circle": 0.5
+    },
+    "points": [
+     [
+      0,
+      2.5,
+      7.2
+     ],
+     [
+      0,
+      7.5,
+      7.2
+     ]
+    ],
+    "colour": "#8f969b",
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wings",
+   "at": [
+    0,
+    0,
+    7.0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      3.5
+     ],
+     [
+      -3.5,
+      -4.5
+     ],
+     [
+      3.5,
+      -4.5
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#b9bfc2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin",
+   "at": [
+    0,
+    -5.5,
+    7.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -0.12,
+      1.5
+     ],
+     [
+      -0.12,
+      -1.5
+     ],
+     [
+      0.12,
+      -1.5
+     ],
+     [
+      0.12,
+      1.5
+     ]
+    ],
+    "height": 2.8,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#a3aaae"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "intake",
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "points": [
+     [
+      0,
+      2.4,
+      6.6
+     ],
+     [
+      0,
+      4.8,
+      6.7
+     ]
+    ],
+    "colour": "#2e3236",
+    "n": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5.5,
+    0.3
+   ],
+   "params": {
+    "length": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic MiG-21 on pylon from name only"
+ }
+}

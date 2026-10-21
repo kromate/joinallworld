@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-node-4361248690",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-osm-node-4361248690",
+   "used": "village taverna in a rendered stone house, about 18 x 10 m, low clay-tile gable roof, vine pergola yard, low yard wall; typed placeholder, nearest OSM building 25 m away (7 x 6 m) not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#b8a47e",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5593a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    5.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc9",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5593a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    3,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 2.6,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    -5.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    8,
+    -5.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -2.2,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "depth": 1.4,
+    "colours": [
+     "#7a5a3a",
+     "#e8dfc9"
+    ]
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    4,
+    3,
+    4.8
+   ],
+   "params": {
+    "width": 0.8,
+    "height": 1.6,
+    "pots": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b8a47e"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Text only; typical Cypriot village house, real layout unseen."
+ }
+}

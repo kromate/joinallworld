@@ -1,0 +1,84 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/185576900",
+   "used": "footprint (containing), 2 levels"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete and render canteen, flat roof, ribbon windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "canteen",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b5",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d3b87a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "colours": [
+     "#d3b87a",
+     "#c9c3b5"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "OSM outline only; facade, entrance and awning are typical, no photo."
+ }
+}

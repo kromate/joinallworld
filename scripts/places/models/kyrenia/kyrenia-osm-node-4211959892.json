@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-node-4211959892",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/4211959892",
+   "used": "tourism=viewpoint location only; no footprint or photo"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/kyrenia.json",
+   "used": "no photo found; massing from the brief and the Kyrenia coastal low-rise style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "points": [
+     [
+      -12,
+      -6
+     ],
+     [
+      10,
+      -7
+     ],
+     [
+      13,
+      2
+     ],
+     [
+      4,
+      7
+     ],
+     [
+      -10,
+      6
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#c9b48f",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-front",
+   "footprint": {
+    "rect": [
+     24,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "z0": 0.5,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-back",
+   "footprint": {
+    "rect": [
+     18,
+     0.8
+    ]
+   },
+   "at": [
+    -1,
+    6.6
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-right",
+   "footprint": {
+    "rect": [
+     0.8,
+     11
+    ]
+   },
+   "at": [
+    13,
+    -1
+   ],
+   "z0": 0.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench",
+   "footprint": {
+    "rect": [
+     3,
+     0.7
+    ]
+   },
+   "at": [
+    -4,
+    -5.5
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -11,
+    5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 2.5,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#e2d8c0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 4,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

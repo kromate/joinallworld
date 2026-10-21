@@ -1,0 +1,137 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/385230804",
+   "used": "footprint 28x13 m rotated 121 deg; the only nearby photo is an interior view through a window and was not used for geometry"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estacionesquiandorra.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Frobles",
+   "view": "street",
+   "file": "/tmp/places-evidence/andorra-la-vella/grau.jpg",
+   "used": "setting only: snow, conifers, ski lifts, stone-and-timber low ski-station buildings with slate roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#857a6a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9,
+    "bands": "#7a6a55"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "snow-band",
+   "footprint": {
+    "osm": true,
+    "scale": 0.98
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f3f5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f3f5"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "rotDeg": 31,
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3.4,
+    "columns": 2,
+    "vans": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -26,
+     4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo: chalet clinic from OSM outline + typical alpine stone/slate style; real doors/windows unknown"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-385230804"
+}

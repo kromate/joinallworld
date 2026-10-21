@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/79885477",
+   "used": "real mall outline (407 x 254 m, name match, Wikidata Q180135), auto-fitted to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-level suburban shopping centre at Bertrange, flat roof, glazed atrium, flags, surface car parks. Only interior photos exist on Commons, no exterior photo found, so colours are typical (pale precast, brick-red accent band, grey roof)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 112,
+    "simplify": 6.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#7d3b2b",
+    "plinth": 0.5,
+    "parapet": 0.9,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#b8c4ca",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#7d3b2b",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "bottom": 6,
+    "colour": "#7d3b2b",
+    "frameColour": "#d8d6d0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 3,
+    "colours": [
+     "#e8e6e0",
+     "#d6403a",
+     "#e8e6e0",
+     "#4aa0d6"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ }
+}

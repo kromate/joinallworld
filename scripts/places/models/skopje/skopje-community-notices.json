@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Bank_of_the_Republic_of_Macedonia_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "kallerna",
+   "view": "side",
+   "file": "/tmp/places-evidence/skopje/bank.jpg",
+   "used": "brutalist raw-concrete tower: separate blank lift/stair shaft with slit windows, ribbon-windowed main body with spandrel bands, cantilevered chamfered top storeys, lower tan-and-glass wing, lawn, flag on top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/174464032",
+   "used": "identity and site scale only; the photographed tower is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 0.71,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b9ad98",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a89b84",
+      "height": 0.9,
+      "proud": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d776c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "polygon": [
+     [
+      -11,
+      -9
+     ],
+     [
+      11,
+      -9
+     ],
+     [
+      14,
+      -5
+     ],
+     [
+      14,
+      10.5
+     ],
+     [
+      -12,
+      10.5
+     ],
+     [
+      -12,
+      -5
+     ]
+    ]
+   },
+   "at": [
+    1,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#80796c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6a60",
+    "overhang": 0.5
+   },
+   "z0": 34
+  },
+  {
+   "type": "mass",
+   "id": "step-wing",
+   "footprint": {
+    "polygon": [
+     [
+      -4,
+      -9
+     ],
+     [
+      4,
+      -9
+     ],
+     [
+      6,
+      -6
+     ],
+     [
+      6,
+      9
+     ],
+     [
+      -4,
+      9
+     ]
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9e9482",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d776c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-shaft",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -6
+   ],
+   "height": 46,
+   "storeys": 11,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c1b6a3",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 2.2,
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    4
+   ],
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8d8d88",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d776c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    -11
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d2bf98",
+    "windows": "ribbon",
+    "windowRatio": 0.65,
+    "bands": "#a89d8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8478",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    0,
+    43
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "crown is a trapezoid prism not cantilevered chamfer; bay windows/faceted ledges not modelled; lift shaft slits generic, pergola omitted"
+ }
+}

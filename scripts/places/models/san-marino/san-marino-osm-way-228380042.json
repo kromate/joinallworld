@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-228380042",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/228380042",
+   "used": "real stadium outline (name match) as the ground; pitch laid along its long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: secondary pitch with one small covered stand and four floodlights; no photograph of the venue found (only a flag image attached to the Wikipedia page)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -68.4,
+      4.7
+     ],
+     [
+      -37.6,
+      31
+     ],
+     [
+      -20.7,
+      41.7
+     ],
+     [
+      -5.8,
+      47.1
+     ],
+     [
+      5.1,
+      37.5
+     ],
+     [
+      46.8,
+      51.1
+     ],
+     [
+      74.2,
+      -10.7
+     ],
+     [
+      -39.7,
+      -56.8
+     ],
+     [
+      -43.3,
+      -46.4
+     ],
+     [
+      -49.1,
+      -46.9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#7a8f56"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    2,
+    6,
+    0.1
+   ],
+   "rotDeg": -22,
+   "params": {
+    "length": 98,
+    "width": 60,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    2,
+    6,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -42
+    ],
+    "end": [
+     38,
+     -42
+    ],
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "concreteColour": "#c5c0b6",
+    "seatColours": [
+     "#c5c0b6",
+     "#7d7a74"
+    ],
+    "canopy": {
+     "depth": 6,
+     "height": 6,
+     "thickness": 0.3,
+     "colour": "#6f7a85"
+    }
+   },
+   "rotDeg": -22
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    36,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    30,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 0.1,
+    "colour": "#5d646b",
+    "points": [
+     [
+      -66,
+      -48
+     ],
+     [
+      74,
+      -10
+     ],
+     [
+      44,
+      52
+     ],
+     [
+      -38,
+      28
+     ],
+     [
+      -66,
+      -48
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo: pitch, one covered stand and four masts from the brief on the real outline; stand position guessed."
+ }
+}

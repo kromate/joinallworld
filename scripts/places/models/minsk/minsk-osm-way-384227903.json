@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-way-384227903",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%93%D0%AD%D0%A3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "BSEU official",
+   "view": "street",
+   "file": "/tmp/places-evidence/minsk/p17_0.jpg",
+   "used": "ten-storey modernist slab: glazed ribbon curtain wall with dark spandrel bands on the long face, windowed narrow end, blank pale concrete pylon strip at the corner, low pale roof penthouse, trees and lamp posts at the foot"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sviardlova_street_(Minsk)_p01_%E2%80%94_Belarusian_State_Economic_University_campus_No_5.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Homoatrox",
+   "view": "street",
+   "file": "/tmp/places-evidence/minsk/p17_1.jpg",
+   "used": "context only: a separate cream stalinist campus block exists on the campus; not modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/384227903",
+   "used": "campus area only; the OSM building match is a 1-2 storey canteen so the footprint was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     56,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 39,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d3d9de",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "plinth": 0.5,
+    "glassColour": "#a9b9c6",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9d1d7",
+       "#4a5058"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c9c6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "at": [
+    -22.5,
+    -8.1
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.6
+    ],
+    "z0": 0,
+    "height": 40.5,
+    "colour": "#c9ccc9",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "penthouse",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "z0": 39,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e7e6e1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d7d3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    14,
+    -11
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9aa8b3",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "id": "lamp-a",
+   "at": [
+    -26,
+    -18
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "id": "firs",
+   "at": [
+    -45,
+    -14
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -38,
+     -16
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -22
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "no street lamps/trolley wires or signage lettering, podium and penthouse sizes guessed, back and far side invented; the other campus blocks and the OSM canteen footprint are not modelled"
+ }
+}

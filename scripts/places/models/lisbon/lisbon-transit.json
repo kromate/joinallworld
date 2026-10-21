@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Gon%C3%A7alo_Ribeiro_Telles_14.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DiogoBaptista",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/pge1.jpg",
+   "used": "the rusticated limestone gateway with a triangular pediment and mask keystone at the edge of the park beside the square; grass, plane trees and a modern tower beyond. It is the neighbouring park, not the square itself, so it is not a match photo"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/865838586",
+   "used": "only that the venue point sits inside the 573 x 218 m Parque Goncalo Ribeiro Telles; the outline is far larger than the square and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 110,
+    "border": 2,
+    "colour": "#a8a8a4",
+    "border_colour": "#d8cfbd"
+   }
+  },
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "radius": 30,
+    "road_width": 8,
+    "island_colour": "#7aa05a",
+    "trees": 5,
+    "kerb": true
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    -10,
+    -4,
+    0.05
+   ],
+   "params": {
+    "width": 12,
+    "depth": 11,
+    "kiosk": true
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    12,
+    6
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 12,
+    "depth": 11,
+    "kiosk": false
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -34,
+    -42,
+    0.05
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 3.2,
+    "deck_height": 0.3
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    20,
+    -46,
+    0.05
+   ],
+   "params": {
+    "length": 36,
+    "kind": "coach",
+    "density": 0.6,
+    "coach_share": 1.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -42,
+    0.05
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.4,
+    "colour": "#7f93a3"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    -54,
+    28
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 9,
+    "openings": 1,
+    "kind": "round",
+    "crest": "pediment"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -55,
+    0.05
+   ],
+   "params": {
+    "length": 90,
+    "count": 4,
+    "kind": "broadleaf",
+    "gap": 14,
+    "height_min": 9,
+    "height_max": 13
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -35,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-a",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    62
+   ],
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f93a3",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bands": "#d8cfbd",
+    "plinth": 1,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-b",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    0,
+    70
+   ],
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8798",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bands": "#d0d0cc",
+    "plinth": 1,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-c",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    34,
+    62
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfbd",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "plinth": 1,
+    "bands": "#a8a8a4",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-w",
+   "footprint": {
+    "rect": [
+     18,
+     34
+    ]
+   },
+   "at": [
+    -54,
+    -12
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#d8cfbd",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "plinth": 1,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of the square itself: the layout is typical (roundabout, metro portals, bus bays, office blocks); the stone gateway from the adjacent park photo is placed at the edge but not compared"
+ }
+}

@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gaaden_-_Anningerhaus_(3).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "C.Stadler/Bwag",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/ann1.jpg",
+   "used": "white rendered gable end with grey roof, rubble-stone plinth, brown timber canopy over the ground floor, brown-framed windows, red-tiled rear wing, picket fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27556083",
+   "used": "proportions of the main block and the two wings (cross-shaped plan, about 33 x 30 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeeea",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 3.0,
+    "trimColour": "#7a4e2d",
+    "bay": 5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7276",
+    "material": "metal-sheet",
+    "pitch": 33,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    13,
+    6
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b2402f",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-base",
+   "footprint": {
+    "rect": [
+     18.2,
+     24.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8780",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-balcony",
+   "footprint": {
+    "rect": [
+     14,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4528",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4528",
+    "material": "membrane",
+    "parapet": 0.0
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "mass",
+   "id": "timber-door-bay",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -12.2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7d4b2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 1.4,
+    "colour": "#6b5238"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#d8d2c2",
+     "#9aa59b"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "spread": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-canopy-roof",
+   "footprint": {
+    "rect": [
+     14,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a2f1c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none"
+   },
+   "z0": 6.2
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.0,
+    "bottom": 5.0,
+    "colour": "#2f7d45",
+    "frameColour": "#eeeeea",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "single large gable with stone plinth, dark timber canopy, green name board and tall picket fence added; west wing dropped; rear red-roof wing is only a front wing nudged back, fence/path slope and tree foliage simplified"
+ }
+}

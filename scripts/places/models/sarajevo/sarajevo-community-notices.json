@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0418\u0441\u0442\u043e\u0447\u043d\u043e_\u041d\u043e\u0432\u043e_\u0421\u0430\u0440\u0430\u0458\u0435\u0432\u043e,_\u0443\u0440\u0431\u0430\u043d\u043e_\u0458\u0435\u0437\u0433\u0440\u043e_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ljubisa Malenica",
+   "view": "street",
+   "file": "/tmp/places-evidence/sarajevo/notices.jpg",
+   "used": "Wikidata image of the item: maroon-brown ribbon-window wing, white panel and glass-louvre centre, big overhanging shed roof, steps, flagpoles with three flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/183545337",
+   "used": "overall size (40 m by 18 m, angled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     26,
+     17
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "height": 18,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#54403b",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#8a99a8",
+    "plinth": 0.5,
+    "bay": 1.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e4e1",
+    "overhang": 3.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     15,
+     20
+    ]
+   },
+   "at": [
+    11.5,
+    -3
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#ecebe7",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "glassColour": "#2f3a44",
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#26292d",
+      "band": 1.1,
+      "floors": [
+       0,
+       1,
+       2,
+       3,
+       4
+      ],
+      "faces": [
+       "front",
+       "right"
+      ]
+     }
+    ],
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 5,
+    "overhang": 4,
+    "colour": "#e6e7e8",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-bay",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    24,
+    -9
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3138",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#232a31"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    28,
+    -4
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#c4202a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#2c333a",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "overhang": 2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 16
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#1b4fa0",
+     "#c8102e",
+     "#1e4b9b"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     2,
+     -15
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Wing roof overhang slab is subtle; wing windows punched rather than a continuous vertical ribbon; louvre bands are black-only (no alternating white strips); no ground-floor colonnade, only steps; red neighbour simplified."
+ }
+}

@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-26908368",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:J%C3%A4rve_Keskus.JPG",
+   "licence": "Public domain",
+   "author": "Dmitry G",
+   "view": "street",
+   "file": "/tmp/places-evidence/tallinn/jarve1.jpg",
+   "used": "two-storey box clad in yellow metal panels with a taller yellow gable end at left, dark glazed corner block, grey ground-floor base with wide shopfront band and a clerestory ribbon window row, blank sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26908368",
+   "used": "overall size and 2 levels; modelled as a 118 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     96,
+     34
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8d8f93",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-box",
+   "footprint": {
+    "rect": [
+     88,
+     34
+    ]
+   },
+   "at": [
+    12,
+    0
+   ],
+   "z0": 6,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9cc2a",
+    "windows": "ribbon",
+    "windowRatio": 0.14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-gable",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9cc2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8bc28",
+    "pitch": 10,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-corner",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -44,
+    -8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#262b31",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "selver-board",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    10,
+    -17.4
+   ],
+   "z0": 4.2,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 0.3,
+    "thickness": 6,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -38,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -38,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    30,
+    -38,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    60,
+    -38,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Night photo only; yellow cladding and dark glass corner by eye; sign is a blank white board; shopfront detail simplified."
+ }
+}

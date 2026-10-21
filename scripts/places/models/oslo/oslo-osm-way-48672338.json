@@ -1,0 +1,1115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-48672338",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TusenfrydEntrance.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/tus1.jpg",
+   "used": "entrance building: long low dark-red timber hall with red low-pitched metal roof, tall red timber tower on each side (left stepped with lean-to, right square with flat roof), yellow blank welcome board, grey steel coaster loops rising behind, pale support masts, birch and spruce trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tusenfryd_(1).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Eirik Yven",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/tus2.jpg",
+   "used": "dark steel truss track arches and white round support masts"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Tusenfryd",
+   "used": "SpaceShot drop tower rising above the forested hill"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48672338",
+   "used": "park is 600 m wide, far above the scene clamp, so only the entrance plaza is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    2,
+    -10
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e2420",
+    "glassColour": "#2a3a52",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.2,
+    "trimColour": "#e8c03a",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8302a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -17,
+    -7
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a2c26",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9473f",
+    "material": "metal-sheet",
+    "pitch": 34,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-annexe",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a2923",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9473f",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    17,
+    -9
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a2520",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "trimColour": "#8a3a30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9473f",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "welcome-board",
+   "at": [
+    0,
+    -14.8,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#e3b93a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    24,
+    -9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e2420",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9473f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      -28.0,
+      14,
+      10.0
+     ],
+     [
+      -25.3,
+      14,
+      17.8
+     ],
+     [
+      -22.6,
+      14,
+      23.3
+     ],
+     [
+      -19.9,
+      14,
+      27.8
+     ],
+     [
+      -17.1,
+      14,
+      31.4
+     ],
+     [
+      -14.4,
+      14,
+      33.9
+     ],
+     [
+      -11.7,
+      14,
+      35.5
+     ],
+     [
+      -9.0,
+      14,
+      36.0
+     ],
+     [
+      -6.3,
+      14,
+      35.5
+     ],
+     [
+      -3.6,
+      14,
+      33.9
+     ],
+     [
+      -0.9,
+      14,
+      31.4
+     ],
+     [
+      1.9,
+      14,
+      27.8
+     ],
+     [
+      4.6,
+      14,
+      23.3
+     ],
+     [
+      7.3,
+      14,
+      17.8
+     ],
+     [
+      10.0,
+      14,
+      10.0
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c6684"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      -4.0,
+      17,
+      10.0
+     ],
+     [
+      -1.3,
+      17,
+      18.4
+     ],
+     [
+      1.4,
+      17,
+      24.4
+     ],
+     [
+      4.1,
+      17,
+      29.2
+     ],
+     [
+      6.9,
+      17,
+      33.0
+     ],
+     [
+      9.6,
+      17,
+      35.8
+     ],
+     [
+      12.3,
+      17,
+      37.4
+     ],
+     [
+      15.0,
+      17,
+      38.0
+     ],
+     [
+      17.7,
+      17,
+      37.4
+     ],
+     [
+      20.4,
+      17,
+      35.8
+     ],
+     [
+      23.1,
+      17,
+      33.0
+     ],
+     [
+      25.9,
+      17,
+      29.2
+     ],
+     [
+      28.6,
+      17,
+      24.4
+     ],
+     [
+      31.3,
+      17,
+      18.4
+     ],
+     [
+      34.0,
+      17,
+      10.0
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c6684"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      -34.0,
+      20,
+      10.0
+     ],
+     [
+      -31.4,
+      20,
+      15.4
+     ],
+     [
+      -28.9,
+      20,
+      19.2
+     ],
+     [
+      -26.3,
+      20,
+      22.3
+     ],
+     [
+      -23.7,
+      20,
+      24.8
+     ],
+     [
+      -21.1,
+      20,
+      26.6
+     ],
+     [
+      -18.6,
+      20,
+      27.6
+     ],
+     [
+      -16.0,
+      20,
+      28.0
+     ],
+     [
+      -13.4,
+      20,
+      27.6
+     ],
+     [
+      -10.9,
+      20,
+      26.6
+     ],
+     [
+      -8.3,
+      20,
+      24.8
+     ],
+     [
+      -5.7,
+      20,
+      22.3
+     ],
+     [
+      -3.1,
+      20,
+      19.2
+     ],
+     [
+      -0.6,
+      20,
+      15.4
+     ],
+     [
+      2.0,
+      20,
+      10.0
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#5c6684"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drop-tower",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "n": 8,
+    "height": 46,
+    "colour": "#d9dcdf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drop-tower-gondola",
+   "at": [
+    44,
+    40,
+    26
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 8,
+    "height": 2.2,
+    "colour": "#c3423a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "id": "kiosk-a",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 3,
+    "colour": "#e3b93a",
+    "topColour": "#a9473f"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "id": "kiosk-b",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 3,
+    "colour": "#ece8dd",
+    "topColour": "#8e3b2f"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "id": "flagpole-l",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 9,
+    "colour": "#bbbbbb"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "id": "flagpole-r",
+   "at": [
+    24,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 9,
+    "colour": "#bbbbbb"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -20,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 16,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -10,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 24,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 27,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    12,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 27,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    22,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 26,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    30,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 17,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -26,
+    19,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 12,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -14,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 18,
+    "colour": "#cfd3d6",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    17,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    17,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    20,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    20,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 10,
+    "height": 11,
+    "colour": "#f0f0ee",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-centre",
+   "footprint": {
+    "rect": [
+     13,
+     9.4
+    ]
+   },
+   "at": [
+    2,
+    -10
+   ],
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e2420",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8302a",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-lettering",
+   "at": [
+    2,
+    -14.6,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.4
+    ],
+    "height": 1.4,
+    "colour": "#e8d9b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony-l",
+   "at": [
+    -17,
+    -11.5,
+    9
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 0.4,
+    "colour": "#7a4a30",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony-r",
+   "at": [
+    17,
+    -12.4,
+    9
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.6
+    ],
+    "height": 0.4,
+    "colour": "#7a4a30",
+    "top": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "banner-l",
+   "at": [
+    -24,
+    -14.1,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.6
+    ],
+    "height": 4.5,
+    "colour": "#c23b30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -8
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -16
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -4
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     44,
+     12
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     0
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     4
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -12
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the entrance plaza is modelled (park is 600 m wide). Coaster is three smooth steel arches on white masts, not lattice trusses with corkscrew loops; gate hall has no ticket booths or fine timber detail; balconies are plain slabs; lettering is a blank board; drop tower position is a guess."
+ }
+}

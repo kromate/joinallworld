@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-23963145",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/37372035",
+   "used": "real hospital outline (multi-wing, 182 m, 6 levels) auto-fitted"
+  },
+  {
+   "kind": "text",
+   "used": "brief: six-storey modernist render slab with ribbon windows, flat membrane roof, car park, ambulance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#56626b",
+    "bands": "#8a8f94",
+    "plinth": 0.6,
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "width": 20,
+    "depth": 9
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -54,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "colour": "#3f6f8f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   120
+  ]
+ }
+}

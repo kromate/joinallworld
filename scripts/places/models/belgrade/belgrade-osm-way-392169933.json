@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-392169933",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/392169933",
+   "used": "real 47 x 15 m Z-shaped outline (name match), levels/height from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Rakovica health centre, long low-rise 1970s block in pale render with ribbon windows; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "fit": 60
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#9aa5ad",
+    "glassColour": "#4d5a62"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7c7e",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     2.4
+    ],
+    "z0": 0,
+    "height": 3.3,
+    "colour": "#9aa5ad",
+    "windows": "none"
+   },
+   "note": "entrance block, position approximate"
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#efeee8",
+    "frameColour": "#9aa5ad"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real Z-shaped outline used, facade colours and entrance position are typical for a 1970s clinic."
+ }
+}

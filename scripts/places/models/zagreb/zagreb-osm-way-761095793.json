@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-761095793",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sv._Rok_(Galgovo).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kraljnnm",
+   "view": "side",
+   "file": "/tmp/places-evidence/zagreb/095793_0.jpg",
+   "used": "yellow-ochre plaster, white pilasters and window frames, round-headed barred windows, orange tile gable roof over nave, lower hipped chancel, small red spire with cross at the junction"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/761095793",
+   "used": "overall length (about 23.6 m) and the split into a wider nave and a narrower chancel"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.775
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13.5,
+     10.5
+    ]
+   },
+   "at": [
+    -5.15,
+    -0.5
+   ],
+   "height": 4.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc27a",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "bay": 7,
+    "plinth": 0.5,
+    "trimColour": "#f4f0e4",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0532f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.35
+   },
+   "storeys": 1
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "polygon": [
+     [
+      -5.0,
+      -4.2
+     ],
+     [
+      2.0,
+      -4.2
+     ],
+     [
+      3.3,
+      -3.99
+     ],
+     [
+      4.47,
+      -3.4
+     ],
+     [
+      5.4,
+      -2.47
+     ],
+     [
+      5.99,
+      -1.3
+     ],
+     [
+      6.2,
+      0.0
+     ],
+     [
+      5.99,
+      1.3
+     ],
+     [
+      5.4,
+      2.47
+     ],
+     [
+      4.47,
+      3.4
+     ],
+     [
+      3.3,
+      3.99
+     ],
+     [
+      2.0,
+      4.2
+     ],
+     [
+      -5.0,
+      4.2
+     ]
+    ]
+   },
+   "at": [
+    8.0,
+    -0.5
+   ],
+   "height": 4.3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc27a",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "plinth": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5,
+    "trimColour": "#f4f0e4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c6592f",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.35
+   },
+   "storeys": 1
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.6,
+    -0.5,
+    7.4
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#a8272b",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.8,
+      0.4
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.7,
+      1.4
+     ],
+     [
+      0.45,
+      1.9
+     ],
+     [
+      0.15,
+      2.8
+     ],
+     [
+      0,
+      3.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.6,
+    -0.5,
+    10.9
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8b84a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      1.1
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.9,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil0",
+   "at": [
+    -11.9,
+    -5.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.8,
+    "colour": "#f4f0e4",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil1",
+   "at": [
+    1.6,
+    -5.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.8,
+    "colour": "#f4f0e4",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pil2",
+   "at": [
+    1.6,
+    -5.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.8,
+    "colour": "#f4f0e4",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "at": [
+    -5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.06
+    ],
+    "height": 0.8,
+    "colour": "#2a2a2a",
+    "material": "metal"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dormer",
+   "at": [
+    -5.15,
+    -2.0,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.8
+    ],
+    "height": 0.8,
+    "colour": "#c0532f",
+    "material": "clay-tile"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     -1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Windows still slimmer than the photo squat round-headed ones, apse is a polygon, street fence is a plain bar not railings, no sign."
+ }
+}

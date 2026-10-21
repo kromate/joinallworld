@@ -1,0 +1,355 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Suderve_baznycia.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Qwarc (lt.wikipedia)",
+   "view": "front",
+   "used": "classicist rotunda: yellow plaster drum, ring peristyle of plain round columns under a deep entablature, upper drum with lunette windows, shallow grey metal dome with small lantern and cross, gate piers",
+   "file": "/tmp/places-evidence/vilnius/sud1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Suderv%C4%97s_ba%C5%BEny%C4%8Dia_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vilensija",
+   "view": "side",
+   "used": "column spacing, niches between pilasters, flat wall between columns, weathered ochre colour",
+   "file": "/tmp/places-evidence/vilnius/sud2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/85627567",
+   "used": "round plan about 33 m across, matches the rotunda with peristyle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 13.6,
+    "n": 20,
+    "height": 9.3,
+    "colour": "#e4d08a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 16.4,
+    "n": 20,
+    "height": 0.6,
+    "colour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    9.2
+   ],
+   "params": {
+    "radius": 16.6,
+    "n": 20,
+    "height": 1.5,
+    "colour": "#e2cd84",
+    "trimColour": "#efe4b8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 16,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 15.2,
+    "startDeg": 0,
+    "endDeg": 337.5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.85,
+      "n": 10,
+      "height": 9.2,
+      "colour": "#dfcb7e",
+      "z0": 0
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    10.6
+   ],
+   "params": {
+    "radius": 11.2,
+    "n": 20,
+    "height": 4.4,
+    "colour": "#e6d28c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "profile": [
+     [
+      11.4,
+      0,
+      "#a9b0b4"
+     ],
+     [
+      10.6,
+      1.2
+     ],
+     [
+      8.8,
+      2.8
+     ],
+     [
+      6,
+      4.0
+     ],
+     [
+      3.2,
+      4.7
+     ],
+     [
+      2.0,
+      4.9
+     ]
+    ],
+    "segments": 20,
+    "colour": "#a9b0b4",
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    19.7
+   ],
+   "params": {
+    "radius": 2.0,
+    "n": 8,
+    "height": 2.4,
+    "colour": "#efe9d6"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    22.1
+   ],
+   "params": {
+    "profile": [
+     [
+      2.3,
+      0,
+      "#8f979b"
+     ],
+     [
+      1.2,
+      0.8
+     ],
+     [
+      0.15,
+      1.6
+     ]
+    ],
+    "segments": 8,
+    "colour": "#8f979b",
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    23.6
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 1.8,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.0,
+    "colour": "#e2cc82",
+    "topColour": "#d8d5ce"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.0,
+    "colour": "#e2cc82",
+    "topColour": "#d8d5ce"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-annex",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    -24,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2cc82",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "churchyard-wall",
+   "footprint": {
+    "rect": [
+     30,
+     0.7
+    ]
+   },
+   "at": [
+    11,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Columns thinner than photo, no lunette windows or niches on the drums, plain lantern; brief text (tower) was wrong, photo shows a rotunda"
+ }
+}

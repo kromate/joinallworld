@@ -1,0 +1,557 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oxbjerget_hill.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Elgaard",
+   "view": "detail",
+   "file": "/tmp/places-evidence/copenhagen/oxb2.jpg",
+   "used": "rough meadow grass, scrub, bare earth path and a plank bench on the hill top, dense mixed woodland beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/290001160",
+   "used": "dog-park fence line, scaled 118/475 to the scene clamp (outline 475 x 312 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a9a52",
+    "topColour": "#a39a5a",
+    "smooth": true,
+    "curve": true,
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       56,
+       38
+      ],
+      "rotDeg": -17,
+      "colour": "#8a9a52"
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       48,
+       32
+      ],
+      "rotDeg": -17,
+      "cx": -4,
+      "cy": 2,
+      "colour": "#a39a5a"
+     },
+     {
+      "z": 4.2,
+      "ellipse": [
+       34,
+       22
+      ],
+      "rotDeg": -17,
+      "cx": -8,
+      "cy": 3,
+      "colour": "#8a9a52"
+     },
+     {
+      "z": 5.4,
+      "ellipse": [
+       14,
+       9
+      ],
+      "rotDeg": -17,
+      "cx": -10,
+      "cy": 4,
+      "colour": "#9a9858"
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.3,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#7d7f80",
+    "points": [
+     [
+      -59.0,
+      -20.8
+     ],
+     [
+      -14.5,
+      -28.3
+     ],
+     [
+      -7.8,
+      -30.4
+     ],
+     [
+      -5.7,
+      -32.2
+     ],
+     [
+      -4.6,
+      -41.9
+     ],
+     [
+      12.1,
+      -39.4
+     ],
+     [
+      51.9,
+      -44.3
+     ],
+     [
+      54.4,
+      -6.6
+     ],
+     [
+      55.0,
+      -2.4
+     ],
+     [
+      56.6,
+      5.2
+     ],
+     [
+      57.8,
+      13.7
+     ],
+     [
+      52.5,
+      19.7
+     ],
+     [
+      22.8,
+      26.8
+     ],
+     [
+      18.3,
+      30.3
+     ],
+     [
+      4.5,
+      36.2
+     ],
+     [
+      -12.0,
+      40.8
+     ],
+     [
+      -40.4,
+      49.5
+     ],
+     [
+      -41.5,
+      48.1
+     ],
+     [
+      -48.7,
+      30.8
+     ],
+     [
+      -52.2,
+      17.1
+     ],
+     [
+      -57.8,
+      -11.0
+     ],
+     [
+      -59.0,
+      -20.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "pillar": 0.2,
+    "leaf": "bars",
+    "colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      -6,
+      -22
+     ],
+     [
+      -2,
+      -14
+     ],
+     [
+      -9,
+      -7
+     ],
+     [
+      -10,
+      0
+     ],
+     [
+      -12,
+      2
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench-seat",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -2
+   ],
+   "z0": 5.6,
+   "height": 0.5,
+   "storeys": 1,
+   "rotDeg": -15,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a7468",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7468"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stump-0.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12.776,
+    -1.792
+   ],
+   "z0": 5.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a6358",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6358"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stump0.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -11.224,
+    -2.208
+   ],
+   "z0": 5.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a6358",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6358"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    2,
+    5.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6,
+    5.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -6,
+    5.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    5.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    2,
+    5.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -65,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    70,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -80,
+    10,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    80,
+    10,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -65,
+    50,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    65,
+    50,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-node-290001160",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Hill recoloured to meadow with earth path, bench on stumps, shrubs and ring of groves; terrain still a smooth loft on a flat green plane, stripes remain faintly."
+ }
+}

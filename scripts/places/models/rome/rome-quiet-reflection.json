@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small whitewashed rural church 18 x 10 m with stuccoed bell-gable, clay-tile gable roof, Isola Sacra near Fiumicino; no photo or reliable outline (OSM match is only 'containing' and larger, 42 x 36 m)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eee7d4",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8dfc8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellgable",
+   "at": [
+    0,
+    -4.6,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.9
+    ],
+    "height": 4.6,
+    "colour": "#f6f1e4",
+    "topColour": "#c9b99a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellgable-cap",
+   "at": [
+    0,
+    -4.6,
+    11.1
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.9
+    ],
+    "height": 1.2,
+    "topScale": [
+     0.1,
+     1
+    ],
+    "colour": "#a65a3a",
+    "topColour": "#a65a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -5.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#5a3d2b",
+    "topColour": "#5a3d2b"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.3,
+    "thickness": 0.3,
+    "colour": "#d9cfb4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; typical small rural whitewashed church from the brief"
+ }
+}

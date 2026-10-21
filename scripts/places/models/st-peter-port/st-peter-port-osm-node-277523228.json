@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-277523228",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guernsey_July_2011_170,_Doyle_Monument.jpg",
+   "licence": "Public domain",
+   "author": "Man vyi",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/doyle1.jpg",
+   "used": "square slightly tapering rubble-granite shaft with a plain capped top, projecting plinth step, low rubble retaining wall around the base, grassy mound, shrubs either side; mixed grey and tan stone"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q5303765",
+   "used": "identity (Doyle Monument, Jerbourg Point); no OSM building footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.975,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a55",
+    "sections": [
+     {
+      "z": -0.4,
+      "ellipse": [
+       20,
+       17
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       14,
+       12
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       11,
+       10
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.5,
+     6.5
+    ],
+    "z0": 0.9,
+    "height": 0.75,
+    "colour": "#b0a58f",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     5.4
+    ],
+    "z0": 1.6,
+    "height": 0.12,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.8
+    ],
+    "z0": 1.6,
+    "height": 1.0,
+    "colour": "#9d9484"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 2.6,
+      "rect": [
+       3.1,
+       3.1
+      ],
+      "colour": "#aa9f88"
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       2.7,
+       2.7
+      ],
+      "colour": "#a39a86"
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       2.4,
+       2.4
+      ],
+      "colour": "#aaa38f"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 12.6,
+    "height": 0.45,
+    "colour": "#8d9296",
+    "topColour": "#7a7f84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "shaft proportions and stone colours match; mound is a stepped stand-in for the grassy hill, no shrubs, rubble texture only as tile pattern, wall shape simplified to a rectangle"
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/114113362",
+   "used": "real outline of the university building (127 x 61 m, name-quality match), levels and height from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long Soviet-style educational block, central entrance, ribbon windows, concrete with blue-grey glazing; the nearby Commons street photos show other buildings and were not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 12,
+    "glassColour": "#8aa7b5",
+    "bands": "#eceae0",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f6368",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.2,
+    "run": 2.4,
+    "count": 5,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.5,
+    "colour": "#3f5f78"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag1",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "id": "flag2",
+   "at": [
+    14,
+    -34,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -40
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -45
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     35
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building exists in the evidence; massing from OSM outline only, facade and entrance position typed from the Soviet institutional style"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-114113363"
+}

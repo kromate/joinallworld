@@ -1,0 +1,410 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lilla_Holmen.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Erik Wannee",
+   "view": "street",
+   "file": "/tmp/places-evidence/mariehamn/recreation-0.jpg",
+   "used": "the approach: pale-blue steel pontoon footbridge with mesh railings and lamp posts, blue open arch over the entrance, dense deciduous and spruce woods behind, small red timber pavilion with a gable lookout to the right, asphalt landing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1494779775",
+   "used": "islet outline (296 x 130 m, fitted to the 118 m scene limit)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 58
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 70,
+    "shape": "rect",
+    "colour": "#6f8f95",
+    "bank": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "landing",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -60
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a7878",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#767476"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "islet",
+   "footprint": {
+    "rect": [
+     60,
+     26
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8f84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f4a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    32,
+    1.2
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 12,
+    "spread": 8,
+    "line": 50,
+    "colour": "#3f6b3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    28,
+    1.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 12,
+    "spread": 8,
+    "line": 50,
+    "colour": "#4f7f3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    1.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 9,
+    "spread": 8,
+    "line": 50,
+    "colour": "#5f8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     3.8,
+     40
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "z0": 0.1,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8fb6c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6f72"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1.9,
+    -46,
+    0.8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "thickness": 0.06,
+    "kind": "rail",
+    "colour": "#9aa4a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    1.9,
+    -46,
+    0.8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "thickness": 0.06,
+    "kind": "rail",
+    "colour": "#9aa4a8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -1.9,
+    -45,
+    0.8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "height": 4.5,
+    "count": 7,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -50,
+    0.5
+   ],
+   "params": {
+    "radius": 0.14,
+    "curve": true,
+    "colour": "#7fa7c9",
+    "points": [
+     [
+      -3.5,
+      0,
+      0
+     ],
+     [
+      -3.5,
+      0,
+      3.5
+     ],
+     [
+      -2.2,
+      0,
+      5.6
+     ],
+     [
+      0,
+      0,
+      6.5
+     ],
+     [
+      2.2,
+      0,
+      5.6
+     ],
+     [
+      3.5,
+      0,
+      3.5
+     ],
+     [
+      3.5,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -50,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.25
+    ],
+    "height": 0.9,
+    "colour": "#7fa7c9",
+    "topColour": "#7fa7c9"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -50,
+    6.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#7fa7c9",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.6,
+      0.1
+     ],
+     [
+      0.6,
+      0.4
+     ],
+     [
+      0.1,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "z0": 1.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f2f28",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "trimColour": "#efe8da"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d3f44",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-lookout",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    23,
+    0
+   ],
+   "z0": 1.2,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8f2f28",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "trimColour": "#efe8da"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3d3f44",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.0,
+    "height": 0.5,
+    "colour": "#8a6a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   70,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Dropped the 118 m clamp and composed the approach at real scale with water both sides; camera still frames far above the landing, bridge railing and arch sign detail are thin, woods read as a block not a dense line."
+ }
+}

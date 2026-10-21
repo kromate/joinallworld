@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8299511",
+   "used": "real outline (86 x 24 m zigzag block), two levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ministry",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d6ae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "bands": "#f1ebd8",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f84",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline and two levels only, colours and hip roof typical."
+ }
+}

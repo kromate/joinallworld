@@ -1,0 +1,143 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "wikidata",
+   "ref": "Q85783503",
+   "used": "identity and location (Qawra); the commons photos are interiors only and were not used for the shell"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large converted showroom, cream facade, glass front, 55 x 30 m, no OSM building match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     55,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9dcc0",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#8f8a80",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a78",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-front",
+   "footprint": {
+    "rect": [
+     20,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa7b2",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "bottom": 5.5,
+    "colour": "#c0392b",
+    "frameColour": "#8f8a80",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "count": 4,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-node-1742953661",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo or OSM building; typed showroom shell of 55x30 m"
+ }
+}

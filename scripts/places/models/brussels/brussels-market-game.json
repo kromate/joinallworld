@@ -1,0 +1,557 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Woluwe_Shopping_Centre_Bd._de_la_Woluwe.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Stephane Mignon",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/wsc2.jpg",
+   "used": "low pale render block with flat roof, arched glazed barrel-vault entrance with teal glass, round maroon W disc on the right wing, dark flat canopy"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Woluwe_shopping.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": ";)uktubeirl",
+   "view": "interior",
+   "used": "central atrium: pyramidal glazed skylight with white steel ribs, white curved balconies (volume idea only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/226906690",
+   "used": "footprint (295 x 121 m, containing building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd8ca",
+    "windows": "ribbon",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "floors"
+    },
+    "cornice": true,
+    "glassColour": "#4f6d7a",
+    "bands": "#f1eee6",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -4,
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     12
+    ],
+    "height": 10,
+    "colour": "#4fa3b5",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 1
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "loft",
+   "at": [
+    -4,
+    -44,
+    10
+   ],
+   "params": {
+    "colour": "#5fb0bf",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       12
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       29.4,
+       12
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       27.5,
+       12
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       24,
+       12
+      ]
+     },
+     {
+      "z": 4.8,
+      "rect": [
+       18,
+       12
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       10,
+       12
+      ]
+     },
+     {
+      "z": 6.3,
+      "rect": [
+       5,
+       12
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 6,
+    "bottom": 0.5,
+    "colour": "#2f9d52",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 0.1,
+    "height": 0.1,
+    "bottom": 20,
+    "colour": "#7a2a3a",
+    "frameColour": "#b8bcc0"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "awning",
+   "at": [
+    -4,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 4,
+    "height": 4,
+    "colours": [
+     "#2b2f36"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    8,
+    11
+   ],
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "height": 4.5,
+    "colour": "#ece8dc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     22
+    ],
+    "height": 6.5,
+    "colour": "#d4cfc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "storeys": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    8,
+    15.5
+   ],
+   "params": {
+    "colour": "#7fb7c4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       20,
+       20
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       14,
+       14
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       8,
+       8
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       1.5,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 9,
+    "colour": "#ddd8ca",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 2.8
+    },
+    "points": [
+     [
+      18,
+      -44.3,
+      6
+     ],
+     [
+      18,
+      -43.2,
+      6
+     ]
+    ],
+    "colour": "#7a2a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -24,
+      -2,
+      15.5
+     ],
+     [
+      -14.75,
+      7.25,
+      22.5
+     ]
+    ],
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -24,
+      18,
+      15.5
+     ],
+     [
+      -14.75,
+      8.75,
+      22.5
+     ]
+    ],
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4,
+      -2,
+      15.5
+     ],
+     [
+      -13.25,
+      7.25,
+      22.5
+     ]
+    ],
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4,
+      18,
+      15.5
+     ],
+     [
+      -13.25,
+      8.75,
+      22.5
+     ]
+    ],
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -52,
+    -18.5,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     26,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#ece8dc",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -62
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -62
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Vault is a lofted dome rather than a true barrel with glazing bars; W disc is a low-poly hexagon; skylight pyramid is a plain pale loft with four thin ribs; OSM outline scaled 0.4 so wing positions are approximate; no ribbon glazing detail on the wings"
+ }
+}

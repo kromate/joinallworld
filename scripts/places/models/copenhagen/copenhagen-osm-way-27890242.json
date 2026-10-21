@@ -1,0 +1,373 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-27890242",
+ "name": "Ganløse Kirke",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GanloeseKirke.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Storgaard",
+   "view": "front",
+   "used": "west tower with two belfry arches and stepped east/west gables, lower nave and narrower chancel with stepped gables, red-brick walls (not whitewashed as the brief guessed), orange clay-tile gable roofs, arched windows, clipped hedges and conifers in the churchyard",
+   "file": "/tmp/places-evidence/copenhagen/gan1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27890242",
+   "used": "overall length about 21 m, tower plus nave plus chancel arrangement"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 1.536
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    -7.2,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0634a",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8703f",
+    "material": "clay-tile",
+    "rise": 4.6,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     8.6
+    ]
+   },
+   "at": [
+    3.3,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c07a60",
+    "windows": "none",
+    "plinth": 0.4,
+    "trimColour": "#e6d7bf"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8703f",
+    "material": "clay-tile",
+    "rise": 4.3,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.8
+    ]
+   },
+   "at": [
+    13.4,
+    0
+   ],
+   "height": 4.7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c07a60",
+    "windows": "none",
+    "plinth": 0.4,
+    "trimColour": "#e6d7bf"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8703f",
+    "material": "clay-tile",
+    "rise": 3.4,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "tower-gable-w",
+   "at": [
+    -10.55,
+    0,
+    12.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.6,
+    "height": 4.8,
+    "steps": 5,
+    "thickness": 0.5,
+    "colour": "#b0634a"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "tower-gable-e",
+   "at": [
+    -3.85,
+    0,
+    12.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.6,
+    "height": 4.8,
+    "steps": 5,
+    "thickness": 0.5,
+    "colour": "#b0634a"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "chancel-gable",
+   "at": [
+    16.6,
+    0,
+    4.7
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.4,
+    "height": 3.6,
+    "steps": 4,
+    "thickness": 0.45,
+    "colour": "#b87258"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "nave-gable",
+   "at": [
+    10.3,
+    0,
+    5.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 8.6,
+    "height": 4.4,
+    "steps": 5,
+    "thickness": 0.45,
+    "colour": "#c07a60"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "belfry-a",
+   "at": [
+    -8.2,
+    -3.35,
+    9.2
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.9,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "belfry-b",
+   "at": [
+    -6.2,
+    -3.35,
+    9.2
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.9,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "nave-w1",
+   "at": [
+    -0.6,
+    -4.3,
+    1.9
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.9,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "nave-w2",
+   "at": [
+    4.2,
+    -4.3,
+    1.9
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.9,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "chancel-w",
+   "at": [
+    13.4,
+    -3.4,
+    1.7
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 1.8,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "churchyard-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.5,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-1",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "depth": 1.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-2",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "depth": 1.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "yew-1",
+   "at": [
+    -1,
+    -6.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6.5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "yew-2",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "big-w",
+   "at": [
+    -16,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "id": "big-e",
+   "at": [
+    28,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Hedged churchyard simplified to blobs, brick texture and arch window count approximate"
+ }
+}

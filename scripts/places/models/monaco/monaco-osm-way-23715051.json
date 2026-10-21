@@ -1,0 +1,600 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-way-23715051",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monaco_BW_2011-06-07_17-50-43.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Berthold Werner",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/g15_om1.jpg",
+   "used": "symmetric Baroque front: tall central block with pediment, four paired columns over a balcony around a big arched window, low entrance arch with stair, flanking piers with statue groups, two-storey-plus wings with arched windows, domed end pavilions, warm pale La Turbie stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23715051",
+   "used": "overall length (about 100 m); outline is diagonal so a straight-fronted composition from the photo was used instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.65,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 37,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9b3a2",
+    "material": "concrete",
+    "pitch": 15,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    -30.5,
+    2
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.8,
+      "depth": 0.5,
+      "storeys": 1,
+      "pierColour": "#d8ccae"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "concrete",
+    "parapet": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    30.5,
+    2
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.8,
+      "depth": 0.5,
+      "storeys": 1,
+      "pierColour": "#d8ccae"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "concrete",
+    "parapet": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-w",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    -45.5,
+    1
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-e",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    45.5,
+    1
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-w",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -12.5,
+    -16
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfae",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-e",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    12.5,
+    -16
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfae",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -17.2,
+    16.5
+   ],
+   "params": {
+    "width": 22,
+    "depth": 3.2,
+    "height": 19,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#e4dcc6",
+    "roofColour": "#cfc6ae"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.4,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#cfc7b2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -15.6,
+    -15.2,
+    20
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    15.6,
+    -15.2,
+    20
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -45.5,
+    -8,
+    21
+   ],
+   "params": {
+    "radius": 4.2,
+    "colour": "#d4c9ae",
+    "finial": 1.5,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    45.5,
+    -8,
+    21
+   ],
+   "params": {
+    "radius": 4.2,
+    "colour": "#d4c9ae",
+    "finial": 1.5,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -25,
+    0
+   ],
+   "params": {
+    "height": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    40,
+    -25,
+    0
+   ],
+   "params": {
+    "height": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -15.3,
+    16
+   ],
+   "params": {
+    "width": 7,
+    "height": 12,
+    "kind": "arch"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -18.2,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 6,
+    "depth": 0.6,
+    "archWidth": 4,
+    "springHeight": 3.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -17.2,
+    31.5
+   ],
+   "params": {
+    "width": 22,
+    "depth": 3.2,
+    "height": 5.5,
+    "columns": 2,
+    "pediment": true,
+    "steps": 0,
+    "colour": "#e4dcc6",
+    "roofColour": "#d6cdb4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -9,
+    -14.5,
+    37
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -3,
+    -14.5,
+    37
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    3,
+    -14.5,
+    37
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    9,
+    -14.5,
+    37
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#e4dcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -34
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -34
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Two-storey arcaded wings, arched central window, pediment with statue finials, entrance arch and domed end pavilions now read. Missing: paired columns over balcony are thin, sculpture groups on piers, rusticated carved detail, ornate pavilion openings."
+ }
+}

@@ -1,0 +1,442 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waldandacht_1140.JPG",
+   "licence": "CC BY-SA 3.0 at",
+   "author": "Estiria",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/wald1.jpg",
+   "used": "white stuccoed pillar shrine with arched grilled niche on a rubble stone base, heavy mossy stone cap with two stepped tiers and a crucifix, set among beech trees, small wooden picture shrine on the tree beside"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bildbaum_01.JPG",
+   "licence": "CC BY-SA 3.0 at",
+   "author": "Estiria",
+   "view": "detail",
+   "file": "/tmp/places-evidence/vienna/wald2.jpg",
+   "used": "small gabled wooden picture box on the beech trunk beside the shrine"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 0.667,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "polygon": [
+     [
+      -1.05,
+      -0.85
+     ],
+     [
+      1.1,
+      -0.9
+     ],
+     [
+      1.15,
+      0.8
+     ],
+     [
+      -1.0,
+      0.85
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.45,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a76",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a76"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     2.1,
+     1.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.35,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "plinth": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.72
+   ],
+   "z0": 1.5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#2c2824",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2824"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.8,
+    -0.72
+   ],
+   "z0": 1.35,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.8,
+    -0.72
+   ],
+   "z0": 1.35,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wreath",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.72
+   ],
+   "z0": 3.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#3f6a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a38"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    0,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     2.1
+    ],
+    "height": 0.27,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    1.25,
+    -1.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 0.5,
+    "colour": "#2e2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "candle",
+   "at": [
+    1.25,
+    -1.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 0.2,
+    "colour": "#b02a22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0,
+    4.05
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     2.5
+    ],
+    "height": 0.5,
+    "colour": "#5f6a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier1",
+   "at": [
+    0,
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.5,
+    "colour": "#5f6a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier2",
+   "at": [
+    0,
+    0,
+    4.95
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 0.5,
+    "colour": "#5f6a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    0,
+    5.45
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.1
+    ],
+    "height": 1.3,
+    "colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    0,
+    6.25
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 0.14,
+    "colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "figure",
+   "at": [
+    0,
+    0,
+    5.7
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beech-trunk",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    2.8,
+    2.6
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b5e50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c5145"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.8,
+    2.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 1,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "picture-box",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    1.15
+   ],
+   "z0": 3.0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a98d63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b6a4c",
+    "pitch": 25,
+    "overhang": 0.1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   24,
+   24
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Niche is a flat dark door without arch, grille bars or recess; no crucifix detail beyond a small figure block; base is textured block not true rubble; trunk is a straight cylinder with a low-poly canopy; forest backdrop missing."
+ }
+}

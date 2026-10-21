@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-osm-node-1272283718",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Widok_na_Rzym_z_okien_Muze%C3%B3w_Watyka%C5%84skich._Via_Crescenzio._-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lech_Darski",
+   "view": "street",
+   "used": "view from the terrace: pale stone balustrade with ball-capped piers along the edge, stone pines and city skyline beyond; the terrace itself is not photographed"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/112134610",
+   "used": "not used: nearest-quality match 17.6 m away, a 15 m sliver that does not look like a terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "rect": [
+     24,
+     10
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#c9b99a",
+    "topColour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-cap",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.7
+    ],
+    "z0": 1.0,
+    "height": 0.25,
+    "colour": "#e6dfcc",
+    "topColour": "#e6dfcc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-base",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.7
+    ],
+    "z0": 0.5,
+    "height": 0.25,
+    "colour": "#e6dfcc",
+    "topColour": "#e6dfcc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      4.5,
+      0.75
+     ],
+     "params": {
+      "segments": 8,
+      "colour": "#e6dfcc",
+      "profile": [
+       [
+        0.18,
+        0
+       ],
+       [
+        0.14,
+        0.1
+       ],
+       [
+        0.12,
+        0.25
+       ],
+       [
+        0.17,
+        0.5
+       ],
+       [
+        0.17,
+        0.55
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11,
+     0
+    ],
+    "end": [
+     11,
+     0
+    ],
+    "count": 23,
+    "lod1Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      4.5
+     ],
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 0.5,
+      "height": 1.0,
+      "colour": "#e6dfcc",
+      "topColour": "#e6dfcc"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11.75,
+     0
+    ],
+    "end": [
+     11.75,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      4.5,
+      1.5
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#e6dfcc",
+      "profile": [
+       [
+        0.4,
+        0
+       ],
+       [
+        0.4,
+        0.15
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        0.3,
+        0.75
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11.75,
+     0
+    ],
+    "end": [
+     11.75,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-wall-west",
+   "at": [
+    -11.6,
+    -0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     9
+    ],
+    "z0": 0.5,
+    "height": 1.0,
+    "colour": "#d8cdb2",
+    "topColour": "#e6dfcc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-wall-east",
+   "at": [
+    11.6,
+    -0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     9
+    ],
+    "z0": 0.5,
+    "height": 1.0,
+    "colour": "#d8cdb2",
+    "topColour": "#e6dfcc"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -3.5,
+    0.5
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    9,
+    -3.5,
+    0.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.7
+    ],
+    "z0": 0.5,
+    "height": 1.0,
+    "colour": "#e6dfcc",
+    "topColour": "#e6dfcc"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "The terrace itself has no photo; the balustrade style comes from the one in the view photo, the size is from the brief (20 x 8 m); no render comparison possible."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     -6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     15,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     10
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

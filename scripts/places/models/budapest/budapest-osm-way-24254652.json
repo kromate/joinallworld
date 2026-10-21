@@ -1,0 +1,485 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%93buda,_Fl%C3%B3ri%C3%A1n_%C3%9Czletk%C3%B6zpont_2021_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/p3-24254652-3.jpg",
+   "used": "stepped red-clad tower blocks with grey louvre panels, long grey louvred 2-storey wings with glazed ribbon, glazed ground storey, blank rooftop sign boards, canopy with railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24254652",
+   "used": "75 x 65 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     76,
+     64
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adaf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#9aa5ab",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colour": "#b4b8ba"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8184",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    8,
+    -23
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c2b2d",
+    "windows": "none",
+    "windowRatio": 0,
+    "windowShape": "rect",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "left"
+      ],
+      "colour": "#a9adaf"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    -22
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c2b2d",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    32,
+    -22
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c2b2d",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -10,
+    -34,
+    5.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 4,
+    "height": 0.1,
+    "thickness": 0.9,
+    "colour": "#b9bdbf",
+    "edgeColour": "#b9bdbf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-green",
+   "at": [
+    -8,
+    -31.5,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#2d6a4a",
+    "topColour": "#2d6a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#3c3f42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopfront",
+   "at": [
+    0,
+    -32.2,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#9fb0b6",
+    "topColour": "#b6b8b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -34.5,
+    5.1
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "rail",
+    "pillarEvery": 2,
+    "colour": "#3c3f42"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#2a2d30",
+      "topColour": "#2a2d30"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -34,
+     -40
+    ],
+    "end": [
+     34,
+     -40
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-t0",
+   "at": [
+    3,
+    -32.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 22,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-t1",
+   "at": [
+    13,
+    -32.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 22,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-w0",
+   "at": [
+    -30,
+    -30.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-w1",
+   "at": [
+    -26,
+    -30.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-e0",
+   "at": [
+    32,
+    -30.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-e1",
+   "at": [
+    36,
+    -30.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#2f3b42",
+    "topColour": "#2f3b42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-panel",
+   "at": [
+    8,
+    -32.2,
+    20
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#b0b4b6",
+    "topColour": "#b0b4b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-top",
+   "at": [
+    4,
+    -30,
+    26
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.6
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#e9e6df",
+    "topColour": "#e9e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-top2",
+   "at": [
+    13,
+    -30,
+    26
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2d3a45",
+    "topColour": "#2d3a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wing",
+   "at": [
+    -12,
+    -31,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#2d6a4a",
+    "topColour": "#2d6a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-24254652",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Red towers now solid clad with narrow glazing strips and louvre panel; wings are louvred bands but without per-bay depth; shopfronts and signs are blank flat boards; stepped tower arrangement approximate"
+ }
+}

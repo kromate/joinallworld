@@ -1,0 +1,95 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/54989509",
+   "used": "real campus building outline (name match): six-sided teaching block with offset wings, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 100
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#5c7a92",
+    "bands": "#c9c6bd",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e82",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the campus building found; outline is real OSM (scaled to 100 m), colours and glazing assumed from brief."
+ }
+}

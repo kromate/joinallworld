@@ -1,0 +1,357 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FL-Landespital-P2014300.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Asurnipal",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/spital.jpg",
+   "used": "tall cream five-storey ward block with window grid on the left, lower podium with railing terrace, round pavilion with conical grey roof on the terrace, dark garage portal and ambulance bay under the podium, barrier at the entrance ramp, pine in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/486420157",
+   "used": "overall size only (about 80 x 95 m outline, 5.2k m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hillside is a smooth mound not wooded rock, ward windows plain grid, ground arcade is round arches not the real square garage portals, no cars or retaining-wall stonework"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e9dfc2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "right": "punched",
+     "left": "punched",
+     "back": "punched"
+    },
+    "bay": 3.8,
+    "glassColour": "#56677a",
+    "bands": "#d4cdb8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    8,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#4b5a68",
+    "plinth": 0.6,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.0,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    12,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#eeeadc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    },
+    "glassColour": "#4b5a68"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "garage-portal",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    20,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2d2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9b3a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -30,
+    22,
+    19
+   ],
+   "params": {
+    "radius": 5,
+    "colour": "#7c7f83",
+    "markColour": "#e8e8e2",
+    "ringColour": "#d9c13a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "bottom": 0.2,
+    "colour": "#f0f0ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "kind": "wall",
+    "colour": "#8d857a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavilion",
+   "at": [
+    26,
+    0,
+    6.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      4.2,
+      0,
+      "#9ab0b8"
+     ],
+     [
+      4.2,
+      2.6,
+      "#9ab0b8"
+     ],
+     [
+      4.2,
+      2.8,
+      "#6f757c"
+     ],
+     [
+      5.4,
+      2.8,
+      "#6f757c"
+     ],
+     [
+      0.2,
+      6.0,
+      "#6f757c"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "terrace-rail",
+   "at": [
+    -10,
+    -14.6,
+    6.5
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#d8d8d2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "barrier",
+   "at": [
+    28,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 0.9,
+    "kind": "fence",
+    "colour": "#c62828"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "slope",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 32,
+    "height": 30,
+    "seed": 5,
+    "stairs": false,
+    "rock_colour": "#5e5348",
+    "boulders": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "extent": [
+   120,
+   90
+  ]
+ }
+}

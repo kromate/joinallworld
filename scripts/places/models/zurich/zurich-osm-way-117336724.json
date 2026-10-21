@@ -1,0 +1,428 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-117336724",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A4ren_Gr%C3%BCningen.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adrian Michael",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/117336724_0.jpg",
+   "used": "white rendered 3-storey front with dark brown hip/gable tile roof, green shutters, grey stone window surrounds, blank painted sign band, half-timbered neighbour left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/117336724",
+   "used": "footprint size 19x12 (plan drawn as a rect to face the street)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.22,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "inn",
+   "footprint": {
+    "rect": [
+     21,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadd",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b4338",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-timber-house",
+   "footprint": {
+    "rect": [
+     12,
+     11
+    ]
+   },
+   "at": [
+    -16.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "timber",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a4a34"
+      ],
+      "height": 0.45,
+      "floors": "upper"
+     },
+     {
+      "type": "fins",
+      "colours": [
+       "#8a4a34"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a4136",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-house",
+   "footprint": {
+    "rect": [
+     9,
+     11
+    ]
+   },
+   "at": [
+    15,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a4136",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -6.4,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "height": 1.2,
+    "bottom": 5.8,
+    "colour": "#ece7dc",
+    "frameColour": "#4a4a46",
+    "posts": false
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -5,
+    2,
+    10.5
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.5,
+    "pots": 0,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 4.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9.8,
+     -6.1
+    ],
+    "end": [
+     7.7,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.7,
+     -6.1
+    ],
+    "end": [
+     9.8,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    4.6
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9.8,
+     -6.1
+    ],
+    "end": [
+     7.7,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    4.6
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.7,
+     -6.1
+    ],
+    "end": [
+     9.8,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9.8,
+     -6.1
+    ],
+    "end": [
+     7.7,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.15
+      ],
+      "height": 2.0,
+      "colour": "#3f6b4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.7,
+     -6.1
+    ],
+    "end": [
+     9.8,
+     -6.1
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     11,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 9.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadd",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b4338",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Shutters, wider windows, 3 storeys and front gable added; gable is a plain triangle not a stepped baroque curve; no flower boxes or stone window surrounds; neighbour timber is stripes not real framing"
+ }
+}

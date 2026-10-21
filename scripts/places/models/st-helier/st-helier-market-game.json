@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waterfront_Centre.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tumericiangovernment",
+   "view": "street",
+   "file": "/tmp/places-evidence/st-helier/wf2.jpg",
+   "used": "white and grey panelled boxes, taller grey panel block with blank sign, glazed shopfront ground floor, flat roofs, palms in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waterfront_Centre_Jersey.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jerriais janne",
+   "view": "detail",
+   "used": "blue painted columns, terracotta panel cladding, sloping glazed canopy, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/179249117",
+   "used": "footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#a9adb0",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "parapet": 0.5,
+    "windowShape": "rect",
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e6e7",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cinema",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    28,
+    -18
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#8e9396",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -27,
+    13
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#3a3f44"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -27.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.6
+    ],
+    "height": 3.4,
+    "colour": "#1c2a33"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 6.5,
+      "colour": "#1f6fc4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -30,
+     0
+    ],
+    "end": [
+     -6,
+     -30,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -12,
+    -35,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 7,
+    "height": 6.5,
+    "thickness": 0.25,
+    "rise": 1.5,
+    "colour": "#b6d6de",
+    "edgeColour": "#2c3338"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#1c2a33"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.4
+    ],
+    "height": 2.8,
+    "colour": "#2c3338"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -46
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     -46
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -44
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM outline still a plain extrusion; no dense shrub planting, glazed ground floor is punched windows only; stepped roofline approximate; tower sign blank"
+ }
+}

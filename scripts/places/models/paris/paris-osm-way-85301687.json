@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-way-85301687",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Herblay_(95),_%C3%A9glise_Saint-Martin,_vue_depuis_le_sud-ouest_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "P.poschadel",
+   "view": "side",
+   "file": "/tmp/places-evidence/paris/herblay.jpg",
+   "used": "cream limestone south aisle with five arched barred windows between sloping-capped buttresses, grey zinc lean-to roof, clerestory with small arched windows and ochre tile nave roof, square stone tower with slate pyramid spire behind the east end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/85301687",
+   "used": "approximate overall size of nave and aisle (about 44 x 20 m); footprint now hand-built rects"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     44,
+     8.5
+    ]
+   },
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfae",
+    "windows": "arched",
+    "windowRatio": 0.34,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 7,
+    "plinth": 0.6,
+    "glassColour": "#3a3a40"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.6,
+    "colour": "#6b7077",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   },
+   "at": [
+    -3,
+    -6.5
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     38,
+     11
+    ]
+   },
+   "at": [
+    -2,
+    3.2
+   ],
+   "height": 13.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfc6",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.0,
+    "glassColour": "#3a3a40"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b8832f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -11,
+     0
+    ],
+    "end": [
+     18,
+     -11,
+     0
+    ],
+    "count": 7,
+    "lod2Step": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        1.7
+       ],
+       "height": 5.0,
+       "colour": "#d0c3a2",
+       "topScale": 0.55
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    13,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     9.6
+    ],
+    "height": 16.5,
+    "colour": "#c9bb9a",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "storeys": 3,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.5,
+    "glassColour": "#33343a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    13,
+    3.2,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     10.0,
+     10.0
+    ],
+    "height": 0.5,
+    "colour": "#b8aa8a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "spire",
+   "at": [
+    13,
+    3.2,
+    17
+   ],
+   "params": {
+    "colour": "#4f545b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.4,
+       9.4
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       7.8,
+       7.8
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24.7,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     6.6
+    ],
+    "height": 7.2,
+    "colour": "#d4c8aa",
+    "topScale": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -24
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -24
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower and aisle lean-to now match; buttresses plain wedge not sloping-capped, no barred window grilles, east end polygonal chevet and balustrade omitted, aisle windows fewer than photo"
+ }
+}

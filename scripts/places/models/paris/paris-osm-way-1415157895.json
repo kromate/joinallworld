@@ -1,0 +1,385 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-way-1415157895",
+ "name": "ENSA Paris-La Villette",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ENSA_Paris-La_Villette_2021_b%C3%A2timent_principal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Guillermo Arevalo",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/way-1415157895-0.jpg",
+   "used": "five-storey glazed block with pale mullion grid and dark spandrels, painted red entrance box, white ground-floor wall, round open white-barred spiral escape-stair cage on a red base, gravel court"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1415157895",
+   "used": "main building outline (long block, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d0d5d7",
+    "glassColour": "#b9cad3",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e1e4e5",
+      "height": 0.5,
+      "at": 0.0,
+      "proud": 0.04
+     }
+    ],
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9094",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-box",
+   "at": [
+    -26,
+    2,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "rect": [
+     9,
+     5
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#d1442f",
+    "topColour": "#c23d2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "white-base",
+   "at": [
+    -16,
+    -2.6,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "rect": [
+     12,
+     5
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#eceae4",
+    "topColour": "#dcdad3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 9
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cage-base",
+   "at": [
+    -10.4,
+    -8.6,
+    0
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#c9402c",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      2.0
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "cage-bars",
+   "at": [
+    -10.4,
+    -8.6,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.3,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 32,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.14
+      ],
+      "z0": 1.8,
+      "height": 14,
+      "colour": "#f4f4f2",
+      "topColour": "#f4f4f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cage-ring-r1",
+   "at": [
+    -10.4,
+    -8.6,
+    5
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#eeeeea",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      3.0,
+      0.18
+     ],
+     [
+      2.8,
+      0.18
+     ],
+     [
+      2.8,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cage-ring-r2",
+   "at": [
+    -10.4,
+    -8.6,
+    9.5
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#eeeeea",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      3.0,
+      0.18
+     ],
+     [
+      2.8,
+      0.18
+     ],
+     [
+      2.8,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cage-ring-r3",
+   "at": [
+    -10.4,
+    -8.6,
+    15.8
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#eeeeea",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      3.0,
+      0.18
+     ],
+     [
+      2.8,
+      0.18
+     ],
+     [
+      2.8,
+      0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cage-core",
+   "at": [
+    -10.4,
+    -8.6,
+    1.8
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c9402c",
+    "profile": [
+     [
+      0.8,
+      0
+     ],
+     [
+      0.8,
+      12
+     ],
+     [
+      0,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cage-roof",
+   "at": [
+    -10.4,
+    -8.6,
+    15.8
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#eeeeea",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Block is the real OSM bar so it is seen side-on, not end-on as in the photo; glazing still darker than the pale mullion grid; stair cage lacks its mural; red entry box and white wall placed by eye; court is paving not gravel (no gravel ground type)."
+ }
+}

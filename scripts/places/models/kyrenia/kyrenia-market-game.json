@@ -1,0 +1,615 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bandabuliya,_Lefko%C5%9Fa.jpeg",
+   "licence": "CC BY 2.0",
+   "author": "dronepicr",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/market.jpg",
+   "used": "entrance gate block: sandstone ashlar, stepped parapet with grey copings, octagonal window, wide dark iron-grille gateway, round-cornered stone building at left, timber stalls with white awnings at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/629540154",
+   "used": "overall scale only (hall about 15 m wide and 55 m long); outline is a multi-lobed block too large to use directly"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.8,
+     8
+    ]
+   },
+   "at": [
+    -6.1,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cfae78",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "bands",
+     "colour": "#b8935c"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2.8,
+     8
+    ]
+   },
+   "at": [
+    6.1,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cfae78",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "bands",
+     "colour": "#b8935c"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-top",
+   "footprint": {
+    "rect": [
+     9.4,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cfae78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-step",
+   "footprint": {
+    "rect": [
+     6,
+     5.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 11,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cfae78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering-band",
+   "footprint": {
+    "rect": [
+     9.0,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.05
+   ],
+   "z0": 7.0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a98d5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "letters",
+   "footprint": {
+    "rect": [
+     6.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.2
+   ],
+   "z0": 7.25,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#efe3c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grille-band",
+   "footprint": {
+    "rect": [
+     9.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.8
+   ],
+   "z0": 4.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#1f2022",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-lit",
+   "footprint": {
+    "rect": [
+     9.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    3.8
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d9a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-in-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     5.5
+    ]
+   },
+   "at": [
+    -3.4,
+    0.2
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5338",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-in-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     5.5
+    ]
+   },
+   "at": [
+    3.4,
+    0.2
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5338",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "copings-l",
+   "footprint": {
+    "rect": [
+     3.2,
+     8.4
+    ]
+   },
+   "at": [
+    -6.1,
+    0
+   ],
+   "z0": 11,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9ea0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "copings-r",
+   "footprint": {
+    "rect": [
+     3.2,
+     8.4
+    ]
+   },
+   "at": [
+    6.1,
+    0
+   ],
+   "z0": 11,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9ea0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "copings-c",
+   "footprint": {
+    "rect": [
+     6.4,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 13.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9ea0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -4.4,
+     -3.95
+    ],
+    "end": [
+     4.4,
+     -3.95
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.08,
+       0.08
+      ],
+      "z0": 4.5,
+      "height": 1.5,
+      "colour": "#101112"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.1
+   ],
+   "params": {
+    "radius": 1.55,
+    "n": 8,
+    "z0": 10.0,
+    "height": 0.9,
+    "colour": "#9a9ea0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.1
+   ],
+   "params": {
+    "radius": 1.25,
+    "n": 8,
+    "z0": 10.0,
+    "height": 1.2,
+    "colour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     50
+    ]
+   },
+   "at": [
+    0,
+    29
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4623c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-corner",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d3b27e",
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.6,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#1c1c1e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f4a35",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stalls-r",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    12.5,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5a3d2c",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#e2d8c0"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    11,
+    -4.2,
+    2.7
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.6,
+    "colours": [
+     "#f4f0e6",
+     "#e4dcc8"
+    ]
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    16,
+    -4.2,
+    2.7
+   ],
+   "params": {
+    "width": 4,
+    "depth": 2.6,
+    "colours": [
+     "#f4f0e6",
+     "#e4dcc8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gateway now an open recessed passage with lit back wall; grille bars and carved lettering barely read at this camera; octagon window mostly buried in the step face; left building windows are plain rect without iron grilles; hall behind is generic, not the real multi-lobed outline"
+ }
+}

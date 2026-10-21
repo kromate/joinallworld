@@ -1,0 +1,449 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Beatriz_%C3%82ngelo.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/hba1.jpg",
+   "used": "low entrance block: pale grey render wall with open slot canopy, dark grey stone base panels, glazed doors, big Y-shaped concrete pier at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HBA_-_vista_lateral.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user",
+   "view": "side",
+   "file": "/tmp/places-evidence/lisbon/hba2.jpg",
+   "used": "stepped wards: pale render blocks with square punched windows and dark charcoal end towers, car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/510427026",
+   "used": "site is about 550 m wide: a 130 m core of wards is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "shiftX": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "plinth": 2.2,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b0ac",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-base",
+   "footprint": {
+    "rect": [
+     64.4,
+     14.4
+    ]
+   },
+   "at": [
+    -20,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4e52",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#3b3f43",
+      "#4a4e52",
+      "#33373b"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    10,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd9cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     16,
+     60
+    ]
+   },
+   "at": [
+    48,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd9cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-c",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    46
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d5cb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-tower-a",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -28,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4b4f53",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-tower-b",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    40,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4b4f53",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "car",
+   "id": "carpark",
+   "at": [
+    -20,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "trees",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -52
+    ],
+    "end": [
+     60,
+     -52
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lettering-band",
+   "at": [
+    -22,
+    -35.2,
+    5
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#2b2d30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot-canopy",
+   "at": [
+    -34,
+    -37,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "height": 0.7,
+    "colour": "#e0e0da"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "v-leg-l",
+   "at": [
+    14,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#c8c8c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       3
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8,
+      "rect": [
+       3,
+       3
+      ],
+      "cx": -2.5
+     },
+     {
+      "z": 15,
+      "rect": [
+       3.2,
+       3
+      ],
+      "cx": -6.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "v-leg-r",
+   "at": [
+    14,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#c8c8c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       3
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8,
+      "rect": [
+       3,
+       3
+      ],
+      "cx": 2.5
+     },
+     {
+      "z": 15,
+      "rect": [
+       3.2,
+       3
+      ],
+      "cx": 6.5
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Long low blank block, charcoal base, lettering band and two angled pale V legs at right end; V is smaller than photo, lettering is a dark bar, no glazed door bay, ward towers still boxy."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-clinic"
+}

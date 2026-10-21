@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-1333029322",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1333029322",
+   "used": "park outline (135 x 76 m, name match) for the extent; spring pool, big tree, rocks and a railed footpath placed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    12,
+    -6
+   ],
+   "params": {
+    "width": 16,
+    "depth": 10,
+    "shape": "oval",
+    "colour": "#6fa0a8"
+   }
+  },
+  {
+   "type": "grotto-rock",
+   "at": [
+    4,
+    2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.5,
+    "colour": "#8e8c86",
+    "statue": false
+   }
+  },
+  {
+   "type": "stadium/big-tree",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "crown_radius": 11,
+    "trunk_radius": 1.6,
+    "colour": "#4f7f3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "rail",
+    "height": 1.1,
+    "thickness": 0.12,
+    "pillarEvery": 2.5,
+    "colour": "#6b4a35",
+    "points": [
+     [
+      -10,
+      -12
+     ],
+     [
+      8,
+      -14
+     ],
+     [
+      22,
+      -10
+     ],
+     [
+      26,
+      -2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 0.4,
+    "count": 6,
+    "colour": "#9a9a92"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; spring, tree and rocks placed from the brief text only."
+ }
+}

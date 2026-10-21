@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-node-6368640905",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Renovirana_Zgrada_Muzi%C4%8Dke_Akademije_u_Sarajevu.jpg",
+   "licence": "GFDL",
+   "author": "Commons user Unitedman97",
+   "file": "/tmp/places-evidence/sarajevo/mus2.jpg",
+   "view": "street",
+   "used": "yellow rendered Secession-style corner block with a tall octagonal corner bay, string courses, arched and round windows, arched entrance with steps, granite plinth, small spire; file title identifies the Music Academy building"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/6368640905",
+   "used": "overall size only; massing composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc05a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "plinth": 2.0,
+    "bay": 3.6,
+    "cornice": true,
+    "bands": "#cfb04c",
+    "trimColour": "#e6d38a",
+    "glassColour": "#566472"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e6d6b",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-bay",
+   "params": {
+    "radius": 4.6,
+    "n": 8,
+    "z0": 0,
+    "height": 17,
+    "colour": "#dcc05a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "storeys": 4,
+    "plinth": 2.0,
+    "trimColour": "#e6d38a",
+    "topScale": 1.0,
+    "windowShape": "arched"
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bay-cap",
+   "params": {
+    "radius": 5.0,
+    "n": 8,
+    "z0": 17,
+    "height": 1.0,
+    "colour": "#cfb04c",
+    "topScale": 1.0
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bay-roof",
+   "params": {
+    "radius": 4.6,
+    "n": 8,
+    "z0": 18,
+    "height": 2.0,
+    "colour": "#6e6d6b",
+    "topScale": 0.35
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -12,
+    -2.5,
+    20.0
+   ],
+   "params": {
+    "baseWidth": 1.0,
+    "height": 4.5,
+    "sides": 4,
+    "colour": "#a7a39b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal",
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#e0c868",
+    "topScale": [
+     0.9,
+     1
+    ]
+   },
+   "at": [
+    -8.6,
+    -7.5,
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8.6,
+    -9.3,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b5ab98"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -3,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "string-0",
+   "params": {
+    "radius": 4.85,
+    "n": 8,
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#e6d38a",
+    "topScale": 1.0
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "string-1",
+   "params": {
+    "radius": 4.85,
+    "n": 8,
+    "z0": 8.4,
+    "height": 0.5,
+    "colour": "#e6d38a",
+    "topScale": 1.0
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "string-2",
+   "params": {
+    "radius": 4.85,
+    "n": 8,
+    "z0": 12.6,
+    "height": 0.5,
+    "colour": "#e6d38a",
+    "topScale": 1.0
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "granite-plinth",
+   "params": {
+    "radius": 4.8,
+    "n": 8,
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#8d8a84",
+    "topScale": 1.0
+   },
+   "at": [
+    -12,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hood",
+   "params": {
+    "rect": [
+     3.6,
+     1.4
+    ],
+    "z0": 4.4,
+    "height": 1.3,
+    "colour": "#7c8288",
+    "topScale": [
+     0.2,
+     1
+    ]
+   },
+   "at": [
+    -8.6,
+    -7.9,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   64,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "long wing invented behind corner bay; no relief pilasters; porthole, hood and bay roof simplified"
+ }
+}

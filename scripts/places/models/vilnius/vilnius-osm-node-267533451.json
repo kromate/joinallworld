@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-node-267533451",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1133892350",
+   "used": "containing building outline (wings in a zig-zag plan, 91 x 68 m, tag building=yes only)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vilnius.json#vilnius-osm-node-267533451",
+   "used": "four-storey concrete and brick faculty block, Soviet 1970s-80s, wooded Sauletekis campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.8,
+    "bands": "#a85a45",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#b8b6ae",
+      "#a85a45"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e5f63",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.0,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#b8b6ae"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    55,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; facade pattern and storey colours typed from brief"
+ }
+}

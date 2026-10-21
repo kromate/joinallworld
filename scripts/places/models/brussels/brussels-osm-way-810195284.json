@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-810195284",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13503761",
+   "used": "real stepped hospital outline (name match, ~135 x 79 m, 9,357 m2)"
+  },
+  {
+   "kind": "text",
+   "url": "https://fr.wikipedia.org/wiki/Institut_Jules_Bordet",
+   "used": "new Erasme-campus hospital opened Nov 2021, about 7 storeys, glazed and metal-clad; no photo of the new building was found (Commons only shows the old 1939 site on Rue Heger-Bordet, which was NOT used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "z0": 0,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c7d3da",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bay": 14,
+    "pattern": [
+     {
+      "type": "floors",
+      "colour": "#5f7886"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa2a7",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-room",
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "height": 4,
+    "colour": "#8b959c",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    0,
+    28
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant-room-2",
+   "params": {
+    "rect": [
+     18,
+     10
+    ],
+    "height": 3,
+    "colour": "#a2aab0",
+    "windows": "none"
+   },
+   "at": [
+    -35,
+    20,
+    28
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -60,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#d9dde0",
+    "columns": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    45,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -75,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "line": 40
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    80,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "line": 40
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the new building; outline simplified 3 m, facade typed as storey-banded glass and metal with no window cuts (budget); atrium and entrance canopy assumed"
+ }
+}

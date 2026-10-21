@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-way-674677959",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/674677959",
+   "used": "real 8-sided outline 191 x 126 m, 6 levels, grey roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c4c9",
+    "glassColour": "#7f98a6",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "bands": "#efe8d8",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9d4c6",
+       "#c9ced1"
+      ]
+     }
+    ],
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 9,
+    "height": 6,
+    "thickness": 0.8,
+    "columns": 4,
+    "colour": "#efe8d8",
+    "edgeColour": "#8fa3ad"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -50,
+    -64,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4,
+    "bottom": 18,
+    "colour": "#8fa3ad",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -75
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -85,
+     -60
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real outline and 6 levels from OSM, glazing and pale bands typed from comparable Baku malls; entrance side and atrium position unknown."
+ }
+}

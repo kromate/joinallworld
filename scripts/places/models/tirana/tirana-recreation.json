@@ -1,0 +1,439 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tirana_Zoo_Entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "BBB2021",
+   "view": "street",
+   "file": "/tmp/places-evidence/tirana/zoo_entrance.jpg",
+   "used": "entrance zone: long orange-brown glulam portal-frame pergola, grey low building behind, tall blank perimeter fence board along the pavement, planted verge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lion_in_the_zoo.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kevinalbania",
+   "view": "detail",
+   "used": "cage block character only: cream glazed-tile walls, pebble-faced concrete props (interior, not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/233519313",
+   "used": "zoo is 6 ha, 540 m long: outline too big for the scene clamp, so the entrance zone (about 60 m) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    8,
+    12
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4b7ba",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain"
+    },
+    "glassColour": "#3a4046"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cage-block",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    16
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -11,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -26,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "z0": 0,
+       "height": 5.2,
+       "colour": "#b8672e",
+       "topColour": "#c47a40"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       5
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "z0": 0,
+       "height": 7.0,
+       "colour": "#b8672e",
+       "topColour": "#c47a40"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         0.3,
+         0.45
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         5.2
+        ],
+        [
+         0,
+         5,
+         7.0
+        ]
+       ],
+       "colour": "#b8672e"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         0.2,
+         0.3
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         3.2
+        ],
+        [
+         0,
+         5,
+         6.2
+        ]
+       ],
+       "colour": "#b8672e"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         0.2,
+         0.3
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         6.0
+        ],
+        [
+         0,
+         5,
+         3.5
+        ]
+       ],
+       "colour": "#b8672e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -26,
+      -4.5,
+      5.6
+     ],
+     [
+      24,
+      -4.5,
+      5.6
+     ]
+    ],
+    "colour": "#b8672e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -26,
+      0,
+      6.4
+     ],
+     [
+      24,
+      0,
+      6.4
+     ]
+    ],
+    "colour": "#b8672e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.6,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "height": 1.5,
+    "bottom": 0.8,
+    "colour": "#1f2326",
+    "frameColour": "#1f2326",
+    "posts": false
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -7.6
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -7.6
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#5a8a3e"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -10,
+    -7.4
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colour": "#c4507a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -12,
+    -6.4
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colour": "#e0b030",
+    "hedge": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -9
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -9
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Raked monopitch glulam portal frames with braces and purlins, dark-lettered fence board (blank, no lettering), planted verge and zebra-less road added; no real zebra marking, hill backdrop absent, grey building behind still a simple block and cage block generic."
+ }
+}

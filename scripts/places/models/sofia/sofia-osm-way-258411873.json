@@ -1,0 +1,255 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GermanskiManastir.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Edal",
+   "view": "side",
+   "file": "/tmp/places-evidence/sofia/german.jpg",
+   "used": "church: rubble-stone nave with red clay-tile gable roof and white eaves band, three brick-arched windows with brown frames, white-rendered lower annex at left with a shed roof, dark lattice fence in front, white wing with wooden verandah at right, conifers behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/258411873",
+   "used": "identity only: precinct location; layout recomposed as a compact church with annex and verandah wing seen from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "church walls are lower and the stone texture is plain versus the mottled rubble; annex roof snow, window frames and fence lattice are simplified; wing and conifers are placed from the photo, not surveyed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a487",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 6.0,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#efece4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b55a3c",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     6.4,
+     7
+    ]
+   },
+   "at": [
+    -13.2,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 3.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#f4f4f2",
+    "material": "membrane",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    20,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2f0ea",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4f4f2",
+    "material": "membrane",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    20,
+    -3.4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 6,
+    "height": 3.0,
+    "radius": 0.1,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#5b3d28"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#25282a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -24,
+      -10
+     ],
+     [
+      34,
+      -10
+     ],
+     [
+      34,
+      12
+     ],
+     [
+      -24,
+      12
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#f2f5f8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    6,
+    10,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 6,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    7,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "count": 3,
+    "kind": "conifer",
+    "min_height": 9,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   44,
+   20
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-osm-way-258411873"
+}

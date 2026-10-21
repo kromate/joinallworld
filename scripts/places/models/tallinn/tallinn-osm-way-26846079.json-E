@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-26846079",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EE-TLN-HAABERSTI-Rocca_al_Mare.JPG",
+   "licence": "Public domain",
+   "author": "Dmitry G",
+   "view": "front across car park",
+   "file": "/tmp/places-evidence/tallinn/rocca1.jpg",
+   "used": "long low pale-render box with a dark black fascia band carrying blank signage, row of flagpoles, blue entrance block at right, dark glazed tower beyond, huge asphalt car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26846079",
+   "used": "overall size (382x182 m) and 2 levels; modelled as a 118 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     116,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "plain-render",
+    "colour": "#d9d6cb",
+    "windows": "none",
+    "plinth": 0.4,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "roof-flat",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     80,
+     2
+    ]
+   },
+   "at": [
+    -14,
+    -21
+   ],
+   "z0": 7,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "smooth-concrete",
+    "colour": "#1f2226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2226"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-entrance",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    34,
+    -23
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6fae",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    52,
+    24
+   ],
+   "height": 38,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-dark",
+    "colour": "#2c3036",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "array",
+   "of": {
+    "type": "flag",
+    "at": [
+     0,
+     0,
+     0
+    ],
+    "params": {
+     "height": 9
+    }
+   },
+   "line": {
+    "start": [
+     -52,
+     -26
+    ],
+    "end": [
+     -20,
+     -26
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    30,
+    -45,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "cars": 14,
+  "trees": 4,
+  "extent": [
+   150,
+   100
+  ]
+ }
+}

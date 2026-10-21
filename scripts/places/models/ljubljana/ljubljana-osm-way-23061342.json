@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-23061342",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/23061342",
+   "used": "real zig-zag plan of the hospital buildings (72 x 70 m, 2,495 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ljubljana.json",
+   "used": "specialty hospital, three storeys; cream stucco and red tile are the brief's typing for Ljubljana, no photo of the building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "fit": 80
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#b9a77f",
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a94c37",
+    "material": "clay-tile",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#d6d0c2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     25
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     35
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo; zig-zag OSM plan with flat roof (hip does not fit the irregular outline), cream render and ambulance bay from typing"
+ }
+}

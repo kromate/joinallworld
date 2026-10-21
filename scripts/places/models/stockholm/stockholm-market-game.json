@@ -1,0 +1,501 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:T%C3%A4by_centrum,_torget.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lindansaren",
+   "view": "street",
+   "used": "long pale cladding facade with diagonal dark metal X bracing, glazed ground storey, flat roof with vents, dark grey office block at left, paved square with dark stripes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/120864772",
+   "used": "name-quality match; outline is a 345 m irregular complex so the mall is composed as a long block with the glass-vaulted street behind it (brief: 260 x 110 m, 3 storeys)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     100,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4dbc6",
+    "windows": "none",
+    "groundKind": "curtain",
+    "groundHeight": 5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "size": [
+       3.5,
+       3
+      ],
+      "colours": [
+       "#e6ddc8",
+       "#d9cfb8",
+       "#ece4d2"
+      ],
+      "mode": "stripes-v",
+      "skipGround": true,
+      "proud": 0.05
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2a6a8",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "street-vault",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c2cd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#9fc0cc",
+    "material": "glass",
+    "rise": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -42,
+     0,
+     0
+    ],
+    "end": [
+     28,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "core/sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         0.7,
+         0.35
+        ]
+       },
+       "points": [
+        [
+         0,
+         -22.4,
+         5.2
+        ],
+        [
+         14,
+         -22.4,
+         15.6
+        ]
+       ],
+       "colour": "#4a4743"
+      }
+     },
+     {
+      "type": "core/sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         0.7,
+         0.35
+        ]
+       },
+       "points": [
+        [
+         14,
+         -22.4,
+         5.2
+        ],
+        [
+         0,
+         -22.4,
+         15.6
+        ]
+       ],
+       "colour": "#4a4743"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "corner-glass",
+   "footprint": {
+    "rect": [
+     10,
+     44
+    ]
+   },
+   "at": [
+    55,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a4d5a",
+    "windows": "none",
+    "windowRatio": 0.85,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9294",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    55,
+    -22.2,
+    12.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#25282b",
+    "frameColour": "#a2a6a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    55,
+    -24.5,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "height": 0.4,
+    "colour": "#9a9ea0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rooftop-plant",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    25,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcbd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea0",
+    "material": "membrane",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -68,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3f44",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#e8e8e6"
+     ],
+     "height": 1.1,
+     "at": 0.55,
+     "floors": [
+      1
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c3033",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park",
+   "footprint": {
+    "rect": [
+     26,
+     30
+    ]
+   },
+   "at": [
+    72,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#b9b4a8",
+      "#a39e92"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -28,
+    -22.1,
+    5.4
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#7f9aa8",
+    "frameColour": "#a2a6a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -36,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "of": {
+     "type": "core/lamp",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "height": 8
+     }
+    }
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     10,
+     -30,
+     0.02
+    ],
+    "end": [
+     10,
+     -52,
+     0.02
+    ],
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       110,
+       0.7
+      ],
+      "height": 0.05,
+      "colour": "#4b3f3a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -27
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -27
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "X bracing is drawn as thin bars rather than tapering panel joints; paving stripes only partly visible; glass corner is a plain tinted box without curve; dark office simplified; rear glass vault reduced"
+ }
+}

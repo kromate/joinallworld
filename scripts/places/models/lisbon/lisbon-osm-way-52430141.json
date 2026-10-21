@@ -1,0 +1,315 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-52430141",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/52430141",
+   "used": "campus boundary only (about 750 x 530 m site, not a building outline): used to choose a scattered-blocks plan, composed at about 100 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lisbon.json",
+   "used": "1970s Caparica campus: low faculty blocks of exposed concrete and render, canopy walkways, courtyards, a pavilion, pine shade. No photo of the buildings was found on Commons (only logos)."
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the real buildings exists in the evidence, so this is a plausible 1970s concrete-and-render campus cluster around a courtyard in pines, not a copy of the actual layout"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-north",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b9b3a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8f8a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e4ddd0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9a58f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    34,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b9b3a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8f8a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-south",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -10,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e4ddd0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9a58f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    20,
+    -24
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cbc5b9",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "canopy-walkway",
+   "at": [
+    -24,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 3.4,
+    "spans": 6,
+    "tower": false,
+    "rails": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 6,
+    "colour": "#bdb7ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-paving",
+   "params": {
+    "rect": [
+     48,
+     36
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#c9c3b6",
+    "topColour": "#c9c3b6"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 42,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 22,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 13,
+      "spread": 6
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     6
+    ],
+    "end": [
+     14,
+     6
+    ],
+    "count": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 9,
+      "spread": 5
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

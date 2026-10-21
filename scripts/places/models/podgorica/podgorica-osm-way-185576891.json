@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-185576891",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Montenegro_Faculty_of_Electrical_Engineering.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user Vanormi",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/m15-uni1.jpg",
+   "used": "a UoM faculty block: brutalist stepped boxes in dark brown-grey concrete, lower pale-edged entrance pavilion with dark glazed ground floor, cylindrical white stair core, two flagpoles, paved axis and plane trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Montenegro_Faculty_of_Biotechnology.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons user Vanormi",
+   "view": "street",
+   "file": "/tmp/places-evidence/podgorica/m15-uni2.jpg",
+   "used": "Yugoslav-era concrete frame with pale rendered walls and exposed grey pilotis, ribbon windows (colour and idiom only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28538070",
+   "used": "campus outline is a sprawling multi-wing complex (145 x 92 m); one representative block is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.78,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tier-2",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    0,
+    11
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#625247",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "glassColour": "#3a3f45",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7570",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier-3",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a4c43",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "glassColour": "#3a3f45",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7570",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     42,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5e4f45",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "glassColour": "#3a3f45",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f3337",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": false,
+    "glassColour": "#2a2f34"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.25,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -14.3,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.7
+    ],
+    "height": 1.5,
+    "colour": "#3e3631",
+    "topColour": "#3e3631"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-core",
+   "at": [
+    0,
+    -15.8,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "n": 16,
+    "height": 10.2,
+    "colour": "#f0eee8",
+    "topColour": "#f0eee8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "colour": "#c8242b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "colour": "#2c3f8f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "axis-path",
+   "at": [
+    0,
+    -33,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     8,
+     34
+    ],
+    "height": 0.06,
+    "colour": "#9a6a5c",
+    "topColour": "#9a6a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   110,
+   64
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -30
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -26
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -46
+    ],
+    "height": 21
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -16
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -14
+    ],
+    "height": 16
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stair core and fascia simplified; grass ground ends in grey pad outside extent; lawn/avenue trees low-poly; no pale slab on upper blocks"
+ }
+}

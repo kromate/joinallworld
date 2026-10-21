@@ -1,0 +1,473 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-relation-16017332",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:American_University_of_Armenia_(main_building)-June_2023.jpg",
+   "licence": "CC0",
+   "author": "Benoit Prieur",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/v11_0.jpg",
+   "used": "boxy 7-storey block in warm beige tuff, angled corner faces, tall pale vertical pilasters between dark glazed bays, projecting cornice, grey stone plinth with entrance glazing, broad grey stair in front, rooftop antennas and flagpole"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:American_University_of_Armenia_(neighborhood_view).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Serouj Ourishian",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yerevan/v11_2.jpg",
+   "used": "size against neighbours: about 7 storeys, flat roof, beige colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168360011",
+   "used": "footprint, rotated so its 32 m south-east face is the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.383,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -25.28,
+      24.3
+     ],
+     [
+      -11.9,
+      21.41
+     ],
+     [
+      -12.3,
+      19.3
+     ],
+     [
+      -3.73,
+      16.66
+     ],
+     [
+      2.06,
+      23.08
+     ],
+     [
+      13.95,
+      9.43
+     ],
+     [
+      21.65,
+      -3.15
+     ],
+     [
+      14.16,
+      -6.79
+     ],
+     [
+      14.92,
+      -16.61
+     ],
+     [
+      17.9,
+      -16.62
+     ],
+     [
+      16.89,
+      -31.79
+     ],
+     [
+      -15.11,
+      -31.67
+     ],
+     [
+      -33.18,
+      -7.57
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "z0": 4.4,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c4a0",
+    "windows": "punched",
+    "windowRatio": 0.6,
+    "bay": 4.2,
+    "glassColour": "#6a7f99",
+    "plinth": 0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.6,
+      "spacing": 4.2,
+      "colour": "#ece0c8",
+      "skipGround": true,
+      "margin": 0.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6e70",
+    "parapet": 0.9,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "polygon": [
+     [
+      -25.28,
+      24.3
+     ],
+     [
+      -11.9,
+      21.41
+     ],
+     [
+      -12.3,
+      19.3
+     ],
+     [
+      -3.73,
+      16.66
+     ],
+     [
+      2.06,
+      23.08
+     ],
+     [
+      13.95,
+      9.43
+     ],
+     [
+      21.65,
+      -3.15
+     ],
+     [
+      14.16,
+      -6.79
+     ],
+     [
+      14.92,
+      -16.61
+     ],
+     [
+      17.9,
+      -16.62
+     ],
+     [
+      16.89,
+      -31.79
+     ],
+     [
+      -15.11,
+      -31.67
+     ],
+     [
+      -33.18,
+      -7.57
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "stone",
+    "colour": "#7b7e82",
+    "windows": "punched",
+    "glassColour": "#7d93a8",
+    "windowRatio": 0.45,
+    "bay": 4.2,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6e70",
+    "parapet": 0.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "rise": 0.22,
+    "run": 0.8,
+    "count": 12,
+    "colour": "#5f6368"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1,
+    "colours": [
+     "#d90012",
+     "#0033a0",
+     "#f2a800"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.6,
+    "bottom": 4.1,
+    "colour": "#5c5f63",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      -15,
+      -32,
+      1.0
+     ],
+     [
+      -15,
+      -38,
+      1.0
+     ]
+    ],
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      15,
+      -32,
+      1.0
+     ],
+     [
+      15,
+      -38,
+      1.0
+     ]
+    ],
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      0,
+      -32,
+      1.0
+     ],
+     [
+      0,
+      -38,
+      1.0
+     ]
+    ],
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -10,
+      -8,
+      28.4
+     ],
+     [
+      -10,
+      -8,
+      37.4
+     ]
+    ],
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      -12,
+      28.4
+     ],
+     [
+      0,
+      -12,
+      35.4
+     ]
+    ],
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      6,
+      -20,
+      28.4
+     ],
+     [
+      6,
+      -20,
+      34.4
+     ]
+    ],
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      -10,
+      -30,
+      28.4
+     ],
+     [
+      -10,
+      -30,
+      30.4
+     ]
+    ],
+    "colour": "#d0b894"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fins/glazing lightened and steps, antennas, flagpole-scale details added; chamfered corner faces and stepped cornice not modelled; steps barely visible from camera"
+ }
+}

@@ -1,0 +1,669 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-144001459",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_de_Santa_Cruz.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Joao Filipe de Carvalho",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/hsc.jpg",
+   "used": "tall off-white slab tower with narrow window strips and cantilevered corner balconies, lower stepped wing with brown roof overhang and balconies, round banded drum at right, brick-based gatehouse kiosk, blank H sign, pines and broadleaf trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/144001459",
+   "used": "site extent only; the OSM way is the whole hospital grounds, so the main blocks are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 58,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     21,
+     15
+    ]
+   },
+   "at": [
+    6,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "punched",
+    "windowRatio": 0.035,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4ca",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    2,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    -16,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe6da",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4030",
+    "overhang": 2.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-top",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -13,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd8cc",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4030",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    29,
+    14,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#eeeae0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      11,
+      7.2,
+      "#eeeae0"
+     ],
+     [
+      11.6,
+      7.2,
+      "#d9d5ca"
+     ],
+     [
+      11.6,
+      7.8
+     ],
+     [
+      11,
+      7.8,
+      "#3d332c"
+     ],
+     [
+      11,
+      9.6
+     ],
+     [
+      11.8,
+      9.6,
+      "#eeeae0"
+     ],
+     [
+      11.8,
+      10.5
+     ],
+     [
+      0,
+      10.5,
+      "#e0dcd0"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-base",
+   "at": [
+    31,
+    16,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f0ece2",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      4,
+      "#f0ece2"
+     ],
+     [
+      0,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     9,
+     5.5
+    ]
+   },
+   "at": [
+    22,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 1.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c5a4a",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.2,
+    "bottom": 2.6,
+    "colour": "#f2f2ee",
+    "frameColour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    48,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -26,
+    -0.4,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "floors": 3,
+    "storeyHeight": 4.2,
+    "proud": 1.1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balc0",
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "height": 0.4,
+    "z0": 20,
+    "colour": "#e6e2d6"
+   },
+   "at": [
+    18,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    19.6,
+    -0.4,
+    20.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balc1",
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "height": 0.4,
+    "z0": 24,
+    "colour": "#e6e2d6"
+   },
+   "at": [
+    18,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    19.6,
+    -0.4,
+    24.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balc2",
+   "params": {
+    "rect": [
+     3.2,
+     5
+    ],
+    "height": 0.4,
+    "z0": 28,
+    "colour": "#e6e2d6"
+   },
+   "at": [
+    18,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    19.6,
+    -0.4,
+    28.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    28,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    24,
+    -21,
+    1.0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk-brick",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     5.9
+    ],
+    "height": 1.1,
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.4,
+    "bottom": 3.4,
+    "colour": "#f4f4f0",
+    "frameColour": "#2a5aa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cb22",
+   "at": [
+    16.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 0.35,
+    "z0": 22,
+    "colour": "#ece8de"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    14.8,
+    -4,
+    22.35
+   ],
+   "params": {
+    "length": 3.6,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cb26",
+   "at": [
+    16.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 0.35,
+    "z0": 26,
+    "colour": "#ece8de"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    14.8,
+    -4,
+    26.35
+   ],
+   "params": {
+    "length": 3.6,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cb30",
+   "at": [
+    16.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 0.35,
+    "z0": 30,
+    "colour": "#ece8de"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    14.8,
+    -4,
+    30.35
+   ],
+   "params": {
+    "length": 3.6,
+    "height": 1.0,
+    "colour": "#cfcac0"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower window strips and corner balconies are simplified; wing balcony bands are floating slabs; kiosk is a low stand-in with a blank H board; trees are generic"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     -15
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -56,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -2
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -4
+    ],
+    "height": 7
+   }
+  ]
+ }
+}

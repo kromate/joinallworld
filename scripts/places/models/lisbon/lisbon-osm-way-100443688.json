@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-100443688",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estc_edificio1.JPG",
+   "licence": "Public domain",
+   "author": "Pedro Azevedo",
+   "view": "detail",
+   "file": "/tmp/places-evidence/lisbon/estc2.jpg",
+   "used": "ochre textured render walls, white marble coping and steps, white tubular railings, small windowed stair tower on a plain upper volume; detail view only, no whole-building photo so not compared"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estc_auditorio.JPG",
+   "licence": "Public domain",
+   "author": "Pedro Azevedo",
+   "view": "interior",
+   "used": "interior only: confirms a raked auditorium (large windowless studio/auditorium volume); not modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/815886503",
+   "used": "real building outline, 80 x 52 m, on the Gregotti campus in Amadora"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b068",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#f1ece0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdc8bc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 9,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a35c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    6,
+    -4
+   ],
+   "z0": 9,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cba865",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f1ece0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a6",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -20,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#e6e0d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.06
+    },
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -27,
+      -27,
+      1.0
+     ],
+     [
+      -13,
+      -27,
+      1.0
+     ],
+     [
+      -13,
+      -27,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 0.6,
+    "colour": "#ece8de",
+    "frameColour": "#a8a8a4"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no whole-building exterior photo exists in the evidence; upper studio volume and stair tower placement are guesses from the brief and one detail photo; courtyard and flags omitted"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   80
+  ],
+  "cars": [
+   {
+    "at": [
+     -46,
+     -40
+    ],
+    "colour": "#b9bdc2"
+   },
+   {
+    "at": [
+     -40,
+     -40
+    ],
+    "colour": "#7a2f2f"
+   },
+   {
+    "at": [
+     -34,
+     -40
+    ],
+    "colour": "#34495e"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     24
+    ],
+    "height": 8
+   }
+  ]
+ }
+}

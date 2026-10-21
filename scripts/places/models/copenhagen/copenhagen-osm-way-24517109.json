@@ -1,0 +1,220 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waves_(Hundige_StorCenter)_2018_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Toxophilus",
+   "view": "interior",
+   "used": "interior only (not compared): white curved render walls, dark metal roller shutters, glazed roof lanterns, red and blue accents"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waves-shoppingcenter.png",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pain454",
+   "view": "detail",
+   "used": "curved blue canopy fascia over a glazed rotunda entrance, blank board (name not drawn)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24517109",
+   "used": "real 470 x 210 m outline, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-osm",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e3dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {},
+    "bands": {
+     "colour": "#4f86b8",
+     "height": 1.0
+    },
+    "plinth": 0.3,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     8
+    ],
+    "height": 3.2,
+    "colour": "#dfe8ea",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -8,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "height": 2.8,
+    "colour": "#dfe8ea",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    25,
+    -14,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 2.8,
+    "colour": "#dfe8ea",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      7,
+      0,
+      "#cfe3ee"
+     ],
+     [
+      7,
+      4.2,
+      "#cfe3ee"
+     ],
+     [
+      8,
+      4.2,
+      "#2f78b4"
+     ],
+     [
+      8,
+      6,
+      "#2f78b4"
+     ],
+     [
+      0,
+      6,
+      "#2f78b4"
+     ]
+    ],
+    "segments": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 40,
+  "trees": 4,
+  "cars": [
+   {
+    "at": [
+     -20,
+     -45
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -12,
+     -45
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -4,
+     -45
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     4,
+     -45
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     12,
+     -45
+    ],
+    "yawDeg": 90
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-24517109",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photos are interior only; massing from real OSM outline and typed colours; no exterior comparison possible"
+ }
+}

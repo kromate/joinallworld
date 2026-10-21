@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-18294000",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sokhumi_State_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anxiq",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/sokhumi.jpg",
+   "used": "seven-storey cream slab with full-height vertical piers and grouped ribbon windows, ochre parapet band on top, wide low two-storey stone base with entrance steps, blue sign board, hedges and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18294000",
+   "used": "not used for the plan: the mapped polygon is irregular and 198 m from the name point; rectangles follow the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdb29a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bay": 5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "z0": 5.2,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d2",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "bay": 4.7,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.45,
+      "spacing": 9.3,
+      "colour": "#f0ece0",
+      "margin": 0.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "top-band",
+   "at": [
+    2,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     28.6,
+     14.6
+    ],
+    "z0": 33.2,
+    "height": 2.6,
+    "colour": "#c9a45e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -18.2,
+    5.4
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.4,
+    "colour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 2.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     6
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -24
+    ],
+    "height": 3
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Tower slab, piers, ribbon windows, ochre parapet band and low stone base match; missing entrance portico detail, hedges, flags, neighbouring towers, blue sign board is blank."
+ }
+}

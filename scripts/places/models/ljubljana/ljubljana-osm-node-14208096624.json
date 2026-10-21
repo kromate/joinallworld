@@ -1,0 +1,88 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-node-14208096624",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28350525",
+   "used": "real 25-point outline of the Tobacna factory block (117 x 65 m), 3 levels, hipped roof"
+  },
+  {
+   "kind": "text",
+   "used": "brief: former tobacco factory, brick and render blocks with arched windows, chimney. The Commons geo photos nearby (graffiti door, tool wall, curtain) do not show the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "factory",
+   "footprint": {
+    "osm": true,
+    "simplify": 10
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8573d",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 20,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.0,
+    "bands": "#d9c9a0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a66",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "radius": 1.5,
+    "material": "brick"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No usable photo (nearby geo photos show other things); real outline, flat roof because the hip roof cannot follow the irregular outline, windows thinned for budget, no arches, chimney position guessed"
+ }
+}

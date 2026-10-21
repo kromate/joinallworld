@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/1137809",
+   "used": "real plan: a long folded wing complex about 616 x 317 m, scaled to the 112 m scene limit"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q2834644",
+   "used": "identity: shopping centre (Parque Corredor, Torrejon de Ardoz); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building found; walls, colours and heights are typical of an early-2000s Spanish mall, the outline is scaled to the scene clamp."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 112,
+    "simplify": 9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e0cfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "bay": 8,
+    "bands": "#b3562f",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.8,
+    "trimColour": "#f0ece2",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4,
+    "bottom": 9,
+    "colour": "#b3562f",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ],
+  "trees": []
+ }
+}

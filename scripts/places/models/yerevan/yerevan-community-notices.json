@@ -1,0 +1,650 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Assembly_of_Armenia.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Serouj Ourishian",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/par2.jpg",
+   "used": "symmetrical pink-orange tuff building: pedimented central pavilion with pilasters and a tall arched window, two pedimented end pavilions with dark basalt ground storeys and balconies, recessed linking bays, flagpole, grass terraces with conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1267676",
+   "used": "identity, 4 levels, 1950 (architect Mark Grigoryan); outline self-overlaps so only the overall width is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     30,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9a066",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.2,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a3f4a",
+    "plinth": 3,
+    "cornice": true,
+    "windowShape": "arched",
+    "pattern": []
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 26,
+    "colour": "#3a3a40",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    -50,
+    -1
+   ],
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9a066",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5.2,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a3f4a",
+    "plinth": 3,
+    "cornice": true,
+    "windowShape": "rect",
+    "pattern": []
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 26,
+    "colour": "#4b4a50",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    50,
+    -1
+   ],
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9a066",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5.2,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a3f4a",
+    "plinth": 3,
+    "cornice": true,
+    "windowShape": "rect",
+    "pattern": []
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 26,
+    "colour": "#4b4a50",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-l",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9a066",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5.2,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a3f4a",
+    "plinth": 3,
+    "cornice": true,
+    "windowShape": "rect",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "axis": "y",
+    "pitch": 20,
+    "colour": "#6f6d6e",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-r",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    27,
+    2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9a066",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5.2,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a3f4a",
+    "plinth": 3,
+    "cornice": true,
+    "windowShape": "rect",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "axis": "y",
+    "pitch": 20,
+    "colour": "#6f6d6e",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "basalt-l",
+   "params": {
+    "rect": [
+     22.4,
+     30.4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#6c6a6c"
+   },
+   "at": [
+    -50,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "basalt-r",
+   "params": {
+    "rect": [
+     22.4,
+     30.4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#6c6a6c"
+   },
+   "at": [
+    50,
+    -1
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 6,
+    "colour": "#b9b4ab"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 5,
+    "colour": "#b9b4ab"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colours": [
+     "#d90012",
+     "#0033a0",
+     "#f2a800"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -34
+    ],
+    "end": [
+     30,
+     -34
+    ],
+    "count": 4,
+    "lod1Step": 4,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -13,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -8,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -3,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    3,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    8,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#a8703a"
+   },
+   "at": [
+    13,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -59,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -53.5,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -46.5,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    -41,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    41,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    46.5,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    53.5,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     1.6,
+     1.8
+    ],
+    "z0": 3,
+    "height": 19,
+    "colour": "#a8703a"
+   },
+   "at": [
+    59,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-terrace",
+   "params": {
+    "rect": [
+     120,
+     8
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#5a8a3c"
+   },
+   "at": [
+    0,
+    -27
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-terrace2",
+   "params": {
+    "rect": [
+     120,
+     6
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#5a8a3c"
+   },
+   "at": [
+    0,
+    -33
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -24
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -24
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -24
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -24
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "pediments are plain dark gables (no oculus, no sculpted tympanum), pilasters are plain strips without capitals, window rhythm is generic, terraced lawn is two flat steps"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-community-notices"
+}

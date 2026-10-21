@@ -1,0 +1,355 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Magyar_T%C3%A1ncm%C5%B1v%C3%A9szeti_Egyetem,_Budapest_20180731.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ato 01",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/p3-246472477-0.jpg",
+   "used": "tall historic block clad in yellow brick with red brick panels and ornate gabled roofline, low plain yellow-cream rear wing, steel pergola canopy, iron fence on concrete wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/246472477",
+   "used": "60 x 24 m footprint, long axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "old",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#e0cf8e",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 1.0,
+    "cornice": true,
+    "windowShape": "rect",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a3c32"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55372f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc27a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 6,
+    "height": 3.6,
+    "colour": "#4a4e52"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    1.5
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "rail",
+    "pillarEvery": 8,
+    "colour": "#25282a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18.2,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.5,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#9a988f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-sign",
+   "at": [
+    -8,
+    -18.3,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#eef0f0",
+    "topColour": "#eef0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    14,
+    -12.6,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     20,
+     1.6
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#b5a574",
+    "topColour": "#b5a574"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "at": [
+    14,
+    -9.5,
+    18
+   ],
+   "params": {
+    "rect": [
+     13,
+     2.2
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#d9c98f",
+    "topColour": "#d9c98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-cap-l",
+   "at": [
+    9,
+    -9.5,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#d9c98f",
+    "topColour": "#8a3c32",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-cap-r",
+   "at": [
+    19,
+    -9.5,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#d9c98f",
+    "topColour": "#8a3c32",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-mid",
+   "at": [
+    14,
+    -9.5,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#c9b87c",
+    "topColour": "#5b3a33",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-tower",
+   "at": [
+    14,
+    -6,
+    18
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#c9b87c",
+    "topColour": "#5b3a33",
+    "topScale": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-l",
+   "at": [
+    10.5,
+    -12.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.25
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#8a3c32",
+    "topColour": "#8a3c32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-r",
+   "at": [
+    17.5,
+    -12.15,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.25
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#8a3c32",
+    "topColour": "#8a3c32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-246472477",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Red brick now limited to bands and framed strips on yellow-cream but ornament is simplified; attic is stepped caps and tower not the curved baroque gable; rear wing plain box; trees sparse"
+ }
+}

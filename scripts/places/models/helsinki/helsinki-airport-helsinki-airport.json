@@ -1,0 +1,267 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Helsinki_Airport_(17087444118).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Markus Trienke",
+   "view": "back",
+   "file": "/tmp/places-evidence/helsinki/0_0.jpg",
+   "used": "long low dark-glazed terminal with a flat roof, control tower and stub tower at the left end, green-glass block at the right end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Helsinki-Vantaa_Airport_new_terminal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "CedarGlen86",
+   "view": "front",
+   "used": "grey metal flat roof with raised wedge-shaped canopy edge and rooftop skylight, glazed ground floor"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.83,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal-main",
+   "footprint": {
+    "rect": [
+     80,
+     30
+    ]
+   },
+   "at": [
+    7,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#27323a",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f54",
+    "material": "metal-sheet",
+    "overhang": 3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-west",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    -50,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#27323a",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "overhang": 1.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-east",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    62,
+    -2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5c9484",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f54",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-gable",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    7,
+    2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3d46",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6368",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -66,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 17,
+    "style": "round",
+    "colour": "#aeb7bb",
+    "cabColour": "#4f6f6a",
+    "bandColour": "#2f3b44",
+    "shaftRadius": 3.4,
+    "cabRadius": 5.6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -57,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "style": "round",
+    "colour": "#aeb7bb",
+    "cabColour": "#4f6f6a",
+    "bandColour": "#2f3b44",
+    "shaftRadius": 2.2,
+    "cabRadius": 3
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -40,
+    -28,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f3f5f6",
+    "tailColour": "#f3f5f6"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f3f5f6",
+    "tailColour": "#f3f5f6"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    26,
+    -28,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f3f5f6",
+    "tailColour": "#f3f5f6"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    60,
+    -28,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f3f5f6",
+    "tailColour": "#f3f5f6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-airport-helsinki-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes already in spec (stout tower, 4 tail-fin aircraft, grey apron, green end block, raised glazed gable); remaining: aircraft shaded blue, no wedge canopy edge, no vehicles or jet bridges."
+ }
+}

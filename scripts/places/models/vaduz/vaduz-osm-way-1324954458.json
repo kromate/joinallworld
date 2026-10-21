@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-1324954458",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1324954458",
+   "used": "real outline of the herb garden (38 x 14 m strip at 40 deg bearing); no photo found, so beds, gravel and the small hut are typical of a herb garden"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15.1,
+      -8.2
+     ],
+     [
+      -4,
+      -17.3
+     ],
+     [
+      15.9,
+      16.3
+     ],
+     [
+      7.8,
+      16.5
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#cdbf99",
+    "slot": "paving-block"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    1.1,
+    1.65,
+    0
+   ],
+   "rotDeg": -36,
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 5,
+    "dx": 3.3,
+    "dy": 5.2,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.12
+      ],
+      "params": {
+       "rect": [
+        2.1,
+        4.2
+       ],
+       "height": 0.45,
+       "colour": "#8a6a45",
+       "material": "timber",
+       "slot": "timber-boards"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.57
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        3.9
+       ],
+       "height": 0.08,
+       "colour": "#55803f",
+       "slot": "grass"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.6
+    ]
+   },
+   "at": [
+    10.2,
+    14.2
+   ],
+   "rotDeg": -36,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b5a42",
+    "material": "timber-shingle",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15.1,
+      -8.2
+     ],
+     [
+      -4,
+      -17.3
+     ],
+     [
+      15.9,
+      16.3
+     ],
+     [
+      7.8,
+      16.5
+     ],
+     [
+      -15.1,
+      -8.2
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#7a6a4c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: beds, hut and fence are typical, not observed"
+ }
+}

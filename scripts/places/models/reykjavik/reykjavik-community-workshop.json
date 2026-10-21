@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: long three-storey 1960s concrete school block with ribbon windows, blue accents; OSM outline is the whole school plot (24,000 m2, not a single building) so not used as a mass"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     100,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.4,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-w",
+   "footprint": {
+    "rect": [
+     7,
+     17
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c3c3bc",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-e",
+   "footprint": {
+    "rect": [
+     7,
+     17
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c3c3bc",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3f6f9a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3a44",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gym",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    10,
+    34
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d6d0",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5a63",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3c4650",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3,
+    "height": 3.6,
+    "form": "flat",
+    "colour": "#3f6f9a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found (Commons search rate-limited); size, wings and colours from the brief only."
+ }
+}

@@ -1,0 +1,981 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mansard is a true slate roof on the real outline but with small gabled, not arched, dormers; balconies are plain bands; cypresses are slim revolves; balustraded terrace wall, statues and potted palms are small stand-ins; wall shows no carved ornament."
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fa%C3%A7ade_Hotel_Metropole_Monte-Carlo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hotel Metropole Monte-Carlo",
+   "view": "side",
+   "file": "/tmp/places-evidence/monaco/metro2.jpg",
+   "used": "warm cream limestone walls with tall French windows, small iron balconies, balustraded terraces, grey-blue slate mansard roof with arched dormers, cypress and palm planting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94399793",
+   "used": "real building outline (containing match, 77 x 55 m, rotated 35 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 0.714,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 14
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e4c994",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 11,
+    "plinth": 0.8,
+    "cornice": true,
+    "windowShape": "rect",
+    "trimColour": "#f3e8cc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7684",
+    "material": "slate",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mansard",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -43.7,
+      -17.5
+     ],
+     [
+      -39,
+      -20.8
+     ],
+     [
+      -42.7,
+      -26
+     ],
+     [
+      -37.7,
+      -29.6
+     ],
+     [
+      -35.4,
+      -26.3
+     ],
+     [
+      -29.3,
+      -30.1
+     ],
+     [
+      -0.8,
+      9.9
+     ],
+     [
+      11.8,
+      0.9
+     ],
+     [
+      -6.9,
+      -23.5
+     ],
+     [
+      9.7,
+      -36.2
+     ],
+     [
+      39.3,
+      4.5
+     ],
+     [
+      38.1,
+      10.7
+     ],
+     [
+      -0.8,
+      35.2
+     ],
+     [
+      -7.3,
+      33.6
+     ]
+    ],
+    "z0": 21,
+    "height": 4.8,
+    "topScale": 0.8,
+    "colour": "#5b6677",
+    "material": "slate",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mansard-cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -43.7,
+      -17.5
+     ],
+     [
+      -39,
+      -20.8
+     ],
+     [
+      -42.7,
+      -26
+     ],
+     [
+      -37.7,
+      -29.6
+     ],
+     [
+      -35.4,
+      -26.3
+     ],
+     [
+      -29.3,
+      -30.1
+     ],
+     [
+      -0.8,
+      9.9
+     ],
+     [
+      11.8,
+      0.9
+     ],
+     [
+      -6.9,
+      -23.5
+     ],
+     [
+      9.7,
+      -36.2
+     ],
+     [
+      39.3,
+      4.5
+     ],
+     [
+      38.1,
+      10.7
+     ],
+     [
+      -0.8,
+      35.2
+     ],
+     [
+      -7.3,
+      33.6
+     ]
+    ],
+    "z0": 25.8,
+    "height": 0.4,
+    "topScale": 0.0,
+    "colour": "#555f6d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    15.7,
+    -28.1,
+    21.2
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    20.1,
+    -22.0,
+    21.2
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    24.6,
+    -15.9,
+    21.2
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    29.0,
+    -9.8,
+    21.2
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    33.5,
+    -3.7,
+    21.2
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    30.4,
+    15.7,
+    21.2
+   ],
+   "rotDeg": 148,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    24.5,
+    19.4,
+    21.2
+   ],
+   "rotDeg": 148,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    18.7,
+    23.0,
+    21.2
+   ],
+   "rotDeg": 148,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    12.9,
+    26.7,
+    21.2
+   ],
+   "rotDeg": 148,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    7.0,
+    30.4,
+    21.2
+   ],
+   "rotDeg": 148,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    -23.5,
+    -22.2,
+    21.2
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    -19.2,
+    -16.2,
+    21.2
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    -15.0,
+    -10.2,
+    21.2
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    -10.7,
+    -4.2,
+    21.2
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "dormer",
+   "lod": [
+    0
+   ],
+   "at": [
+    -6.4,
+    1.8,
+    21.2
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 1.8,
+    "depth": 1.1,
+    "height": 2.2,
+    "colour": "#e9dcc0",
+    "roof_colour": "#5f6a7a",
+    "roof_material": "slate"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "lod": [
+    0
+   ],
+   "at": [
+    24.5,
+    -15.9,
+    0
+   ],
+   "rotDeg": 54,
+   "params": {
+    "length": 40,
+    "floors": 4,
+    "storeyHeight": 3.5,
+    "proud": 0.9,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "lod": [
+    0
+   ],
+   "at": [
+    18.7,
+    23.0,
+    0
+   ],
+   "rotDeg": 148,
+   "params": {
+    "length": 37,
+    "floors": 4,
+    "storeyHeight": 3.5,
+    "proud": 0.9,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    2.4,
+    -11.3,
+    0
+   ],
+   "rotDeg": -127,
+   "params": {
+    "length": 24,
+    "height": 1.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.7,
+    -1.8,
+    1.3
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#eee6d2"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "lod": [
+    0
+   ],
+   "at": [
+    2.4,
+    -11.3,
+    1.3
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#eee6d2"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "lod": [
+    0
+   ],
+   "at": [
+    -4.8,
+    -20.8,
+    1.3
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#eee6d2"
+   }
+  },
+  {
+   "type": "awning",
+   "lod": [
+    0
+   ],
+   "at": [
+    2.4,
+    -11.3,
+    0
+   ],
+   "rotDeg": -127,
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 3,
+    "colours": [
+     "#f1ebdb",
+     "#f1ebdb"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.5,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.5,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.5,
+    "spread": 3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20.5,
+    -31.6,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    24.9,
+    -25.5,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    29.4,
+    -19.4,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    33.8,
+    -13.3,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14,
+    -35,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    38,
+    -7,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a4a2c",
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a2a1c"
+     ],
+     [
+      0.2,
+      1.0
+     ],
+     [
+      0.9,
+      2.5,
+      "#2a4a2c"
+     ],
+     [
+      1.15,
+      8
+     ],
+     [
+      0.95,
+      15
+     ],
+     [
+      0.5,
+      19
+     ],
+     [
+      0,
+      21
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -5.2,
+     -29.9
+    ],
+    "height": 5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -1.0,
+     -33.0
+    ],
+    "height": 5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     3.1,
+     -36.2
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-node-4354597820"
+}

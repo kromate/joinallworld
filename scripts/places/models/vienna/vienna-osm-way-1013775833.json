@@ -1,0 +1,468 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-way-1013775833",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Restaurant_Luftburg_Kolarik_im_Prater_Frontansicht_1995.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kolarik im Prater",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/luft.jpg",
+   "used": "entrance gate with big blank sign board between teal posts, gravel and red-brick path to a small chalet restaurant: cream ground floor with veranda, dark vertical-boarded gable with white stripes, white beer-garden umbrellas, teal kiosk on the right, chestnut trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1013775833",
+   "used": "identity and extent only (outline is the whole garden, 113 x 94 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.25
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcae",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dcae",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-gable",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "rotDeg": 90,
+   "z0": 4.4,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3b4046",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "rect",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "width": 0.35,
+      "depth": 0.1,
+      "spacing": 1.1,
+      "colour": "#f1eee6",
+      "margin": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f55",
+    "material": "slate",
+    "pitch": 52,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    3.6
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a4636",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3b30",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-right",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    11,
+    10
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8604a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    11,
+    -5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a6b73",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "rect",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#bfe0e0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f1f1ee",
+      "height": 0.5,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5560",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 8.4,
+    "colour": "#1f5560"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -15,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 8.4,
+    "colour": "#1f5560"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     5,
+     24
+    ],
+    "height": 0.05,
+    "colour": "#a85a4a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 3,
+    "dx": 6,
+    "dy": 5,
+    "centred": true,
+    "lod1Step": 2,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "profile": [
+       [
+        0.06,
+        0
+       ],
+       [
+        0.06,
+        2.2
+       ],
+       [
+        1.4,
+        2.5,
+        "#f2efe6"
+       ],
+       [
+        0.1,
+        3.0,
+        "#f2efe6"
+       ]
+      ],
+      "colour": "#8a6a4a",
+      "segments": 8
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 1.6,
+    "thickness": 0.2,
+    "colour": "#1f5560"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -15,
+    7.6
+   ],
+   "params": {
+    "colour": "#f4f1e8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       18,
+       0.6
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       18,
+       0.6
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       5,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.2,
+    -15,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.7
+    ],
+    "height": 3.2,
+    "colour": "#c4352b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.2,
+    -15,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.7
+    ],
+    "height": 3.2,
+    "colour": "#c4352b"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 16,
+    "min_height": 13,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 7,
+    "dy": 6,
+    "centred": true,
+    "of": {
+     "type": "table-set",
+     "params": {
+      "chairs": 4
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     24
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     24
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Gabled white sign with red end panels now dominates; chalet narrowed to a two-storey cream/dark gable, teal glazed kiosk and dense tree backdrop added. Still missing the chain-link gate leaves, lamps, hedges/planters; teal fence wall too heavy; tree style low-poly."
+ }
+}

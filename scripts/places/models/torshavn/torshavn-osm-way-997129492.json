@@ -1,0 +1,87 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-997129492",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/997129492",
+   "used": "real 25,000 m2 campus outline (name match Glasir, amenity=college) including the long wings and courtyard notches; OSM level tag 6 on the sibling way, brief says a glazed Nordic school block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "college",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c7ccce",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#5f7a8c",
+    "bay": 6,
+    "plinth": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c7ccce",
+      "#eeeeea"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6e72",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#eeeeea",
+    "frameColour": "#5f7a8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "groundColour": "#a9a9a4",
+  "forecourt": "none",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found (Commons search rate-limited and nothing listed for Glasir): real OSM outline only, scaled 0.75 to fit; height, storeys and glazing are from the brief, not seen"
+ }
+}

@@ -1,0 +1,290 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-59305144",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Castillo_La_Rocca_o_Guaita,_San_Marino.jpg",
+   "licence": "CC BY 2.0",
+   "author": "lumiere",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-marino/59305144_1.jpg",
+   "used": "first tower: grey limestone ashlar, tall square shaft with a few small slit windows, corbelled machicolation under a merloned parapet, small tiled cabin on top, battlemented curtain walls beside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fortress_of_Guaita_-_First_Tower_(San_Marino).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commonists",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-marino/59305144_0.jpg",
+   "used": "stonework colour and the flared base of the tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/59305144",
+   "used": "footprint of the double curtain wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "curtain",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89d86",
+    "windows": "none",
+    "plinth": 1.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8573",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keep-shaft",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    14,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a089",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a089"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "keep-corbel",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 24,
+    "height": 1.0,
+    "topScale": 1.0,
+    "colour": "#a9a089",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "keep-corbel-arch",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     15
+    ],
+    "z0": 24.5,
+    "height": 3.0,
+    "topScale": 1.0,
+    "colour": "#a9a089",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 1.4
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    14,
+    -10,
+    27.5
+   ],
+   "params": {
+    "length": 15,
+    "depth": 15,
+    "height": 1.1,
+    "merlon": 1.1,
+    "gap": 0.9,
+    "colour": "#a9a089"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    -1,
+    -6,
+    10
+   ],
+   "params": {
+    "length": 20,
+    "depth": 0,
+    "height": 1.1,
+    "merlon": 1.2,
+    "gap": 1.0,
+    "colour": "#a89d86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keep-cabin",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    14,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 27.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a089",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a891",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 2.2,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 10,
+    "colour": "#9a9078"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -10,
+    30.8
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "taller keep with bold corbel course and merloned curtain added; flared battered base, ashlar coursing and the second wall run simplified"
+ }
+}

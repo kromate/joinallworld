@@ -1,0 +1,414 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tivoli_-_Gr%C3%B8ften.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Leif Jorgensen",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/246489323_1.jpg",
+   "used": "low glazed garden pavilion: dark brown timber frame, glass walls, long low dark-grey metal roof with a raised clerestory ridge, projecting gabled entrance bay at right with a blank sign board, planters and a low kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gr%C3%B8ften_(Tivoli).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Orf3us",
+   "view": "detail",
+   "file": "/tmp/places-evidence/copenhagen/246489323_0.jpg",
+   "used": "gabled entrance porch with open timber posts, bulb-lit rafters, standing-seam metal roof, terrace roof on posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/246489323",
+   "used": "27 x 14 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining-hall",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2a20",
+    "glassColour": "#eaf4f6",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f666b",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     17,
+     8
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.2,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3b2d24",
+    "glassColour": "#eaf4f6",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f666b",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    11,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2a20",
+    "glassColour": "#eaf4f6",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f666b",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.2,
+    -4.9,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 1.1,
+    "colour": "#c23a30"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -5.7,
+     0
+    ],
+    "end": [
+     9,
+     -5.7,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 3.0,
+      "colour": "#3b2d24"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -6.4,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     20,
+     2.2
+    ],
+    "height": 0.18,
+    "colour": "#5f666b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -5.75,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.12
+    ],
+    "height": 0.1,
+    "colour": "#3b2d24"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -7.4,
+     0
+    ],
+    "end": [
+     8,
+     -7.4,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.8
+      ],
+      "height": 0.6,
+      "colour": "#6b5444"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -7.4,
+     0.6
+    ],
+    "end": [
+     8,
+     -7.4,
+     0.6
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.3,
+       0.7
+      ],
+      "height": 0.8,
+      "colour": "#4f8a3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11.5,
+     -7.5,
+     1.05
+    ],
+    "end": [
+     8.5,
+     -7.5,
+     1.05
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 0.3,
+      "colour": "#e0a030"
+     }
+    }
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -12,
+    -6.0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.7,
+    "count": 24
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -7.2,
+     0
+    ],
+    "end": [
+     9,
+     -7.2,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 3.0,
+      "colour": "#3a2a20"
+     }
+    }
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -12,
+    -7.1,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.8,
+    "count": 36
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   44,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-246489323",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glass renders dark; sign small on ridge; planters and bulb strings crude; trees and wide ground plane"
+ }
+}

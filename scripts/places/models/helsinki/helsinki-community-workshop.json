@@ -1,0 +1,159 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roihuvuori_library.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Htm",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/4_1.jpg",
+   "used": "two-storey dark red-brown brick block, flat roof with red-brown fascia, two bands of ribbon windows with white frames, timber double door, round rust-coloured stair tower at the left end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/16189641",
+   "used": "footprint 23 x 15 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.78,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     23,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a4535",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "faces": {
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#9fb4b8",
+    "plinth": 1.0,
+    "trimColour": "#e2e0d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3b2c",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13.5,
+    -1,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3,
+      0,
+      "#8a3f2a"
+     ],
+     [
+      3,
+      8.8,
+      "#8a3f2a"
+     ],
+     [
+      0.01,
+      8.8,
+      "#7a3b2c"
+     ]
+    ],
+    "segments": 16,
+    "colour": "#8a3f2a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -7,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#8e9093"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 3.2,
+    "colour": "#e9e6dd",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     5
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Tower slightly too wide and brick-textured vs rust steel; windows grouped differently; side door, low sill windows and wooden entrance doors missing."
+ }
+}

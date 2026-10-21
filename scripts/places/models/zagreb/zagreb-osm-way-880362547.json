@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-880362547",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ekonomski_fakultet_Zg_0807.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "SpeedyGonsales",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/econ.jpg",
+   "used": "five-storey cream rendered block, regular punched window pairs in grid, glazed ground-floor entrance hall with canopy edge, flat roof with parapet and small roof setback; park trees and gravel path in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15461905",
+   "used": "main outline, about 135 x 102 m, reduced"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 35,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d0",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 5.4,
+    "plinth": 0.4,
+    "groundKind": "glass",
+    "groundHeight": 4.2,
+    "bands": "#bdb59c",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    },
+    "cornice": "#7d7a73"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7170",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-setback",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 19,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dec8",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8d8c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -61,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 5,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#8d8a82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -80
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -75
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -78
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -70
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "distant view through trees; ground hall glazed and front/left windows added, roof setback and canopy approximate; window density thinned to meet triangle budget"
+ }
+}

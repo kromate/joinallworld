@@ -1,0 +1,425 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chalet_de_la_For%C3%AAt.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GdML",
+   "view": "side",
+   "file": "/tmp/places-evidence/brussels/chalet.jpg",
+   "used": "white painted brick upper storey with tall arched windows, red clay-tile roof with skylights, low glazed zinc-roofed veranda along the front, balustraded balcony at the left, grey parasols and round timber tables on the paved terrace, clipped box trees in terracotta pots"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/225203726",
+   "used": "footprint 35 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "punched"
+    },
+    "bay": 10,
+    "plinth": 0.5,
+    "cornice": true,
+    "glassColour": "#b9c9c3",
+    "trimColour": "#d8d5cc"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     28,
+     5
+    ]
+   },
+   "at": [
+    1,
+    -5.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#f7f7f3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#e4eeea",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a4aaa8",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 9,
+    "radius": 1.6,
+    "height": 2.8,
+    "colours": [
+     "#6e6a63"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3,
+    "count": 3,
+    "spread": 6,
+    "colour": "#4d6b3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    -2,
+    6
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#e8e8e2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    -0.6,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "height": 0.15,
+    "colour": "#9fb5c2"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6,
+    -0.6,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "height": 0.15,
+    "colour": "#9fb5c2"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -9.5
+    ],
+    "end": [
+     10,
+     -9.5
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.95,
+       "n": 12,
+       "z0": 0.8,
+       "height": 2.6,
+       "colour": "#4d6b3c",
+       "topScale": 0.9
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -9.5
+    ],
+    "end": [
+     10,
+     -9.5
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 0.6,
+       "n": 10,
+       "height": 0.8,
+       "colour": "#b5654a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14.5,
+    -3.5,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.0
+    ],
+    "height": 0.2,
+    "colour": "#e8e8e2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -4.8,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#dfe6e0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 0.85,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#b5a58f"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 0.85,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#b5a58f"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 0.85,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#b5a58f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     16
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -16
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Balcony balustrade sits behind the wing and is barely visible; skylights are flat patches; box trees are plain cylinders, tables are low discs without chairs; real terrace is seen through foliage; no chalet lettering (by rule)"
+ }
+}

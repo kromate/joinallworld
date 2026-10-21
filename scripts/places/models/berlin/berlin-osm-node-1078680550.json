@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-node-1078680550",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%BClowpyramide.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sam4000",
+   "view": "front",
+   "used": "fieldstone pyramid on a low square base course on a grassy mound, proportions (height about 1.3 x base), hedge and trees around, fields behind",
+   "file": "/tmp/places-evidence/berlin/b5-bulow.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1408204498",
+   "used": "base footprint 5.6 x 5.2 m (nearest match, 43 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": -0.6,
+  "fit": "building",
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "hill",
+   "params": {
+    "radius": 15,
+    "n": 24,
+    "height": 1.2,
+    "topScale": 0.85,
+    "colour": "#8c8f4c",
+    "material": "grass",
+    "topColour": "#8c8f4c"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base-course",
+   "params": {
+    "rect": [
+     9,
+     8.6
+    ],
+    "height": 0.8,
+    "colour": "#4a3f3a"
+   },
+   "at": [
+    0,
+    0,
+    1.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course0",
+   "params": {
+    "rect": [
+     8.82,
+     8.4
+    ],
+    "height": 1.5,
+    "topScale": 0.875,
+    "colour": "#8d7b6b",
+    "topColour": "#8d7b6b"
+   },
+   "at": [
+    0,
+    0,
+    2.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course1",
+   "params": {
+    "rect": [
+     7.717500000000001,
+     7.3500000000000005
+    ],
+    "height": 1.5,
+    "topScale": 0.8571428571428571,
+    "colour": "#756a5f",
+    "topColour": "#756a5f"
+   },
+   "at": [
+    0,
+    0,
+    3.45
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course2",
+   "params": {
+    "rect": [
+     6.615000000000001,
+     6.300000000000001
+    ],
+    "height": 1.5,
+    "topScale": 0.8333333333333334,
+    "colour": "#9a8874",
+    "topColour": "#9a8874"
+   },
+   "at": [
+    0,
+    0,
+    4.9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course3",
+   "params": {
+    "rect": [
+     5.5125,
+     5.25
+    ],
+    "height": 1.5,
+    "topScale": 0.8,
+    "colour": "#7d6f62",
+    "topColour": "#7d6f62"
+   },
+   "at": [
+    0,
+    0,
+    6.35
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course4",
+   "params": {
+    "rect": [
+     4.41,
+     4.2
+    ],
+    "height": 1.5,
+    "topScale": 0.75,
+    "colour": "#8a7866",
+    "topColour": "#8a7866"
+   },
+   "at": [
+    0,
+    0,
+    7.8
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course5",
+   "params": {
+    "rect": [
+     3.3075000000000006,
+     3.1500000000000004
+    ],
+    "height": 1.5,
+    "topScale": 0.6666666666666666,
+    "colour": "#6f655b",
+    "topColour": "#6f655b"
+   },
+   "at": [
+    0,
+    0,
+    9.25
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course6",
+   "params": {
+    "rect": [
+     2.205,
+     2.1
+    ],
+    "height": 1.5,
+    "topScale": 0.5,
+    "colour": "#94826f",
+    "topColour": "#94826f"
+   },
+   "at": [
+    0,
+    0,
+    10.7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course7",
+   "params": {
+    "rect": [
+     1.1025,
+     1.05
+    ],
+    "height": 1.5,
+    "topScale": 0.0,
+    "colour": "#7a6d60",
+    "topColour": "#7a6d60"
+   },
+   "at": [
+    0,
+    0,
+    12.15
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pyramid-lod2",
+   "params": {
+    "rect": [
+     8.8,
+     8.4
+    ],
+    "height": 12,
+    "topScale": 0.02,
+    "colour": "#85766a"
+   },
+   "at": [
+    0,
+    0,
+    2.0
+   ],
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "params": {
+    "rect": [
+     14,
+     3.5
+    ],
+    "height": 2.6,
+    "colour": "#3f5f2c"
+   },
+   "at": [
+    6,
+    -8,
+    1.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "rect": [
+     40,
+     3
+    ],
+    "height": 0.05,
+    "colour": "#6b6a68"
+   },
+   "at": [
+    10,
+    -18,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -10
+    ],
+    "height": 24
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fieldstone is banded colour courses not cobbles, huge poplar is a generic tree, mound is a low disc with a lighter top ring, hedge is a plain block, no leaf litter or background fields."
+ }
+}

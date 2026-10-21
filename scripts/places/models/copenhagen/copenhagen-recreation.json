@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Looking_Into_the_Light.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mikael Hansen / Wikimedia Commons user",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/c20_farum1.jpg",
+   "used": "sculpture pair 'Se ind i lyset': two rough dark granite spheres with polished dished tops, on a sand-coloured gravel bed in a granite-kerbed terrace"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4787514",
+   "used": "real park outline as the lawn plate; sculpture count (eight) from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 16,
+  "fovDeg": 30,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0,
+    "fit": 110
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f8c5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8c5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "granite-kerb",
+   "at": [
+    0,
+    2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     62,
+     36
+    ],
+    "height": 0.5,
+    "colour": "#9a978e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gravel-bed",
+   "at": [
+    0,
+    2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     58,
+     32
+    ],
+    "height": 0.55,
+    "colour": "#b8a88a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    -4,
+    1.05
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4b4d52",
+    "profile": [
+     [
+      0.3,
+      0.09499999999999997
+     ],
+     [
+      0.65,
+      0.115
+     ],
+     [
+      1.221,
+      0.445
+     ],
+     [
+      1.645,
+      0.95
+     ],
+     [
+      1.871,
+      1.57
+     ],
+     [
+      1.871,
+      2.23
+     ],
+     [
+      1.645,
+      2.85
+     ],
+     [
+      1.221,
+      3.355
+     ],
+     [
+      0.65,
+      3.685
+     ],
+     [
+      1.04,
+      3.53,
+      "#15171b"
+     ],
+     [
+      0.01,
+      3.42,
+      "#15171b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4,
+    -6,
+    1.05
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4b4d52",
+    "profile": [
+     [
+      0.3,
+      0.1050000000000002
+     ],
+     [
+      0.718,
+      0.127
+     ],
+     [
+      1.35,
+      0.491
+     ],
+     [
+      1.819,
+      1.05
+     ],
+     [
+      2.068,
+      1.735
+     ],
+     [
+      2.068,
+      2.465
+     ],
+     [
+      1.819,
+      3.15
+     ],
+     [
+      1.35,
+      3.709
+     ],
+     [
+      0.718,
+      4.073
+     ],
+     [
+      1.16,
+      3.91,
+      "#15171b"
+     ],
+     [
+      0.01,
+      3.78,
+      "#15171b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-building",
+   "footprint": {
+    "rect": [
+     56,
+     10
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 0.5,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#bfa974",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "trimColour": "#5f7a68",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f6c",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cloud",
+   "at": [
+    9.0,
+    -18.0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -3
+     ],
+     [
+      4,
+      -3.5
+     ],
+     [
+      5.5,
+      0
+     ],
+     [
+      3,
+      3.5
+     ],
+     [
+      -3,
+      3
+     ],
+     [
+      -5,
+      0
+     ]
+    ],
+    "height": 3.4,
+    "topScale": 0.6,
+    "colour": "#8d8a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "meditative-place",
+   "at": [
+    29.0,
+    -17.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.9,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clair-de-lune",
+   "at": [
+    -26.0,
+    11.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.9
+    ],
+    "height": 4.8,
+    "topScale": 0.7,
+    "colour": "#b3b0a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "earth-weaving",
+   "at": [
+    36,
+    14,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -1
+     ],
+     [
+      4,
+      -1.5
+     ],
+     [
+      4.5,
+      1
+     ],
+     [
+      -3.5,
+      1.5
+     ]
+    ],
+    "height": 1.4,
+    "colour": "#7a7770"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water-bearer",
+   "at": [
+    -34,
+    22,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.6,
+    "topScale": 0.5,
+    "colour": "#6e6c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bulls",
+   "at": [
+    28.0,
+    2.5,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -2.5,
+      -1
+     ],
+     [
+      2.5,
+      -1
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      -2,
+      1.4
+     ]
+    ],
+    "height": 1.8,
+    "topScale": 0.7,
+    "colour": "#5a5a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "playful-waves",
+   "at": [
+    -29.0,
+    -15.0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -1
+     ],
+     [
+      3,
+      -1.4
+     ],
+     [
+      3.5,
+      1
+     ],
+     [
+      -2.5,
+      1.2
+     ]
+    ],
+    "height": 1.2,
+    "colour": "#9a978e"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-e",
+   "at": [
+    44,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 20,
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Spheres now round ~2 m dark granite with dark dished insets (not tilted, enlarged for legibility); sand bed and granite kerb enlarged; yellow-brick block with green trim, awnings and round holes omitted; other seven sculptures placed from names"
+ }
+}

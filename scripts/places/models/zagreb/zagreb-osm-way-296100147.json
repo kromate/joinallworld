@@ -1,0 +1,250 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/296100147",
+   "used": "real ground outline (125 x 82 m, bearing 162 deg), drawn at 0.9 scale to fit the 118 m scene clamp; stand placed on the long east side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52.6,
+      42.1
+     ],
+     [
+      -17.6,
+      -65.0
+     ],
+     [
+      52.6,
+      -41.0
+     ],
+     [
+      18.0,
+      64.2
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#5a8f3a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -49.1,
+      39.3
+     ],
+     [
+      -16.4,
+      -60.6
+     ],
+     [
+      49.1,
+      -38.3
+     ],
+     [
+      16.8,
+      59.9
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.05,
+    "colour": "#6aa044",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     -44
+    ],
+    "end": [
+     22,
+     56
+    ],
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.85,
+    "firstHeight": 0.5,
+    "seatColour": "#2f5d3c",
+    "seatColours": [
+     "#2f5d3c",
+     "#c2beb5"
+    ],
+    "blocks": 3,
+    "concreteColour": "#c2beb5",
+    "under": "solid",
+    "backWall": 0.6,
+    "canopy": {
+     "height": 5.2,
+     "depth": 6.5,
+     "colour": "#575d62",
+     "slopeDeg": 4,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "club-house",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    46,
+    -52
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3dc",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#575d62",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "thickness": 0.2,
+    "colour": "#8a8f86",
+    "points": [
+     [
+      -55.5,
+      44.5
+     ],
+     [
+      -18.5,
+      -68.6
+     ],
+     [
+      55.5,
+      -43.3
+     ],
+     [
+      19.0,
+      67.7
+     ],
+     [
+      -55.5,
+      44.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    36,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -18,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -70,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -64,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; stand position, fence and club house are plausible, not verified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-296100147"
+}

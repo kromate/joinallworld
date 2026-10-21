@@ -1,0 +1,323 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_Commercial_A%C3%A9roville_-_Roissy-en-France_(FR95)_-_2025-05-02_-_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chabe01",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/aeroville.jpg",
+   "used": "two-level dark glass box with triangle-patterned pale fritting, red ground-floor base, external stair, pale car-park block left, grass bank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/267428256",
+   "used": "overall size (441 m long); modelled as 118 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4247",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.5,
+       1.5
+      ],
+      "colours": [
+       "#2f4247",
+       "#3a5156",
+       "#a9b9b8"
+      ],
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7274",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-base",
+   "footprint": {
+    "rect": [
+     84,
+     4
+    ]
+   },
+   "at": [
+    -2,
+    -15.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8342e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7274"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-dark",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    40,
+    -17
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3d40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3235"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -55,
+    2
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbcb4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9c8c0",
+       "#8f9090"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    51,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9bfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-0",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    -30,
+    -15.4
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-1",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    22,
+    -15.4
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "extent": [
+   116,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     48.0,
+     -30.0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     47.1,
+     -26.2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48.2,
+     -35.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50.1,
+     -25.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     43.4,
+     -31.0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52.9,
+     -33.0
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "facade fritting is still coarse square panels not triangles; AEROVILLE sign boards hidden behind red base, stair canopy simplified; 120 m clamp so only part of the centre is modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-market-game"
+}

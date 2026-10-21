@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1222359926",
+   "used": "nearest building (1.4 m) to the station coordinate: L-shaped pavilion about 23 by 15 m, 232 m2"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:300Aragveli3.JPG",
+   "licence": "Attribution",
+   "author": "Zviad Avaliani",
+   "view": "interior",
+   "used": "palette only: pale marble-like stone cladding, grey floor; no exterior photo exists so no exterior appearance was taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a49a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#6f8aa0",
+    "edgeColour": "#8c8f91"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 1.6,
+    "bottom": 3.2,
+    "colour": "#2b5fa0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#c8c8c8",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "note": "Soviet-era metro entrance pavilion, one storey with a flat roof, blank blue sign board.",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo; one-storey pavilion on the real outline with typical Soviet metro entrance canopy."
+ }
+}

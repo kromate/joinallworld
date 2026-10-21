@@ -1,0 +1,1021 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-1566325327",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pedion_Areos08_25_05_623000.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sp!ros",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/athens/pedion0.jpg",
+   "used": "equestrian statue on a white drum plinth with stepped base beside a paved path, dense cypress and broadleaf canopy, cream-white city beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Athens_Pedion_tou_Areos098.JPG",
+   "licence": "FAL",
+   "author": "antomoro",
+   "view": "street",
+   "file": "/tmp/places-evidence/athens/pedion1.jpg",
+   "used": "wide pale paved walk with grass verges, palm trees, black lamp standards, timber bench"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1566325327",
+   "used": "park is 767 x 469 m: only the central fountain square portion (118 m) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground-green",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     118
+    ],
+    "z0": -0.1,
+    "height": 0.1,
+    "colour": "#6f9a4d"
+   }
+  },
+  {
+   "type": "lawn",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 118,
+    "colour": "#6f9a4d"
+   }
+  },
+  {
+   "type": "plaza",
+   "id": "fountain-square",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "border": 1.6,
+    "colour": "#d8d3c6",
+    "border_colour": "#b8b0a2"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "id": "fountain",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path0",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      15
+     ],
+     [
+      0,
+      59
+     ]
+    ],
+    "width": 6.5,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path1",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -15
+     ],
+     [
+      0,
+      -59
+     ]
+    ],
+    "width": 6.5,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      15,
+      0
+     ],
+     [
+      59,
+      0
+     ]
+    ],
+    "width": 6.5,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path3",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      0
+     ],
+     [
+      -59,
+      0
+     ]
+    ],
+    "width": 6.5,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path4",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      15,
+      15
+     ],
+     [
+      55,
+      50
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path5",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      15
+     ],
+     [
+      -55,
+      50
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path6",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      15,
+      -15
+     ],
+     [
+      55,
+      -50
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path7",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      -15
+     ],
+     [
+      -55,
+      -50
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust0",
+   "at": [
+    19.5,
+    7.9
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust1",
+   "at": [
+    8.2,
+    19.3
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust2",
+   "at": [
+    -7.9,
+    19.5
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust3",
+   "at": [
+    -19.3,
+    8.2
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust4",
+   "at": [
+    -19.5,
+    -7.9
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust5",
+   "at": [
+    -8.2,
+    -19.3
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust6",
+   "at": [
+    7.9,
+    -19.5
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "bust7",
+   "at": [
+    19.3,
+    -8.2
+   ],
+   "params": {
+    "height": 3.2,
+    "plinthHeight": 2.0,
+    "colour": "#e6e2d8",
+    "plinthColour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-s",
+   "at": [
+    10,
+    -19
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-n",
+   "at": [
+    -10,
+    19
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp0",
+   "at": [
+    12,
+    12
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp1",
+   "at": [
+    -12,
+    12
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp2",
+   "at": [
+    12,
+    -12
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp3",
+   "at": [
+    -12,
+    -12
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp4",
+   "at": [
+    -30,
+    -18
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp5",
+   "at": [
+    -45,
+    -18
+   ],
+   "params": {
+    "height": 4.8
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "palms",
+   "at": [
+    0,
+    -34
+   ],
+   "params": {
+    "length": 44,
+    "count": 4,
+    "kind": "palm",
+    "gap": 4.5,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "eq-base",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e9e6de",
+    "profile": [
+     [
+      10,
+      0,
+      "#dedad0"
+     ],
+     [
+      10,
+      0.7
+     ],
+     [
+      8.6,
+      0.7,
+      "#e9e6de"
+     ],
+     [
+      8.6,
+      1.4
+     ],
+     [
+      7,
+      1.4
+     ],
+     [
+      7,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "eq-drum",
+   "at": [
+    -34,
+    -12,
+    2.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4f1ea",
+    "profile": [
+     [
+      4.4,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      4.4,
+      6.2
+     ],
+     [
+      5.0,
+      6.2,
+      "#d9d5ca"
+     ],
+     [
+      5.0,
+      7.2
+     ],
+     [
+      4.4,
+      7.2
+     ],
+     [
+      0,
+      7.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-body",
+   "at": [
+    -34.0,
+    -12.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     8.959999999999999,
+     3.2
+    ],
+    "z0": 3.04,
+    "height": 3.6799999999999997,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-chest",
+   "at": [
+    -31.120000000000005,
+    -12.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.8800000000000003
+    ],
+    "z0": 2.72,
+    "height": 4.16,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-neck",
+   "at": [
+    -28.72,
+    -12.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     2.4000000000000004,
+     1.7600000000000002
+    ],
+    "z0": 4.4799999999999995,
+    "height": 4.16,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-head",
+   "at": [
+    -27.119999999999997,
+    -12.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     2.72,
+     1.4400000000000002
+    ],
+    "z0": 6.24,
+    "height": 1.7600000000000002,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-tail",
+   "at": [
+    -38.8,
+    -12.0,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     1.2800000000000002,
+     0.96
+    ],
+    "z0": 1.92,
+    "height": 2.8800000000000003,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-leg0",
+   "at": [
+    -37.67999999999999,
+    -13.12,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     0.8800000000000001,
+     0.8800000000000001
+    ],
+    "z0": 0.0,
+    "height": 3.12,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-leg1",
+   "at": [
+    -37.67999999999999,
+    -10.88,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     0.8800000000000001,
+     0.8800000000000001
+    ],
+    "z0": 0.0,
+    "height": 3.12,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-leg2",
+   "at": [
+    -30.32,
+    -13.12,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     0.8800000000000001,
+     0.8800000000000001
+    ],
+    "z0": 0.0,
+    "height": 3.12,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-leg3",
+   "at": [
+    -30.32,
+    -10.88,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     0.8800000000000001,
+     0.8800000000000001
+    ],
+    "z0": 0.0,
+    "height": 3.12,
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "id": "rider",
+   "at": [
+    -33.52,
+    -12.0,
+    15.920000000000002
+   ],
+   "params": {
+    "height": 6.0,
+    "pose": "raised",
+    "colour": "#3f3f33"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d0con",
+   "at": [
+    30,
+    30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d0bro",
+   "at": [
+    30,
+    30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d1con",
+   "at": [
+    -30,
+    30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d1bro",
+   "at": [
+    -30,
+    30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d2con",
+   "at": [
+    30,
+    -30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d2bro",
+   "at": [
+    30,
+    -30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d3con",
+   "at": [
+    -45,
+    -40
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d3bro",
+   "at": [
+    -45,
+    -40
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d4con",
+   "at": [
+    0,
+    48
+   ],
+   "params": {
+    "width": 100,
+    "depth": 16,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d4bro",
+   "at": [
+    0,
+    48
+   ],
+   "params": {
+    "width": 100,
+    "depth": 16,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d5con",
+   "at": [
+    0,
+    -50
+   ],
+   "params": {
+    "width": 100,
+    "depth": 14,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d5bro",
+   "at": [
+    0,
+    -50
+   ],
+   "params": {
+    "width": 100,
+    "depth": 14,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d6con",
+   "at": [
+    50,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 100,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d6bro",
+   "at": [
+    50,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 100,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d7con",
+   "at": [
+    -52,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 60,
+    "count": 15,
+    "kind": "conifer",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "d7bro",
+   "at": [
+    -52,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 60,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tree count capped by the 20k/4k budget so canopy is still sparser than the photo; horse is blocky; mountains and city backdrop absent"
+ }
+}

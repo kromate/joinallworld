@@ -1,0 +1,538 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-179419205",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NOVA_School_of_Business_and_Economics,_Carcavelos_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GualdimG",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/nova1.jpg",
+   "used": "white stepped terraced blocks on slender white columns with glass-and-steel balustrades, dark glazed ground floors, big sloping light-steel truss canopy roof at left foreground, plain white cut volume at right, paved plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nova_SBE_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Miguelmcorreia",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/nova2.jpg",
+   "used": "long low white campus strip on the cliff top above the beach, light poles, palms, lawn bank in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/179419205",
+   "used": "campus outline checked (212 m diagonal strip); a 118 m portion of the main terraced blocks is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": -5,
+  "fovDeg": 72,
+  "aspect": 1.33,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "g-left",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -28,
+    -2
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4f5a",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "s-left",
+   "at": [
+    -28,
+    -4
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "height": 1.0,
+    "z0": 6,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-upper",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "z0": 7,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4f5a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -48,
+     -16
+    ],
+    "end": [
+     -6,
+     -16
+    ],
+    "lod1Step": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      13.6
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       32
+      ],
+      "height": 1.0,
+      "colour": "#c9cdd0"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -20,
+     -24
+    ],
+    "end": [
+     -8,
+     -24
+    ],
+    "lod1Step": 2,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 15,
+      "colour": "#f1eee6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -44,
+     -20
+    ],
+    "end": [
+     -14,
+     -20
+    ],
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 6,
+      "colour": "#f1eee6"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "g-mid",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    22,
+    16
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4f5a",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "s-mid1",
+   "at": [
+    22,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     22
+    ],
+    "height": 1.0,
+    "z0": 5,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "g-mid2",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    24,
+    18
+   ],
+   "z0": 6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4f5a",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "s-mid2",
+   "at": [
+    24,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     20
+    ],
+    "height": 1.0,
+    "z0": 11,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cube-right",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    60,
+    20
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     6,
+     5
+    ],
+    "end": [
+     38,
+     5
+    ],
+    "lod1Step": 2,
+    "lod2Step": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 11,
+      "colour": "#f1eee6"
+     }
+    }
+   }
+  },
+  {
+   "type": "railing",
+   "lod": [
+    0
+   ],
+   "at": [
+    2,
+    4.5,
+    6
+   ],
+   "params": {
+    "length": 42,
+    "height": 1.1,
+    "glass": true,
+    "colour": "#8c9298"
+   }
+  },
+  {
+   "type": "railing",
+   "lod": [
+    0
+   ],
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "colour": "#8c9298"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "big-canopy",
+   "at": [
+    -40,
+    -30,
+    13
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 30,
+    "depth": 22,
+    "rise": 5,
+    "folds": 1,
+    "slopeY": 0.25,
+    "thickness": 0.8,
+    "colour": "#e8e2d0",
+    "underColour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -52,
+     -30
+    ],
+    "end": [
+     -28,
+     -30
+    ],
+    "lod1Step": 3,
+    "lod2Step": 7,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      12.4
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       22
+      ],
+      "height": 0.7,
+      "colour": "#f2efe6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -50,
+     -38
+    ],
+    "end": [
+     -30,
+     -38
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 13,
+      "colour": "#f6f4ee"
+     }
+    }
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "canopy is a flat sloped plate with strip rafters not a steel lattice, and the view is wider than the photo so it does not dominate; balustrades, terraces and the tall plain volume are approximate; ground is empty paving"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     75,
+     -22
+    ],
+    "height": 9
+   }
+  ],
+  "cars": []
+ }
+}

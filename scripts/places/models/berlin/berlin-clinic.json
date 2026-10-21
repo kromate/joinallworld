@@ -1,0 +1,495 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unfallkrankenhaus_berlin.jpg",
+   "licence": "Public domain",
+   "author": "see Commons page",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/cl2.jpg",
+   "used": "long ribbon-windowed ochre brick blocks, round-drum helipad tower with checkered plant box, low dark-glass ambulance hall in front, trees and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unfallkrankenhaus_Berlin,_540-646.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "detail",
+   "file": "/tmp/places-evidence/berlin/cl1.jpg",
+   "used": "tower: yellow brick with dark red brick bands, teal-framed glazing strip, white-grey drum with wide dark soffit, red/white checkered box above"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14113037",
+   "used": "overall extent and the long north-south spine with cross wings (the real 61-vertex outline costs 60k triangles, so the plan is recomposed as spine plus four wings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     18,
+     100
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c79f5f",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "glassColour": "#34444c",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.15,
+      "at": 0.0,
+      "proud": 0.05,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing0",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -36.0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c79f5f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#34444c",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.15,
+      "at": 0.0,
+      "proud": 0.05,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing1",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -11.700000000000001
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c79f5f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#34444c",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.15,
+      "at": 0.0,
+      "proud": 0.05,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing2",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    0,
+    12.6
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c79f5f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#34444c",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.15,
+      "at": 0.0,
+      "proud": 0.05,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing3",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    0,
+    36.9
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c79f5f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#34444c",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.15,
+      "at": 0.0,
+      "proud": 0.05,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    -12,
+    -50,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 22,
+    "colour": "#d2a650",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a4f3c",
+      "height": 0.25
+     }
+    ],
+    "faces": {}
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "helipad-drum",
+   "at": [
+    -12,
+    -50,
+    22
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#2f3235"
+     ],
+     [
+      5.4,
+      0,
+      "#2f3235"
+     ],
+     [
+      5.4,
+      0.5,
+      "#2f3235"
+     ],
+     [
+      3.7,
+      0.6,
+      "#2f3235"
+     ],
+     [
+      3.7,
+      3.0,
+      "#d9dbdc"
+     ],
+     [
+      0,
+      3.0,
+      "#d9dbdc"
+     ]
+    ],
+    "segments": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-box",
+   "at": [
+    -11,
+    -50,
+    25
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 3.0,
+    "colour": "#d8d3d0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1,
+       1
+      ],
+      "colours": [
+       "#c9352f",
+       "#f2efe9"
+      ],
+      "mode": "checker"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-hall",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    18,
+    -58
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#25312f",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3b3a",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "hall-doors",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     8.5,
+     -65.2
+    ],
+    "end": [
+     27.5,
+     -65.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.3
+      ],
+      "height": 3.4,
+      "colour": "#eeeeea"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "hall-doors-red",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     13,
+     -65.4
+    ],
+    "end": [
+     23,
+     -65.4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 3.0,
+      "colour": "#c9352f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -64
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -62
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     68,
+     -70
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -66
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ribbon glazing only on front faces of wings, spine and gables plain ochre; drum soffit and tower glazing simplified; door panels flat white/red slabs; trees moved aside but low-poly, bear and signpost omitted"
+ }
+}

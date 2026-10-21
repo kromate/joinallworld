@@ -1,0 +1,555 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-24950668",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EWK_Spandau_2013_-_03.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Der wahre Jakob",
+   "view": "front",
+   "used": "light render storeys with yellow-orange window frames and bands, top storey and long wall clad in green panels, low entrance pavilions with green roofs and yellow glazing, glass pergola, cobbled forecourt",
+   "file": "/tmp/places-evidence/berlin/EWK.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24950668",
+   "used": "site boundary only (582 x 320 m wooded campus), not used as a building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.38,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     40
+    ],
+    "height": 0.15,
+    "colour": "#a99d98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-low",
+   "footprint": {
+    "rect": [
+     58,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    26
+   ],
+   "rotDeg": -6,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d3c8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "bands": "#e0a63a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#68977a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-top",
+   "footprint": {
+    "rect": [
+     58,
+     11
+    ]
+   },
+   "at": [
+    -34,
+    27.5
+   ],
+   "rotDeg": -6,
+   "z0": 8,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#68977a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#68977a",
+       "#7aa68a",
+       "#5d8c70"
+      ]
+     },
+     {
+      "type": "fins",
+      "colour": "#d6e0d2",
+      "spacing": 6
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d8c70",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-low",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    26,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d2cb",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 4.5,
+    "bands": "#e0a63a",
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#68977a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-high",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 12,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#68977a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#68977a",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-ann",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    42,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d3cfc6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "bands": "#e0a63a",
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#68977a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e0a63a",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#68977a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    14,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e0a63a",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#68977a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-c",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e0a63a",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#68977a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -4,
+     0
+    ],
+    "end": [
+     6,
+     -4,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -4,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 3.8,
+       "colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       4,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 3.8,
+       "colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       3.8
+      ],
+      "params": {
+       "rect": [
+        8.5,
+        0.3
+       ],
+       "height": 0.25,
+       "colour": "#f0f0ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -6.5,
+     3.9
+    ],
+    "end": [
+     -14,
+     -0.5,
+     3.9
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        17,
+        0.2
+       ],
+       "height": 0.2,
+       "colour": "#f0f0ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 11,
+    "colour": "#5a2f2c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -21.0,
+    -10,
+    0.15
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "depth": 2.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -12.6,
+    -12,
+    0.15
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "depth": 2.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4.2,
+    -12,
+    0.15
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.6,
+    "depth": 2.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14.0,
+    -9,
+    0.15
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.6,
+    "depth": 2.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    30.8,
+    -9,
+    0.15
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.6,
+    "depth": 2.4,
+    "colour": "#3f6b34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23.8,
+    -4,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18.2,
+    -3,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28.0,
+    -4,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Long low west wing with green ribbed upper storey and shed roof, shorter stepped east block, yellow-glazed green-hipped pavilions, white lattice pergola, cobbled forecourt, hedges and a dark brick pier (placed at the right where the photo shows it) added; framing is much wider than the close photo, pergola is small, panel seams are only fins, campus layout beyond the forecourt is unknown."
+ }
+}

@@ -1,0 +1,357 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hlemmur_bus_terminl_2013-09-18_20-45.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jonasunn",
+   "view": "street",
+   "file": "/tmp/places-evidence/reykjavik/hlemmur1.jpg",
+   "used": "low dark hall: black horizontal-slat fascia band along the roofline, tinted glass ribbon with posters below, blank yellow sign board over the corner, row of white pyramidal skylights on the roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/22880576",
+   "used": "real hall outline, stepped front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a3633",
+    "glassColour": "#7f9aa6",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "plinth": 0.35,
+    "bands": "#26231f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3633",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skylight-0",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -15,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "mass",
+   "id": "skylight-1",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "mass",
+   "id": "skylight-2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "mass",
+   "id": "skylight-3",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "mass",
+   "id": "skylight-4",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "mass",
+   "id": "skylight-5",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    15,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eceeee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.1
+   },
+   "z0": 2.7
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "bottom": 3.0,
+    "colour": "#f0b323",
+    "frameColour": "#3a3633",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.0,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     4
+    ],
+    "height": 0.04,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.8,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     4
+    ],
+    "height": 0.04,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.6,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     4
+    ],
+    "height": 0.04,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.4,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     4
+    ],
+    "height": 0.04,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.2,
+    -20,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     4
+    ],
+    "height": 0.04,
+    "colour": "#f2f2f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Hall still reads a bit large and dark; posters in glazing and slat fascia simplified; lamps and crossing added but no kerb corner or parked cars."
+ }
+}

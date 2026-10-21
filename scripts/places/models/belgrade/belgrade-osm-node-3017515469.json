@@ -1,0 +1,134 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1334328469",
+   "used": "real footprint outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/belgrade.json#belgrade-osm-node-3017515469",
+   "used": "1944 Red Army memorial; no photo found; stele on steps with stone kerb on the small irregular OSM plot (17x12 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true,
+    "fit": 17
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7a7a76",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6af"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 0.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6af",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stele",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "z0": 1.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b9b6af",
+    "rise": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     7
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-node-3017515469",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; monument form assumed (stele on steps)"
+ }
+}

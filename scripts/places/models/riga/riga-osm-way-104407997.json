@@ -1,0 +1,588 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-104407997",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:R\u012bga,_Aug\u0161\u0101mcel\u0161an\u0101s_luter\u0101\u0146u_bazn\u012bca_2002-09-28.jpg",
+   "licence": "CC BY 3.0",
+   "author": "J. Sedols",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/res3.jpg",
+   "used": "main view: gabled front block with three round arches on two columns and a round oculus, pitched brick corbel frieze, tall square tower at left with paired belfry arches, round door and a slender grey spire, low aisle roof behind the tower, tan-yellow brick"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:R\u012bgas_Aug\u0161\u0101mcel\u0161an\u0101s_luter\u0101\u0146u_bazn\u012bca_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Normunds Kolby",
+   "view": "side",
+   "file": "/tmp/places-evidence/riga/res1.jpg",
+   "used": "long nave side with arched windows and grey metal roof, tower proportions, cemetery trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/104407997",
+   "used": "extent only (about 31 x 24 m footprint, name match); the model keeps the tower, front block and nave as separate volumes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 0,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-nave",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b39069",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "left": "arched",
+     "right": "arched",
+     "back": "none"
+    },
+    "bands": "#d9c7a0"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#7f868c",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98760",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "arched"
+    },
+    "bands": "#d3c3a0"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#6c7178",
+    "material": "metal-sheet",
+    "rise": 16,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-vestry",
+   "footprint": {
+    "rect": [
+     5.4,
+     16
+    ]
+   },
+   "at": [
+    -6.2,
+    -0.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98760",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f868c",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    3,
+    12.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98760",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#7f868c",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3,
+    -11.8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#9a9a92"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1.0999999999999996,
+    -11.08,
+    0.1
+   ],
+   "params": {
+    "colour": "#2a241e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       3.1,
+       0.2
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       2.5,
+       0.2
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       1.6,
+       0.2
+      ]
+     },
+     {
+      "z": 5.25,
+      "rect": [
+       0.5,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3,
+    -11.08,
+    0.1
+   ],
+   "params": {
+    "colour": "#2a241e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       3.1,
+       0.2
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       2.5,
+       0.2
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       1.6,
+       0.2
+      ]
+     },
+     {
+      "z": 5.25,
+      "rect": [
+       0.5,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    7.1,
+    -11.08,
+    0.1
+   ],
+   "params": {
+    "colour": "#2a241e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       3.4,
+       0.2
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       3.1,
+       0.2
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       2.5,
+       0.2
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       1.6,
+       0.2
+      ]
+     },
+     {
+      "z": 5.25,
+      "rect": [
+       0.5,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.9500000000000002,
+    -11.6,
+    0
+   ],
+   "params": {
+    "colour": "#c8b690",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.28,
+      0.4
+     ],
+     [
+      0.22,
+      0.8
+     ],
+     [
+      0.22,
+      4.2
+     ],
+     [
+      0.34,
+      4.4
+     ],
+     [
+      0.34,
+      4.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5.05,
+    -11.6,
+    0
+   ],
+   "params": {
+    "colour": "#c8b690",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.28,
+      0.4
+     ],
+     [
+      0.22,
+      0.8
+     ],
+     [
+      0.22,
+      4.2
+     ],
+     [
+      0.34,
+      4.4
+     ],
+     [
+      0.34,
+      4.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -3.5999999999999996,
+    -10.9,
+    0
+   ],
+   "params": {
+    "colour": "#a98760",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.6,
+    -10.9,
+    0
+   ],
+   "params": {
+    "colour": "#a98760",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3,
+    -11.08,
+    6.6
+   ],
+   "params": {
+    "colour": "#2a241e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.4,
+       0.2
+      ]
+     },
+     {
+      "z": 0.4,
+      "rect": [
+       1.0,
+       0.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       1.0,
+       0.2
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       0.4,
+       0.2
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -2
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     4
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     16
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     16
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no brick corbel frieze on raking edges, no belfry arches, round oculus only approximated as a dark block, pinnacles small, spire lacks dormers"
+ }
+}

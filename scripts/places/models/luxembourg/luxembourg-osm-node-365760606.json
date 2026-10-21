@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-node-365760606",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/514627669",
+   "used": "real mound outline (860 m2, about 33 m across, roughly round); height 4 m from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "No exterior photo located for this unnamed Luxembourg tumulus (the Altrier tumulus photos on Commons are a different site). Shown as a grassed burial mound in woodland with a low stone kerb and a small blank information board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "slot": "grass",
+    "profile": [
+     [
+      0,
+      3.8,
+      "#8a9a6a"
+     ],
+     [
+      3,
+      3.6,
+      "#8a9a6a"
+     ],
+     [
+      7,
+      2.8,
+      "#7d8d5e"
+     ],
+     [
+      11,
+      1.6,
+      "#7d8d5e"
+     ],
+     [
+      14.5,
+      0.6,
+      "#6f7f55"
+     ],
+     [
+      16.5,
+      0.0,
+      "#6f7f55"
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a8a398",
+    "points": [
+     [
+      -9,
+      0
+     ],
+     [
+      -4,
+      1.5
+     ],
+     [
+      4,
+      1.5
+     ],
+     [
+      9,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.1,
+    "bottom": 0.9,
+    "colour": "#6f7f55",
+    "frameColour": "#a8a398"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 10,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 9,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 3,
+    "spread": 9,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

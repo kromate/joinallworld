@@ -1,0 +1,462 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ko%C3%A7_%C3%9Cniversitesi_Ana_Kamp%C3%BCs_Bilim_Kap%C4%B1s%C4%B1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Khutuck",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/1491971480_1.jpg",
+   "used": "two-storey peach render blocks on a pink granite base, rhythm of small square brown-framed windows, dark wide-eaved low hip roofs, taller central gate tower with a round-arched opening and a dark cap, shallow reflecting pool in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ko%C3%A7University2.jpg",
+   "licence": "Public domain",
+   "author": "Jorge1767",
+   "view": "street",
+   "file": "/tmp/places-evidence/istanbul/1491971480_0.jpg",
+   "used": "paved plaza in pink stone setts, arcaded ground floor with terracotta-tiled roofs and a dark chimney on the neighbouring wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1491971480",
+   "used": "campus is 994 x 375 m: only one courtyard block around the Science Gate is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.64,
+  "shiftY": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.0,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 4,
+    "colour": "#3e2f24",
+    "material": "metal-sheet",
+    "overhang": 4.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.0,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 4,
+    "colour": "#3e2f24",
+    "material": "metal-sheet",
+    "overhang": 4.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-west",
+   "at": [
+    -5.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     12
+    ],
+    "height": 18,
+    "colour": "#ecd3ad",
+    "topColour": "#d9bf98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-east",
+   "at": [
+    5.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     12
+    ],
+    "height": 18,
+    "colour": "#ecd3ad",
+    "topColour": "#d9bf98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-bridge",
+   "footprint": {
+    "rect": [
+     7.0,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 10.5,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 2.4,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecd3ad"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-front-panel",
+   "at": [
+    0,
+    -6.05,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13.8,
+     0.2
+    ],
+    "z0": 10.5,
+    "height": 7.5,
+    "colour": "#ecd3ad",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-cap",
+   "at": [
+    0,
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     12.8
+    ],
+    "height": 2.2,
+    "colour": "#3f3730",
+    "topColour": "#3a342c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-west",
+   "footprint": {
+    "rect": [
+     11,
+     26
+    ]
+   },
+   "at": [
+    -20.5,
+    19
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 4,
+    "colour": "#3e2f24",
+    "material": "metal-sheet",
+    "overhang": 4.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-east",
+   "footprint": {
+    "rect": [
+     11,
+     26
+    ]
+   },
+   "at": [
+    20.5,
+    19
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 4,
+    "colour": "#3e2f24",
+    "material": "metal-sheet",
+    "overhang": 4.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     52,
+     10
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecd3ad",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "plinth": 4.0,
+    "glassColour": "#6a4a36",
+    "trimColour": "#d9bf98",
+    "bands": {
+     "colour": "#d6bd97",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 4,
+    "colour": "#3e2f24",
+    "material": "metal-sheet",
+    "overhang": 4.2
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 26,
+    "shape": "round",
+    "colour": "#7f8f98",
+    "bank": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -3.0,
+    0
+   ],
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "points": [
+     [
+      0,
+      0,
+      10.8
+     ],
+     [
+      0,
+      0,
+      9.0
+     ]
+    ],
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -3.0,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 1.0,
+    "colour": "#e0c070"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-ring",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.5
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      7.0
+     ],
+     "radius": 3.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 14
+    },
+    "colour": "#c9a090"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-1491971480",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower raised with dark cap, deeper eaves, taller plinth and round arch with lantern; plinth not coloured separately from render, arch reads small and pale pool surface is flat, wings invented."
+ }
+}

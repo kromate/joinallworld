@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-way-91742617",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arena_Mytishchi_front.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Anastasia Klepikova",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/moscow/myt2.jpg",
+   "used": "long barrel-roofed grey hall behind a lower grey-clad front block with a wide glazed entrance bay, rounded glazed left end, flat annex to the right, car park and red-paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mytishchi_Arena,_Moscow_Oblast_(2).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "A.Savin",
+   "view": "street",
+   "file": "/tmp/places-evidence/moscow/myt1.jpg",
+   "used": "grey panel cladding, glazed foyer behind a flag row, curved roof crown"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/91742617",
+   "used": "overall size only (irregular 170 m outline exceeds the scene clamp, modelled as simplified volumes)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 2.12,
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real plan is an irregular 170 m outline (simplified to boxes plus an oval end); sloped hall roof ends, curved front canopies, red paving pattern and the facade glazing grid are approximated; sign board is a blank panel."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     82,
+     56
+    ]
+   },
+   "at": [
+    -4,
+    14
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c5bc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "colour": "#b7b3aa"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#aeb4ba",
+    "material": "metal-sheet",
+    "rise": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     66,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfcbc2",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea5ab",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-front",
+   "footprint": {
+    "rect": [
+     58,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6a86",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea5ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-drum",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    -45,
+    -4
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f8fa0",
+    "windows": "curtain",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea5ab",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    51,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d1cdc4",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab0b5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     22,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "z0": 15,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -10,
+    -28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 4,
+    "columns": 0,
+    "colour": "#7d8a96"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    14,
+    -28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 4,
+    "columns": 0,
+    "colour": "#7d8a96"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 8,
+    "spacing": 3.6,
+    "colours": [
+     "#c8362f",
+     "#f2f2f2",
+     "#2f4f9a",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.4,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 6,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -40
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ }
+}

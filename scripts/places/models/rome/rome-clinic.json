@@ -1,0 +1,322 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ospedale_Sant'Andrea_(Rome).jpg",
+   "licence": "Public domain",
+   "author": "Liberato Del Giorno",
+   "view": "side",
+   "file": "/tmp/places-evidence/rome/hosp.jpg",
+   "used": "long curved cream ward slab with fine ribbon windows, flat roof, recessed ground storey with a projecting canopy slab and heavy piers, lawn and trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14313088",
+   "used": "curved ward block outline with annex wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "polygon": [
+     [
+      -50.2,
+      -4.3
+     ],
+     [
+      -40.5,
+      3.1
+     ],
+     [
+      -29.7,
+      8.9
+     ],
+     [
+      -18.1,
+      12.8
+     ],
+     [
+      -6.1,
+      14.8
+     ],
+     [
+      6.1,
+      14.8
+     ],
+     [
+      18.1,
+      12.8
+     ],
+     [
+      29.7,
+      8.9
+     ],
+     [
+      40.5,
+      3.1
+     ],
+     [
+      50.2,
+      -4.3
+     ],
+     [
+      58.9,
+      5.4
+     ],
+     [
+      47.5,
+      14.1
+     ],
+     [
+      34.9,
+      20.8
+     ],
+     [
+      21.3,
+      25.4
+     ],
+     [
+      7.2,
+      27.7
+     ],
+     [
+      -7.2,
+      27.7
+     ],
+     [
+      -21.3,
+      25.4
+     ],
+     [
+      -34.9,
+      20.8
+     ],
+     [
+      -47.5,
+      14.1
+     ],
+     [
+      -58.9,
+      5.4
+     ]
+    ]
+   },
+   "height": 38,
+   "storeys": 12,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 14,
+    "plinth": 0.3,
+    "bands": "#d9ceb0",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 3,
+      "spacing": 13,
+      "width": 1.6,
+      "colour": "#cfc6ad",
+      "backColour": "#5a6a70"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.35,
+      "depth": 0.3,
+      "spacing": 9,
+      "colour": "#cdbf9c",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    48,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 25,
+    "depth": 10,
+    "height": 6,
+    "thickness": 1.0,
+    "columns": 0,
+    "colour": "#d6cfbd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-piers",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    40,
+    -8
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ad"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-piers2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    56,
+    -8
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ad"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 7,
+    "line": 35,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 2,
+    "spread": 6,
+    "line": 20,
+    "colour": "#2d5230"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 2,
+    "spread": 8,
+    "line": 22,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -10,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "colour": "#b5283a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Slab is now a clear 12-storey crescent with pilotis and a projecting entrance canopy, lawn and trees; windows are coarse ribbons plus sparse fins, not the dense fine vertical fins of the photo; wall reads whiter than cream; canopy is small and at the far end; red flowerbed is a thin hedge line; umbrella pines approximated by generic trees."
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jersey_library_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Danrok",
+   "view": "street",
+   "file": "/tmp/places-evidence/st-helier/st-helier-community-workshop-0.jpg",
+   "used": "pink-brown rusticated granite ground storey with round arches, two upper storeys of tall arched dark-framed windows in a row of seven, blank brick-granite end wing, flat roof with railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/185953209",
+   "used": "footprint (name match, 3 levels, brown masonry)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     43,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a07b6d",
+    "windows": "arched",
+    "windowRatio": 0.75,
+    "bay": 4.4,
+    "plinth": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a88",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     41,
+     24.5
+    ]
+   },
+   "at": [
+    -1,
+    0.2
+   ],
+   "z0": 6.5,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a98577",
+    "windows": "arched",
+    "windowRatio": 0.62,
+    "bay": 5.6,
+    "cornice": true,
+    "trimColour": "#2e3a4d",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    24.5,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a38578",
+    "windows": "none",
+    "windowRatio": 0.06,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -12.1,
+    15
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "kind": "rail",
+    "colour": "#d8dadc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper windows are single-height arched cuts, photo has tall double-height recessed bays; ground arches small without deep reveals or doorway; kerb, cars, bicycles omitted"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-community-workshop"
+}

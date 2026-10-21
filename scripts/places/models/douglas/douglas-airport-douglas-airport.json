@@ -1,0 +1,374 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-airport-douglas-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ronaldsway_Airport_Terminal_Building_-_geograph.org.uk_-_1702198.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Richard Hoare",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/douglas-airport-douglas-airport-5.jpg",
+   "used": "2000 extension: pink roughcast two-storey wings, arched barrel-vault entrance fascia on two pale columns over a glazed hall, slit windows, flat parapet roofs, blue-grey roof of the hall behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Isle_of_Man_Airport_-_geograph.org.uk_-_6803484.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "thejackrustles",
+   "view": "detail",
+   "used": "older 1950s core: taller block with three tall slit windows in a grey surround, flagpoles on the roof, grey metal canopy"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -24.5,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9b3a0",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-pier",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -9
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfa795",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     15,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d3ad9b",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#7f9fb0",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8c9aa5",
+    "material": "metal-sheet",
+    "axis": "y",
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "arched-fascia",
+   "at": [
+    0,
+    -12.5,
+    10.2
+   ],
+   "params": {
+    "form": "curved",
+    "width": 17,
+    "depth": 3.5,
+    "height": 1.6,
+    "thickness": 1.1,
+    "rise": 2.2,
+    "colour": "#dcc0b0",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column-l",
+   "at": [
+    -6.8,
+    -13.2,
+    0
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 12,
+    "height": 10.4,
+    "colour": "#e2cdbf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column-r",
+   "at": [
+    6.8,
+    -13.2,
+    0
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 12,
+    "height": 10.4,
+    "colour": "#e2cdbf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "emblem-board",
+   "at": [
+    0,
+    -11.4,
+    3.5
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.6,
+    "bottom": 4.5,
+    "colour": "#b3333f",
+    "frameColour": "#d8d8d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    27.5,
+    1
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d3ad9b",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-tower-block",
+   "footprint": {
+    "rect": [
+     11,
+     4
+    ]
+   },
+   "at": [
+    33,
+    -12
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d6b09e",
+    "windows": "none",
+    "bands": "#8f979c",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    33,
+    -15,
+    4.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 2.6,
+    "height": 0.0,
+    "thickness": 0.35,
+    "colour": "#7d8c96"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "id": "tower",
+   "at": [
+    18,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#d9d4cc",
+    "cabColour": "#8aa5b5",
+    "bandColour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    8,
+    16
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9ccd0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#9aa5ae",
+    "material": "metal-sheet",
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "roof-flags",
+   "at": [
+    40,
+    -4,
+    9.5
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#b3333f",
+    "count": 2,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": 0,
+  "cars": [
+   {
+    "at": [
+     -30,
+     -26
+    ],
+    "yawDeg": 90,
+    "colour": "#2d3a5a"
+   },
+   {
+    "at": [
+     -20,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     12,
+     -32
+    ],
+    "yawDeg": 0,
+    "colour": "#7a2f2f"
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "No lettering/emblem on glazing, 1950s core block with slit-window tower only suggested, control tower and rear hall positions are plan guesses; no OSM outline."
+ }
+}

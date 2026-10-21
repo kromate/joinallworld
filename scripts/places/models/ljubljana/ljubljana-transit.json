@@ -1,0 +1,191 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-transit",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbbb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c6c4bd"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shelter",
+   "at": [
+    -3,
+    0.3,
+    0.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 4.2,
+    "height": 3.1,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#9a9892",
+    "edgeColour": "#5f7fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4.5,
+     3
+    ]
+   },
+   "at": [
+    11.5,
+    0.2
+   ],
+   "z0": 0.6,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5f7fa8",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4ca",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "stop-sign",
+   "at": [
+    -14.5,
+    -1.8,
+    0.6
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 0.9,
+    "bottom": 2.4,
+    "colour": "#5f7fa8",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "coach",
+   "id": "bus-bays",
+   "at": [
+    -10,
+    -5.5,
+    0
+   ],
+   "params": {
+    "colour": "#eceae4",
+    "stripe": "#5f7fa8",
+    "count": 1,
+    "spacing": 13,
+    "length": 11.5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    -14,
+    2.8,
+    0.6
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 13
+   }
+  },
+  {
+   "type": "coach",
+   "id": "bus-bay-2",
+   "at": [
+    4,
+    -5.5,
+    0
+   ],
+   "params": {
+    "colour": "#eceae4",
+    "stripe": "#5f7fa8",
+    "count": 1,
+    "spacing": 13,
+    "length": 11.5,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     9
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable OSM outline (the matched OSM building is a fire station 227 m away), so layout, shelter length and kiosk position are typical suburban bus-hub guesses from the brief."
+ }
+}

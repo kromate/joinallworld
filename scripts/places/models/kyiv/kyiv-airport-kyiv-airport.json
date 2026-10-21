@@ -1,0 +1,411 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-airport-kyiv-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Boryspil_International_Airport_Kyiv.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Arne M\u00fcseler",
+   "file": "/tmp/places-evidence/kyiv/ap1.jpg",
+   "view": "front",
+   "used": "Terminal D landside: undulating grey swept metal roof on white Y-struts over a glazed hall, raised departures road deck on tapered piers, cylindrical glass cores"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 11,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     22
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d3e0e6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9499"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "departures-deck",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "rect": [
+     116,
+     13
+    ],
+    "z0": 6.5,
+    "height": 3.4,
+    "colour": "#d5d6d3",
+    "topColour": "#c5c7c8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "deck-piers",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -4,
+        -2
+       ],
+       [
+        4,
+        -2
+       ],
+       [
+        1.5,
+        2
+       ],
+       [
+        -1.5,
+        2
+       ]
+      ],
+      "z0": 0,
+      "height": 7,
+      "colour": "#d7d8d5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -12
+    ],
+    "end": [
+     48,
+     -12
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "wave-roof",
+   "at": [
+    -6,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 100,
+    "depth": 52,
+    "z": 16,
+    "rise": 5,
+    "waves": 2,
+    "thickness": 1.0,
+    "colour": "#8f969b",
+    "underColour": "#c6c9cb",
+    "slopeY": 0.05
+   }
+  },
+  {
+   "type": "surface",
+   "id": "roof-sweep",
+   "at": [
+    50,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 22,
+    "depth": 56,
+    "z": 15,
+    "rise": 30,
+    "waves": 0.5,
+    "thickness": 1.6,
+    "colour": "#8f969b",
+    "underColour": "#c6c9cb"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cores",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 3,
+      "n": 12,
+      "z0": 0,
+      "height": 17,
+      "colour": "#c4d0d6",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -2
+    ],
+    "end": [
+     44,
+     -2
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "struts",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        1.1,
+        1.1
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        1,
+        9
+       ],
+       [
+        -3,
+        3,
+        15
+       ],
+       [
+        -6,
+        5,
+        19
+       ]
+      ],
+      "colour": "#f2f3f3"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     4
+    ],
+    "end": [
+     46,
+     4
+    ],
+    "count": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -40,
+    -7.5,
+    9
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#2d4f7a",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 8,
+    "spacing": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 6,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lod2-deck",
+   "at": [
+    0,
+    -12
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     116,
+     11
+    ],
+    "z0": 6,
+    "height": 2.6,
+    "colour": "#d5d6d3"
+   }
+  },
+  {
+   "type": "array",
+   "id": "struts2",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.9,
+        0.9
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        -1,
+        8
+       ],
+       [
+        2,
+        -4,
+        15
+       ],
+       [
+        5,
+        -8,
+        19
+       ]
+      ],
+      "colour": "#f2f3f3"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     2
+    ],
+    "end": [
+     46,
+     2
+    ],
+    "count": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "deck-rail",
+   "at": [
+    0,
+    -17.8
+   ],
+   "params": {
+    "rect": [
+     116,
+     0.4
+    ],
+    "z0": 9.9,
+    "height": 1.1,
+    "colour": "#9aa0a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof still a wave sheet with a squared (not pointed) prow; deck rail added; cores and strut forest simplified; no lit under-deck glazing detail."
+ }
+}

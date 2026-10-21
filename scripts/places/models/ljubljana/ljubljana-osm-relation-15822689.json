@@ -1,0 +1,221 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/15822689",
+   "used": "name-matched stadium relation (207 x 140 m site at bearing 12): reduced pitch+track ground inside the scene clamp"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nogometna_tekma_Hermes-KAC_Rapid_(2).jpg",
+   "licence": "public domain",
+   "author": "unknown",
+   "view": "street",
+   "file": "/tmp/places-evidence/ljubljana/zak1.jpg",
+   "used": "historic match photo shows only the pitch edge, low timber and earth bank with spectators and trees behind; no building, so not used for comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     84
+    ],
+    "height": 0.15,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "length": 96,
+    "width": 64,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -34
+    ],
+    "end": [
+     34,
+     -34
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#5f7fa8",
+     "#eceae4",
+     "#5f7fa8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d4ca",
+    "underColour": "#c9c5bb",
+    "canopy": {
+     "height": 1.0,
+     "depth": 9,
+     "thickness": 0.4,
+     "slopeDeg": 3,
+     "colour": "#8e8a82",
+     "edgeColour": "#6c7176",
+     "overhangBack": 0.6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     36
+    ],
+    "end": [
+     -34,
+     36
+    ],
+    "rows": 3,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.3,
+    "bay": 6,
+    "seatColours": [
+     "#eceae4"
+    ],
+    "concreteColour": "#d8d4ca"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -54,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     54,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-relation-15822689",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo of the ground (only 1930s match pictures); one low stand with canopy, masts and scoreboard are typed from the brief and the real site extent"
+ }
+}

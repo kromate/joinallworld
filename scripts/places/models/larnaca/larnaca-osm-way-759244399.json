@@ -1,0 +1,112 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/759244399",
+   "used": "real outline 28 x 13.4 m, bearing 10 deg, area 376 m2"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-osm-way-759244399",
+   "used": "village health centre in Akincilar (Louroujina): single storey, covered entrance, ambulance bay (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#b9b3a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#f0ebdf",
+    "frameColour": "#b9b3a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline-only massing, entrance and bay placement guessed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-759244399"
+}

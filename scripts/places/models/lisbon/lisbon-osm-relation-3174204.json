@@ -1,0 +1,411 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-relation-3174204",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ConventoSantosNovo.jpg",
+   "licence": "CC BY",
+   "author": "Ana Mantua",
+   "view": "side",
+   "file": "/tmp/places-evidence/lisbon/convento.jpg",
+   "used": "long plain ochre-yellow four-storey block, regular white-framed windows, pale stone corner pilaster, low red tile hip roof, stone retaining base on a slope"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3174204",
+   "used": "real convent outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "retaining-wall",
+   "params": {
+    "points": [
+     [
+      -42,
+      -43
+     ],
+     [
+      42,
+      -43
+     ],
+     [
+      42,
+      43
+     ],
+     [
+      -42,
+      43
+     ]
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#b8a98a",
+    "topColour": "#a89a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-front",
+   "footprint": {
+    "rect": [
+     82,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "z0": 3,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa95a",
+    "trimColour": "#e2dccb",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3c",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-back",
+   "footprint": {
+    "rect": [
+     82,
+     16
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "z0": 3,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa95a",
+    "trimColour": "#e2dccb",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3c",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     16,
+     52
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "z0": 3,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa95a",
+    "trimColour": "#e2dccb",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3c",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     16,
+     52
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "z0": 3,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa95a",
+    "trimColour": "#e2dccb",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "cornice": false,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3c",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church-front",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "z0": 3,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#e0d6bc",
+    "windows": "none",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a3c",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster--41--42",
+   "params": {
+    "points": [
+     [
+      -42.5,
+      -43.5
+     ],
+     [
+      -39.5,
+      -43.5
+     ],
+     [
+      -39.5,
+      -40.5
+     ],
+     [
+      -42.5,
+      -40.5
+     ]
+    ],
+    "z0": 3,
+    "height": 17.2,
+    "colour": "#e2dccb",
+    "topColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-41--42",
+   "params": {
+    "points": [
+     [
+      39.5,
+      -43.5
+     ],
+     [
+      42.5,
+      -43.5
+     ],
+     [
+      42.5,
+      -40.5
+     ],
+     [
+      39.5,
+      -40.5
+     ]
+    ],
+    "z0": 3,
+    "height": 17.2,
+    "colour": "#e2dccb",
+    "topColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster--41-42",
+   "params": {
+    "points": [
+     [
+      -42.5,
+      40.5
+     ],
+     [
+      -39.5,
+      40.5
+     ],
+     [
+      -39.5,
+      43.5
+     ],
+     [
+      -42.5,
+      43.5
+     ]
+    ],
+    "z0": 3,
+    "height": 17.2,
+    "colour": "#e2dccb",
+    "topColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-41-42",
+   "params": {
+    "points": [
+     [
+      39.5,
+      40.5
+     ],
+     [
+      42.5,
+      40.5
+     ],
+     [
+      42.5,
+      43.5
+     ],
+     [
+      39.5,
+      43.5
+     ]
+    ],
+    "z0": 3,
+    "height": 17.2,
+    "colour": "#e2dccb",
+    "topColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     "height": 2.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e2dccb",
+      "windows": "rect",
+      "windowRatio": 0.3
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#7a4a3c",
+      "pitch": 30
+     }
+    },
+    "mode": "line",
+    "start": [
+     -34,
+     -35.5,
+     19.5
+    ],
+    "end": [
+     34,
+     -35.5,
+     19.5
+    ],
+    "count": 9
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "church front is a plain gable block; retaining base is a flat prism, no slope or street grade; courtyard ring done but no inner court detail; dormers simplified"
+ }
+}

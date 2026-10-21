@@ -1,0 +1,518 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lava_rocks_in_a_park_in_the_centre_of_Hafnarfj%C3%B6rdur-2.jpg",
+   "licence": "Public domain",
+   "author": "Szilas",
+   "view": "street",
+   "file": "/tmp/places-evidence/reykjavik/hellis1.jpg",
+   "used": "dark weathered lava outcrops with moss on grass, small gabled cafe house (cream upper, pale blue base, olive-green roof) behind, teal open shelter at left, spruce and rowan trees, playground swing and slide"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/129577128",
+   "used": "park outline (190 x 100 m) as grass ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58.8,
+      1.14
+     ],
+     [
+      -52.92,
+      -1.2
+     ],
+     [
+      -52.68,
+      -10.319999999999999
+     ],
+     [
+      19.92,
+      -33.3
+     ],
+     [
+      29.46,
+      -37.32
+     ],
+     [
+      37.26,
+      -29.52
+     ],
+     [
+      55.85999999999999,
+      -14.879999999999999
+     ],
+     [
+      55.26,
+      -14.52
+     ],
+     [
+      49.379999999999995,
+      -7.68
+     ],
+     [
+      30.479999999999997,
+      5.94
+     ],
+     [
+      37.08,
+      17.22
+     ],
+     [
+      32.76,
+      21.84
+     ],
+     [
+      29.04,
+      25.38
+     ],
+     [
+      25.74,
+      27.66
+     ],
+     [
+      20.16,
+      30.179999999999996
+     ],
+     [
+      12.0,
+      32.1
+     ],
+     [
+      -4.44,
+      31.92
+     ],
+     [
+      -20.099999999999998,
+      30.839999999999996
+     ],
+     [
+      -24.3,
+      30.179999999999996
+     ],
+     [
+      -30.42,
+      26.52
+     ],
+     [
+      -39.9,
+      19.979999999999997
+     ],
+     [
+      -44.459999999999994,
+      14.1
+     ],
+     [
+      -49.92,
+      9.839999999999998
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#7a9a50",
+    "top": true
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 9,
+    "height": 7.5,
+    "seed": 11,
+    "stairs": false,
+    "rock_colour": "#5a5650",
+    "boulders": 3
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "height": 8,
+    "seed": 12,
+    "stairs": false,
+    "rock_colour": "#5a5650",
+    "boulders": 3
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -32,
+    10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 6,
+    "seed": 13,
+    "stairs": false,
+    "rock_colour": "#5a5650",
+    "boulders": 3
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 6.5,
+    "seed": 14,
+    "stairs": false,
+    "rock_colour": "#5a5650",
+    "boulders": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    2,
+    28
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#efe6c6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 2.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3a77c",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -52,
+    34
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f7f70",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2f7f70",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    43,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    46,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 1,
+    "spread": 1,
+    "colour": "#1f4a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 0.15,
+    "colour": "#d8c89c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 0.4,
+    "colour": "#d8c89c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.2,
+    22,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 2.4,
+    "colour": "#c9302e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.8,
+    22,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 2.4,
+    "colour": "#c9302e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.18
+    ],
+    "height": 0.18,
+    "colour": "#c9302e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    25,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     1,
+     3
+    ],
+    "height": 0.2,
+    "colour": "#e3b52f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo is Hellisgerdi, the intended venue (Hafnarfjordur). Lava still rounded domes not craggy outcrops; playground reduced to a simple swing frame; ground is flat not sloped."
+ }
+}

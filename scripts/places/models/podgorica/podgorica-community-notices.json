@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/185576903",
+   "used": "real multi-wing outline of the National Security Agency compound (name match, 1493 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/National_Security_Agency_(Montenegro)",
+   "used": "government block, no photo found; storeys and colours from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "anb",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b5",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#7f98a3",
+    "plinth": 0.6,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#c40c0c",
+     "#d4af37"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 1.5,
+    "colour": "#7f98a3",
+    "frameColour": "#6b6460"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "extent": [
+   100,
+   70
+  ],
+  "cars": [
+   {
+    "at": [
+     24,
+     -27
+    ],
+    "colour": "#8a8f94"
+   },
+   {
+    "at": [
+     30,
+     -27
+    ],
+    "colour": "#2d3a55"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real multi-wing outline, storeys and colours assumed, fence and flags positional guess"
+ }
+}

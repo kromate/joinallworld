@@ -1,0 +1,442 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-relation-9948513",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9948513",
+   "used": "park outline (about 594 x 425 m) scaled by 0.19 to a lawn slab; park, hilltop, about 183,000 m2"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/%C3%87aml%C4%B1ca_Hill",
+   "used": "public hilltop park with tea gardens, Ottoman-style pavilions, a Bosphorus viewing terrace, pine trees, and the Camlica TV tower (opened 2021) nearby; no usable photo of the park itself was found (the Commons images are distant city views)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -60.5,
+      5.5
+     ],
+     [
+      -44.5,
+      16.1
+     ],
+     [
+      -37.7,
+      13.6
+     ],
+     [
+      -30.5,
+      22.7
+     ],
+     [
+      -22.9,
+      20.8
+     ],
+     [
+      -10.3,
+      18.3
+     ],
+     [
+      -10.4,
+      36.4
+     ],
+     [
+      7.7,
+      48.8
+     ],
+     [
+      30.2,
+      41.0
+     ],
+     [
+      47.4,
+      38.8
+     ],
+     [
+      46.2,
+      32.8
+     ],
+     [
+      44.2,
+      28.4
+     ],
+     [
+      49.6,
+      16.8
+     ],
+     [
+      50.7,
+      9.4
+     ],
+     [
+      49.7,
+      4.4
+     ],
+     [
+      33.5,
+      -25.2
+     ],
+     [
+      11.2,
+      -40.2
+     ],
+     [
+      -10.1,
+      -42.3
+     ],
+     [
+      -18.2,
+      -41.0
+     ],
+     [
+      -28.0,
+      -37.9
+     ],
+     [
+      -31.2,
+      -38.0
+     ],
+     [
+      -35.8,
+      -37.4
+     ],
+     [
+      -49.0,
+      -18.4
+     ],
+     [
+      -50.9,
+      -7.5
+     ],
+     [
+      -56.6,
+      2.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#6f9a52",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     44,
+     14
+    ],
+    "z0": 0.4,
+    "height": 0.6,
+    "colour": "#d9cdb4",
+    "topColour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -15.2,
+    1.0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#cfc4aa"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    6,
+    0.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 6,
+    "colour": "#8a5a3a",
+    "cap_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    4,
+    14,
+    0.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 10,
+    "depth": 6.5,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 6,
+    "colour": "#8a5a3a",
+    "cap_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    2,
+    0.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 6,
+    "colour": "#8a5a3a",
+    "cap_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -5,
+    1.0
+   ],
+   "params": {
+    "radius": 3.2,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -5,
+    1.0
+   ],
+   "params": {
+    "radius": 2.6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.25,
+    "run": 1.1,
+    "count": 4,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -28
+     ],
+     [
+      0,
+      -16
+     ],
+     [
+      -8,
+      0
+     ],
+     [
+      -30,
+      3
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -8,
+      0
+     ],
+     [
+      4,
+      10
+     ],
+     [
+      30,
+      0
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 6,
+    "spread": 14,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 5,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 7,
+    "spread": 40,
+    "line": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tv-tower",
+   "at": [
+    50,
+    36,
+    0
+   ],
+   "params": {
+    "colour": "#e8e6e0",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.2
+     },
+     {
+      "z": 20,
+      "circle": 1.6
+     },
+     {
+      "z": 42,
+      "circle": 1.1
+     },
+     {
+      "z": 58,
+      "circle": 1.2
+     },
+     {
+      "z": 59,
+      "circle": 1.8
+     },
+     {
+      "z": 63,
+      "circle": 1.8
+     },
+     {
+      "z": 64,
+      "circle": 0.5
+     },
+     {
+      "z": 72,
+      "circle": 0.15
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no park photo: pavilion count, terrace and path layout follow the brief, not a photo; the real 369 m tower is shown as a 72 m mast; the 594 m outline is shrunk to a 118 m lawn so distances are compressed"
+ }
+}

@@ -1,0 +1,280 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liszt_Ferenc_nemzetk%C3%B6zi_rep%C3%BCl%C5%91t%C3%A9r._%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82_%D0%A4%D0%B5%D1%80%D0%B5%D0%BD%D1%86_%D0%9B%D0%B8%D1%81%D1%82._%D0%A4%D0%B5%D1%80%D0%B5%D1%85%D0%B5%D0%B4%D1%8C_2_By_Victor_Belousov._-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Victor Belousov",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/airport1.jpg",
+   "used": "long landside frontage seen from the access road: left a ribbed blue-grey barrel-vault terminal, right a lower flat glazed block with white saw-tooth roof edge, lamp masts and flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1",
+   "used": "overall length only; footprint not used because the match is another building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "t2b-vault",
+   "footprint": {
+    "rect": [
+     66,
+     40
+    ]
+   },
+   "at": [
+    -40,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f93a8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "curtain",
+     "right": "none",
+     "back": "none",
+     "front": "curtain"
+    },
+    "plinth": 0.5,
+    "bay": 6
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#5f7fa6",
+    "material": "metal-sheet",
+    "rise": 11,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sky-court",
+   "footprint": {
+    "rect": [
+     50,
+     36
+    ]
+   },
+   "at": [
+    16,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0cc",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "curtain"
+    },
+    "plinth": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0",
+    "parapet": 0.6,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "t2a",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    52,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfcdc6",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.4,
+    "bands": "#b9b7b0",
+    "bay": 6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "saw-roof",
+   "at": [
+    16,
+    2
+   ],
+   "params": {
+    "rect": [
+     52,
+     38
+    ],
+    "z0": 8,
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#f2f2ee",
+    "topColour": "#f7f7f4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    15,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 6,
+    "colour": "#dcdcd8",
+    "edgeColour": "#8d9296"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.7
+       ]
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        3.5
+       ],
+       "radius": 20.2,
+       "startDeg": 180,
+       "endDeg": 0,
+       "plane": "yz",
+       "radiusY": 11.3
+      },
+      "colour": "#4a6a90"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -70,
+     0,
+     0
+    ],
+    "end": [
+     -10,
+     0,
+     0
+    ],
+    "count": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -80,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 10,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -62,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 6,
+    "spacing": 4,
+    "colour": "#e8e8e8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -120,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-airport-budapest-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "far street view: vault ribs, saw-tooth Sky Court edge and lamp masts present; flags crude, no tower, no airside piers"
+ }
+}

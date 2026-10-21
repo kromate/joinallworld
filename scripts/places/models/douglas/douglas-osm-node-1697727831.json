@@ -1,0 +1,160 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "douglas",
+  "venueId": "douglas-osm-node-1697727831",
+  "verified": "text",
+  "evidence": [
+    {
+      "kind": "text",
+      "ref": "briefs/douglas.json",
+      "used": "small stone waterworks (pump house) in rural north-east Isle of Man; no outline or photo found for this node"
+    }
+  ],
+  "camera": {
+    "yawDeg": 25,
+    "pitchDeg": 8,
+    "fovDeg": 45
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "pump-house",
+      "footprint": {
+        "rect": [
+          12,
+          8
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#8d8a80",
+        "windows": "punched",
+        "windowRatio": 0.1,
+        "bay": 3.5,
+        "plinth": 0.4
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 32,
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "mass",
+      "id": "filter-annex",
+      "footprint": {
+        "rect": [
+          5,
+          6
+        ]
+      },
+      "at": [
+        8.5,
+        1
+      ],
+      "z0": 0,
+      "height": 3,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#7a7870",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "shed",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 12
+      }
+    },
+    {
+      "type": "chimney-stack",
+      "at": [
+        -4.5,
+        0,
+        6.6
+      ],
+      "params": {
+        "width": 0.9,
+        "height": 1.8,
+        "pots": 1
+      }
+    },
+    {
+      "type": "core/water-tank",
+      "at": [
+        -12,
+        6,
+        0
+      ],
+      "params": {
+        "kind": "elevated",
+        "radius": 2.2,
+        "tankHeight": 3,
+        "legHeight": 5,
+        "legs": 4,
+        "colour": "#9aa0a3"
+      }
+    },
+    {
+      "type": "fence-wall",
+      "at": [
+        0,
+        -9,
+        0
+      ],
+      "params": {
+        "length": 30,
+        "height": 1.2,
+        "kind": "wall",
+        "colour": "#8d8a80"
+      }
+    }
+  ],
+  "site": {
+    "ground": "grass",
+    "forecourt": "none",
+    "trees": [
+      {
+        "kind": "conifer",
+        "at": [
+          -16,
+          -4
+        ]
+      },
+      {
+        "kind": "conifer",
+        "at": [
+          16,
+          10
+        ]
+      },
+      {
+        "kind": "conifer",
+        "at": [
+          -14,
+          12
+        ]
+      }
+    ],
+    "extent": [
+      50,
+      40
+    ]
+  },
+  "review": {
+    "rounds": 0,
+    "match": "rough",
+    "gaps": "no evidence for this node; modest typical stone pump house"
+  }
+}

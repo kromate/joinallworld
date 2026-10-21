@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-371964365",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/371964365",
+   "used": "real 126 x 111 m plot outline used for the perimeter fence; pitch and main stand aligned to its long axis (rotated -59.6 deg)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small club ground with one stand, floodlights and a scoreboard; no photo of the ground found (the geo-nearby Commons photo shows a church, not the stadium)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -66.5,
+      22.9
+     ],
+     [
+      -65.1,
+      34.8
+     ],
+     [
+      11,
+      81.5
+     ],
+     [
+      42.8,
+      33.2
+     ],
+     [
+      77.1,
+      -25.3
+     ],
+     [
+      -18.4,
+      -80.4
+     ],
+     [
+      -39.6,
+      -44.8
+     ],
+     [
+      -49.8,
+      -26.2
+     ],
+     [
+      -66.5,
+      22.9
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9c5bd"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -2.3,
+    0.9,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    -2.3,
+    0.9,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "start": [
+     -26,
+     -40
+    ],
+    "end": [
+     26,
+     -40
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#a8512f",
+    "concreteColour": "#c9c5bd",
+    "underColour": "#a9a59d",
+    "backWall": 3.5,
+    "canopy": {
+     "height": 8.5,
+     "depth": 8,
+     "thickness": 0.35,
+     "slopeDeg": 4,
+     "colour": "#7b7c7e",
+     "edgeColour": "#7b7c7e"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    -2.3,
+    0.9,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "start": [
+     -55,
+     -25
+    ],
+    "end": [
+     -55,
+     25
+    ],
+    "flip": false,
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#c9c5bd",
+    "concreteColour": "#c9c5bd",
+    "bay": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    -46,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    46,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    46,
+    0
+   ],
+   "rotDeg": -59.6,
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -52,
+    36,
+    0
+   ],
+   "rotDeg": 30.4,
+   "params": {
+    "width": 9,
+    "height": 4,
+    "post_height": 2.4,
+    "colour": "#2a2d31"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   135
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the ground; pitch/stand orientation inferred from the OSM plot axis; stand size and floodlight positions typical, not measured."
+ }
+}

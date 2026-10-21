@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%BAnker_1_de_la_Dehesa_de_Navalcarb%C3%B3n,_foto_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sabbut",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/dehesa1.jpg",
+   "used": "Civil War bunker on a sandy path: low rounded rubble-and-granite block with a dark loophole opening, surrounded by open umbrella-pine woodland and pale sandy ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/17542778",
+   "used": "park is 1.1 km2, far beyond the scene; a representative clearing with the bunker is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "roof-slab",
+   "at": [
+    0.0,
+    0.44,
+    2.97
+   ],
+   "params": {
+    "colour": "#a9a8a2",
+    "material": "rubble-flint",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       8.58,
+       6.38
+      ]
+     },
+     {
+      "z": 0.99,
+      "ellipse": [
+       8.8,
+       6.6
+      ]
+     },
+     {
+      "z": 2.09,
+      "ellipse": [
+       7.7,
+       5.72
+      ]
+     },
+     {
+      "z": 2.64,
+      "ellipse": [
+       4.84,
+       3.52
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    -4.18,
+    -2.86
+   ],
+   "params": {
+    "rect": [
+     4.18,
+     3.74
+    ],
+    "height": 3.3,
+    "colour": "#b3a98f",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    4.4,
+    -1.98
+   ],
+   "params": {
+    "rect": [
+     3.74,
+     4.18
+    ],
+    "height": 3.08,
+    "colour": "#908b80",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    0.44,
+    2.86
+   ],
+   "params": {
+    "rect": [
+     11.88,
+     2.64
+    ],
+    "height": 3.3,
+    "colour": "#4a443c",
+    "material": "rubble-flint"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-r",
+   "at": [
+    6.6,
+    1.98
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     5.28
+    ],
+    "height": 3.3,
+    "colour": "#8f8a7f",
+    "material": "rubble-flint"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     40,
+     6
+    ],
+    "height": 0.06,
+    "colour": "#d2c6a6",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path2",
+   "at": [
+    -6,
+    10
+   ],
+   "params": {
+    "rect": [
+     6,
+     20
+    ],
+    "height": 0.06,
+    "colour": "#d2c6a6",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trunk0",
+   "at": [
+    -10.799999999999999,
+    17
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 8,
+    "colour": "#6b4f3a",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "crown0",
+   "at": [
+    -10.799999999999999,
+    17,
+    7.6
+   ],
+   "params": {
+    "colour": "#3f5f34",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.2000000000000002,
+       1.2000000000000002
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       2.72,
+       2.5600000000000005
+      ]
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       2.4000000000000004,
+       2.2399999999999998
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       1.2000000000000002,
+       1.1199999999999999
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "trunk1",
+   "at": [
+    -3.5999999999999996,
+    20
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 8,
+    "colour": "#6b4f3a",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "crown1",
+   "at": [
+    -3.5999999999999996,
+    20,
+    7.6
+   ],
+   "params": {
+    "colour": "#3f5f34",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.2000000000000002,
+       1.2000000000000002
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       2.72,
+       2.5600000000000005
+      ]
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       2.4000000000000004,
+       2.2399999999999998
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       1.2000000000000002,
+       1.1199999999999999
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Bunker now fills the view with loophole between two granite piers on sandy ground, but only two pines remain, crowns are generic lofts and rubble texture is approximate"
+ }
+}

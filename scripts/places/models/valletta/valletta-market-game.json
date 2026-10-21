@@ -1,0 +1,519 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bay_Street_right.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/valletta/bay2.jpg",
+   "used": "pale grey-blue panel cladding upper floors with recessed balcony loggia, deep-blue clad lower corner block, white railings, glass canopy at top right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Julians_Bay_Street_(386).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kommodore_ss",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/valletta/bay1.jpg",
+   "used": "blue steel poles, glazed blue entrance blocks, paved pedestrian street, low shop awnings, hotel-complex banners as blank boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/21102330",
+   "used": "footprint (name match, 77 x 35 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f6fb0",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#8fb0dc",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3ad",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-upper",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    -14,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9d3e6",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bands": "#b4c0d8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8afb8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -14,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9d3e6",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8afb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-wing",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    18,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9d3e6",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bands": "#b4c0d8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3ad",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 6,
+    "bottom": 1.5,
+    "colour": "#2d5a9c",
+    "frameColour": "#c9ced6",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 6,
+    "bottom": 1.5,
+    "colour": "#7a2a2f",
+    "frameColour": "#c9ced6",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.5,
+    "height": 2.8,
+    "colours": [
+     "#2d5a9c",
+     "#f1ede2"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "pylons",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 14,
+      "colour": "#2f5fa8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     -19
+    ],
+    "end": [
+     28,
+     -19
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopfront",
+   "at": [
+    0,
+    -17.6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#2a3440"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -17.9,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#2d5a9c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    -14,
+    -6.7,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#f4f4f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail2",
+   "at": [
+    -14,
+    -6.7,
+    12.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#f4f4f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc0",
+   "at": [
+    -6,
+    -17.9,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     2.37,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc1",
+   "at": [
+    -6,
+    -17.9,
+    4.557142857142858
+   ],
+   "params": {
+    "rect": [
+     3.77,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc2",
+   "at": [
+    -6,
+    -17.9,
+    5.214285714285714
+   ],
+   "params": {
+    "rect": [
+     4.41,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc3",
+   "at": [
+    -6,
+    -17.9,
+    5.871428571428572
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc4",
+   "at": [
+    -6,
+    -17.9,
+    6.528571428571429
+   ],
+   "params": {
+    "rect": [
+     4.41,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc5",
+   "at": [
+    -6,
+    -17.9,
+    7.185714285714286
+   ],
+   "params": {
+    "rect": [
+     3.77,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "disc6",
+   "at": [
+    -6,
+    -17.9,
+    7.8428571428571425
+   ],
+   "params": {
+    "rect": [
+     2.37,
+     0.35
+    ],
+    "height": 0.66,
+    "colour": "#e8c868"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    28,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 8,
+    "height": 22,
+    "thickness": 0.2,
+    "colour": "#cfe3ea",
+    "edgeColour": "#f0f0f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "podium follows the curved OSM outline so the blue corner is a long sweep rather than one tight corner; sign disc partly sunk into the curved wall; panel joints are only horizontal bands; loggia is a plain recessed block with rails, not a true open balcony"
+ }
+}

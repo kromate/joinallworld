@@ -1,0 +1,287 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-1178108642",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hlavne_ihrisko_FC_Petrzalka.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FC Petrzalka",
+   "view": "side",
+   "file": "/tmp/places-evidence/bratislava/v1_0.jpg",
+   "used": "long raked grandstand with black/grey/white seats under a curved translucent canopy on arched ribs; white block building behind at left; white club building with red band at right; open pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1178108642",
+   "used": "identity and scale (115 x 85 m ground)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.51,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     12
+    ],
+    "end": [
+     -36,
+     12
+    ],
+    "rows": 14,
+    "rise": 0.4,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "seatColours": [
+     "#0e0e10",
+     "#0e0e10",
+     "#f2f2ee",
+     "#f2f2ee",
+     "#0e0e10",
+     "#f2f2ee"
+    ],
+    "seatColour": "#0e0e10",
+    "blocks": 6,
+    "concreteColour": "#c9c9c4",
+    "backWall": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -24,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "club",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    42,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": {
+     "colour": "#c43a30",
+     "height": 1.0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    18.5,
+    0.0
+   ],
+   "params": {
+    "kind": "flat",
+    "width": 74,
+    "depth": 14,
+    "z": 7.6,
+    "vCurve": "arch",
+    "vRise": 3.8,
+    "thickness": 0.15,
+    "colour": "#dfe6e9"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 19,
+    "start": [
+     -36,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.25,
+        0.25
+       ]
+      },
+      "points": [
+       [
+        0,
+        11,
+        6.6
+       ],
+       [
+        0,
+        16,
+        10.2
+       ],
+       [
+        0,
+        23.5,
+        8.4
+       ]
+      ],
+      "curve": true,
+      "steps": 8,
+      "colour": "#3b4046"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    10.2,
+    0
+   ],
+   "params": {
+    "length": 74,
+    "height": 1.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a9a9a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     48
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     48
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     48
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     52
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     56
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     58
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "seats render blue-tinted rather than black/white blocks, camera is higher and further than the pitch-level photo, no concrete front wall in view, ribs lighter than the photo's black steel"
+ }
+}

@@ -1,0 +1,299 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/253990537",
+   "used": "nave about 10.6 x 19 m with a rounded east apse, 24.6 x 10.7 m overall; Serbian Orthodox, building=church"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single nave, small dome, western bell tower, plastered walls and red tile roof; no photo found for this church"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "aspect": 1.4,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10.6,
+     15
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bay": 4.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bands": "#b9a47c",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b3f2b",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "at": [
+    0,
+    8.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.6,
+      0.0
+     ],
+     [
+      -3.98,
+      2.3
+     ],
+     [
+      -2.3,
+      3.98
+     ],
+     [
+      0.0,
+      4.6
+     ],
+     [
+      2.3,
+      3.98
+     ],
+     [
+      3.98,
+      2.3
+     ],
+     [
+      4.6,
+      0.0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 5.0,
+    "colour": "#efe6d0",
+    "windows": "none",
+    "topScale": 1.0,
+    "trimColour": "#b9a47c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "apse-roof",
+   "at": [
+    0,
+    8.5,
+    5.0
+   ],
+   "params": {
+    "profile": [
+     [
+      4.9,
+      0,
+      "#8b3f2b"
+     ],
+     [
+      3.5,
+      0.8,
+      "#8b3f2b"
+     ],
+     [
+      0.2,
+      2.4,
+      "#8b3f2b"
+     ]
+    ],
+    "segments": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.6,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#b9a47c",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#6d6a64",
+    "rise": 4.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    1,
+    8.6
+   ],
+   "params": {
+    "profile": [
+     [
+      2.2,
+      0,
+      "#efe6d0"
+     ],
+     [
+      2.2,
+      1.8,
+      "#efe6d0"
+     ],
+     [
+      2.5,
+      1.9,
+      "#b9a47c"
+     ],
+     [
+      2.0,
+      2.2,
+      "#6d6a64"
+     ],
+     [
+      0.2,
+      3.6,
+      "#6d6a64"
+     ],
+     [
+      0.05,
+      4.6,
+      "#d4af37"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.2,
+    "run": 0.45,
+    "count": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; proportions from OSM outline and typical Serbian village church; tower position and dome size typed, not seen"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-quiet-reflection"
+}

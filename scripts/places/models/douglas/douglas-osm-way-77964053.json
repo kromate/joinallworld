@@ -1,0 +1,78 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-way-77964053",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/77964054",
+   "used": "real multi-wing campus outline (143 x 101 m, about 8100 m2, building=university, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "simplify": 7
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd8c9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6d7f8c",
+    "plinth": 0.3,
+    "bay": 14,
+    "trimColour": "#b0b4b6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -62,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8362f",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this campus. Massing is the real OSM outline with a uniform 12 m / 3 storey height, flat roof and ribbon windows from the brief; individual wing heights, entrance, atrium and car-park layout are not known. Footprint heavily simplified and ground floor wing roofs flat to stay in the LOD budget."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ }
+}

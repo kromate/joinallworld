@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-airport-valletta-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta_International_Airport.jpg",
+   "licence": "Public domain",
+   "author": "William Shewring",
+   "view": "front",
+   "file": "/tmp/places-evidence/valletta/air1.jpg",
+   "used": "landside front: pale limestone drum with tall dark glazed slots, barrel-vaulted dark entrance canopy, splayed low wings with tall arched openings, buff stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24322541",
+   "used": "overall extent only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     32,
+     14
+    ]
+   },
+   "at": [
+    -27,
+    -4
+   ],
+   "rotDeg": 22,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a0",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.9,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "glassColour": "#2b3033"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.5,
+    "colour": "#bfb08a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     32,
+     14
+    ]
+   },
+   "at": [
+    27,
+    -4
+   ],
+   "rotDeg": -22,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a0",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.9,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "glassColour": "#2b3033"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.5,
+    "colour": "#bfb08a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a0",
+    "windows": "none",
+    "faces": {
+     "front": "arched"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 10,
+    "plinth": 0.4,
+    "cornice": true,
+    "glassColour": "#2b3033"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb08a",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      8.5,
+      0,
+      "#d9c9a0"
+     ],
+     [
+      8.5,
+      24,
+      "#d9c9a0"
+     ],
+     [
+      8.7,
+      24.6,
+      "#cdbb90"
+     ],
+     [
+      0,
+      24.6,
+      "#cdbb90"
+     ]
+    ],
+    "segments": 28,
+    "arcade": {
+     "from": 2.5,
+     "to": 22.5,
+     "count": 16,
+     "width": 1.3,
+     "height": 20,
+     "sill": 2.5,
+     "shape": "rect",
+     "depth": 0.5,
+     "innerColour": "#2b4048"
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 34,
+    "depth": 4.5,
+    "height": 4.4,
+    "columns": 4,
+    "colour": "#5d544a",
+    "edgeColour": "#d9c9a0",
+    "axis": "x"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wing arches are still small relative to the tall wall (not double-height); drum slots are plain dark strips without mullions; canopy fan and recessed block not modelled; control tower removed."
+ }
+}

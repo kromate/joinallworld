@@ -1,0 +1,197 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-218286514",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LeppavaaranUrheilupuisto.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/helsinki/lepp1.jpg",
+   "used": "long raked grandstand with steel truss-edged canopy roof, blue-grey athletics track with white lines, green pitch infield, green mesh fence, pine and birch edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/218286514",
+   "used": "park is 1 km x 440 m; only the stadium core is modelled at real scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 176,
+    "width": 88,
+    "lane_width": 9.5,
+    "infield": true,
+    "pitch": true,
+    "colour": "#4f86c6"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     48,
+     50
+    ],
+    "end": [
+     -52,
+     50
+    ],
+    "rows": 24,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#27334f",
+     "#3e4a63"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d5cf",
+    "backWall": 1.2,
+    "under": "solid",
+    "canopy": {
+     "height": 16,
+     "depth": 20,
+     "colour": "#dfe3e8",
+     "slopeDeg": 3,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 170,
+    "height": 2.0,
+    "thickness": 0.12,
+    "kind": "mesh",
+    "colour": "#1f4a2c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    65,
+    55,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    75,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    105,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 30,
+    "count": 40,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 18
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    105,
+    0,
+    0
+   ],
+   "params": {
+    "width": 25,
+    "depth": 100,
+    "count": 40,
+    "kind": "birch",
+    "min_height": 9,
+    "max_height": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    105,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "width": 150,
+    "depth": 30,
+    "count": 6,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "canopy truss is a plain slab with posts, track curve only approximate, pitch has football markings, trees low-poly, mesh fence thin"
+ }
+}

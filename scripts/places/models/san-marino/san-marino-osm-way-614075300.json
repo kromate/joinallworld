@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-614075300",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/614075300",
+   "used": "park outline (Parco Montelupo, name match, about 18,000 m2, hillside lawn)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lawns, trees, small sports area; pavilion, paths and bench positions assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a4e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -40
+     ],
+     [
+      -10,
+      -10
+     ],
+     [
+      5,
+      20
+     ],
+     [
+      10,
+      50
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      -10
+     ],
+     [
+      30,
+      5
+     ],
+     [
+      55,
+      20
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    35,
+    28,
+    0.55
+   ],
+   "params": {
+    "length": 44,
+    "width": 26,
+    "infield": false,
+    "pitch": true,
+    "colour": "#a85c3c"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -8,
+    -8,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#a85c3c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    10,
+    0.55
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.2,
+    "kind": "wall",
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -30,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 14,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    30,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 10,
+    "line": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -20,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 12,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ }
+}

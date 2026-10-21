@@ -1,0 +1,298 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_johns_parish_hall.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Danrok",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/st-helier-community-notices-0.jpg",
+   "used": "pink-brown granite, slate gabled hall with four tall paned windows between buttress strips, square clock tower at left with hipped slate cap and dentil cornice, ridge cupola, tall end chimney, granite dwarf wall in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/906637546",
+   "used": "identity and size only; the OSM outline is a multi-part polygon and was recomposed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19,
+     11
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a98a80",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 4.8,
+    "plinth": 0.7,
+    "trimColour": "#d8d2c8",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 36,
+    "colour": "#4d5157",
+    "material": "slate",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -9.6,
+    -1.5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#a08478",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 4,
+    "colour": "#4a4e54",
+    "material": "slate",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -5.7
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#b39a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -5.7
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#b39a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster2",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -5.7
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#b39a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster3",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -5.7
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#b39a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster4",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    12,
+    -5.7
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#b39a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cupola",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "z0": 9.2,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9c4bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 0.9,
+    "colour": "#5f9c8a"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    12.6,
+    0,
+    5
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 8,
+    "pots": 1,
+    "colour": "#a08478"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.9,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#b7a99c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 1,
+  "treeKind": "broadleaf",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clock face, tower dormers, dentil detail simplified; chain posts replaced by plain wall; ridge cupola is a plain copper cap; granite texture and bare tree not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-community-notices"
+}

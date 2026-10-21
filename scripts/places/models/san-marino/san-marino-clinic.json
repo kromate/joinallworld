@@ -1,0 +1,415 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ospedale_di_Stato_della_Repubblica_di_San_Marino.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lukas Raich",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-marino/clinic.jpg",
+   "used": "five-storey stepped block of brown-tan render with pale vertical pilasters and bands, taller central block, entrance canopy with blank fascia, glazed low left wing with ambulance bay"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10587132",
+   "used": "overall extent only (195 m complex, modelled as the front facade ranges)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -40,
+    4
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#9a8473",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 5.0,
+      "colour": "#d9d3c6",
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#d9d3c6",
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-left",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -15,
+    2
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#9a8473",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 5.0,
+      "colour": "#d9d3c6",
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#d9d3c6",
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-tower",
+   "footprint": {
+    "rect": [
+     13.5,
+     16
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#9a8473",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 5.0,
+      "colour": "#d9d3c6",
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#d9d3c6",
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-link",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    20,
+    4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#9a8473",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 5.0,
+      "colour": "#d9d3c6",
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#d9d3c6",
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    46,
+    4
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#9a8473",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.3,
+      "spacing": 5.0,
+      "colour": "#d9d3c6",
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#d9d3c6",
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -45,
+    -8
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7c8f8a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6c0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 11,
+    "height": 4.4,
+    "thickness": 1.0,
+    "columns": 4,
+    "colour": "#3d4042",
+    "edgeColour": "#4b5a5e"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -33,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 4.0,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#d6d4cd",
+    "edgeColour": "#c9c6c0"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -32,
+    -12,
+    0
+   ],
+   "params": {
+    "heading": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -38,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0,
+    "colour": "#d9dadd",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -15.6,
+    3.0
+   ],
+   "params": {
+    "width": 9,
+    "height": 0.8,
+    "bottom": 3.1,
+    "colour": "#46a3b5",
+    "frameColour": "#d9d3c6",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     64,
+     -8
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Render still slightly pink under sun; window grouping 2-3 with recessed panels not modelled; fascia sign is a blank board; rear wings omitted"
+ }
+}

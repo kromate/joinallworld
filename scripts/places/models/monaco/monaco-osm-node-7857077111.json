@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-node-7857077111",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/161775595",
+   "used": "containing apartment-building outline (3 levels) beneath the restaurant point"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hotel_Hermitage_(3531773294).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Leandro Neumann Ciuffo",
+   "view": "street",
+   "used": "neighbouring Belle Epoque hotel only for palette (warm yellow render, cream trim, white balustrades); not a photo of this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the restaurant; real 3-level outline with a glazed dining pavilion on the roof terrace from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8cf98",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f4efe2",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "roof-balus",
+   "at": [
+    0,
+    -3,
+    11
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 11,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9aa8ac",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -11,
+    2.7
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "colours": [
+     "#f4efe2",
+     "#c9b27a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "blank-board",
+   "at": [
+    -5,
+    -11.5,
+    3.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-a",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-b",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   60
+  ]
+ }
+}

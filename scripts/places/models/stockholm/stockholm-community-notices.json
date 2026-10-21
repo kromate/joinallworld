@@ -1,0 +1,448 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gillingebanan_2013a_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/gill_a.jpg",
+   "used": "control tower: concrete shaft with red stripes and an overhanging glazed cab; yellow clad workshop shed with grey roller doors and shallow roof; lattice radio mast behind; cracked asphalt apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gillingebanan_2013c.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/gill_c.jpg",
+   "used": "setting: huge flat worn asphalt area, low dark and red office building and yellow shed in the distance, lamp posts, flagpoles, pines and bare birches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220063970",
+   "used": "not used: nearest match is an unrelated 71 m2 building 9.5 m away, so the layout comes from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 36,
+  "aspect": 1.4,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    -8,
+    15
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8b83a",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-doors",
+   "footprint": {
+    "rect": [
+     6.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    7.3
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9aeb2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    17
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfae38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6166",
+    "rise": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -55,
+    30
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3436",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#a8372c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a60",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a8680",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       4.4799999999999995,
+       4.4799999999999995
+      ],
+      "cx": 0.0,
+      "colour": "#8a8680"
+     },
+     {
+      "z": 1.62,
+      "rect": [
+       3.6399999999999997,
+       3.6399999999999997
+      ],
+      "cx": 0.0,
+      "colour": "#9a958e"
+     },
+     {
+      "z": 6.75,
+      "rect": [
+       3.2199999999999998,
+       3.2199999999999998
+      ],
+      "cx": 0.32000000000000006,
+      "colour": "#a8a49c"
+     },
+     {
+      "z": 10.8,
+      "rect": [
+       3.2199999999999998,
+       3.2199999999999998
+      ],
+      "cx": 0.8,
+      "colour": "#a8a49c"
+     },
+     {
+      "z": 14.850000000000001,
+      "rect": [
+       3.36,
+       3.36
+      ],
+      "cx": 1.4400000000000002,
+      "colour": "#8a8680"
+     },
+     {
+      "z": 17.01,
+      "rect": [
+       4.4799999999999995,
+       4.4799999999999995
+      ],
+      "cx": 1.6,
+      "colour": "#7a7670"
+     },
+     {
+      "z": 17.55,
+      "rect": [
+       8.68,
+       7.56
+      ],
+      "cx": 1.6,
+      "colour": "#5b6468"
+     },
+     {
+      "z": 18.36,
+      "rect": [
+       8.959999999999999,
+       7.839999999999999
+      ],
+      "cx": 1.6,
+      "colour": "#7fa5b0"
+     },
+     {
+      "z": 22.14,
+      "rect": [
+       8.959999999999999,
+       7.839999999999999
+      ],
+      "cx": 1.6,
+      "colour": "#7fa5b0"
+     },
+     {
+      "z": 22.275000000000002,
+      "rect": [
+       11.76,
+       10.36
+      ],
+      "cx": 1.6,
+      "colour": "#3f4448"
+     },
+     {
+      "z": 23.22,
+      "rect": [
+       11.2,
+       9.799999999999999
+      ],
+      "cx": 1.6,
+      "colour": "#3f4448"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -3.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "height": 1.8,
+    "bottom": 12,
+    "colour": "#2a5aa8",
+    "frameColour": "#d8d8d4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#f2f0ea",
+    "frameColour": "#b02a22",
+    "posts": true
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -4,
+    22,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "baseWidth": 1.6,
+    "topWidth": 0.5,
+    "panels": 14,
+    "colour": "#7e8387",
+    "colour2": "#9aa0a4"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    35,
+    6,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      -30,
+      -2,
+      9
+     ],
+     [
+      -10,
+      10,
+      14
+     ],
+     [
+      8,
+      2,
+      22
+     ]
+    ],
+    "sag": 2.5,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "length": 24,
+    "height": 0.9,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-doors2",
+   "footprint": {
+    "rect": [
+     6.5,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    7.3
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9aeb2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -58,
+     16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -52,
+     40
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is a leaning boxy loft with glazed cab and signboards but lacks the hexagonal cab and red stripe detail; shed has two roller doors but no gabled side wing; no guard rail geometry, scrub or flat horizon; distant office is a guess."
+ }
+}

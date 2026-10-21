@@ -1,0 +1,303 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Drossinis_museum_10.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Aliki Galiatsatou",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/athens-community-workshop-0.jpg",
+   "used": "two-storey ochre-cream rendered villa, terracotta hip roof with a dark red dentil eave and a red band between floors, white-framed windows with green shutters, white-stone corner pier and arch of a ground floor loggia carrying a balcony with a black iron rail, privet hedge and ochre garden wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/299059456",
+   "used": "footprint 13.1 x 11.5 m, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "rect": [
+     13.1,
+     11.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c98a",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#2f5a3a",
+    "trimColour": "#f4f1e8",
+    "plinth": 0.5,
+    "bands": {
+     "colour": "#8c3f32",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8482a",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4.0,
+    -9.0,
+    4.65
+   ],
+   "params": {
+    "length": 5.4,
+    "height": 1.0,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 0.4,
+    "colour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -11.2,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9bd7c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -10.9,
+    1.0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.0,
+    "thickness": 1.0,
+    "kind": "wall",
+    "colour": "#2a4a28"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8.8,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 0,
+    "height": 8.4,
+    "colour": "#dcd7ca",
+    "topColour": "#eceae0"
+   },
+   "at": [
+    -6.6,
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-right",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 3.3,
+    "colour": "#dcd7ca",
+    "topColour": "#eceae0"
+   },
+   "at": [
+    -2.1,
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "impost-r",
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 3.2,
+    "height": 0.35,
+    "colour": "#e9e5d8",
+    "topColour": "#e9e5d8"
+   },
+   "at": [
+    -2.1,
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -4.35,
+    -8.2,
+    3.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      1.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 2.0,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 1.0
+    },
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-slab",
+   "params": {
+    "rect": [
+     5.6,
+     3.0
+    ],
+    "z0": 4.5,
+    "height": 0.4,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   },
+   "at": [
+    -4.2,
+    -7.6,
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4.2,
+    -9.0,
+    4.9
+   ],
+   "params": {
+    "length": 5.6,
+    "height": 1.1,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 0.18,
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6.6,
+    -8.2,
+    8.4
+   ],
+   "params": {
+    "height": 3.4,
+    "colours": [
+     "#2b63b3",
+     "#ffffff",
+     "#2b63b3",
+     "#ffffff",
+     "#2b63b3"
+    ],
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     9,
+     5
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   34,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pier, arch ring and balcony enlarged; shutters shown as green glass, no dentil eave, flag colours simplified, hedge plain block"
+ }
+}

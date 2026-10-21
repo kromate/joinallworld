@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/431374177",
+   "used": "real outline of the Municipio Roma VI seat (about 73 x 22 m, a long bar with a notch), name-quality match; no exterior photo of the building was found on Commons (category images are maps and unrelated town views), so facade is a plain 4-storey rendered office block from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd0b4",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "bay": 5,
+    "plinth": 0.6,
+    "bands": "#a89f8b",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9399",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#8c8577",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building: only the OSM plan is real; storeys, cream render, ribbon windows, entrance and forecourt are typical-office assumptions from the brief."
+ }
+}

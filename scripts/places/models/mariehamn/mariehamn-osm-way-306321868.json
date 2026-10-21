@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-way-306321868",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/306321868",
+   "used": "not used for shape: the outline is a 240,000 m2 battlefield polygon, far larger than the structures"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bunker",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      -3
+     ],
+     [
+      9,
+      -3
+     ],
+     [
+      11,
+      4
+     ],
+     [
+      -11,
+      4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8f94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7f55",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "revetment-back",
+   "footprint": {
+    "rect": [
+     44,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a8a398",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8f62",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-front",
+   "footprint": {
+    "rect": [
+     44,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8f94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8f62",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#5a5f62"
+     ],
+     [
+      4.4,
+      0,
+      "#8a8f94"
+     ],
+     [
+      4.4,
+      1.6,
+      "#8a8f94"
+     ],
+     [
+      3.2,
+      1.6,
+      "#7b8085"
+     ],
+     [
+      3.2,
+      0,
+      "#5a5f62"
+     ]
+    ],
+    "segments": 18,
+    "openTop": true
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -14,
+    0,
+    1.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#5a5f62"
+     ],
+     [
+      4.4,
+      0,
+      "#8a8f94"
+     ],
+     [
+      4.4,
+      1.6,
+      "#8a8f94"
+     ],
+     [
+      3.2,
+      1.6,
+      "#7b8085"
+     ],
+     [
+      3.2,
+      0,
+      "#5a5f62"
+     ]
+    ],
+    "segments": 18,
+    "openTop": true
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    14,
+    0,
+    1.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 1.8,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a8a398"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline of the actual remains: typical Russian WWI coastal battery layout (two gun pits, concrete bunker, granite revetment) in grass and conifers"
+ }
+}

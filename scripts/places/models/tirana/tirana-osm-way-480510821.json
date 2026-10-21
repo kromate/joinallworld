@@ -1,0 +1,627 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-480510821",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pazari_i_ri.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Kevin Jasini",
+   "view": "street",
+   "used": "glass-walled gable market halls with dark steel frames and dark pitched metal roofs, low gable hall on the right with open sides, brick-paved square, saturated red apartment block with zigzag trim behind, olive trees, awnings",
+   "file": "/tmp/places-evidence/tirana/baz1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_New_Bazaar_of_Tirana.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Besara1",
+   "view": "detail",
+   "used": "gable proportions and thin dark frame grid of the glass hall, dark sloping fascia, steel posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/480510821",
+   "used": "name match; real outline (160 m, irregular) too large and spiky, so the central square with halls is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-a",
+   "footprint": {
+    "rect": [
+     27.599999999999998,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8196",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {},
+    "bands": "#1f2428",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2a3036",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-a2",
+   "footprint": {
+    "rect": [
+     16.099999999999998,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    8
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8196",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {},
+    "bands": "#1f2428"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2a3036",
+    "material": "metal-sheet",
+    "pitch": 48,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    12,
+    22
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d11f2a",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#5b3a8f",
+    "cornice": true,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b3a8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     26,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3.5,
+      "depth": 1.6,
+      "colours": [
+       "#c8362f",
+       "#f0eee8",
+       "#7aa0b8"
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall-open",
+   "footprint": {
+    "rect": [
+     25.299999999999997,
+     13
+    ]
+   },
+   "at": [
+    14,
+    -3
+   ],
+   "z0": 3.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#262b30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a444c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    3.5,
+    -9,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     21,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 3.9,
+      "colour": "#1f2428",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    3.5,
+    3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     21,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 3.9,
+      "colour": "#1f2428",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     44
+    ],
+    "height": 0.08,
+    "colour": "#d8b4a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -35,
+    -8,
+    0.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     70,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       40
+      ],
+      "height": 0.03,
+      "colour": "#efe3d6",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -24,
+    0.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     32,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       80,
+       0.4
+      ],
+      "height": 0.03,
+      "colour": "#efe3d6",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 2.2,
+    "height": 2.6,
+    "colours": [
+     "#f0eee8",
+     "#e8e4da"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#f0eee8",
+     "#7aa0b8"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    26,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3.6,
+      "depth": 1.6,
+      "colours": [
+       "#c8362f",
+       "#f0eee8"
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "planter--2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -2,
+    -16
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b87050",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -16,
+    0.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#8a9468"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-30",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    30,
+    -24
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b87050",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -24,
+    0.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#8a9468"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter--30",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b87050",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#8a9468"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stork",
+   "at": [
+    6,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#e6e2d8",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       0.5,
+       0.4
+      ]
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       0.9,
+       0.5
+      ]
+     },
+     {
+      "z": 4.2,
+      "ellipse": [
+       0.4,
+       0.3
+      ]
+     },
+     {
+      "z": 5.2,
+      "ellipse": [
+       0.25,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Halls are dark-roofed glass gables without a true mullion grid; zigzag trim on red block is only a band; wicker stork, ladder and crowds simplified; camera framing is wider than the photo."
+ }
+}

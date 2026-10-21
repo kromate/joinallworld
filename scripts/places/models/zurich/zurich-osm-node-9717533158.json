@@ -1,0 +1,21 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "zurich", "venueId": "zurich-osm-node-9717533158",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/330659641", "used": "real outline (containing, ~58 x 26 m, 1529 m2) and its tags: commercial use, 6 levels, flat roof"},
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Herostrasse_12.jpg", "licence": "CC BY-SA 4.0", "author": "Ralph Plennert", "view": "street", "used": "style of the office-type block 53 m away on the same street (not confirmed as this exact building): grey precast frame with deep square window reveals, 6 storeys, dark entrance bay; used only as a plausible facade reference, so verified stays footprint"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 10, "fovDeg": 55, "aspect": 1.78, "fit": "building", "margin": 0.08},
+ "parts": [
+  {"type": "mass", "id": "block", "footprint": {"osm": true, "rotDeg": -18}, "at": [0, 0], "height": 21, "storeys": 6,
+   "wall": {"material": "exposed-concrete", "colour": "#8f9091", "windows": "punched", "windowRatio": 0.3, "plinth": 0.3, "trimColour": "#6f7276", "glassColour": "#7f93a3", "faces": {"back": "none"}},
+   "roof": {"form": "flat", "colour": "#8a8d8f", "material": "membrane", "parapet": 0.5}},
+  {"type": "mass", "id": "entrance-bay", "footprint": {"rect": [9, 2]}, "at": [0, -16], "height": 4.2, "storeys": 1,
+   "wall": {"material": "exposed-concrete", "colour": "#3d4043", "windows": "curtain", "windowRatio": 0.5, "glassColour": "#2c3438"},
+   "roof": {"form": "flat", "colour": "#4a4d50", "material": "membrane", "overhang": 1.0}},
+  {"type": "core/flag", "at": [-10, -18, 0], "params": {"height": 9, "count": 2, "spacing": 2, "colours": ["#c0392b", "#2e8b57"]}},
+  {"type": "core/fence-wall", "at": [0, -22, 0], "params": {"length": 36, "height": 1.8, "thickness": 0.2, "kind": "fence", "colour": "#5f6469"}}
+ ],
+ "site": {"ground": "paving", "forecourt": "plaza", "trees": [{"kind": "conifer", "at": [20, -14], "height": 14}, {"kind": "broadleaf", "at": [-24, -14], "height": 10}], "extent": [100, 80]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "Whether this OSM building is the school is unconfirmed; height and facade come from OSM tags plus a nearby look-alike block, entrance and window rhythm assumed."}
+}

@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-38247112",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:XIAOMI_ARENA.jpg",
+   "licence": "CC0",
+   "author": "AliseArena",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/arena1.jpg",
+   "used": "three-storey glazed arena wrapping a white central entrance block, curved glass wings left and right with lit ribbon floors, red fascia band over the ground floor, tall lattice mast over the entrance, flagpoles and brick plaza; sponsor logos left out"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38247112",
+   "used": "overall size and orientation only (142 x 84 m); the real outline is a faceted oval that the 118 m clamp would shrink, so a hand polygon of the same character is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arena",
+   "footprint": {
+    "polygon": [
+     [
+      -50,
+      -14
+     ],
+     [
+      -30,
+      -30
+     ],
+     [
+      -12,
+      -35
+     ],
+     [
+      12,
+      -35
+     ],
+     [
+      30,
+      -30
+     ],
+     [
+      50,
+      -14
+     ],
+     [
+      56,
+      22
+     ],
+     [
+      34,
+      38
+     ],
+     [
+      -34,
+      38
+     ],
+     [
+      -56,
+      22
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f4a4a",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#1d4a4c",
+       "#b9d6cf",
+       "#1d4a4c"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#c8452f",
+      "height": 0.35,
+      "at": 0.75,
+      "floors": [
+       0
+      ]
+     }
+    ],
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e757b",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     32,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9da",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -43
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7a85",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8452f",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -42.3,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 7,
+    "bottom": 9,
+    "colour": "#e8832a",
+    "frameColour": "#d9d6cd",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5.5,
+    -42.3,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 7,
+    "bottom": 9,
+    "colour": "#e8832a",
+    "frameColour": "#d9d6cd",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -42.8,
+    6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 24,
+    "colour": "#f3efe0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 6,
+    "spacing": 7,
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "height": 0.15,
+    "colour": "#6b4a40"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": 6,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance block is a flat box not a canted curved tower; wings faceted rather than a continuous sweep around the block; logo panels plain orange; plaza brick colour done via slab"
+ }
+}

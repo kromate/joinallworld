@@ -1,0 +1,639 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-way-130808774",
+ "name": "Rungis International Market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rue_Claires_-_Rungis_(FR94)_-_2022-05-25_-_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chabe01",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/way-130808774-0.jpg",
+   "used": "apron view inside the market: long low white hall at left with perforated parapet band and dark loading canopy, blue container and skip, grey metal-clad block at right with roof railings, wide cracked asphalt, rows of white refrigerated trucks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/126104043",
+   "used": "checked only: a thin 277 x 9 m strip, not the market; two representative pavilions modelled instead (market is 232 ha)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-left",
+   "footprint": {
+    "rect": [
+     80,
+     18
+    ]
+   },
+   "at": [
+    -32,
+    44
+   ],
+   "rotDeg": 10,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcdcd8",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e4e0",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lace",
+   "footprint": {
+    "rect": [
+     80,
+     0.7
+    ]
+   },
+   "at": [
+    -32,
+    35.2
+   ],
+   "rotDeg": 10,
+   "z0": 7.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.9,
+       0.9
+      ],
+      "colours": [
+       "#f4f4f1",
+       "#e6e6e2"
+      ],
+      "gap": 0.05,
+      "slits": {
+       "fraction": 0.45,
+       "colour": "#7f858a",
+       "width": 0.5,
+       "height": 0.5
+      }
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "dock-canopy",
+   "at": [
+    -32,
+    33.5,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 8,
+    "height": 4.6,
+    "thickness": 0.7,
+    "columns": 0,
+    "colour": "#2e3438",
+    "edgeColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "boxes-blue",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     32.5,
+     0
+    ],
+    "end": [
+     -18,
+     30,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.1,
+       2.5
+      ],
+      "z0": 0,
+      "height": 2.6,
+      "colour": "#254a8f",
+      "topColour": "#254a8f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "boxes-white",
+   "params": {
+    "mode": "line",
+    "start": [
+     -57,
+     29,
+     0
+    ],
+    "end": [
+     -36,
+     28,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.1,
+       2.5
+      ],
+      "z0": 0.5,
+      "height": 2.6,
+      "colour": "#f2f2f0",
+      "topColour": "#f2f2f0"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     36,
+     56
+    ]
+   },
+   "at": [
+    44,
+    48
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f959a",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7d8388",
+      "height": 0.35,
+      "at": 0.5,
+      "proud": 0.06
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8085",
+    "material": "membrane",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-plant",
+   "at": [
+    40,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "z0": 16,
+    "height": 2.4,
+    "colour": "#b9bec2",
+    "topColour": "#c9ced1"
+   }
+  },
+  {
+   "type": "array",
+   "id": "roof-rail",
+   "params": {
+    "mode": "line",
+    "start": [
+     26.4,
+     20.4,
+     16.4
+    ],
+    "end": [
+     61.6,
+     20.4,
+     16.4
+    ],
+    "count": 19,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 1.1,
+      "colour": "#c9ced1"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "trucks-0",
+   "params": {
+    "mode": "line",
+    "start": [
+     18,
+     6,
+     0
+    ],
+    "end": [
+     18,
+     30,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.5,
+        7.2
+       ],
+       "z0": 1.0,
+       "height": 3.0,
+       "colour": "#f3f4f4",
+       "topColour": "#f3f4f4"
+      },
+      "at": [
+       0,
+       3.8,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.4,
+        2.2
+       ],
+       "z0": 0.9,
+       "height": 2.5,
+       "colour": "#eceeef",
+       "topColour": "#eceeef"
+      },
+      "at": [
+       0,
+       -0.6,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        1.0
+       ],
+       "z0": 1.9,
+       "height": 0.9,
+       "colour": "#2f3a44",
+       "topColour": "#2f3a44"
+      },
+      "at": [
+       0,
+       -1.75,
+       0.0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       -1.25,
+       0,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       1.25,
+       0,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       -1.25,
+       6.2,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       1.25,
+       6.2,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "trucks-1",
+   "params": {
+    "mode": "line",
+    "start": [
+     24.5,
+     8,
+     0
+    ],
+    "end": [
+     24.5,
+     32,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.5,
+        7.2
+       ],
+       "z0": 1.0,
+       "height": 3.0,
+       "colour": "#f3f4f4",
+       "topColour": "#f3f4f4"
+      },
+      "at": [
+       0,
+       3.8,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.4,
+        2.2
+       ],
+       "z0": 0.9,
+       "height": 2.5,
+       "colour": "#eceeef",
+       "topColour": "#eceeef"
+      },
+      "at": [
+       0,
+       -0.6,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        1.0
+       ],
+       "z0": 1.9,
+       "height": 0.9,
+       "colour": "#2f3a44",
+       "topColour": "#2f3a44"
+      },
+      "at": [
+       0,
+       -1.75,
+       0.0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       -1.25,
+       0,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       1.25,
+       0,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       -1.25,
+       6.2,
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        1.1
+       ],
+       "z0": 0,
+       "height": 1.1,
+       "colour": "#222222",
+       "topColour": "#222222"
+      },
+      "at": [
+       1.25,
+       6.2,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "id": "lamp-1",
+   "at": [
+    6,
+    16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lace parapet is a coarse slit pattern, trucks are boxes with simple cabs, no cracks or bay markings on the ground, hall and block are shorter than the real run; ground colour washed by the site pad."
+ }
+}

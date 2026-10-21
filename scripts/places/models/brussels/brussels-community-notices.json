@@ -1,0 +1,779 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kasteel_de_Viron.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nico Vanhaeverbeek",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/viron.jpg",
+   "used": "symmetrical red-brick front with white stone banding and gabled centre bay, two square corner towers with flared bulbous slate caps and spires, small pointed turrets along the roofline, sloping lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41223235",
+   "used": "overall size 40 x 20 m and plan depth (L-shape simplified to main block, towers, rear wing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.225,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5604f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 2.6,
+    "bands": "#e6dccb",
+    "cornice": true,
+    "plinth": 0.5,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5058",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -17.5,
+    -3
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5604f",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 2.8,
+    "bands": "#e6dccb",
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    17.5,
+    -3
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5604f",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 2.8,
+    "bands": "#e6dccb",
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    2,
+    10.5
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65646",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5058",
+    "material": "slate",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-l",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17.5,
+    -3,
+    20
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      3.1,
+      0,
+      "#4a5058"
+     ],
+     [
+      3.1,
+      0.6
+     ],
+     [
+      2.2,
+      1.8
+     ],
+     [
+      1.2,
+      2.8
+     ],
+     [
+      1.9,
+      3.6
+     ],
+     [
+      1.6,
+      4.4
+     ],
+     [
+      0.9,
+      5.4
+     ],
+     [
+      0.3,
+      6.6
+     ],
+     [
+      0.2,
+      10,
+      "#8a8a8a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-r",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    17.5,
+    -3,
+    20
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      3.1,
+      0,
+      "#4a5058"
+     ],
+     [
+      3.1,
+      0.6
+     ],
+     [
+      2.2,
+      1.8
+     ],
+     [
+      1.2,
+      2.8
+     ],
+     [
+      1.9,
+      3.6
+     ],
+     [
+      1.6,
+      4.4
+     ],
+     [
+      0.9,
+      5.4
+     ],
+     [
+      0.3,
+      6.6
+     ],
+     [
+      0.2,
+      10,
+      "#8a8a8a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-l2",
+   "lod": [
+    2
+   ],
+   "at": [
+    -17.5,
+    -3,
+    20
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      3.5,
+      0
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      0,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-r2",
+   "lod": [
+    2
+   ],
+   "at": [
+    17.5,
+    -3,
+    20
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      3.5,
+      0
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      0,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.25
+    ],
+    "z0": 0.5,
+    "height": 2.8,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     9,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#bd6a58",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 2.2,
+    "bands": "#e6dccb",
+    "cornice": true,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dccb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "market-open/stepped-gable",
+   "id": "centre-gable",
+   "at": [
+    0,
+    -7.8,
+    12.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "height": 4.2,
+    "steps": 4,
+    "thickness": 0.6,
+    "colour": "#bd6a58",
+    "trim_colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-window",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "z0": 8.4,
+    "height": 3.4,
+    "colour": "#2d3a44"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -13,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    13,
+    -5.4,
+    11.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a5058",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#e6dccb"
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0.7,
+      1.6,
+      "#4a5058"
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.1,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#6f9a4a",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       60,
+       24
+      ]
+     },
+     {
+      "z": 0.8,
+      "rect": [
+       44,
+       14
+      ],
+      "cy": 3
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       34,
+       6
+      ],
+      "cy": 6
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.5
+      ],
+      "z0": 11.0,
+      "height": 0.8,
+      "colour": "#e6dccb"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -13.5,
+     -5.85,
+     0
+    ],
+    "end": [
+     13.5,
+     -5.85,
+     0
+    ],
+    "count": 28
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "towers still squat boxes vs the photo's taller slim ones; crenellated parapet added to the front but no diaper brickwork; hill is a low mound"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     31,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

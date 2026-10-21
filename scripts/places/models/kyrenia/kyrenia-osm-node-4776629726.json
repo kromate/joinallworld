@@ -1,0 +1,281 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-node-4776629726",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/4776629726",
+   "used": "amenity=restaurant, cuisine kebab, capacity 15: a very small premises (a point only; the nearest building is a house and was not used)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/kyrenia.json",
+   "used": "single-room whitewashed meyhane with stone accents, awning, small front terrace with two umbrellas, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.5,
+    "parapet": 0.35,
+    "bands": "#d9c49a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    -3,
+    5.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e1d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -3.5,
+    5.6
+   ],
+   "z0": 3.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b96a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8277"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     10,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -5.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c49a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.5,
+    0
+   ],
+   "params": {
+    "width": 7.5,
+    "depth": 2.4,
+    "height": 2.7,
+    "drop": 0.5,
+    "colours": [
+     "#b96a43",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -3.7,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.8,
+    "bottom": 3.0,
+    "colour": "#b96a43",
+    "frameColour": "#f1ece0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.6,
+     0,
+     0
+    ],
+    "end": [
+     2.6,
+     0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "profile": [
+       [
+        0.06,
+        0,
+        "#6b5b4a"
+       ],
+       [
+        0.06,
+        2.1,
+        "#6b5b4a"
+       ],
+       [
+        1.2,
+        2.1,
+        "#f1ece0"
+       ],
+       [
+        0.1,
+        2.6,
+        "#d9c49a"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.6,
+     0.9,
+     0
+    ],
+    "end": [
+     2.6,
+     0.9,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 0.75,
+      "colour": "#6b5b4a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: size from OSM capacity and the brief, layout typical of a village meyhane"
+ }
+}

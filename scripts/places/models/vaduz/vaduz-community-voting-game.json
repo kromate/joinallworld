@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vaduz_Rathaus_2008_SE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hans G. Oberlack",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/rathaus2.jpg",
+   "used": "long cream-rendered three-storey front on a grey stone plinth, two low tiled roofs with a louvred clerestory band between, row of arched windows with red-pink surrounds on the first floor, grilled ground-floor windows, round arch entrance at the right end with steps, small clock gable on the roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rathaus_Vaduz.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "St9191",
+   "view": "side",
+   "file": "/tmp/places-evidence/vaduz/rathaus1.jpg",
+   "used": "tall square clock tower at the end of the block with a curved gable top, red-white shutters, arched windows, arcade of round arches at its foot"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28712183",
+   "used": "footprint (name match, 26.8 x 17.8 m, 4 levels, gabled, light yellow), rotated to the long axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.8,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clerestory band floats above the roof as a black slab instead of sitting between two tiled roofs, block roof is one hip not two stepped roofs, plinth and ground grilles flat colour, clock face a flat disc, entrance arch not distinct"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -49,
+    "scale": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b4",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 3.1,
+    "glassColour": "#3a3d44",
+    "trimColour": "#d98a72",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b3a31",
+    "material": "clay-tile",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     31,
+     5
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 11.2,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3b3a3a",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon"
+    },
+    "glassColour": "#2b2e33"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     4.5,
+     2.4
+    ]
+   },
+   "at": [
+    14,
+    -9.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a62"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    14,
+    -13.7,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-gable",
+   "footprint": {
+    "rect": [
+     4,
+     1.4
+    ]
+   },
+   "at": [
+    8,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 11.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b3a31",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "at": [
+    8,
+    -2.3,
+    13.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 0.9,
+    "n": 16,
+    "height": 0.2,
+    "colour": "#f4f1e6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "round-turret",
+   "at": [
+    -15.8,
+    -2.5,
+    0
+   ],
+   "params": {
+    "radius": 0.8,
+    "height": 14.5,
+    "cap": "cone",
+    "colour": "#e6d8b4",
+    "roof_colour": "#5b3a31"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

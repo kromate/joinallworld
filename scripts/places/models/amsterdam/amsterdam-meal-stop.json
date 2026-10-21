@@ -1,0 +1,298 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Restaurant_Vermeer_exterior.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "detail",
+   "file": "/tmp/places-evidence/amsterdam/verm1.jpg",
+   "used": "ground-floor joinery only: cream-white painted pilaster frames, black double doors and black-framed glazing, transom sign board; colours for the shopfront and awning"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/266944080",
+   "used": "row of gabled brick warehouse fronts: 4 levels, 16 m, grey tile roof, brick; the OSM outline is a 31 x 5 m sliver so the row is modelled as five 6.2 m plots"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     6.0,
+     12
+    ]
+   },
+   "at": [
+    -12.4,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e4a3c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bay": 2.6,
+    "cornice": true,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#4a4a4d",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     6.0,
+     12
+    ]
+   },
+   "at": [
+    -6.2,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5240",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bay": 2.6,
+    "cornice": true,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#4a4a4d",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     6.0,
+     12
+    ]
+   },
+   "at": [
+    0.0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#64443a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bay": 2.6,
+    "cornice": true,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#4a4a4d",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house3",
+   "footprint": {
+    "rect": [
+     6.0,
+     12
+    ]
+   },
+   "at": [
+    6.200000000000001,
+    0
+   ],
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#744e3e",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bay": 2.6,
+    "cornice": true,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#4a4a4d",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house4",
+   "footprint": {
+    "rect": [
+     6.0,
+     12
+    ]
+   },
+   "at": [
+    12.4,
+    0
+   ],
+   "height": 15.8,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a483a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bay": 2.6,
+    "cornice": true,
+    "bands": "#c9bfa9"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 42,
+    "colour": "#4a4a4d",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6.2,
+    -6.3,
+    0
+   ],
+   "params": {
+    "width": 6.0,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#1f2326",
+     "#1f2326"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.2,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.8,
+    "bottom": 3.4,
+    "colour": "#1f2326",
+    "frameColour": "#efece4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo shows only the ground-floor doorway so facade is from OSM tags and brief; stepped/neck gables, hoist beams and the real shopfront are missing; awning and sign are blank boards"
+ }
+}

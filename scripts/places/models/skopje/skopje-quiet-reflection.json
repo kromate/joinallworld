@@ -1,0 +1,312 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%9A%D1%83%D1%87%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8_%D0%BC%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B8%D1%80.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ehrlich91",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/kuchkovo1.jpg",
+   "used": "tiny monastery chapel on a slope: beige plaster upper walls over a pink-brown render band, stone-clad corner, brick-framed arched and oval windows, dark grey barrel roof with a projecting eave, steps and railing, woodland around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/134282949",
+   "used": "containing building outline roughly 12 x 8 m; chapel modelled smaller from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     7.0,
+     5.0
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#cdbf9f",
+    "windows": "arched",
+    "windowRatio": 0.09,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": {
+     "colour": "#a87868",
+     "height": 1.3
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#4b4f57",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-corner",
+   "footprint": {
+    "rect": [
+     1.6,
+     5.0
+    ]
+   },
+   "at": [
+    3.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8ccb4",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched",
+     "right": "none",
+     "left": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b4f57",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.7,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4502f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4502f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.1,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4502f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4502f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-top",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    -1.9,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 2.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4502f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4502f"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -5.2,
+    -3.4,
+    0.4
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.0,
+    "colour": "#7a5c3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#7f9f55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9f55"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 12,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 12,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    -4.5,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    5,
+    -4,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -3,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Brick frame sits at wrong spot (arch window should be on stone corner, oval window on left); lower pink render band not visible; no slope/stairs; tree canopy still blobby, windows plain arched not oval."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-quiet-reflection"
+}

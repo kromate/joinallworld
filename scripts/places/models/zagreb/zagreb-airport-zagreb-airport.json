@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-airport-zagreb-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/350577654",
+   "used": "overall size of the terminal (323 m long, 26,000 m2): a 120 m portion is modelled as the recognisable landside front; no photo available"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-level glass-fronted terminal opened 2017, thin long roof overhang, jet bridges behind, control tower, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     116,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "bay": 4.8,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "curtain"
+    },
+    "bands": "#e8ebec"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc3c5",
+    "material": "metal-sheet",
+    "overhang": 7,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa5b1",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 3.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d9da",
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     14,
+     60
+    ]
+   },
+   "at": [
+    -20,
+    48
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#97aab5",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8ca",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    26,
+    40
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#97aab5",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8ca",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 9,
+    "height": 5.2,
+    "thickness": 0.4,
+    "columns": 9,
+    "colour": "#dfe2e3",
+    "edgeColour": "#7b8a95"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -26,
+    22,
+    4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -14,
+    22,
+    4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    20,
+    20,
+    4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    32,
+    20,
+    4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -70,
+    12,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "style": "round",
+    "colour": "#d8dcde",
+    "cabColour": "#5f7080"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -18,
+    9
+   ],
+   "params": {
+    "width": 26,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#5f7080",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 7,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -48
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; only 120 m of the 323 m terminal is shown, piers and tower placement are schematic, facade detail from the brief."
+ }
+}

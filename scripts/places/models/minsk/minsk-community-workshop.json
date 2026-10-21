@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/25323311",
+   "used": "real building outline (containing match, 70 x 32 m, bearing 66 deg), used as the main block footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q3918424",
+   "used": "identity only: Yakub Kolas Central Scientific Library, National Academy of Sciences; no exterior photo of the building found (nearby Commons photos show the museum and the Academy of Sciences)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stacks",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdc8ba",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#8d8f8c",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5e6266",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    -30
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dfd3",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -35,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.4,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#b7bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building: outline is real (OSM), height, storeys, colours and the entrance block are typical Soviet institutional assumptions"
+ }
+}

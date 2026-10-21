@@ -1,0 +1,652 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-relation-13298038",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CERIA_(1).jpg",
+   "licence": "CC0",
+   "author": "Bernard Lee",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/bru-ceria1.jpg",
+   "used": "long 1930s-style block of buff cladding with two big steel-glazed bands, dark stone base with white-framed windows, taller end block with a tall glazed slit and a golden statue, small clock tower behind, rooftop railing, hedge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CERIA_(3).jpg",
+   "licence": "CC0",
+   "author": "Bernard Lee",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/bru-ceria2.jpg",
+   "used": "length of the glazed facade, lower wing at the far end"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13298038",
+   "used": "campus polygon is 363 x 339 m so only the street-front main building from the photos is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     78,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf9f",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "glassColour": "#6f8497",
+    "plinth": 2.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b9ab8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -52,
+    1
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf9f",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#6f8497",
+    "plinth": 2,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-block",
+   "at": [
+    43,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      11
+     ],
+     [
+      -4,
+      -8.5
+     ],
+     [
+      -2.6,
+      -10.2
+     ],
+     [
+      0,
+      -11.3
+     ],
+     [
+      3,
+      -10.7
+     ],
+     [
+      4.8,
+      -9.2
+     ],
+     [
+      5.3,
+      -5
+     ],
+     [
+      5.3,
+      11
+     ]
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#c9bb98",
+    "topColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-cornice",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    43,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.3,
+      11.3
+     ],
+     [
+      -4.3,
+      -8.6
+     ],
+     [
+      -2.8,
+      -10.5
+     ],
+     [
+      0,
+      -11.7
+     ],
+     [
+      3.2,
+      -11.0
+     ],
+     [
+      5.1,
+      -9.4
+     ],
+     [
+      5.7,
+      -5
+     ],
+     [
+      5.7,
+      11.3
+     ]
+    ],
+    "z0": 19.5,
+    "height": 0.7,
+    "colour": "#b9ab8b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-base",
+   "at": [
+    43,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.2,
+      11.2
+     ],
+     [
+      -4.2,
+      -8.6
+     ],
+     [
+      -2.7,
+      -10.4
+     ],
+     [
+      0,
+      -11.5
+     ],
+     [
+      3.1,
+      -10.9
+     ],
+     [
+      5,
+      -9.3
+     ],
+     [
+      5.5,
+      -5
+     ],
+     [
+      5.5,
+      11.2
+     ]
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#665a4e",
+    "topColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    39.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.2
+    ],
+    "z0": 3.3,
+    "height": 15,
+    "colour": "#6f8497"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-frame",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    39.45,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3.8
+    ],
+    "z0": 3.3,
+    "height": 15.3,
+    "colour": "#c9bd9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-plinth",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48.2,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     2.2
+    ],
+    "z0": 8.5,
+    "height": 1.2,
+    "colour": "#c99a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48.3,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.9
+    ],
+    "z0": 9.7,
+    "height": 6.5,
+    "colour": "#e8b838",
+    "topColour": "#e0b13f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-b",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48.3,
+    -6.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.9
+    ],
+    "z0": 9.7,
+    "height": 2.2,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     78.4,
+     20.4
+    ],
+    "z0": 0,
+    "height": 3.3,
+    "colour": "#6a5e52",
+    "topColour": "#b9ab8b",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.32,
+    "storeys": 1,
+    "bay": 4.0,
+    "glassColour": "#5f7488",
+    "trimColour": "#f1eee6",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "west-base",
+   "at": [
+    -52,
+    1,
+    0
+   ],
+   "params": {
+    "rect": [
+     26.3,
+     16.3
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#6a5e52",
+    "topColour": "#b9ab8b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-tower",
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 17,
+    "height": 9.5,
+    "colour": "#d6c9a9",
+    "topColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     5.0
+    ],
+    "z0": 24.2,
+    "height": 2.4,
+    "colour": "#c9bd9f",
+    "topColour": "#8d8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    2.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.15
+    ],
+    "z0": 24.4,
+    "height": 2.0,
+    "colour": "#f1efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-dark",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    2.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.1
+    ],
+    "z0": 24.8,
+    "height": 1.2,
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-rail",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -9.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     77,
+     0.12
+    ],
+    "z0": 17.5,
+    "height": 1.0,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-rail-top",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -9.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     77,
+     0.14
+    ],
+    "z0": 18.4,
+    "height": 0.1,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -2,
+    -12.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     1.6
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#2f4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence-rail",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.12
+    ],
+    "z0": 0.9,
+    "height": 0.1,
+    "colour": "#25282b"
+   }
+  },
+  {
+   "type": "array",
+   "id": "fence-posts",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "z0": 0,
+      "height": 1.1,
+      "colour": "#25282b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -38,
+     -14.5
+    ],
+    "end": [
+     38,
+     -14.5
+    ],
+    "count": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     64,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "end block front is a faceted convex slab not a smooth curve, statue is a gold block, banners and fence posts simplified, clock tower is a plain shaft with a flat clock panel"
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/512343925",
+   "used": "real kinked slab outline (130 m long), 10 levels, flat roof, concrete, grey"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bay": 9,
+    "bands": "#c9b48a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6c68",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -8,
+    3.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "colour": "#7a8c6e",
+    "posts": false
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 6,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-community-workshop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: real OSM slab only, library entrance and sign schematic"
+ }
+}

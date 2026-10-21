@@ -1,0 +1,219 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1119457186",
+   "used": "name-matched stadium outline 110 x 72 m, long axis north-south: pitch, track-less ground and stands laid inside it; no photo found on Commons or via category search"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     116
+    ],
+    "height": 0.15,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     66,
+     104
+    ],
+    "height": 0.08,
+    "colour": "#3c7a3a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -37,
+     -42
+    ],
+    "end": [
+     -37,
+     42
+    ],
+    "flip": false,
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#8c1f2a",
+     "#eceae4",
+     "#8c1f2a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d4ca",
+    "underColour": "#c9c5bb",
+    "canopy": {
+     "height": 1.0,
+     "depth": 12,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#8e8a82",
+     "edgeColour": "#8c1f2a",
+     "overhangBack": 0.8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     37,
+     42
+    ],
+    "end": [
+     37,
+     -42
+    ],
+    "rows": 8,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.3,
+    "bay": 6,
+    "seatColours": [
+     "#eceae4",
+     "#8c1f2a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d4ca",
+    "canopy": {
+     "height": 1.0,
+     "depth": 7,
+     "thickness": 0.35,
+     "slopeDeg": 3,
+     "colour": "#8e8a82",
+     "edgeColour": "#6c7176"
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    48,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    48,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "facing": "north"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo available; stand length, roof span and colours typed from the brief; pitch markings and fences generic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-1119457186"
+}

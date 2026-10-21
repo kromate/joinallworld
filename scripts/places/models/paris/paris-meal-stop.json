@@ -1,0 +1,311 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Germain_en_Laye,_Chateau_du_Val,_facade.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jerome M N",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/val.jpg",
+   "used": "nine-bay buff limestone garden front, two storeys, arched ground-floor French windows, pilaster strips, balustrade over a low slate mansard, small dormers, lower wings, gravel court with lawn disc"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/132248181",
+   "used": "size only (88 x 36 m, castle/restaurant); photo facade modelled as a straight front block with side wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.66,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c48a",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 4.4,
+    "plinth": 0.9,
+    "cornice": true,
+    "parapet": 1.0,
+    "trimColour": "#e9dfc4",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#474b52",
+    "material": "slate",
+    "pitch": 70,
+    "rise": 2.8,
+    "overhang": 0.3,
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    -27,
+    1
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4c08c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "parapet": 0.8,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#474b52",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    27,
+    1
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4c08c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true,
+    "parapet": 0.8,
+    "faces": {
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#474b52",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "rise": 0.15,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bust",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#d8d2c2"
+     ],
+     [
+      0.8,
+      0,
+      "#d8d2c2"
+     ],
+     [
+      0.8,
+      1.8,
+      "#d8d2c2"
+     ],
+     [
+      0.4,
+      1.8,
+      "#d8d2c2"
+     ],
+     [
+      0.4,
+      2.4,
+      "#bdb7a6"
+     ],
+     [
+      0.3,
+      2.8,
+      "#bdb7a6"
+     ],
+     [
+      0,
+      3.0,
+      "#bdb7a6"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lawn",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5d8a45"
+     ],
+     [
+      11,
+      0,
+      "#5d8a45"
+     ],
+     [
+      11,
+      0.08,
+      "#5d8a45"
+     ],
+     [
+      0,
+      0.08,
+      "#5d8a45"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.6,
+       1.4
+      ]
+     },
+     "height": 1.8,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#474b52",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#474b52",
+      "rise": 0.8
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -14,
+     -6.2,
+     11
+    ],
+    "end": [
+     14,
+     -6.2,
+     11
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   110,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -16
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "all front windows arched on both floors (photo has square upper windows), no oculus or urns, bust is a plain pedestal, dormers boxy"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-meal-stop"
+}

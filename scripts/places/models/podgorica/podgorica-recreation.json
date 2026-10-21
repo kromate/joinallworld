@@ -1,0 +1,889 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Njegosh.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rasho992",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/park2.jpg",
+   "used": "seated bronze statue on a white stone plinth and two-step base, clipped conifer shrubs either side, stone pines behind, orange marigold bed in front, pale paved plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B5%D0%B3%D0%BE%D1%88%D0%B5%D0%B2_%D0%BF%D0%B0%D1%80%D0%BA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerodot1986",
+   "view": "street",
+   "file": "/tmp/places-evidence/podgorica/park1.jpg",
+   "used": "paved curving walk with kerb, bright lawn, mulched tree bed, plane-like broadleaf trees and cypresses, timber-slat benches, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28130532",
+   "used": "park is 385 x 211 m; only a representative 110 x 80 m core around the monument is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.0,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    3
+   ],
+   "params": {
+    "rect": [
+     26,
+     24
+    ],
+    "height": 0.1,
+    "colour": "#6faa3f",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     14,
+     9
+    ],
+    "height": 0.2,
+    "colour": "#d9d4c6",
+    "z0": 0.1
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "walk-a",
+   "params": {
+    "points": [
+     [
+      -11.0,
+      -8.4
+     ],
+     [
+      -6.0,
+      -6.6
+     ],
+     [
+      -3.0,
+      -3.5999999999999996
+     ],
+     [
+      0.0,
+      -1.7999999999999998
+     ],
+     [
+      3.0,
+      -3.5999999999999996
+     ],
+     [
+      6.0,
+      -6.6
+     ],
+     [
+      11.0,
+      -8.4
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#c4c0b6"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "walk-b",
+   "params": {
+    "points": [
+     [
+      0.0,
+      -1.7999999999999998
+     ],
+     [
+      0.0,
+      4.8
+     ],
+     [
+      -4.0,
+      8.4
+     ],
+     [
+      -9.0,
+      12.0
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#c4c0b6"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "walk-c",
+   "params": {
+    "points": [
+     [
+      0.0,
+      4.8
+     ],
+     [
+      4.0,
+      8.4
+     ],
+     [
+      9.0,
+      12.0
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#c4c0b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    4
+   ],
+   "params": {
+    "rect": [
+     9,
+     6.5
+    ],
+    "height": 0.45,
+    "colour": "#e2ddd0",
+    "z0": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     4.2
+    ],
+    "height": 0.45,
+    "colour": "#e9e5da",
+    "z0": 0.55
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.6
+    ],
+    "height": 2.7,
+    "colour": "#f0ede6",
+    "z0": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-seat",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.8
+    ],
+    "height": 0.7,
+    "colour": "#4a4638",
+    "z0": 3.7
+   }
+  },
+  {
+   "type": "loft",
+   "id": "torso",
+   "at": [
+    0,
+    4.5,
+    4.4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#4a4638",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.85,
+       0.6
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.8,
+       0.55
+      ]
+     },
+     {
+      "z": 1.7,
+      "ellipse": [
+       0.55,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "head",
+   "at": [
+    0,
+    4.5,
+    6.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#5a5546",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.25,
+       0.25
+      ]
+     },
+     {
+      "z": 0.3,
+      "ellipse": [
+       0.38,
+       0.36
+      ]
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.34,
+       0.32
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "knee-l",
+   "at": [
+    -0.5,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     1.7
+    ],
+    "height": 0.8,
+    "colour": "#4a4638",
+    "z0": 3.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "knee-r",
+   "at": [
+    0.5,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     1.9
+    ],
+    "height": 0.8,
+    "colour": "#4a4638",
+    "z0": 4.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fig-l2",
+   "at": [
+    0,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 2.9,
+    "colour": "#4a4638",
+    "z0": 3.7
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "marigold-bed",
+   "at": [
+    0,
+    -6.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     2.6
+    ],
+    "height": 0.5,
+    "colour": "#e8892a",
+    "z0": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "marigold-b2",
+   "at": [
+    -3,
+    -6.3
+   ],
+   "params": {
+    "rect": [
+     5,
+     1.6
+    ],
+    "height": 0.15,
+    "colour": "#f0b030",
+    "z0": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "marigold-b3",
+   "at": [
+    4,
+    -6.8
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.4
+    ],
+    "height": 0.15,
+    "colour": "#d9731f",
+    "z0": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "shrub0",
+   "at": [
+    -5.2,
+    3,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#2f6a34",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.0999999999999996
+     },
+     {
+      "z": 0.96,
+      "circle": 3.0
+     },
+     {
+      "z": 2.08,
+      "circle": 2.7
+     },
+     {
+      "z": 3.2,
+      "circle": 1.2000000000000002
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "shrub1",
+   "at": [
+    5.4,
+    2.4,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#3d7b3a",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.89
+     },
+     {
+      "z": 0.8999999999999999,
+      "circle": 2.7
+     },
+     {
+      "z": 1.9500000000000002,
+      "circle": 2.43
+     },
+     {
+      "z": 3.0,
+      "circle": 1.08
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "shrub2",
+   "at": [
+    -3,
+    7.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#2f6a34",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.26
+     },
+     {
+      "z": 0.66,
+      "circle": 1.8
+     },
+     {
+      "z": 1.4300000000000002,
+      "circle": 1.62
+     },
+     {
+      "z": 2.2,
+      "circle": 0.7200000000000001
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pine0",
+   "at": [
+    -4.5,
+    8.5
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#2e5a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.35
+     },
+     {
+      "z": 6.0,
+      "circle": 0.3
+     },
+     {
+      "z": 7.800000000000001,
+      "circle": 0.7
+     },
+     {
+      "z": 8.0,
+      "ellipse": [
+       4.3,
+       3.8
+      ]
+     },
+     {
+      "z": 9.3,
+      "ellipse": [
+       4.8,
+       4.2
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       2.5,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pine1",
+   "at": [
+    0.0,
+    10.5
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#2e5a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.35
+     },
+     {
+      "z": 6.6,
+      "circle": 0.3
+     },
+     {
+      "z": 8.58,
+      "circle": 0.7
+     },
+     {
+      "z": 8.8,
+      "ellipse": [
+       4.3,
+       3.8
+      ]
+     },
+     {
+      "z": 10.23,
+      "ellipse": [
+       4.8,
+       4.2
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       2.5,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pine2",
+   "at": [
+    5.25,
+    9.0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#2e5a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.35
+     },
+     {
+      "z": 6.0,
+      "circle": 0.3
+     },
+     {
+      "z": 7.800000000000001,
+      "circle": 0.7
+     },
+     {
+      "z": 8.0,
+      "ellipse": [
+       4.3,
+       3.8
+      ]
+     },
+     {
+      "z": 9.3,
+      "ellipse": [
+       4.8,
+       4.2
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       2.5,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pine3",
+   "at": [
+    -9.0,
+    6.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#2e5a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.35
+     },
+     {
+      "z": 5.3999999999999995,
+      "circle": 0.3
+     },
+     {
+      "z": 7.0200000000000005,
+      "circle": 0.7
+     },
+     {
+      "z": 7.2,
+      "ellipse": [
+       4.3,
+       3.8
+      ]
+     },
+     {
+      "z": 8.370000000000001,
+      "ellipse": [
+       4.8,
+       4.2
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       2.5,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pine4",
+   "at": [
+    9.75,
+    6.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#2e5a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.35
+     },
+     {
+      "z": 5.3999999999999995,
+      "circle": 0.3
+     },
+     {
+      "z": 7.0200000000000005,
+      "circle": 0.7
+     },
+     {
+      "z": 7.2,
+      "ellipse": [
+       4.3,
+       3.8
+      ]
+     },
+     {
+      "z": 8.370000000000001,
+      "ellipse": [
+       4.8,
+       4.2
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       2.5,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench0",
+   "at": [
+    -6.3,
+    -2
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.55
+    ],
+    "height": 0.55,
+    "colour": "#a8743c",
+    "z0": 0.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "benchback0",
+   "at": [
+    -6.3,
+    -1.75
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#a8743c",
+    "z0": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench1",
+   "at": [
+    6.3,
+    -2.5
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.55
+    ],
+    "height": 0.55,
+    "colour": "#a8743c",
+    "z0": 0.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "benchback1",
+   "at": [
+    6.3,
+    -2.25
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#a8743c",
+    "z0": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   20,
+   18
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-recreation",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Monument reads (seated bronze on white two-step plinth, clipped shrubs, marigold bed, stone pines) but the figure is blocky, pines are sparse umbrellas without the dense overhead canopy, framing is a wide plaza view rather than the close shot, paving walks barely visible."
+ }
+}

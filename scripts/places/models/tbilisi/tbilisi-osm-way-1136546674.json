@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-1136546674",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Barbara_Church_In_Mtskheta_05.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nikolozgogorishvili",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tbilisi/barb5.jpg",
+   "used": "small rectangular stone hall, buff ashlar with darker patches, steep gabled roof of grey-blue standing-seam sheet, paved apron around it, grass hilltop with a few cypresses, houses below"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1136546674",
+   "used": "plan about 9 x 6 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 38,
+  "fovDeg": 44,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hill",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b59a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6b"
+   },
+   "z0": -0.5
+  },
+  {
+   "type": "mass",
+   "id": "apron-s",
+   "footprint": {
+    "rect": [
+     12,
+     2.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -4.3
+   ],
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b7b2a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b2a4"
+   },
+   "z0": 0.0
+  },
+  {
+   "type": "mass",
+   "id": "apron-w",
+   "footprint": {
+    "rect": [
+     2.5,
+     9
+    ]
+   },
+   "at": [
+    -6.2,
+    -0.8
+   ],
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b7b2a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b2a4"
+   },
+   "z0": 0.0
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4b48f",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a99a76"
+      ],
+      "height": 0.9,
+      "at": 0.55,
+      "proud": 0.0,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#74838a",
+    "material": "metal-sheet",
+    "pitch": 44,
+    "overhang": 0.35,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -3.05,
+    0.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.8,
+    "arch": true,
+    "colour": "#3a3a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "z0": -0.3,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9b79c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "pitch": 30,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -26,
+    -2
+   ],
+   "z0": -0.3,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9a98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b4b3d",
+    "pitch": 30,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -18,
+    18
+   ],
+   "z0": -0.3,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d0c2a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d5546",
+    "pitch": 30,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house3",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "z0": -0.3,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4b69a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "pitch": 30,
+    "overhang": 0.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -2,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 1,
+    "spread": 1.2,
+    "colour": "#2f4a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12.5,
+    1,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "spread": 1.2,
+    "colour": "#2f4a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    4,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 1,
+    "spread": 1.2,
+    "colour": "#2f4a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -5,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1,
+    "spread": 1.2,
+    "colour": "#2f4a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12.5,
+    7,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 1,
+    "spread": 1.2,
+    "colour": "#2f4a34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hall now taller with blank walls and one small door; hilltop is flat sand rather than sloped terrain, cypresses are generic cones, no apse/benches or stone-paving texture, houses are simple boxes"
+ }
+}

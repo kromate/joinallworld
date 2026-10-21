@@ -1,0 +1,412 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Galatasaray_Nef_Stadium_front_view_2022.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Antoloji",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/342828509_fv.jpg",
+   "used": "dark navy metal-clad outer wall with glazed bands, big sweeping projecting canopy ring with exposed steel truss and pale rim, inclined round struts under the canopy edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Galatasaray_Arena_North-East_Corner.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "1886kusagi",
+   "view": "interior",
+   "file": "/tmp/places-evidence/istanbul/342828509_ne.jpg",
+   "used": "fully enclosed bowl, two-tier raked seating in claret and amber, steel roof ring all round with a glazed clerestory gap"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4865967",
+   "used": "overall size 244 x 217 m; modelled as an oval scaled to about 0.43"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "outer-wall",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     96,
+     84
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2c3752",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 20,
+    "glassColour": "#e2c88a",
+    "plinth": 3.0
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 28,
+    "radiusY": 23,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 14,
+    "rise": 1.25,
+    "run": 1.55,
+    "firstHeight": 2,
+    "facetDeg": 24,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#8e2f3c",
+    "concreteColour": "#c4c0bb",
+    "underColour": "#2f3748"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-ring",
+   "at": [
+    0,
+    0,
+    19
+   ],
+   "params": {
+    "section": {
+     "poly": [
+      [
+       -4,
+       0
+      ],
+      [
+       -4,
+       1.2
+      ],
+      [
+       6,
+       2.6
+      ],
+      [
+       16,
+       4.2
+      ],
+      [
+       16,
+       3.4
+      ],
+      [
+       6,
+       1.4
+      ],
+      [
+       6,
+       0
+      ]
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 46,
+     "radiusY": 40,
+     "startDeg": 0,
+     "endDeg": 360,
+     "steps": 20
+    },
+    "colour": "#d8dcde"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "canopy-underside",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9aa1a6",
+    "sections": [
+     {
+      "z": 17,
+      "ellipse": [
+       48,
+       42
+      ]
+     },
+     {
+      "z": 20.5,
+      "ellipse": [
+       58,
+       52
+      ]
+     }
+    ],
+    "capTop": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 40,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 24,
+    "lod1Step": 2,
+    "lod2Step": 8,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#d4d7d9",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 1.4,
+        "cy": 0
+       },
+       {
+        "z": 7.5,
+        "circle": 1.1,
+        "cy": 5
+       }
+      ]
+     },
+     "at": [
+      0,
+      0,
+      12
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     44,
+     28
+    ],
+    "height": 0.1,
+    "colour": "#4f8a3f",
+    "topColour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      60.0,
+      0.0
+     ],
+     [
+      58.85,
+      10.53
+     ],
+     [
+      55.43,
+      20.66
+     ],
+     [
+      49.89,
+      30.0
+     ],
+     [
+      42.43,
+      38.18
+     ],
+     [
+      33.33,
+      44.9
+     ],
+     [
+      22.96,
+      49.89
+     ],
+     [
+      11.71,
+      52.96
+     ],
+     [
+      0.0,
+      54.0
+     ],
+     [
+      -11.71,
+      52.96
+     ],
+     [
+      -22.96,
+      49.89
+     ],
+     [
+      -33.33,
+      44.9
+     ],
+     [
+      -42.43,
+      38.18
+     ],
+     [
+      -49.89,
+      30.0
+     ],
+     [
+      -55.43,
+      20.66
+     ],
+     [
+      -58.85,
+      10.53
+     ],
+     [
+      -60.0,
+      0.0
+     ],
+     [
+      -58.85,
+      -10.53
+     ],
+     [
+      -55.43,
+      -20.66
+     ],
+     [
+      -49.89,
+      -30.0
+     ],
+     [
+      -42.43,
+      -38.18
+     ],
+     [
+      -33.33,
+      -44.9
+     ],
+     [
+      -22.96,
+      -49.89
+     ],
+     [
+      -11.71,
+      -52.96
+     ],
+     [
+      -0.0,
+      -54.0
+     ],
+     [
+      11.71,
+      -52.96
+     ],
+     [
+      22.96,
+      -49.89
+     ],
+     [
+      33.33,
+      -44.9
+     ],
+     [
+      42.43,
+      -38.18
+     ],
+     [
+      49.89,
+      -30.0
+     ],
+     [
+      55.43,
+      -20.66
+     ],
+     [
+      58.85,
+      -10.53
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#3c4048",
+    "topColour": "#3c4048"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-342828509",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy deepened with pale underside, navy wall and lit glazing; last strut change did not visibly alter the render so struts still read near-vertical instead of inclined, no truss lattice, no lit lobby."
+ }
+}

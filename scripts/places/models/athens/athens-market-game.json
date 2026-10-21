@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/44000881",
+   "used": "real irregular outline of The Mall Athens (190 x 159 m, 5 levels), scaled into the scene"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/The_Mall_Athens",
+   "used": "glazed mall, multi-storey car parks, cinema and amusement park on level 3"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 88,
+    "simplify": 3
+   },
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9b4bb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a9b4bb",
+       "#d8d6d0"
+      ]
+     }
+    ],
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdd0",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park-west",
+   "footprint": {
+    "rect": [
+     9,
+     34
+    ]
+   },
+   "at": [
+    -54,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbab2",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8f8d87"
+      ],
+      "height": 0.5,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park-east",
+   "footprint": {
+    "rect": [
+     9,
+     34
+    ]
+   },
+   "at": [
+    54,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbab2",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8f8d87"
+      ],
+      "height": 0.5,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 9,
+    "height": 5,
+    "columns": 4,
+    "colour": "#d4d2cc",
+    "edgeColour": "#7f8c96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "trees": [],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo exists; real OSM outline scaled to 88 m (about 0.38) so car parks and canopy positions are approximate; no cinema/amusement-park detail."
+ }
+}

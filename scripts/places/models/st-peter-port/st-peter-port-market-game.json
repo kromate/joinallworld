@@ -1,0 +1,175 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/570299339",
+   "used": "real outline of the Market Square marketplace (name match, about 34 x 11 m, bearing 39 deg)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-peter-port.json#st-peter-port-market-game",
+   "used": "Victorian granite and stucco arcaded market hall, slate roof, clock tower, stalls (no photo of this place found; nearby Commons photos show the library and a church, not the market)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#b2aaa0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bands": "#e8e2d2",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stucco-pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 39,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e2d2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    -10,
+    7
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 9,
+    "cap": "hip",
+    "cap_rise": 3.5,
+    "clock": true,
+    "wall_colour": "#e8e2d2",
+    "roof_colour": "#44505a",
+    "trim_colour": "#b2aaa0"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "rotDeg": 39,
+   "params": {
+    "count": 6,
+    "pitch": 2.4,
+    "kind": "umbrella",
+    "colours": [
+     "#44505a",
+     "#e8e2d2",
+     "#9a3f33"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "rotDeg": 39,
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#44505a",
+    "frameColour": "#b2aaa0"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the real market found; massing from OSM outline and brief only."
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-node-1795426195",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/297436763",
+   "used": "real six-sided battery outline (68 m2, 'Napoleonic Battery', containing match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: granite platform with parapet and cannons facing the sea; no photo found for this battery"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39a90",
+    "windows": "none",
+    "plinth": 0.4,
+    "parapet": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -2.0,
+    0.8,
+    2.6
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 1,
+    "scale": 0.9
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    3.0,
+    0.6,
+    2.6
+   ],
+   "rotDeg": -15,
+   "params": {
+    "count": 1,
+    "scale": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1,
+    -6.0,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.4,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#8d8a84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; only the OSM outline and brief were used, so wall height, embrasures and parapet profile are assumed."
+ }
+}

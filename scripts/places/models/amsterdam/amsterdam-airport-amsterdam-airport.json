@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-airport-amsterdam-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Schiphol_Airport_entry.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amin enwiki",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/airport2.jpg",
+   "used": "Schiphol Plaza landside: tall blue-tinted curtain glazing in a regular grid, deep flat canopy on slender teal-green steel columns with a glazed strip, low entrance pavilion, grey paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Airport_Schiphol.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Roberto Strauss",
+   "view": "back",
+   "file": "/tmp/places-evidence/amsterdam/airport1.jpg",
+   "used": "airside: glazed jet bridges, pier with long low dark roofline, tall floodlight masts, KLM narrow-body aircraft at the stand"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/268641398",
+   "used": "overall extent only (540 x 270 m terminal with piers); a 110 m landside frontage is modelled because the scene clamps at 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.47,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza-glass",
+   "footprint": {
+    "rect": [
+     110,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5d95c4",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#6aa3d0",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     118,
+     22
+    ]
+   },
+   "at": [
+    0,
+    60
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8b9399",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e757b",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    -19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0c4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab1b6",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -27,
+    14
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 20,
+    "height": 0,
+    "thickness": 1.6,
+    "columns": 6,
+    "colour": "#2d3a3f",
+    "edgeColour": "#2f7d6b",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 6,
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -52,
+     -26
+    ],
+    "end": [
+     52,
+     -26
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    55,
+    70,
+    0
+   ],
+   "params": {
+    "height": 70,
+    "style": "round",
+    "colour": "#c9cdd0",
+    "cabColour": "#7f8f9c",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -14.7,
+    14.5
+   ],
+   "params": {
+    "width": 26,
+    "height": 3.5,
+    "bottom": 0,
+    "colour": "#f0f0f0",
+    "frameColour": "#b9bec2",
+    "posts": false
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    30,
+    45,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "colour": "#bfc7cc"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    45,
+    75,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e8edf2",
+    "tailColour": "#2f8fd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "revolving-pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    10,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2e4d6b",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7d6b",
+    "overhang": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   160
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -36
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "taller blue landside glazing on a 6 m grid, teal-edged dark canopy at 14 m with 6 columns, revolving pavilion and nearer tower added; truss, tie rods, lamp clusters, NS logo and lettering not modelled"
+ }
+}

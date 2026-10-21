@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-308441483",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ringkollkapellet_nord-_og_%C3%B8stvegg_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tom Bjornstad",
+   "view": "side",
+   "file": "/tmp/places-evidence/oslo/ring1.jpg",
+   "used": "long red-painted vertical board nave, steep dark-tile gable roof with white bargeboards, small square red belfry with louvres and pyramid cap on the ridge, white-framed square windows, stone chimney, small projecting porch roof at the gable end, grass and spruce setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/308441483",
+   "used": "overall size (about 20 x 9 m including porch)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     8
+    ]
+   },
+   "at": [
+    -1,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3228",
+    "glassColour": "#5f7f8a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "trimColour": "#efece4",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#34373a",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3,
+     5
+    ]
+   },
+   "at": [
+    9.5,
+    0
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7e2d25",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d8d5cc",
+    "material": "concrete",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -5,
+    0,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "height": 2.3,
+    "colour": "#8e3228"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-cap",
+   "at": [
+    -5,
+    0,
+    8.9
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 1.3,
+    "topScale": 0.15,
+    "colour": "#34373a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    1.5,
+    1.6,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.4,
+    "colour": "#b9b3a7"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     6
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     4
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Chimney sits a little low and the belfry is slightly large; no weathervane, gable-end windows or porch rails."
+ }
+}

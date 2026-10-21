@@ -1,0 +1,772 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Old_Lonan_(St_Adamnan%27s)_church_-_geograph.org.uk_-_32555.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "John Radcliffe",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/adamnan_0.jpg",
+   "used": "massing: tiny rubble-stone nave, steep slate gable roof, pointed arched window in the gable end, single slit in the long wall, stone bellcote on the opposite gable, churchyard wall, bare trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Adamnan%27s_(2023-05-05)_01.jpg",
+   "licence": "CC0",
+   "author": "Simon Cobb",
+   "view": "side",
+   "file": "/tmp/places-evidence/douglas/adamnan_1.jpg",
+   "used": "proportions and bellcote seen from the other side, dark lichened stone colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160506184",
+   "used": "8.9 x 6.3 m outline size (9 x 6 modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5c594e",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "front": "plain",
+     "back": "plain",
+     "right": "none"
+    },
+    "windowRatio": 0.14,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e6368",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.25,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit",
+   "at": [
+    0.5,
+    -3.02
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.1
+    ],
+    "z0": 1.6,
+    "height": 0.9,
+    "colour": "#1d2224",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellcote",
+   "at": [
+    3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.6
+    ],
+    "z0": 3.2,
+    "height": 4.0,
+    "colour": "#58554b",
+    "windows": "none",
+    "topColour": "#58554b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellcote-cap",
+   "at": [
+    3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.7
+    ],
+    "z0": 7.2,
+    "height": 0.4,
+    "colour": "#4a4d50",
+    "windows": "none",
+    "topColour": "#4a4d50",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-front",
+   "at": [
+    3.9,
+    -0.86
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "z0": 5.0,
+    "height": 1.3,
+    "colour": "#15181a",
+    "windows": "none",
+    "topColour": "#15181a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-top",
+   "at": [
+    3.9,
+    -0.86
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "z0": 6.3,
+    "height": 0.4,
+    "colour": "#15181a",
+    "windows": "none",
+    "topColour": "#15181a",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-back",
+   "at": [
+    3.9,
+    0.86
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "z0": 5.0,
+    "height": 1.3,
+    "colour": "#15181a",
+    "windows": "none",
+    "topColour": "#15181a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-window",
+   "at": [
+    -4.53,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.0
+    ],
+    "z0": 0.6,
+    "height": 1.9,
+    "colour": "#1c2326",
+    "windows": "none",
+    "topColour": "#1c2326"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-window-top",
+   "at": [
+    -4.53,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.0
+    ],
+    "z0": 2.5,
+    "height": 0.8,
+    "colour": "#1c2326",
+    "windows": "none",
+    "topColour": "#1c2326",
+    "topScale": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-window-sill",
+   "at": [
+    -4.58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     1.3
+    ],
+    "z0": 0.55,
+    "height": 0.15,
+    "colour": "#8a867a",
+    "windows": "none",
+    "topColour": "#8a867a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "churchyard-wall",
+   "at": [
+    2,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     1.2
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#5c594e",
+    "windows": "none",
+    "topColour": "#6a665a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-side",
+   "at": [
+    12.5,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     8
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#5c594e",
+    "windows": "none",
+    "topColour": "#6a665a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-0",
+   "at": [
+    -1,
+    -6.5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-0",
+   "at": [
+    -1,
+    -6.5
+   ],
+   "params": {
+    "rect": [
+     0.8999999999999999,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-1",
+   "at": [
+    2.5,
+    -8
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-1",
+   "at": [
+    2.5,
+    -8
+   ],
+   "params": {
+    "rect": [
+     0.8999999999999999,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-2",
+   "at": [
+    6.5,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.7,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-2",
+   "at": [
+    6.5,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.8999999999999999,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-3",
+   "at": [
+    -6,
+    -5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#777874",
+    "windows": "none",
+    "topColour": "#777874",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-3",
+   "at": [
+    -6,
+    -5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#777874",
+    "windows": "none",
+    "topColour": "#777874"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-4",
+   "at": [
+    -3.5,
+    -9
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#5e6060",
+    "windows": "none",
+    "topColour": "#5e6060",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-4",
+   "at": [
+    -3.5,
+    -9
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5e6060",
+    "windows": "none",
+    "topColour": "#5e6060"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-5",
+   "at": [
+    5,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-5",
+   "at": [
+    5,
+    -10
+   ],
+   "params": {
+    "rect": [
+     0.8999999999999999,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#6c6d6c",
+    "windows": "none",
+    "topColour": "#6c6d6c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-6",
+   "at": [
+    -7.5,
+    -7
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#686a68",
+    "windows": "none",
+    "topColour": "#686a68",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-6",
+   "at": [
+    -7.5,
+    -7
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#686a68",
+    "windows": "none",
+    "topColour": "#686a68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-7",
+   "at": [
+    0,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#777874",
+    "windows": "none",
+    "topColour": "#777874",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-base-7",
+   "at": [
+    0,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#777874",
+    "windows": "none",
+    "topColour": "#777874"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-0",
+   "at": [
+    -4,
+    -5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-1",
+   "at": [
+    1,
+    -6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 1.9000000000000001,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-2",
+   "at": [
+    4.5,
+    -5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-3",
+   "at": [
+    -7,
+    -3
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-4",
+   "at": [
+    7,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grave-up-5",
+   "at": [
+    -2,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 0,
+    "height": 2.3,
+    "colour": "#5a5c5e",
+    "windows": "none",
+    "topColour": "#5a5c5e",
+    "topScale": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   30,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rubble is regular coursing without lichen mottling; bellcote still simple block; trees and gravestones generic; churchyard wall not a thick rubble wall behind the nave"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-way-160506184"
+}

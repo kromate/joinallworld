@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-community-voting-game",
+ "name": "Republic Square",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Republic_Square,_Belgrade_2022.jpg",
+   "licence": "CC0",
+   "author": "Imeao",
+   "view": "street",
+   "file": "/tmp/places-evidence/belgrade/rs2.jpg",
+   "used": "stepped stone pedestal with green-bronze equestrian statue, ornate lamp standard, pale paving; Riunione Palace left (cream stone, deep dark mansard, 8 floors, cafe umbrellas at its foot); National Museum right (pink brick and cream stone, green copper dome on the corner)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Republic_Square_(13807400154).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge Lascar",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/rs1.jpg",
+   "used": "open plaza extent, rose bed around the statue plinth, lamp standard, scale of surrounding blocks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/170353929",
+   "used": "Riunione Palace footprint size (41 x 26 m, 8 levels) as the left-hand backdrop"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 64,
+    "border": 1.6,
+    "colour": "#aaa8a1",
+    "border_colour": "#7a7973"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    8,
+    -4,
+    0.05
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 1,
+    "width": 14,
+    "depth": 10,
+    "colours": [
+     "#c43a52",
+     "#7a2f3a"
+    ]
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    8,
+    -4,
+    0.2
+   ],
+   "params": {
+    "height": 36,
+    "plinthHeight": 12,
+    "colour": "#3f6b57",
+    "plinthColour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "riunione",
+   "footprint": {
+    "rect": [
+     41,
+     26
+    ]
+   },
+   "at": [
+    -34,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 36,
+   "storeys": 8,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e9dfc8",
+    "trimColour": "#d8ccb0",
+    "windows": "none",
+    "faces": {
+     "front": "punched",
+     "left": "punched"
+    },
+    "bay": 4.6,
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#cfc6ae"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#26272a",
+    "material": "slate",
+    "pitch": 62,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "national-museum",
+   "footprint": {
+    "rect": [
+     46,
+     28
+    ]
+   },
+   "at": [
+    36,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#e3b9a4",
+    "trimColour": "#efe2c6",
+    "windows": "none",
+    "faces": {
+     "front": "arched",
+     "left": "plain"
+    },
+    "bay": 4.5,
+    "windowRatio": 0.32,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#efe2c6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f9488",
+    "material": "copper",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    26,
+    33,
+    24
+   ],
+   "params": {
+    "radius": 12,
+    "profile": "hemi",
+    "drum": 7,
+    "lantern": 4,
+    "finial": 3,
+    "colour": "#7fae9a",
+    "drumColour": "#d6c8a4"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -34,
+    20,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 14,
+    "colours": [
+     "#efe7d2",
+     "#e4d9bc"
+    ],
+    "radius": 1.8
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    28,
+    24,
+    16
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#c6363c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -34,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     41.8,
+     26.8
+    ],
+    "height": 5.0,
+    "colour": "#7a5a3c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 0.5,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9.5
+    ],
+    "height": 1.0,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     7
+    ],
+    "height": 1.5,
+    "colour": "#cfc9ba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "equestrian statue is a simplified standing figure on a stepped box (no horse, relief panels or spherical lamp heads); museum lacks pilasters, clock and terracotta brick bands; Riunione shopfront arcade is a plain brown base; cafe umbrellas simplified"
+ }
+}

@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-174803482",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Selman_St%C3%ABrmasi_Stadium_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sadsadas",
+   "view": "side",
+   "file": "/tmp/places-evidence/tirana/stadium2.jpg",
+   "used": "main stand: raked blue and white seats in diagonal blocks, grey concrete rear wall with dark window openings, white cantilever canopy with blue edge, rails and side stairs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Selman_St%C3%ABrmasi_Stadium_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sadsadas",
+   "view": "side",
+   "file": "/tmp/places-evidence/tirana/stadium1.jpg",
+   "used": "low grey-walled opposite stand, red track edge, green pitch, apartment blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/174803482",
+   "used": "overall size (about 140 x 205 m site); pitch and stands modelled at real pitch scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 155,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 124,
+    "width": 88,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     -46
+    ],
+    "end": [
+     42,
+     -46
+    ],
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "bay": 6,
+    "backWall": 11.5,
+    "under": "open",
+    "seatColours": [
+     "#3a86e8",
+     "#e6e8ea",
+     "#3a86e8",
+     "#e6e8ea"
+    ],
+    "blocks": 5,
+    "concreteColour": "#bdbcb6",
+    "underColour": "#b0afaa",
+    "canopy": {
+     "height": 12.2,
+     "depth": 15,
+     "thickness": 0.8,
+     "slopeDeg": 5,
+     "colour": "#d8d8d4",
+     "edgeColour": "#3a86e8"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -58.4,
+     9.2
+    ],
+    "end": [
+     38,
+     -58.4,
+     9.2
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.2,
+        0.5
+       ],
+       "height": 2.4,
+       "colour": "#3a2a22"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     46
+    ],
+    "end": [
+     -42,
+     46
+    ],
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "bay": 6,
+    "backWall": 2.5,
+    "under": "open",
+    "seatColours": [
+     "#a8a8a4",
+     "#9a9a96"
+    ],
+    "blocks": 1,
+    "concreteColour": "#bdbcb6",
+    "underColour": "#b0afaa",
+    "seatColour": "#a0a09c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -62,
+     30
+    ],
+    "end": [
+     -62,
+     -30
+    ],
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "bay": 6,
+    "under": "open",
+    "seatColours": [
+     "#a8a8a4",
+     "#9a9a96"
+    ],
+    "blocks": 2,
+    "concreteColour": "#bdbcb6",
+    "underColour": "#b0afaa"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     -30
+    ],
+    "end": [
+     62,
+     30
+    ],
+    "rows": 4,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "bay": 6,
+    "under": "open",
+    "seatColours": [
+     "#a8a8a4",
+     "#9a9a96"
+    ],
+    "blocks": 2,
+    "concreteColour": "#bdbcb6",
+    "underColour": "#b0afaa"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     60
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Canopy slab reads thin from this pitch and has no visible rafters; seats are blue/white blocks but not true diagonal pattern; windows are plain dark boxes; no side stairs or steel railings; opposite stand is low grey bank."
+ }
+}

@@ -1,0 +1,249 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mick%C5%ABnai,_ur%C4%97dija.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vilensija",
+   "view": "side",
+   "used": "white-clapboard 1.5-storey gabled block with grey standing-seam roof, small dormer, textured beige render gable end, barred windows, steel porch canopy; lower two-storey wing behind in orange and green panels",
+   "file": "/tmp/places-evidence/vilnius/vilnius-community-notices-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/281802201",
+   "used": "identity and size only (about 58 m long incl. wings); photo shows the main block about 14 x 9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#cdbf9d",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8794",
+    "material": "metal-sheet",
+    "pitch": 45,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clapboard-front",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.75
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#eef0f0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer",
+   "footprint": {
+    "rect": [
+     2.5,
+     2.6
+    ]
+   },
+   "at": [
+    -3,
+    -2.3
+   ],
+   "z0": 5.6,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6f7378",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8794",
+    "pitch": 30,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-orange",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    -11.5,
+    9
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98a3d",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-green",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -20.5,
+    9
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a86",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -5.2
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -6.2,
+    2.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 4.2,
+    "depth": 2.2,
+    "height": 0,
+    "thickness": 0.15,
+    "columns": 0,
+    "colour": "#8d939b"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -7,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "White clapboard is a thin front skin with a window grid, no real siding lines or window bars; beige gable end flat colour without texture; dormer simplified; wings approximated from OSM size"
+ }
+}

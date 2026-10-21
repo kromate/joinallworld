@@ -1,0 +1,486 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-airport-vienna-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skylink-Nordseite.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Trainler",
+   "view": "back",
+   "file": "/tmp/places-evidence/vienna/sky_n.jpg",
+   "used": "North Pier airside: long dark glazed block, dark concrete gate fingers with jet bridges and blue signs, apron with aircraft"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23854598",
+   "used": "Pier Nord (484 m long, 5 levels, 30 m high, black): a 110 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -34,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     114,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#14181c",
+    "glassColour": "#1a2128",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0,
+    "cornice": true,
+    "bands": "#2a3036"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "overhang": 0.6,
+    "parapet": 0.5
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "pier-ground",
+   "footprint": {
+    "rect": [
+     114,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2b2f33",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#34383c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger0",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -48,
+    -17
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3236",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -48,
+    -34,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign0",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    -48,
+    -5.4
+   ],
+   "z0": 5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5fae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5fae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger1",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -24,
+    -17
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3236",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -24,
+    -34,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign1",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    -24,
+    -5.4
+   ],
+   "z0": 5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5fae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5fae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger2",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3236",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    0,
+    -34,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign2",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.4
+   ],
+   "z0": 5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5fae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5fae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger3",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    24,
+    -17
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3236",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    24,
+    -34,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign3",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    24,
+    -5.4
+   ],
+   "z0": 5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5fae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5fae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finger4",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    48,
+    -17
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3236",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    48,
+    -34,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign4",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    48,
+    -5.4
+   ],
+   "z0": 5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f5fae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5fae"
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    -36,
+    -52,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f4f6f7",
+    "tailColour": "#c8202f"
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    12,
+    -52,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.7,
+    "colour": "#f4f6f7",
+    "tailColour": "#c8202f"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -55,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 5,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "groundColour": "#6b6e70",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a 114 m stretch of the 480 m pier; gate fingers are plain covered bays, no ground vehicles, aircraft generic"
+ }
+}

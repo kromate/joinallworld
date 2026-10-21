@@ -1,0 +1,419 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OsloMet_Kjeller.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/akers1.jpg",
+   "used": "three-storey dark steel-framed glass curtain wall building, projecting flat canopy over a glazed entrance bay, left wing with two tall white printed art panels, black louvred end, asphalt forecourt, round clipped shrub"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/193580169",
+   "used": "campus location and the building group; only the photographed front building is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 78,
+  "aspect": 1.33,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    -12.4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8290",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#b9ccd8",
+    "faces": {
+     "left": "plain"
+    },
+    "bands": "#2b3238"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    4,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3b0",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "glassColour": "#b9ccd8",
+    "faces": {
+     "left": "curtain",
+     "right": "plain"
+    },
+    "bands": "#2b3238"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "overhang": 5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre-end",
+   "footprint": {
+    "rect": [
+     5,
+     18
+    ]
+   },
+   "at": [
+    14.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#25282b",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#25282b",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-glass",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8290",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#b9ccd8",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    2,
+    19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8b4a3a",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#7f98a8",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5d60",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "art-panel-1",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    -18.2,
+    -10.3
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 11.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#8d8d88"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc7",
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "art-panel-2",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    -13.0,
+    -10.3
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 11.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#8d8d88"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc7",
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    3,
+    -10.5,
+    10
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#e8a400",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "art-panel-3",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    14.5,
+    -10.4
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 11.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfca",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca",
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    4,
+    -24,
+    0.02
+   ],
+   "params": {
+    "width": 4,
+    "depth": 24,
+    "border": 0,
+    "colour": "#d8d6cd",
+    "border_colour": "#d8d6cd"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -6,
+    -18,
+    0.04
+   ],
+   "params": {
+    "width": 14,
+    "depth": 0.6,
+    "border": 0,
+    "colour": "#e0b800",
+    "border_colour": "#e0b800"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -12,
+    -24,
+    0.04
+   ],
+   "params": {
+    "width": 0.6,
+    "depth": 8,
+    "border": 0,
+    "colour": "#e0b800",
+    "border_colour": "#e0b800"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    14,
+    -28,
+    0.04
+   ],
+   "params": {
+    "width": 10,
+    "depth": 0.6,
+    "border": 0,
+    "colour": "#e0b800",
+    "border_colour": "#e0b800"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "bay projects only modestly, mullion grid generic, art panels plain grey without drawings, shrub is a stock tree, maze markings simplified"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

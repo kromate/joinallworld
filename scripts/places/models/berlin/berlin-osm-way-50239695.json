@@ -1,0 +1,675 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-50239695",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2010-4-28_F%27felde_fec_AMA.B_849.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Angela M. Arnold, Berlin",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/berlin-osm-way-50239695-0.jpg",
+   "used": "open dandelion lawn with a bed and white benches at the back, cobbled path, low black railing with bollards, mixed young broadleaf trees and shrubs, blank park sign board on posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zamenhofpark_(Berlin-Friedrichsfelde_2013)_1195-1075-(120).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lotse",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/berlin-osm-way-50239695-1.jpg",
+   "used": "corner of the strip: low black railing, trees, notice posts, street edge and advertising column, plain plaster flank walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/50239695",
+   "used": "real park outline, a 108 x 23 m diagonal strip"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -37.9,
+      -48.7
+     ],
+     [
+      12.8,
+      46.9
+     ],
+     [
+      15.2,
+      45.7
+     ],
+     [
+      14.6,
+      44.5
+     ],
+     [
+      30.7,
+      36
+     ],
+     [
+      -9.1,
+      -42.6
+     ],
+     [
+      -26.6,
+      -34
+     ],
+     [
+      -35.2,
+      -50.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#b9c04a",
+    "topColour": "#c4c648",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -40
+     ],
+     [
+      -4,
+      4
+     ],
+     [
+      24,
+      40
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b7b1a6"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -4,
+    -6,
+    0.13
+   ],
+   "rotDeg": 28,
+   "params": {
+    "rows": 1,
+    "cols": 2,
+    "width": 5,
+    "depth": 3,
+    "colours": [
+     "#8a5a3c",
+     "#c9a14a"
+    ]
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    2,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -16,
+    -20,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "length": 22,
+    "height": 0.6,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#222222",
+    "pillarEvery": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "width": 2.2,
+    "height": 0.8,
+    "colour": "#f2f2ee",
+    "posts": 2
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    10,
+    12,
+    0
+   ],
+   "params": {
+    "height": 1.8,
+    "steps": 1,
+    "figure": "none",
+    "width": 1.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -28,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "length": 12,
+    "height": 1.1
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    20,
+    28,
+    0
+   ],
+   "rotDeg": 118,
+   "params": {
+    "length": 10,
+    "height": 1.1
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -32.135,
+      -70.68
+     ],
+     [
+      12.865,
+      -3.6800000000000015
+     ],
+     [
+      40.865,
+      39.32
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#a9a49a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -57.865,
+      -53.32
+     ],
+     [
+      -12.865,
+      13.680000000000001
+     ],
+     [
+      15.135,
+      56.68
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#a9a49a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "round-bed",
+   "at": [
+    3,
+    -4
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 16,
+    "z0": 0.12,
+    "height": 0.25,
+    "colour": "#6b4a2f",
+    "topColour": "#c9a14a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    7.236880572413271,
+    -2.2086756253802076,
+    0.12
+   ],
+   "rotDeg": 112.91831180523293,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    1.2086756253802085,
+    0.23688057241327076,
+    0.12
+   ],
+   "rotDeg": 202.91831180523292,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -1.2368805724132717,
+    -5.7913243746197915,
+    0.12
+   ],
+   "rotDeg": 292.9183118052329,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    4.791324374619792,
+    -8.23688057241327,
+    0.12
+   ],
+   "rotDeg": 22.918311805232975,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank-s",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -38,
+    -48
+   ],
+   "rotDeg": -33,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dccb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flank-n",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    24,
+    48
+   ],
+   "rotDeg": -33,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dccb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -27.437122374486517,
+    -16.22725430754599,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 8.176916901183807,
+    "height": 1.6959641332384634,
+    "colour": "#5a8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    4.158212192827595,
+    -6.267074637664356,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 8.323408337400224,
+    "height": 1.8844796241114614,
+    "colour": "#6a8f3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -26.15375914031954,
+    -14.259430681823295,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 6.9373238441867855,
+    "height": 2.1965158684083703,
+    "colour": "#6a8f3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8.173433137742325,
+    -0.11040252212842994,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 8.198524668108021,
+    "height": 1.7177076616231686,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -27.799679677399702,
+    -16.783175505346208,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 6.6064895054115444,
+    "height": 2.140668377418406,
+    "colour": "#6a8f3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    20.190111372089415,
+    18.3151707705371,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 8.68564590147837,
+    "height": 1.4512251505815978,
+    "colour": "#5a8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -39.147658239632406,
+    -34.18340930076968,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 9.120305956334226,
+    "height": 2.0588564089866113,
+    "colour": "#6a8f3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    4.079945319928012,
+    -6.38708384277705,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 8.875295696263212,
+    "height": 2.1030502402043854,
+    "colour": "#5a8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    5.5715312938833215,
+    34.3860146506211,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 7.707739543764692,
+    "height": 1.9825007784420774,
+    "colour": "#5a8a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.3922633630456396,
+    -8.97486284333002,
+    0
+   ],
+   "rotDeg": 56,
+   "params": {
+    "length": 9.742346886818083,
+    "height": 2.1030933282704334,
+    "colour": "#4f7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "memorial form unknown so a plain plinth; tree species approximate; street frontage reduced to two flank walls; view is aerial not the ground-level photo"
+ }
+}

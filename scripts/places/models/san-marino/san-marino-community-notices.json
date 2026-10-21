@@ -1,0 +1,89 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/199417552",
+   "used": "real building outline (659 m2, bearing 154) containing the venue point; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "casa",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e1d3b3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9c8a6c",
+      "height": 0.35,
+      "floors": [
+       0
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#5eb6e4",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

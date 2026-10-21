@@ -1,0 +1,143 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/167324842",
+   "used": "real Z-shaped 2259 m2 outline, 4 levels (containing match, no photo to confirm)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "bands": "#c9c6bd",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e82",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.5,
+    "columns": 2,
+    "colour": "#5c7a92"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "at": [
+     -24,
+     -34
+    ],
+    "colour": "#2c3e50"
+   },
+   {
+    "at": [
+     -18,
+     -34
+    ],
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     -12,
+     -34
+    ],
+    "colour": "#8a2b2b"
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: real Z-shaped OSM outline with generic ribbon-window render facade"
+ }
+}

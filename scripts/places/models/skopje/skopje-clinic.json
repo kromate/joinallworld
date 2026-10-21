@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%92%D0%BE%D0%B5%D0%BD%D0%B0_%D0%91%D0%BE%D0%BB%D0%BD%D0%B8%D1%86%D0%B0_%28_8-%D0%BC%D0%B8_%D0%A1%D0%B5%D0%BF%D1%82%D0%B5%D0%BC%D0%B2%D1%80%D0%B8_%29_%D0%A1%D0%BA%D0%BE%D0%BF%D1%98%D0%B5_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio user (Commons upload)",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/hosp.jpg",
+   "used": "low pale concrete podium on pilotis with a ribbon of small windows and a canopy entrance, tall ~11-storey slab behind with blank pale left end and dark grid glazing, lower block left, brick-and-concrete wing right"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8253944",
+   "used": "overall scale and multi-wing layout (about 200 m across); the tower and podium are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    2,
+    -16
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9ccc0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2,
+      "spacing": 6,
+      "width": 0.8,
+      "colour": "#b9bdb2",
+      "storeys": 1
+     }
+    ],
+    "faces": {
+     "left": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a4248",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [],
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-end",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -44,
+    -4
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b9c0bd",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8587",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    38,
+    -14
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8745a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#d8d6cc",
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -32,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    -10,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower glazing still horizontal-banded, podium window rhythm simplified, brick wing taller but not close to foreground"
+ }
+}

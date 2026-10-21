@@ -1,0 +1,158 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_johns_parish_hall.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Danrok",
+   "view": "front-left",
+   "file": "/tmp/places-evidence/st-helier/st-helier-community-notices-0.jpg",
+   "used": "pink-brown granite, slate gabled hall with four tall paned windows between buttress strips, square clock tower at left with hipped slate cap and dentil cornice, ridge cupola, tall end chimney, granite dwarf wall in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/906637546",
+   "used": "identity and size only; the OSM outline is a multi-part polygon and was recomposed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19,
+     9
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a98a80",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 4.6,
+    "plinth": 0.7,
+    "trimColour": "#d8d2c8",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 28,
+    "colour": "#4d5157",
+    "material": "slate",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -9.2,
+    -1.4
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#a08478",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 2.7
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 4.4,
+    "colour": "#4a4e54",
+    "material": "slate",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    11.6,
+    0,
+    5.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 3.6,
+    "pots": 1,
+    "colour": "#a08478"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    9,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 3,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.9,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#a39a90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "paving",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": ""
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-community-notices"
+}

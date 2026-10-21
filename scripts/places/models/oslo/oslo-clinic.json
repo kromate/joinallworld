@@ -1,0 +1,528 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sunnaas_sykehus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/sunnaas1.jpg",
+   "used": "three-storey white rendered ward block, shallow monopitch dark roofs, dark glazed corner bay, small black-railed balconies, stepped lower wing behind, sloping lawn and young trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sunnaas_sykehus,_Nesodden_(2005).jpg",
+   "licence": "CC BY 3.0",
+   "author": "TorSch",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/oslo/sunnaas2.jpg",
+   "used": "older white four-storey ward blocks with grey roofs, conifer setting above the fjord"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43556465",
+   "used": "campus extent and orientation (outline too large and scattered; a representative group of blocks is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-1",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "windowShape": "rect",
+    "glassColour": "#2f3a43",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#3d4146",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-2",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -9,
+    -2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "glassColour": "#2f3a43",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#3d4146",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-3",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    12,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "glassColour": "#2f3a43",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#3d4146",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    34,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "glassColour": "#2f3a43",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#3d4146",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    24,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3a43",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#4f5f6b",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#2b2f33",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-low",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "glassColour": "#4a5560",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#3d4146",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "glassColour": "#4a5560",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#2b2f33",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-block",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    -30,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d6",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "glassColour": "#4a5560",
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 18,
+    "colour": "#6f747a",
+    "material": "slate",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -55,
+    60,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -33,
+    -7.3,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -26,
+    -7.3,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -12,
+    -9.8,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -5,
+    -9.8,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    10,
+    -12.3,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    17,
+    -12.3,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "railing_colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     26,
+     1.2
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8780",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "only one ward block group modelled; terraced stepping, window reveals, sloping lawn and retaining wall simplified; older blocks behind are a guess"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 6,
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

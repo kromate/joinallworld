@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-airport-larnaca-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LCA_Terminal_outside.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phpeter",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/air1.jpg",
+   "used": "pale board-marked concrete end block with glazed lower part, curved glazed hall under an arched metal roof with deep eaves, upper-level canopy walkway on concrete piers at right"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Larnaca_International_Airport",
+   "used": "2009 terminal, 16 jetways, separate control tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 58,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     20,
+     26
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "height": 32,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#dcdad3",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d4cd",
+    "material": "metal-sheet",
+    "overhang": 0.3,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     52,
+     30
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5a63",
+    "glassColour": "#38535c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "right": "curtain",
+     "back": "none",
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#9ea4a8",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-wing",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    52,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#56707a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbf",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walkway-deck",
+   "at": [
+    40,
+    -9
+   ],
+   "params": {
+    "rect": [
+     34,
+     9
+    ],
+    "z0": 6.2,
+    "height": 0.9,
+    "colour": "#c9cccd",
+    "topColour": "#d9dbdc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walkway-roof",
+   "at": [
+    40,
+    -9
+   ],
+   "params": {
+    "rect": [
+     36,
+     10
+    ],
+    "z0": 10.4,
+    "height": 0.5,
+    "colour": "#bfc3c6",
+    "topColour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "walkway-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0,
+      "height": 10.4,
+      "colour": "#9aa1a6"
+     }
+    },
+    "count": 5,
+    "mode": "line",
+    "start": [
+     24,
+     -12
+    ],
+    "end": [
+     56,
+     -12
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       3
+      ],
+      "z0": 0,
+      "height": 6.2,
+      "colour": "#d0cec8"
+     }
+    },
+    "count": 3,
+    "mode": "line",
+    "start": [
+     26,
+     -10
+    ],
+    "end": [
+     54,
+     -10
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -62,
+    48,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "round",
+    "colour": "#d8d6d0",
+    "cabColour": "#6b7378",
+    "bandColour": "#8c959b"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    28,
+    14,
+    4.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    46,
+    16,
+    4.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    64,
+    16,
+    4.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#222a30",
+    "count": 3,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-glass",
+   "footprint": {
+    "rect": [
+     16,
+     2
+    ]
+   },
+   "at": [
+    -37,
+    -13.5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#44606a",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "concrete-fin",
+   "at": [
+    -26,
+    -12
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 0,
+    "height": 32,
+    "colour": "#d6d4cd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walkway-glass",
+   "at": [
+    40,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.2
+    ],
+    "z0": 7.1,
+    "height": 1.2,
+    "colour": "#aebfc4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hall roof is a plain arch not the swept wave profile; canopy walkway is simplified and seen from far; framing wider than the close-up photo; control tower kept distant"
+ }
+}

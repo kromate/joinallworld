@@ -1,0 +1,512 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-777985963",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Црква_у_Војковићима.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mitropolija dabrobosanska",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/vojkovici.jpg",
+   "used": "tall square bell tower with cream walls, yellow arched panels and dark cornice bands, lantern dome and cross; yellow-lined arched porch, round windows, dark grey low roofs, drum dome behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/777985963",
+   "used": "overall size only (about 27x18 m cross); OSM outline orientation does not match the photo viewpoint, so massing is recomposed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.98
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4cf",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "arched",
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#7a6a4a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4cf",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "arched",
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#7a6a4a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5.6,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -6.4
+   ],
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c8",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-arch",
+   "at": [
+    0,
+    -8.1
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#e3c46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-arch-in",
+   "at": [
+    0,
+    -8.3
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.2
+    ],
+    "height": 3.3,
+    "colour": "#5a4a33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     6.0
+    ],
+    "height": 21,
+    "z0": 0,
+    "colour": "#ebe4cf",
+    "windows": "none",
+    "plinth": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-fb0",
+   "at": [
+    0,
+    -7.25
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 7.0,
+    "z0": 9.5,
+    "colour": "#e3c46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-fbi0",
+   "at": [
+    0,
+    -7.35
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 5.2,
+    "z0": 10.3,
+    "colour": "#6b5a42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-fb1",
+   "at": [
+    0,
+    -1.15
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 7.0,
+    "z0": 9.5,
+    "colour": "#e3c46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-fbi1",
+   "at": [
+    0,
+    -1.0499999999999998
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 5.2,
+    "z0": 10.3,
+    "colour": "#6b5a42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-s0",
+   "at": [
+    -3.15,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.4
+    ],
+    "height": 7.0,
+    "z0": 9.5,
+    "colour": "#e3c46a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-s1",
+   "at": [
+    3.15,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.4
+    ],
+    "height": 7.0,
+    "z0": 9.5,
+    "colour": "#e3c46a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "round-window",
+   "at": [
+    0,
+    -7.3,
+    6.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "segments": 10,
+    "colour": "#7a6a4a",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-band-low",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 0.5,
+    "z0": 8.5,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-band-mid",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "height": 0.4,
+    "z0": 17.0,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-band",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "height": 0.6,
+    "z0": 19.6,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-belfry",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "radius": 2.7,
+    "n": 8,
+    "height": 4.5,
+    "z0": 20.2,
+    "colour": "#eadba6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.45
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-cap",
+   "at": [
+    0,
+    -4.2,
+    24.7
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4a4d52",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      2.9,
+      0.3
+     ],
+     [
+      2.2,
+      1.0
+     ],
+     [
+      1.2,
+      1.7
+     ],
+     [
+      0.4,
+      2.1
+     ],
+     [
+      0.1,
+      2.3
+     ],
+     [
+      0.1,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "height": 0.12,
+    "z0": 27.4,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    5
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 12,
+    "height": 4.5,
+    "z0": 7.2,
+    "colour": "#ebe4cf",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    5,
+    11.7
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4a4d52",
+    "profile": [
+     [
+      3.7,
+      0
+     ],
+     [
+      3.4,
+      0.8
+     ],
+     [
+      2.4,
+      1.8
+     ],
+     [
+      1.2,
+      2.5
+     ],
+     [
+      0.15,
+      2.8
+     ],
+     [
+      0.15,
+      4.3
+     ]
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "yellow plinth band and side arched wall panels on the nave are missing; tower shaft panels are single rather than stepped arches; hillside and neighbour building omitted; photo is low resolution"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ }
+}

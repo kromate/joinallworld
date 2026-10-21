@@ -1,0 +1,340 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-648765786",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skansi_Arena_Argja_Boltfelag_IMG_20210808_115709246.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Timmietovenaar",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/648765786_2.jpg",
+   "used": "single long covered stand across the far side of the pitch: flat roof with white fascia board, dark glazed upper wall, grey lower block with small windows, blue and red seating rows, floodlight mast at the right end, green artificial turf, mountain slope behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Inni_%C3%AD_Vika_Football_Stadium_on_23_October_2010_AB_Argir_vs_FC_Su%C3%B0uroy_1-0.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Eileen Sanda",
+   "view": "street",
+   "file": "/tmp/places-evidence/torshavn/648765786_1.jpg",
+   "used": "wire-mesh perimeter fence, advertising boards along the pitch edge, row of flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/648765786",
+   "used": "identity only (outline is an irregular site polygon, pitch and stand sized from the photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "width": 56,
+    "stripes": 0,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     22,
+     33.2
+    ],
+    "end": [
+     -30,
+     33.2
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#2f5f9e",
+     "#a8483a"
+    ],
+    "seatColour": "#2f5f9e",
+    "blocks": 6,
+    "concreteColour": "#8b929a",
+    "under": "solid",
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-back",
+   "footprint": {
+    "rect": [
+     52,
+     4
+    ]
+   },
+   "at": [
+    -4,
+    42.5
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f353b",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9ebee",
+    "material": "metal-sheet",
+    "overhang": 2.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-front",
+   "footprint": {
+    "rect": [
+     52,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    37
+   ],
+   "z0": 7.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9ebee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    22,
+    33
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a525a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a525a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts2",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -30,
+    33
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a525a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a525a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    31,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "club-hut",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -48,
+    28
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2d3036",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a6670",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    31,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 0.9,
+    "thickness": 0.15,
+    "colour": "#2f5f9e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -46,
+    30,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 2.4,
+    "thickness": 0.1,
+    "colour": "#9aa0a6"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    46,
+    30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 58,
+    "height": 2.4,
+    "thickness": 0.1,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "colour": "#6d8a45",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       150,
+       30
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       146,
+       30
+      ],
+      "cy": 4
+     },
+     {
+      "z": 18,
+      "rect": [
+       130,
+       24
+      ],
+      "cy": 8
+     },
+     {
+      "z": 26,
+      "rect": [
+       110,
+       10
+      ],
+      "cy": 6
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hillside is a smooth loft without the rocky ridge; stand fascia lettering, flagpoles and club-hut details omitted; ad boards and end fences simplified"
+ }
+}

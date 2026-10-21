@@ -1,0 +1,619 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-relation-7096099",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praha,_St%C5%99e%C5%A1ovice,_park_Max_van_der_Stoel,_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Daniel Baranek",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/prague/relation-7096099-0.jpg",
+   "used": "small pond with rubble-stone edge and stepping path, curving grey asphalt and sand paths over lawn, young scattered trees, mature trees on the left slope, low terracotta-brown brick pavilion building at right, slim lamp posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Park_M_Stoela_p%C5%99es_jez%C3%ADrko_k_JZ.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Xyzabec",
+   "view": "street",
+   "file": "/tmp/places-evidence/prague/relation-7096099-2.jpg",
+   "used": "pond and lawn layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7096099",
+   "used": "park outline, 4.7 ha"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8db35a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8db35a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scatter-ground",
+   "at": [
+    0,
+    0,
+    -0.05
+   ],
+   "params": {
+    "rect": [
+     120,
+     120
+    ],
+    "height": 0.1,
+    "colour": "#7f9460"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-left",
+   "at": [
+    -45,
+    -4,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -30
+     ],
+     [
+      10,
+      -34
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      10,
+      40
+     ],
+     [
+      -20,
+      44
+     ]
+    ],
+    "height": 3.5,
+    "topScale": 0.7,
+    "topOffset": [
+     -4,
+     0
+    ],
+    "colour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-near",
+   "at": [
+    -5,
+    -34,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      0
+     ],
+     [
+      40,
+      -2
+     ],
+     [
+      44,
+      10
+     ],
+     [
+      -30,
+      12
+     ]
+    ],
+    "height": 2.2,
+    "topScale": [
+     0.9,
+     0.5
+    ],
+    "colour": "#8a9a63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "retaining-wall",
+   "at": [
+    8,
+    -16,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.2
+    ],
+    "height": 2.6,
+    "colour": "#b9a98c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond",
+   "at": [
+    -10,
+    -2,
+    0.64
+   ],
+   "params": {
+    "points": [
+     [
+      -13,
+      -4
+     ],
+     [
+      -8,
+      -8
+     ],
+     [
+      -2,
+      -8.5
+     ],
+     [
+      3,
+      -6
+     ],
+     [
+      8,
+      -3
+     ],
+     [
+      11,
+      2
+     ],
+     [
+      8,
+      7
+     ],
+     [
+      2,
+      9
+     ],
+     [
+      -3,
+      6
+     ],
+     [
+      -8,
+      9
+     ],
+     [
+      -13,
+      6
+     ],
+     [
+      -16,
+      1
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#4d6e66"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-main",
+   "params": {
+    "section": {
+     "rect": [
+      4.2,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -14,
+      0.55
+     ],
+     [
+      -12,
+      -14,
+      0.55
+     ],
+     [
+      6,
+      -10,
+      0.55
+     ],
+     [
+      20,
+      -2,
+      0.55
+     ],
+     [
+      22,
+      14,
+      0.55
+     ],
+     [
+      10,
+      28,
+      0.55
+     ],
+     [
+      -6,
+      34,
+      0.55
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#74757a",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-sand",
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -24,
+      -14,
+      0.54
+     ],
+     [
+      -24,
+      2,
+      0.54
+     ],
+     [
+      -6,
+      10,
+      0.54
+     ],
+     [
+      8,
+      14,
+      0.54
+     ],
+     [
+      12,
+      30,
+      0.54
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#cdb88f",
+    "n": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    30,
+    -4
+   ],
+   "rotDeg": -12,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5634a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b5a47",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-edge",
+   "at": [
+    -10,
+    -2,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -15.34,
+      -4.72
+     ],
+     [
+      -9.44,
+      -9.44
+     ],
+     [
+      -2.36,
+      -10.03
+     ],
+     [
+      3.54,
+      -7.08
+     ],
+     [
+      9.44,
+      -3.54
+     ],
+     [
+      12.979999999999999,
+      2.36
+     ],
+     [
+      9.44,
+      8.26
+     ],
+     [
+      2.36,
+      10.62
+     ],
+     [
+      -3.54,
+      7.08
+     ],
+     [
+      -9.44,
+      10.62
+     ],
+     [
+      -15.34,
+      7.08
+     ],
+     [
+      -18.88,
+      1.18
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#a99d85"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 7,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 5,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 9,
+    "spread": 30
+   }
+  },
+  {
+   "type": "array",
+   "id": "boulders",
+   "at": [
+    -10,
+    -2,
+    0.55
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 6,
+      "height": 0.6,
+      "colour": "#b4a88e"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 13.5,
+    "radiusY": 10.5,
+    "count": 22,
+    "startDeg": 0,
+    "endDeg": 360,
+    "lod1Step": 2,
+    "lod2Step": 22
+   }
+  },
+  {
+   "type": "array",
+   "id": "stepping-stones",
+   "at": [
+    -10,
+    -2,
+    0.55
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.7
+      ],
+      "height": 0.15,
+      "colour": "#c9c0aa"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     12
+    ],
+    "end": [
+     6,
+     13.5
+    ],
+    "count": 7,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-door",
+   "at": [
+    24,
+    -9.3,
+    0.5
+   ],
+   "rotDeg": -12,
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "height": 2.8,
+    "colour": "#3a2a24"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamp-row",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 4
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     -18
+    ],
+    "end": [
+     18,
+     -14
+    ],
+    "count": 6,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamp-row2",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 4
+     }
+    },
+    "mode": "line",
+    "start": [
+     24,
+     2
+    ],
+    "end": [
+     8,
+     30
+    ],
+    "count": 5,
+    "lod2Step": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pond is a kidney shape with boulder rim and stepping stones, but banks are simple tapered slabs not the real sunken bowl; paths and lamps approximate; pavilion a low brick box with door recess."
+ }
+}

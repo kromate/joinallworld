@@ -1,0 +1,115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-1429264291",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Marine_Church,_Dzveli_Marabda_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yasuhiro Kojima",
+   "view": "side",
+   "file": "/tmp/places-evidence/tbilisi/mar1.jpg",
+   "used": "plain single-nave hall, long walls of dark grey basalt ashlar blocks, light cream stone gable top, low pitched clay-tile roof with tile ridge, one small low door in the long wall, grass and thin path"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1429264291",
+   "used": "hall plan about 11 x 7 m, long axis east-west"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     11,
+     6.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#69645c",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c3b9a2"
+      ],
+      "height": 1.6,
+      "at": 1.0,
+      "proud": 0.0,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b46a45",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    2.5,
+    -3.42,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.9,
+    "arch": false,
+    "colour": "#2e2a26"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "no cut-stone texture variation or basalt patchwork, no path/shrubs, door simplified"
+ }
+}

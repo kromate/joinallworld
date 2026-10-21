@@ -1,0 +1,603 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%22UFO%22_of_the_Most_Slovensk%C3%A9ho_n%C3%A1rodn%C3%A9ho_povstania_bridge_(10266970494).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge Lascar",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/ufo_ext.jpg",
+   "used": "A-shaped white steel pylon of two inward-leaning legs, saucer-shaped deck with dark glazed band on top, deck road rising towards it, stay cables; street-level view: far bridge ramp rising to pylon, cobbled plaza with plague column left and tree row right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/378574918",
+   "used": "saucer diameter 26 m, height 95 m, pyramidal metal roof"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Most_SNP",
+   "used": "pylon 84.6 m, 303 m main span, cable-stayed single pylon"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "legL",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d4d9dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2399999999999998,
+       3.06
+      ],
+      "cx": -5.0
+     },
+     {
+      "z": 25,
+      "rect": [
+       2.0,
+       2.8049999999999997
+      ],
+      "cx": -3.9
+     },
+     {
+      "z": 55,
+      "rect": [
+       1.6800000000000002,
+       2.55
+      ],
+      "cx": -2.4
+     },
+     {
+      "z": 74,
+      "rect": [
+       1.4400000000000002,
+       2.38
+      ],
+      "cx": -1.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "legR",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d4d9dc",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2399999999999998,
+       3.06
+      ],
+      "cx": 5.0
+     },
+     {
+      "z": 25,
+      "rect": [
+       2.0,
+       2.8049999999999997
+      ],
+      "cx": 3.9
+     },
+     {
+      "z": 55,
+      "rect": [
+       1.6800000000000002,
+       2.55
+      ],
+      "cx": 2.4
+     },
+     {
+      "z": 74,
+      "rect": [
+       1.4400000000000002,
+       2.38
+      ],
+      "cx": 1.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      0,
+      -58,
+      1
+     ],
+     [
+      0,
+      -25,
+      6.5
+     ],
+     [
+      0,
+      0,
+      9.5
+     ],
+     [
+      0,
+      6,
+      9.5
+     ]
+    ],
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "span",
+   "at": [
+    33,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     9
+    ],
+    "z0": 9.5,
+    "height": 1.8,
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "saucer",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#7d8791",
+    "profile": [
+     [
+      0,
+      71.5
+     ],
+     [
+      13,
+      71.5,
+      "#aab2b8"
+     ],
+     [
+      13.4,
+      73.2,
+      "#c3cbd1"
+     ],
+     [
+      12.6,
+      73.4,
+      "#26303a"
+     ],
+     [
+      12.6,
+      76.6,
+      "#26303a"
+     ],
+     [
+      13,
+      76.8,
+      "#c3cbd1"
+     ],
+     [
+      12.2,
+      78,
+      "#c3cbd1"
+     ],
+     [
+      8,
+      78.6,
+      "#8d97a0"
+     ],
+     [
+      7,
+      78.8,
+      "#c3cbd1"
+     ],
+     [
+      6.6,
+      79,
+      "#26303a"
+     ],
+     [
+      6.4,
+      82,
+      "#26303a"
+     ],
+     [
+      7,
+      82.2,
+      "#c3cbd1"
+     ],
+     [
+      6,
+      83,
+      "#6f7a85"
+     ],
+     [
+      0.1,
+      84,
+      "#6f7a85"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 84,
+    "height": 9,
+    "colour": "#b0b7bc"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0.5,
+      0,
+      70
+     ],
+     [
+      12,
+      0,
+      11.2
+     ]
+    ],
+    "colour": "#8d959b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0.5,
+      0,
+      66
+     ],
+     [
+      22,
+      0,
+      11.2
+     ]
+    ],
+    "colour": "#8d959b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0.5,
+      0,
+      62
+     ],
+     [
+      33,
+      0,
+      11.2
+     ]
+    ],
+    "colour": "#8d959b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0.5,
+      0,
+      58
+     ],
+     [
+      45,
+      0,
+      11.2
+     ]
+    ],
+    "colour": "#8d959b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0.5,
+      0,
+      54
+     ],
+     [
+      56,
+      0,
+      11.2
+     ]
+    ],
+    "colour": "#8d959b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "column",
+   "at": [
+    -48,
+    -30,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#cfc9bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    40,
+    -25,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     50
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 24,
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    42,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     40
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4d6b3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -38
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -42
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -30
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     0
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -12
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slimmer A pylon, two-level saucer with mast and one-sided cable fan read; photo is street level with pylon far away, plague column/tree row/cobbles only hinted, camera shows isolated tower."
+ }
+}

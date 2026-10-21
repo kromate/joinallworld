@@ -1,0 +1,526 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gateway_Building_University_of_Malta.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jaakko.kulta",
+   "view": "front",
+   "file": "/tmp/places-evidence/valletta/uni1.jpg",
+   "used": "Gateway Building: two big round sandy limestone towers with vertical slit windows flanking a recessed white entrance with a teal footbridge, long stepped four-storey wing to the right with a rust-red oriel"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/169100030",
+   "used": "not used: the polygon is the whole 527 m campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.379,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tower-l",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      5,
+      0,
+      "#d3b57f"
+     ],
+     [
+      5,
+      15.2,
+      "#d3b57f"
+     ],
+     [
+      5.25,
+      15.5,
+      "#c4a672"
+     ],
+     [
+      5.25,
+      16.099999999999998,
+      "#c4a672"
+     ],
+     [
+      4.8,
+      16.099999999999998,
+      "#c4a672"
+     ],
+     [
+      0,
+      16.099999999999998,
+      "#c4a672"
+     ]
+    ],
+    "arcade": [
+     {
+      "from": 3,
+      "to": 14.2,
+      "count": 10,
+      "width": 0.55,
+      "height": 9.2,
+      "sill": 2,
+      "shape": "rect",
+      "depth": 0.4,
+      "innerColour": "#2b2a28"
+     },
+     {
+      "from": 10.7,
+      "to": 14.2,
+      "count": 10,
+      "width": 0.55,
+      "height": 2.2,
+      "sill": 0,
+      "shape": "rect",
+      "depth": 0.4,
+      "innerColour": "#2b2a28",
+      "phase": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-r",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      5,
+      0,
+      "#d3b57f"
+     ],
+     [
+      5,
+      17,
+      "#d3b57f"
+     ],
+     [
+      5.25,
+      17.3,
+      "#c4a672"
+     ],
+     [
+      5.25,
+      17.9,
+      "#c4a672"
+     ],
+     [
+      4.8,
+      17.9,
+      "#c4a672"
+     ],
+     [
+      0,
+      17.9,
+      "#c4a672"
+     ]
+    ],
+    "arcade": [
+     {
+      "from": 3,
+      "to": 16,
+      "count": 10,
+      "width": 0.55,
+      "height": 11,
+      "sill": 2,
+      "shape": "rect",
+      "depth": 0.4,
+      "innerColour": "#2b2a28"
+     },
+     {
+      "from": 12.5,
+      "to": 16,
+      "count": 10,
+      "width": 0.55,
+      "height": 2.2,
+      "sill": 0,
+      "shape": "rect",
+      "depth": 0.4,
+      "innerColour": "#2b2a28",
+      "phase": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     4
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efede6",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dfd5",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "emblem",
+   "footprint": {
+    "rect": [
+     3,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    0.8
+   ],
+   "z0": 10.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4a5560",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     19,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4f9a8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f9a8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    22,
+    -3
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdae79",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.7,
+    "bay": 4,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#2b2a28"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a672",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "oriel",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    22,
+    -4
+   ],
+   "z0": 4.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a8553a",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2d3b44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f4630"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r0",
+   "footprint": {
+    "rect": [
+     10.5,
+     16
+    ]
+   },
+   "at": [
+    28.0,
+    2
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3b57f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2d3b44",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a672",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r1",
+   "footprint": {
+    "rect": [
+     10.5,
+     16
+    ]
+   },
+   "at": [
+    38.5,
+    2
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3b57f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2d3b44",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a672",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r2",
+   "footprint": {
+    "rect": [
+     10.5,
+     16
+    ]
+   },
+   "at": [
+    49.0,
+    2
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3b57f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2d3b44",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a672",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb07b",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a672",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#c9b58a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -37,
+     -5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round slit towers and stepped right wing done; slits are one column only, no flat-roofed ramps, emblem is a plain box, oriel is rectangular not curved, tree cluster is low-poly."
+ }
+}

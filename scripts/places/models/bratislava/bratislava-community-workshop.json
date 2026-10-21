@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mlynsk%C3%A9_luhy_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wizzard",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/workshop1.jpg",
+   "used": "grey-white rendered two-storey block with large dark-framed windows in a loose grid, glazed entrance lobby with dark flat canopy, entrance stair, darker grey stair/entry volume and a higher block behind at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/799366809",
+   "used": "campus size only; massing from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad6",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "trimColour": "#33383d",
+    "glassColour": "#2a3238",
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "material": "membrane",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     11
+    ]
+   },
+   "at": [
+    16.5,
+    1
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c9094",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    24,
+    -5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3036",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f343a",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    36,
+    3
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcdc8",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "trimColour": "#33383d",
+    "bay": 7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7d80",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "steps": 6,
+    "rise": 0.17,
+    "run": 0.4,
+    "colour": "#8d8f91"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    19.2,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 2.8,
+    "height": 1.0,
+    "thickness": 0.06,
+    "kind": "railing",
+    "colour": "#222222"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    28.8,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 2.8,
+    "height": 1.0,
+    "thickness": 0.06,
+    "kind": "railing",
+    "colour": "#222222"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.8
+    ],
+    "height": 1.4,
+    "colour": "#4f7a38"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.8
+    ],
+    "height": 1.4,
+    "colour": "#4f7a38"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.8
+    ],
+    "height": 1.4,
+    "colour": "#4f7a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Entrance stair/railings tiny, foreground empty grey ground, wing massing guessed"
+ }
+}

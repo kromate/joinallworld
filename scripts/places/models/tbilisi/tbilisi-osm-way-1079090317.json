@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-way-1079090317",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1079090317",
+   "used": "whole compound outline (about 214 x 198 m, stepped plan), scaled to fit; levels from brief (5 storeys, Soviet medical blocks)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tbilisi_City_-_Urban_Photos_(16).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mostafameraji",
+   "view": "street",
+   "used": "street photo near the place only; does not show the hospital, not used for the model"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 40,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "compound",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 17.5,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8a8",
+    "windows": "ribbon",
+    "windowRatio": 0.16,
+    "plinth": 0.6,
+    "bands": "#8b8f8c",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#bdb8a8",
+       "#cbc6b6"
+      ]
+     }
+    ],
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 2,
+    "vans": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "outline scaled 0.55 to fit 118 m; no photo of the hospital, facade is typed Soviet medical block"
+ }
+}

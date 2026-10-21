@@ -1,0 +1,206 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: ethno restaurant, stone ground floor, timber upper floor, hip roof, wide terrace, grass setting with parking; no OSM outline or photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8ae98",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a32"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a32",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0583a",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -7,
+    3.6
+   ],
+   "params": {
+    "length": 20,
+    "floors": 1,
+    "storeyHeight": 3.2,
+    "proud": 1.4,
+    "colour": "#6b4a32"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -2,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "lean-to",
+    "balustrade": false,
+    "steps": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 2,
+    "colours": [
+     "#e8e0cf",
+     "#6b4a32"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 9,
+    "radius": 1.5,
+    "colours": [
+     "#e8e0cf",
+     "#6b4a32"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    6,
+    3,
+    8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.2,
+    "pots": 1
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-osm-node-4110147399",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only: no OSM outline or photo; massing from the brief."
+ }
+}

@@ -1,0 +1,871 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-364803296",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadio_Baseball_Serravalle_European_Cup_2012.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ary29",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-marino/base1.jpg",
+   "used": "panorama from the stands: red-clay infield and cut-outs in a green field, concrete bleacher stands along both foul lines, tall floodlight masts, blue outfield fence, low building behind the outfield, wooded hills"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/364803296",
+   "used": "real stadium outline as the grass ground; diamond placed from its shape (home plate near the SW indent, foul lines along local +x and +y)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "grass",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -79.7,
+      -6.8
+     ],
+     [
+      -78.2,
+      3.3
+     ],
+     [
+      -73.5,
+      13.7
+     ],
+     [
+      -61.7,
+      28.3
+     ],
+     [
+      -58.4,
+      25.7
+     ],
+     [
+      -44.5,
+      40.1
+     ],
+     [
+      0.2,
+      79.7
+     ],
+     [
+      31.7,
+      66
+     ],
+     [
+      49.7,
+      49.3
+     ],
+     [
+      58.4,
+      33.5
+     ],
+     [
+      61.1,
+      25.7
+     ],
+     [
+      64.5,
+      13.4
+     ],
+     [
+      66.2,
+      -4.2
+     ],
+     [
+      64.4,
+      -20.4
+     ],
+     [
+      59.5,
+      -32.4
+     ],
+     [
+      52.4,
+      -44.4
+     ],
+     [
+      43.6,
+      -55.8
+     ],
+     [
+      30.3,
+      -65.5
+     ],
+     [
+      16.7,
+      -73.2
+     ],
+     [
+      4.5,
+      -66.4
+     ],
+     [
+      -1.4,
+      -75.9
+     ],
+     [
+      -36.3,
+      -59.1
+     ],
+     [
+      -28.8,
+      -46.4
+     ],
+     [
+      -40.8,
+      -37.5
+     ],
+     [
+      -43.1,
+      -41.7
+     ],
+     [
+      -58.2,
+      -28.7
+     ],
+     [
+      -62,
+      -34.1
+     ],
+     [
+      -73.8,
+      -20
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.12,
+    "colour": "#5f8f3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infield-grass",
+   "at": [
+    -24.3,
+    1.7,
+    0.17
+   ],
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "height": 0.04,
+    "colour": "#5f9a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-path-1",
+   "at": [
+    -24.3,
+    -12,
+    0.18
+   ],
+   "params": {
+    "rect": [
+     28,
+     2
+    ],
+    "height": 0.03,
+    "colour": "#b5623f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base-path-3",
+   "at": [
+    -38,
+    1.7,
+    0.18
+   ],
+   "params": {
+    "rect": [
+     2,
+     28
+    ],
+    "height": 0.03,
+    "colour": "#b5623f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mound",
+   "at": [
+    -24.3,
+    1.7,
+    0.2
+   ],
+   "params": {
+    "radius": 2.6,
+    "n": 12,
+    "height": 0.35,
+    "colour": "#b5623f",
+    "topScale": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.15,
+    "colour": "#2f6aa3",
+    "points": [
+     [
+      49.95,
+      -15.07
+     ],
+     [
+      49.7,
+      -4.77
+     ],
+     [
+      48.26,
+      5.44
+     ],
+     [
+      45.62,
+      15.4
+     ],
+     [
+      41.85,
+      24.99
+     ],
+     [
+      36.97,
+      34.07
+     ],
+     [
+      31.07,
+      42.52
+     ],
+     [
+      24.23,
+      50.23
+     ],
+     [
+      16.52,
+      57.07
+     ],
+     [
+      8.07,
+      62.97
+     ],
+     [
+      -1.01,
+      67.85
+     ],
+     [
+      -10.6,
+      71.62
+     ],
+     [
+      -20.56,
+      74.26
+     ],
+     [
+      -30.77,
+      75.7
+     ],
+     [
+      -41.07,
+      75.95
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dugout-1",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.2
+    ],
+    "height": 1.6,
+    "colour": "#2f6aa3",
+    "topColour": "#3b3f44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dugout-3",
+   "at": [
+    -42,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     9
+    ],
+    "height": 1.6,
+    "colour": "#2f6aa3",
+    "topColour": "#3b3f44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "infield-dirt",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -19
+     ],
+     [
+      -6,
+      -19
+     ],
+     [
+      -3,
+      2
+     ],
+     [
+      -8,
+      13
+     ],
+     [
+      -19,
+      21
+     ],
+     [
+      -32,
+      22
+     ],
+     [
+      -45,
+      15
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b5623f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "home-circle",
+   "at": [
+    -38,
+    -12,
+    0.17
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "height": 0.03,
+    "colour": "#b5623f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mound-cutout",
+   "at": [
+    -24.3,
+    1.7,
+    0.17
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 16,
+    "height": 0.03,
+    "colour": "#b5623f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.06,
+    "thickness": 3.2,
+    "colour": "#b5623f",
+    "points": [
+     [
+      42.56,
+      -13.06
+     ],
+     [
+      42.33,
+      -3.79
+     ],
+     [
+      41.03,
+      5.4
+     ],
+     [
+      38.66,
+      14.36
+     ],
+     [
+      35.26,
+      22.99
+     ],
+     [
+      30.87,
+      31.16
+     ],
+     [
+      25.56,
+      38.77
+     ],
+     [
+      19.41,
+      45.71
+     ],
+     [
+      12.47,
+      51.86
+     ],
+     [
+      4.86,
+      57.17
+     ],
+     [
+      -3.31,
+      61.56
+     ],
+     [
+      -11.94,
+      64.96
+     ],
+     [
+      -20.9,
+      67.33
+     ],
+     [
+      -30.09,
+      68.63
+     ],
+     [
+      -39.36,
+      68.86
+     ]
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -20
+    ],
+    "end": [
+     22,
+     -20
+    ],
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "concreteColour": "#c4c0b7",
+    "backWall": 1.2
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     40
+    ],
+    "end": [
+     -48,
+     -14
+    ],
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "concreteColour": "#c4c0b7",
+    "backWall": 1.2
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -47,
+     -21
+    ],
+    "end": [
+     -35,
+     -21
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "concreteColour": "#cfcbc1"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 7,
+    "thickness": 0.04,
+    "colour": "#8f9a90",
+    "points": [
+     [
+      -50,
+      -14
+     ],
+     [
+      -50,
+      -26
+     ],
+     [
+      -40,
+      -26
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 8,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 8,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 8,
+    "colour": "#4a4f52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -8,
+    72,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -8,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66,
+    8,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "head_width": 3.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    36,
+    64
+   ],
+   "rotDeg": -45,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cdb0",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8573f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 11,
+    "count": 4,
+    "spread": 12,
+    "colour": "#3f6a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 11,
+    "count": 4,
+    "spread": 12,
+    "colour": "#3f6a3a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open concrete bleachers with back walls along both foul lines, clay diamond with home circle, mound cut-out and warning track, backstop netting, 8 floodlight masts, blue 2.4 m outfield fence, pitched-roof clubhouse and pine backdrop added; lamp arrays are generic, hillside is only a few tree clumps, stand curvature and exact orientation still inferred from the outline."
+ }
+}

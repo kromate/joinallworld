@@ -1,0 +1,315 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-513953442",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Larnaca_college_palm.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Panek",
+   "view": "street",
+   "file": "/tmp/places-evidence/larnaca/col1.jpg",
+   "used": "single tall tan-rendered block, four storeys over a ground-floor car park, small projecting balconies, narrow punched windows, plain flank wall with a blank sign area; stone-clad shop beside it, palm tree in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/513953442",
+   "used": "footprint 22 x 19 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.26,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "height": 15.5,
+   "storeys": 5,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#cdb994",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 3.8,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "inset": 2.5,
+      "spacing": 5.5,
+      "width": 0.7,
+      "colour": "#bfae8c",
+      "backColour": "#2c2a28"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": [
+       2,
+       3
+      ],
+      "width": 2.6,
+      "depth": 1.3,
+      "every": 8,
+      "colour": "#c4ae86",
+      "railKind": "solid"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    -11,
+    -6
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "z0": 3.1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#c7b28c",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.12,
+    0,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     10
+    ],
+    "height": 3.2,
+    "colour": "#d8c7a1"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.2,
+    -4.8,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 0.1,
+    "colour": "#d8c7a1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    -19
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5a181",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89c88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -23.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "height": 2.8,
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -23.25,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.1
+    ],
+    "height": 1.8,
+    "colour": "#f1d58a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -23.25,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     8.2,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#3a312b"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#6e5a45",
+    "segments": 8,
+    "profile": [
+     [
+      0.6,
+      0
+     ],
+     [
+      0.5,
+      3
+     ],
+     [
+      0.42,
+      9
+     ],
+     [
+      0.38,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -18,
+    9.5
+   ],
+   "params": {
+    "colour": "#4d6b34",
+    "segments": 12,
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      1.6,
+      1.5
+     ],
+     [
+      3.8,
+      0.6
+     ],
+     [
+      4.4,
+      -0.4
+     ],
+     [
+      3.0,
+      -0.2
+     ],
+     [
+      1.4,
+      0.3
+     ],
+     [
+      0.3,
+      -0.3
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Blank sign panel, pilotis and setback wing approximate; shop stone cladding simplified; palm canopy is a flat cone, not a fan palm; trunk thin."
+ }
+}

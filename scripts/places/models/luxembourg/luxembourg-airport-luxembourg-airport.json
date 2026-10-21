@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-airport-luxembourg-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg_findel_airport.jpg",
+   "licence": "Public domain",
+   "author": "Lux lb at de.wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/apt1.jpg",
+   "used": "landside: long low two-storey pale-grey terminal with dark ribbon glazing and a roof-top sign board, taller steel-framed glass block at left, forecourt with red bus shelter"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/87845533",
+   "used": "overall scale only (Terminal A complex is 150 m across); the outline is a multi-wing blob so the photo massing is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     72,
+     20
+    ]
+   },
+   "at": [
+    18,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9cdcf",
+    "windows": "ribbon",
+    "windowRatio": 0.78,
+    "glassColour": "#2c343c",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "width": 0.7,
+     "depth": 0.3,
+     "spacing": 3.0,
+     "colour": "#f2f4f4"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -35,
+    8
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3238",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#3f8fa6",
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front",
+      "left"
+     ],
+     "width": 0.5,
+     "depth": 0.3,
+     "spacing": 3.0,
+     "colour": "#20252a"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#22272c",
+    "material": "metal-sheet",
+    "overhang": 7.0,
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -15,
+    4
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9296",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 14,
+    "colour": "#b9bec2",
+    "edgeColour": "#5a6066"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "on": "terminal",
+   "at": [
+    8,
+    -10.4,
+    0.9
+   ],
+   "params": {
+    "width": 44,
+    "height": 3.6,
+    "bottom": 1.0,
+    "posts": true,
+    "colour": "#f4f5f5",
+    "frameColour": "#d8dcde"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    10,
+    48,
+    0
+   ],
+   "params": {
+    "height": 21,
+    "style": "round",
+    "colour": "#c9cdd0",
+    "cabColour": "#5a7080",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -3.5,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    42.0,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#b43b34",
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -32,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 2.8,
+    "height": 2.8,
+    "columns": 4,
+    "colour": "#9fc4cc",
+    "edgeColour": "#c63b32"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -35,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 5,
+    "height": 4.0,
+    "columns": 8,
+    "colour": "#9aa0a5",
+    "edgeColour": "#4a5056"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -20,
+    0.03
+   ],
+   "params": {
+    "width": 150,
+    "depth": 60,
+    "colour": "#74787c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Glass hall now has deep dark roof slab, teal glazing and canopy but no truss detail; roof sign board is taller but blank (no lettering by rule); bus shelter is a small glazed canopy with red edge; tower shortened; render is a distant overview vs close street photo."
+ }
+}

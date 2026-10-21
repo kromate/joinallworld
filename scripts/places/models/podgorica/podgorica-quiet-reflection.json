@@ -1,0 +1,274 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: Vranjina monastery, St Nicholas church rebuilt 1886, red-tile roof, one church and two lodgings (small one 1998), on Skadar Lake shore"
+  },
+  {
+   "kind": "text",
+   "used": "setting from Wikimedia photo File:Vranjina.jpg (CC BY 2.0, lidija scekic, village not monastery, not compared): stone houses with low tile roofs on terraced hill above reedy lake shore"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15487672",
+   "used": "not used for footprint: the outline is the whole 157,000 m2 island"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church-nave",
+   "footprint": {
+    "rect": [
+     6.2,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "rise": 2.0,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "polygon": [
+     [
+      -2.4,
+      0
+     ],
+     [
+      2.4,
+      0
+     ],
+     [
+      2.0,
+      1.8
+     ],
+     [
+      0,
+      2.6
+     ],
+     [
+      -2.0,
+      1.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    5.5
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "rise": 1.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "narthex-tower",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a690",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "rise": 2.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodging",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    3
+   ],
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b2a590",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "rise": 1.9,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodging-1998",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    13,
+    -1
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfcd",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "rise": 1.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "enclosure",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.6,
+    "thickness": 0.5,
+    "colour": "#b5ab98"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "id": "pier",
+   "at": [
+    22,
+    -8
+   ],
+   "params": {
+    "length": 16,
+    "width": 2,
+    "height": 0.6,
+    "colour": "#7d6445"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/tree",
+   "id": "cyp",
+   "at": [
+    6,
+    -9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "spread": 3,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "bl",
+   "at": [
+    -22,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4,
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-quiet-reflection",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the monastery exists; typical stone church with tile roof, lodgings, pier from brief text only."
+ }
+}

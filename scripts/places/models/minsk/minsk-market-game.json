@@ -1,0 +1,451 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-market-game",
+ "verified": "photo",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gate cluster tightened (maroon arch, teal hall, white kiosk) but still framed wider than photo so arch reads small; lettering/emblem boards and kiosk picture panels not legible, hall tinted blue by lighting, no pedestrians, no ground road colour match."
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tutej%C5%A1y_market_(Minsk)_7.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Homoatrox",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/minsk-market-game-0.jpg",
+   "used": "maroon arched entrance gate with yellow lettering board, long low pale-blue-green market hall with grey sloping metal roof, white kiosk with blank boards, black iron fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tutej%C5%A1y_market_(Minsk)_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Homoatrox",
+   "view": "street",
+   "used": "open-air covered aisles with clothing stalls, grey tiled and red-trimmed pitched roofs behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23555207",
+   "used": "market identity and ~5700 m2 size only; ground slab is a compact rectangle around the gate for framing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -3,
+    -2
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d7f80",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-hall",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "rotDeg": 12,
+   "z0": 0.5,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9fd0c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#c9d1d3",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8488",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "hall-sign",
+   "at": [
+    -11.5,
+    -1.8,
+    0.5
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 10,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#b9c9c6",
+    "frameColour": "#7d8488",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "entrance-arch",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -6.5,
+      -6,
+      0.2
+     ],
+     [
+      -6.5,
+      -6,
+      2.2
+     ],
+     [
+      -5.91,
+      -6,
+      3.33
+     ],
+     [
+      -5.31,
+      -6,
+      4.3
+     ],
+     [
+      -4.72,
+      -6,
+      5.12
+     ],
+     [
+      -4.12,
+      -6,
+      5.8
+     ],
+     [
+      -3.53,
+      -6,
+      6.33
+     ],
+     [
+      -2.94,
+      -6,
+      6.7
+     ],
+     [
+      -2.34,
+      -6,
+      6.92
+     ],
+     [
+      -1.75,
+      -6,
+      7.0
+     ],
+     [
+      -1.16,
+      -6,
+      6.92
+     ],
+     [
+      -0.56,
+      -6,
+      6.7
+     ],
+     [
+      0.03,
+      -6,
+      6.33
+     ],
+     [
+      0.62,
+      -6,
+      5.8
+     ],
+     [
+      1.22,
+      -6,
+      5.12
+     ],
+     [
+      1.81,
+      -6,
+      4.3
+     ],
+     [
+      2.41,
+      -6,
+      3.33
+     ],
+     [
+      3.0,
+      -6,
+      2.2
+     ],
+     [
+      3.0,
+      -6,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#7a1f3a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "arch-sign",
+   "at": [
+    -1.75,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "height": 1.0,
+    "bottom": 5.4,
+    "colour": "#d9a935",
+    "frameColour": "#7a1f3a",
+    "posts": false
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "sign-board",
+   "id": "emblem",
+   "at": [
+    1.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 2.2,
+    "bottom": 6.6,
+    "colour": "#e7d9a8",
+    "frameColour": "#7a1f3a",
+    "posts": false
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-sweets",
+   "footprint": {
+    "rect": [
+     5.5,
+     3.4
+    ]
+   },
+   "at": [
+    8,
+    -4
+   ],
+   "z0": 0.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0ef",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8eaea",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "kiosk-banner",
+   "at": [
+    8,
+    -5.9,
+    0.5
+   ],
+   "params": {
+    "width": 5.0,
+    "height": 0.9,
+    "bottom": 2.4,
+    "colour": "#e9d9b0",
+    "frameColour": "#c0392b",
+    "posts": false
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "sign-board",
+   "id": "kiosk-panel-a",
+   "at": [
+    6.6,
+    -5.95,
+    0.5
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 1.7,
+    "bottom": 0.7,
+    "colour": "#c78a3a",
+    "frameColour": "#b0352b",
+    "posts": false
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "sign-board",
+   "id": "kiosk-panel-b",
+   "at": [
+    9.4,
+    -5.95,
+    0.5
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 1.7,
+    "bottom": 0.7,
+    "colour": "#b8573a",
+    "frameColour": "#b0352b",
+    "posts": false
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "fence-wall",
+   "id": "iron-fence",
+   "at": [
+    -17,
+    -6,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 1.6,
+    "thickness": 0.12,
+    "kind": "fence",
+    "pillarEvery": 2.2,
+    "colour": "#1f1f22"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-0",
+   "at": [
+    -4,
+    6.5,
+    0.5
+   ],
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "cladding": "open",
+    "goods": "sacks",
+    "roof_colour": "#8d9498",
+    "wall_colour": "#c9c6bf"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10,
+    6.5,
+    0.5
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c0392b",
+     "#2e86c1",
+     "#f1c40f",
+     "#27ae60"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "trees",
+   "at": [
+    -16,
+    4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 1,
+    "spread": 5,
+    "colour": "#7a5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ }
+}

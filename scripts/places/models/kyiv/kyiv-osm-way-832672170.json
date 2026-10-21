@@ -1,0 +1,608 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-832672170",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%82%D0%B0%D0%B4%D0%B8%D0%BE%D0%BD_%D0%A1%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BA,_%D0%9A%D0%B8%D0%B5%D0%B2,_%D0%B8%D1%8E%D0%BD%D1%8C_2019,_7.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mitte27",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/kyiv-osm-way-832672170-1.jpg",
+   "used": "main stand seen from the pitch: concrete grey-blue stair walls, yellow and blue bench seating, ribbon-windowed press level, long flat cantilever canopy with pale fascia, lattice floodlight tower on the left, forested slope behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyiv_Spartak_Stadium3.jpg",
+   "licence": "CC BY 3.0",
+   "author": "eugeneloza",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/kyiv-osm-way-832672170-2.jpg",
+   "used": "seating block layout, window ribbon with air conditioners, corrugated canopy fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/832672170",
+   "used": "stadium enclosure about 277 x 144 m; plan recomposed as track, one covered stand and one low stand because the outline is a rotated irregular polygon"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Plan recomposed (oval track, one covered stand), not the OSM polygon; stand taller/deeper with canopy raised, but seating reads mostly blue and the yellow half is faint; buttresses and ribbon windows simple; forest a green slope plus few trees; one lattice mast; pink paving a strip."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5,
+    -0.06
+   ],
+   "params": {
+    "rect": [
+     168,
+     120
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#7f9a55",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -60,
+    -0.03
+   ],
+   "params": {
+    "rect": [
+     168,
+     24
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#c9a79a"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 140,
+    "width": 80,
+    "colour": "#a8523f",
+    "infield": false,
+    "pitch": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      30.0,
+      -53.5
+     ],
+     [
+      39.73,
+      -51.96
+     ],
+     [
+      48.52,
+      -47.48
+     ],
+     [
+      55.48,
+      -40.52
+     ],
+     [
+      59.96,
+      -31.73
+     ],
+     [
+      61.5,
+      -22.0
+     ],
+     [
+      59.96,
+      -12.27
+     ],
+     [
+      55.48,
+      -3.48
+     ],
+     [
+      48.52,
+      3.48
+     ],
+     [
+      39.73,
+      7.96
+     ],
+     [
+      30.0,
+      9.5
+     ],
+     [
+      -30.0,
+      9.5
+     ],
+     [
+      -39.73,
+      7.96
+     ],
+     [
+      -48.52,
+      3.48
+     ],
+     [
+      -55.48,
+      -3.48
+     ],
+     [
+      -59.96,
+      -12.27
+     ],
+     [
+      -61.5,
+      -22.0
+     ],
+     [
+      -59.96,
+      -31.73
+     ],
+     [
+      -55.48,
+      -40.52
+     ],
+     [
+      -48.52,
+      -47.48
+     ],
+     [
+      -39.73,
+      -51.96
+     ],
+     [
+      -30.0,
+      -53.5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.07,
+    "colour": "#5d9a45",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -22,
+    0.04
+   ],
+   "params": {
+    "rect": [
+     1,
+     63
+    ],
+    "z0": 0,
+    "height": 0.09,
+    "colour": "#eeeee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     8
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#c9a79a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     24
+    ],
+    "end": [
+     -50,
+     24
+    ],
+    "rows": 20,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 2.6,
+    "seatColours": [
+     "#4f7fb5",
+     "#4f7fb5",
+     "#d2b53a",
+     "#d2b53a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#8e93a0",
+    "underColour": "#8e93a0",
+    "under": "solid",
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       3.2,
+       2.6
+      ],
+      "z0": 0,
+      "height": 2.6,
+      "topScale": [
+       1,
+       0.5
+      ],
+      "colour": "#868b96"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     22.6
+    ],
+    "end": [
+     48,
+     22.6
+    ],
+    "count": 13
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press",
+   "footprint": {
+    "rect": [
+     100,
+     4
+    ]
+   },
+   "at": [
+    0,
+    44.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "z0": 12.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a99c",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#8fa3ad"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     4
+    ],
+    "z0": 0,
+    "height": 12.6,
+    "colour": "#9a9d9a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 102,
+    "depth": 26,
+    "height": 19.5,
+    "thickness": 1.1,
+    "colour": "#7d8084",
+    "edgeColour": "#d9d7cc",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -66
+    ],
+    "end": [
+     50,
+     -66
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColours": [
+     "#4f7fb5",
+     "#d2b53a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#9a9d9a",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    40
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 4,
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "params": {
+    "rect": [
+     168,
+     30
+    ],
+    "z0": 0,
+    "height": 26,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     6
+    ],
+    "colour": "#2c5428",
+    "material": "grass"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ }
+}

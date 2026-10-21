@@ -1,0 +1,113 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/48992138",
+   "used": "real irregular outline (about 100x50 m, tagged university, name match), simplified into three bars: it is a 51 m diagonal main bar plus an arc of lobes"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg_Clearstream.jpg",
+   "licence": "CC0",
+   "author": "Boubloub",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/snt1.jpg",
+   "used": "typical Kirchberg office architecture nearby (6 storeys, long ribbon glazing between grey bands, flat roof with deep overhang). This is a different building (Wikidata labels the item a Meier bank building), so only the local idiom is borrowed; verified stays footprint."
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aeb9c2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#5d7e96",
+       "#a9b2b9"
+      ]
+     }
+    ],
+    "bands": "#8a939b",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8388",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -6,
+    -12,
+    3
+   ],
+   "params": {
+    "length": 24,
+    "height": 16,
+    "pitch": 1.8,
+    "depth": 0.5,
+    "colour": "#d6d8da"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "count": 4,
+    "height_min": 7,
+    "height_max": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-48992138",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "outline only (simplified); facade is typical Kirchberg glass-and-band, not photographed for this building"
+ }
+}

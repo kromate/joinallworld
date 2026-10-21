@@ -1,0 +1,499 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_bust_Nizami_Ganjavi_-_jun_2025_-_07.jpg",
+   "licence": "CC0",
+   "author": "Giku",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/nizami1.jpg",
+   "used": "bronze-grey bust of a bearded man in a cap on a tall square pink-granite shaft with a stepped base, round grass island with grey granite kerb, pink-red paving blocks, pines and broadleaf trees, apartment block behind right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_bust_Nizami_Ganjavi_-_jun_2025_-_06.jpg",
+   "licence": "CC0",
+   "author": "Giku",
+   "view": "side",
+   "used": "curved granite kerb walls around the paved plaza, benches, park setting"
+  },
+  {
+   "kind": "text",
+   "used": "OSM match is the 565,000 m2 park, so its outline is not used; the monument is modelled from the photos alone"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Trees are generic low-poly crowns; bust has no face detail; no bicycle or lamp; kerb is circular not angular granite; flats block is a plain box with only banded tint."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building",
+  "shiftY": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "radius": 19,
+    "n": 28,
+    "height": 0.02,
+    "colour": "#7fa24a",
+    "slot": "grass"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    -5,
+    0.02
+   ],
+   "params": {
+    "radius": 12,
+    "n": 28,
+    "height": 0.04,
+    "colour": "#c98a7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.0
+    ],
+    "height": 0.5,
+    "colour": "#b9706a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-top",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     1.4
+    ],
+    "height": 0.3,
+    "colour": "#b06a62"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 3.6,
+    "colour": "#b4705e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-cap",
+   "at": [
+    0,
+    0,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 0.18,
+    "colour": "#a9665a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text-panel",
+   "at": [
+    0,
+    -0.47,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.04
+    ],
+    "height": 0.9,
+    "colour": "#7e4a40"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bust",
+   "at": [
+    0,
+    0,
+    4.58
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#76706a",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.747,
+      0.0
+     ],
+     [
+      0.777,
+      0.172
+     ],
+     [
+      0.628,
+      0.486
+     ],
+     [
+      0.419,
+      0.744
+     ],
+     [
+      0.194,
+      0.829
+     ],
+     [
+      0.224,
+      0.944
+     ],
+     [
+      0.284,
+      1.173
+     ],
+     [
+      0.299,
+      1.401
+     ],
+     [
+      0.194,
+      1.573
+     ],
+     [
+      0.0,
+      1.659
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bust-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    4.58
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#76706a",
+    "profile": [
+     [
+      0.747,
+      0.0
+     ],
+     [
+      0.419,
+      0.744
+     ],
+     [
+      0.299,
+      1.401
+     ],
+     [
+      0.0,
+      1.659
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "radius": 3.7,
+    "n": 20,
+    "height": 0.3,
+    "colour": "#bdbab2",
+    "slot": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass",
+   "at": [
+    0,
+    0,
+    0.09
+   ],
+   "params": {
+    "radius": 3.35,
+    "n": 20,
+    "height": 0.3,
+    "colour": "#7fa653",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "plaza-kerb",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.5
+     ]
+    },
+    "arc": {
+     "steps": 16,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 6,
+     "startDeg": 200,
+     "endDeg": 340,
+     "plane": "xy"
+    },
+    "colour": "#c4c1b9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "plaza-kerb-2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.5
+     ]
+    },
+    "arc": {
+     "steps": 16,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 6,
+     "startDeg": 20,
+     "endDeg": 160,
+     "plane": "xy"
+    },
+    "colour": "#c4c1b9"
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "b1",
+   "at": [
+    -5,
+    4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "id": "b2",
+   "at": [
+    5,
+    6,
+    0
+   ],
+   "rotDeg": -10,
+   "params": {
+    "count": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "flats",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    19,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c79a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 1.0,
+    "faces": {
+     "left": "punched"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9c79a",
+       "#8a6a4a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7770",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t0",
+   "at": [
+    -5,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    4,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 21
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t3",
+   "at": [
+    12,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   28,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-node-855102025"
+}

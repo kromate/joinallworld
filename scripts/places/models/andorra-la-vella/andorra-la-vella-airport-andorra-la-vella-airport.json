@@ -1,0 +1,560 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-airport-andorra-la-vella-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heliport_Andorra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Walmaul",
+   "view": "street",
+   "file": "/tmp/places-evidence/andorra-la-vella/heli.jpg",
+   "used": "the pad sits on the roof of the long stone-clad hospital block: red-white striped edge, ringed H marker, ribbed metal plant enclosure at the left end, stone wall with narrow windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/648871704",
+   "used": "pad size 34 x 16 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "block",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23.0,
+      -8.0
+     ],
+     [
+      -17.25,
+      -9.09
+     ],
+     [
+      -11.5,
+      -9.88
+     ],
+     [
+      -5.75,
+      -10.34
+     ],
+     [
+      0.0,
+      -10.5
+     ],
+     [
+      5.75,
+      -10.34
+     ],
+     [
+      11.5,
+      -9.88
+     ],
+     [
+      17.25,
+      -9.09
+     ],
+     [
+      23.0,
+      -8.0
+     ],
+     [
+      23.0,
+      8.0
+     ],
+     [
+      17.25,
+      6.91
+     ],
+     [
+      11.5,
+      6.12
+     ],
+     [
+      5.75,
+      5.66
+     ],
+     [
+      0.0,
+      5.5
+     ],
+     [
+      -5.75,
+      5.66
+     ],
+     [
+      -11.5,
+      6.12
+     ],
+     [
+      -17.25,
+      6.91
+     ],
+     [
+      -23.0,
+      8.0
+     ]
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#9a8f7e",
+    "topColour": "#9a8f7e",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "storeys": 6,
+    "plinth": 0.8,
+    "faces": [
+     "front"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ribbon",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23.0,
+      -8.12
+     ],
+     [
+      -17.25,
+      -9.21
+     ],
+     [
+      -11.5,
+      -9.99
+     ],
+     [
+      -5.75,
+      -10.46
+     ],
+     [
+      0.0,
+      -10.62
+     ],
+     [
+      5.75,
+      -10.46
+     ],
+     [
+      11.5,
+      -9.99
+     ],
+     [
+      17.25,
+      -9.21
+     ],
+     [
+      23.0,
+      -8.12
+     ],
+     [
+      23.0,
+      8.12
+     ],
+     [
+      17.25,
+      7.03
+     ],
+     [
+      11.5,
+      6.25
+     ],
+     [
+      5.75,
+      5.78
+     ],
+     [
+      0.0,
+      5.62
+     ],
+     [
+      -5.75,
+      5.78
+     ],
+     [
+      -11.5,
+      6.25
+     ],
+     [
+      -17.25,
+      7.03
+     ],
+     [
+      -23.0,
+      8.12
+     ]
+    ],
+    "z0": 18.6,
+    "height": 1.0,
+    "colour": "#2b3036",
+    "topColour": "#2b3036"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23.0,
+      -8.7
+     ],
+     [
+      -17.25,
+      -9.79
+     ],
+     [
+      -11.5,
+      -10.57
+     ],
+     [
+      -5.75,
+      -11.04
+     ],
+     [
+      0.0,
+      -11.2
+     ],
+     [
+      5.75,
+      -11.04
+     ],
+     [
+      11.5,
+      -10.57
+     ],
+     [
+      17.25,
+      -9.79
+     ],
+     [
+      23.0,
+      -8.7
+     ],
+     [
+      23.0,
+      8.7
+     ],
+     [
+      17.25,
+      7.61
+     ],
+     [
+      11.5,
+      6.83
+     ],
+     [
+      5.75,
+      6.36
+     ],
+     [
+      0.0,
+      6.2
+     ],
+     [
+      -5.75,
+      6.36
+     ],
+     [
+      -11.5,
+      6.83
+     ],
+     [
+      -17.25,
+      7.61
+     ],
+     [
+      -23.0,
+      8.7
+     ]
+    ],
+    "z0": 21,
+    "height": 0.7,
+    "colour": "#8d8577",
+    "topColour": "#8d8577"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    4,
+    -1.5
+   ],
+   "params": {
+    "rect": [
+     38,
+     15
+    ],
+    "z0": 21.7,
+    "height": 0.3,
+    "colour": "#85807a",
+    "topColour": "#85807a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "h-ring",
+   "at": [
+    8,
+    -1.5
+   ],
+   "params": {
+    "radius": 5.5,
+    "n": 24,
+    "z0": 22.0,
+    "height": 0.06,
+    "colour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "h-core",
+   "at": [
+    8,
+    -1.5
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 24,
+    "z0": 22.06,
+    "height": 0.06,
+    "colour": "#85807a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "h-bar",
+   "at": [
+    8,
+    -1.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     4.4
+    ],
+    "z0": 22.12,
+    "height": 0.05,
+    "colour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "z0": 22.0,
+      "height": 0.07,
+      "colour": "#c23b2e"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "mode": "line",
+    "start": [
+     -13,
+     -8.7
+    ],
+    "end": [
+     21,
+     -8.7
+    ],
+    "count": 15
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "z0": 22.0,
+      "height": 0.07,
+      "colour": "#e8e6e0"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "mode": "line",
+    "start": [
+     -11.8,
+     -8.7
+    ],
+    "end": [
+     19.8,
+     -8.7
+    ],
+    "count": 14
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 22.0,
+      "height": 0.3,
+      "colour": "#3fb36a"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     5.8
+    ],
+    "end": [
+     22,
+     5.8
+    ],
+    "count": 13
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    -18.5,
+    1
+   ],
+   "z0": 21.7,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bdc0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.5,
+      "depth": 0.12,
+      "width": 0.12,
+      "colour": "#9da2a6",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a9ad",
+    "parapet": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arc plan, ribbon strip, cornice, flush full-length pad with striped edge and green lights, left plant enclosure added; stone is ribbed-looking texture not coursed blocks, no hillside backdrop or safety netting"
+ }
+}

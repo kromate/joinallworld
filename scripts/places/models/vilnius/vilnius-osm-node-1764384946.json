@@ -1,0 +1,498 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-node-1764384946",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vilnius.json#vilnius-osm-node-1764384946",
+   "used": "Mazoji Riese hillfort: lower oval wooded mound about 50 x 40 m and 10 m high beside a stream valley; the only nearby Commons photo (Re\u0161a road, 213 m away) shows a road, not the hillfort, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       27,
+       22
+      ],
+      "cx": 0
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       24,
+       19.5
+      ],
+      "cx": 0
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       19,
+       15.5
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       13,
+       10.5
+      ],
+      "cx": 0
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       10,
+       8
+      ],
+      "cx": 0
+     }
+    ],
+    "colour": "#7f9470",
+    "topColour": "#a9b58a",
+    "smooth": true,
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "outer-bank",
+   "at": [
+    3,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       33,
+       26
+      ],
+      "cx": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       29,
+       23
+      ],
+      "cx": 0
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       25,
+       20
+      ],
+      "cx": 0
+     }
+    ],
+    "colour": "#7d6b58",
+    "topColour": "#7f9470",
+    "capTop": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -26
+     ],
+     [
+      -30,
+      -30
+     ],
+     [
+      -8,
+      -33
+     ],
+     [
+      14,
+      -30
+     ],
+     [
+      34,
+      -32
+     ],
+     [
+      50,
+      -24
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#6fa0b8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -22
+     ],
+     [
+      -30,
+      -26
+     ],
+     [
+      -8,
+      -29
+     ],
+     [
+      14,
+      -26
+     ],
+     [
+      34,
+      -28
+     ],
+     [
+      50,
+      -20
+     ]
+    ],
+    "width": 1.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14.352049888657364,
+    3.5048344000628537,
+    3.871648226633249
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13.621052920118647
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13.636085648456117,
+    2.366766434291595,
+    4.232902046658889
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.936924144249485
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    5.604614289409321,
+    10.193530151905657,
+    4.204893135548975
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.14941360108401
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    1.4725575425470359,
+    -4.211732336991846,
+    6.896190943466642
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.517006313122627
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16.939568400513167,
+    8.590024490492858,
+    1.9797317456271224
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.467192412706195
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22.82310953680625,
+    4.86739318663528,
+    0.425
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13.823788905627833
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9.172111759225611,
+    -10.53055047797069,
+    3.473877316980374
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.787470475700813
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14.315157151385126,
+    1.0713210448519361,
+    4.090975745553234
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.297755525844275
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3.131790051407471,
+    6.286102446524647,
+    5.980197815045668
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.150412946123943
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12.265045264713997,
+    2.2387620077886123,
+    4.690021307312814
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13.21213564259266
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16.541808618871453,
+    -1.5811891293217137,
+    3.2939304562262275
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.498865761033958
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6.759156101367912,
+    -8.72582398328466,
+    4.57701981795481
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.390814498319429
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    23.909516619976426,
+    -0.2787692615077929,
+    0.425
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13.201077747464309
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2.628254474815205,
+    -7.664314062623201,
+    5.51271942348344
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.148329508039527
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -1.2221204181867453,
+    3.8648478863740885,
+    7.041365995774871
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.831439432052035
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16.915194779579135,
+    9.677970497806,
+    1.665909661055527
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.932567658529672
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20.163560791272946,
+    -4.308516465740994,
+    1.6595985938921949
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.002724685277853
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    5.551459679853946,
+    16.991721580337227,
+    1.0846677677906997
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.349936380068332
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    43.23230470568629,
+    35.56394143310994,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.292153375334792
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11.650942101062178,
+    40.899152021473114,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.079102347400571
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -37.15702214830469,
+    34.65619875648687,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.856304866375057
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    23.223646529438298,
+    31.651883511873713,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.985551795572519
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35.90583219389654,
+    30.838507641175074,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12.188086047375897
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -29.008968462147045,
+    37.830131982545524,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.789699510004086
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; oval mound, stream and broadleaf cover typed from brief"
+ }
+}

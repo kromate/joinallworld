@@ -1,0 +1,537 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DJI_20250112123901_0015_D_v1.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Arianit Dobroshi",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/pristina/recreation_0.jpg",
+   "used": "drone view down the valley: large pool basin with surrounding terrace and small service buildings, fenced sports court in the foreground, road on the right, dense forest on both slopes (photo taken in snow, colours taken from the brief instead)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Germia_Park",
+   "used": "pool at the start of the recreation area, meadows, playground, restaurants, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 62,
+  "aspect": 1.78,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Valley slopes are stepped blocks; pool basin still rectangular; court and seating approximate; snow scene colours not reproduced."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pool-terrace",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     84,
+     44
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#d6d0c0",
+    "topColour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-basin",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "z0": 0.2,
+    "height": 0.1,
+    "colour": "#4aa3c8",
+    "topColour": "#4aa3c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool-lane-lines",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.4
+    ],
+    "z0": 0.3,
+    "height": 0.05,
+    "colour": "#e8f2f6",
+    "topColour": "#e8f2f6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-house",
+   "footprint": {
+    "rect": [
+     40,
+     7
+    ]
+   },
+   "at": [
+    0,
+    44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8b86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a48",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    38,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "rect": [
+     36,
+     18
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c0c8cc",
+    "topColour": "#c0c8cc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -31,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 3,
+    "kind": "fence",
+    "colour": "#3a3f3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 3,
+    "kind": "fence",
+    "colour": "#3a3f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    44,
+    10
+   ],
+   "params": {
+    "rect": [
+     7,
+     100
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#3d3f43",
+    "topColour": "#3d3f43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "basin-b",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     64,
+     31
+    ],
+    "z0": 0.2,
+    "height": 0.1,
+    "colour": "#4aa3c8",
+    "topColour": "#4aa3c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "basin-c",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     67,
+     29
+    ],
+    "z0": 0.2,
+    "height": 0.1,
+    "colour": "#4aa3c8",
+    "topColour": "#4aa3c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "seat-terrace",
+   "at": [
+    -4,
+    -12
+   ],
+   "params": {
+    "rect": [
+     34,
+     3
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#b9b4a6",
+    "topColour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-a",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -25,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7b78",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-b",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    26,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8553a",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-10",
+   "at": [
+    -42,
+    10
+   ],
+   "params": {
+    "rect": [
+     13,
+     110
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#4a6f3a",
+    "topColour": "#3c5e30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "forest-10",
+   "at": [
+    -42,
+    -40,
+    10
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 14,
+      "spread": 6
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 7,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-11",
+   "at": [
+    -52,
+    10
+   ],
+   "params": {
+    "rect": [
+     16,
+     110
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#4a6f3a",
+    "topColour": "#3c5e30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "forest-11",
+   "at": [
+    -52,
+    -40,
+    18
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 14,
+      "spread": 6
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 7,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope10",
+   "at": [
+    48,
+    10
+   ],
+   "params": {
+    "rect": [
+     13,
+     110
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#4a6f3a",
+    "topColour": "#3c5e30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "forest10",
+   "at": [
+    48,
+    -40,
+    10
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 14,
+      "spread": 6
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 7,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope11",
+   "at": [
+    58,
+    10
+   ],
+   "params": {
+    "rect": [
+     16,
+     110
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#4a6f3a",
+    "topColour": "#3c5e30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "forest11",
+   "at": [
+    58,
+    -40,
+    18
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 14,
+      "spread": 6
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 7,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-recreation"
+}

@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1367341315",
+   "used": "real outline: a very long thin diagonal block (about 290 x 48 m); rotated to lie along the x axis and scaled to the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 35,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "pattern": [],
+    "plinth": 0.5,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6f6f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "count": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: OSM outline only (290 m strip scaled to 118 m), generic modernist ribbon-window facade"
+ }
+}

@@ -1,0 +1,444 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Halki_seminary_(cropped).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Darwinek",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/halki1.jpg",
+   "used": "long three-storey ochre-cream block, central pedimented bay with a big arched window, rows of arched upper windows, hip roof in orange-red tile with a ridge of chimneys, gabled wing at left, cypress and pine around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/194303861",
+   "used": "real L-shaped plan 74x58 m (containing match, photo agrees on the long block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 2.2,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     74,
+     21
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bd8e",
+    "windows": "arched",
+    "windowRatio": 0.32,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#efe6d0",
+    "cornice": true,
+    "plinth": 0.8,
+    "trimColour": "#efe6d0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8502e",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-arm",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    -28,
+    -9
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bd8e",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8502e",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-arm",
+   "footprint": {
+    "rect": [
+     19,
+     16
+    ]
+   },
+   "at": [
+    27.5,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bd8e",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8502e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     20,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bd8e",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#efe6d0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8502e",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     0
+    ],
+    "end": [
+     16,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 6,
+      "colour": "#b0764f",
+      "z0": 17
+     }
+    },
+    "lod2Step": 8,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    50,
+    14
+   ],
+   "params": {
+    "radius": 3,
+    "drum": 2,
+    "profile": "hemi",
+    "colour": "#7f8a8e",
+    "drumColour": "#efe6d0",
+    "finial": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     24
+    ],
+    "end": [
+     56,
+     24
+    ],
+    "count": 8,
+    "lod2Step": 20,
+    "lod1Step": 4,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2a5530",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.7
+       },
+       {
+        "z": 14.3,
+        "circle": 0.8
+       },
+       {
+        "z": 16.900000000000002,
+        "circle": 7
+       },
+       {
+        "z": 22.099999999999998,
+        "circle": 4.8999999999999995
+       },
+       {
+        "z": 26,
+        "circle": 0.3
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -58,
+     36
+    ],
+    "end": [
+     58,
+     36
+    ],
+    "count": 7,
+    "lod2Step": 20,
+    "lod1Step": 4,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2a5530",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.7
+       },
+       {
+        "z": 16.5,
+        "circle": 0.8
+       },
+       {
+        "z": 19.5,
+        "circle": 8
+       },
+       {
+        "z": 25.5,
+        "circle": 5.6
+       },
+       {
+        "z": 30,
+        "circle": 0.3
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -19
+    ],
+    "end": [
+     54,
+     -19
+    ],
+    "count": 9,
+    "lod2Step": 20,
+    "lod1Step": 4,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#16382a",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.5
+       },
+       {
+        "z": 3.2,
+        "circle": 1.5
+       },
+       {
+        "z": 11.2,
+        "circle": 1.0499999999999998
+       },
+       {
+        "z": 16,
+        "circle": 0.1
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -27
+    ],
+    "end": [
+     60,
+     -27
+    ],
+    "count": 6,
+    "lod2Step": 20,
+    "lod1Step": 4,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2a5530",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.7
+       },
+       {
+        "z": 7.700000000000001,
+        "circle": 0.8
+       },
+       {
+        "z": 9.1,
+        "circle": 5
+       },
+       {
+        "z": 11.9,
+        "circle": 3.5
+       },
+       {
+        "z": 14,
+        "circle": 0.3
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Distant hillside photo: pedimented centre bay, projecting gabled left wing, steeper red hip and mid-ridge chimneys added; trees are lofted cypress/pine rows, not a dense sloping canopy; no real hillside; chimney detail approximate."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-community-workshop"
+}

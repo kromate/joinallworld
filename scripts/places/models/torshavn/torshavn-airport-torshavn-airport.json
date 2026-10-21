@@ -1,0 +1,715 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:V%C3%A1gar_Airport,_Faroe_Islands.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Erik Christensen",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/airport1.jpg",
+   "used": "control tower (white two-level body on pilotis, balcony, teal glass cab, mast) and the long red service hall with three green roller doors; low terminal behind; green moorland and bare hill"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/443991023",
+   "used": "terminal outline (named match, 202 m long, scaled to fit), placed behind the tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 46,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 0.4,
+    "simplify": 1.0
+   },
+   "at": [
+    -5,
+    55
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9ced1",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8387",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fire-hall",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a02f2c",
+    "windows": "ribbon",
+    "faces": {},
+    "plinth": 0.2,
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7.5,
+       0.5
+      ],
+      "height": 4.2,
+      "z0": 0.2,
+      "colour": "#2f7d4a",
+      "windows": "none"
+     },
+     "at": [
+      0,
+      -4.55
+     ]
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     17,
+     0
+    ],
+    "end": [
+     39,
+     0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hall-glazing",
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "height": 1.4,
+    "z0": 5.3,
+    "colour": "#3f5a50"
+   },
+   "at": [
+    18,
+    -4.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ann",
+   "params": {
+    "rect": [
+     16,
+     8
+    ],
+    "height": 4,
+    "colour": "#9aa2a6"
+   },
+   "at": [
+    -24,
+    14
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "height": 8.5,
+      "colour": "#eeeeea"
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 6.5,
+    "dy": 6.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-body",
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "height": 5,
+    "z0": 8.5,
+    "colour": "#eeeeea",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#2f5d5e",
+    "plinth": 0
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "params": {
+    "rect": [
+     13,
+     13
+    ],
+    "height": 0.25,
+    "z0": 8.6,
+    "colour": "#dcdcd8"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cab",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#2d5f60",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 13.5,
+      "rect": [
+       8,
+       8
+      ]
+     },
+     {
+      "z": 17.1,
+      "rect": [
+       10.5,
+       10.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cab-roof",
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "height": 0.35,
+    "z0": 17.1,
+    "colour": "#e4e4e0"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-shaft",
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 13.5,
+    "colour": "#e4e4e0"
+   },
+   "at": [
+    -5.8,
+    -1.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 8,
+    "z0": 17.7,
+    "colour": "#444444"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f5fa5"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 1.1,
+      "z0": 8.85,
+      "colour": "#dcdcd8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -6.4,
+     -6.4
+    ],
+    "end": [
+     6.4,
+     -6.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 1.1,
+      "z0": 8.85,
+      "colour": "#dcdcd8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -6.4,
+     6.4
+    ],
+    "end": [
+     6.4,
+     6.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 1.1,
+      "z0": 8.85,
+      "colour": "#dcdcd8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -6.4,
+     -6.4
+    ],
+    "end": [
+     -6.4,
+     6.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 1.1,
+      "z0": 8.85,
+      "colour": "#dcdcd8"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     6.4,
+     -6.4
+    ],
+    "end": [
+     6.4,
+     6.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 6,
+    "z0": 17.45,
+    "colour": "#555555"
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 4.5,
+    "z0": 17.45,
+    "colour": "#555555"
+   },
+   "at": [
+    3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "annex",
+   "params": {
+    "rect": [
+     12,
+     13
+    ],
+    "height": 9.5,
+    "z0": 0,
+    "colour": "#a02f2c",
+    "windows": "none"
+   },
+   "at": [
+    56,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "annex-roof",
+   "params": {
+    "rect": [
+     12.4,
+     13.4
+    ],
+    "height": 0.4,
+    "z0": 9.5,
+    "colour": "#8a8f93"
+   },
+   "at": [
+    56,
+    2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "equip",
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 7,
+    "z0": 7.5,
+    "colour": "#d9dcd8"
+   },
+   "at": [
+    40,
+    4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "equip2",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 5,
+    "z0": 14.5,
+    "colour": "#bbbbbb"
+   },
+   "at": [
+    40,
+    4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tanker",
+   "params": {
+    "rect": [
+     6,
+     2.4
+    ],
+    "height": 2.6,
+    "z0": 0.4,
+    "colour": "#d9702a"
+   },
+   "at": [
+    30,
+    -9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "van",
+   "params": {
+    "rect": [
+     4,
+     2
+    ],
+    "height": 2,
+    "z0": 0.4,
+    "colour": "#e5c331"
+   },
+   "at": [
+    37,
+    -9.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.3
+      ],
+      "height": 1.1,
+      "z0": 6,
+      "colour": "#3f5a50"
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     17,
+     -6.6
+    ],
+    "end": [
+     39,
+     -6.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     110,
+     14
+    ],
+    "height": 0.1,
+    "z0": 0,
+    "colour": "#55595c"
+   },
+   "at": [
+    0,
+    -24
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6a7160",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       80,
+       26
+      ],
+      "cx": 0,
+      "cy": 92
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       70,
+       20
+      ],
+      "cx": 0,
+      "cy": 96
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       50,
+       12
+      ],
+      "cx": -5,
+      "cy": 100
+     }
+    ],
+    "curve": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Raked lantern cab, railed balcony, annex, equipment, tanker/van and hill backdrop added; terminal behind is generic OSM outline, hill is a smooth mound, no aircraft/hangar roofs, fence or apron detail."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-airport-torshavn-airport"
+}

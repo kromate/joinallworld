@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-node-4250666792",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/615384961",
+   "used": "real outline of the building (316 m2, about 26 x 12 m, 4-point rectangle skewed 9 degrees; Wikidata Q88269985 restaurant)"
+  },
+  {
+   "kind": "text",
+   "used": "No photo found on Commons or Wikidata. Converted farmhouse look from the brief: two-storey, pale limewash, red-brown pan-tile gable roof, side terrace with awning and a low garden wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "farmhouse",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90,
+    "fit": 26
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#e8dfc4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "bay": 3.4,
+    "plinth": 0.6,
+    "trimColour": "#b9a77e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -6,
+    0,
+    9.4
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.6,
+    "colour": "#b9a77e",
+    "pots": 1
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.2,
+    "height": 2.6,
+    "colours": [
+     "#a2573f",
+     "#f2eee4"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.9,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#b9a77e",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      24,
+      0
+     ],
+     [
+      24,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    6,
+    -10.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c3b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ }
+}

@@ -1,0 +1,1361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Huddinge_station,_20220902.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/huddinge3.jpg",
+   "used": "long platform canopy on blue steel posts with a pale timber-board soffit, tiled platform edge, orange waiting shelters under the roof, double track with ballast beside the platform"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Huddinge_station_perrong_bild_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "used": "canopy bay rhythm, blue posts and portal frames, shelter positions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/247978882",
+   "used": "canopy roof outline 102 x 10.5 m (building=roof), modelled as a rect of that size"
+  }
+ ],
+ "camera": {
+  "yawDeg": -78,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     102,
+     10.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29d96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29d96",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    0.5,
+    1.0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 102,
+    "depth": 9,
+    "height": 3.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#b59a73",
+    "edgeColour": "#2c3a52",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter0",
+   "footprint": {
+    "rect": [
+     2.4,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    0.8
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9805f",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter1",
+   "footprint": {
+    "rect": [
+     2.4,
+     3
+    ]
+   },
+   "at": [
+    -10,
+    0.8
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9805f",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter2",
+   "footprint": {
+    "rect": [
+     2.4,
+     3
+    ]
+   },
+   "at": [
+    10,
+    0.8
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9805f",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter3",
+   "footprint": {
+    "rect": [
+     2.4,
+     3
+    ]
+   },
+   "at": [
+    30,
+    0.8
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9805f",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e3b2e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station-hall",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    58,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2bc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b5057",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 102,
+    "tracks": 2,
+    "spacing": 4.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 102,
+    "height": 1.8,
+    "thickness": 0.1,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "edge-tactile",
+   "footprint": {
+    "rect": [
+     102,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -4.6
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf8f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -48,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -48,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -42,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -42,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -36,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -36,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -24,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -24,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -18,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -18,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -12,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -12,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -6,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -6,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    6,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    6,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    12,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    12,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    18,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    18,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    24,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    24,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    30,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    30,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    36,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    36,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    42,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    42,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    48,
+    -2.6,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    48,
+    3.4,
+    1.0
+   ],
+   "params": {
+    "length": 0.3,
+    "count": 1,
+    "height": 3.5,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#254a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench0",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.6
+    ]
+   },
+   "at": [
+    -36,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "poster0",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -44,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.6
+    ]
+   },
+   "at": [
+    -16,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "poster1",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -24,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.6
+    ]
+   },
+   "at": [
+    4,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "poster2",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench3",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.6
+    ]
+   },
+   "at": [
+    24,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "poster3",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    16,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench4",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.6
+    ]
+   },
+   "at": [
+    44,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b2f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2f33",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "poster4",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    36,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 1,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f45",
+    "material": "membrane"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "canopy posts are plain round columns not arched portal frames; no catenary wires; station hall assumed; tactile strip and benches are simple boxes"
+ }
+}

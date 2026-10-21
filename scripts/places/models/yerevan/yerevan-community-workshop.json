@@ -1,0 +1,597 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Etchmiadzin_Seminary.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Rita Willaert",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/sem2.jpg",
+   "used": "central octagonal drum of brown tuff with arched windows and a round-arched ground entrance under a copper segmented dome, small windowed octagonal lantern with cross, two-storey tuff wings with arched windows and grey metal roofs, khachkars and hedges in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/386440931",
+   "used": "identity, 2 levels, approx extent (70 x 28 m); the photo's composition (central domed octagon, flanking wings) is used for the layout"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -32,
+    3
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e5f58",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "bay": 3.6,
+    "glassColour": "#dfe6ea",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a89a8c"
+      ],
+      "height": 0.45,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 14,
+    "colour": "#7b7d7e",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    27,
+    3
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e5f58",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "bay": 3.6,
+    "glassColour": "#dfe6ea",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a89a8c"
+      ],
+      "height": 0.45,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 14,
+    "colour": "#7b7d7e",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "octagon",
+   "params": {
+    "points": [
+     [
+      12.219,
+      5.061
+     ],
+     [
+      5.061,
+      12.219
+     ],
+     [
+      -5.061,
+      12.219
+     ],
+     [
+      -12.219,
+      5.061
+     ],
+     [
+      -12.219,
+      -5.061
+     ],
+     [
+      -5.061,
+      -12.219
+     ],
+     [
+      5.061,
+      -12.219
+     ],
+     [
+      12.219,
+      -5.061
+     ]
+    ],
+    "z0": 0,
+    "height": 16,
+    "colour": "#a38a72",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 2,
+    "glassColour": "#dfe6ea",
+    "trimColour": "#c9b79f",
+    "plinth": 0.8
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "params": {
+    "points": [
+     [
+      12.962,
+      5.369
+     ],
+     [
+      5.369,
+      12.962
+     ],
+     [
+      -5.369,
+      12.962
+     ],
+     [
+      -12.962,
+      5.369
+     ],
+     [
+      -12.962,
+      -5.369
+     ],
+     [
+      -5.369,
+      -12.962
+     ],
+     [
+      5.369,
+      -12.962
+     ],
+     [
+      12.962,
+      -5.369
+     ]
+    ],
+    "z0": 15.6,
+    "height": 0.8,
+    "colour": "#cdbfa8"
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    -1,
+    16.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#b87a5a",
+    "profile": [
+     [
+      11.2,
+      0
+     ],
+     [
+      11.5,
+      0.6
+     ],
+     [
+      10.8,
+      2.2
+     ],
+     [
+      9.3,
+      4.4
+     ],
+     [
+      7.2,
+      6.2
+     ],
+     [
+      4.8,
+      7.6
+     ],
+     [
+      2.6,
+      8.4
+     ],
+     [
+      1.6,
+      8.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "params": {
+    "points": [
+     [
+      2.679,
+      1.11
+     ],
+     [
+      1.11,
+      2.679
+     ],
+     [
+      -1.11,
+      2.679
+     ],
+     [
+      -2.679,
+      1.11
+     ],
+     [
+      -2.679,
+      -1.11
+     ],
+     [
+      -1.11,
+      -2.679
+     ],
+     [
+      1.11,
+      -2.679
+     ],
+     [
+      2.679,
+      -1.11
+     ]
+    ],
+    "z0": 25.0,
+    "height": 4.6,
+    "colour": "#b07050",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "storeys": 1,
+    "glassColour": "#dfe6ea"
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cupola",
+   "at": [
+    0,
+    -1,
+    29.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#b87a5a",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      2.8,
+      0.9
+     ],
+     [
+      1.6,
+      1.8
+     ],
+     [
+      0,
+      2.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 31.8,
+    "height": 2.4,
+    "colour": "#2b2b2b"
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "z0": 33.3,
+    "height": 0.2,
+    "colour": "#2b2b2b"
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "params": {
+    "rect": [
+     4.4,
+     2.2
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#9a7a62",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -13.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-hole",
+   "params": {
+    "rect": [
+     2.8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#2d2a28"
+   },
+   "at": [
+    0,
+    -15.1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.4
+      ],
+      "z0": 0,
+      "height": 1.7,
+      "colour": "#b88b6c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -17
+    ],
+    "end": [
+     -9,
+     -17
+    ],
+    "count": 3,
+    "lod1Step": 3,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "khachkar-base",
+   "params": {
+    "rect": [
+     7,
+     2.8
+    ],
+    "z0": 0,
+    "height": 2,
+    "colour": "#c9c3b8"
+   },
+   "at": [
+    -12,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "params": {
+    "rect": [
+     40,
+     1.4
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#3d6b34"
+   },
+   "at": [
+    8,
+    -22.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "chimney-a",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 9,
+    "height": 4,
+    "colour": "#8c8c8a"
+   },
+   "at": [
+    -44,
+    7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "chimney-b",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 9,
+    "height": 4,
+    "colour": "#8c8c8a"
+   },
+   "at": [
+    -20,
+    7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "khachkar-0",
+   "params": {
+    "rect": [
+     1.7,
+     0.6
+    ],
+    "z0": 2,
+    "height": 3.4,
+    "colour": "#a47a60"
+   },
+   "at": [
+    -14.2,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "khachkar-1",
+   "params": {
+    "rect": [
+     1.7,
+     0.6
+    ],
+    "z0": 2,
+    "height": 3.4,
+    "colour": "#a47a60"
+   },
+   "at": [
+    -12,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "khachkar-2",
+   "params": {
+    "rect": [
+     1.7,
+     0.6
+    ],
+    "z0": 2,
+    "height": 3.4,
+    "colour": "#a47a60"
+   },
+   "at": [
+    -9.8,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "khachkar-r",
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#b07a5c"
+   },
+   "at": [
+    30,
+    -21
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "wings are plain dark tuff with arched windows (no chequer relief), dome segmented but smoother than copper standing-seam, khachkars plain slabs, ground-floor arch is a dark slot"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-community-workshop"
+}

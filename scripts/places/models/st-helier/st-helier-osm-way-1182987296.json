@@ -1,0 +1,477 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-way-1182987296",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Aubin_Church.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Dan Marsh",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/church1.jpg",
+   "used": "granite walls, west front with tall bell gable carrying three arched bell openings, clock roundel, two corner turrets and a cross, arched timber door, lancet windows on the west wing, brown tile roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1182987296",
+   "used": "overall size (24 m x 16 m, matched by name); plan simplified to rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10,
+     18
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a8a095",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b4a3c",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-front",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a9187",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b4a3c",
+    "material": "slate",
+    "pitch": 62,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    6
+   ],
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a8a095",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b4a3c",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-gable",
+   "params": {
+    "rect": [
+     3.8,
+     1.5
+    ],
+    "z0": 7.5,
+    "height": 9.2,
+    "colour": "#9a9187",
+    "topScale": [
+     0.28,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -2.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-turret-l",
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 8.0,
+    "height": 6.0,
+    "colour": "#9a9187",
+    "topScale": 0.8
+   },
+   "at": [
+    -2.2,
+    -2.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-turret-r",
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 8.0,
+    "height": 4.8,
+    "colour": "#9a9187",
+    "topScale": 0.8
+   },
+   "at": [
+    2.2,
+    -2.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-1",
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 11.2,
+    "height": 2.0,
+    "colour": "#2a2623"
+   },
+   "at": [
+    -0.8,
+    -3.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-2",
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 11.2,
+    "height": 2.0,
+    "colour": "#2a2623"
+   },
+   "at": [
+    0.8,
+    -3.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bell-open-3",
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "z0": 14.0,
+    "height": 1.6,
+    "colour": "#2a2623"
+   },
+   "at": [
+    0,
+    -3.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 16.5,
+    "height": 1.8,
+    "colour": "#b9b2a3"
+   },
+   "at": [
+    0,
+    -2.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "rect": [
+     0.9,
+     0.22
+    ],
+    "z0": 17.4,
+    "height": 0.22,
+    "colour": "#b9b2a3"
+   },
+   "at": [
+    0,
+    -2.6
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "clock",
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      0.9,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      0.9,
+      0.25,
+      "#6a5b3a"
+     ],
+     [
+      0,
+      0.25,
+      "#6a5b3a"
+     ]
+    ],
+    "segments": 14
+   },
+   "at": [
+    0,
+    -3.0,
+    9.2
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -3.05,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 4.6,
+    "depth": 0.9,
+    "archWidth": 2.6,
+    "springHeight": 3.0,
+    "colour": "#7a4a2d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lancet-w",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 3.8,
+    "height": 2.6,
+    "colour": "#59656a"
+   },
+   "at": [
+    0,
+    -3.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-win-l",
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 1.6,
+    "height": 1.2,
+    "colour": "#59656a"
+   },
+   "at": [
+    -3.2,
+    -3.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-win-r",
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "z0": 1.6,
+    "height": 1.2,
+    "colour": "#59656a"
+   },
+   "at": [
+    3.2,
+    -3.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lancet-1",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 3.2,
+    "colour": "#59656a"
+   },
+   "at": [
+    -12.4,
+    2.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lancet-2",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 3.2,
+    "colour": "#59656a"
+   },
+   "at": [
+    -10.8,
+    2.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lancet-3",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 3.2,
+    "colour": "#59656a"
+   },
+   "at": [
+    -9.2,
+    2.8
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.8,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#b4ad9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-wall",
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#8f877c"
+   },
+   "at": [
+    -2,
+    -7.5
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     9
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Plan simplified to a nave, west front and left wing; real ashlar quoins, stepped buttress edges on the bell gable, arched side windows and the hillside backdrop are not modelled; bell gable still boxier than the photo."
+ }
+}

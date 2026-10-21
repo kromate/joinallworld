@@ -1,0 +1,337 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gubb%C3%A4ngsparken.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Larske",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/gubb1.jpg",
+   "used": "open lawn with winter-dry grass, big grey granite outcrop in the foreground, a large Scots pine at left, gravel path across the lawn, playground equipment and a low grassy mound with a leaning slide at the back, red-painted low pavilion and yellow apartment block beyond the trees, tall street lamp at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/374377103",
+   "used": "park outline (name match, 226 m, fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 18,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c8c4c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c4c"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -4,
+    -34,
+    0.3
+   ],
+   "params": {
+    "width": 34,
+    "depth": 14,
+    "height": 0.9,
+    "seed": 4,
+    "stairs": false,
+    "rock_colour": "#868a8c",
+    "boulders": 1
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    22,
+    24,
+    0.3
+   ],
+   "params": {
+    "width": 24,
+    "depth": 14,
+    "height": 3.2,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#8a8a4e",
+    "boulders": 0
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.31
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -8
+     ],
+     [
+      -30,
+      -12
+     ],
+     [
+      0,
+      -14
+     ],
+     [
+      20,
+      -6
+     ],
+     [
+      34,
+      8
+     ],
+     [
+      34,
+      14
+     ]
+    ],
+    "width": 3,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 1,
+    "spread": 2,
+    "colour": "#3a6535"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 10,
+    "colour": "#7a7a4a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    44,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 20,
+    "count": 26,
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    8,
+    30
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9c3f33",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a34",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-yellow",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    40,
+    62
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d9b44a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-red",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -12,
+    64
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#a8503a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b4a42"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "climbing-frame",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    30,
+    18
+   ],
+   "z0": 1.8,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c24a2a",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c24a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "swings",
+   "footprint": {
+    "rect": [
+     6,
+     0.6
+    ]
+   },
+   "at": [
+    40,
+    12
+   ],
+   "z0": 1.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4a6a8a",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    46,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-374377103",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Added flat granite outcrop, tall pine, olive-yellow lawn, curved gravel path, grassy playground mound with climbing frame and swings, red pavilion, tall lamp and yellow/red 4-storey blocks; no leaning slide, trees are low-poly cones, ground plane renders grey-green around the park, view is an overview not ground level."
+ }
+}

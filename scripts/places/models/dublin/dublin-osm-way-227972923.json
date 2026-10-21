@@ -1,0 +1,658 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-227972923",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Church_of_the_Assumption_(Howth)_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dario Crespi",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/how2.jpg",
+   "used": "gable front with large round rose window, tall granite west tower on the left with pointed belfry openings and corner pinnacles, pointed doorway with gabled porch, granite boundary wall and railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/227972923",
+   "used": "overall size (38 x 32 m); outline is irregular so a simplified nave/aisle/tower composition was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    4.5,
+    0
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#6c6962",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "bay": 5,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b5058",
+    "material": "slate",
+    "pitch": 52,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     22
+    ]
+   },
+   "at": [
+    14,
+    3
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#74716a",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4b5058",
+    "material": "slate",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -5,
+    -12.5
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "granite",
+    "colour": "#66635c",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.07,
+    "plinth": 0.6,
+    "bay": 2.5,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6b64",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinn-l",
+   "at": [
+    -7.0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 24,
+    "height": 2.8,
+    "colour": "#7d7a72",
+    "topColour": "#7d7a72",
+    "topScale": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinn-r",
+   "at": [
+    -3.0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 24,
+    "height": 2.8,
+    "colour": "#7d7a72",
+    "topColour": "#7d7a72",
+    "topScale": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinn-bl",
+   "at": [
+    -7.0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 24,
+    "height": 2.8,
+    "colour": "#7d7a72",
+    "topColour": "#7d7a72",
+    "topScale": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinn-br",
+   "at": [
+    -3.0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 24,
+    "height": 2.8,
+    "colour": "#7d7a72",
+    "topColour": "#7d7a72",
+    "topScale": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-open-l",
+   "at": [
+    -6.0,
+    -15.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "z0": 18.4,
+    "height": 4.0,
+    "colour": "#2b2d30",
+    "topColour": "#2b2d30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-open-r",
+   "at": [
+    -4.0,
+    -15.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "z0": 18.4,
+    "height": 4.0,
+    "colour": "#2b2d30",
+    "topColour": "#2b2d30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "buttress-tower",
+   "at": [
+    -7.7,
+    -15.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#85827a",
+    "topColour": "#85827a",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "church-gothic/rose-window",
+   "at": [
+    4.5,
+    -15.02,
+    10.2
+   ],
+   "params": {
+    "radius": 2.5,
+    "glass": "#5a6a8c",
+    "spokes": 8
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    4.5,
+    -15.05,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 4.2,
+    "arch": true,
+    "colour": "#2a1f18",
+    "trim": "#9a978d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-hood",
+   "at": [
+    4.5,
+    -16.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     2.2
+    ],
+    "z0": 4.6,
+    "height": 1.2,
+    "colour": "#86837b",
+    "topColour": "#86837b",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-pier-l",
+   "at": [
+    2.6,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8a867d",
+    "topColour": "#8a867d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-pier-r",
+   "at": [
+    6.4,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8a867d",
+    "topColour": "#8a867d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.5,
+    -16.6,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "rise": 0.6,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#8a867d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    4.5,
+    -14.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 17.2,
+    "height": 2.2,
+    "colour": "#5c5a55",
+    "topColour": "#5c5a55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    4.5,
+    -14.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 18.6,
+    "height": 0.3,
+    "colour": "#5c5a55",
+    "topColour": "#5c5a55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "butt-l",
+   "at": [
+    -1.8,
+    -15.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 7.0,
+    "colour": "#85827a",
+    "topColour": "#85827a",
+    "topScale": 0.55
+   }
+  },
+  {
+   "type": "prism",
+   "id": "butt-r",
+   "at": [
+    11.0,
+    -15.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 7.0,
+    "colour": "#85827a",
+    "topColour": "#85827a",
+    "topScale": 0.55
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    0.2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#8f8b82",
+    "topColour": "#8f8b82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    8.8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#8f8b82",
+    "topColour": "#8f8b82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap-l",
+   "at": [
+    0.2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 4.4,
+    "height": 0.35,
+    "colour": "#9a978d",
+    "topColour": "#9a978d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap-r",
+   "at": [
+    8.8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "z0": 4.4,
+    "height": 0.35,
+    "colour": "#9a978d",
+    "topColour": "#9a978d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 9.5,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#85827a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#85827a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -4.8,
+    -22,
+    1.0
+   ],
+   "params": {
+    "length": 9.5,
+    "height": 1.0,
+    "colour": "#1f2225"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    16.5,
+    -22,
+    1.0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "colour": "#1f2225"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    4.5,
+    -22,
+    0.2
+   ],
+   "params": {
+    "length": 7.4,
+    "height": 1.5,
+    "colour": "#1f2225"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    18,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rose window is a ring-and-spokes disc without full tracery; tower, porch and gate piers are simplified boxes; no aisle on the left, no side buttresses along the nave; boundary wall and railings are straight rather than curving round the corner."
+ }
+}

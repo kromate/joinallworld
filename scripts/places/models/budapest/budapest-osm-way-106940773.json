@@ -1,0 +1,1409 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Veresegyh%C3%A1zi_Medvepark_l%C3%A9gi_fot%C3%B3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CivertanS at Hungarian Wikipedia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/budapest/bear1.jpg",
+   "used": "five-sided enclosure with perimeter path, two ponds in the western half, scattered den mounds, red-roofed entrance buildings at the west edge, pine woods on the east and north, car park to the south-west"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bear_Farm_Veresegyh%C3%A1z_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christo",
+   "view": "detail",
+   "file": "/tmp/places-evidence/budapest/bear2.jpg",
+   "used": "tall pale-grey mesh fence on posts with bare earth ground and pine forest behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/106940773",
+   "used": "zoo extent only (421 x 300 m incl. other areas); the bear enclosure outline is read from the aerial photo and drawn at about 0.55 m per pixel"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 50,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "enclosure-ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -47,
+      15
+     ],
+     [
+      -32,
+      22
+     ],
+     [
+      40.6,
+      28.1
+     ],
+     [
+      45.5,
+      -27
+     ],
+     [
+      0,
+      -22.3
+     ],
+     [
+      -49,
+      -27.5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8b9366",
+    "topColour": "#8b9366"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond-w",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26.65,
+      0.4
+     ],
+     [
+      -27.35,
+      1.85
+     ],
+     [
+      -28.78,
+      3.21
+     ],
+     [
+      -30.67,
+      4.07
+     ],
+     [
+      -32.72,
+      4.13
+     ],
+     [
+      -34.57,
+      3.28
+     ],
+     [
+      -35.98,
+      1.75
+     ],
+     [
+      -36.77,
+      -0.06
+     ],
+     [
+      -36.85,
+      -1.67
+     ],
+     [
+      -36.22,
+      -2.76
+     ],
+     [
+      -34.97,
+      -3.24
+     ],
+     [
+      -33.25,
+      -3.24
+     ],
+     [
+      -31.28,
+      -2.93
+     ],
+     [
+      -29.35,
+      -2.45
+     ],
+     [
+      -27.77,
+      -1.78
+     ],
+     [
+      -26.8,
+      -0.85
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.05,
+    "colour": "#5f6f50",
+    "topColour": "#5f6f50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond-e",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.3,
+      -3.92
+     ],
+     [
+      -2.46,
+      -1.96
+     ],
+     [
+      -3.46,
+      0.18
+     ],
+     [
+      -5.16,
+      1.95
+     ],
+     [
+      -7.34,
+      2.85
+     ],
+     [
+      -9.7,
+      2.64
+     ],
+     [
+      -11.85,
+      1.45
+     ],
+     [
+      -13.43,
+      -0.31
+     ],
+     [
+      -14.16,
+      -2.13
+     ],
+     [
+      -13.93,
+      -3.64
+     ],
+     [
+      -12.78,
+      -4.7
+     ],
+     [
+      -10.91,
+      -5.4
+     ],
+     [
+      -8.66,
+      -5.85
+     ],
+     [
+      -6.37,
+      -6.09
+     ],
+     [
+      -4.39,
+      -5.97
+     ],
+     [
+      -2.97,
+      -5.29
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.05,
+    "colour": "#6a705c",
+    "topColour": "#6a705c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fence",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      -47,
+      15,
+      1.2
+     ],
+     [
+      -32,
+      22,
+      1.2
+     ],
+     [
+      40.6,
+      28.1,
+      1.2
+     ],
+     [
+      45.5,
+      -27,
+      1.2
+     ],
+     [
+      0,
+      -22.3,
+      1.2
+     ],
+     [
+      -49,
+      -27.5,
+      1.2
+     ]
+    ],
+    "closed": true,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -49.0,
+      15.85,
+      0.15
+     ],
+     [
+      -33.25,
+      23.2,
+      0.15
+     ],
+     [
+      42.98,
+      29.6,
+      0.15
+     ],
+     [
+      48.12,
+      -28.25,
+      0.15
+     ],
+     [
+      0.35,
+      -23.32,
+      0.15
+     ],
+     [
+      -51.1,
+      -28.78,
+      0.15
+     ]
+    ],
+    "closed": true,
+    "colour": "#d7d3c6"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "den0",
+   "at": [
+    -22.0,
+    13.750000000000002,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den1",
+   "at": [
+    -8.25,
+    16.5,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den2",
+   "at": [
+    13.750000000000002,
+    19.25,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den3",
+   "at": [
+    30.250000000000004,
+    16.5,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den4",
+   "at": [
+    33.0,
+    -5.5,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den5",
+   "at": [
+    19.25,
+    -13.750000000000002,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den6",
+   "at": [
+    -33.0,
+    -13.750000000000002,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den7",
+   "at": [
+    2.75,
+    -11.0,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den8",
+   "at": [
+    -16.5,
+    -16.5,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den9",
+   "at": [
+    38.5,
+    5.5,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den10",
+   "at": [
+    11.0,
+    2.75,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "den11",
+   "at": [
+    -41.25,
+    8.25,
+    0.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c2b68f",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entry-building",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -38,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4452b",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe-kiosk",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -62,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a52",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4452b",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -38,
+    12.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parking-apron",
+   "at": [
+    -66,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     11
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#8b8b86",
+    "topColour": "#8b8b86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.2,
+    "count": 9,
+    "spread": 12,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.0,
+    "count": 5,
+    "spread": 7,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 7,
+    "spread": 8,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 16,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 16,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 16,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 16,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 14,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 14,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 14,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 14,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 14,
+    "spread": 9,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -85,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 18,
+    "spread": 14,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 12,
+    "spread": 8,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 10,
+    "spread": 8,
+    "line": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bare0",
+   "at": [
+    -15,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#b5ab86",
+    "topColour": "#b5ab86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bare1",
+   "at": [
+    5,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     7
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#b5ab86",
+    "topColour": "#b5ab86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bare2",
+   "at": [
+    22,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#b5ab86",
+    "topColour": "#b5ab86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bare3",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#b5ab86",
+    "topColour": "#b5ab86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bare4",
+   "at": [
+    30,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#b5ab86",
+    "topColour": "#b5ab86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub0",
+   "at": [
+    -5,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub1",
+   "at": [
+    12,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub2",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub3",
+   "at": [
+    25,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub4",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub5",
+   "at": [
+    35,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.0,
+    "count": 5,
+    "spread": 5,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 22,
+    "spread": 10,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 22,
+    "spread": 14,
+    "line": 0
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ground is one green-grey tone with pale bare patches and scrub cones; pond shapes small; pine woods are dense cone masses but still read as clusters; north strip and southern pond omitted; enclosure scaled smaller than real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-106940773"
+}

@@ -1,0 +1,386 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fittja_moske_2012.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Holger.Ellgaard",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/fittja1.jpg",
+   "used": "cream render hall with three tall arched portals and patterned panels, dark hipped metal roof, octagonal glazed drum with dark dome, three small domes on the front roof edge, white pencil minaret with dark pointed cap, red brick base and stairs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130648288",
+   "used": "hall size (about 21 x 21 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 30,
+  "aspect": 1.35,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     21,
+     28
+    ]
+   },
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8e4a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e4a40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.5,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd2bd",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 6.6,
+      "opening": 0.72,
+      "height": 0.88,
+      "depth": 1.6,
+      "pierColour": "#d8ccb4",
+      "faces": [
+       "front"
+      ],
+      "count": 3
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4b5057",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.5,
+    13
+   ],
+   "params": {
+    "radius": 6.2,
+    "n": 8,
+    "height": 4.2,
+    "colour": "#cfd8d8",
+    "windows": "rect",
+    "windowRatio": 0.6,
+    "topColour": "#cfd8d8"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0.5,
+    17.2
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#3d4147",
+    "profile": [
+     [
+      6.6,
+      0
+     ],
+     [
+      6.9,
+      0.5
+     ],
+     [
+      6.0,
+      1.8
+     ],
+     [
+      4.2,
+      3.0
+     ],
+     [
+      2.0,
+      3.8
+     ],
+     [
+      0.4,
+      4.2
+     ],
+     [
+      0.4,
+      5.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.5,
+    13.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     0,
+     0
+    ],
+    "end": [
+     6.5,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 14,
+       "colour": "#3d4147",
+       "profile": [
+        [
+         1.5,
+         0
+        ],
+        [
+         1.6,
+         0.4
+        ],
+        [
+         1.2,
+         1.2
+        ],
+        [
+         0.5,
+         1.9
+        ],
+        [
+         0.15,
+         2.2
+        ],
+        [
+         0.15,
+         2.8
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8.5,
+    -12.5,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f2f2ee",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.3,
+      0.5
+     ],
+     [
+      1.0,
+      0.7
+     ],
+     [
+      1.0,
+      8
+     ],
+     [
+      1.7,
+      8.2,
+      "#f2f2ee"
+     ],
+     [
+      1.7,
+      9.0
+     ],
+     [
+      1.1,
+      9.1
+     ],
+     [
+      1.0,
+      15.4
+     ],
+     [
+      1.4,
+      15.5,
+      "#3d4147"
+     ],
+     [
+      0.9,
+      17
+     ],
+     [
+      0.1,
+      20
+     ]
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 2.5,
+    "colour": "#a24a3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    14,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8ccb4",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5057",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8e4a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a79a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-130648288",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Portals are pointed windows set in the cream wall, not full-height deep recesses; no surface patterning, red railed stairs or street furniture; minaret lacks the lattice balcony."
+ }
+}

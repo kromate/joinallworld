@@ -1,0 +1,808 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arca_Triumfal%C4%83_din_Chi%C8%99in%C4%83u.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andrew Iurciuc",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/arch2.jpg",
+   "used": "square attic with round clock on the front, entablature, two column pairs flanking the passage on wide piers, weathered cream stone, cathedral belfry behind, flag in the passage"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arca_Triumfala.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dragosh820",
+   "view": "detail",
+   "file": "/tmp/places-evidence/chisinau/arch1.jpg",
+   "used": "free-standing Corinthian columns at the corners, dentil cornice and relief frieze, round arch inside the passage"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/20340431",
+   "used": "11 x 11 m plan, 36 m from the venue centre; modelled by dimension"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.2,
+     11.2
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#a39b88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     3.9,
+     10
+    ]
+   },
+   "at": [
+    -3.65,
+    0
+   ],
+   "z0": 0.9,
+   "height": 7.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8ae99",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-plinth-l",
+   "at": [
+    -3.65,
+    -5.5
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     1.8
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#a79e88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col-l-0.95",
+   "at": [
+    -4.6,
+    -5.5,
+    1.6
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d6cdb8",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.3
+     ],
+     [
+      0.52,
+      0.5
+     ],
+     [
+      0.5,
+      5.9
+     ],
+     [
+      0.68,
+      6.2
+     ],
+     [
+      0.8,
+      6.7,
+      "#d3c9b3"
+     ],
+     [
+      0,
+      6.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col-l0.95",
+   "at": [
+    -2.7,
+    -5.5,
+    1.6
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d6cdb8",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.3
+     ],
+     [
+      0.52,
+      0.5
+     ],
+     [
+      0.5,
+      5.9
+     ],
+     [
+      0.68,
+      6.2
+     ],
+     [
+      0.8,
+      6.7,
+      "#d3c9b3"
+     ],
+     [
+      0,
+      6.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     3.9,
+     10
+    ]
+   },
+   "at": [
+    3.65,
+    0
+   ],
+   "z0": 0.9,
+   "height": 7.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8ae99",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col-plinth-r",
+   "at": [
+    3.65,
+    -5.5
+   ],
+   "params": {
+    "rect": [
+     3.9,
+     1.8
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#a79e88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col-r-0.95",
+   "at": [
+    2.7,
+    -5.5,
+    1.6
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d6cdb8",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.3
+     ],
+     [
+      0.52,
+      0.5
+     ],
+     [
+      0.5,
+      5.9
+     ],
+     [
+      0.68,
+      6.2
+     ],
+     [
+      0.8,
+      6.7,
+      "#d3c9b3"
+     ],
+     [
+      0,
+      6.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col-r0.95",
+   "at": [
+    4.6,
+    -5.5,
+    1.6
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d6cdb8",
+    "profile": [
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.3
+     ],
+     [
+      0.52,
+      0.5
+     ],
+     [
+      0.5,
+      5.9
+     ],
+     [
+      0.68,
+      6.2
+     ],
+     [
+      0.8,
+      6.7,
+      "#d3c9b3"
+     ],
+     [
+      0,
+      6.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "spandrel",
+   "footprint": {
+    "rect": [
+     3.4,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8ae99",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "passage-arch",
+   "at": [
+    0,
+    -5.05,
+    5.4
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "center": [
+      0,
+      0
+     ],
+     "radius": 1.6,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#d9d0bb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "keystone",
+   "at": [
+    0,
+    -5.1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.6
+    ],
+    "z0": 6.9,
+    "height": 0.7,
+    "colour": "#e0d8c4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "passage-back",
+   "at": [
+    0,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.4
+    ],
+    "z0": 0.9,
+    "height": 6.1,
+    "colour": "#3a342b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     10.6
+    ],
+    "z0": 7.2,
+    "height": 0.8,
+    "colour": "#a79e88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.2,
+     11.2
+    ],
+    "z0": 8.0,
+    "height": 0.5,
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     11,
+     10.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.5,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8ae99",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.8,
+     10.8
+    ],
+    "z0": 12.9,
+    "height": 0.5,
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.2,
+     11.2
+    ],
+    "z0": 13.4,
+    "height": 0.3,
+    "colour": "#d0c7b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-plate",
+   "at": [
+    0,
+    -5.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.25
+    ],
+    "z0": 9.4,
+    "height": 3.0,
+    "colour": "#efe8d3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "clock-rim",
+   "at": [
+    0,
+    -5.4,
+    10.9
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "center": [
+      0,
+      0
+     ],
+     "radius": 1.6,
+     "startDeg": 0,
+     "endDeg": 360
+    },
+    "colour": "#3a342b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-hand-v",
+   "at": [
+    0,
+    -5.45
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 10.9,
+    "height": 1.1,
+    "colour": "#2a2620"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-hand-h",
+   "at": [
+    0.4,
+    -5.45
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.15
+    ],
+    "z0": 10.85,
+    "height": 0.15,
+    "colour": "#2a2620"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 7.65,
+      "height": 0.35,
+      "colour": "#e3dbc7"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5.4,
+     -5.45,
+     0
+    ],
+    "end": [
+     5.4,
+     -5.45,
+     0
+    ],
+    "count": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.4
+      ],
+      "z0": 8.5,
+      "height": 4.4,
+      "colour": "#d0c7b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.9,
+     -5.2,
+     0
+    ],
+    "end": [
+     4.9,
+     -5.2,
+     0
+    ],
+    "count": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.4
+      ],
+      "z0": 8.5,
+      "height": 4.4,
+      "colour": "#d0c7b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -2.9,
+     -5.2,
+     0
+    ],
+    "end": [
+     2.9,
+     -5.2,
+     0
+    ],
+    "count": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -7.5,
+    11,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 11,
+    "cap": "pyramid",
+    "colour": "#ece8dc",
+    "cap_colour": "#4a7355"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -11.5,
+    13,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "height": 4,
+    "colour": "#4a7355",
+    "drum": 3,
+    "drumColour": "#ece8dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stone is a flat weathered cream-grey with no relief carving or capital detail; cathedral belfry and dome are generic stand-ins; flag omitted."
+ }
+}

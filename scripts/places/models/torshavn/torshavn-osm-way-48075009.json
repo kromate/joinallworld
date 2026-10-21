@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-48075009",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/48075009",
+   "used": "outline of the square (52 x 28 m, leisure=park)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3b0a6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "polygon": [
+     [
+      -20,
+      -4
+     ],
+     [
+      -6,
+      -2
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      -8,
+      8.5
+     ],
+     [
+      -18,
+      8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6a3a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    -6,
+    3,
+    0.45
+   ],
+   "params": {
+    "height": 4.2,
+    "plinth_height": 1.4,
+    "colour": "#8a8780",
+    "figure_colour": "#5a5148"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -16,
+    -9,
+    0.25
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 2.6
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    12,
+    6,
+    0.25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 2,
+    "spacing": 2.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -12,
+    0.25
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 4,
+    "spacing": 13
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     3.4
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "z0": 0.25,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3b4046",
+    "material": "metal-sheet",
+    "pitch": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     5
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the square: OSM outline with generic paving, lawn, monument, benches, kiosk"
+ }
+}

@@ -1,0 +1,352 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Istanbul_asv2021-11_img72_IST_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alexander Savin",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/airport1.jpg",
+   "used": "landside elevation: wide flat-edged roof on branching white columns, arched teal glazing between, lower flat-roofed arched wing at right, colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/687768729",
+   "used": "overall scale only: the terminal is 1.2 km, a 112 m bay run is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 2,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     118,
+     14
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8a96",
+    "windows": "arched",
+    "windowRatio": 0.9,
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d9db",
+    "overhang": 0,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    62,
+    -1
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a7f8a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e7",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    -12,
+    -2,
+    15
+   ],
+   "params": {
+    "rect": [
+     122,
+     34
+    ],
+    "height": 0.9,
+    "colour": "#e8eaeb"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -66,
+     -12
+    ],
+    "end": [
+     42,
+     -12
+    ],
+    "count": 10,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#ecece9",
+       "sections": [
+        {
+         "z": 0,
+         "circle": 1.0
+        },
+        {
+         "z": 8,
+         "circle": 0.9
+        },
+        {
+         "z": 11,
+         "circle": 1.3
+        },
+        {
+         "z": 15,
+         "circle": 2.0
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "colour": "#ecece9",
+       "sections": [
+        {
+         "z": 8,
+         "circle": 0.7
+        },
+        {
+         "z": 12,
+         "circle": 0.5,
+         "cx": 2.5,
+         "cy": 0.0
+        },
+        {
+         "z": 15,
+         "circle": 0.4,
+         "cx": 5,
+         "cy": 0
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "colour": "#ecece9",
+       "sections": [
+        {
+         "z": 8,
+         "circle": 0.7
+        },
+        {
+         "z": 12,
+         "circle": 0.5,
+         "cx": -2.5,
+         "cy": 0.0
+        },
+        {
+         "z": 15,
+         "circle": 0.4,
+         "cx": -5,
+         "cy": 0
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "colour": "#ecece9",
+       "sections": [
+        {
+         "z": 8,
+         "circle": 0.7
+        },
+        {
+         "z": 12,
+         "circle": 0.5,
+         "cx": 0.0,
+         "cy": 3.0
+        },
+        {
+         "z": 15,
+         "circle": 0.4,
+         "cx": 0,
+         "cy": 6
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "colour": "#ecece9",
+       "sections": [
+        {
+         "z": 8,
+         "circle": 0.7
+        },
+        {
+         "z": 12,
+         "circle": 0.5,
+         "cx": 0.0,
+         "cy": -2.5
+        },
+        {
+         "z": 15,
+         "circle": 0.4,
+         "cx": 0,
+         "cy": -5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower",
+   "at": [
+    -10,
+    60,
+    0
+   ],
+   "params": {
+    "colour": "#e6e7e8",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.0
+     },
+     {
+      "z": 45,
+      "circle": 2.8
+     },
+     {
+      "z": 65,
+      "circle": 2.6
+     },
+     {
+      "z": 72,
+      "circle": 3.6
+     },
+     {
+      "z": 77,
+      "circle": 6.2
+     },
+     {
+      "z": 80,
+      "circle": 7.0
+     },
+     {
+      "z": 82,
+      "circle": 6.0
+     },
+     {
+      "z": 83,
+      "circle": 3.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only ~118 m of the 1.2 km terminal; flat roof on tulip columns with 4 rib stubs, but glazing is arched window cuts on a box, not full-height teal arches; roof is not pitched; tower shape from brief not photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-airport-istanbul-airport"
+}

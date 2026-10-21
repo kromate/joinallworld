@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Novi_dvori_Zapre%C5%A1i%C4%87_(obnova).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Suradnik13",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/dvori.jpg",
+   "used": "long two-storey white-rendered block, nine shuttered window bays, very large orange clay-tile hip roof, small stepped gable on the roof slope off-centre, white chimneys along the ridge, skylights, balustraded roof ornaments"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/240713477",
+   "used": "plan 44.7 x 14.1 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.5,
+    "plinth": 0.5,
+    "cornice": "#c9573a",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#cf6a40",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "id": "gable",
+   "at": [
+    5,
+    -4.2,
+    7.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "steps": 5,
+    "thickness": 0.5,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -16,
+    0,
+    10.8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -8,
+    0,
+    10.8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    8,
+    0,
+    10.8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    17,
+    0,
+    10.8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#f0ece2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     16
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "hip roof pitch and gable offset approximate; ground-floor arched doors, shutters, skylights, balustrades omitted"
+ }
+}

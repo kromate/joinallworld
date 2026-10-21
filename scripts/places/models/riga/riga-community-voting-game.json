@@ -1,0 +1,387 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bauma%C5%86a_skv%C4%93rs,_R%C4%ABga.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Silraks",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/baumana.jpg",
+   "used": "a small paved/green city square with a row of mature lime trees, wooden benches and planters, a glass bus shelter at the road edge; light-cream palace and domed roofs behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1548579171",
+   "used": "location only (a 4 m shelter, not the square outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "polygon": [
+     [
+      -50,
+      -22
+     ],
+     [
+      50,
+      -24
+     ],
+     [
+      52,
+      20
+     ],
+     [
+      -50,
+      22
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a96"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-strip",
+   "footprint": {
+    "rect": [
+     96,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": -0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4e"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -3,
+    0.2
+   ],
+   "params": {
+    "width": 40,
+    "depth": 3,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    -3,
+    0.2
+   ],
+   "params": {
+    "width": 40,
+    "depth": 3,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    12,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "bands": "#d8d0b8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d52",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    12,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 19,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d52",
+    "pitch": 50
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    -5,
+    24,
+    19
+   ],
+   "params": {
+    "radius": 4.5,
+    "profile": "onion",
+    "drum": 1.2,
+    "colour": "#3f4246"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    29,
+    24,
+    19
+   ],
+   "params": {
+    "radius": 4.5,
+    "profile": "onion",
+    "drum": 1.2,
+    "colour": "#3f4246"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c4cfd8",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    -52,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "profile": "onion",
+    "drum": 8,
+    "colour": "#d4a935",
+    "drumColour": "#e8e2cf",
+    "finial": 1.5
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -44,
+      -10
+     ],
+     [
+      44,
+      -10
+     ]
+    ],
+    "width": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -8,
+     0
+    ],
+    "end": [
+     18,
+     -8,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.7
+      ],
+      "height": 0.5,
+      "colour": "#4a3a2a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -14,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     2.2
+    ],
+    "height": 2.6,
+    "colour": "#7f858a",
+    "windows": "none",
+    "topColour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -14.8,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.1
+    ],
+    "height": 2.2,
+    "colour": "#b6cdd2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -14,
+    0.2
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "square outline estimated (OSM only gives a shelter); palace, hotel and church are simplified blocks and domes; bus shelter is a plain box; benches and planters generic; lime canopy is a stylised row"
+ }
+}

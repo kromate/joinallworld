@@ -1,0 +1,484 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Casino dome is a smooth cream revolve with lantern, not the ornate carved Belle Epoque facade; folded parasols are simple cones; chairs/tables are generic sets; Art Nouveau glass canopy is a simple curved canopy; no footprint used (OSM match was a park)."
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_de_Paris,_Monte_Carlo_-_terrasse_(novembre_2021).jpg",
+   "licence": "CC0",
+   "author": "Benoit Prieur",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/cafe2.jpg",
+   "used": "low single-storey glazed terrace pavilion with green window frames under cream awnings and a dark green zinc roof edge, open paved terrace in front, cream domed Casino building behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cafe_Paris_-_Casino_de_Monte_Carlo_-_Monaco_2014.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jose Luiz",
+   "view": "detail",
+   "used": "fan-shaped glass entrance canopy with dark green ironwork on a cream facade with mosaic roundels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 0.75,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace-pavilion",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dde0c2",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#e3ece0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5648",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    16,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 6,
+    "depth": 3.5,
+    "height": 3.6,
+    "rise": 1.2,
+    "thickness": 0.2,
+    "colour": "#2f5a48",
+    "edgeColour": "#2f5a48"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -8.3,
+    3.9
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#f4efe2",
+    "frameColour": "#e5d3a6",
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "lod": [
+    0
+   ],
+   "at": [
+    -13.3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 3.4,
+    "colours": [
+     "#f1ebdb",
+     "#f1ebdb"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 3.4,
+    "colours": [
+     "#f1ebdb",
+     "#f1ebdb"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "lod": [
+    0
+   ],
+   "at": [
+    13.3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 3.4,
+    "colours": [
+     "#f1ebdb",
+     "#f1ebdb"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "casino-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e5d3a6",
+    "windows": "arched",
+    "windowRatio": 0.34,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a444c",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    19,
+    12.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e5d3a6",
+    "profile": [
+     [
+      7.0,
+      0,
+      "#e5d3a6"
+     ],
+     [
+      7.0,
+      1.4
+     ],
+     [
+      6.4,
+      2.6,
+      "#d9c38e"
+     ],
+     [
+      6.6,
+      3.0,
+      "#e5d3a6"
+     ],
+     [
+      6.0,
+      5.0
+     ],
+     [
+      5.6,
+      5.6,
+      "#c9b27a"
+     ],
+     [
+      5.0,
+      7.0,
+      "#d6c08a"
+     ],
+     [
+      3.8,
+      9.0
+     ],
+     [
+      2.2,
+      10.6
+     ],
+     [
+      1.5,
+      11.4,
+      "#e5d3a6"
+     ],
+     [
+      1.6,
+      12.4
+     ],
+     [
+      1.2,
+      13.6,
+      "#d9c38e"
+     ],
+     [
+      0.6,
+      14.4
+     ],
+     [
+      0,
+      16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -11.5,
+    19,
+    12.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e5d3a6",
+    "profile": [
+     [
+      2.0,
+      0,
+      "#e5d3a6"
+     ],
+     [
+      2.0,
+      2.6
+     ],
+     [
+      2.3,
+      3.0,
+      "#d9c38e"
+     ],
+     [
+      1.8,
+      4.4,
+      "#d6c08a"
+     ],
+     [
+      0.8,
+      6.0
+     ],
+     [
+      0,
+      7.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11.5,
+    19,
+    12.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e5d3a6",
+    "profile": [
+     [
+      2.0,
+      0,
+      "#e5d3a6"
+     ],
+     [
+      2.0,
+      2.6
+     ],
+     [
+      2.3,
+      3.0,
+      "#d9c38e"
+     ],
+     [
+      1.8,
+      4.4,
+      "#d6c08a"
+     ],
+     [
+      0.8,
+      6.0
+     ],
+     [
+      0,
+      7.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "table-set",
+     "params": {
+      "chairs": 4,
+      "table_colour": "#f4f2ea",
+      "chair_colour": "#8a5a34",
+      "radius": 0.75
+     }
+    },
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 4.6,
+    "dy": 4,
+    "centred": true,
+    "start": [
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#eadfc0",
+      "profile": [
+       [
+        0.08,
+        0,
+        "#4a3a28"
+       ],
+       [
+        0.08,
+        1.2
+       ],
+       [
+        0.28,
+        1.4,
+        "#eadfc0"
+       ],
+       [
+        0.3,
+        3.2
+       ],
+       [
+        0.12,
+        4.4
+       ],
+       [
+        0,
+        4.8
+       ]
+      ]
+     }
+    },
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 4.6,
+    "dy": 4,
+    "centred": true,
+    "start": [
+     2.3,
+     2
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -14
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-meal-stop"
+}

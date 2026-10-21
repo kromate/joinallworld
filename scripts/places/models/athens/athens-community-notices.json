@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HNMS.JPG",
+   "licence": "Attribution",
+   "author": "Templar52 (el.wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/athens-community-notices-0.jpg",
+   "used": "cream rendered two-storey block with two bands of ribbon glazing, thin roof slab, blank signage bands, roof plant boxes and satellite dish, tall flag and instrument masts, rubble-stone retaining wall and white fence in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191315065",
+   "used": "overall size 52 x 32 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     52,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dbbf",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#c9d6dc",
+    "bands": "#d9ceb0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "parapet": 0.5,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     34,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -11.1
+   ],
+   "z0": 6.0,
+   "height": 0.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfb5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    3
+   ],
+   "z0": 9.4,
+   "height": 2.4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4bfb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa79c"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    3,
+    3,
+    11.8
+   ],
+   "params": {
+    "kind": "drum",
+    "radius": 1.1,
+    "tankHeight": 1.6,
+    "legHeight": 0.3,
+    "legs": 3,
+    "colour": "#b5b5ad"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 17,
+    "colours": [
+     "#2b63b3"
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    22,
+    2,
+    9.4
+   ],
+   "params": {
+    "baseWidth": 0.5,
+    "height": 15,
+    "sides": 4,
+    "colour": "#9aa0a3",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -24,
+    3,
+    9.4
+   ],
+   "params": {
+    "baseWidth": 0.4,
+    "height": 8,
+    "sides": 4,
+    "colour": "#9aa0a3",
+    "finial": false
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -1,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "segments": 16,
+    "colour": "#e9ebec",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.4,
+      0.3
+     ],
+     [
+      1.7,
+      1.0
+     ],
+     [
+      1.3,
+      1.9
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 1.0,
+    "kind": "wall",
+    "colour": "#b7ae9d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16.2,
+    0.9
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.9,
+    "thickness": 0.08,
+    "kind": "wall",
+    "pillarEvery": 2.5,
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "no legible lettering or fence railings; roof plant boxes, dish and stone retaining wall simplified"
+ }
+}

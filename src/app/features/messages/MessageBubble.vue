@@ -14,7 +14,7 @@ import type { RequestOp } from './moneyRequestModel.ts'
 import type { Message } from '../../../types/social.ts'
 
 const props = defineProps<{ item: Message; meId: string; group: boolean; head: boolean; tail: boolean; time: string; canReact: boolean; canActions: boolean; canPin?: boolean; pinned?: boolean; pinPending?: boolean; pinBlocked?: boolean; pinOffline?: boolean; preview?: boolean; voiceEnabled?: boolean; now?: number; partner?: string; requestBusy?: boolean; requestOffline?: boolean }>()
-const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; reportVoice: [item: Message]; reportScam: [item: Message]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message]; pin: [item: Message, pinned: boolean]; request: [id: string, op: RequestOp]; menu: [open: boolean] }>()
+const emit = defineEmits<{ reply: [item: Message]; react: [item: Message, emoji: string | null]; player: [id: string]; jump: [seq: number]; reportVoice: [item: Message]; reportScam: [item: Message]; reportMessage: [item: Message]; picture: [item: Message]; edit: [item: Message]; remove: [item: Message]; forward: [item: Message]; pin: [item: Message, pinned: boolean]; request: [id: string, op: RequestOp]; menu: [open: boolean] }>()
 const mine = computed(() => props.item.from?.id === props.meId)
 const parts = computed(() => pieces(props.item.body, props.item.mentions))
 const big = computed(() => (props.item.mentions?.length || props.item.replyTo || props.item.image || props.item.voice ? 0 : emojiOnly(props.item.body)))
@@ -98,6 +98,7 @@ onBeforeUnmount(cancel)
       <button v-if="mine && !item.image && !item.voice && !item.gift && !item.request" type="button" role="menuitem" class="menu-item" @click="action('edit')">Edit</button>
       <button v-if="mine && !item.gift && !item.request" type="button" role="menuitem" class="menu-item" @click="action('remove')">Delete for everyone</button>
       <button v-if="item.voice && !mine" type="button" role="menuitem" class="menu-item" @click="emit('reportVoice', item); hide()">Report voice note</button>
+      <button v-if="!preview && !mine && item.from && item.body && !item.scam" type="button" role="menuitem" class="menu-item" @click="emit('reportMessage', item); hide()">Report message</button>
       <button type="button" role="menuitem" class="menu-item is-quiet" @click="hide(true)">Close</button>
     </div>
   </div>

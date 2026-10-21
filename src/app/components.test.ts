@@ -111,7 +111,7 @@ test('Bank: balance, rent, and the ledger with every change explained', async ()
 
 test('Bank: offline it is read-only and says so on every payment', async () => {
   server.fault.offline = true
-  await app.game.refresh()
+  for (let i = 0; i < 3; i++) await app.game.refresh() // three failures in a row: the grace is over
   try {
     assert.equal(app.game.connected.value, false)
     const html = await render('/src/app/features/bank/BankApp.vue')

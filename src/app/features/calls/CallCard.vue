@@ -9,6 +9,7 @@ import { toneState } from './callTones.ts'
 import { initialOf, hueOf, statusText } from './callFormat.ts'
 import { acknowledgeDisclosure, DISCLOSURE, disclosureAcknowledged } from './callState.ts'
 import { loadedCalls } from './callsLoader.ts'
+import { answerCall } from './useCall.ts'
 import CallIcons from './CallIcons.vue'
 
 const props = defineProps<{ view: CallView; where: string | null; founder: boolean }>()
@@ -29,7 +30,7 @@ onMounted(async () => {
   if (incoming.value && !typing) answer.value?.focus()
 })
 const controller = () => loadedCalls()
-function accept(): void { acknowledgeDisclosure(); void controller()?.accept() }
+function accept(): void { acknowledgeDisclosure(); void answerCall() }
 </script>
 
 <template>

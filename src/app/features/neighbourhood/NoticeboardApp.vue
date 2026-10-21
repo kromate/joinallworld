@@ -10,8 +10,10 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { NOTICE } from '../../../neighbourhood/model.ts'
 import type { BoardView, MeetupsView, MeetupView, NoticeView } from '../../../types/neighbourhood.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const tab = ref<'board' | 'meet'>('board')
 type R<T> = ({ ok: true } & T) | { ok: false; code?: string; reason: string }
 const call = async <T,>(path: string, body?: object): Promise<R<T>> => { try { return await game.fetchJson(path, body ? { method: 'POST', body } : undefined) } catch (e) { return { ok: false, reason: (e as { reason?: string }).reason ?? 'That did not go through.' } } }
@@ -52,7 +54,7 @@ async function go(m: MeetupView): Promise<void> {
 }
 async function planIt(): Promise<void> {
   busy.value = true; planNote.value = ''
-  const r = await call<{ meetup: MeetupView; priceNote?: string }>('/api/neighbourhood/meetups/plan', { crew: plan.value.crew, ...(plan.value.price > 0 ? { price: plan.value.price } : {}) })
+  const r = await call<{ meetup: MeetupView; priceNote?: string }>('/api/neighbourhood/meetups/plan', { crew: plan.value.crew, ...(!playApp && plan.value.price > 0 ? { price: plan.value.price } : {}) })
   busy.value = false
   if (!r.ok) { toast(r.reason, 'error'); return }
   planNote.value = r.priceNote ?? ''
@@ -97,7 +99,7 @@ const hint = computed(() => kinds.value.find((k) => k.id === draft.value.kind)?.
     </template>
 
     <template v-else>
-      <p class="social-note">Once a month, on the first Saturday, people confirmed in the same area meet. Free, or with a ticket the host sets.</p>
+      <p class="social-note">Once a month, on the first Saturday, people confirmed in the same area meet.<template v-if="!playApp"> Free, or with a ticket the host sets.</template></p>
       <p v-if="meetups && !meetups.area" class="feed-note">Confirm where you are in My profile to see your area's meetup.</p>
       <p v-else-if="meetups && !meetups.meetups.length" class="feed-note">No meetup planned yet for {{ meetups.area?.cityName }}. Next one: {{ when(meetups.next) }}.</p>
       <article v-for="m in meetups?.meetups ?? []" :key="m.event.id" class="feed-card" :data-meetup="m.event.id">
@@ -106,14 +108,14 @@ const hint = computed(() => kinds.value.find((k) => k.id === draft.value.kind)?.
         <div class="feed-bar">
           <span v-if="m.event.me === 'going'" class="feed-note">You are going</span>
           <button v-else-if="m.canGo && !m.event.price" type="button" @click="go(m)">I'm coming</button>
-          <button v-else-if="m.canGo && m.event.price" type="button" @click="shell.open('plans')">Get a ticket · ₦{{ m.event.price.toLocaleString('en-NG') }}</button>
+          <button v-else-if="!playApp && m.canGo && m.event.price" type="button" @click="shell.open('plans')">Get a ticket · ₦{{ m.event.price.toLocaleString('en-NG') }}</button>
           <span v-else class="feed-note">For people confirmed in {{ m.area.name }}</span>
         </div>
       </article>
       <form v-if="meetups?.plannable.length" class="feed-card feed-form" @submit.prevent="planIt">
         <b>Host the next meetup</b>
         <label>Community<select v-model="plan.crew"><option v-for="p in meetups.plannable" :key="p.crew" :value="p.crew">{{ p.name }} · {{ p.area.name }}</option></select></label>
-        <label>Ticket price in naira (0 is free; needs your Earn account)<input v-model.number="plan.price" type="number" min="0"></label>
+        <label v-if="!playApp">Ticket price in naira (0 is free; needs your Earn account)<input v-model.number="plan.price" type="number" min="0"></label>
         <p v-if="planNote" class="feed-error">{{ planNote }}</p>
         <button type="submit" class="social-btn is-primary" :disabled="busy">Plan for {{ when(meetups.next) }}</button>
       </form>

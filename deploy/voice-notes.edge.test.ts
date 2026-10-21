@@ -8,6 +8,7 @@ import { createRequire } from 'node:module'
 import { randomUUID } from 'node:crypto'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts'
 import { runVoiceJourney, syntheticWebmOpus, type VoiceAnswer, type VoiceJourneyHost } from '../server/testing/voiceJourney.ts'
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 interface MiniflareInstance {
   ready: Promise<URL>
@@ -60,6 +61,7 @@ async function fixture(t: TestContext) {
       const session = await response.json() as { session: { id: string; name: string } }
       const actor = { ...session.session, cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '' }
       assert.notEqual(actor.cookie, '', 'session creation sets an authenticated cookie')
+      assert.equal((await request('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, actor)).status, 200)
       for (const path of ['/api/life?city=lagos', '/api/social/me']) assert.equal((await request(path, null, actor)).status, 200)
       return actor
     },

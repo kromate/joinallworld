@@ -9,6 +9,7 @@ import { ibadanJourney } from '../server/testing/ibadanJourney.ts'
 import { ogunJourney } from '../server/testing/ogunJourney.ts'
 import { cityJourney, legacyJourney, JOURNEY_TIME, object, qualifyState, seedLegacyRecords } from '../server/testing/cityJourney.ts'
 import type { JourneyDevice, JourneyHost, JourneySocket } from '../server/testing/cityJourney.ts'
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 import { layoutBindings } from '../server/testing/sqliteStorage.ts';
 
 interface TestWebSocket {
@@ -107,6 +108,10 @@ test('Worker city modules: complete city journey and lossless legacy switches su
       method: body ? 'POST' : 'GET', headers: { origin, ...(body ? { 'content-type': 'application/json' } : {}), ...(cookie ? { cookie } : {}) },
       ...(body ? { body: JSON.stringify(body) } : {}),
     }),
+    acceptSharingTerms: async cookie => {
+      const response = await send('/api/sharing/terms', { method: 'POST', headers: { origin, 'content-type': 'application/json', cookie }, body: JSON.stringify({ version: SHARING_TERMS_VERSION, over13: true }) })
+      assert.equal(response.status, 200)
+    },
     elapse: (device, city, ms) => modify(device, city, entry => { assert.equal(typeof entry.updatedAt, 'number'); entry.updatedAt = Number(entry.updatedAt) - ms }),
     qualify: (device, city) => modify(device, city, entry => qualifyState(entry.state)),
     edit: (device, city, change) => modify(device, city, entry => change(object(entry.state))),

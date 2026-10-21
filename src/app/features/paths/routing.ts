@@ -40,7 +40,7 @@ export interface Env {
   focusUnit(unit: string): void
 }
 
-const PANEL_OF: Readonly<Record<Exclude<PanelWord, 'signup' | 'login'>, string>> = { messages: 'messages', friends: 'people', invite: 'invite', business: 'business', jobs: 'jobs', help: 'help', sound: 'settings', politics: 'politics', records: 'politics', shops: 'showcase', services: 'showcase', feedback: 'feedback', danfo: 'danfo', detty: 'events' }
+const PANEL_OF: Readonly<Record<Exclude<PanelWord, 'signup' | 'login'>, string>> = { messages: 'messages', friends: 'people', invite: 'invite', business: 'business', jobs: 'jobs', help: 'help', sound: 'settings', politics: 'politics', records: 'politics', shops: 'showcase', services: 'showcase', feedback: 'feedback', danfo: 'danfo', detty: 'events', near: 'feed' }
 
 /** The kind of shop My shop starts on for /shops and /services (the rows of src/entry-variants.ts). */
 const setupCategory = (panel: 'shops' | 'services'): string | undefined => ENTRY_VARIANTS.find((variant) => variant.id === panel)?.category
@@ -55,7 +55,7 @@ export async function arrive(env: Env, found: WaitingIntent | null): Promise<voi
   const map = (to: string, run: () => void): void => { views.hold(to, () => env.mapOpen(), 'replace'); run() }
   switch (intent.kind) {
     case 'panel':
-      if (intent.panel === 'signup' || intent.panel === 'login') await env.openAccount(intent.panel); else env.open(PANEL_OF[intent.panel], intent.panel === 'records' ? { tab: 'records' } : intent.panel === 'shops' || intent.panel === 'services' ? { setup: setupCategory(intent.panel) } : undefined)
+      if (intent.panel === 'signup' || intent.panel === 'login') await env.openAccount(intent.panel); else env.open(PANEL_OF[intent.panel], intent.panel === 'near' ? { tab: 'near' } : intent.panel === 'records' ? { tab: 'records' } : intent.panel === 'shops' || intent.panel === 'services' ? { setup: setupCategory(intent.panel) } : undefined)
       return
     case 'games': {
       const table = intent.game && intent.game !== 'oro' ? PHONE_TABLE[intent.game] : null

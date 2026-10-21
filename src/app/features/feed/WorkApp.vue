@@ -10,8 +10,10 @@ import { useApp } from '../../state/app.ts'
 import { feedApi } from './feedApi.ts'
 import { FEED, agoText } from '../../../feed/model.ts'
 import type { GigView } from '../../../types/feed.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const api = feedApi((path, options) => game.fetchJson(path, options))
 const gigs = ref<GigView[]>([]), mine = ref<GigView[]>([]), busy = ref(false), making = ref(false), now = ref(Date.now())
 const form = ref({ title: '', about: '', reward: 1000 })
@@ -74,8 +76,8 @@ const canReview = (g: GigView): boolean => g.state === 'done' && Boolean(g.revie
           <button type="button" class="feed-pill" @click="act(g, 'close')">Close</button>
         </template>
         <div v-if="g.mine && g.state === 'taken'" class="feed-row"><span class="feed-note">{{ g.worker?.name }} is on it.</span><button type="button" class="social-btn is-primary" :disabled="busy" @click="act(g, 'done')">Mark done</button></div>
-        <p v-if="g.paid" class="feed-note" data-earn="gig-paid">Paid ₦{{ g.paid.toLocaleString('en-NG') }} in real money.</p>
-        <template v-else-if="g.mine && (g.state === 'taken' || g.state === 'done')">
+        <p v-if="!playApp && g.paid" class="feed-note" data-earn="gig-paid">Paid ₦{{ g.paid.toLocaleString('en-NG') }} in real money.</p>
+        <template v-else-if="!playApp && g.mine && (g.state === 'taken' || g.state === 'done')">
           <form v-if="paying?.id === g.id" class="feed-form" @submit.prevent="payReal">
             <label>Amount in real naira<input v-model.number="paying.amount" type="number" min="500" step="100"></label>
             <label>E-mail for the receipt<input v-model="paying.email" type="email" autocomplete="email"></label>

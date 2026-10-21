@@ -4,9 +4,14 @@ import { computed, onMounted } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { offerLine } from './bonusModel.ts'
 import { bonus, loadOffer } from './bonusStore.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const { game } = useApp()
-const line = computed(() => offerLine(bonus.offer))
+const playApp = isPlayApp()
+const line = computed(() => {
+  const words = offerLine(bonus.offer)
+  return playApp ? words?.replace(' in the game.', ' of in-game naira.') ?? null : words
+})
 onMounted(() => { void loadOffer(game.fetchJson) })
 </script>
 

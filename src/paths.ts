@@ -19,7 +19,7 @@ export type GameSlug = typeof GAME_SLUGS[number]
 /** The Phone table a board game opens (a private game against the computer). Oro is the daily puzzle, not a table. */
 export const PHONE_TABLE: Readonly<Record<Exclude<GameSlug, 'oro'>, string>> = Object.freeze({ chess: 'phone-chess', weave: 'phone-weave', whot: 'phone-whot', penalties: 'phone-penalty', ayo: 'phone-ayo' });
 
-export const PANEL_WORDS = ['messages', 'friends', 'invite', 'business', 'jobs', 'help', 'sound', 'politics', 'records', 'signup', 'login', 'shops', 'services', 'feedback', 'danfo', 'detty'] as const
+export const PANEL_WORDS = ['messages', 'friends', 'invite', 'business', 'jobs', 'help', 'sound', 'politics', 'records', 'signup', 'login', 'shops', 'services', 'feedback', 'danfo', 'detty', 'near'] as const
 export type PanelWord = typeof PANEL_WORDS[number]
 
 /** What an address asks for. */
@@ -33,7 +33,7 @@ export type PathIntent =
   | { kind: 'street'; city: string; place: string | null }
 
 /** First segments that belong to something else: the API, the build, the share and invite links, the mail pages, the operator pages, the socket and the image folders. Never a place. */
-export const RESERVED_PREFIXES: readonly string[] = Object.freeze(['api', 'assets', 's', 'j', 'v', 'e', 'shop', 'agents', 'admin', 'socket', 'og', 'icons', 'c', 'ev', 'app', '.well-known', 'privacy', 'money', 'about', 'features', 'pages', 'skills']);
+export const RESERVED_PREFIXES: readonly string[] = Object.freeze(['api', 'assets', 's', 'j', 'v', 'e', 'shop', 'agents', 'admin', 'socket', 'og', 'icons', 'c', 'ev', 'app', '.well-known', 'terms', 'privacy', 'money', 'about', 'features', 'pages', 'skills']);
 
 const games = (game: GameSlug | null): PathIntent => ({ kind: 'games', game });
 /** The words that always mean what they say, whatever the registry holds. */

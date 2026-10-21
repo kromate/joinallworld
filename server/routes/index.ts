@@ -1,3 +1,5 @@
+import sharing from './sharing.ts'
+import { withSharingPolicy } from '../sharing-policy.ts'
 import retention from './retention.ts';
 /**
  * HTTP ROUTE REGISTRY — the contract for server/routes/*.js
@@ -264,7 +266,7 @@ import worldEvents from './world-events.ts';
 import worldEventsAdmin from './world-events-admin.ts';
 import { prepareRouteCityContent, warmCityContentFailure } from '../request-city-content.ts';
 
-export const ROUTE_MODULES: RouteModule[] = [core, auth, social, civic, support, moderation, world, land, growth, growthMod, campus, projects, retention, pulse, festivals, worldFeed, gist, prayers, works, stages, ping, visit, places, business, commerce, businessMod, market, marketMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust, realValue, street, livingWorld, showcase, showcaseMod, agents, agentsMod, legacy, profiles, arena, clans, story, storyTalkRoutes, spaces, spacesMod, feed, feedMod, feedAdmin, promote, promoteAdmin, earn, earnAdmin, worldEvents, worldEventsAdmin, shareLoops, neighbourhood, neighbourhoodAdmin, economy];
+export const ROUTE_MODULES: RouteModule[] = [core, auth, sharing, social, civic, support, moderation, world, land, growth, growthMod, campus, projects, retention, pulse, festivals, worldFeed, gist, prayers, works, stages, ping, visit, places, business, commerce, businessMod, market, marketMod, notice, residence, companion, admin, bonus, storageMod, politics, records, trust, realValue, street, livingWorld, showcase, showcaseMod, agents, agentsMod, legacy, profiles, arena, clans, story, storyTalkRoutes, spaces, spacesMod, feed, feedMod, feedAdmin, promote, promoteAdmin, earn, earnAdmin, worldEvents, worldEventsAdmin, shareLoops, neighbourhood, neighbourhoodAdmin, economy];
 import danfo from './danfo.ts';
 ROUTE_MODULES.push(danfo);
 import watch from './watch.ts';
@@ -330,7 +332,7 @@ function buildTable(ctx: RouteContext, modules: RouteModule[]): RouteTable {
       const parsed = KEY.exec(key);
       if (!parsed || typeof handler !== 'function') throw new Error(`Invalid route: ${key}`);
       if (exact.has(key) || patterns.some(route => route.key === key)) throw new Error(`Duplicate route: ${key}`);
-      const guarded = refusingBanned(ctx, parsed[2] ?? '', withCityContent(ctx, handler));
+      const guarded = refusingBanned(ctx, parsed[2] ?? '', withSharingPolicy(ctx, withCityContent(ctx, handler)));
       if (!key.includes('/:')) { exact.set(key, guarded); continue; }
       patterns.push({ key, method: parsed[1] ?? '', segments: (parsed[2] ?? '').split('/'), handler: guarded });
     }

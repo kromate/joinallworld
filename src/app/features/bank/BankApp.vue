@@ -24,10 +24,12 @@ import { linkWords } from '../../../ui/link.ts'
 const ReliefLink = defineAsyncComponent(() => import('../relief/ReliefLink.vue'))
 import { billsLine, loanReasons, loanRule, rentStanding } from './bankLines.ts'
 import { dayTotals, groupLedger, percentOf, weekFlow } from './ledgerModel.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 defineProps<{ params?: unknown }>()
 
 const { game, shell, command } = useApp()
+const playApp = isPlayApp()
 const state = game.state
 const view = game.view
 const economy = computed(() => view.value.economy)
@@ -79,10 +81,10 @@ async function pay(which: 'rent' | 'week' | 'all'): Promise<void> {
           <template v-else-if="bills.tail === 'no-job'"> You have no job yet. Open Jobs to start earning.</template>
         </template>
         <template v-else>No weekly bills yet.</template>
-        <small class="bank-real">Game naira is never real money and cannot be withdrawn. <a href="/money" target="_blank" rel="noopener">What is real money?</a></small>
+        <small class="bank-real">Game naira is never real money and cannot be withdrawn.<template v-if="!playApp"> <a href="/money" target="_blank" rel="noopener">What is real money?</a></template></small>
       </div>
     </section>
-    <p class="ui-note">Game money only. Real store earnings are shown in My Store.</p>
+    <p class="ui-note">Game money only.<template v-if="!playApp"> Real store earnings are shown in My Store.</template></p>
     <div v-if="offline" class="bank-why" role="status">{{ offline }}</div>
 
     <div class="bank-quick">

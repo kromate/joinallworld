@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import {fixture} from './test-fixture.ts';
 import core from './routes/core.ts';
+import sharing from './routes/sharing.ts';
 import type {CityLifeRecord, Db, RouteContext, RouteKey, RouteHandler, SessionRecord} from './types.ts';
 import type {ActionRequest, TimedId} from '../src/types/protocol.ts';
 import type {LifeState} from '../src/types/life.ts';
@@ -24,7 +25,7 @@ const extension = (ctx: RouteContext): Record<RouteKey, RouteHandler> => ({
   },
 });
 test('extension command authenticates, validates identity, and durably deduplicates paid outcomes', async t => {
-  const f=await fixture(t,{routes:[core,extension]});
+  const f=await fixture(t,{routes:[core,sharing,extension]});
   const a=await f.device('Command Ada'), b=await f.device('Command Bayo');
   const life=async (who:{cookie:string}):Promise<LifeState>=>{const state=(await reply(await f.request('/api/life?city=lagos',null,who.cookie))).state;if(!state)throw Error('no state');return state;};
   await life(a);await life(b);
@@ -58,7 +59,7 @@ test('extension counterparty/queue callback commits with charge and receipt or r
    if(rejectOnce){rejectOnce=false;throw ctx.fail(503,'synthetic_queue_failure');}
   }})};
  }});
- const f=await fixture(t,{routes:[core,module]});const a=await f.device('Atomic Ada');
+ const f=await fixture(t,{routes:[core,sharing,module]});const a=await f.device('Atomic Ada');
  await f.request('/api/life?city=lagos',null,a.cookie);
  await f.server.store.transact(db=>{lagosLife(firstSession(db)).state.location='library';});
  const body={cityId:'lagos',actionId:`${f.now()}:${randomUUID()}`,payload:{song:'Fixture'}};

@@ -12,11 +12,13 @@ import GameIcon from '../../ui/GameIcon.vue'
 import SkeletonRows from '../../ui/SkeletonRows.vue'
 import ShopFront from './ShopFront.vue'
 import { adultConsentBody, wordsFor } from './showcaseModel.ts'
+import { isPlayApp } from '../../playMode.ts'
 const LinkInterstitial = defineAsyncComponent(() => import('../trust/LinkInterstitial.vue'))
 
 const props = defineProps<{ id: string }>()
 const emit = defineEmits<{ back: [] }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 /** "Step inside": the shop in 3D. Leaving brings the visitor back to this page. */
 function stepInside(): void {
   shell.close()
@@ -35,7 +37,7 @@ const detail = ref('')
 const ids = new Map<string, string>()
 const form = ref<HTMLElement | null>(null)
 /** One short line for the bar: a prompt with its one action, or the answer. Long refusals stay readable in the list of codes, not here. */
-const message = computed(() => (needs.value === 'account' ? 'Sign in to chat or pay.' : needs.value === 'adult' ? 'Say you are 18 or older to continue.' : note.value))
+const message = computed(() => (needs.value === 'account' ? (playApp ? 'Sign in to chat.' : 'Sign in to chat or pay.') : needs.value === 'adult' ? 'Say you are 18 or older to continue.' : note.value))
 const bar = ref<HTMLElement | null>(null)
 const barHeight = ref(64)
 let watcher: ResizeObserver | null = null
@@ -53,7 +55,7 @@ onMounted(async () => {
 const codeOf = (error: unknown): string | undefined => (error instanceof Error ? (error as { code?: string }).code : undefined)
 
 async function go(kind: ShowcaseLinkKind): Promise<void> {
-  if (!shop.value || busy.value) return
+  if (!shop.value || busy.value || (playApp && kind === 'pay')) return
   busy.value = kind; note.value = ''; needs.value = ''
   const key = `go:${kind}`, clientId = ids.get(key) ?? newClientId()
   ids.set(key, clientId)
@@ -70,7 +72,7 @@ async function go(kind: ShowcaseLinkKind): Promise<void> {
   } finally { busy.value = '' }
 }
 async function declareAdult(): Promise<void> {
-  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: adultConsentBody(game.view.value.cityId) }); needs.value = ''; note.value = 'Thank you. Press Chat or Pay again.' } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
+  try { await game.fetchJson('/api/growth/consent', { method: 'POST', body: adultConsentBody(game.view.value.cityId) }); needs.value = ''; note.value = playApp ? 'Thank you. Press Chat again.' : 'Thank you. Press Chat or Pay again.' } catch (error) { note.value = error instanceof Error ? error.message : 'That did not work.' }
 }
 async function report(): Promise<void> {
   if (!reporting.value || !reason.value || busy.value) return
@@ -82,6 +84,18 @@ async function report(): Promise<void> {
     ids.delete(key); note.value = 'Thank you. We will look at it. They are not told who reported them.'; reporting.value = null; reason.value = ''; detail.value = ''
   } catch (error) { ids.delete(key); const code = codeOf(error); if (code === 'account_required') needs.value = 'account'; note.value = wordsFor(code, error instanceof Error ? error.message : 'That report was not sent.') } finally { busy.value = '' }
 }
+async function blockOwner(): Promise<void> {
+  const owner = shop.value?.badge
+  const self = game.session.value?.id
+  if (!owner || !self || owner.id === self || busy.value) return
+  if (!window.confirm(`Block ${owner.name}? This stops messages, invitations and friend requests. You can unblock them from their player card.`)) return
+  busy.value = 'block'; note.value = ''
+  try {
+    await game.fetchJson('/api/social/block', { method: 'POST', body: { id: owner.id, cityId: game.view.value.cityId } })
+    note.value = `${owner.name} is blocked. You can unblock them from their player card.`
+  } catch (error) { note.value = wordsFor(codeOf(error), error instanceof Error ? error.message : 'That player could not be blocked.') }
+  finally { busy.value = '' }
+}
 </script>
 
 <template>
@@ -91,10 +105,11 @@ async function report(): Promise<void> {
     <SkeletonRows v-else-if="!shop" :rows="3" label="Loading the shop" />
     <template v-else>
       <ShopFront :shop="shop" reportable @report="reporting = { photo: $event }" />
-      <p v-if="shop.payNotice" class="sp-warn" role="status">{{ shop.payNotice }}. Check it with the seller before you pay.</p>
-      <p class="sp-fine">Chat and payment happen outside Allworld, on the seller’s own page. Allworld does not hold your money or take part in the deal.</p>
+      <p v-if="!playApp && shop.payNotice" class="sp-warn" role="status">{{ shop.payNotice }}. Check it with the seller before you pay.</p>
+      <p class="sp-fine">{{ playApp ? 'Chat happens outside Allworld.' : 'Chat and payment happen outside Allworld, on the seller’s own page. Allworld does not hold your money or take part in the deal.' }}</p>
       <button type="button" class="ui-button is-primary is-block" data-step-inside @click="stepInside">Step inside</button>
       <button type="button" class="ui-button is-quiet is-block" @click="reporting = {}">Report this shop</button>
+      <button v-if="game.session.value?.id && shop.badge.id !== game.session.value.id" type="button" class="ui-button is-quiet is-block" data-block-shop-owner :disabled="busy !== ''" @click="blockOwner">Block shop owner</button>
       <form v-if="reporting" ref="form" class="sp-report" @submit.prevent="report">
         <fieldset>
           <legend>{{ reporting.photo ? 'Why are you reporting this photo?' : 'Why are you reporting this shop?' }}</legend>
@@ -112,7 +127,7 @@ async function report(): Promise<void> {
         </div>
         <div class="sp-go">
           <button type="button" class="ui-button is-primary" aria-label="Chat with the seller" :disabled="busy !== ''" :aria-busy="busy === 'chat'" @click="go('chat')">Chat</button>
-          <button v-if="shop.pay" type="button" class="ui-button" aria-label="Pay the seller" :disabled="busy !== ''" :aria-busy="busy === 'pay'" @click="go('pay')">Pay</button>
+          <button v-if="!playApp && shop.pay" type="button" class="ui-button" aria-label="Pay the seller" :disabled="busy !== ''" :aria-busy="busy === 'pay'" @click="go('pay')">Pay</button>
         </div>
       </div>
       <!-- The bar is fixed to the bottom while the page scrolls under it; this gap is its height, so nothing is ever covered. -->

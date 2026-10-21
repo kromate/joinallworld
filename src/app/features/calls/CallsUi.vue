@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { answerCall } from './useCall.ts'
 // The call screens, loaded lazily by CallsHost: the confirmation of the first call, the call card (ringing, incoming,
 // connecting), the pill (in the call), the summary, and the quiet line for a call on another device. It also plays the
 // call tones for each change of phase, and stops them the instant the call is answered, ended or this page goes away.
@@ -52,7 +53,7 @@ function typing(target: EventTarget | null): boolean {
 }
 function keys(event: KeyboardEvent): void {
   if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return
-  if (event.key === 'Enter' && phase.value === 'incoming' && !typing(event.target)) { event.preventDefault(); void loadedCalls()?.accept() }
+  if (event.key === 'Enter' && phase.value === 'incoming' && !typing(event.target)) { event.preventDefault(); void answerCall() }
   else if (event.key === 'Escape' && showCard.value && (event.target === document.body || !typing(event.target) || phase.value === 'incoming')) { event.preventDefault(); loadedCalls()?.hangup() }
 }
 const leave = (): void => closeCallAudio()

@@ -31,6 +31,11 @@ const MANIFEST = `{
     { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
+  "shortcuts": [
+    { "name": "Map", "url": "/map", "icons": [{ "src": "/icons/shortcut-map-96.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "Messages", "url": "/messages", "icons": [{ "src": "/icons/shortcut-messages-96.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "Near you", "url": "/near", "icons": [{ "src": "/icons/shortcut-near-96.png", "sizes": "96x96", "type": "image/png" }] }
+  ],
   "screenshots": [
     { "src": "/store/1-street-entry.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Walk your own street: the entry card over the world" },
     { "src": "/store/2-near-you.png", "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "Near you: posts from people confirmed in your area" },

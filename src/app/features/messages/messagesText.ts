@@ -8,6 +8,8 @@ import { money } from '../../ui/format.ts'
 
 const DAY = 86400000
 export const messageLength = (text: string): number => Array.from(text.trim()).length
+/** Context for a player report: identify the sender and retain only the server-allowed number of characters. */
+export const messageReportText = (sender: string, body: string, limit: number): string => Array.from(`Message from ${sender}: ${body.trim()}`).slice(0, Math.max(0, limit)).join('')
 const isOutbox = (item: ThreadItem): item is OutboxEntry => 'status' in item
 const itemTime = (item: ThreadItem): number => item.at
 const itemSender = (item: ThreadItem): string => (isOutbox(item) ? 'me' : item.sys ? 'sys' : item.from?.id ?? 'sys')

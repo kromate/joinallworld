@@ -1,25 +1,54 @@
 /*
- * OWNER: growth (push), scenes (place models)
- * Allworld's service worker. It does three things: show a notification when a push arrives, open the
- * game when that notification is tapped, and keep the unique place models (see PLACE MODELS below).
- * It caches nothing else and intercepts no other request: the one fetch handler answers only
- * /assets/places/<hash>.glb and the two shared atlas files next to them, so it cannot serve a stale
- * game or change how anything else loads.
+ * OWNER: growth (push, offline page), scenes (place models)
+ * Allworld's service worker. It does four things: show a notification when a push arrives, open the game
+ * when that notification is tapped, show a small "you are offline" page when a page load fails for want
+ * of a network, and keep the unique place models (see PLACE MODELS below). The offline page is written
+ * below, not stored; the only Cache Storage it uses is the place cache. Every other request (scripts,
+ * pictures, the game's data, the socket) never passes through here, and a page load that works is handed
+ * back untouched, so the worker cannot serve a stale game or change how anything else loads.
  *
- * SCOPE AND UPDATES. Registered at "/" by the Stay in touch app when a player switches notifications
- * on, and by the game itself after the first place model has been shown (src/scene/places/persist.ts),
- * so a return visit can find the models on the device. The browser re-checks this file on its own (at
- * most every 24 hours, and on navigation); a changed file takes over at once (skipWaiting +
- * clients.claim), which is safe because the only state it holds is the place cache, whose entries are
- * content-addressed and never change. Switching notifications off unsubscribes; the worker then simply
- * never receives anything.
+ * SCOPE AND UPDATES. Registered at "/" in three cases: when a player switches notifications on (the Stay in
+ * touch app), inside the installed app (the Play Store app or Add to Home Screen; see
+ * src/app/features/start/offlineWorker.ts), and by the game itself after the first place model has been
+ * shown (src/scene/places/persist.ts), so a return visit can find the models on the device. The browser
+ * re-checks this file on its own (at most every 24 hours, and on navigation); a changed file takes over at
+ * once (skipWaiting + clients.claim), which is safe because the only state it holds is the place cache,
+ * whose entries are content-addressed and never change.
  *
  * A push payload is JSON { title, body, url, tag } made by server/growth/outreach.ts. The words
  * are the server's own; nothing in a payload is run or inserted as markup.
  */
 self.addEventListener('install', () => { self.skipWaiting(); });
-self.addEventListener('activate', (event) => { event.waitUntil(Promise.all([self.clients.claim(), dropOldPlaceCaches()])); });
+self.addEventListener('activate', (event) => {
+  // Navigation preload starts the page's request while the worker wakes, so the fetch handler below costs no time.
+  const preload = self.registration && self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve();
+  event.waitUntil(Promise.all([self.clients.claim(), preload, dropOldPlaceCaches()]));
+});
 
+/*
+ * OFFLINE. Only page loads (mode "navigate", GET) are looked at. The network answers as usual; only when
+ * it cannot be reached at all is the page below shown in its place. An error page from the server (a 404,
+ * a 500) is a real answer and passes through. The offline page answers 200 (Chrome's app checks have counted
+ * an error status for a failed load as a crash of the installed app). The page has no script: it reloads itself every 10 seconds
+ * (the meta refresh repeats the address that failed) and has a Try again link, so the game comes back by
+ * itself when the connection does. Its own policy allows nothing but its inline style.
+ */
+const OFFLINE_PAGE = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+  + '<meta http-equiv="refresh" content="10"><meta name="theme-color" content="#183b2a"><title>Allworld: offline</title><style>'
+  + 'html,body{height:100%;margin:0}body{display:flex;align-items:center;justify-content:center;background:#183b2a;color:#f4efe3;'
+  + 'font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center}main{max-width:320px;padding:24px}'
+  + 'svg{width:72px;height:72px;margin-bottom:16px}h1{font-size:22px;margin:0 0 8px}p{margin:0 0 24px;opacity:.85}'
+  + 'a{display:inline-block;padding:12px 28px;border-radius:999px;background:#f4efe3;color:#183b2a;font-weight:600;text-decoration:none}'
+  + '</style></head><body><main><svg viewBox="0 0 64 64" fill="none" stroke="#f4efe3" stroke-width="3" aria-hidden="true">'
+  + '<circle cx="32" cy="32" r="28"/><ellipse cx="32" cy="32" rx="12" ry="28"/><path d="M4 32h56M9 18h46M9 46h46"/></svg>'
+  + '<h1>You are offline</h1><p>Allworld needs the internet. Check your connection; the world comes back by itself when you are online again.</p>'
+  + '<a href="">Try again</a></main></body></html>';
+function offlinePage() {
+  return new Response(OFFLINE_PAGE, { status: 200, headers: {
+    'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store',
+    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
+  } });
+}
 /*
  * PLACE MODELS. Every venue has its own model at /assets/places/<sha256>.glb and the models share one atlas at
  * /assets/places/trim-<sha256>.webp (2048) and trim-1024-<sha256>.webp. Each address names the SHA-256 of the file's own bytes, so
@@ -50,10 +79,20 @@ function placeResponse(event, request, key) {
 }
 self.addEventListener('fetch', (event) => {
   const request = event.request;
-  if (request.method !== 'GET' || request.headers.has('range')) return;
+  if (request.method !== 'GET') return;
+  if (request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const preloaded = await event.preloadResponse;
+        if (preloaded) return preloaded;
+        return await fetch(request);
+      } catch (error) { return offlinePage(); }
+    })());
+    return;
+  }
   let url;
   try { url = new URL(request.url); } catch (error) { return; }
-  if (url.origin !== self.location.origin || !PLACE_FILE.test(url.pathname)) return;
+  if (url.origin !== self.location.origin || !PLACE_FILE.test(url.pathname) || request.headers.has('range')) return;
   event.respondWith(placeResponse(event, request, url.origin + url.pathname));
 });
 

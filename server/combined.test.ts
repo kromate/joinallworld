@@ -53,7 +53,9 @@ async function world(t: TestContext, options: FixtureOptions = {}) {
     const response = await origin('/api/account/sign-in', { idToken, csrf }, cookie);
     assert.equal(response.status, 200, 'signed in');
     await response.text();
-    return { cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '' };
+    const linkedCookie = (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '';
+    await f.acceptSharingTerms(linkedCookie);
+    return { cookie: linkedCookie };
   }
   /** The stored record that holds a device's character: its own, or its account's. */
   const publicId = async (who: Who): Promise<string> => String(object((await get('/api/session', who)).session).id);

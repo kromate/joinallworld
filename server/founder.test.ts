@@ -49,7 +49,9 @@ async function world(t: TestContext, options: FixtureOptions = {}) {
     const response = await page('/api/account/sign-in', { idToken, csrf }, cookie);
     assert.equal(response.status, 200, `sign-in of ${subject}`);
     await response.text();
-    return must(response.headers.get('set-cookie'), 'a cookie').split(';')[0] ?? '';
+    const linkedCookie = must(response.headers.get('set-cookie'), 'a cookie').split(';')[0] ?? '';
+    await f.acceptSharingTerms(linkedCookie);
+    return linkedCookie;
   }
   /** With a fresh token of the founder's account: bring one of its set-aside characters into play. */
   async function playAs(cookie: string, use: string): Promise<void> {
@@ -109,6 +111,7 @@ test('a new guest and a new account holder each find the founder first, tagged, 
   assert.deepEqual([(await w.me(ngozi)).status, (await w.me(ngozi)).error], [403, 'onboarding_required']);
   assert.equal((await w.social()).players[ngozi.id], undefined);
   assert.equal((await f.action(ngozi.cookie, { type: 'onboarding.quick-start', payload: { look: LOOK } })).code, 'playing');
+  await f.acceptSharingTerms(ngozi.cookie);
 
   // Play confirmed: the first overview already has the founder, tagged, and the note.
   const first = await w.me(ngozi);

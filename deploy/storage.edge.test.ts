@@ -7,6 +7,7 @@ import { mkdtemp, rm, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
+import { SHARING_TERMS_VERSION } from '../src/types/sharing.ts'
 
 interface MiniflareInstance { ready: Promise<URL>; dispose(): Promise<void>; dispatchFetch(url: string, init?: RequestInit & { headers?: Record<string, string> }): Promise<Response> }
 interface MiniflareTooling { Miniflare: new (options: Record<string, unknown>) => MiniflareInstance; convertV4MiniflareOptions(options: Record<string, unknown>): Record<string, unknown> }
@@ -44,6 +45,7 @@ async function host(t: TestContext) {
     const response = await post('/api/session', { name });
     assert.equal(response.status, 200);
     const who: Device = { ...(await response.json() as { session: { id: string; name: string } }).session, cookie: (response.headers.get('set-cookie') ?? '').split(';')[0] ?? '' };
+    assert.equal((await post('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, who)).status, 200);
     await (await get('/api/life?city=lagos', who)).arrayBuffer(); await (await get('/api/social/me', who)).arrayBuffer();
     return who;
   }

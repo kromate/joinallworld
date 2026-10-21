@@ -24,6 +24,7 @@ test('core routes work under a replacement socket module that provides nothing',
   const acted = await f.action(cookie, { type: 'travel', id: 'library', mode: 'trek' });
   assert.deepEqual([acted.ok, acted.code], [true, 'started']);
   assert.equal((await json(await f.request('/api/session', { name: 'Solo Renamed' }, cookie))).session.name, 'Solo Renamed');
+  await f.acceptSharingTerms(cookie);
   // No room module, so nobody is in a room: voice configuration is refused, not crashed on.
   const voice = await json(await f.request('/api/voice-config', null, cookie));
   assert.deepEqual([voice.status, voice.error], [403, 'room_membership_required']);

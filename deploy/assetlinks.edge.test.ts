@@ -17,7 +17,7 @@ const { build } = require('esbuild') as { build(options: BundleOptions): Promise
 
 const PRINT = Array.from({ length: 32 }, (_, i) => (i * 7 % 256).toString(16).padStart(2, '0').toUpperCase()).join(':');
 
-async function worker(t: TestContext, bindings: Record<string, string>) {
+async function worker(t: TestContext, bindings: Record<string, string>, builtAssets = false) {
   const folder = await mkdtemp(join(tmpdir(), 'joinallworld-assetlinks-'));
   const dist = join(folder, 'dist');
   await mkdir(join(dist, 'assets'), { recursive: true });
@@ -28,7 +28,7 @@ async function worker(t: TestContext, bindings: Record<string, string>) {
   const options = {
     name: 'joinallworld-assetlinks', script: await readFile(bundle, 'utf8'), modules: true, compatibilityDate: '2026-10-01',
     durableObjects: { JOINALLWORLD: { className: 'JoinAllworldState', useSQLite: true } }, bindings: { BUILD_ID: 'assetlinks-test', ...bindings },
-    assets: { directory: dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
+    assets: { directory: builtAssets ? resolve('dist') : dist, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true }, assetConfig: { not_found_handling: 'single-page-application' } },
   };
   const mf = new Miniflare({ ...convertV4MiniflareOptions(options), resourcePersistencePath: join(folder, 'storage'), handleStructuredLogs: () => {} });
   t.after(async () => { await mf.dispose(); await rm(folder, { recursive: true, force: true }); });
@@ -56,3 +56,21 @@ test('on the Worker a set fingerprint is published as Digital Asset Links, on th
   const wrong = await worker(t, { PLAY_SIGNING_SHA256: 'REPLACE-WITH-PLAY-SHA256' });
   assert.equal((await wrong(game, '/.well-known/assetlinks.json')).status, 404);
 });
+
+
+test('Worker public rules, deletion instructions and app payment refusal use the shared server policy', async t => {
+  const get = await worker(t, {}, true)
+  const game = 'https://joinallworld.test'
+  for (const path of ['/terms', '/privacy']) {
+    const page = await get(game, path)
+    assert.equal(page.status, 200, page.text)
+    assert.match(page.text, /width=device-width/)
+    assert.match(page.text, /lawyer/)
+    if (path === '/privacy') assert.match(page.text, /id="delete"/)
+  }
+  for (const path of ['/api/earn/pay', '/api/promote/order', '/api/civic/ads/rent']) {
+    const refused = await get(game, path, { method: 'POST', headers: { 'X-Allworld-App': 'play', 'Content-Type': 'application/json' }, body: '{}' })
+    assert.equal(refused.status, 403, path + ": " + refused.text)
+    assert.equal(JSON.parse(refused.text).error, 'play_payment_unavailable')
+  }
+})

@@ -3,6 +3,7 @@
 // (scopeSwitched, useSheetScope) is in ./phoneModel.ts, which the first download carries.
 import type { LifeState } from '../../../types/life.ts'
 import type { Panel, PanelView, PhoneGroup, PhoneNotification } from '../../types/panel.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 /** The four apps in the dock, in order. */
 export const DOCK: readonly string[] = ['messages', 'jobs', 'bank', 'ride']
@@ -21,8 +22,10 @@ const BUILT_INS: readonly PhoneApp[] = [
   { id: 'help', title: 'Help', group: 'life', builtIn: 'help' },
 ]
 
+/** Inside the Play app the phone does not list the apps that pay for or sell digital goods (Earn, Billboards; docs/STORE.md). */
+export const PLAY_HIDDEN_APPS: ReadonlySet<string> = new Set(['earn', 'ads'])
 /** Every app the phone lists: Phone apps, and Sim tabs that are also apps (`phone: true`). */
-export const listedApps = (panels: readonly Panel[]): PhoneApp[] => panels.filter((panel) => (panel.placement === 'phone' || panel.phone === true) && !panel.hidden?.())
+export const listedApps = (panels: readonly Panel[], playApp = isPlayApp()): PhoneApp[] => panels.filter((panel) => (panel.placement === 'phone' || panel.phone === true) && !panel.hidden?.() && !(playApp && PLAY_HIDDEN_APPS.has(panel.id)))
   .map((panel) => ({ id: panel.id, title: panel.title, short: panel.short, group: panel.group, tint: panel.tint, panel }))
 
 export interface PhonePage { label: string; groups: { id: PhoneGroup; label: string; apps: PhoneApp[] }[] }

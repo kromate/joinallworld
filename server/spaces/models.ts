@@ -1,3 +1,4 @@
+import { requireSharingTerms } from '../sharing-policy.ts'
 /**
  * OWNER: spaces
  * PLAYERS' 3D MODELS (docs/SPACES-3D.md, phase 1): a player uploads a .glb, the server checks it byte by byte (src/spaces/glb.ts),
@@ -138,6 +139,7 @@ function build(ctx: RouteContext) {
         const link = /^[0-9a-z]{16,80}$/i.test(token) ? spacesOf(db).links?.[token] : undefined;
         if (!link || link.exp <= ctx.now()) return null;
         const session = ctx.core.sessionByPublicId(db, link.by);
+        if (session) requireSharingTerms(ctx, db, session);
         return session ? { link, session } : null;
       });
       if (!found) throw ctx.fail(404, 'unknown_link');

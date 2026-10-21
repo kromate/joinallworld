@@ -4,6 +4,7 @@ await preloadCityContent('lagos');
 // own naira through the ordinary furniture actions, is told the shortfall when it cannot pay, and cannot import into a room it is not in.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { SHARING_TERMS_VERSION } from '../../src/types/sharing.ts';
 import { world } from './test-world.ts';
 import type { World } from './test-world.ts';
 import { FURNITURE } from '../../src/game/content/furniture.ts';
@@ -62,6 +63,10 @@ test('import_game: a valid lite game is stored and playable by its id; a bad one
   const { LITE_EXAMPLES } = await import('../../src/arena/lite/examples.ts');
   const { liteDef } = await import('../../src/arena/lite/rules.ts');
   const def = { ...LITE_EXAMPLES[0]!.def, title: 'Robo Dodge' };
+  const unaccepted = await w.tool(bot.key, 'import_game', { def });
+  assert.equal(unaccepted.data.code, 'sharing_terms_required');
+  const agreed = await w.tool(bot.key, 'call_api', { method: 'POST', path: '/api/sharing/terms', body: { version: SHARING_TERMS_VERSION, over13: true } });
+  assert.equal(agreed.ok, true, JSON.stringify(agreed.data));
   const made = await w.tool(bot.key, 'import_game', { def });
   assert.equal(made.ok, true, JSON.stringify(made.data));
   const id = (made.data as { game: { id: string } }).game.id;

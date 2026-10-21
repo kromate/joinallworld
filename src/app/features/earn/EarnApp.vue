@@ -9,17 +9,19 @@ import { onMounted, ref, watch } from 'vue'
 import { useApp } from '../../state/app.ts'
 import { naira } from '../../../earn/model.ts'
 import type { EarnMe, PoolMonthStatus } from '../../../types/earn.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ params?: { tab?: string } | null }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const tab = ref<'money' | 'pool'>(props.params?.tab === 'pool' ? 'pool' : 'money')
 const me = ref<EarnMe | null>(null), busy = ref(false), email = ref('')
 const toast = (t: string, tone?: 'error'): void => game.toast(t, tone === 'error' ? 'error' : 'info')
 type R<T> = ({ ok: true } & T) | { ok: false; reason: string }
 const call = async <T,>(path: string, body?: object): Promise<R<T>> => { try { return await game.fetchJson(path, body ? { method: 'POST', body } : undefined) } catch (e) { return { ok: false, reason: (e as { reason?: string }).reason ?? 'That did not go through.' } } }
 async function load(): Promise<void> { const r = await call<EarnMe>('/api/earn/me'); if (r.ok) me.value = r }
-onMounted(() => { void load().then(() => { if (me.value && me.value.status !== 'none' && me.value.status !== 'ready') void refresh(true) }) })
-watch(() => game.view.value.connected, (on, was) => { if (on && !was) void load() })
+onMounted(() => { if (!playApp) void load().then(() => { if (me.value && me.value.status !== 'none' && me.value.status !== 'ready') void refresh(true) }) })
+watch(() => game.view.value.connected, (on, was) => { if (!playApp && on && !was) void load() })
 
 async function openAccount(): Promise<void> {
   busy.value = true
@@ -40,7 +42,7 @@ const monthName = (m: string): string => new Date(`${m}-15T00:00:00Z`).toLocaleD
 </script>
 
 <template>
-  <section class="feed" aria-label="Earn" data-earn="app">
+  <section v-if="!playApp" class="feed" aria-label="Earn" data-earn="app">
     <nav class="feed-tabs"><button type="button" :class="{ 'is-on': tab === 'money' }" @click="tab = 'money'">Get paid</button><button type="button" :class="{ 'is-on': tab === 'pool' }" @click="tab = 'pool'">Creator pool</button></nav>
     <p v-if="me && !me.open" class="feed-note">Earning real money opens soon.</p>
     <p v-else-if="me && !me.account" class="feed-note">Sign in first (Settings → Account), so your earnings stay yours on every device.</p>
@@ -80,4 +82,5 @@ const monthName = (m: string): string => new Date(`${m}-15T00:00:00Z`).toLocaleD
       <p class="feed-note">Points from many different people count; bought or swapped reactions do not, and an account that games them is left out.</p>
     </template>
   </section>
+  <p v-else class="feed-note" data-earn="play-hidden">This feature is not available in this app.</p>
 </template>

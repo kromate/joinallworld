@@ -38,7 +38,9 @@ async function setup(t: TestContext, { bachs = false }: { bachs?: boolean } = {}
     const { csrf } = await call('/api/account', undefined, d.cookie);
     const res = await fetch(f.base + '/api/account/sign-in', { method: 'POST', headers: { Origin: f.base, 'Content-Type': 'application/json', Cookie: d.cookie }, body: JSON.stringify({ idToken: await signToken(key, claimsFor(PROJECT, f.now(), { subject: `Uid${address.replace(/\W/g, '')}`, email: address, n: ++minted })), csrf }) });
     assert.equal(res.status, 200);
-    const out = { ...d, cookie: (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie };
+    const cookie = (res.headers.get('set-cookie') ?? '').split(';')[0] ?? d.cookie;
+    await f.acceptSharingTerms(cookie);
+    const out = { ...d, cookie };
     await call('/api/growth/hello', { cityId: 'lagos' }, out.cookie);
     await call('/api/growth/consent', { cityId: 'lagos', age: adult ? 'adult' : 'minor' }, out.cookie);
     await call('/api/social/me', undefined, out.cookie);

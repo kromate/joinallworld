@@ -19,9 +19,15 @@ import { judge } from '../feed/review.ts'
 import { registerAdminSetting } from '../admin/settings.ts'
 import { characterCity } from '../character.ts'
 import { categoryLabel, TIERS } from '../../src/promote/model.ts'
+import type { ListingView } from '../../src/types/promote.ts'
+import type { StreetView } from '../../src/types/neighbourhood.ts'
 import type { Db, RouteContext, RouteHandler, RouteKey, RouteRequest, SessionRecord } from '../types.ts'
 
 const NO_STORE = { 'Cache-Control': 'no-store' }
+const playRequest = (request: RouteRequest): boolean => request.header?.('X-Allworld-App') === 'play'
+const neutralListings = (listings: readonly ListingView[]): ListingView[] => listings.map((listing) => ({ ...listing, boosted: false }))
+  .sort((a, b) => a.name.localeCompare(b.name) || a.id.localeCompare(b.id))
+const neutralStreet = (street: StreetView): StreetView => ({ ...street, groups: street.groups.map((group) => ({ ...group, listings: neutralListings(group.listings) })) })
 export default function promoteRoutes(ctx: RouteContext): Record<RouteKey, RouteHandler> {
   const promote = promoteService(ctx)
   registerAdminSetting(ctx, { key: 'promoteBoostPrice', label: 'Business: Boost, naira a week', help: 'A week of a Sponsored card in the city feed and the top of its directory.', kind: 'number', min: 100, max: 1_000_000, default: () => TIERS.boost.price })
@@ -63,7 +69,8 @@ export default function promoteRoutes(ctx: RouteContext): Record<RouteKey, Route
     'GET /api/promote/directory': async (request) => {
       if (!ctx.allow(`promote:dir:${addressBucket(request.ip)}`, 120, 60000)) throw ctx.fail(429, 'rate_limited')
       const asked = request.query.get('city'), category = request.query.get('category')
-      return { body: await ctx.store.read((db) => { const s = request.session(db); const city = asked && ctx.cityIds.some((c) => c === asked) ? asked : (s && characterCity(s)) ?? ctx.cityIds[0] ?? 'lagos'; return promote.directory(db, s?.publicId ?? null, city, category || null) }), headers: NO_STORE }
+      const answer = await ctx.store.read((db) => { const s = request.session(db); const city = asked && ctx.cityIds.some((c) => c === asked) ? asked : (s && characterCity(s)) ?? ctx.cityIds[0] ?? 'lagos'; return promote.directory(db, s?.publicId ?? null, city, category || null) })
+      return { body: playRequest(request) ? { ...answer, listings: neutralListings(answer.listings) } : answer, headers: NO_STORE }
     },
     'POST /api/promote/listings': async (request) => {
       const b = await body(request)
@@ -109,7 +116,8 @@ export default function promoteRoutes(ctx: RouteContext): Record<RouteKey, Route
     'GET /api/promote/street': async (request) => {
       if (!ctx.allow(`promote:street:${addressBucket(request.ip)}`, 120, 60000)) throw ctx.fail(429, 'rate_limited')
       const asked = request.query.get('city')
-      return { body: await ctx.store.read((db) => { const s = request.session(db); const city = askedCity(asked, s); return { ok: true as const, ...promote.street(db, s?.publicId ?? null, city) } }), headers: NO_STORE }
+      const answer = await ctx.store.read((db) => { const s = request.session(db); const city = askedCity(asked, s); return { ok: true as const, ...promote.street(db, s?.publicId ?? null, city) } })
+      return { body: playRequest(request) ? { ok: true as const, ...neutralStreet(answer) } : answer, headers: NO_STORE }
     },
     'POST /api/promote/contact': async (request) => {
       if (!ctx.allow(`promote:contact:${addressBucket(request.ip)}`, 60, 60000)) throw ctx.fail(429, 'rate_limited')

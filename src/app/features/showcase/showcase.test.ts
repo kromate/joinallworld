@@ -106,6 +106,14 @@ test('what a player reads names no provider and no company, shows no link, and l
   assert.match(source('app', 'features', 'showcase', 'ShopPage.vue'), /LinkInterstitial/)
 })
 
+test('a shop visitor can block its identified owner after a clear confirmation using the existing social block route', () => {
+  const page = source('app', 'features', 'showcase', 'ShopPage.vue')
+  assert.match(page, /data-block-shop-owner[\s\S]*?Block shop owner/)
+  assert.match(page, /window\.confirm\(`Block \$\{owner\.name\}\? This stops messages, invitations and friend requests\./)
+  assert.match(page, /game\.fetchJson\('\/api\/social\/block', \{ method: 'POST', body: \{ id: owner\.id, cityId: game\.view\.value\.cityId \} \}\)/)
+  assert.match(page, /owner\.id === self/)
+})
+
 // ---- the second pass: consent, the clock, conflicts, field problems, photos ------------------------------------------------
 test('the "I am 18 or older" answer always carries the city the route needs, on both screens that ask it', () => {
   assert.deepEqual(adultConsentBody('lagos'), { cityId: 'lagos', age: 'adult' })

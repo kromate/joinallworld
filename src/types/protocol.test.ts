@@ -11,6 +11,7 @@ import assert from 'node:assert/strict'
 import { readFile, readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fixture } from '../../server/test-fixture.ts'
+import { SHARING_TERMS_VERSION } from './sharing.ts'
 import { buildRoutes } from '../../server/routes/index.ts'
 import { buildSocketHandlers } from '../../server/ws/index.ts'
 import { cityCatalogue, registeredCityIds } from '../game/cities/registry.ts'
@@ -169,6 +170,8 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const session = sameKeys(await body(created), SESSION_RESPONSE_KEYS, 'POST /api/session')
   const ada = sameKeys(session.session, OWN_SESSION_KEYS, 'session')
   sameKeys(await get('/api/session', cookie), SESSION_RESPONSE_KEYS, 'GET /api/session')
+  // Sharing (chat, voice) needs the rules accepted first; the test player accepts them like a player would.
+  assert.equal((await post('/api/sharing/terms', { version: SHARING_TERMS_VERSION, over13: true }, cookie)).accepted, true)
   sameKeys(await get('/api/session'), ERROR_BODY_KEYS, 'an error body')
   assert.deepEqual(await get('/api/life?city=atlantis', cookie), { error: 'invalid_city' })
   const life = sameKeys(await get('/api/life?city=lagos', cookie), LIFE_RESPONSE_KEYS, 'GET /api/life')
@@ -344,7 +347,7 @@ test('core, social, civic and support answers carry exactly the typed keys', asy
   const database = record(JSON.parse(await readFile(join(f.dir, 'devices.json'), 'utf8')) as unknown, 'devices.json')
   for (const key of Object.keys(database)) assert.ok((DATABASE_KEYS as readonly string[]).includes(key), `devices.json has an untyped top-level key "${key}"`)
   for (const name of COLLECTION_NAMES) assert.ok(Object.hasOwn(database, name), `the ${name} collection was created`)
-  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'character', 'cities', 'expiresAt', 'name', 'once', 'passport', 'publicId', 'rev', 'secret'] satisfies (keyof SessionRecord)[], 'stored session')
+  const stored = sameKeys(record(database.sessions, 'sessions')[cookie.slice(4)], ['actions', 'character', 'cities', 'expiresAt', 'name', 'once', 'passport', 'publicId', 'rev', 'secret', 'sharingTerms'] satisfies (keyof SessionRecord)[], 'stored session')
   const growth = record(database.growth, 'growth')
   for (const key of Object.keys(growth)) assert.ok((['comeback', 'comebackStats', 'contacts', 'metrics', 'outreach', 'players', 'push', 'salt', 'shares', 'sweptAt', 'tables'] satisfies (keyof GrowthCollection)[] as string[]).includes(key), `the growth collection has an untyped key "${key}"`)
   sameKeys(record(growth.players, 'players')[efe.id], ['consent', 'counted', 'devices', 'invited', 'owed', 'ref', 'seen', 'shares', 'table', 'wins'] satisfies (keyof GrowthPlayerRecord)[], 'growth player')

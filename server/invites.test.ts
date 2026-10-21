@@ -42,6 +42,7 @@ async function setup(t: Parameters<typeof fixture>[0]) {
     const who: Who = { name, cookie: (opened.headers.get('set-cookie') ?? '').split(';')[0] ?? '', id: isRecord(session) && typeof session.id === 'string' ? session.id : '' };
     await call(`/api/life?city=${CITY}`, null, who);
     assert.equal((await act(who, 'onboarding.quick-start', { look: presetLook('street') })).code, 'playing');
+    await f.acceptSharingTerms(who.cookie);
     const steps: [string, Frame, string][] = [['onboarding.traits', { traits: ['smooth-talker', 'clean-pikin'] }, 'traits_saved'], ['onboarding.dream', { dream: 'everybodys-padi' }, 'dream_saved'], ['onboarding.lottery', {}, 'rolled'], ['onboarding.home', { lga, via: 'manual' }, 'life_started']];
     if (lga) for (const [type, payload, code] of steps) assert.equal((await act(who, type, payload)).code, code);
     assert.equal((await call('/api/social/me', null, who)).me?.name, name);

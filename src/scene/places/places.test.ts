@@ -197,7 +197,7 @@ test('the lazy manifest loader: a city with models, a city without, and a failur
   const manifest = await loadPlaceManifest('abuja')
   assert.equal(manifest?.city, 'abuja')
   assert.deepEqual(manifest, parsePlaceManifest(committed('abuja'), 'abuja'), 'the generated module is the committed JSON')
-  assert.equal(await loadPlaceManifest('accra'), null, 'a city without place models')
+  assert.equal(await loadPlaceManifest('no-such-city'), null, 'a city without place models')
   assert.equal(await loadPlaceManifest('abuja'), manifest, 'read once')
   forgetPlaceManifests()
   let calls = 0

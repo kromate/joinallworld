@@ -104,6 +104,7 @@ test('a shop from opening to winding up, on the Node host', { timeout: 60000 }, 
   assert.equal(signedIn.status, 200);
   const founderCookie = signedIn.headers.get('set-cookie')?.split(';')[0];
   assert.ok(founderCookie);
+  await f.acceptSharingTerms(founderCookie);
   assert.equal(object(await (await request('/api/admin/me', undefined, founderCookie)).json()).level, 'root');
   const founderId = object(object(await (await request('/api/session', undefined, founderCookie)).json()).session).id;
   assert.ok(typeof founderId === 'string');
@@ -117,6 +118,7 @@ test('a shop from opening to winding up, on the Node host', { timeout: 60000 }, 
     const result = await businessJourney({
       now: f.now,
       request,
+      acceptSharingTerms: (cookie) => f.acceptSharingTerms(cookie),
       funding,
       elapse: async (_device, _city, ms) => { f.advance(ms); },
       age: async (ms) => { f.advance(ms); },

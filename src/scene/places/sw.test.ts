@@ -99,5 +99,5 @@ test('an update drops older place caches and keeps the current one; push and cli
   await finished
   assert.deepEqual([...w.stores.keys()].sort(), ['allworld-places-v1', 'someone-elses'])
   for (const type of ['install', 'activate', 'push', 'notificationclick', 'fetch']) assert.ok(w.listeners.has(type), type)
-  assert.match(source, /It caches nothing else and intercepts no other request/)
+  assert.match(source, /the only Cache Storage it uses is the place cache/)
 })

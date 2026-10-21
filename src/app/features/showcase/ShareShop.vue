@@ -8,9 +8,11 @@ import type { ShowcaseStatus } from '../../../types/showcase.ts'
 import { shareMessage, shopPath } from '../../../types/showcase-link.ts'
 import { copyText, systemShare } from '../../../ui/share.ts'
 import { newClientId } from '../social/useSocial.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ shop: { name: string; status: ShowcaseStatus; pub?: string | undefined }; photos: number; blocked: string | null }>()
 const { game } = useApp()
+const playApp = isPlayApp()
 const path = ref(props.shop.pub ? shopPath(props.shop.name, props.shop.pub) : '')
 const note = ref('')
 const busy = ref(false)
@@ -63,7 +65,7 @@ async function copy(what: 'link' | 'message'): Promise<void> {
   <section class="ss" aria-label="Share my shop" data-share>
     <template v-if="shop.status === 'live'">
       <h3 class="ss-title">Share my shop</h3>
-      <p class="ss-lead">Customers open your link with no sign-up, see your items and prices, and message you. Anyone who has the link can see your contact and payment links.</p>
+      <p class="ss-lead">Customers open your link with no sign-up, see your items and prices, and message you. Anyone who has the link can see your contact<template v-if="!playApp"> and payment links</template>.</p>
       <p v-if="url" class="ss-url" data-share-url>{{ url }}</p>
       <p v-if="message" class="ss-msg" data-share-message>{{ message }}</p>
       <div class="ss-go">

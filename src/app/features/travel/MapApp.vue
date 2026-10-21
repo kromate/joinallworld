@@ -34,9 +34,11 @@ import { DATA_LAYERS, asMapParams, layoutKey, LAYERS, tripInfo } from './travelM
 import type { MapUiDetail } from './travelModel.ts'
 import { mapUi } from './travelState.ts'
 import { isListOpen, layers, seen, tell, trackWide } from './travelMapState.ts'
+import { isPlayApp } from '../../playMode.ts'
 
 const props = defineProps<{ params?: unknown }>()
 const { game, shell } = useApp()
+const playApp = isPlayApp()
 const civic = useCivic()
 const view = game.view
 
@@ -74,8 +76,8 @@ function openBoard(event: Event): void {
   void game.fetchJson('/api/promote/contact', { method: 'POST', body: { listing, via: 'board' } }).catch(() => undefined)
   shell.open('promote', { listing })
 }
-onMounted(() => { window.addEventListener('jaw:map-business', openBoard) })
-onBeforeUnmount(() => { window.removeEventListener('jaw:map-business', openBoard) })
+onMounted(() => { if (!playApp) window.addEventListener('jaw:map-business', openBoard) })
+onBeforeUnmount(() => { if (!playApp) window.removeEventListener('jaw:map-business', openBoard) })
 const adsEntry = computed(() => civic.entry<AdsResponse>(adsKey(game.cityId.value)))
 const govEntry = computed(() => civic.entry<GovResponse>(govKey(game.cityId.value)))
 /** Changes when the map should be told again: a layer, a place, the layout, a layer's data arriving, the connection. */
@@ -87,12 +89,13 @@ const stamp = computed(() => [
 function syncMap(): void {
   // Layers: load what is switched on (cached; never from a timer) and hand the map what there is.
   const cityId = game.cityId.value
-  const detail: MapUiDetail = { layers: { ...layers }, layer: mapUi.layer }
-  for (const layer of DATA_LAYERS.filter((option) => layers[option.id])) {
+  const shownLayers = { ...layers, ...(playApp ? { billboards: false, sea: false } : {}) }
+  const detail: MapUiDetail = { layers: shownLayers, layer: mapUi.layer }
+  for (const layer of DATA_LAYERS.filter((option) => shownLayers[option.id])) {
     if (layer.key === 'gov') { void civic.load<GovResponse>(govKey(cityId), govPath(cityId), { maxAge: 30000 }); detail.gov = govEntry.value.data }
     else { void civic.load<AdsResponse>(adsKey(cityId), adsPath(cityId), { maxAge: 30000 }); detail.ads = adsEntry.value.data }
   }
-  if (layers.billboards && detail.ads) { loadBoards(); if (boards.city === cityId) detail.ads = fillBoards(detail.ads as AdsResponse, boards.list, Date.now()) }
+  if (!playApp && shownLayers.billboards && detail.ads) { loadBoards(); if (boards.city === cityId) detail.ads = fillBoards(detail.ads as AdsResponse, boards.list, Date.now()) }
   // Opened for a place (the Home tab, a goal chip, "Go to work", a pin): highlight it on the city map too.
   const wanted = asMapParams(props.params)?.destination
   if (wanted && wanted === mapUi.destination) detail.selected = mapUi.destination

@@ -51,7 +51,7 @@ function openOwner(): void {
 <style scoped>
 .world-now { display: grid; gap: 2px; margin: 0; }
 .world-now b { font-size: 17px; }
-.world-now small { color: #59616b; font-size: 12px; }
+.world-now small { color: #59616b; font-size: 13px; line-height: 1.4; }
 .world-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #c2c8cc; margin-right: 6px; }
 .world-dot.is-on { background: #33d17a; }
 </style>

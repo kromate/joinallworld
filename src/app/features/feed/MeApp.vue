@@ -135,3 +135,10 @@ const sceneOn = computed(() => Boolean(scene.venue.value) && !document.body.clas
     </template>
   </section>
 </template>
+
+<style scoped>
+.feed .feed-form label.feed-row, .feed .feed-card label.feed-row { display: flex !important; flex-wrap: nowrap; align-items: center; gap: 10px; min-height: var(--tap, 44px); }
+.feed input[type='checkbox'] { flex: none; width: 22px; height: 22px; min-width: 22px; margin: 0; padding: 0; border-radius: 6px; accent-color: var(--c-green-dark); }
+.feed .feed-row { gap: 8px; }
+.feed .feed-pill { min-height: var(--tap, 44px); padding: 0 14px; display: inline-flex; align-items: center; text-decoration: none; }
+</style>

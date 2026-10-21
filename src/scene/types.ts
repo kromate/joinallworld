@@ -39,6 +39,8 @@ export interface BatchGeometry {
   readonly col?: ArrayLike<number>
 }
 export interface LightSpec { x: number; y: number; z: number; colour: Colour; intensity: number; distance: number }
+/** A prop a batch drew, where a tap can name it: its kind ("Palm tree"), its foot in the batch's space, its radius and height. */
+export interface PropMark { kind: string; x: number; z: number; r: number; h: number }
 export interface BatchResult { meshes: THREE.Mesh[]; lights: THREE.PointLight[]; triangles: number }
 export interface SceneMaterials { solid: THREE.MeshLambertMaterial | THREE.MeshStandardMaterial; glow: THREE.MeshBasicMaterial; glass: THREE.MeshStandardMaterial }
 
@@ -56,6 +58,8 @@ export interface Batch {
   at(x: number, y: number, z: number, ry: number, draw: (b: Batch) => void, rx?: number, rz?: number, scale?: number): Batch
   light(x: number, y: number, z: number, colour: Colour, intensity?: number, distance?: number): Batch
   world(x: number, y: number, z: number): { x: number; y: number; z: number }
+  /** Records a prop at (x, z) of the current frame so a tap can name it; build() keeps the list on its first mesh (userData.props). */
+  note?(kind: string, x: number, z: number, r: number, h: number): void
   readonly triangles: number
   /** Any material may back a layer (the map passes one shared material for all three). */
   build(materials: Record<keyof SceneMaterials, THREE.Material>): BatchResult

@@ -259,7 +259,7 @@ function resign(): void {
       <ul v-if="seats.length" class="wv-score">
         <li v-for="row in score" :key="row.seat" :class="{ 'is-turn': row.active, 'is-you': row.you }">
           <span class="wv-marker" aria-hidden="true">{{ row.active ? '▶' : '' }}</span>
-          <b class="wv-name">{{ row.name }}<span v-if="row.bot" class="wv-bot"> (bot)</span><span v-if="row.you" class="wv-you"> · you</span></b>
+          <b class="wv-name">{{ row.bot ? row.name.replace(/\s*\(bot\)$/i, '') : row.name }}<span v-if="row.bot" class="wv-bot"> (bot)</span><span v-if="row.you" class="wv-you"> · you</span></b>
           <span class="wv-points">{{ row.score }}<span class="wv-sr"> points</span></span>
           <span class="wv-count">{{ row.out ? 'left the game' : plain(row.tiles, 'tile') }}<span v-if="row.active" class="wv-sr"> · to play</span></span>
         </li>
@@ -377,14 +377,14 @@ function resign(): void {
 .wv-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .wv-head { display: grid; gap: 8px; }
 .wv-score { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.wv-score li { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 8px; align-items: center; background: rgba(255, 255, 255, .1); border-radius: 12px; padding: 7px 10px; border: 2px solid transparent; }
+.wv-score li { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto auto; column-gap: 8px; align-items: center; background: rgba(255, 255, 255, .1); border-radius: 12px; padding: 5px 10px; border: 2px solid transparent; }
 .wv-score li.is-turn { border-color: #e8a643; }
-.wv-marker { grid-row: span 2; color: #e8a643; font-size: 11px; }
+.wv-marker { color: #e8a643; font-size: 11px; }
 .wv-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
 .wv-bot { font-weight: 600; color: #cfd2ff; }
 .wv-you { font-weight: 600; color: #ffd27a; }
-.wv-points { grid-row: span 2; grid-column: 3; font-size: 22px; font-weight: 800; }
-.wv-count { font-size: 12px; color: rgba(255, 255, 255, .8); grid-column: 2; }
+.wv-points { order: 4; font-size: 20px; font-weight: 800; min-width: 24px; text-align: right; }
+.wv-count { order: 3; font-size: 12px; color: rgba(255, 255, 255, .8); }
 .wv-watch { margin: 0; font-size: 13px; font-weight: 700; color: #ffd27a; text-align: center; }
 .wv-status { margin: 0; text-align: center; font-size: 15px; font-weight: 800; min-height: 22px; }
 

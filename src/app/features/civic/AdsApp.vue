@@ -159,23 +159,23 @@ const pick = (row: number, col: number): void => { ui.row = row; ui.col = col }
 </template>
 
 <style scoped>
-.civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.civic-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions .civic-action { flex: 1 1 140px; display: grid; margin: 0; }
 .civic-actions.is-stack { display: grid; }
 :global(.ph.is-wide) .civic-actions.is-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 .civic-form { display: grid; gap: var(--s-3); margin: var(--s-2) 0; }
 .civic-form.is-card { padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
-.civic-form label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 !important; }
+.civic-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin: 0 !important; }
 .civic-form .civic-note { display: block; margin: 0 0 5px !important; font-weight: 600; color: var(--c-ink); }
 :global(.ph.is-wide) .civic-form input, :global(.ph.is-wide) .civic-form select { max-width: 460px; }
 :global(.ph.is-wide) .ads-swatches { max-width: 520px; }
 .civic-list { list-style: none; padding: 0; margin: 0; }
-.civic-list li { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 13px; min-height: var(--tap); }
+.civic-list li { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); padding: 10px 0; border-bottom: 1px solid var(--c-line); font-size: 14px; min-height: var(--tap); }
 .civic-list.is-card { border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); padding: 0 14px; }
 .civic-list.is-card li:last-child { border-bottom: 0; }
 .civic-list li > span { min-width: 0; overflow-wrap: anywhere; }
-.civic-list small { display: block; color: var(--c-muted); font-size: 11px; }
+.civic-list small { display: block; color: var(--c-muted); font-size: 13px; }
 .civic-list .civic-action { flex: none; margin: 0; max-width: 150px; }
 .ads-swatches { display: flex; flex-wrap: wrap; gap: 6px; }
 .ads-swatches button { width: var(--tap); height: var(--tap); border-radius: var(--r-sm); border: 2px solid transparent; cursor: pointer; font-size: 18px; background: var(--c-fill); box-shadow: inset 0 0 0 1px #0000001a; }

@@ -1,13 +1,15 @@
 .boot-screen::before,.boot-screen::after { content: ""; position: absolute; left: 0; right: 0; pointer-events: none; background: url(/icons/loading-neighbours.webp) center top / min(100vw, 90vh, 720px) auto no-repeat; }
-/* The picture is one square drawn twice: its top two fifths above the words, the rest below. Each window is capped at its share of the
-   picture (which is never wider than 720px), so on a tall or wide screen the two can never show the same part. */
+/* One square picture drawn twice: top above the words, rest below, never the same part twice. */
 .boot-screen::before { top: 0; height: min(32vh, 36vw, 288px); }
 .boot-screen::after { bottom: 0; height: min(44vh, 52vw, 432px); background-position: center bottom; }
+@media (min-width: 760px) { .boot-screen::before, .boot-screen::after { mask: linear-gradient(90deg, #0000, #000 14%, #000 86%, #0000) center / min(100vw, 90vh, 720px) 100% no-repeat; } }
 .boot-world { border-radius: 26px; margin-bottom: 20px; animation: world-breathe 2.4s ease-in-out infinite alternate; }
 .boot-world.paused { animation: none; }
 @keyframes world-breathe { to { transform: translateY(-8px) rotate(3deg); } }
 @media(prefers-reduced-motion:reduce) { .boot-world { animation: none; } }
 
 .boot-screen .boot-note { margin: 12px 0 0; color: var(--c-muted); font-size: 14px; }
+/* Short screen: the pictures fade so the words stay readable. */
+@media (max-height: 760px) { .boot-screen.is-waiting::before, .boot-screen.is-waiting::after { opacity: .3; } }
 .boot-screen button:disabled { opacity: .6; cursor: default; }
 .boot-screen button:hover { background: var(--c-night); }

@@ -191,6 +191,8 @@ const whatsapp = computed(() => `https://wa.me/?text=${encodeURIComponent(`${now
 
 <style scoped>
 .place-panel { min-width: 0; overflow-wrap: anywhere; }
+.place-panel .life-spots { flex-wrap: wrap; overflow: visible; row-gap: 8px; }
+.place-panel .life-spots button { min-height: 44px; }
 .place-voice.is-on { outline: 2px solid var(--c-good, #1a7f4b); }
 .place-voice-note { margin: 2px 2px 0; }
 .place-part { display: grid; gap: 8px; margin-top: 8px; max-height: min(46vh, 420px); overflow-y: auto; padding: 2px; }

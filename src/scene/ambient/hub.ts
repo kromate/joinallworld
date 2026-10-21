@@ -14,6 +14,7 @@ import { SCENE_CHARACTER_TRIANGLES, SCENE_DRAW_CALLS, SCENE_TRIANGLES } from '..
 import type * as Layers from './layer.ts';
 import type { AmbientLayer, AmbientPerson, AmbientTag, Resident } from './layer.ts';
 import type { Ident, Stage } from './plan.ts';
+import { restyleMarks } from '../markers.ts';
 
 /**
  * The layer, the plan, the density curves and the figures are one lazy chunk: this file is all the scene's own chunk carries. It is fetched the
@@ -128,7 +129,7 @@ export function createAmbientHub(env: HubEnv): AmbientHub {
       build()
       return true
     },
-    attach() { build() },
+    attach() { restyleMarks(env.kit.THREE, env.parent); build() },
     release() { drop() },
     setResidents(list) {
       residents = list

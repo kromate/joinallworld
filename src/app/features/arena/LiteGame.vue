@@ -82,11 +82,11 @@ onMounted(() => { if (props.intent.kind !== 'join') void load() })
 <style scoped>
 .lg { display: grid; gap: 12px; align-content: start; padding: 68px 10px 12px; overflow-y: auto; max-height: 100%; box-sizing: border-box; }
 .lg-small { margin: 0; font-size: 12px; color: var(--c-muted); }
-.lg-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lg-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 8px; }
 .lg-pick { width: 100%; min-height: 56px; display: grid; gap: 2px; text-align: left; padding: 10px 14px; border: 2px solid #2b2233; border-radius: 14px; background: #f3efe8; color: #2b2233; font: inherit; cursor: pointer; touch-action: manipulation; }
 .lg-pick b { font-size: 16px; } .lg-pick small { font-size: 12px; color: #5a5160; }
 .lg-pick:active { background: #ffd34d; }
-.lg-card { display: grid; gap: 8px; padding: 14px; background: #f3efe8; border-radius: 14px; color: #2b2233; }
+.lg-card { display: grid; gap: 8px; width: min(100%, 760px); justify-self: center; box-sizing: border-box; padding: 14px; background: #f3efe8; border-radius: 14px; color: #2b2233; }
 .lg-card h3 { margin: 0; font-size: 16px; } .lg-card p, .lg-card label { margin: 0; font-size: 14px; }
 .lg-text { width: 100%; box-sizing: border-box; font: 16px ui-monospace, monospace; padding: 8px; border: 2px solid #2b2233; border-radius: 10px; background: #fff; color: #2b2233; resize: vertical; min-height: 120px; }
 .lg-problems { margin: 0; padding-left: 20px; font-size: 13px; color: #a33; }

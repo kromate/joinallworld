@@ -130,8 +130,9 @@
 .atlas-go[data-atlas-settle]{margin:6px 0 8px;width:100%}
 .atlas-more{display:none}
 .atlas-preview,.atlas-routes{padding-top:10px;border-top:1px solid var(--c-line,#e3e6e4)}
-.atlas-sheet h3{margin:0 0 6px;font-size:var(--t-caption,12px);font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--c-muted,#5f6770)}
+.atlas-sheet h3{margin:0 0 6px;font-size:var(--t-body,14px);font-weight:700;color:var(--c-ink-2,#39404b)}
 .atlas-preview ul{margin:0;padding-left:18px;font-size:var(--t-body,13px);line-height:1.5}
+.atlas-guide ul{display:grid;gap:6px;margin:0;padding-left:18px;font-size:var(--t-body,14px);line-height:1.45;color:var(--c-ink-2,#39404b)}
 .atlas-waitline{margin:0;font-size:var(--t-caption,12px);line-height:1.45;color:var(--c-muted,#5f6770)}
 .atlas-planned{display:flex;gap:8px;align-items:flex-start;margin:0;padding:10px;border-radius:var(--r-sm,12px);background:var(--c-blue-soft,#e8effd);font-size:var(--t-caption,12px);line-height:1.45;color:#24407a}
 .atlas-routes ul{display:grid;gap:4px;margin:0 0 8px;padding:0;list-style:none}
@@ -178,12 +179,16 @@
   .atlas-rail{display:none;grid-column:1/3;z-index:5;width:min(300px,100%);max-height:min(100%,520px)}
   .atlas.is-list .atlas-rail{display:grid}
 }
-/* A phone: the sheet is a bottom sheet over the map, the list a sheet under the breadcrumb */
-@media(max-width:720px){
+/* A phone, or a tablet held upright (too narrow for a side sheet beside the map): the sheet is a bottom sheet over the map, the list a sheet under the breadcrumb */
+@media(max-width:720px),(min-width:721px) and (max-width:1100px) and (orientation:portrait){
   .atlas-frame{top:60px;bottom:80px;width:calc(100% - 16px);grid-template-columns:minmax(0,1fr);gap:6px}
   .atlas-frame>.atlas-stage{grid-column:1;margin-bottom:206px}
   .atlas-crumbs{gap:6px}
-  .atlas-crumbs .atlas-back{padding:0 10px;font-size:var(--t-caption,12px)}
+  .atlas-crumbs .atlas-back{min-height:44px;padding:0 12px;font-size:var(--t-caption,12px)}
+  .atlas:has(.atlas-travel) .atlas-frame>.atlas-stage{margin-bottom:262px}
+  .atlas[data-level="world"] .atlas-label.is-city{font-size:11px;padding:1px 6px 1px 5px;gap:3px}
+  .atlas-sheet .atlas-teaser,.atlas-preview ul{font-size:14px}
+  .atlas-route small,.atlas-row small,.atlas-count,.atlas-legend{font-size:12px}
   .atlas-crumbs .atlas-back span,.atlas-list-toggle span{display:none}
   .atlas-list-toggle{width:44px;padding:0;justify-content:center}
   .atlas-countries{min-height:44px;padding:0 12px;font-size:12px}
@@ -194,8 +199,8 @@
   .atlas-sheet h2{font-size:var(--t-title,17px)}
   /* Folded, the sheet is a name, a line and its one action: the map stays in view. "Routes and details" unfolds it. */
   .atlas-sheet:not(.is-expanded)>:not(header):not(nav):not(.atlas-go):not(.atlas-more):not(.atlas-teaser):not(.atlas-travel){display:none}
-  .atlas-sheet nav[aria-label="Cities in this state"]{flex-wrap:nowrap;overflow-x:auto;min-height:44px;scrollbar-width:none}
-  .atlas-sheet nav[aria-label="Cities in this state"] button{flex:none}
+  .atlas-sheet nav[aria-label="Cities in this state"],.atlas-sheet nav[aria-label="Cities here"]{flex-wrap:nowrap;overflow-x:auto;min-height:44px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 24px),transparent)}
+  .atlas-sheet nav[aria-label="Cities in this state"] button,.atlas-sheet nav[aria-label="Cities here"] button{flex:none}
   .atlas.has-cities .atlas-frame>.atlas-stage{margin-bottom:262px}
   .atlas-sheet:not(.is-expanded) .atlas-teaser{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .atlas-more{display:block;justify-self:center;min-height:36px;padding:0 14px;border:0;border-radius:18px;background:var(--c-fill,#eef1ef);font-size:var(--t-caption,12px);font-weight:650}
@@ -263,9 +268,9 @@
 .atlas-state-overview li>button,.atlas-state-overview li>span{display:flex;justify-content:space-between;gap:8px;width:100%;padding:7px 8px;border:0;border-radius:8px;font:inherit;font-size:12px;text-align:left;background:#eef2e9}
 .atlas-state-overview li>span{background:#f3f4f0;color:#6b7168}
 .atlas-state-overview small{font-size:10px;white-space:nowrap}
-.atlas-sheet nav[aria-label="Cities in this state"]{display:flex;flex-wrap:wrap;gap:6px}
-.atlas-sheet nav[aria-label="Cities in this state"] button{min-height:44px;border:1px solid #cbd7c6;border-radius:22px;background:#f2f5ed;padding:7px 14px;color:#334b38;font:inherit;font-size:12px;cursor:pointer}
-.atlas-sheet nav[aria-label="Cities in this state"] button[aria-pressed="true"]{background:#2e6542;color:#fff;border-color:#2e6542}
+.atlas-sheet nav[aria-label="Cities in this state"],.atlas-sheet nav[aria-label="Cities here"]{display:flex;flex-wrap:wrap;gap:6px}
+.atlas-sheet nav[aria-label="Cities in this state"] button,.atlas-sheet nav[aria-label="Cities here"] button{min-height:44px;border:1px solid #cbd7c6;border-radius:22px;background:#f2f5ed;padding:7px 14px;color:#334b38;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.atlas-sheet nav[aria-label="Cities in this state"] button[aria-pressed="true"],.atlas-sheet nav[aria-label="Cities here"] button[aria-pressed="true"]{background:#2e6542;color:#fff;border-color:#2e6542}
 
 /* The travel card: one big button per way to the chosen city, cheapest first. */
 .atlas-travel{display:grid;gap:6px}
@@ -312,4 +317,15 @@ p.atlas-way-why{padding:8px 10px;border-radius:12px;background:#fff6e8}
 .atlas-fpanel li button[data-atlas-fact=chat]{background:#e1ece6;color:#14532d}
 .atlas-fp-note{margin:10px 2px 6px;font-size:12px;color:#5c6670}
 .atlas-fp-foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-@media(max-width:720px){.atlas-fpanel{bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:720px),(min-width:721px) and (max-width:1100px) and (orientation:portrait){.atlas-fpanel{bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+
+/* An upright tablet takes the phone's bottom-sheet layout (the stage would be a 400px sliver beside a side sheet), with the room it has: the top bar is taller, the sheet and list are cards rather than full-width strips, and the buttons keep their words. */
+@media(min-width:721px) and (max-width:1100px) and (orientation:portrait){
+  .atlas-frame{top:74px;bottom:92px;width:auto}
+  .atlas-sheet{justify-self:center;width:min(100%,600px)}
+  .atlas-rail{justify-self:start;width:min(100%,420px)}
+  .atlas-crumbs .atlas-back span,.atlas-list-toggle span{display:inline}
+  .atlas-list-toggle{width:auto;padding:0 14px}
+  .atlas-pill span{display:inline}.atlas-pill{width:auto;padding:0 13px}
+  .atlas-countries{padding:0 14px;font-size:var(--t-body,13px)}
+}

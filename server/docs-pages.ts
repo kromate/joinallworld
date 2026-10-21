@@ -43,7 +43,7 @@ a{color:#0f5132}code{font:14px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;b
 .brand{font-weight:800;color:#fff;text-decoration:none;font-size:19px;margin-right:auto}.bar nav{display:flex;gap:4px;flex-wrap:wrap}.bar nav a{color:#d9eadf;text-decoration:none;padding:5px 11px;border-radius:999px;font-size:15px}
 .bar nav a:hover{background:#1c6b45;color:#fff}.bar nav a[aria-current=page]{background:#f3f0e7;color:#0f5132;font-weight:700}
 .page{max-width:1180px;margin:0 auto;padding:28px 20px 64px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px}
-.toc{position:sticky;top:76px;align-self:start;max-height:calc(100vh - 96px);overflow:auto;font-size:15px}.toc b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5b6b63;margin-bottom:6px}
+.toc{position:sticky;top:76px;align-self:start;max-height:calc(100vh - 96px);overflow:auto;font-size:15px}.toc b{display:block;font-size:13px;color:#5b6b63;margin-bottom:6px}
 .toc ol{list-style:none;margin:0;padding:0}.toc li{margin:0}.toc a{display:flex;justify-content:space-between;gap:8px;padding:5px 10px;border-radius:8px;text-decoration:none;color:#193126}.toc a:hover{background:#e6e1d3}.toc span{color:#5b6b63;font-size:13px}
 h1{font-size:34px;line-height:1.15;margin:0 0 8px}.lead{font-size:18px;color:#34493f;margin:0 0 6px;max-width:760px}.meta{color:#5b6b63;font-size:14px}
 .chips{display:none;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0;list-style:none}.chips a{display:block;padding:5px 11px;border-radius:999px;background:#e6e1d3;text-decoration:none;font-size:14px;color:#193126}
@@ -51,10 +51,11 @@ section{margin-top:40px}h2{font-size:23px;margin:0 0 4px;padding-top:8px;border-
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .card{background:#fffdf7;border:1px solid #e0dacb;border-radius:12px;padding:14px 16px}.card h3{font-size:16.5px;margin:0 0 4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.card h3 a{text-decoration:none}.card h3 a:hover{text-decoration:underline}
 .card p{margin:0 0 6px;font-size:15px}.card .how{color:#4a5c53;font-size:14px;margin:0}.card .how b{color:#193126;font-weight:600}
-.tag{font-size:11.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;background:#fde7c4;color:#7a4b00;border-radius:999px;padding:1px 8px}
+.tag{font-size:12px;font-weight:700;background:#fde7c4;color:#7a4b00;border-radius:999px;padding:1px 8px}
 .prose{max-width:720px}.prose p{font-size:17px;line-height:1.65;margin:0 0 14px}.prose strong{color:#0f5132}.prose+.grid{margin-top:8px}
-.up{display:inline-block;margin-top:12px;font-size:14px}.foot{margin-top:48px;font-size:14px;color:#5b6b63}
-@media (max-width:860px){html{scroll-padding-top:12px}.bar{position:static}.page{grid-template-columns:1fr;gap:0}.toc{display:none}.chips{display:flex}h1{font-size:28px}}`
+.up{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-size:15px}.foot{margin-top:48px;font-size:14px;color:#5b6b63}
+@media (max-width:860px){html{scroll-padding-top:12px}.bar{position:static}.bar .in{padding:8px 16px 4px;gap:0 12px}.brand{display:inline-flex;align-items:center;min-height:44px}.bar nav{flex:1 0 100%;flex-wrap:nowrap;gap:2px;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none}.bar nav::-webkit-scrollbar{display:none}.bar nav a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 10px}
+.page{grid-template-columns:minmax(0,1fr);gap:0;padding:20px 16px 48px}.page>*{min-width:0}.grid{grid-template-columns:minmax(0,1fr)}.toc{display:none}.chips{display:flex;flex-wrap:nowrap;overflow-x:auto;margin:16px -16px 0;padding:0 16px 4px;gap:8px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.chips::-webkit-scrollbar{display:none}.chips li{flex:none}.chips a{display:flex;align-items:center;min-height:44px;padding:0 14px}h1{font-size:28px}.lead{font-size:17px;line-height:1.5}.card{padding:14px}section{margin-top:32px}}@media(min-width:1700px){.bar .in,.page{max-width:1480px}.page{grid-template-columns:280px minmax(0,1fr);gap:56px}.grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}.lead{font-size:19px}}@media(min-width:2800px){.bar,.page{zoom:1.4}.toc{max-height:none}}`
 
 /** Escape, then show `backquoted` words as code. */
 const rich = (text: string): string => esc(text).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')

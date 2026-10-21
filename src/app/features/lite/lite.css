@@ -1,17 +1,41 @@
 /* Allworld Lite: the social apps full screen, no scene. Above the page, under sheets and the phone (SheetHost). */
 .lite-shell{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;background:var(--c-bg,#f3f0e7);color:var(--c-ink)}
 .lite-top{display:flex;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px;background:#174c36;color:#fff}
-.lite-top b{font-size:18px;letter-spacing:-.01em}
-.lite-grow{flex:1}
-.lite-chip{border:0;border-radius:999px;background:#ffffff22;color:#fff;font:650 13px var(--font);padding:8px 12px;cursor:pointer}
+.lite-top b{flex:none;font-size:18px;letter-spacing:-.01em}
+.lite-grow{flex:1;min-width:0}
+.lite-chip{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:0;border-radius:999px;background:#ffffff26;color:#fff;font:650 14px var(--font);padding:0 14px;white-space:nowrap;text-decoration:none;cursor:pointer}
 .lite-chip.is-world{background:#f2b134;color:#193126}
+.lite-chip:focus-visible,.lite-tabs button:focus-visible{outline:3px solid #f2b134;outline-offset:2px}
+.lite-short{display:none}
+@media(max-width:480px){
+  .lite-long{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .lite-short{display:inline}
+  .lite-top{gap:6px;padding-inline:10px}
+  .lite-chip{padding:0 12px}
+}
+@media(max-width:350px){.lite-top b{font-size:16px}.lite-chip{padding:0 10px;font-size:13px}}
 .lite-note{margin:0;padding:8px 12px;background:#fff8e6;font-size:13px}
-.lite-main{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px;min-height:0}
-.lite-main>*{max-width:720px;margin-inline:auto}
+.lite-main{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px;min-height:0;margin-bottom:var(--lite-dock,0px)}
+.lite-main>*{box-sizing:border-box;max-width:720px;margin-inline:auto}
 .lite-tabs{flex:none;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--c-line);background:#fff;padding-bottom:env(safe-area-inset-bottom,0px)}
-.lite-tabs button{position:relative;border:0;background:none;color:var(--c-muted);font:650 13px var(--font);min-height:54px;cursor:pointer}
+.lite-tabs button{position:relative;border:0;background:none;color:var(--c-ink-2,#39404b);font:650 14px var(--font);min-height:54px;cursor:pointer}
 .lite-tabs button.is-on{color:var(--c-ink);box-shadow:inset 0 3px 0 #174c36}
 .lite-dot{position:absolute;top:6px;margin-left:4px;display:inline-grid;place-items:center;min-width:17px;height:17px;border-radius:9px;background:#c0392b;color:#fff;font-size:10px;padding:0 4px}
 body.is-lite .life-sidebar,body.is-lite .life-bottom [data-slot="main"],body.is-lite .life-nav,body.is-lite .life-wordmark,body.is-lite .hud-bar{display:none!important}
-body.is-lite .life-bottom{z-index:6;bottom:64px}
-@media(min-width:900px){.lite-main{padding:20px}}
+/* The floating strips dock above the tab bar; LiteShell.vue measures them and the page ends above them (--lite-dock). */
+body.is-lite .life-ui .life-bottom{z-index:6;left:0;right:0;width:min(720px,calc(100% - 24px));bottom:calc(var(--lite-tabs,54px) + 8px)}
+@media(min-width:900px){
+  .lite-main{padding:20px}
+  /* A wide screen has room beside the page: the strips stack in a column on the right instead of taking height. */
+  body.is-lite .life-ui .life-bottom{left:auto;right:16px;width:440px}
+  .lite-main{margin-bottom:0;padding-right:476px}
+}
+/* Wide screens: header, page, side strips and tab bar share one centred 1184px stage (720px page, 24px gap, 440px strip column), so nothing is pinned to a far corner. */
+@media(min-width:1280px){
+  .lite-top{padding-inline:max(16px,calc((100% - 1184px)/2))}
+  .lite-main{padding-right:484px}
+  .lite-tabs{padding-inline:max(0px,calc((100% - 1184px)/2))}
+  body.is-lite .life-ui .life-bottom{left:calc(50% + 152px);right:auto}
+}
+/* The Chats button floats at the bottom of its list: leave room so the last row is not under it. */
+.lite-main{padding-bottom:80px}

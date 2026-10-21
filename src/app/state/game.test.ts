@@ -210,6 +210,8 @@ test('the link says why the game is not playable: unreachable, expired, new', as
   await down.game.connect()
   down.server.fault.status = 502
   await down.game.refresh()
+  assert.equal(down.game.link.value, 'online', 'one failed read is a grace, not an outage')
+  await down.game.refresh(); await down.game.refresh()
   assert.equal(down.game.link.value, 'unreachable', 'the device is online but the server did not answer')
 
   const reset = setup()

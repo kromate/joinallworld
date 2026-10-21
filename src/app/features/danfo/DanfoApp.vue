@@ -176,13 +176,16 @@ onBeforeUnmount(() => { if (timer !== undefined) clearInterval(timer) })
 .danfo-app { display: flex; flex-direction: column; gap: 10px; }
 .danfo-head { display: flex; gap: 12px; align-items: center; }
 .danfo-head h2 { margin: 0; font-size: 20px; }
-.danfo-head p { margin: 2px 0 0; font-size: 13px; opacity: .75; }
+.danfo-head p { margin: 2px 0 0; font-size: 14px; opacity: .8; }
 .danfo-badge { font-size: 30px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: #f4c20d; }
 .danfo-today { margin: 0; font-weight: 600; font-size: 14px; }
+.danfo-app .social-list { padding: 0; list-style: none; }
+.danfo-app .social-list > .danfo-line { padding: 12px 14px; }
+.danfo-app .social-list > .danfo-line:last-child { border-bottom: 0; }
 .danfo-card { border-radius: 14px; padding: 12px; background: rgba(244, 194, 13, .14); border: 1px solid rgba(244, 194, 13, .5); }
-.danfo-card p { margin: 4px 0; font-size: 13px; }
+.danfo-card p { margin: 4px 0; font-size: 14px; }
 .danfo-line { display: flex; flex-direction: column; gap: 8px; padding: 10px 0; border-bottom: 1px solid rgba(127,127,127,.2); }
-.danfo-line-head small { display: block; font-size: 12px; opacity: .8; margin-top: 2px; }
+.danfo-line-head small { display: block; font-size: 13px; opacity: .8; margin-top: 2px; }
 .danfo-row-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
 .danfo-stops { display: flex; flex-wrap: wrap; gap: 4px 10px; padding: 0; margin: 8px 0; list-style: none; font-size: 12px; }
 .danfo-stops li { opacity: .6; }
@@ -192,5 +195,5 @@ onBeforeUnmount(() => { if (timer !== undefined) clearInterval(timer) })
 .danfo-board { margin: 0; padding: 0; list-style: none; font-size: 13px; }
 .danfo-board li { display: flex; justify-content: space-between; padding: 3px 0; }
 .danfo-board li.is-you { font-weight: 700; }
-.danfo-fine { font-size: 12px; opacity: .7; margin: 6px 0 0; }
+.danfo-fine { font-size: 13px; opacity: .8; margin: 6px 0 0; }
 </style>

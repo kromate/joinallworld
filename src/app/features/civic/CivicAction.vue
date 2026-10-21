@@ -24,5 +24,5 @@ const emit = defineEmits<{ click: [] }>()
 <style scoped>
 .civic-action { display: inline-grid; gap: 3px; justify-items: stretch; vertical-align: top; margin: 2px 6px 2px 0; }
 .civic-action .is-highlight { background: var(--c-amber) !important; color: #3a2a00 !important; box-shadow: none !important; }
-.civic-why { font-size: 12px; line-height: 1.35; color: var(--c-red); }
+.civic-why { font-size: 13px; line-height: 1.4; color: var(--c-red); }
 </style>

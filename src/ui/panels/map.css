@@ -21,7 +21,7 @@
 .life-ui .map-filters button.is-selected{background:var(--c-ink);color:#fff}
 .life-ui .map-layers button{background:var(--c-surface-solid);border:1px solid var(--c-line)!important}
 .life-ui .map-layers button.is-selected{background:var(--c-green-dark);border-color:var(--c-green-dark)!important}
-.map-layer-note{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);font-size:12px;color:var(--c-muted);padding:0 4px}
+.map-layer-note{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);font-size:13px;line-height:1.4;color:var(--c-ink-2,#39404b);padding:2px 4px 6px}
 .map-layer-note span{min-width:0;overflow-wrap:anywhere}
 
 .map-more{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-2);min-height:0}
@@ -33,9 +33,9 @@
 .map-list li{min-width:0}
 .map-list-text{flex:1;min-width:0}
 .map-list b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.map-list small{display:block;font-size:11px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map-list small{display:block;font-size:12px;color:var(--c-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .map-list-crowd{color:var(--c-green-dark);font-weight:700}
-.map-list em{flex:none;white-space:nowrap;font-style:normal;font-size:11px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
+.map-list em{flex:none;white-space:nowrap;font-style:normal;font-size:12px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--c-green-soft);color:var(--c-green-dark)}
 .map-list .is-closed em{background:var(--c-fill);color:var(--c-muted);font-weight:600}
 .map-list .is-closed b{color:var(--c-muted)}
 .map-list .is-here em{background:var(--c-amber-soft);color:var(--c-amber-dark)}
@@ -56,13 +56,13 @@
 .map-desc{font-size:13px}
 .map-ambient{font-size:12px;font-style:italic;color:var(--c-muted);margin-top:6px!important}
 .map-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px!important}
-.map-chips span,.map-chips button{font-size:11px;padding:4px 9px;border-radius:12px;background:var(--c-fill);color:#454b55}
+.map-chips span,.map-chips button{font-size:12px;padding:4px 9px;border-radius:12px;background:var(--c-fill);color:#454b55}
 .life-ui .map-chips button{background:var(--c-green-soft);color:var(--c-green-dark);font-weight:700;min-height:var(--tap);padding:0 14px;border-radius:999px}
 .map-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(56px,1fr));gap:5px}
 .life-ui .map-modes button{display:grid;justify-items:center;align-content:center;gap:0;min-height:72px;padding:6px 2px;border-radius:15px;background:var(--c-surface-solid);border:2px solid var(--c-line)!important;font-size:12px}
 .map-modes button>span{font-size:20px;line-height:1.15}
 .map-modes b{font-size:12px;font-weight:700}
-.map-modes small{font-size:11px;color:var(--c-green-dark);font-weight:700}
+.map-modes small{font-size:12px;color:var(--c-green-dark);font-weight:700}
 .map-modes .map-mode-time{color:var(--c-muted);font-weight:500;font-size:10px}
 .life-ui .map-modes button.is-selected{border-color:var(--c-green-dark)!important;background:var(--c-green-soft)}
 .map-modes button.is-short small:not(.map-mode-time){color:var(--c-red)}
@@ -85,9 +85,9 @@
 /* Drawn from the server's own numbers each time it reports: from the fraction done, to full, over the seconds left. */
 .map-trip-track i{display:block;height:100%;width:var(--from,0%);border-radius:6px;background:var(--c-green);animation:map-trip-fill linear forwards}
 @keyframes map-trip-fill{from{width:var(--from,0%)}to{width:100%}}
-.map-trip-banter{font-size:12.5px;line-height:1.35;color:var(--c-ink);min-height:2.7em}
-.map-trip-banter b{margin-right:6px;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--c-green-dark)}
-.map-trip-rule{font-size:11px;color:var(--c-muted);line-height:1.3}
+.map-trip-banter{font-size:13px;line-height:1.35;color:var(--c-ink);min-height:2.7em}
+.map-trip-banter b{margin-right:6px;font-size:12px;color:var(--c-green-dark)}
+.map-trip-rule{font-size:12px;color:var(--c-muted);line-height:1.3}
 .ui-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 /* On the map the trip bar is the progress display; the shell's small chip would only repeat it. */
 .life-ui[data-mode="map"]:has(.map-trip) .life-progress{display:none}
@@ -156,4 +156,10 @@
 .life-ui .map-levels{position:relative}
 @media(max-width:720px){
   .life-ui .map-levels{position:fixed;top:60px;left:8px;max-width:calc(100vw - 16px)}
+}
+
+/* Phone: the layer toggles scroll sideways like the filters, so they get the same fade at the edge; and the venue card keeps its Go button in view while the rest scrolls. */
+@media(max-width:720px){
+  .life-ui .map-more .map-filters.map-layers{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+  .life-ui .map-card>.map-go{position:sticky;bottom:-8px;z-index:1;box-shadow:0 -10px 10px -4px #fbfbfa,0 8px 0 8px #fbfbfa}
 }

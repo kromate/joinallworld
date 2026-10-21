@@ -104,7 +104,7 @@ import { spotsOf } from './life.ts';
 import type * as THREE from 'three';
 import type { Ident as AmbientIdent } from './scene/ambient/plan.ts';
 import type { AmbientPerson } from './scene/ambient/layer.ts';
-import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson } from './scene/types.ts';
+import type { Colour, ThreeModule, Vec3, SceneCamera, SceneTag as DomTag, ScenePerson, SceneThing, WalkSpot, SceneWalk, CrowdPerson, PropMark } from './scene/types.ts';
 import type { OccluderBox } from './scene/camera-collision.ts';
 import type { HomePick } from './scene/home-scene.ts';
 import type { SceneControls } from './scene/controls.ts';
@@ -270,9 +270,20 @@ export interface HostScene {
   objects?(): { id: string; itemId: string; x: number; y?: number; z: number }[]
   dispose?(): void
 }
+/** describeAt(): a spot, a person, a game table, a home object, a named prop (scenery), bare floor, or the sky; with the nearest spot to the place. */
+export type TapDescription =
+  | { kind: 'spot'; id: string; label: string }
+  | { kind: 'person'; id: string }
+  | { kind: 'thing'; id: string }
+  | { kind: 'object'; id: string }
+  | { kind: 'prop'; name: string; at: { x: number; z: number }; near: { id: string; label: string } | null }
+  | { kind: 'floor'; at: { x: number; z: number }; near: { id: string; label: string } | null }
+  | { kind: 'sky' };
 /** What createVenueWorld() returns. Every method draws at most one frame, and only when something changed. */
 export interface VenueWorld {
   setView(factory: SceneViewFactory | null): boolean
+  /** What a tap at this point of the page would land on, read only: nothing moves and no view changes. `near` is the spot closest to that place. */
+  describeAt?(clientX: number, clientY: number): TapDescription | null
   update(): void
   captureCanvas(): HTMLCanvasElement | null
   setStreet(street: WorldStreetResponse | null): void
@@ -1089,6 +1100,54 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
    *   floor    anywhere else on the floor; null when it looks at the sky
    * → { type, spot | person | hit, at } | null. Used by the tap and by the hover, so what lights up is what a click does.
    */
+  /** The props the current scene's batches recorded (PropMark, in the scene group's space), read once per scene. */
+  let propsOf: { scene: unknown; list: PropMark[] } | null = null;
+  const propPoint = new THREE.Vector3(), groupInverse = new THREE.Matrix4();
+  function sceneProps(): PropMark[] {
+    if (!current) return [];
+    if (propsOf?.scene === current) return propsOf.list;
+    const list: PropMark[] = [];
+    current.group.updateMatrixWorld(true);
+    groupInverse.copy(current.group.matrixWorld).invert();
+    current.group.traverse((object) => {
+      const marks = (object.userData as { props?: PropMark[] }).props;
+      if (!Array.isArray(marks)) return;
+      for (const mark of marks) {
+        propPoint.set(mark.x, 0, mark.z).applyMatrix4(object.matrixWorld).applyMatrix4(groupInverse);
+        list.push({ ...mark, x: propPoint.x, z: propPoint.z });
+      }
+    });
+    propsOf = { scene: current, list };
+    return list;
+  }
+  /** The prop drawn under a point of the page: of those whose upright box covers it, the one nearest the camera. */
+  function propAt(clientX: number, clientY: number): PropMark | null {
+    let best: PropMark | null = null, front = -Infinity;
+    for (const prop of sceneProps()) {
+      screenOf(prop.x, 0, prop.z, pixel); screenOf(prop.x, prop.h, prop.z, pixelTop);
+      const tall = Math.max(10, pixel.y - pixelTop.y), wide = Math.max(10, tall * (prop.r / Math.max(0.2, prop.h)));
+      if (clientY < pixelTop.y - 4 || clientY > pixel.y + wide * 0.35 || Math.abs(clientX - pixel.x) > wide + 4) continue;
+      if (pixel.y > front) { front = pixel.y; best = prop; }
+    }
+    return best;
+  }
+  function nearestSpotTo(at: { x: number; z: number }): { id: string; label: string } | null {
+    let best: WalkSpot | null = null, away = Infinity;
+    for (const spot of spotList) { const d = Math.hypot(spot.x - at.x, spot.z - at.z); if (d < away) { away = d; best = spot; } }
+    return best ? { id: best.id, label: best.label } : null;
+  }
+  function describeAt(clientX: number, clientY: number): TapDescription | null {
+    if (!current) return null;
+    const target = pick(clientX, clientY);
+    if (target?.type === 'spot') return { kind: 'spot', id: target.spot.id, label: target.spot.label };
+    if (target?.type === 'person') return { kind: 'person', id: target.person.id };
+    if (target?.type === 'thing') return { kind: 'thing', id: target.thing.id };
+    if (target?.type === 'object') return { kind: 'object', id: String(target.hit.id) };
+    const prop = propAt(clientX, clientY);
+    if (prop) return { kind: 'prop', name: prop.kind, at: { x: prop.x, z: prop.z }, near: nearestSpotTo(prop) };
+    const at = target?.type === 'floor' ? target.at : floorAt(clientX, clientY, { x: 0, z: 0 });
+    return at ? { kind: 'floor', at: { x: at.x, z: at.z }, near: nearestSpotTo(at) } : { kind: 'sky' };
+  }
   function pick(clientX: number, clientY: number): Target | null {
     const walk = walkOf();
     if (!walk || !walk.grid || !current) return null;
@@ -1681,6 +1740,7 @@ export function createVenueHost(container: HTMLElement, { location = 'park', cit
     release() { dropInput(); releasePointers(); if (walker.mode === 'keys') walker.stop(); clearDwell(); if (thingDwell !== null) { clearTimeout(thingDwell); thingDwell = null; } },
   };
   return {
+    describeAt,
     setView(factory) { view?.dispose(); view = null; viewSource.release(); view = factory?.(viewSource) ?? null; resize(); return true; },
     update() { renderScene(); },
     async benchmark() {

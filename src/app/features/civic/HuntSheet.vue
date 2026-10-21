@@ -80,13 +80,13 @@ async function claim(): Promise<void> {
 </template>
 
 <style scoped>
-.civic-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.civic-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .civic-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; }
 .civic-actions.is-stack { display: grid; }
 :global(.ph.is-wide) .civic-actions.is-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 .hunt-hero.hero-card { --hero: var(--app-tint, #0aa5c2); }
-.hunt-dots { display: flex; gap: 6px; margin: 6px 0 2px; }
-.hunt-dots i { width: 22px; height: 22px; transform: rotate(45deg) scale(.7); border-radius: 4px; background: #ffffff40; box-shadow: inset 0 0 0 2px #ffffff80; }
-.hunt-dots i.is-found { background: #fff; }
+.hunt-dots { display: flex; gap: 10px; margin: 6px 0 2px; }
+.hunt-dots i { width: 22px; height: 22px; transform: rotate(45deg) scale(.7); border-radius: 4px; background: var(--c-fill-2); box-shadow: inset 0 0 0 2px var(--c-faint); }
+.hunt-dots i.is-found { background: var(--app-tint, #0aa5c2); box-shadow: inset 0 0 0 2px var(--app-tint, #0aa5c2); }
 .hunt-gems .is-found .ui-row-body > b { color: var(--c-green-dark); }
 </style>

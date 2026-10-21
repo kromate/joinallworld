@@ -65,7 +65,7 @@ const hint = computed(() => kinds.value.find((k) => k.id === draft.value.kind)?.
 </script>
 
 <template>
-  <div aria-label="Noticeboard" role="region" data-hood="app">
+  <div class="hood-app" aria-label="Noticeboard" role="region" data-hood="app">
     <nav class="feed-tabs"><button type="button" :class="{ 'is-on': tab === 'board' }" @click="tab = 'board'">Noticeboard</button><button type="button" :class="{ 'is-on': tab === 'meet' }" @click="tab = 'meet'">Meet your neighbours</button></nav>
 
     <template v-if="tab === 'board'">
@@ -122,3 +122,8 @@ const hint = computed(() => kinds.value.find((k) => k.id === draft.value.kind)?.
     </template>
   </div>
 </template>
+
+<style scoped>
+.hood-app { display: grid; gap: 10px; min-width: 0; overflow-wrap: anywhere; }
+.hood-app .feed-tabs { margin: 0; }
+</style>

@@ -43,7 +43,8 @@ const live = shallowRef<{ entry: ArenaCatalogEntry; intent: ArenaIntent } | null
 const liveKey = ref(0)
 const liveScreen = shallowRef<Component | null>(null)
 const code = ref('')
-const practiceSeats = ref<Record<string, number>>({})
+// Each game's player count starts at its smallest table, so the picker shows a choice instead of a blank box.
+const practiceSeats = ref<Record<string, number>>(Object.fromEntries(ARENA_CATALOG.map((entry) => [entry.id, entry.min])))
 const codeBox = ref<HTMLInputElement | null>(null)
 async function openLive(entry: ArenaCatalogEntry | null, intent: ArenaIntent): Promise<void> {
   if (!entry) { game.toast('That game is not available.', 'error'); return }
@@ -170,7 +171,6 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
     <component :is="liveScreen" :key="liveKey" :intent="live.intent" @close="back" />
   </div>
   <div v-else class="gm">
-    <button class="gm-back" type="button" @click="back">‹ All games</button>
     <OroGame :key="screen" :mode="screen === 'daily' ? 'daily' : 'practice'" @close="back" @state="onState" />
   </div>
 </template>
@@ -182,13 +182,12 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
 .gm-library p { font-size: 14px; line-height: 1.5; color: var(--c-muted); margin: 8px 0 0; }
 .gm-streak { display: inline-block; margin-top: 10px; color: #8a4b0a; background: #fff0d1; padding: 5px 8px; border-radius: 6px; font-weight: 650; }
 .gm-note { font-size: 12px; line-height: 1.45; color: var(--c-muted); margin: var(--s-2) 2px; }
-.gm-back { justify-self: start; background: none; border: 0; color: var(--c-muted); font: inherit; font-size: 12px; text-decoration: underline; min-height: var(--tap, 44px); cursor: pointer; }
 .gm-daily { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: center; padding: 14px; background: #e2f2e9; border-radius: 16px; }
 .gm-daily h3 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.025em; }
 .gm-daily p { font-size: 13px; margin: 0 0 10px; color: #294e3c; }
 .gm-daily .base-button { padding: 10px; width: 100%; }
 .gm-daily-links { grid-column: 1 / -1; display: flex; gap: 12px; justify-content: space-between; border-top: 1px solid #bdd9c9; padding-top: 4px; }
-.gm-daily-links button, .gm-share { border: 0; background: none; min-height: 44px; padding: 6px 0; font: 600 13px var(--font); color: #22543d; text-align: left; cursor: pointer; }
+.gm-daily-links button, .gm-share { border: 0; background: none; min-height: 44px; padding: 6px 0; font: 600 14px var(--font); color: #22543d; text-align: left; cursor: pointer; }
 .gm-live { display: grid; gap: 10px; padding: 14px; border-radius: 16px; }
 .gm-clans { background: #3a2c55; color: #fff; }
 .gm-build { background: #1f3b4d; color: #fff; }
@@ -196,9 +195,11 @@ const dailyCta = computed(() => (today.value?.status === 'playing' || !today.val
 .gm-challenge { margin: 6px 0 0; padding: 6px 10px; border-radius: 10px; background: rgba(255,255,255,.12); font-size: 13px; }
 .gm-live h3 { margin: 0 0 2px; font-size: 24px; letter-spacing: -.025em; }
 .gm-live p { margin: 0; font-size: 13px; opacity: .85; } .gm-live small { opacity: .8; }
-.gm-seats { padding: 8px; border-radius: 8px; border: 0; font: 14px var(--font); }
-.gm-live-row { display: flex; gap: 8px; } .gm-live-row > * { flex: 1; }
-.gm-code { display: flex; gap: 8px; } .gm-code input { flex: 1; min-width: 0; padding: 10px; border-radius: 8px; border: 0; font: 14px var(--font); }
+.gm-seats { min-height: var(--tap, 44px); padding: 0 8px; border-radius: 10px; border: 0; background: #fff; color: var(--c-ink); font: 600 14px var(--font); }
+.gm-live-row { display: flex; gap: 8px; } .gm-live-row > * { flex: 1 1 0; min-width: 0; }
+.gm .ui-row-body > b, .gm .ui-row-body > small { overflow: visible; overflow-wrap: anywhere; text-overflow: clip; white-space: normal; }
+.gm-live-row > .gm-seats { flex: 1.35 1 0; padding: 0 4px 0 10px; }
+.gm-code { display: flex; gap: 8px; } .gm-code input { flex: 1; min-width: 0; min-height: var(--tap, 44px); padding: 0 12px; border-radius: 10px; border: 1px solid var(--c-line); background: #fff; font: 16px var(--font); }
 .gm-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
 .gm-game { min-width: 0; }
 .gm-launch { display: grid; gap: 6px; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 14px; color: var(--c-ink); }

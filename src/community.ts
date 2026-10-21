@@ -26,7 +26,7 @@
  * is revoked (`venue_mismatch`, `visit_ended`) or refused (`not_a_guest`) stops voice.
  */
 import type { PublicSession } from './types/protocol.ts'
-import { reconnectDelay, STABLE_CONNECTION_MS } from './reconnect.ts'
+import { onWake, reconnectDelay, STABLE_CONNECTION_MS } from './reconnect.ts'
 import { cityName } from './game/cities/registry.ts'
 import { fetchIceConfig } from './voice-config.ts'
 import { GROUP_CHAT_NOTE, groupHeader } from './community-words.ts'
@@ -757,6 +757,8 @@ export async function createCommunity(options: CommunityOptions = {}): Promise<C
   }
 
   listen(browser(), 'pagehide', () => leaveVoice())
+  // The network is back, or the tab is shown again: try now instead of waiting out the pause (or the give-up).
+  cleanups.push(onWake(() => { if (!destroyed && !socket && session) reconnect() }))
   try {
     const response = await fetch('/api/session')
     if (response.ok) { const result = await response.json() as { session: PublicSession }; session = result.session; connect() }

@@ -13,11 +13,12 @@
 //   </ArenaStage>
 //
 // Inside, a `.arena-fill` element grows to the free height (use it for the canvas holder).
-import { computed, defineAsyncComponent, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { getSound, setSound } from '../../../audio/settings.ts'
 import type { ScreenPad } from '../../../arena/input/usePad.ts'
+import { lazyComponent } from '../../state/lazy.ts'
 
-const ArenaPadPanel = defineAsyncComponent(() => import('./ArenaPadPanel.vue'))
+const ArenaPadPanel = lazyComponent(() => import('./ArenaPadPanel.vue'))
 const props = defineProps<{ title: string; chip?: string; off?: boolean; /** The game is on and the player is in it: the arena fills the whole screen and the bar fades. */ play?: boolean; /** The screen's controller (usePad): the Controller button and panel. */ pad?: ScreenPad }>()
 const emit = defineEmits<{ leave: [] }>()
 
@@ -108,19 +109,29 @@ html.arena-open, html.arena-open body { overflow: hidden; }
 .as-btn, .as-ico { border: 0; font: inherit; height: 44px; min-width: 44px; padding: 0 12px; border-radius: 22px; cursor: pointer; }
 .as-btn { font-size: 14px; font-weight: 650; }
 .as-ico { display: grid; place-items: center; width: 44px; padding: 0; }
-.as-chip { font-size: 12px; padding: 5px 10px; border-radius: 99px; font-weight: 650; text-transform: capitalize; white-space: nowrap; }
+.as-chip { font-size: 12px; padding: 5px 10px; border-radius: 99px; font-weight: 650; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.as-chip::first-letter { text-transform: uppercase; }
 .as-chip.off { background: rgba(138, 75, 10, .8); }
 .as-ico.on { box-shadow: 0 0 0 2px #7ee2a8; }
 .as-pad { position: absolute; z-index: 7; inset: auto 8px calc(env(safe-area-inset-bottom) + 8px) 8px; max-height: calc(100% - 70px); overflow-y: auto; color: var(--c-ink, #1a1d24); max-width: 520px; margin: 0 auto; }
-.as-mid { flex: 1; min-width: 0; display: flex; justify-content: center; pointer-events: none; }
+.as-mid { flex: 1 1 auto; min-width: 0; display: flex; justify-content: center; pointer-events: none; }
 .as-mid > :deep(*) { pointer-events: auto; background: rgba(8, 12, 28, .55); border-radius: 16px; padding: 2px 12px; }
 .as-mid :deep(*) { color: #fff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+/* A phone: Leave, the status chip, the score and three round buttons share one row, so the chip gives way first and the gaps close up. */
+@media (max-width: 430px) {
+  .as-bar { gap: 4px; padding: 4px 6px; }
+  .as-btn { padding: 0 10px; }
+  .as-chip { flex: 0 1 auto; font-size: 11px; padding: 4px 8px; }
+  .as-mid > :deep(*) { padding: 2px 6px; }
+}
 .as-hint { position: absolute; z-index: 5; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom) + 8px); margin: 0; padding: 6px 10px; font-size: 12px; text-align: center; background: rgba(255, 240, 209, .92); color: #8a4b0a; border-radius: 10px; pointer-events: none; }
 .as-body { position: absolute; inset: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 0 0 12px; color: var(--c-ink, #1a1d24); background: #f6f7f9; -webkit-overflow-scrolling: touch; }
 .as-body.is-play { overflow: hidden; padding: 0; background: #0b1020; }
 /* Not playing (lobby, result): the arena is the top part and the cards sit below, scrolling. */
 .as-body :deep(.arena-fill) { flex: none; height: min(46vh, 100vw); min-height: 0; }
 .as-body > :deep(*) { box-sizing: border-box; }
+/* A wide window: the lobby and the result are one centred column, not a strip across the screen with the cards lost under it; the bar's buttons stay with it. */
+@media (min-width: 900px) { .as-body:not(.is-play) > :deep(*) { width: 100%; max-width: 1200px; align-self: center; } .as-bar { max-width: 1700px; margin-inline: auto; } }
 .as-body :deep(.rp), .as-body :deep([class$="-card"]) { margin: 0 10px; }
 /* Playing: the arena's holder (a game's `*-stage`) takes all of it, whatever height cap the game's own styles put on it in the lobby. */
 .as-body.is-play :deep(.arena-fill > [class$="-stage"]) { flex: 1 1 auto; height: 100%; max-height: none !important; min-height: 0 !important; border-radius: 0; }

@@ -202,24 +202,24 @@ onBeforeUnmount(() => { if (timer !== undefined) clearInterval(timer); if (tick 
 .hg-app { display: flex; flex-direction: column; gap: 10px; }
 .hg-head { display: flex; gap: 12px; align-items: center; }
 .hg-head h2 { margin: 0; font-size: 20px; }
-.hg-head p { margin: 2px 0 0; font-size: 13px; opacity: .75; }
+.hg-head p { margin: 2px 0 0; font-size: 14px; opacity: .8; }
 .hg-badge { font-size: 30px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: #f59f00; }
 .hg-card { border-radius: 14px; padding: 12px; background: rgba(245, 159, 0, .14); border: 1px solid rgba(245, 159, 0, .5); }
-.hg-card p { margin: 4px 0; font-size: 13px; }
+.hg-card p { margin: 4px 0; font-size: 14px; }
 .hg-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
 .hg-traders { list-style: none; margin: 0; padding: 0; }
 .hg-trader { display: flex; flex-direction: column; gap: 8px; padding: 10px 0; border-bottom: 1px solid rgba(127,127,127,.2); }
-.hg-trader-head small, .hg-trader-head em { display: block; font-size: 12px; opacity: .8; margin-top: 2px; }
+.hg-trader-head small, .hg-trader-head em { display: block; font-size: 13px; opacity: .85; margin-top: 2px; }
 .hg-ai { margin-left: 8px; font-size: 11px; padding: 1px 6px; border-radius: 8px; background: rgba(127,127,127,.25); }
 .hg-items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .hg-items li { display: flex; align-items: center; gap: 10px; }
 .hg-item-name { flex: 1; font-size: 14px; }
-.hg-item-name small { display: block; font-size: 12px; opacity: .7; }
+.hg-item-name small { display: block; font-size: 13px; opacity: .8; }
 .hg-talk { border-radius: 14px; padding: 10px; background: rgba(127,127,127,.12); display: flex; flex-direction: column; gap: 8px; }
 .hg-title { margin: 0; font-weight: 700; font-size: 14px; }
 .hg-sub { margin: 0; font-size: 12px; opacity: .75; }
 .hg-lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.hg-lines li { max-width: 86%; padding: 6px 10px; border-radius: 14px; font-size: 13px; }
+.hg-lines li { max-width: 86%; padding: 6px 10px; border-radius: 14px; font-size: 14px; }
 .hg-lines li.is-trader { align-self: flex-start; background: #f1e6d3; color: #241a12; }
 .hg-lines li.is-you { align-self: flex-end; background: #2f9e44; color: #fff; }
 .hg-chips { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -227,5 +227,5 @@ onBeforeUnmount(() => { if (timer !== undefined) clearInterval(timer); if (tick 
 .hg-label { display: block; font-size: 12px; opacity: .75; flex-basis: 100%; }
 .hg-input { flex: 1; min-width: 100px; padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(127,127,127,.5); font-size: 16px; }
 .hg-deal { margin: 0; font-weight: 700; font-size: 14px; }
-.hg-fine { font-size: 12px; opacity: .7; margin: 6px 0 0; }
+.hg-fine { font-size: 13px; opacity: .8; margin: 6px 0 0; }
 </style>

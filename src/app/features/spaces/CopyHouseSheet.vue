@@ -128,6 +128,8 @@ async function backToGame(): Promise<void> {
 </template>
 
 <style scoped>
+/* The phone hides the corner Close of the main sheet; this sheet opens over the app and needs its own. */
+:deep(.base-sheet-close) { display: grid !important; }
 .sp-head { padding: 16px 56px 8px 18px; }
 .sp-head h2 { margin: 0; font-size: 18px; }
 .sp-head p { margin: 2px 0 0; font-size: 13px; color: var(--c-ink-2); }
@@ -149,8 +151,8 @@ async function backToGame(): Promise<void> {
 .ch-card { display: flex; flex-direction: column; gap: 8px; padding: 14px; border: 1px solid var(--c-line); border-radius: 14px; background: #fff; }
 .ch-card h3 { margin: 0; font-size: 15px; }
 .ch-card h3 small { margin-left: 6px; padding: 2px 8px; border-radius: 10px; background: var(--c-green-soft, #e3f3ea); color: var(--c-green-dark, #1d6b45); font-size: 11px; }
-.ch-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.ch-links .ui-button { display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.ch-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ch-links .ui-button { display: flex; align-items: center; justify-content: center; min-width: 0; white-space: normal; text-align: center; line-height: 1.25; padding: 8px 10px; text-decoration: none; }
 .ch-json { font: 13px/1.4 ui-monospace, Menlo, monospace; }
 .ch-notes { margin: 0; padding-left: 18px; font-size: 13px; color: var(--c-ink-2); }
 </style>

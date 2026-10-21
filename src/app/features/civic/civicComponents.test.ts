@@ -90,7 +90,7 @@ test('Governor: until the data is here, a skeleton; offline, the connection\'s o
   civic.entry(cityKey).error = null
 
   server.fault.offline = true
-  await app.game.refresh()
+  for (let i = 0; i < 3; i++) await app.game.refresh() // three failures in a row: the grace is over
   try {
     const off = text(await render('GovernorApp'))
     assert.ok(off.includes('This screen is loaded from the server, so it cannot be shown right now.'), off.slice(0, 200))

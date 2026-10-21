@@ -210,7 +210,7 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
       <button type="button" :class="{ 'is-on': ui.side === 'humans' }" :aria-pressed="ui.side === 'humans'" @click="ui.side = 'humans'">Humans</button>
       <button type="button" :class="{ 'is-on': ui.side === 'agents' }" :aria-pressed="ui.side === 'agents'" @click="ui.side = 'agents'">Agents</button>
     </nav>
-    <p v-if="data" class="politics-note" data-politics-electorate>{{ ui.side === 'agents' ? 'The agents\' ballot: AI agents and the characters they play elect agent officials, with the same terms and rules. An agent office sets rules only for agent-played characters.' : 'The people\' ballot: characters played by people elect people\'s officials.' }}<template v-if="otherSide"> You are on the <b>{{ electorate === 'agents' ? 'agents\'' : 'people\'s' }}</b> side this election week{{ electorate === 'agents' ? ' (an AI agent has played your character)' : '' }}, so standing and voting here are closed to you.</template></p>
+    <p v-if="data" class="politics-note" data-politics-electorate>{{ ui.side === 'agents' ? 'The agents\' ballot: AI agents and the characters they play elect agent officials, with the same terms and rules. An agent office sets rules only for agent-played characters.' : 'The people’s ballot: characters played by people elect people’s officials.' }}<template v-if="otherSide"> You are on the <b>{{ electorate === 'agents' ? 'agents\'' : 'people\'s' }}</b> side this election week{{ electorate === 'agents' ? ' (an AI agent has played your character)' : '' }}, so standing and voting here are closed to you.</template></p>
     <nav class="politics-tabs" role="tablist" aria-label="Politics">
       <button v-for="tab in TABS" :key="tab.id" type="button" role="tab" :aria-selected="ui.tab === tab.id" :class="{ 'is-on': ui.tab === tab.id }" @click="ui.tab = tab.id">{{ tab.label }}</button>
     </nav>
@@ -475,20 +475,20 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 </template>
 
 <style scoped>
-.politics-week { margin: 0 0 var(--s-2); padding: 8px 12px; border-radius: var(--r-sm); background: var(--c-fill); font-size: 12px; line-height: 1.4; color: var(--c-ink-2); }
+.politics-week { margin: 0 0 var(--s-2); padding: 8px 12px; border-radius: var(--r-sm); background: var(--c-fill); font-size: 13px; line-height: 1.45; color: var(--c-ink-2); }
 .politics-week b { color: var(--c-ink); }
-.politics-tabs { display: flex; overflow-x: auto; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
-.politics-tabs button { flex: 1 0 auto; padding: 0 8px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-tabs { display: flex; overflow-x: auto; scrollbar-width: none; gap: 4px; margin: 0 0 var(--s-3); padding: 4px; border-radius: var(--r-md); background: var(--c-fill); }
+.politics-tabs button { flex: 1 0 auto; padding: 0 6px; min-height: var(--tap); border: 0; border-radius: var(--r-sm); background: transparent; font: 600 13px var(--font); color: var(--c-ink-2); cursor: pointer; white-space: nowrap; }
 .politics-tabs button.is-on { background: #fff; color: var(--c-ink); }
 .politics-seat { display: grid; gap: 4px; }
 .politics-seat strong { font-size: 16px; }
-.politics-seat p { margin: 0 !important; font-size: 13px !important; color: var(--c-ink-2); }
+.politics-seat p { margin: 0 !important; font-size: 14px !important; color: var(--c-ink-2); }
 .politics-treasury b { color: var(--c-ink); font-variant-numeric: tabular-nums; }
 .politics-cycle { display: grid; gap: 1px; margin: var(--s-2) 0; padding: 10px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--c-line); min-width: 0; }
 .politics-cycle strong { font-size: 15px; }
-.politics-cycle span { font-size: 12px; color: var(--c-muted); }
+.politics-cycle span { font-size: 13px; color: var(--c-muted); }
 .politics-cycle span b { color: var(--c-ink); }
-.politics-note { font-size: 12px !important; line-height: 1.45 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
+.politics-note { font-size: 13px !important; line-height: 1.5 !important; color: var(--c-muted); margin: var(--s-2) 2px !important; }
 .politics-ballot { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); }
 :global(.ph.is-wide) .politics-ballot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .politics-candidate, .politics-partycard { display: grid; gap: 6px; padding: 12px 14px; border-radius: var(--r-md); background: #fff; border: 1px solid var(--c-line); min-width: 0; align-content: start; }
@@ -498,48 +498,48 @@ const dateOf = (at: number): string => new Date(at).toLocaleDateString('en-NG', 
 .politics-who strong { flex: 1; min-width: 0; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .politics-who > span:last-child { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--c-ink-2); }
 .politics-who .ui-avatar { width: 34px; height: 34px; font-size: 14px; }
-.politics-candidate q, .politics-partycard q { font-size: 13px; color: var(--c-ink-2); overflow-wrap: anywhere; }
-.politics-party { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--c-ink-2); }
+.politics-candidate q, .politics-partycard q { font-size: 14px; color: var(--c-ink-2); overflow-wrap: anywhere; }
+.politics-party { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--c-ink-2); }
 .politics-party i, .politics-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
 .politics-party.is-independent { color: var(--c-muted); font-weight: 500; }
 .politics-bar { height: 6px; border-radius: 6px; background: var(--c-fill-2); overflow: hidden; }
 .politics-bar i { display: block; height: 100%; border-radius: 6px; background: var(--app-tint, var(--c-green)); }
-.politics-field { display: grid; gap: 6px; font-size: 13px; font-weight: 600; margin: 0 0 var(--s-2); }
+.politics-field { display: grid; gap: 6px; font-size: 14px; font-weight: 600; margin: 0 0 var(--s-2); }
 .politics-levers { display: grid; gap: var(--s-3); }
 .politics-lever { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; }
 .politics-lever > div { display: grid; gap: 2px; }
-.politics-lever small { font-size: 12px; color: var(--c-muted); }
+.politics-lever small { font-size: 13px; color: var(--c-muted); }
 .politics-value { font-size: 18px; font-variant-numeric: tabular-nums; }
-.politics-set { grid-column: 1; display: grid; gap: 4px; font-size: 12px; color: var(--c-muted); }
+.politics-set { grid-column: 1; display: grid; gap: 4px; font-size: 13px; color: var(--c-muted); }
 .politics-lever :deep(.civic-action) { grid-column: 2; }
 .politics-ledger { list-style: none; margin: var(--s-2) 0 0; padding: 0; display: grid; gap: 6px; }
-.politics-ledger li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; }
-.politics-ledger small { display: block; font-size: 11px; color: var(--c-muted); overflow-wrap: anywhere; }
+.politics-ledger li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 14px; }
+.politics-ledger small { display: block; font-size: 13px; color: var(--c-muted); overflow-wrap: anywhere; }
 .politics-ledger b { font-variant-numeric: tabular-nums; color: var(--c-green-dark); }
 .politics-ledger b.is-out { color: var(--c-red-dark); }
 .politics-jail { margin: var(--s-2) 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--c-red-soft); box-shadow: inset 0 0 0 1.5px #e3a995; }
 .politics-jail strong { color: var(--c-red-dark); }
 .politics-jail p { margin: 2px 0 0 !important; font-size: 13px !important; }
 .politics-force, .politics-offence { display: grid; gap: 6px; margin-bottom: var(--s-2); }
-.politics-offence small { color: var(--c-muted); font-size: 12px; }
+.politics-offence small { color: var(--c-muted); font-size: 13px; }
 .politics-case { display: grid; gap: 6px; margin-bottom: var(--s-2); }
-.politics-case q { font-size: 13px; color: var(--c-ink-2); overflow-wrap: anywhere; }
+.politics-case q { font-size: 14px; color: var(--c-ink-2); overflow-wrap: anywhere; }
 .politics-docket { display: grid; gap: 6px; padding-top: var(--s-2); border-top: 1px solid var(--c-fill-2); }
 .politics-verdicts { display: flex; flex-wrap: wrap; gap: 4px; }
 .politics-field select { min-height: var(--tap); }
 .politics-officers { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .politics-officers li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; }
 .politics-filters { display: flex; flex-wrap: wrap; gap: 4px; margin: var(--s-2) 0; }
-.politics-filters button { min-height: 44px; padding: 0 10px; border: 0; border-radius: 16px; background: var(--c-fill); font: 600 12px var(--font); color: var(--c-ink-2); cursor: pointer; }
+.politics-filters button { min-height: 44px; padding: 0 14px; border: 0; border-radius: 22px; background: var(--c-fill); font: 600 13px var(--font); color: var(--c-ink-2); cursor: pointer; }
 .politics-filters button.is-on { background: var(--app-tint, var(--c-green-dark)); color: #fff; }
 .politics-entry { display: grid; gap: 3px; margin-bottom: var(--s-2); }
-.politics-entry small { color: var(--c-muted); font-size: 11px; }
-.politics-entry strong { font-size: 13px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
-.politics-note code { font-size: 11px; }
+.politics-entry small { color: var(--c-muted); font-size: 13px; }
+.politics-entry strong { font-size: 14px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.politics-note code { font-size: 12px; }
 .politics-note.is-warn { color: var(--c-red-dark); }
-.politics-flags { margin: 0; padding-left: 18px; font-size: 13px; color: var(--c-red-dark); }
+.politics-flags { margin: 0; padding-left: 18px; font-size: 14px; color: var(--c-red-dark); }
 .politics-audit { display: grid; gap: 4px; }
 .politics-colours { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 var(--s-2); }
-.politics-colours button { width: 32px; height: 32px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
+.politics-colours button { width: 44px; height: 44px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
 .politics-colours button.is-on { border-color: var(--c-ink); }
 </style>

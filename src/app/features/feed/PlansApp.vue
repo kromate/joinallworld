@@ -129,3 +129,10 @@ const go = (e: EventView): void => { if (/square/i.test(e.place.label ?? '')) sh
     </template>
   </section>
 </template>
+
+<style scoped>
+.feed .feed-pill { min-height: var(--tap, 44px); padding: 0 14px; display: inline-flex; align-items: center; text-decoration: none; }
+.feed input[type='checkbox'] { flex: none; width: 22px; height: 22px; padding: 0; accent-color: var(--c-green-dark); }
+.feed > .feed-card > b, .feed > b { font-size: 16px; }
+.feed .social-list { padding: 0; list-style: none; }
+</style>

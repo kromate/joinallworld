@@ -62,8 +62,10 @@ const next = (id: string): Promise<void> => send('order', '/api/civic/works/orde
 </template>
 
 <style scoped>
-.city-works { margin: 12px 0; }
-.city-works h3 { font-size: 14px; margin: 0 0 4px; }
-.city-works progress { width: 100%; height: 6px; margin-top: 4px; }
+.city-works { margin: 0; padding: 14px; border-radius: var(--r-md); background: #fff; box-shadow: var(--e-1), var(--ring); }
+.city-works h3 { font-size: 16px; margin: 0 0 6px; }
+.city-works .social-row { padding: 0; border-bottom: 0; }
+.city-works .social-actions { padding-top: 8px; }
+.city-works progress { width: 100%; height: 8px; margin-top: 6px; }
 .city-works [data-works="active"] { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; }
 </style>

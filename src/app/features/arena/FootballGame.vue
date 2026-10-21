@@ -424,7 +424,7 @@ onBeforeUnmount(() => {
 @media (hover: hover) { .keys { display: block; } }
 /* Landscape: the pitch takes the whole screen and the thumbs sit on top of its lower corners. */
 @media (orientation: landscape) {
-  .fb-pad { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 8px 6px; pointer-events: none; }
+  .fb-pad { position: absolute; left: 0; right: 0; bottom: 0; max-width: 1400px; margin-inline: auto; padding: 0 8px 6px; pointer-events: none; }
   .fb-pad .fb-joy, .fb-pad .fb-btn { pointer-events: auto; opacity: 0.7; }
   .fb-joy { width: 108px; height: 108px; } .fb-knob { width: 46px; height: 46px; }
   .fb-btn.shoot { width: 86px; height: 86px; } .fb-btn.tackle { width: 62px; height: 62px; }

@@ -104,7 +104,7 @@ function play(cup: number): void {
   <section class="ay" aria-label="Ayo board">
     <header class="ay-head">
       <div v-for="(seat, index) in seats" :key="index" class="ay-player" :class="{ 'is-turn': view.turn === index, 'is-you': me === index }">
-        <span><b>{{ seat.name }}</b><small v-if="seat.bot">house</small><small v-else-if="me === index">you</small></span>
+        <span><b>{{ seat.bot ? seat.name.replace(/\s*\(bot\)$/i, '') : seat.name }}</b><small v-if="seat.bot">house</small><small v-else-if="me === index">you</small></span>
         <strong>{{ view.captured[index] ?? 0 }}<small> captured</small></strong>
       </div>
     </header>
@@ -143,15 +143,15 @@ function play(cup: number): void {
 <style scoped>
 .ay { display: grid; gap: 10px; min-width: 0; margin: 0 0 var(--s-3); padding: 8px; border-radius: 20px; color: #fff8e8; background: #203c2f; }
 .ay-head { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.ay-player { display: flex; align-items: center; justify-content: space-between; min-width: 0; gap: 8px; padding: 8px 10px; border: 2px solid transparent; border-radius: 12px; background: rgba(255, 255, 255, .1); }
+.ay-player { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; min-width: 0; gap: 2px 8px; padding: 8px 10px; border: 2px solid transparent; border-radius: 12px; background: rgba(255, 255, 255, .1); }
 .ay-player.is-turn { border-color: #f7c85a; }
 .ay-player.is-you { background: rgba(255, 255, 255, .16); }
-.ay-player > span { min-width: 0; display: grid; }
+.ay-player > span { min-width: 0; grid-column: 1 / -1; display: flex; align-items: baseline; gap: 6px; }
 .ay-player b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
-.ay-player small { color: rgba(255, 248, 232, .75); font-size: 10px; font-weight: 650; }
-.ay-player strong { flex: 0 0 auto; font-size: 20px; }
-.ay-player strong small { display: block; font-size: 9px; text-align: right; }
-.ay-variant { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: rgba(255, 248, 232, .78); }
+.ay-player small { color: rgba(255, 248, 232, .85); font-size: 12px; font-weight: 650; }
+.ay-player strong { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 6px; font-size: 20px; }
+.ay-player strong small { font-size: 12px; }
+.ay-variant { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: rgba(255, 248, 232, .78); }
 .ay-variant b { color: #ffe3a0; }
 .ay-scroll { min-width: 0; }
 .ay-board { position: relative; display: grid; gap: 2px; min-width: 0; width: 100%; padding: 2px; border: 2px solid #6d3c20; border-radius: 20px; background: linear-gradient(145deg, #c48143, #92522b 58%, #7b4023); box-shadow: inset 0 2px 0 rgba(255, 238, 194, .32), inset 0 -6px 12px rgba(65, 27, 8, .35), 0 6px 16px rgba(0, 0, 0, .26); box-sizing: border-box; }
@@ -168,7 +168,7 @@ function play(cup: number): void {
 .ay-ridge { height: 3px; margin: 0 5%; border-radius: 99px; background: rgba(73, 32, 12, .46); box-shadow: 0 1px rgba(255, 227, 171, .2); }
 .ay-direction { position: absolute; top: 50%; left: 4px; transform: translateY(-50%); color: #ffe3a0; font-size: 18px; font-weight: 900; z-index: 2; pointer-events: none; }
 .ay-status { min-height: 21px; margin: 0; text-align: center; font-size: 14px; font-weight: 800; }
-.ay-note { margin: 0 2px; color: rgba(255, 248, 232, .78); font-size: 11px; line-height: 1.45; text-align: center; }
+.ay-note { margin: 0 2px; color: rgba(255, 248, 232, .85); font-size: 12px; line-height: 1.45; text-align: center; }
 @media (max-width: 420px) {
   .ay { padding-inline: 6px; }
   .ay-count { right: 0; }

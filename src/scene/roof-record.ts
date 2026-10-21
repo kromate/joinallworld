@@ -55,6 +55,7 @@ export function coverRecorder(inner: Batch): CoverRecorder {
     at(x, y, z, ry, draw, rx, rz, scale) { inner.at(x, y, z, ry, () => draw(batch), rx, rz, scale); return batch },
     light(x, y, z, colour, intensity, distance) { inner.light(x, y, z, colour, intensity, distance); return batch },
     world: (x, y, z) => inner.world(x, y, z),
+    note: (kind, x, z, r, h) => inner.note?.(kind, x, z, r, h),
     get triangles() { return inner.triangles },
     build: (materials) => inner.build(materials),
     ...(inner.prepareAo ? { prepareAo: () => inner.prepareAo!() } : {}),

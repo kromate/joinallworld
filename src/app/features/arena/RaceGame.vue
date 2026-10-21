@@ -398,7 +398,7 @@ onBeforeUnmount(() => {
 .keys { display: none; position: absolute; bottom: -2px; left: 0; right: 0; text-align: center; }
 @media (hover: hover) { .keys { display: block; } .rg-pad { height: 212px; } }
 @media (orientation: landscape) {
-  .rg-pad { position: absolute; left: 0; right: 0; bottom: 0; height: 168px; pointer-events: none; }
+  .rg-pad { position: absolute; left: 0; right: 0; bottom: 0; max-width: 1400px; margin-inline: auto; height: 168px; pointer-events: none; }
   .rg-pad .rg-btn, .rg-pad .rg-auto { pointer-events: auto; } .rg-pad .rg-btn { opacity: .7; } .keys { display: none; }
 }
 @media (orientation: landscape) and (max-height: 500px) { .rg-pad { height: 140px; } .rg-btn.mv { width: 70px; height: 76px; } .rg-btn.gas { width: 96px; height: 96px; } .rg-btn.brake { right: 102px; width: 64px; height: 64px; } .rg-pedals { width: 180px; height: 140px; } }

@@ -210,6 +210,13 @@ const NAME_TEXT: Readonly<Record<NameRefusalCode, string>> = { name_not_allowed:
 
 const ACTIVE_POLL_MS = 1000;
 const IDLE_POLL_MS = 60000;
+/** A slow network is not a dead one: a request may take this long before it counts as a failure. */
+export const REQUEST_TIMEOUT_MS = 20000;
+/**
+ * Grace before "Server unreachable": it is declared on the GRACE_FAILURES-th failure in a row. Until then the game stays
+ * playable and quietly reads again after 1.5 s, then 3 s (about 5 s of grace, plus the requests).
+ */
+export const GRACE_FAILURES = 3;
 const isRecord = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
 function pendingIntent(value: unknown): PendingActionIntent | null {
   if (!isRecord(value) || typeof value.sessionId !== 'string' || !value.sessionId || value.sessionId.length > 100 || typeof value.actionId !== 'string'
@@ -317,6 +324,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     api, fetchJson: fetchScoped, connect, command, retryPendingAction, switchCity, switchLegacy, refresh, lifeChanged, wake, schedule, stop,
   };
   let pollTimer: unknown = null;
+  let failures = 0;
   let identityGeneration = 0;
   if (!cachedStateReady && !savedWaiting) status('Saved travel could not be read. Reconnect to reconcile; the saved copy is preserved.', true)
   const routeCooldowns = new Map<string, { until: number; attempts: number }>()
@@ -382,7 +390,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
     try {
       // A string, or a falsy value, goes out as it is (fetch decides); anything else is JSON.
       response = await fetch(path, { ...options, body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body as BodyInit | null | undefined,
-        headers: { 'Content-Type': 'application/json', ...(await import('./app/playMode.ts')).playRequestHeaders(), ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(10000) });
+        headers: { 'Content-Type': 'application/json', ...(await import('./app/playMode.ts')).playRequestHeaders(), ...(client.session && path !== '/api/session' ? { 'X-Allworld-Actor': client.session.id } : {}), ...options.headers }, signal: globalThis.AbortSignal?.timeout?.(REQUEST_TIMEOUT_MS) });
     } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error(TEXT.connectionLost); }
     let payload: Payload;
     try { payload = await response.json() as Payload; } catch { if (!responseCurrent()) throw staleIdentityResponse(); throw Error('Server returned an unreadable response'); }
@@ -398,6 +406,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
       client.storage = next;
       if (changed) { status(next ? next.reason : 'Connected · progress saved', Boolean(next)); onChange(client.state, client.state); }
     }
+    // Any answer below 500 proves the server is there: the failures in a row start again.
+    if (response.status < 500) failures = 0
     if (!response.ok) {
       const error: ApiError = Error(payload.error === 'action_expired' ? TEXT.outOfSync : payload.error || payload.message || 'Connection failed');
       error.status = response.status; error.code = payload.code || payload.error;
@@ -498,6 +508,8 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
   /** The request did not get an answer worth having: the device is offline, or the server is not reachable. */
   const down = (): LinkState => (isOnline() ? 'unreachable' : 'offline');
   function lost(error: ApiError, text?: string): void {
+    // A server that does not answer once or twice is probably a slow network: stay connected and playable, read again soon.
+    if (error.code !== 'economy_unavailable' && isOnline() && ++failures < GRACE_FAILURES) { cancelTimer(pollTimer); pollTimer = later(refresh, 1500 * failures); return }
     teachingCapability = null; teachingTransition = null
     client.ready = false; client.link = error.code === 'economy_unavailable' ? 'recovery' : down();
     status(client.link === 'recovery' ? error.reason || TEXT.paused.recovery : text || error.message, true);
@@ -589,6 +601,7 @@ export function createClient({ fetch = globalThis.fetch?.bind(globalThis), stora
 
   async function connect(createNew = false, startCity?: string): Promise<boolean> {
     const attempt = ++connectGeneration, current = (): boolean => attempt === connectGeneration
+    failures = 0;
     teachingCapability = null; teachingTransition = null; client.ready = false; client.link = 'connecting'; client.refusal = null; client.retryAfter = null;
     status('Connecting…');
     try {

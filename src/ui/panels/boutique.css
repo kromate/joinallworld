@@ -1,7 +1,7 @@
 /* Boutique phone app. */
 .boutique-root{--button-primary:#78274e;--button-selected:#f8e8f0;--button-selected-ink:#682345;display:grid;gap:var(--s-2);font-family:var(--font)}
 .boutique-root h3{margin:var(--s-2) 0 0}
-.boutique-top{position:relative;z-index:2;display:grid;gap:var(--s-2);padding-bottom:var(--s-2);background:#fff;border-bottom:1px solid var(--c-line)}
+.boutique-top{position:relative;z-index:2;display:grid;gap:var(--s-2);padding-bottom:var(--s-2);background:none;border-bottom:1px solid var(--c-line)}
 .boutique-state{display:flex!important;align-items:center;justify-content:center;gap:4px}
 .boutique-top .look-view .look-stage{height:clamp(190px,calc(28 * var(--ui-vh)),240px)}
 .boutique-top p{margin:0!important;line-height:1.35!important}
@@ -19,3 +19,6 @@
 .boutique-why{color:var(--c-red)!important}
 .boutique-state{font-style:normal;font-weight:600;font-size:12px;color:var(--c-green-dark);min-height:var(--tap);display:grid;place-items:center}
 .ph.is-wide .boutique-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* The look caption wraps to two lines instead of cutting the outfit off. */
+.boutique-top :deep(.look-caption){white-space:normal;overflow:visible;text-overflow:clip;text-align:left;line-height:1.35!important}

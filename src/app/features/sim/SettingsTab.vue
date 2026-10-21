@@ -207,4 +207,4 @@ onMounted(() => { void growth.load(); void loadOlderLives() })
   </div>
 </template>
 
-<style scoped src="../../../ui/panels/settings.css"></style>
+<style src="../../../ui/panels/settings.css"></style>

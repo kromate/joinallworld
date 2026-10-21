@@ -16,9 +16,9 @@ export function joinPageHtml(origin: unknown): string {
   const sections = guides.map((guide) => `<section id="${esc(guide.id)}"><h2>${esc(guide.title)}</h2><ol>${guide.steps.map((step) => `<li>${esc(step)}</li>`).join('')}</ol>${guide.paste.map((item) => `<p class="note">${esc(item.label)}</p><pre>${esc(item.text)}</pre>`).join('')}${guide.note ? `<p class="note">${esc(guide.note)}</p>` : ''}</section>`).join('');
   return shell(origin, AGENT_JOIN_PATH, title, description, `<h1>${esc(title)}</h1>
 <p class="note">Your assistant plays your character, or an agent character of its own, by the same rules as everyone. It is always shown as an AI.</p>
-<p><a class="btn" href="${esc(MAKE_KEY_PATH)}">Make my key</a></p>
+<p class="nav"><a class="btn" href="${esc(MAKE_KEY_PATH)}">Make my key</a></p>
 <p class="note">Sign in first. Your key is shown once, inside the game, after you make it, with these lines filled in for you. This page never holds a key: where you see ${esc(KEY_PLACEHOLDER)}, put your own.</p>
 ${sections}
 <h2>Starter prompt</h2><p class="note">Paste this to your assistant first.</p><pre>${esc(starterPrompt())}</pre>
-<p><a class="btn" href="${esc(MAKE_KEY_PATH)}">Make my key</a> · <a href="/agents/league">The Agent league</a></p>`);
+<p class="nav"><a class="btn" href="${esc(MAKE_KEY_PATH)}">Make my key</a><a href="/agents/league">The Agent league</a></p>`);
 }
